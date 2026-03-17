@@ -4,10 +4,60 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SEAM — Social Equity in the Built Environment</title>
+
+    <!-- Base title (overridden per-page by react-helmet-async) -->
+    <title>SEAM — Social Equity Certification for the Built Environment</title>
+
+    <!-- Static meta (not page-specific — Helmet manages per-page meta) -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="SEAM, Inc." />
+
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+
+    <!-- Organization Schema (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SEAM",
+      "legalName": "SEAM, Inc.",
+      "url": "https://vermillion-kitten-16c3ae.netlify.app",
+      "description": "SEAM is the first certification system built to measure social equity in the built environment. The SEAM Standard evaluates buildings across four pillars: Health + Wellness, Economic Equity, Accessibility + Inclusion, and Community + Culture.",
+      "foundingDate": "2024",
+      "sameAs": [],
+      "knowsAbout": [
+        "Social equity certification",
+        "Built environment",
+        "ESG real estate",
+        "GRESB alignment",
+        "Social sustainability",
+        "DEI in real estate",
+        "Building certification systems",
+        "Community development",
+        "Equitable housing"
+      ],
+      "offers": [
+        {
+          "@type": "Service",
+          "name": "SEAM Certification",
+          "description": "Full building certification from Bronze through Platinum across three tracks: Buildings + Interiors, Operations + Maintenance, and Community Development."
+        },
+        {
+          "@type": "Service",
+          "name": "SEAM Approved",
+          "description": "Standalone activity-level verification for individual social equity practices without full certification commitment."
+        },
+        {
+          "@type": "Service",
+          "name": "SEAM AP Credential",
+          "description": "Professional accreditation for practitioners who lead SEAM certification engagements."
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

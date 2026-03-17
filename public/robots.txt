@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# AI Crawlers — explicitly allowed for GEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://vermillion-kitten-16c3ae.netlify.app/sitemap.xml

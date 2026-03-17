@@ -1,35 +1,60 @@
 import { Link } from 'react-router-dom'
+import { useReveal } from '../hooks/useReveal'
+import { useEffect, useRef } from 'react'
+import SEO, { faqSchema } from '../components/SEO'
 
 /* ─── Section 1: Hero ─── */
 function Hero() {
-  return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Warm gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-warm-50 to-white" />
+  const imageRef = useRef<HTMLImageElement>(null)
 
-      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32">
-        <div className="max-w-4xl">
-          <h1 className="font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.05] tracking-[-0.04em] text-warm-900">
+  // Subtle parallax on the hero image
+  useEffect(() => {
+    function handleScroll() {
+      if (imageRef.current) {
+        const y = window.scrollY
+        imageRef.current.style.transform = `translateY(${y * 0.25}px) scale(1.05)`
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return (
+    <section className="relative min-h-[90vh] flex items-end overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          ref={imageRef}
+          src="/hero.png"
+          alt="People gathered in conversation beneath the columns of a modern building"
+          className="hero-image h-full w-full object-cover object-center scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/10" />
+      </div>
+
+      <div className="hero-enter relative mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-28 w-full">
+        <div className="max-w-3xl">
+          <h1 className="hero-title font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
             Buildings should serve{' '}
-            <em className="font-display italic font-normal text-warm-500">
+            <em className="font-display italic font-normal text-warm-200">
               the people inside them
             </em>
           </h1>
-          <p className="mt-8 max-w-2xl text-[clamp(1.1rem,1.5vw,1.25rem)] leading-relaxed text-warm-500">
-            SEAM is the first certification system built to measure what matters most
-            about the places we live and work: whether they advance social equity for
-            the communities they touch.
+          <p className="hero-subtitle mt-8 max-w-2xl text-[clamp(1.1rem,1.5vw,1.25rem)] leading-relaxed text-warm-200">
+            SEAM is the first system built to measure what matters most about the
+            places we live and work: whether they advance social equity for the
+            communities they touch.
           </p>
-          <div className="mt-12 flex flex-wrap gap-4">
+          <div className="hero-cta mt-12 flex flex-wrap gap-4">
             <Link
               to="/get-started"
-              className="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300"
+              className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
             >
               Start a project
             </Link>
             <Link
               to="/about/mission"
-              className="inline-flex items-center rounded-full border border-warm-200 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-400 transition-colors duration-300"
+              className="inline-flex items-center rounded-full border border-white/30 px-8 py-4 text-[16px] font-medium text-white hover:border-white/60 transition-colors duration-300"
             >
               Learn more
             </Link>
@@ -42,10 +67,12 @@ function Hero() {
 
 /* ─── Section 2: Mission ─── */
 function Mission() {
+  const ref = useReveal()
+
   return (
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="max-w-3xl mx-auto text-center">
+        <div ref={ref} className="reveal-fade-up max-w-3xl mx-auto text-center">
           <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
             Our purpose
           </p>
@@ -92,10 +119,13 @@ const pillars = [
 ]
 
 function Pillars() {
+  const headerRef = useReveal()
+  const gridRef = useReveal(0.1)
+
   return (
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="max-w-2xl mb-16 lg:mb-20">
+        <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
           <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
             The framework
           </p>
@@ -105,11 +135,11 @@ function Pillars() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
           {pillars.map((pillar) => (
             <div
               key={pillar.number}
-              className="group rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+              className="reveal-child group rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
               <span className="text-[14px] font-medium text-seam-500 mb-4 block">
                 {pillar.number}
@@ -165,10 +195,13 @@ const products = [
 ]
 
 function Products() {
+  const headerRef = useReveal()
+  const gridRef = useReveal(0.1)
+
   return (
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="max-w-2xl mb-16 lg:mb-20">
+        <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
           <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
             What we offer
           </p>
@@ -178,12 +211,12 @@ function Products() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
           {products.map((product) => (
             <Link
               key={product.href}
               to={product.href}
-              className="group rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+              className="reveal-child group rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
               <span className="text-[13px] font-medium uppercase tracking-[0.1em] text-seam-600 mb-2 block">
                 {product.label}
@@ -227,10 +260,13 @@ const projects = [
 ]
 
 function Proof() {
+  const headerRef = useReveal()
+  const gridRef = useReveal(0.1)
+
   return (
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="max-w-2xl mb-16 lg:mb-20">
+        <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
           <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
             Proof
           </p>
@@ -240,11 +276,11 @@ function Proof() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
             <div
               key={project.name}
-              className="group relative rounded-2xl bg-warm-900 p-10 lg:p-12 min-h-[360px] flex flex-col justify-end overflow-hidden"
+              className="reveal-child group relative rounded-2xl bg-warm-900 p-10 lg:p-12 min-h-[360px] flex flex-col justify-end overflow-hidden"
             >
               {/* Placeholder for future project imagery */}
               <div className="absolute inset-0 bg-gradient-to-t from-warm-900 via-warm-900/80 to-warm-900/40" />
@@ -306,10 +342,13 @@ const resources = [
 ]
 
 function Resources() {
+  const headerRef = useReveal()
+  const gridRef = useReveal(0.1)
+
   return (
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="max-w-2xl mb-16 lg:mb-20">
+        <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
           <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
             Open resources
           </p>
@@ -319,12 +358,12 @@ function Resources() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {resources.map((resource) => (
             <Link
               key={resource.href}
               to={resource.href}
-              className="group rounded-2xl bg-warm-50 p-8 lg:p-10 transition-all duration-300 hover:bg-warm-100/80"
+              className="reveal-child group rounded-2xl bg-warm-50 p-8 lg:p-10 transition-all duration-300 hover:bg-warm-100/80"
             >
               <h3 className="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
                 {resource.title}
@@ -345,9 +384,11 @@ function Resources() {
 
 /* ─── Section 7: CTA ─── */
 function CtaBlock() {
+  const ref = useReveal()
+
   return (
     <section className="py-24 lg:py-32 bg-warm-900">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <div ref={ref} className="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
         <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
           Ready to build something{' '}
           <em className="italic font-normal text-warm-400">worth belonging to?</em>
@@ -379,6 +420,28 @@ function CtaBlock() {
 export default function Home() {
   return (
     <>
+      <SEO
+        path="/"
+        description="SEAM is the first certification system that measures social equity in buildings. Bronze through Platinum certification across Health + Wellness, Economic Equity, Accessibility + Inclusion, and Community + Culture."
+        jsonLd={faqSchema([
+          {
+            question: 'What is SEAM certification?',
+            answer: 'SEAM is the first certification system built to measure social equity in the built environment. It evaluates buildings across four interdependent pillars: Health + Wellness, Economic Equity, Accessibility + Inclusion, and Community + Culture, with levels from Bronze through Platinum.',
+          },
+          {
+            question: 'How is SEAM different from LEED or WELL?',
+            answer: 'SEAM is complementary to LEED, WELL, and Fitwel. While those systems focus on environmental performance and physical wellness, SEAM measures social equity — the relationship between a building and the people it touches. SEAM requires ongoing verification, community voice in evaluation, and interdependent scoring across all four pillars.',
+          },
+          {
+            question: 'What is SEAM Approved?',
+            answer: 'SEAM Approved is a standalone activity-level verification program. Organizations can verify individual social equity practices without committing to full certification. It serves as both a standalone credential and a natural on-ramp to full SEAM certification.',
+          },
+          {
+            question: 'What is the ROSSI Calculator?',
+            answer: 'ROSSI (Return on Social Sustainability Investment) translates social equity outcomes into financial language. It models project-level and portfolio-level impact, GRESB alignment, and insurance risk reduction to help capital providers evaluate social sustainability investments.',
+          },
+        ])}
+      />
       <Hero />
       <Mission />
       <Pillars />

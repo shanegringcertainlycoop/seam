@@ -1,5 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { posts } from '../../data/blog'
+import SEO, { blogPostingSchema, breadcrumbSchema } from '../../components/SEO'
 
 function formatDate(dateStr: string) {
   return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
@@ -158,6 +159,28 @@ export default function BlogPost() {
 
   return (
     <>
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        path={`/resources/blog/${post.slug}`}
+        type="article"
+        article={{
+          author: post.author.name,
+          publishedTime: post.date,
+          section: post.category,
+        }}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            blogPostingSchema(post),
+            breadcrumbSchema([
+              { name: 'Home', path: '/' },
+              { name: 'Blog', path: '/resources/blog' },
+              { name: post.title, path: `/resources/blog/${post.slug}` },
+            ]),
+          ],
+        }}
+      />
       {/* Article Header */}
       <article>
         <header className="pt-16 lg:pt-24 pb-12 lg:pb-16">

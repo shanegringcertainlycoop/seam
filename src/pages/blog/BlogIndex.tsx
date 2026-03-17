@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { posts, categories, type BlogPost } from '../../data/blog'
+import SEO from '../../components/SEO'
 
 function formatDate(dateStr: string) {
   return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
@@ -84,6 +85,11 @@ export default function BlogIndex() {
 
   return (
     <>
+      <SEO
+        title="Blog & Insights"
+        description="Lessons from SEAM-certified projects, practitioner perspectives, sector analysis, and updates on the Standard and ROSSI calculator."
+        path="/resources/blog"
+      />
       {/* Header */}
       <section className="pt-16 lg:pt-24 pb-12">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
