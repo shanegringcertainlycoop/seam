@@ -6,7 +6,7 @@ export default function SiteLayout() {
   return (
     <div className="min-h-screen bg-white font-sans text-warm-700 antialiased">
       <Navbar />
-      <main className="pt-[88px]">
+      <main>
         <Outlet />
       </main>
       <Footer />

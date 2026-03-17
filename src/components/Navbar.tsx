@@ -254,8 +254,18 @@ function MobileAccordion({
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [scrolled, setScrolled] = useState(false)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const navRef = useRef<HTMLElement>(null)
+
+  // Track scroll position for transparent → solid transition
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const openDropdown = useCallback((label: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
@@ -292,13 +302,19 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled || mobileOpen || activeDropdown
+          ? 'bg-white/95 backdrop-blur-md shadow-sm'
+          : 'bg-transparent'
+      }`}
     >
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div className="flex h-[88px] items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="font-display text-[28px] font-semibold tracking-[-0.04em] text-warm-900">
+            <span className={`font-display text-[28px] font-semibold tracking-[-0.04em] transition-colors duration-300 ${
+              scrolled || mobileOpen || activeDropdown ? 'text-warm-900' : 'text-white'
+            }`}>
               SEAM
             </span>
           </Link>
@@ -307,7 +323,11 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-10">
             <Link
               to="/about"
-              className="text-[15px] text-warm-500 hover:text-warm-900 transition-colors duration-300"
+              className={`text-[15px] transition-colors duration-300 ${
+                scrolled || activeDropdown
+                  ? 'text-warm-500 hover:text-warm-900'
+                  : 'text-white/80 hover:text-white'
+              }`}
             >
               About
             </Link>
@@ -321,9 +341,13 @@ export default function Navbar() {
               >
                 <button
                   className={`inline-flex items-center text-[15px] transition-colors duration-300 ${
-                    activeDropdown === group.label
-                      ? 'text-warm-900'
-                      : 'text-warm-500 hover:text-warm-900'
+                    scrolled || activeDropdown
+                      ? activeDropdown === group.label
+                        ? 'text-warm-900'
+                        : 'text-warm-500 hover:text-warm-900'
+                      : activeDropdown === group.label
+                        ? 'text-white'
+                        : 'text-white/80 hover:text-white'
                   }`}
                   onClick={() =>
                     setActiveDropdown(
@@ -347,7 +371,11 @@ export default function Navbar() {
 
             <Link
               to="/get-started"
-              className="ml-4 inline-flex items-center rounded-full bg-warm-900 px-6 py-3 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors duration-300"
+              className={`ml-4 inline-flex items-center rounded-full px-6 py-3 text-[15px] font-medium transition-colors duration-300 ${
+                scrolled || activeDropdown
+                  ? 'bg-warm-900 text-white hover:bg-warm-800'
+                  : 'bg-white text-warm-900 hover:bg-white/90'
+              }`}
             >
               Get Started
             </Link>
@@ -355,7 +383,9 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="lg:hidden p-2 text-warm-500"
+            className={`lg:hidden p-2 transition-colors duration-300 ${
+              scrolled || mobileOpen ? 'text-warm-500' : 'text-white'
+            }`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
