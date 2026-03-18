@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import { useReveal } from '../../hooks/useReveal'
 import { useCountUp } from '../../hooks/useCountUp'
-import SEO, { faqSchema, breadcrumbSchema } from '../../components/SEO'
+import SEO, { breadcrumbSchema } from '../../components/SEO'
 
 /* ─── Hero ─── */
 function Hero() {

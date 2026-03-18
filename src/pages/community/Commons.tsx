@@ -169,7 +169,7 @@ function Tiers() {
                 <p className={`mt-2 font-display text-[20px] tracking-[-0.02em] ${
                   'highlighted' in tier && tier.highlighted ? 'text-seam-300' : 'text-seam-600'
                 }`}>
-                  {tier.price}
+                  {String(tier.price)}
                 </p>
               )}
               <p className={`mt-4 text-[15px] leading-relaxed ${
