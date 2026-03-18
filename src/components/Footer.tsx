@@ -20,6 +20,15 @@ const footerSections = [
     ],
   },
   {
+    title: 'Who We Serve',
+    links: [
+      { label: 'Developers & Owners', href: '/for/developers-owners' },
+      { label: 'Property Managers', href: '/for/operators' },
+      { label: 'Capital Providers', href: '/for/capital-providers' },
+      { label: 'Impact Professionals', href: '/for/impact-professionals' },
+    ],
+  },
+  {
     title: 'About',
     links: [
       { label: 'Our Mission', href: '/about/mission' },
@@ -45,7 +54,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-12">
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-10">
             {footerSections.map((section) => (
               <div key={section.title}>
                 <h3 className="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-500 mb-6">

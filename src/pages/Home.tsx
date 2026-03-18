@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useReveal } from '../hooks/useReveal'
+import { useCountUp } from '../hooks/useCountUp'
 import { useEffect, useRef } from 'react'
 import SEO, { faqSchema } from '../components/SEO'
+import Marquee from '../components/Marquee'
 
 /* ─── Section 1: Hero ─── */
 function Hero() {
@@ -84,6 +86,44 @@ function Mission() {
             When buildings are designed and operated with social equity at their core,
             communities thrive and investments outperform.
           </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── Section 2b: Stats Ticker ─── */
+function Stats() {
+  const s1 = useCountUp(4, { suffix: '' })
+  const s2 = useCountUp(3, { suffix: '' })
+  const s3 = useCountUp(100, { suffix: '%' })
+  const s4 = useCountUp(50, { suffix: '+' })
+  const ref = useReveal(0.2)
+
+  const stats = [
+    { ...s1, label: 'Certification pillars' },
+    { ...s2, label: 'Product tracks' },
+    { ...s3, label: 'Open-source standard' },
+    { ...s4, label: 'Activities measured' },
+  ]
+
+  return (
+    <section ref={ref} className="reveal-fade-up py-16 lg:py-20 border-b border-warm-100">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          {stats.map((s) => (
+            <div key={s.label} className="text-center">
+              <span
+                ref={s.ref}
+                className="block font-display text-[clamp(2.5rem,5vw,4rem)] tracking-[-0.04em] text-seam-600"
+              >
+                {s.display}
+              </span>
+              <span className="block mt-2 text-[14px] text-warm-500 uppercase tracking-[0.08em]">
+                {s.label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -444,6 +484,18 @@ export default function Home() {
       />
       <Hero />
       <Mission />
+      <Stats />
+      <Marquee
+        items={[
+          'Health + Wellness',
+          'Economic Equity',
+          'Accessibility + Inclusion',
+          'Community + Culture',
+          'Bronze to Platinum',
+          'Open Standard',
+          'GRESB Aligned',
+        ]}
+      />
       <Pillars />
       <Products />
       <Proof />

@@ -12,6 +12,16 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="author" content="SEAM, Inc." />
 
+    <!-- GEO: Generative Engine Optimization — AI crawler signals -->
+    <meta name="citation_title" content="SEAM — Social Equity Certification for the Built Environment" />
+    <meta name="citation_author" content="SEAM, Inc." />
+    <meta name="citation_date" content="2024" />
+    <meta name="speakable" content="true" />
+
+    <!-- Geo-location signals (US-based, nationwide service) -->
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="United States" />
+
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -56,6 +66,26 @@
           "description": "Professional accreditation for practitioners who lead SEAM certification engagements."
         }
       ]
+    }
+    </script>
+
+    <!-- WebSite schema for sitelinks search box -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SEAM",
+      "url": "https://vermillion-kitten-16c3ae.netlify.app",
+      "description": "SEAM is the first certification system built to measure social equity in the built environment.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://vermillion-kitten-16c3ae.netlify.app/resources/blog?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".hero-subtitle", "[data-speakable]"]
+      }
     }
     </script>
   </head>

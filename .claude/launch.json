@@ -5,7 +5,13 @@
       "name": "seam-dev",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
-      "port": 5173
+      "port": 8086
+    },
+    {
+      "name": "method-structure-architect",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "8086"],
+      "port": 8086
     }
   ]
 }
