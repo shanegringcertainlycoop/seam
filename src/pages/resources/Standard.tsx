@@ -19,13 +19,13 @@ function Hero() {
           <span className="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
             The SEAM Standard&trade;
           </span>
-          <h1 className="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          <h1 className="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white max-w-2xl">
             The framework for belonging{' '}
             <em className="font-display italic font-normal text-seam-300">
               in the built environment
             </em>
           </h1>
-          <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+          <p className="hero-subtitle mt-8 max-w-lg text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
             The first social equity certification purpose-built for commercial real estate. A rigorous, human-centered standard that embeds belonging into every stage of how buildings are conceived, built, and managed.
           </p>
           <div className="hero-cta mt-10 flex flex-wrap gap-4">

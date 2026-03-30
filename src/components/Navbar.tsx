@@ -78,6 +78,11 @@ const solutions: NavGroup = {
 const theStandard: NavGroup = {
   label: 'The Standard',
   links: [],
+  featured: {
+    label: 'The Standard',
+    href: '/resources/standard',
+    description: 'The full SEAM framework, free to download.',
+  },
   sections: [
     {
       heading: 'Rating Systems',

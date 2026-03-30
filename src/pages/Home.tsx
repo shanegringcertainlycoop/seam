@@ -133,6 +133,7 @@ const pillars = [
     number: '01',
     title: 'Social Impact',
     icon: '/icons/pillar-social-impact.png',
+    href: '/standard/social-impact',
     description:
       'Measurable outcomes for people and communities. Social Impact is the pillar that builds the evidence behind your project\u2019s wide-ranging effect on the people and communities it reaches.',
   },
@@ -140,6 +141,7 @@ const pillars = [
     number: '02',
     title: 'Social Responsibility',
     icon: '/icons/pillar-social-responsibility.png',
+    href: '/standard/social-responsibility',
     description:
       'How an organization operates says as much as what it builds. Social Responsibility focuses on the governance practices, community engagement, and social investments that turn values into consistent, documented action.',
   },
@@ -147,6 +149,7 @@ const pillars = [
     number: '03',
     title: 'Social Justice',
     icon: '/icons/pillar-social-justice.png',
+    href: '/standard/social-justice',
     description:
       'Real estate shapes who has access to opportunity, and who doesn\u2019t. The Social Justice pillar addresses issues that historically impact how we build, zone, invest, and support impacted parties.',
   },
@@ -154,6 +157,7 @@ const pillars = [
     number: '04',
     title: 'Social Accountability',
     icon: '/icons/pillar-social-accountability.png',
+    href: '/standard/social-accountability',
     description:
       'Every building is connected to people far beyond its walls. Social Accountability is the pillar that addresses the full reach of that connection, from the materials sourced and the suppliers hired to the health and safety of everyone the project impacts.',
   },
@@ -178,8 +182,9 @@ function Pillars() {
 
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
           {pillars.map((pillar) => (
-            <div
+            <Link
               key={pillar.number}
+              to={pillar.href}
               className="reveal-child group relative overflow-visible rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
               <img
@@ -196,7 +201,7 @@ function Pillars() {
               <p className="text-[16px] leading-relaxed text-warm-500">
                 {pillar.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -294,7 +299,7 @@ function Products() {
                       className="h-24 w-auto object-contain -ml-16"
                     />
                   </div>
-                ) : product.logo.includes('approved-wordmark') ? (
+                ) : product.logo?.includes('approved-wordmark') ? (
                   <div className="h-24 w-24 bg-[#01313d] rounded-xl flex items-center justify-center p-3">
                     <img
                       src={product.logo}
