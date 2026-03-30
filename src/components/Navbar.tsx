@@ -136,6 +136,11 @@ const resources: NavGroup = {
   label: 'Resources',
   links: [
     {
+      label: 'Directory',
+      href: '/directory',
+      description: 'Find accredited professionals, certified projects, and verified activities.',
+    },
+    {
       label: 'The Standard',
       href: '/resources/standard',
       description: 'The full SEAM framework, free to download.',
@@ -534,17 +539,6 @@ export default function Navbar() {
               About
             </Link>
 
-            <Link
-              to="/directory"
-              className={`text-[15px] transition-colors duration-300 ${
-                scrolled || activeDropdown
-                  ? 'text-warm-500 hover:text-warm-900'
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              Directory
-            </Link>
-
             {dropdowns.map((group) => (
               <div
                 key={group.label}
@@ -625,14 +619,6 @@ export default function Navbar() {
               className="block py-4 text-[17px] font-medium text-warm-700 border-b border-warm-100"
             >
               About
-            </Link>
-
-            <Link
-              to="/directory"
-              onClick={() => setMobileOpen(false)}
-              className="block py-4 text-[17px] font-medium text-warm-700 border-b border-warm-100"
-            >
-              Directory
             </Link>
 
             {dropdowns.map((group) => (

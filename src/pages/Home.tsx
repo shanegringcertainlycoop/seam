@@ -132,26 +132,30 @@ const pillars = [
   {
     number: '01',
     title: 'Social Impact',
+    icon: '/icons/pillar-social-impact.png',
     description:
-      'Indoor environments that protect and promote the physical and mental health of every occupant, worker, and visitor.',
+      'Measurable outcomes for people and communities. Social Impact is the pillar that builds the evidence behind your project\u2019s wide-ranging effect on the people and communities it reaches.',
   },
   {
     number: '02',
     title: 'Social Responsibility',
+    icon: '/icons/pillar-social-responsibility.png',
     description:
-      'Procurement, employment, and wealth-building practices that create opportunity for historically excluded communities.',
+      'How an organization operates says as much as what it builds. Social Responsibility focuses on the governance practices, community engagement, and social investments that turn values into consistent, documented action.',
   },
   {
     number: '03',
     title: 'Social Justice',
+    icon: '/icons/pillar-social-justice.png',
     description:
-      'Spaces designed so that everyone can participate fully, regardless of ability, language, or identity.',
+      'Real estate shapes who has access to opportunity, and who doesn\u2019t. The Social Justice pillar addresses issues that historically impact how we build, zone, invest, and support impacted parties.',
   },
   {
     number: '04',
     title: 'Social Accountability',
+    icon: '/icons/pillar-social-accountability.png',
     description:
-      'Programming and governance that honor the social fabric of the neighborhoods buildings inhabit.',
+      'Every building is connected to people far beyond its walls. Social Accountability is the pillar that addresses the full reach of that connection, from the materials sourced and the suppliers hired to the health and safety of everyone the project impacts.',
   },
 ]
 
@@ -176,8 +180,13 @@ function Pillars() {
           {pillars.map((pillar) => (
             <div
               key={pillar.number}
-              className="reveal-child group rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+              className="reveal-child group relative overflow-visible rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
+              <img
+                src={pillar.icon}
+                alt=""
+                className="absolute -top-6 right-6 h-32 w-auto object-contain pointer-events-none"
+              />
               <span className="text-[14px] font-medium text-seam-500 mb-4 block">
                 {pillar.number}
               </span>
@@ -204,6 +213,7 @@ const products = [
       'Bronze through Platinum certification across three tracks: Buildings + Interiors, Operations + Maintenance, and Community Development.',
     href: '/certification',
     audience: 'For developers, owners, and capital providers',
+    logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
   },
   {
     label: 'SEAM Approved',
@@ -212,6 +222,7 @@ const products = [
       'Verify individual social equity activities without committing to full certification.',
     href: '/approved',
     audience: 'For operators, managers, and anchor institutions',
+    logo: '/logos/approved-wordmark.png',
   },
   {
     label: 'SEAM AP Credential',
@@ -220,6 +231,7 @@ const products = [
       'The qualification for practitioners who lead certification work. Build your practice, join the directory, shape the field.',
     href: '/ap-credential',
     audience: 'For consultants and sustainability professionals',
+    logo: '/logos/ap-seal.png',
   },
   {
     label: 'COMMUNITY',
@@ -228,6 +240,8 @@ const products = [
       'Resources, peer connection, and ongoing support for organizations and individuals committed to improving social equity.',
     href: '/commons',
     audience: 'For all professional audiences',
+    logo: '/logos/member-organization.png',
+    logo2: '/logos/member-individual.png',
   },
 ]
 
@@ -253,8 +267,49 @@ function Products() {
             <Link
               key={product.href}
               to={product.href}
-              className="reveal-child group rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+              className="reveal-child group relative overflow-visible rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
+              <div className="absolute -top-10 right-8 flex items-end pointer-events-none">
+                {'logos' in product && product.logos ? (
+                  <div className="flex items-end -space-x-12">
+                    {product.logos.map((logo: string) => (
+                      <img
+                        key={logo}
+                        src={logo}
+                        alt=""
+                        className="h-24 w-auto object-contain"
+                      />
+                    ))}
+                  </div>
+                ) : 'logo2' in product && product.logo2 ? (
+                  <div className="flex items-end">
+                    <img
+                      src={product.logo}
+                      alt=""
+                      className="h-24 w-auto object-contain"
+                    />
+                    <img
+                      src={product.logo2}
+                      alt=""
+                      className="h-24 w-auto object-contain -ml-16"
+                    />
+                  </div>
+                ) : product.logo.includes('approved-wordmark') ? (
+                  <div className="h-24 w-24 bg-[#01313d] rounded-xl flex items-center justify-center p-3">
+                    <img
+                      src={product.logo}
+                      alt=""
+                      className="w-full object-contain brightness-0 invert"
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={product.logo}
+                    alt=""
+                    className="h-24 w-auto object-contain"
+                  />
+                )}
+              </div>
               <span className="text-[13px] font-medium uppercase tracking-[0.1em] text-seam-600 mb-2 block">
                 {product.label}
               </span>
