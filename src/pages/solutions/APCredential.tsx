@@ -1,18 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useReveal } from '../../hooks/useReveal'
-import { useCountUp } from '../../hooks/useCountUp'
 import SEO, { faqSchema, breadcrumbSchema } from '../../components/SEO'
 
 /* ─── Hero ─── */
 function Hero() {
   return (
     <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-      {/* Decorative grid */}
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: 'linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-      }} />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -45,22 +41,17 @@ function Hero() {
             </div>
           </div>
 
-          {/* Credential badge */}
+          {/* AP Credential seal */}
           <div className="hidden lg:flex justify-center">
             <div className="relative">
-              {/* Decorative rings */}
               <div className="absolute inset-0 -m-8 rounded-full border border-seam-500/20 animate-[spin_30s_linear_infinite]" />
               <div className="absolute inset-0 -m-16 rounded-full border border-seam-400/10 animate-[spin_45s_linear_infinite_reverse]" />
-              <div className="w-64 h-64 rounded-full bg-gradient-to-br from-seam-600 to-seam-800 flex flex-col items-center justify-center shadow-2xl shadow-seam-900/40">
-                <span className="font-display text-[56px] font-semibold tracking-[-0.04em] text-white leading-none">
-                  AP
-                </span>
-                <span className="mt-2 text-[13px] font-medium uppercase tracking-[0.15em] text-seam-200">
-                  Accredited
-                </span>
-                <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-200">
-                  Professional
-                </span>
+              <div className="w-64 h-64 rounded-full bg-white flex items-center justify-center shadow-2xl shadow-seam-900/40 border border-seam-900/10">
+                <img
+                  src="/logos/ap-seal.png"
+                  alt="SEAM AP credential seal"
+                  className="w-56 h-56 object-contain"
+                />
               </div>
             </div>
           </div>
@@ -70,41 +61,6 @@ function Hero() {
   )
 }
 
-/* ─── Stats Bar ─── */
-function StatsBar() {
-  const s1 = useCountUp(4, { suffix: '' })
-  const s2 = useCountUp(100, { suffix: '%' })
-  const s3 = useCountUp(3, { suffix: '' })
-  const ref = useReveal(0.2)
-
-  const stats = [
-    { ...s1, label: 'Pillar domains covered' },
-    { ...s2, label: 'Online — study anywhere' },
-    { ...s3, label: 'Year renewal cycle' },
-  ]
-
-  return (
-    <section ref={ref} className="reveal-fade-up bg-warm-50 border-b border-warm-100">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <span
-                ref={s.ref}
-                className="block font-display text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] text-seam-600"
-              >
-                {s.display}
-              </span>
-              <span className="block mt-1 text-[14px] text-warm-500 uppercase tracking-[0.08em]">
-                {s.label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
 
 /* ─── Why Earn the AP ─── */
 const benefits = [
@@ -126,7 +82,7 @@ const benefits = [
     ),
     title: 'Join the practitioner network',
     description:
-      'Get listed in the SEAM directory, connect with certified project teams, and access peer learning opportunities through the Commons community.',
+      'Get listed in the SEAM directory, connect with certified project teams, and access peer learning opportunities through the community.',
   },
   {
     icon: (
@@ -158,7 +114,7 @@ function WhyEarn() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             Why earn the AP
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -173,7 +129,7 @@ function WhyEarn() {
               key={b.title}
               className="reveal-child group rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
-              <div className="text-seam-600 mb-6">{b.icon}</div>
+              <div className="text-gold-500 mb-6">{b.icon}</div>
               <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
                 {b.title}
               </h3>
@@ -224,7 +180,7 @@ function HowItWorks() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             The path
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -292,7 +248,7 @@ function WhoItsFor() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             Who it's for
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -305,7 +261,7 @@ function WhoItsFor() {
           {audiences.map((a) => (
             <div
               key={a.title}
-              className="reveal-child rounded-2xl bg-warm-50 p-8 lg:p-10"
+              className="reveal-child rounded-2xl bg-warm-50 p-5 sm:p-8 lg:p-10"
             >
               <h3 className="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">
                 {a.title}
@@ -313,6 +269,80 @@ function WhoItsFor() {
               <p className="text-[15px] leading-relaxed text-warm-500">
                 {a.description}
               </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── Featured APs ─── */
+const featuredAPs = [
+  {
+    name: 'Maya Richardson',
+    title: 'SEAM AP · Director, Urban Equity Partners',
+    image: '/images/placeholder-ap-1.jpg',
+    quote:
+      'The AP credential connected my background in public health to the built environment in a way that developers and investors actually respond to.',
+  },
+  {
+    name: 'David Okonkwo',
+    title: 'SEAM AP · Senior Consultant, Greenbridge Advisory',
+    image: '/images/placeholder-ap-2.jpg',
+    quote:
+      'Within six months of earning my AP, I was leading certification engagements for three projects. The credential gave me immediate credibility with building owners.',
+  },
+  {
+    name: 'Elena Vásquez',
+    title: 'SEAM AP · Founder, Comunidad Design Lab',
+    image: '/images/placeholder-ap-3.jpg',
+    quote:
+      'SEAM gave me a structured framework to translate twenty years of community organizing into measurable outcomes that show up in project financing.',
+  },
+]
+
+function FeaturedAPs() {
+  const headerRef = useReveal()
+  const gridRef = useReveal(0.1)
+
+  return (
+    <section className="py-24 lg:py-32 bg-warm-50">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+            Meet our APs
+          </p>
+          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            Practitioners leading{' '}
+            <em className="italic font-normal">the work</em>
+          </h2>
+        </div>
+
+        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-8">
+          {featuredAPs.map((ap) => (
+            <div
+              key={ap.name}
+              className="reveal-child rounded-2xl bg-white border border-warm-100 overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+            >
+              <div className="aspect-[4/3] bg-warm-200 overflow-hidden">
+                <img
+                  src={ap.image}
+                  alt={ap.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-5 sm:p-8 lg:p-10">
+                <blockquote className="text-[16px] leading-relaxed text-warm-600 italic">
+                  "{ap.quote}"
+                </blockquote>
+                <div className="mt-6 pt-6 border-t border-warm-100">
+                  <p className="text-[16px] font-medium text-warm-900">
+                    {ap.name}
+                  </p>
+                  <p className="text-[14px] text-warm-500 mt-1">{ap.title}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -363,7 +393,7 @@ const faqs = [
   },
   {
     q: 'How much does the credential cost?',
-    a: 'The preparation course and exam fee are bundled at a single price. Commons members receive a discount. Renewal every three years requires continuing education credits — no re-examination.',
+    a: 'The preparation course and exam fee are bundled at a single price. Community members receive a discount. Renewal every three years requires continuing education credits — no re-examination.',
   },
   {
     q: 'Is the AP credential required to work on SEAM projects?',
@@ -380,53 +410,69 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="py-24 lg:py-32 bg-warm-50">
+    <section className="py-24 lg:py-32 bg-warm-50 overflow-hidden">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
-            Frequently asked
-          </p>
-          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Questions about{' '}
-            <em className="italic font-normal">the AP credential</em>
-          </h2>
-        </div>
-
-        <div className="max-w-3xl">
-          {faqs.map((faq, i) => (
-            <div key={i} className="border-b border-warm-200">
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="flex w-full items-center justify-between py-6 text-left"
-              >
-                <span className="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
-                  {faq.q}
-                </span>
-                <svg
-                  className={`shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 ${
-                    open === i ? 'rotate-45' : ''
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-              </button>
-              <div
-                className={`grid transition-all duration-300 ${
-                  open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <p className="pb-6 text-[16px] leading-relaxed text-warm-500 max-w-2xl">
-                    {faq.a}
-                  </p>
-                </div>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-start">
+          <div>
+            <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+              <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+                Frequently asked
+              </p>
+              <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+                Questions about{' '}
+                <em className="italic font-normal">the AP credential</em>
+              </h2>
             </div>
-          ))}
+
+            <div>
+              {faqs.map((faq, i) => (
+                <div key={i} className="border-b border-warm-200">
+                  <button
+                    onClick={() => setOpen(open === i ? null : i)}
+                    aria-expanded={open === i}
+                    aria-controls={`faq-answer-${i}`}
+                    className="flex w-full items-center justify-between py-6 text-left"
+                  >
+                    <span className="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
+                      {faq.q}
+                    </span>
+                    <svg
+                      className={`shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 ${
+                        open === i ? 'rotate-45' : ''
+                      }`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </button>
+                  <div
+                    id={`faq-answer-${i}`}
+                    role="region"
+                    className={`grid transition-all duration-300 ${
+                      open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="pb-6 text-[16px] leading-relaxed text-warm-500 max-w-2xl">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="hidden lg:block sticky top-32">
+            <img
+              src="/images/faq-ap-credential.jpg"
+              alt="SEAM Accredited Professional"
+              className="w-full aspect-[3/4] object-cover rounded-2xl"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -486,10 +532,10 @@ export default function APCredential() {
         ] as unknown as Record<string, unknown>}
       />
       <Hero />
-      <StatsBar />
       <WhyEarn />
       <HowItWorks />
       <WhoItsFor />
+      <FeaturedAPs />
       <Testimonial />
       <FAQ />
       <CtaBlock />

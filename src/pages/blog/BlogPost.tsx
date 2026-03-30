@@ -114,7 +114,11 @@ function ArticleBody({ body }: { body: string }) {
 function RelatedPosts({ currentSlug, category }: { currentSlug: string; category: string }) {
   const related = posts
     .filter((p) => p.slug !== currentSlug)
-    .sort((a, b) => (a.category === category ? -1 : 1) - (b.category === category ? -1 : 1))
+    .sort((a, b) => {
+      const aMatch = a.category === category ? 0 : 1
+      const bMatch = b.category === category ? 0 : 1
+      return aMatch - bMatch
+    })
     .slice(0, 3)
 
   if (related.length === 0) return null
@@ -132,13 +136,13 @@ function RelatedPosts({ currentSlug, category }: { currentSlug: string; category
               to={`/resources/blog/${post.slug}`}
               className="group block"
             >
-              <span className="text-[12px] font-medium uppercase tracking-[0.1em] text-seam-600 mb-3 block">
+              <span className="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-500 mb-3 block">
                 {post.category}
               </span>
-              <h3 className="font-display text-[20px] leading-[1.25] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-700 transition-colors duration-300">
+              <h3 className="font-display text-[20px] leading-[1.25] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-gold-600 transition-colors duration-300">
                 {post.title}
               </h3>
-              <p className="text-[14px] text-warm-400">
+              <p className="text-[14px] text-warm-500">
                 {post.author.name} &middot; {post.readTime}
               </p>
             </Link>
@@ -183,11 +187,11 @@ export default function BlogPost() {
       />
       {/* Article Header */}
       <article>
-        <header className="pt-16 lg:pt-24 pb-12 lg:pb-16">
+        <header className="pt-28 sm:pt-30 lg:pt-32 pb-8 lg:pb-16">
           <div className="mx-auto max-w-3xl px-6 lg:px-10">
             <Link
               to="/resources/blog"
-              className="inline-flex items-center gap-2 text-[14px] text-warm-400 hover:text-warm-700 transition-colors mb-10"
+              className="inline-flex items-center gap-2 text-[14px] text-warm-500 hover:text-warm-700 transition-colors mb-10"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -195,7 +199,7 @@ export default function BlogPost() {
               All articles
             </Link>
 
-            <span className="inline-block rounded-full bg-seam-50 text-seam-700 px-4 py-1.5 text-[13px] font-medium mb-6">
+            <span className="inline-block rounded-full bg-seam-50 text-gold-600 px-4 py-1.5 text-[13px] font-medium mb-6">
               {post.category}
             </span>
 
@@ -203,7 +207,7 @@ export default function BlogPost() {
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-4 text-[15px] text-warm-400">
+            <div className="flex flex-wrap items-center gap-4 text-[15px] text-warm-500">
               <div>
                 <span className="text-warm-900 font-medium">{post.author.name}</span>
                 <span className="text-warm-300 mx-1">/</span>

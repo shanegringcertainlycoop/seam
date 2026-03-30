@@ -1,8 +1,12 @@
 import { useEffect, useRef } from 'react'
 
+/** True when the page is being captured by Figma HTML-to-Design */
+const isFigmaCapture = typeof window !== 'undefined' && window.location.hash.includes('figmacapture')
+
 /**
  * Intersection Observer hook that adds a 'revealed' class
  * when an element scrolls into view. Triggers once.
+ * During Figma capture, reveals everything immediately.
  */
 export function useReveal<T extends HTMLElement = HTMLDivElement>(
   threshold = 0.15,
@@ -12,6 +16,11 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(
   useEffect(() => {
     const el = ref.current
     if (!el) return
+
+    if (isFigmaCapture) {
+      el.classList.add('revealed')
+      return
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {

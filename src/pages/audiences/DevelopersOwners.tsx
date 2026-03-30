@@ -7,13 +7,18 @@ import SEO, { faqSchema, breadcrumbSchema } from '../../components/SEO'
 function Hero() {
   return (
     <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: 'linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-      }} />
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src="/images/hero-developers.jpg"
+          alt="Real estate development with social equity focus"
+          className="h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20" />
+      </div>
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
-        <div className="hero-enter max-w-3xl">
+        <div className="hero-enter max-w-4xl mx-auto text-center">
           <span className="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
             For Developers &amp; Owners
           </span>
@@ -23,10 +28,10 @@ function Hero() {
               Attract mission-aligned capital.
             </em>
           </h1>
-          <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            SEAM certification gives developers and owners a measurable, third-party-verified signal that their buildings advance social equity — the metric investors, tenants, and communities increasingly demand.
+          <p className="hero-subtitle mt-8 max-w-xl mx-auto text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+            SEAM programming gives developers and owners a measurable, third-party-verified signal that their buildings advance social equity and meet the demands of investors, tenants, and communities alike.
           </p>
-          <div className="hero-cta mt-10 flex flex-wrap gap-4">
+          <div className="hero-cta mt-10 flex flex-wrap gap-4 justify-center">
             <Link
               to="/get-started"
               className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
@@ -50,7 +55,7 @@ function Hero() {
 const challenges = [
   {
     pain: 'ESG commitments with no social proof',
-    solution: 'SEAM certification provides third-party-verified evidence of social equity outcomes — not promises, not policies, but measured performance across four interdependent pillars.',
+    solution: "SEAM certification provides third-party-verified evidence of social equity outcomes. These aren't promises or policies. It's measured performance across four social equity pillars.",
   },
   {
     pain: 'Tenant and community skepticism',
@@ -74,12 +79,12 @@ function Challenges() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             The challenge
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             You know equity matters.{' '}
-            <em className="italic font-normal">Now prove it.</em>
+            <em className="italic font-normal">Now show it.</em>
           </h2>
         </div>
 
@@ -87,10 +92,10 @@ function Challenges() {
           {challenges.map((c) => (
             <div
               key={c.pain}
-              className="reveal-child grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 rounded-2xl border border-warm-100 p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+              className="reveal-child grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 rounded-2xl border border-warm-100 p-5 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
               <div>
-                <span className="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-3 block">
+                <span className="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-500 mb-3 block">
                   The problem
                 </span>
                 <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900">
@@ -98,7 +103,7 @@ function Challenges() {
                 </h3>
               </div>
               <div>
-                <span className="text-[13px] font-medium uppercase tracking-[0.1em] text-seam-600 mb-3 block">
+                <span className="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-500 mb-3 block">
                   How SEAM helps
                 </span>
                 <p className="text-[16px] leading-relaxed text-warm-500">
@@ -121,6 +126,7 @@ const products = [
     description: 'Bronze through Platinum across Buildings + Interiors, Operations + Maintenance, or Community Development tracks.',
     href: '/certification',
     fit: 'Best for new developments and major renovations where social equity is part of the business plan from day one.',
+    logo: '/logos/cert-platinum.png',
   },
   {
     label: 'SEAM Approved',
@@ -128,6 +134,7 @@ const products = [
     description: 'Verify individual social equity practices without committing to full certification. A standalone credential or a pathway into it.',
     href: '/approved',
     fit: 'Best for existing assets where you want to credential specific programs — local hiring, community advisory boards, procurement policies.',
+    logo: '/logos/approved-wordmark.png',
   },
   {
     label: 'ROSSI Calculator',
@@ -138,6 +145,23 @@ const products = [
   },
 ]
 
+function ProductIcon({ logo }: { logo?: string }) {
+  if (!logo) return null
+  const isApproved = logo.includes('approved-wordmark')
+  const isMember = logo.includes('member-')
+  return (
+    <div className="absolute -top-7 right-4 sm:-top-8 sm:right-8">
+      {isMember ? (
+        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden drop-shadow-sm">
+          <img src={logo} alt="" className="w-full h-full object-cover scale-[1.35]" />
+        </div>
+      ) : (
+        <img src={logo} alt="" className={`w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-sm ${isApproved ? 'bg-[#01313d] rounded-lg p-2' : ''}`} />
+      )}
+    </div>
+  )
+}
+
 function ProductsForYou() {
   const headerRef = useReveal()
   const gridRef = useReveal(0.1)
@@ -146,7 +170,7 @@ function ProductsForYou() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             Your toolkit
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -155,14 +179,15 @@ function ProductsForYou() {
           </h2>
         </div>
 
-        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6 pt-10">
           {products.map((p) => (
             <Link
               key={p.href}
               to={p.href}
-              className="reveal-child group rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+              className="reveal-child group relative overflow-visible rounded-2xl bg-white border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
-              <span className="text-[13px] font-medium uppercase tracking-[0.1em] text-seam-600 mb-2 block">
+              <ProductIcon logo={p.logo} />
+              <span className="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-500 mb-2 block">
                 {p.label}
               </span>
               <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
@@ -171,10 +196,10 @@ function ProductsForYou() {
               <p className="text-[16px] leading-relaxed text-warm-500 mb-6">
                 {p.description}
               </p>
-              <p className="text-[14px] leading-relaxed text-warm-400 italic border-t border-warm-100 pt-5">
+              <p className="text-[14px] leading-relaxed text-warm-500 italic border-t border-warm-100 pt-5">
                 {p.fit}
               </p>
-              <span className="inline-block mt-4 text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
+              <span className="inline-block mt-4 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">
                 Learn more &rarr;
               </span>
             </Link>
@@ -201,7 +226,7 @@ function Outcomes() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             The business case
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -285,7 +310,7 @@ function FAQ() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             Frequently asked
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -299,6 +324,8 @@ function FAQ() {
             <div key={i} className="border-b border-warm-200">
               <button
                 onClick={() => setOpen(open === i ? null : i)}
+                aria-expanded={open === i}
+                aria-controls={`faq-answer-${i}`}
                 className="flex w-full items-center justify-between py-6 text-left"
               >
                 <span className="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
@@ -317,6 +344,8 @@ function FAQ() {
                 </svg>
               </button>
               <div
+                id={`faq-answer-${i}`}
+                role="region"
                 className={`grid transition-all duration-300 ${
                   open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                 }`}

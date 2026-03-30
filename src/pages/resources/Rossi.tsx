@@ -8,10 +8,8 @@ import SEO, { faqSchema, breadcrumbSchema } from '../../components/SEO'
 function Hero() {
   return (
     <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: 'linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-      }} />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20" />
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="hero-enter">
@@ -86,7 +84,7 @@ function StatsBar() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <span ref={s.ref} className="block font-display text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] text-seam-600">{s.display}</span>
+              <span ref={s.ref} className="block font-display text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] text-gold-500">{s.display}</span>
               <span className="block mt-1 text-[14px] text-warm-500 uppercase tracking-[0.08em]">{s.label}</span>
             </div>
           ))}
@@ -105,7 +103,7 @@ function BusinessCase() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div ref={headerRef} className="reveal-slide-left">
-            <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">The problem</p>
+            <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">The problem</p>
             <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
               Proving equitable business{' '}<em className="italic font-normal">is good business</em>
             </h2>
@@ -171,7 +169,7 @@ function WhatItModels() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Four dimensions</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Four dimensions</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             What ROSSI{' '}<em className="italic font-normal">models</em>
           </h2>
@@ -179,7 +177,7 @@ function WhatItModels() {
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8">
           {dimensions.map((d) => (
             <div key={d.title} className="reveal-child group rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-              <div className="text-seam-600 mb-6">{d.icon}</div>
+              <div className="text-gold-500 mb-6">{d.icon}</div>
               <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">{d.title}</h3>
               <p className="text-[16px] leading-relaxed text-warm-500">{d.description}</p>
             </div>
@@ -198,29 +196,29 @@ function Methodology() {
     <section id="methodology" className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">The methodology</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">The methodology</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Built on research.{' '}<em className="italic font-normal">Grounded in evidence.</em>
           </h2>
         </div>
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="reveal-child rounded-2xl border border-warm-100 p-10 lg:p-12">
-            <span className="font-display text-[40px] tracking-[-0.04em] text-seam-600">100s</span>
-            <p className="mt-2 text-[14px] text-warm-400 uppercase tracking-[0.08em] mb-6">Studies reviewed</p>
+            <span className="font-display text-[40px] tracking-[-0.04em] text-gold-500">100s</span>
+            <p className="mt-2 text-[14px] text-warm-500 uppercase tracking-[0.08em] mb-6">Studies reviewed</p>
             <p className="text-[16px] leading-relaxed text-warm-500">
               We examined hundreds of studies, whitepapers, and reports on the direct relationship between social sustainability and financial performance. All research from 2019 to 2024.
             </p>
           </div>
           <div className="reveal-child rounded-2xl border border-warm-100 p-10 lg:p-12">
-            <span className="font-display text-[40px] tracking-[-0.04em] text-seam-600">NYU</span>
-            <p className="mt-2 text-[14px] text-warm-400 uppercase tracking-[0.08em] mb-6">Stern ROSI foundation</p>
+            <span className="font-display text-[40px] tracking-[-0.04em] text-gold-500">NYU</span>
+            <p className="mt-2 text-[14px] text-warm-500 uppercase tracking-[0.08em] mb-6">Stern ROSI foundation</p>
             <p className="text-[16px] leading-relaxed text-warm-500">
               ROSSI builds on NYU Stern Center for Sustainable Business&apos;s ROSI&trade; Methodology — the framework used by corporate leaders and investors to bridge sustainability and financial performance.
             </p>
           </div>
           <div className="reveal-child rounded-2xl border border-warm-100 p-10 lg:p-12">
-            <span className="font-display text-[40px] tracking-[-0.04em] text-seam-600">4</span>
-            <p className="mt-2 text-[14px] text-warm-400 uppercase tracking-[0.08em] mb-6">Pillar alignment</p>
+            <span className="font-display text-[40px] tracking-[-0.04em] text-gold-500">4</span>
+            <p className="mt-2 text-[14px] text-warm-500 uppercase tracking-[0.08em] mb-6">Pillar alignment</p>
             <p className="text-[16px] leading-relaxed text-warm-500">
               While NYU ROSI covers all ESG factors, ROSSI focuses specifically on social factors aligned with the four pillars of the SEAM Standard — making results directly actionable for certification decisions.
             </p>
@@ -246,7 +244,7 @@ function WhoUsesIt() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Who uses ROSSI</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Who uses ROSSI</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             The financial case for{' '}<em className="italic font-normal">every stakeholder</em>
           </h2>
@@ -287,7 +285,7 @@ function Testimonial() {
 
 /* ─── FAQ ─── */
 const faqs = [
-  { q: 'Is ROSSI free to use?', a: 'Basic ROSSI access is included with Commons Practitioner membership and all organization tiers. The full portfolio modeling tool is available with Builder and Steward organization membership.' },
+  { q: 'Is ROSSI free to use?', a: 'Basic ROSSI access is included with Community Practitioner membership and all organization tiers. The full portfolio modeling tool is available with Builder and Steward organization membership.' },
   { q: 'How long does it take to complete?', a: 'The core calculator takes less than 20 questions. Project-level modeling can be completed in a single session. Portfolio-level analysis may take longer depending on the number of properties.' },
   { q: 'What data do I need to get started?', a: 'Basic property information: building size, occupancy type, tenant count, and current social equity programs. The calculator guides you through each input — no financial modeling expertise required.' },
   { q: 'How does ROSSI relate to GRESB?', a: 'ROSSI outputs are aligned with GRESB social indicators. The portfolio model generates GRESB-ready data that feeds directly into your annual submission without manual translation.' },
@@ -302,7 +300,7 @@ function FAQ() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Frequently asked</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Frequently asked</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Questions about{' '}<em className="italic font-normal">ROSSI</em>
           </h2>
@@ -310,11 +308,11 @@ function FAQ() {
         <div className="max-w-3xl">
           {faqs.map((faq, i) => (
             <div key={i} className="border-b border-warm-200">
-              <button onClick={() => setOpen(open === i ? null : i)} className="flex w-full items-center justify-between py-6 text-left">
+              <button onClick={() => setOpen(open === i ? null : i)} aria-expanded={open === i} aria-controls={`faq-answer-${i}`} className="flex w-full items-center justify-between py-6 text-left">
                 <span className="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
                 <svg className={`shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 ${open === i ? 'rotate-45' : ''}`} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
               </button>
-              <div className={`grid transition-all duration-300 ${open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+              <div id={`faq-answer-${i}`} role="region" className={`grid transition-all duration-300 ${open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
                 <div className="overflow-hidden"><p className="pb-6 text-[16px] leading-relaxed text-warm-500 max-w-2xl">{faq.a}</p></div>
               </div>
             </div>
@@ -333,10 +331,10 @@ function CtaBlock() {
         <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
           Social equity has a{' '}<em className="italic font-normal text-seam-300">return on investment</em>
         </h2>
-        <p className="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">Calculate yours in less than 20 questions. Free with Commons membership.</p>
+        <p className="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">Calculate yours in less than 20 questions. Free with community membership.</p>
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <Link to="/get-started" className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Calculate your ROSSI</Link>
-          <Link to="/commons" className="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Join the Commons</Link>
+          <Link to="/community" className="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Join the community</Link>
         </div>
       </div>
     </section>

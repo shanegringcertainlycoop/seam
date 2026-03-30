@@ -16,7 +16,7 @@ export default function Marquee({
   const doubled = `${text}${separator}${text}${separator}`
 
   return (
-    <div className="overflow-hidden py-6 bg-warm-50 border-y border-warm-100">
+    <div className="overflow-hidden py-6 bg-warm-50 border-y border-warm-100" aria-hidden="true" role="presentation">
       <div
         className="marquee-track whitespace-nowrap"
         style={{ '--marquee-duration': `${speed}s` } as React.CSSProperties}

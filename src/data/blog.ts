@@ -85,7 +85,7 @@ ROSSI v2 introduces three capabilities that respond directly to how institutiona
 
 ## How to use it
 
-ROSSI v2 is free and publicly accessible at seaminc.org/rossi. No account required for project-level modeling. Portfolio features require a free Commons membership.
+ROSSI v2 is free and publicly accessible at seaminc.org/rossi. No account required for project-level modeling. Portfolio features require a free community membership.
 
 The calculator is not a sales tool. It is a translation layer. Social equity outcomes are real. The challenge has always been expressing them in the quantitative frameworks that capital allocation decisions require. ROSSI exists to close that gap.`,
   },

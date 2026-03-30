@@ -2,12 +2,32 @@ import { Link } from 'react-router-dom'
 
 const footerSections = [
   {
-    title: 'Products',
+    title: 'Solutions',
     links: [
       { label: 'Certification', href: '/certification' },
       { label: 'SEAM Approved', href: '/approved' },
       { label: 'AP Credential', href: '/ap-credential' },
-      { label: 'Commons', href: '/commons' },
+      { label: 'The Standard', href: '/resources/standard' },
+      { label: 'Community', href: '/community' },
+      { label: 'Individual Membership', href: '/community/individual' },
+      { label: 'Organization Membership', href: '/community/organization' },
+    ],
+  },
+  {
+    title: 'Rating Systems',
+    links: [
+      { label: 'Buildings + Interiors', href: '/rating-system/buildings-interiors' },
+      { label: 'Operations + Maintenance', href: '/rating-system/operations-maintenance' },
+      { label: 'Community Development', href: '/rating-system/community-development' },
+    ],
+  },
+  {
+    title: 'Pillars',
+    links: [
+      { label: 'Social Impact', href: '/standard/social-impact' },
+      { label: 'Social Responsibility', href: '/standard/social-responsibility' },
+      { label: 'Social Justice', href: '/standard/social-justice' },
+      { label: 'Social Accountability', href: '/standard/social-accountability' },
     ],
   },
   {
@@ -26,14 +46,16 @@ const footerSections = [
       { label: 'Property Managers', href: '/for/operators' },
       { label: 'Capital Providers', href: '/for/capital-providers' },
       { label: 'Impact Professionals', href: '/for/impact-professionals' },
+      { label: 'People & Communities', href: '/for/people' },
     ],
   },
   {
-    title: 'About',
+    title: 'Directory',
     links: [
-      { label: 'Our Mission', href: '/about/mission' },
-      { label: 'Team', href: '/about/team' },
-      { label: 'Certified Projects', href: '/about/projects' },
+      { label: 'SEAM APs', href: '/directory?tab=aps' },
+      { label: 'Certified Projects', href: '/directory?tab=projects' },
+      { label: 'Approved Activities', href: '/directory?tab=activities' },
+      { label: 'About SEAM', href: '/about' },
       { label: 'Contact', href: '/get-started' },
     ],
   },
@@ -44,17 +66,15 @@ export default function Footer() {
     <footer className="bg-warm-900 text-warm-300">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-4">
-            <span className="font-display text-[28px] font-semibold tracking-[-0.04em] text-white">
-              SEAM
-            </span>
+          <div className="lg:col-span-3">
+            <img src="/logos/seam-wordmark.png" alt="SEAM" className="h-8 w-auto" />
             <p className="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-sm">
               Social equity in the built environment. We believe that where people live and work
               should reflect their dignity.
             </p>
           </div>
 
-          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="lg:col-span-9 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 lg:gap-10">
             {footerSections.map((section) => (
               <div key={section.title}>
                 <h3 className="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-500 mb-6">

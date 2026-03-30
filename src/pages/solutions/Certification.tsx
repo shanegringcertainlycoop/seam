@@ -1,17 +1,15 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useReveal } from '../../hooks/useReveal'
-import { useCountUp } from '../../hooks/useCountUp'
+
 import SEO, { faqSchema, breadcrumbSchema } from '../../components/SEO'
 
 /* ─── Hero ─── */
 function Hero() {
   return (
     <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: 'linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-      }} />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -39,66 +37,30 @@ function Hero() {
                 to="/resources/standard"
                 className="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300"
               >
-                Download the Standard
+                Access the Standard
               </Link>
             </div>
           </div>
 
-          {/* Certification levels */}
-          <div className="hidden lg:flex flex-col items-center gap-3">
-            {(['Platinum', 'Gold', 'Silver', 'Bronze'] as const).map((level, i) => {
-              const widths = ['w-48', 'w-56', 'w-64', 'w-72']
-              const opacities = ['opacity-100', 'opacity-80', 'opacity-60', 'opacity-40']
-              return (
-                <div
-                  key={level}
-                  className={`${widths[i]} ${opacities[i]} rounded-xl bg-gradient-to-r from-seam-600 to-seam-700 px-6 py-4 text-center shadow-lg`}
-                >
-                  <span className="text-[15px] font-medium text-white tracking-wide">
-                    {level}
-                  </span>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* ─── Stats Bar ─── */
-function StatsBar() {
-  const s1 = useCountUp(4, { suffix: '' })
-  const s2 = useCountUp(3, { suffix: '' })
-  const s3 = useCountUp(50, { suffix: '+' })
-  const s4 = useCountUp(4, { suffix: '' })
-  const ref = useReveal(0.2)
-
-  const stats = [
-    { ...s1, label: 'Certification levels' },
-    { ...s2, label: 'Certification tracks' },
-    { ...s3, label: 'Measurable activities' },
-    { ...s4, label: 'Interdependent pillars' },
-  ]
-
-  return (
-    <section ref={ref} className="reveal-fade-up bg-warm-50 border-b border-warm-100">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-14">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <span
-                ref={s.ref}
-                className="block font-display text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] text-seam-600"
-              >
-                {s.display}
-              </span>
-              <span className="block mt-1 text-[14px] text-warm-500 uppercase tracking-[0.08em]">
-                {s.label}
-              </span>
+          {/* Certification badges — diagonal cascade */}
+          <div className="hidden lg:flex justify-center items-center">
+            <div className="relative w-[420px] h-[420px]">
+              {[
+                { src: '/logos/cert-bronze.png', alt: 'Bronze certification', style: { width: 220, height: 220, bottom: 0, left: 0 } },
+                { src: '/logos/cert-silver.png', alt: 'Silver certification', style: { width: 220, height: 220, bottom: 60, left: 60 } },
+                { src: '/logos/cert-gold.png', alt: 'Gold certification', style: { width: 220, height: 220, bottom: 120, left: 120 } },
+                { src: '/logos/cert-platinum.png', alt: 'Platinum certification', style: { width: 220, height: 220, bottom: 180, left: 180 } },
+              ].map((badge, i) => (
+                <img
+                  key={badge.alt}
+                  src={badge.src}
+                  alt={badge.alt}
+                  style={{ ...badge.style, zIndex: i }}
+                  className="absolute object-contain drop-shadow-lg"
+                />
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
@@ -150,7 +112,7 @@ function Tracks() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             Three tracks
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -165,14 +127,14 @@ function Tracks() {
               key={t.title}
               className="reveal-child group rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
-              <div className="text-seam-600 mb-6">{t.icon}</div>
+              <div className="text-gold-500 mb-6">{t.icon}</div>
               <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
                 {t.title}
               </h3>
               <p className="text-[16px] leading-relaxed text-warm-500 mb-6">
                 {t.description}
               </p>
-              <span className="text-[14px] text-warm-400">{t.audience}</span>
+              <span className="text-[14px] text-warm-500">{t.audience}</span>
             </div>
           ))}
         </div>
@@ -185,25 +147,25 @@ function Tracks() {
 const pillars = [
   {
     number: '01',
-    title: 'Health + Wellness',
+    title: 'Social Accountability',
     description:
       'Indoor environments that protect and promote the physical and mental health of every occupant, worker, and visitor. Air quality, thermal comfort, biophilic design, and restorative space.',
   },
   {
     number: '02',
-    title: 'Economic Equity',
+    title: 'Social Responsibility',
     description:
       'Procurement, employment, and wealth-building practices that create opportunity for historically excluded communities. Local hiring, diverse supply chains, living wages.',
   },
   {
     number: '03',
-    title: 'Accessibility + Inclusion',
+    title: 'Social Justice',
     description:
       'Spaces designed so that everyone can participate fully, regardless of ability, language, or identity. Universal design, wayfinding, cultural responsiveness, and digital access.',
   },
   {
     number: '04',
-    title: 'Community + Culture',
+    title: 'Social Impact',
     description:
       'Programming and governance that honor the social fabric of the neighborhoods buildings inhabit. Community voice in evaluation, arts integration, public benefit provisions.',
   },
@@ -217,15 +179,15 @@ function Pillars() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             The framework
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Four interdependent{' '}
+            Four{' '}
             <em className="italic font-normal">pillars</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            No single pillar can be ignored. Scoring is interdependent — a building must demonstrate progress across all four to earn any level of certification.
+            Much like your building, social equity is an ecosystem of interdependent efforts. With progress in each SEAM pillar, you move closer to certification.
           </p>
         </div>
 
@@ -288,7 +250,7 @@ function HowItWorks() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             The process
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -324,10 +286,10 @@ function HowItWorks() {
 const differentiators = [
   {
     title: 'Social equity, not just sustainability',
-    description: 'LEED measures environmental performance. WELL measures wellness. SEAM measures the relationship between a building and the people it touches.',
+    description: 'LEED measures environmental performance. WELL measures wellness. SEAM is the perfect complement to measure the relationship between a building and the people it touches.',
   },
   {
-    title: 'Interdependent scoring',
+    title: 'A holistic approach',
     description: "You can't earn Platinum in one pillar and ignore the others. Every certification level requires demonstrated progress across all four pillars.",
   },
   {
@@ -348,18 +310,17 @@ function Differentiators() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             What makes us different
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Not another green label.{' '}
             <em className="italic font-normal">A social equity standard.</em>
           </h2>
         </div>
 
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
           {differentiators.map((d) => (
-            <div key={d.title} className="reveal-child rounded-2xl bg-white p-8 lg:p-10">
+            <div key={d.title} className="reveal-child rounded-2xl bg-white p-5 sm:p-8 lg:p-10">
               <h3 className="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
                 {d.title}
               </h3>
@@ -386,12 +347,12 @@ function Testimonial() {
             <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
           </svg>
           <blockquote className="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
-            SEAM certification changed the conversation with our investors. It gave us a framework to show that social equity is not a cost center — it is the asset strategy.
+            [SEAM Certification] reflects our belief that real estate carries a responsibility for strengthening neighborhoods, advancing fair business practices, and creating spaces designed to support the people who rely on them.
           </blockquote>
           <div className="mt-10">
-            <p className="text-[16px] font-medium text-white">Maya Richardson</p>
+            <p className="text-[16px] font-medium text-white">Greg Smith</p>
             <p className="text-[14px] text-warm-400 mt-1">
-              VP of Development &middot; The Jack, Kansas City
+              CEO, Urban Visions &middot; The Jack
             </p>
           </div>
         </div>
@@ -408,7 +369,7 @@ const faqs = [
   },
   {
     q: 'How much does certification cost?',
-    a: 'Pricing is based on project size and track. Registration fees cover the initial assessment scope. Verification fees are separate. Commons members and portfolio subscribers receive discounted rates.',
+    a: 'Pricing is based on project size and track. Registration fees cover the initial assessment scope. Verification fees are separate. Community members and portfolio subscribers receive discounted rates.',
   },
   {
     q: 'Do we need a SEAM AP on our team?',
@@ -433,53 +394,69 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="py-24 lg:py-32 bg-warm-50">
+    <section className="py-24 lg:py-32 bg-warm-50 overflow-hidden">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
-            Frequently asked
-          </p>
-          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Questions about{' '}
-            <em className="italic font-normal">certification</em>
-          </h2>
-        </div>
-
-        <div className="max-w-3xl">
-          {faqs.map((faq, i) => (
-            <div key={i} className="border-b border-warm-200">
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="flex w-full items-center justify-between py-6 text-left"
-              >
-                <span className="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
-                  {faq.q}
-                </span>
-                <svg
-                  className={`shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 ${
-                    open === i ? 'rotate-45' : ''
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-              </button>
-              <div
-                className={`grid transition-all duration-300 ${
-                  open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <p className="pb-6 text-[16px] leading-relaxed text-warm-500 max-w-2xl">
-                    {faq.a}
-                  </p>
-                </div>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-start">
+          <div>
+            <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+              <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+                Frequently asked
+              </p>
+              <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+                Questions about{' '}
+                <em className="italic font-normal">certification</em>
+              </h2>
             </div>
-          ))}
+
+            <div>
+              {faqs.map((faq, i) => (
+                <div key={i} className="border-b border-warm-200">
+                  <button
+                    onClick={() => setOpen(open === i ? null : i)}
+                    aria-expanded={open === i}
+                    aria-controls={`faq-answer-${i}`}
+                    className="flex w-full items-center justify-between py-6 text-left"
+                  >
+                    <span className="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
+                      {faq.q}
+                    </span>
+                    <svg
+                      className={`shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 ${
+                        open === i ? 'rotate-45' : ''
+                      }`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </button>
+                  <div
+                    id={`faq-answer-${i}`}
+                    role="region"
+                    className={`grid transition-all duration-300 ${
+                      open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="pb-6 text-[16px] leading-relaxed text-warm-500 max-w-2xl">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="hidden lg:block sticky top-32">
+            <img
+              src="/images/faq-certification.jpg"
+              alt="The Jack — a SEAM-certified building in the city skyline"
+              className="w-full aspect-[3/4] object-cover rounded-2xl"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -511,7 +488,7 @@ function CtaBlock() {
             to="/resources/standard"
             className="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
           >
-            Download the Standard
+            Access the Standard
           </Link>
         </div>
       </div>
@@ -538,7 +515,7 @@ export default function Certification() {
         ] as unknown as Record<string, unknown>}
       />
       <Hero />
-      <StatsBar />
+      {/* StatsBar removed */}
       <Tracks />
       <Pillars />
       <HowItWorks />

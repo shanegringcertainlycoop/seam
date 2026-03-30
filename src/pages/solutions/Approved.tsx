@@ -8,10 +8,8 @@ import SEO, { faqSchema, breadcrumbSchema } from '../../components/SEO'
 function Hero() {
   return (
     <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: 'linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-      }} />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -26,7 +24,7 @@ function Hero() {
               </em>
             </h1>
             <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-              SEAM Approved verifies individual social equity activities without requiring full building certification. A standalone credential or a natural on-ramp into it.
+              SEAM Approved verifies individual social equity activities without requiring full building certification. These are standalone achievements or an on-ramp to your certification journey.
             </p>
             <div className="hero-cta mt-10 flex flex-wrap gap-4">
               <Link
@@ -44,16 +42,19 @@ function Hero() {
             </div>
           </div>
 
-          {/* Checkmark badge */}
+          {/* SEAM Approved logo */}
           <div className="hidden lg:flex justify-center">
             <div className="relative">
               <div className="absolute inset-0 -m-8 rounded-full border border-seam-500/20 animate-[spin_30s_linear_infinite]" />
               <div className="absolute inset-0 -m-16 rounded-full border border-seam-400/10 animate-[spin_45s_linear_infinite_reverse]" />
-              <div className="w-64 h-64 rounded-full bg-gradient-to-br from-seam-600 to-seam-800 flex flex-col items-center justify-center shadow-2xl shadow-seam-900/40">
-                <svg className="w-20 h-20 text-white mb-2" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                </svg>
-                <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-200">
+              <div className="w-56 h-56 rounded-2xl bg-[#01313d] flex flex-col items-center justify-center shadow-2xl shadow-seam-900/40 p-8">
+                <div className="flex gap-1.5 mb-4">
+                  {[14, 10, 16, 8, 18, 12].map((h, i) => (
+                    <div key={i} className="w-1.5 bg-white/80 rounded-full" style={{ height: `${h}px` }} />
+                  ))}
+                </div>
+                <img src="/logos/approved-wordmark.png" alt="SEAM" className="w-36 object-contain brightness-0 invert mb-2" />
+                <span className="text-[18px] font-medium uppercase tracking-[0.08em] text-white">
                   Approved
                 </span>
               </div>
@@ -86,7 +87,7 @@ function StatsBar() {
             <div key={s.label} className="text-center">
               <span
                 ref={s.ref}
-                className="block font-display text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] text-seam-600"
+                className="block font-display text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] text-gold-500"
               >
                 {s.display}
               </span>
@@ -119,7 +120,7 @@ const comparisons = [
       </svg>
     ),
     title: 'Faster turnaround',
-    description: "Activity verification takes weeks, not months. Submit documentation for a specific practice, receive third-party review, and earn your SEAM Approved credential on a timeline that fits operational cycles.",
+    description: "Activity verification takes weeks, not months. Submit documentation for a specific practice, receive third-party review, and earn your SEAM Approved stamp on a timeline that fits operational cycles.",
   },
   {
     icon: (
@@ -137,7 +138,7 @@ const comparisons = [
       </svg>
     ),
     title: 'Standalone credibility',
-    description: "SEAM Approved is a real credential, not a participation trophy. Third-party verified, publicly listed, and recognized by capital providers and compliance teams as a diligence signal for social performance.",
+    description: "SEAM Approved is a real designation, not a participation trophy. Third-party verified, publicly listed, and recognized by capital providers and compliance teams as a diligence signal for social performance.",
   },
 ]
 
@@ -149,7 +150,7 @@ function HowItsDifferent() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             How it works
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -164,7 +165,7 @@ function HowItsDifferent() {
               key={c.title}
               className="reveal-child group rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
-              <div className="text-seam-600 mb-6">{c.icon}</div>
+              <div className="text-gold-500 mb-6">{c.icon}</div>
               <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
                 {c.title}
               </h3>
@@ -181,10 +182,10 @@ function HowItsDifferent() {
 
 /* ─── Example Activities ─── */
 const activities = [
-  { pillar: 'Health + Wellness', examples: ['Indoor air quality monitoring program', 'Biophilic design integration', 'Mental health and restorative space access', 'Thermal comfort and occupant control'] },
-  { pillar: 'Economic Equity', examples: ['Local and diverse procurement policy', 'Living wage commitment', 'Workforce development and apprenticeship', 'Community wealth-building partnership'] },
-  { pillar: 'Accessibility + Inclusion', examples: ['Universal design beyond code compliance', 'Multilingual wayfinding and signage', 'Digital accessibility standards', 'Culturally responsive programming'] },
-  { pillar: 'Community + Culture', examples: ['Community advisory board governance', 'Arts and cultural integration', 'Public benefit and open-access provisions', 'Neighborhood engagement reporting'] },
+  { pillar: 'Social Accountability', examples: ['Indoor air quality monitoring program', 'Biophilic design integration', 'Mental health and restorative space access', 'Thermal comfort and occupant control'] },
+  { pillar: 'Social Responsibility', examples: ['Local and diverse procurement policy', 'Living wage commitment', 'Workforce development and apprenticeship', 'Community wealth-building partnership'] },
+  { pillar: 'Social Justice', examples: ['Universal design beyond code compliance', 'Multilingual wayfinding and signage', 'Digital accessibility standards', 'Culturally responsive programming'] },
+  { pillar: 'Social Impact', examples: ['Community advisory board governance', 'Arts and cultural integration', 'Public benefit and open-access provisions', 'Neighborhood engagement reporting'] },
 ]
 
 function ExampleActivities() {
@@ -195,7 +196,7 @@ function ExampleActivities() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             What you can verify
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -203,13 +204,13 @@ function ExampleActivities() {
             <em className="italic font-normal">all four pillars</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            Choose any activity from the SEAM Standard. Each verified activity earns credit toward its pillar — and toward full certification if you decide to pursue it.
+            Pick from a list of activities in the SEAM Standard. Each is verified to earn credit toward its pillar and full certification if you decide to pursue it.
           </p>
         </div>
 
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {activities.map((a) => (
-            <div key={a.pillar} className="reveal-child rounded-2xl bg-white p-8 lg:p-10">
+            <div key={a.pillar} className="reveal-child rounded-2xl bg-white p-5 sm:p-8 lg:p-10">
               <h3 className="font-display text-[18px] lg:text-[20px] tracking-[-0.02em] text-warm-900 mb-5">
                 {a.pillar}
               </h3>
@@ -263,7 +264,7 @@ function Process() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             The process
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -331,18 +332,18 @@ function WhoItsFor() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
             Who it serves
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Built for organizations{' '}
-            <em className="italic font-normal">ready to start</em>
+            For organizations{' '}
+            <em className="italic font-normal">ready to lead</em>
           </h2>
         </div>
 
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {audiences.map((a) => (
-            <div key={a.title} className="reveal-child rounded-2xl bg-white p-8 lg:p-10">
+            <div key={a.title} className="reveal-child rounded-2xl bg-white p-5 sm:p-8 lg:p-10">
               <h3 className="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">
                 {a.title}
               </h3>
@@ -399,7 +400,7 @@ const faqs = [
   },
   {
     q: 'How much does it cost?',
-    a: 'Pricing is per activity. Commons members receive discounted verification fees. Volume pricing is available for organizations verifying multiple activities or rolling out Approved across a portfolio.',
+    a: 'Pricing is per activity. Community members receive discounted verification fees. Volume pricing is available for organizations verifying multiple activities or rolling out Approved across a portfolio.',
   },
   {
     q: 'Do we need a SEAM AP for activity verification?',
@@ -416,53 +417,69 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="py-24 lg:py-32 bg-warm-50">
+    <section className="py-24 lg:py-32 bg-warm-50 overflow-hidden">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
-            Frequently asked
-          </p>
-          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Questions about{' '}
-            <em className="italic font-normal">SEAM Approved</em>
-          </h2>
-        </div>
-
-        <div className="max-w-3xl">
-          {faqs.map((faq, i) => (
-            <div key={i} className="border-b border-warm-200">
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="flex w-full items-center justify-between py-6 text-left"
-              >
-                <span className="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
-                  {faq.q}
-                </span>
-                <svg
-                  className={`shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 ${
-                    open === i ? 'rotate-45' : ''
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-              </button>
-              <div
-                className={`grid transition-all duration-300 ${
-                  open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <p className="pb-6 text-[16px] leading-relaxed text-warm-500 max-w-2xl">
-                    {faq.a}
-                  </p>
-                </div>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-start">
+          <div>
+            <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+              <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+                Frequently asked
+              </p>
+              <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+                Questions about{' '}
+                <em className="italic font-normal">SEAM Approved</em>
+              </h2>
             </div>
-          ))}
+
+            <div>
+              {faqs.map((faq, i) => (
+                <div key={i} className="border-b border-warm-200">
+                  <button
+                    onClick={() => setOpen(open === i ? null : i)}
+                    aria-expanded={open === i}
+                    aria-controls={`faq-answer-${i}`}
+                    className="flex w-full items-center justify-between py-6 text-left"
+                  >
+                    <span className="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
+                      {faq.q}
+                    </span>
+                    <svg
+                      className={`shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 ${
+                        open === i ? 'rotate-45' : ''
+                      }`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </button>
+                  <div
+                    id={`faq-answer-${i}`}
+                    role="region"
+                    className={`grid transition-all duration-300 ${
+                      open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="pb-6 text-[16px] leading-relaxed text-warm-500 max-w-2xl">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="hidden lg:block sticky top-32">
+            <img
+              src="/images/faq-approved.jpg"
+              alt="Design materials and finishes selected for an equity-focused project"
+              className="w-full aspect-[3/4] object-cover rounded-2xl"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -481,7 +498,7 @@ function CtaBlock() {
           <em className="italic font-normal text-seam-300">Build from there.</em>
         </h2>
         <p className="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
-          Verify the social equity work your building already does — or take the first step toward full certification.
+          Verify the social equity work your building already does and get recognition for your efforts.
         </p>
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <Link

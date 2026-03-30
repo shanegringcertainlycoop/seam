@@ -6,11 +6,14 @@ import SEO, { breadcrumbSchema } from '../../components/SEO'
 /* ─── Hero ─── */
 function Hero() {
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: 'linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-      }} />
+    <section className="relative z-20 min-h-[80vh] flex items-center bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20" />
+      <img
+        src="/icons/standard-hero-building.png"
+        alt=""
+        className="absolute right-[-5%] bottom-0 translate-y-[15%] w-[clamp(560px,75vw,1100px)] pointer-events-none select-none z-30"
+      />
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
         <div className="hero-enter max-w-3xl">
           <span className="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
@@ -75,7 +78,7 @@ function WhySEAM() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Why SEAM</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Why SEAM</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Built different.{' '}<em className="italic font-normal">Designed to matter.</em>
           </h2>
@@ -95,12 +98,12 @@ function WhySEAM() {
                   <h3 className="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900">{d.title}</h3>
                 </div>
                 <div className="lg:col-span-4 p-6 lg:p-8 lg:border-l border-warm-100">
-                  <span className="text-[12px] font-medium uppercase tracking-[0.1em] text-seam-600 mb-2 block">SEAM</span>
+                  <span className="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-500 mb-2 block">SEAM</span>
                   <p className="text-[15px] leading-relaxed text-warm-600">{d.seam}</p>
                 </div>
                 <div className="lg:col-span-4 p-6 lg:p-8 lg:border-l border-warm-100 bg-warm-50/50">
-                  <span className="text-[12px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-2 block">Others</span>
-                  <p className="text-[15px] leading-relaxed text-warm-400">{d.others}</p>
+                  <span className="text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500 mb-2 block">Others</span>
+                  <p className="text-[15px] leading-relaxed text-warm-500">{d.others}</p>
                 </div>
               </div>
             </div>
@@ -116,26 +119,34 @@ const pillars = [
   {
     number: '01',
     title: 'Social Impact',
+    href: '/standard/social-impact',
     description: 'Reduce poverty and inequality by identifying and managing the social, cultural, and economic impacts of development — before they happen.',
     concepts: ['Impact Assessment: Contextual Assessment, Impacted Party Engagement, Monitoring + Evaluation'],
+    icon: '/icons/pillar-social-impact.png',
   },
   {
     number: '02',
     title: 'Social Responsibility',
+    href: '/standard/social-responsibility',
     description: 'Strengthen civil society and promote capacity through responsible, sustainable development practices at every level of the organization.',
     concepts: ['Transformational Governance (5 objectives)', 'Community Involvement', 'Social Investment'],
+    icon: '/icons/pillar-social-responsibility.png',
   },
   {
     number: '03',
     title: 'Social Justice',
+    href: '/standard/social-justice',
     description: 'Promote root cause strategies that lead to equal access to social resources — in procurement, in the workplace, in the community, in capital.',
     concepts: ['Social Equity + Justice (Procurement, Workplace, Community, Capital)', 'Social Justice Innovation'],
+    icon: '/icons/pillar-social-justice.png',
   },
   {
     number: '04',
     title: 'Social Accountability',
+    href: '/standard/social-accountability',
     description: 'Protect fundamental human rights and freedoms — and create safe, healthy workplaces and environments for everyone the building touches.',
     concepts: ['Human Rights (Ethical Materials, Ethical Suppliers, Reporting, Education)', 'Health + Safety'],
+    icon: '/icons/pillar-social-accountability.png',
   },
 ]
 
@@ -151,7 +162,7 @@ function Framework() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-12">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">The framework</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">The framework</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Four pillars. Eight concepts.{' '}<em className="italic font-normal">One standard.</em>
           </h2>
@@ -160,32 +171,33 @@ function Framework() {
           </p>
         </div>
 
-        <div ref={statsRef} className="reveal-fade-up flex gap-8 mb-16">
+        <div ref={statsRef} className="reveal-fade-up flex flex-wrap gap-4 sm:gap-8 mb-10 lg:mb-16">
           <div className="flex items-baseline gap-2">
-            <span ref={s1.ref} className="font-display text-[32px] tracking-[-0.04em] text-seam-600">{s1.display}</span>
-            <span className="text-[14px] text-warm-400">Pillars</span>
+            <span ref={s1.ref} className="font-display text-[32px] tracking-[-0.04em] text-gold-500">{s1.display}</span>
+            <span className="text-[14px] text-warm-500">Pillars</span>
           </div>
           <span className="text-warm-200">&middot;</span>
           <div className="flex items-baseline gap-2">
-            <span ref={s2.ref} className="font-display text-[32px] tracking-[-0.04em] text-seam-600">{s2.display}</span>
-            <span className="text-[14px] text-warm-400">Concepts</span>
+            <span ref={s2.ref} className="font-display text-[32px] tracking-[-0.04em] text-gold-500">{s2.display}</span>
+            <span className="text-[14px] text-warm-500">Concepts</span>
           </div>
           <span className="text-warm-200">&middot;</span>
           <div className="flex items-baseline gap-2">
-            <span ref={s3.ref} className="font-display text-[32px] tracking-[-0.04em] text-seam-600">{s3.display}</span>
-            <span className="text-[14px] text-warm-400">Objectives</span>
+            <span ref={s3.ref} className="font-display text-[32px] tracking-[-0.04em] text-gold-500">{s3.display}</span>
+            <span className="text-[14px] text-warm-500">Objectives</span>
           </div>
         </div>
 
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
           {pillars.map((p) => (
-            <div key={p.number} className="reveal-child rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-              <span className="text-[14px] font-medium text-seam-500 mb-4 block">Pillar {p.number}</span>
-              <h3 className="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4">{p.title}</h3>
+            <Link key={p.number} to={p.href} className="reveal-child group relative rounded-2xl border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] overflow-hidden">
+              <img src={p.icon} alt="" className="absolute -top-4 -right-4 w-48 h-48 object-contain opacity-90 pointer-events-none" />
+              <span className="relative text-[14px] font-medium text-seam-500 mb-4 block">Pillar {p.number}</span>
+              <h3 className="relative font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4 group-hover:text-gold-600 transition-colors">{p.title}</h3>
               <p className="text-[16px] leading-relaxed text-warm-500 mb-6">{p.description}</p>
               <ul className="space-y-2 border-t border-warm-100 pt-5">
                 {p.concepts.map((c) => (
-                  <li key={c} className="flex items-start gap-2.5 text-[14px] leading-snug text-warm-400">
+                  <li key={c} className="flex items-start gap-2.5 text-[14px] leading-snug text-warm-500">
                     <svg className="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
@@ -193,7 +205,8 @@ function Framework() {
                   </li>
                 ))}
               </ul>
-            </div>
+              <span className="inline-block mt-6 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">Explore pillar &rarr;</span>
+            </Link>
           ))}
         </div>
       </div>
@@ -203,20 +216,56 @@ function Framework() {
 
 /* ─── How It Works (structure) ─── */
 const layers = [
-  { title: 'Pillars', description: 'The four organizing themes of social equity in the built environment. Every activity connects back to a pillar — so users always understand the why behind each requirement.' },
-  { title: 'Concepts', description: 'Eight focused areas within the pillars, each addressing a specific social theme — from impact assessment and human rights to social equity in procurement and community investment.' },
-  { title: 'Objectives', description: 'Twenty-one specific, measurable goals within each concept — defining what the project is trying to achieve, with clear rationale and connection to internationally recognized standards.' },
-  { title: 'Activities', description: 'The individual actions that drive certification — each with defined requirements, a clear scoring rubric, documentation standards, and a referenced international source. Activities are the unit of measurement.' },
+  { title: 'Pillars', count: '4', description: 'The four organizing themes of social equity in the built environment. Every activity connects back to a pillar — so users always understand the why behind each requirement.' },
+  { title: 'Concepts', count: '8', description: 'Eight focused areas within the pillars, each addressing a specific social theme — from impact assessment and human rights to social equity in procurement and community investment.' },
+  { title: 'Objectives', count: '21', description: 'Twenty-one specific, measurable goals within each concept — defining what the project is trying to achieve, with clear rationale and connection to internationally recognized standards.' },
+  { title: 'Activities', count: '50+', description: 'The individual actions that drive certification — each with defined requirements, a clear scoring rubric, documentation standards, and a referenced international source. Activities are the unit of measurement.' },
 ]
+
+function NestingGraphic() {
+  const ringData = [
+    { label: 'Pillars', count: '4', bg: 'bg-seam-900', text: 'text-white', countColor: 'text-seam-300', size: 'w-[480px] h-[480px]', pt: 'pt-5' },
+    { label: 'Concepts', count: '8', bg: 'bg-seam-700', text: 'text-white', countColor: 'text-seam-300', size: 'w-[360px] h-[360px]', pt: 'pt-5' },
+    { label: 'Objectives', count: '21', bg: 'bg-seam-500', text: 'text-white', countColor: 'text-seam-200', size: 'w-[260px] h-[260px]', pt: 'pt-4' },
+    { label: 'Activities', count: '50+', bg: 'bg-gold-400', text: 'text-warm-900', countColor: 'text-warm-800', size: 'w-[120px] h-[120px]', pt: 'pt-2' },
+  ]
+
+  return (
+    <div className="relative w-[480px] h-[480px] mx-auto">
+      {ringData.map((ring, i) => (
+        <div
+          key={ring.label}
+          className={`absolute rounded-3xl ${ring.bg} ${ring.size} flex flex-col items-center justify-start transition-all duration-500`}
+          style={{
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: i,
+          }}
+        >
+          <div className={`text-center ${ring.pt}`}>
+            <span className={`block text-[12px] font-medium uppercase tracking-[0.15em] ${ring.countColor}`}>
+              {ring.label}
+            </span>
+            <span className={`block font-display text-[22px] tracking-[-0.02em] leading-tight ${ring.text}`}>
+              {ring.count}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 function HowItWorks() {
   const headerRef = useReveal()
   const stepsRef = useReveal(0.1)
+  const graphicRef = useReveal(0.2)
   return (
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">How it works</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">How it works</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             A structure built for{' '}<em className="italic font-normal">real impact</em>
           </h2>
@@ -225,18 +274,28 @@ function HowItWorks() {
           </p>
         </div>
 
-        <div ref={stepsRef} className="reveal-stagger max-w-3xl">
-          {layers.map((layer, i) => (
-            <div key={layer.title} className={`reveal-child flex gap-8 py-10 ${i < layers.length - 1 ? 'border-b border-warm-200' : ''}`}>
-              <div className="shrink-0 w-10 h-10 rounded-full bg-seam-600 flex items-center justify-center">
-                <span className="text-[14px] font-medium text-white">{i + 1}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Nesting graphic */}
+          <div ref={graphicRef} className="reveal-scale hidden lg:block">
+            <NestingGraphic />
+          </div>
+
+          {/* Text descriptions */}
+          <div ref={stepsRef} className="reveal-stagger">
+            {layers.map((layer, i) => (
+              <div key={layer.title} className={`reveal-child flex gap-6 py-8 ${i < layers.length - 1 ? 'border-b border-warm-200' : ''}`}>
+                <div className="shrink-0">
+                  <span className="block font-display text-[28px] tracking-[-0.04em] text-gold-500">
+                    {layer.count}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-2">{layer.title}</h3>
+                  <p className="text-[16px] leading-relaxed text-warm-500">{layer.description}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">{layer.title}</h3>
-                <p className="text-[16px] leading-relaxed text-warm-500">{layer.description}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -245,10 +304,10 @@ function HowItWorks() {
 
 /* ─── Certification Levels ─── */
 const levels = [
-  { name: 'Bronze', tagline: 'Acting to avoid harm', description: 'The project is making measurable progress toward international social targets. Foundational activities are in place. Harm is being identified and addressed.', imp: 'Act to Avoid Harm' },
-  { name: 'Silver', tagline: 'Preventing harm', description: 'The project has moved from awareness to active prevention — with a demonstrated commitment to growing into positive social impact over time.', imp: 'Act to Avoid Harm (advanced)' },
-  { name: 'Gold', tagline: 'Achieving positive impact', description: 'The project is actively improving the well-being of impacted parties. Social outcomes fall within a sustainable range — real benefit, not just reduced harm.', imp: 'Benefit Impacted Parties' },
-  { name: 'Platinum', tagline: 'Contributing to solutions', description: 'The project is setting the standard for the industry — achieving lasting positive impact at scale, with benefits that extend beyond the project itself.', imp: 'Contribute to Solutions' },
+  { name: 'Bronze', tagline: 'Acting to avoid harm', description: 'The project is making measurable progress toward international social targets. Foundational activities are in place. Harm is being identified and addressed.', imp: 'Act to Avoid Harm', logo: '/logos/cert-bronze.png' },
+  { name: 'Silver', tagline: 'Preventing harm', description: 'The project has moved from awareness to active prevention — with a demonstrated commitment to growing into positive social impact over time.', imp: 'Act to Avoid Harm (advanced)', logo: '/logos/cert-silver.png' },
+  { name: 'Gold', tagline: 'Achieving positive impact', description: 'The project is actively improving the well-being of impacted parties. Social outcomes fall within a sustainable range — real benefit, not just reduced harm.', imp: 'Benefit Impacted Parties', logo: '/logos/cert-gold.png' },
+  { name: 'Platinum', tagline: 'Contributing to solutions', description: 'The project is setting the standard for the industry — achieving lasting positive impact at scale, with benefits that extend beyond the project itself.', imp: 'Contribute to Solutions', logo: '/logos/cert-platinum.png' },
 ]
 
 function CertLevels() {
@@ -258,7 +317,7 @@ function CertLevels() {
     <section id="levels" className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Certification levels</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Certification levels</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Recognition that reflects{' '}<em className="italic font-normal">real progress</em>
           </h2>
@@ -269,13 +328,14 @@ function CertLevels() {
 
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {levels.map((level, i) => {
-            const intensities = ['bg-seam-700/10', 'bg-seam-700/20', 'bg-seam-700/35', 'bg-seam-700/60']
+            const intensities = ['bg-seam-700/10', 'bg-seam-700/20', 'bg-seam-800/70', 'bg-seam-900/85']
             const textColors = ['text-seam-800', 'text-seam-800', 'text-white', 'text-white']
-            const subColors = ['text-seam-600', 'text-seam-600', 'text-seam-200', 'text-seam-200']
+            const subColors = ['text-gold-500', 'text-gold-500', 'text-seam-200', 'text-seam-200']
             const bodyColors = ['text-warm-500', 'text-warm-500', 'text-seam-100/80', 'text-seam-100/80']
             return (
-              <div key={level.name} className={`reveal-child rounded-2xl ${intensities[i]} p-8 lg:p-10`}>
-                <h3 className={`font-display text-[28px] tracking-[-0.02em] ${textColors[i]}`}>{level.name}</h3>
+              <div key={level.name} className={`reveal-child relative rounded-2xl ${intensities[i]} p-8 lg:p-10 overflow-hidden`}>
+                <img src={level.logo} alt={`${level.name} certification`} className="absolute -top-4 -right-4 w-28 h-28 object-contain opacity-60 drop-shadow-lg" />
+                <h3 className={`relative font-display text-[28px] tracking-[-0.02em] ${textColors[i]}`}>{level.name}</h3>
                 <p className={`mt-1 text-[14px] font-medium ${subColors[i]}`}>{level.tagline}</p>
                 <p className={`mt-4 text-[15px] leading-relaxed ${bodyColors[i]}`}>{level.description}</p>
                 <p className={`mt-5 text-[12px] uppercase tracking-[0.1em] ${subColors[i]} border-t ${i >= 2 ? 'border-seam-400/20' : 'border-seam-600/20'} pt-4`}>
@@ -292,10 +352,10 @@ function CertLevels() {
 
 /* ─── Rating Systems ─── */
 const ratings = [
-  { code: 'B+I:D', title: 'Buildings + Interiors: Developer', description: 'Ground-up construction and major renovations where the owner assumes developer responsibilities — project ownership, financing, construction supervision, and tenant leasing management.' },
-  { code: 'B+I:O', title: 'Buildings + Interiors: Occupier', description: 'Construction or renovation projects where the owner occupies the space — fit-outs, interior buildouts, and workplace environments where the owner is the primary occupant.' },
-  { code: 'O+M:D', title: 'Operations + Management: Developer', description: 'Existing assets being operated and managed by the developer — applying social equity standards to the ongoing performance and management of a building or portfolio.' },
-  { code: 'O+M:O', title: 'Operations + Management: Occupier', description: 'Ongoing operations by an occupier — applying the Standard to the management of an occupied space, including workplace practices, supply chain, and community relationships.' },
+  { code: 'B+I:D', title: 'Buildings + Interiors: Developer', description: 'Ground-up construction and major renovations where the owner assumes developer responsibilities — project ownership, financing, construction supervision, and tenant leasing management.', href: '/rating-system/buildings-interiors' },
+  { code: 'B+I:O', title: 'Buildings + Interiors: Occupier', description: 'Construction or renovation projects where the owner occupies the space — fit-outs, interior buildouts, and workplace environments where the owner is the primary occupant.', href: '/rating-system/buildings-interiors' },
+  { code: 'O+M:D', title: 'Operations + Management: Developer', description: 'Existing assets being operated and managed by the developer — applying social equity standards to the ongoing performance and management of a building or portfolio.', href: '/rating-system/operations-maintenance' },
+  { code: 'O+M:O', title: 'Operations + Management: Occupier', description: 'Ongoing operations by an occupier — applying the Standard to the management of an occupied space, including workplace practices, supply chain, and community relationships.', href: '/rating-system/operations-maintenance' },
 ]
 
 function RatingSystems() {
@@ -305,7 +365,7 @@ function RatingSystems() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Rating systems</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Rating systems</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Tailored to{' '}<em className="italic font-normal">how you build</em>
           </h2>
@@ -316,11 +376,12 @@ function RatingSystems() {
 
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
           {ratings.map((r) => (
-            <div key={r.code} className="reveal-child rounded-2xl bg-white p-8 lg:p-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-              <span className="inline-block rounded-lg bg-seam-50 px-3 py-1.5 text-[13px] font-mono font-medium text-seam-700 mb-4">{r.code}</span>
-              <h3 className="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{r.title}</h3>
+            <Link key={r.code} to={r.href} className="reveal-child group rounded-2xl bg-white p-8 lg:p-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+              <span className="inline-block rounded-lg bg-seam-50 px-3 py-1.5 text-[13px] font-mono font-medium text-gold-600 mb-4">{r.code}</span>
+              <h3 className="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-600 transition-colors">{r.title}</h3>
               <p className="text-[15px] leading-relaxed text-warm-500">{r.description}</p>
-            </div>
+              <span className="inline-block mt-4 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">Explore rating system &rarr;</span>
+            </Link>
           ))}
         </div>
       </div>
@@ -345,7 +406,7 @@ function DesignPrinciples() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Framework design</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Framework design</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Social equity embedded{' '}<em className="italic font-normal">by design</em>
           </h2>
@@ -375,18 +436,21 @@ const audiences = [
     subtitle: 'Developers, owners, architects',
     quote: 'When people feel like they belong in a space, everything performs better — the building, the business, the community.',
     description: 'The SEAM Standard gives you the framework to build for belonging, and the verified recognition to show it. Whether you are managing ESG commitments, responding to investor expectations, or building something worth being proud of.',
+    href: '/who-we-serve/developers-owners',
   },
   {
     title: 'Operators + managers',
     subtitle: 'Property managers, asset managers',
     quote: 'The buildings that perform best are the ones where people actually want to be.',
     description: 'SEAM certification helps operators connect social practices to performance outcomes — occupancy, retention, tenant satisfaction, and community relationships. A structured, measurable framework for the work many operators are already doing.',
+    href: '/who-we-serve/property-managers',
   },
   {
     title: 'Social equity practitioners',
     subtitle: 'Sustainability, ESG, impact teams',
     quote: 'SEAM gives the work language, structure, and proof — not just intention.',
     description: 'For professionals leading social equity efforts inside real estate organizations, SEAM provides the rigor that makes the work credible — internally and externally. It translates commitment into a framework that can be measured, verified, and communicated.',
+    href: '/who-we-serve/impact-professionals',
   },
 ]
 
@@ -397,7 +461,7 @@ function WhoItsFor() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Who it serves</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Who it serves</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Built for everyone{' '}<em className="italic font-normal">the building touches</em>
           </h2>
@@ -405,14 +469,15 @@ function WhoItsFor() {
 
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
           {audiences.map((a) => (
-            <div key={a.title} className="reveal-child rounded-2xl bg-white p-10 lg:p-12">
-              <h3 className="font-display text-[22px] lg:text-[24px] tracking-[-0.02em] text-warm-900">{a.title}</h3>
-              <p className="text-[14px] text-warm-400 mt-1 mb-6">{a.subtitle}</p>
-              <blockquote className="text-[15px] italic leading-relaxed text-seam-700 border-l-2 border-seam-500 pl-4 mb-6">
+            <Link key={a.title} to={a.href} className="reveal-child group rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+              <h3 className="font-display text-[22px] lg:text-[24px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors">{a.title}</h3>
+              <p className="text-[14px] text-warm-500 mt-1 mb-6">{a.subtitle}</p>
+              <blockquote className="text-[15px] italic leading-relaxed text-gold-600 border-l-2 border-seam-500 pl-4 mb-6">
                 &ldquo;{a.quote}&rdquo;
               </blockquote>
               <p className="text-[15px] leading-relaxed text-warm-500">{a.description}</p>
-            </div>
+              <span className="inline-block mt-4 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">Learn more &rarr;</span>
+            </Link>
           ))}
         </div>
       </div>
@@ -434,7 +499,7 @@ function CtaBlock() {
         </p>
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <Link to="/certification" className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Start certification</Link>
-          <Link to="/get-started" className="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Download the Standard</Link>
+          <Link to="/get-started" className="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Access the Standard</Link>
           <Link to="/ap-credential" className="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Find a SEAM AP</Link>
         </div>
       </div>

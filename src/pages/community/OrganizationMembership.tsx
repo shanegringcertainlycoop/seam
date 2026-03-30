@@ -5,11 +5,16 @@ import SEO, { faqSchema, breadcrumbSchema } from '../../components/SEO'
 
 function Hero() {
   return (
-    <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: 'linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-      }} />
+    <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+      {/* Background image */}
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src="/images/hero-organization.jpg"
+          alt="Organization membership for teams and institutions"
+          className="h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20" />
+      </div>
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
         <div className="hero-enter max-w-3xl">
           <span className="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
@@ -20,7 +25,7 @@ function Hero() {
             <em className="font-display italic font-normal text-seam-300">Scale the commitment.</em>
           </h1>
           <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            Contributor, Builder, and Steward tiers for teams and institutions. Portfolio tools, team seats, dedicated onboarding, and volume pricing for organizations serious about social equity.
+            Contributor, Builder, and Steward tiers for teams and institutions. Portfolio tools, team seats, dedicated onboarding, and volume pricing for organizations serious about advancing social equity.
           </p>
           <div className="hero-cta mt-10 flex flex-wrap gap-4">
             <Link to="/get-started" className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
@@ -32,13 +37,14 @@ function Hero() {
           </div>
         </div>
       </div>
+      <img src="/logos/member-organization.png" alt="Organization membership" className="hidden lg:block absolute -bottom-44 right-16 w-[26rem] h-[26rem] object-contain drop-shadow-2xl z-10" />
     </section>
   )
 }
 
 /* ─── Why Org Membership ─── */
 const reasons = [
-  { title: 'Team-wide access', description: 'Give your entire team — property managers, sustainability leads, community liaisons, executives — access to the same templates, courses, and tools. No per-seat surprises.' },
+  { title: 'Team-wide access', description: 'Give your entire team — property managers, sustainability leads, community liaisons, executives — access to the same templates, courses, and tools. No per-seat subscriptions.' },
   { title: 'Portfolio ROSSI modeling', description: 'Model social equity impact across your entire portfolio. Aggregate GRESB-aligned data, benchmark properties against each other, and generate board-ready reporting.' },
   { title: 'Volume verification pricing', description: 'Discounted SEAM Approved and certification fees when rolling out across multiple properties. Builder and Steward tiers include priority reviewer scheduling.' },
   { title: 'Dedicated onboarding', description: 'A SEAM team member works with your organization to map existing programs to the Standard, identify quick wins, and build a certification roadmap tailored to your portfolio.' },
@@ -53,9 +59,9 @@ function WhyOrgMembership() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Why organizations join</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Why organizations join</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Certification is the goal.{' '}<em className="italic font-normal">Membership is the engine.</em>
+            Impact is the destination.{' '}<em className="italic font-normal">Membership is the engine.</em>
           </h2>
         </div>
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -105,7 +111,7 @@ function Pricing() {
     <section id="pricing" className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Organization tiers</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Organization tiers</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Scale your commitment{' '}<em className="italic font-normal">with your portfolio</em>
           </h2>
@@ -118,7 +124,7 @@ function Pricing() {
           {tiers.map((tier) => (
             <div key={tier.name} className={`rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-warm-900 text-white ring-2 ring-seam-500' : 'bg-white border border-warm-100'}`}>
               <h3 className={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
-              <p className={`mt-2 font-display text-[20px] tracking-[-0.02em] ${tier.highlighted ? 'text-seam-300' : 'text-seam-600'}`}>{tier.price}</p>
+              <p className={`mt-2 font-display text-[20px] tracking-[-0.02em] ${tier.highlighted ? 'text-seam-300' : 'text-gold-500'}`}>{tier.price}</p>
               <p className={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-warm-300' : 'text-warm-500'}`}>{tier.description}</p>
 
               <ul className="mt-8 space-y-3 flex-1">
@@ -145,10 +151,10 @@ function Pricing() {
 
 /* ─── Who Joins ─── */
 const orgs = [
-  { title: 'Real estate operators', description: 'Property management firms rolling out social equity programs across a portfolio. Use SEAM Approved to credential existing practices at scale.' },
+  { title: 'Real estate operators', description: 'Property management firms rolling out social equity programs across a portfolio. Use SEAM Approved to designate existing practices at scale.' },
   { title: 'Developers and ownership groups', description: 'Organizations pursuing full certification for new developments or existing assets. Portfolio ROSSI modeling for investor and board reporting.' },
   { title: 'Anchor institutions', description: 'Hospitals, universities, and civic buildings using SEAM to formalize community benefit commitments and report on social impact outcomes.' },
-  { title: 'Consulting and advisory firms', description: 'Firms offering SEAM certification services to clients. Team-wide access to templates, courses, and ROSSI tools for project delivery.' },
+  { title: 'Consulting and advisory firms', description: 'Firms offering SEAM Certification services to clients. Team-wide access to templates, courses, and ROSSI tools for project delivery.' },
 ]
 
 function WhoJoins() {
@@ -158,9 +164,9 @@ function WhoJoins() {
     <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Who joins</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Who joins</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Organizations that{' '}<em className="italic font-normal">mean it</em>
+            Organizations who{' '}<em className="italic font-normal">understand the future</em>
           </h2>
         </div>
         <div ref={gridRef} className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -214,7 +220,7 @@ function FAQ() {
     <section className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">Frequently asked</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Frequently asked</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Questions about{' '}<em className="italic font-normal">organization membership</em>
           </h2>
@@ -222,11 +228,11 @@ function FAQ() {
         <div className="max-w-3xl">
           {faqs.map((faq, i) => (
             <div key={i} className="border-b border-warm-200">
-              <button onClick={() => setOpen(open === i ? null : i)} className="flex w-full items-center justify-between py-6 text-left">
+              <button onClick={() => setOpen(open === i ? null : i)} aria-expanded={open === i} aria-controls={`faq-answer-${i}`} className="flex w-full items-center justify-between py-6 text-left">
                 <span className="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
                 <svg className={`shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 ${open === i ? 'rotate-45' : ''}`} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
               </button>
-              <div className={`grid transition-all duration-300 ${open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+              <div id={`faq-answer-${i}`} role="region" className={`grid transition-all duration-300 ${open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
                 <div className="overflow-hidden"><p className="pb-6 text-[16px] leading-relaxed text-warm-500 max-w-2xl">{faq.a}</p></div>
               </div>
             </div>
@@ -248,7 +254,7 @@ function CtaBlock() {
         <p className="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">Talk to our team about the right tier for your organization. Custom scoping, portfolio pricing, and dedicated onboarding.</p>
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <Link to="/get-started" className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Request a quote</Link>
-          <Link to="/commons" className="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Commons overview</Link>
+          <Link to="/community" className="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Community overview</Link>
         </div>
       </div>
     </section>
@@ -260,8 +266,8 @@ const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
 export default function OrganizationMembership() {
   return (
     <>
-      <SEO title="Organization Membership" description="Organization Commons membership for teams and institutions. Contributor, Builder, and Steward tiers with team seats, portfolio ROSSI, dedicated onboarding, and volume certification pricing." path="/commons/organization"
-        jsonLd={[faqSchema(faqItems), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Commons', path: '/commons' }, { name: 'Organization Membership', path: '/commons/organization' }])] as unknown as Record<string, unknown>} />
+      <SEO title="Organization Membership" description="Organization community membership for teams and institutions. Contributor, Builder, and Steward tiers with team seats, portfolio ROSSI, dedicated onboarding, and volume certification pricing." path="/community/organization"
+        jsonLd={[faqSchema(faqItems), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Community', path: '/community' }, { name: 'Organization Membership', path: '/community/organization' }])] as unknown as Record<string, unknown>} />
       <Hero /><WhyOrgMembership /><Pricing /><WhoJoins /><Testimonial /><FAQ /><CtaBlock />
     </>
   )

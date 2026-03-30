@@ -4,27 +4,44 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Playfair Display", Georgia, serif;
 
-  --color-warm-50: #faf8f5;
-  --color-warm-100: #f3efe8;
-  --color-warm-200: #e8e0d4;
-  --color-warm-300: #d4c8b5;
-  --color-warm-400: #b8a78e;
-  --color-warm-500: #9a8568;
-  --color-warm-600: #7d6a4f;
-  --color-warm-700: #5e4f3b;
-  --color-warm-800: #3f3428;
-  --color-warm-900: #1f1a14;
+  /* Neutral gray scale (cool) */
+  --color-warm-50: #f7f7f6;
+  --color-warm-100: #eeeded;
+  --color-warm-200: #e2e1df;
+  --color-warm-300: #D9D9D6;
+  --color-warm-400: #b5b5b2;
+  --color-warm-500: #8e8e8b;
+  --color-warm-600: #6b6b68;
+  --color-warm-700: #4a4a48;
+  --color-warm-800: #2d2d2b;
+  --color-warm-900: #1a1a19;
 
-  --color-seam-50: #f0f7f4;
-  --color-seam-100: #d9ede3;
-  --color-seam-200: #b3dbc7;
-  --color-seam-300: #7ec3a3;
-  --color-seam-400: #4da87e;
-  --color-seam-500: #2d8a5e;
-  --color-seam-600: #1f6e49;
-  --color-seam-700: #19573b;
-  --color-seam-800: #14452f;
-  --color-seam-900: #0f3424;
+  /* Teal brand scale */
+  --color-seam-50: #f0f5f7;
+  --color-seam-100: #d4e3e8;
+  --color-seam-200: #b0cdd5;
+  --color-seam-300: #8ab4c0;
+  --color-seam-400: #6B8F9C;
+  --color-seam-500: #4d7380;
+  --color-seam-600: #3a5c67;
+  --color-seam-700: #1e4550;
+  --color-seam-800: #0d3a44;
+  --color-seam-900: #00313C;
+
+  /* Gold accent scale */
+  --color-gold-50: #fdf6eb;
+  --color-gold-100: #f9e5c8;
+  --color-gold-200: #f2ce96;
+  --color-gold-300: #e8b05e;
+  --color-gold-400: #D78825;
+  --color-gold-500: #bf7520;
+  --color-gold-600: #a0611a;
+  --color-gold-700: #7d4c15;
+  --color-gold-800: #5c3810;
+  --color-gold-900: #3d250b;
+
+  /* Sage utility */
+  --color-sage: #DFECE2;
 }
 
 /* ─── Scroll Reveal Animations ─── */
@@ -165,4 +182,113 @@
 }
 .counter-animate {
   animation: counterPop 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ─── Accessibility: Reduced Motion ─── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-fade-up,
+  .reveal-fade,
+  .reveal-slide-left,
+  .reveal-slide-right,
+  .reveal-scale,
+  .reveal-stagger .reveal-child {
+    opacity: 1;
+    transform: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .hero-enter .hero-title,
+  .hero-enter .hero-subtitle,
+  .hero-enter .hero-cta {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero-image {
+    transition: none;
+  }
+}
+
+/* ─── Figma Capture: Force all content visible ─── */
+.figma-capture .reveal-fade-up,
+.figma-capture .reveal-fade,
+.figma-capture .reveal-slide-left,
+.figma-capture .reveal-slide-right,
+.figma-capture .reveal-scale,
+.figma-capture .reveal-stagger .reveal-child {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.figma-capture .hero-enter .hero-title,
+.figma-capture .hero-enter .hero-subtitle,
+.figma-capture .hero-enter .hero-cta {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+/* ─── Accessibility: Focus Visible ─── */
+
+:focus-visible {
+  outline: 2px solid var(--color-seam-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Accessibility: Skip to Content ─── */
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.skip-to-content:focus {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  width: auto;
+  height: auto;
+  padding: 12px 24px;
+  background: var(--color-warm-900);
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 9999px;
+  z-index: 100;
+  outline: 2px solid var(--color-seam-500);
+  outline-offset: 2px;
+}
+
+/* ─── Accessibility: Visually Hidden ─── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
