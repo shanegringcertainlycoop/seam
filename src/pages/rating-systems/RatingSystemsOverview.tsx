@@ -28,7 +28,7 @@ function Hero() {
             </em>
           </h1>
           <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            The SEAM Standard measures social equity through three distinct rating systems — each built for a different stage of how buildings and communities are conceived, managed, and grown.
+            The SEAM Standard measures social equity through three distinct rating systems each built for a different stage of how buildings and communities are conceived, managed, and grown.
           </p>
           <div className="hero-cta mt-10 flex flex-wrap gap-4">
             <Link
@@ -66,10 +66,10 @@ function Overview() {
             <em className="italic font-normal">the built environment</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            Social equity does not begin or end with design. It must be embedded in how buildings are planned, how they operate day-to-day, and how entire neighborhoods evolve. Each SEAM rating system addresses a different dimension — so every project can find the right entry point.
+            Social equity does not begin or end with design. It must be embedded in how buildings are planned, how they operate day-to-day, and how entire neighborhoods evolve. Each SEAM rating system addresses a different dimension so every project can find the right entry point.
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            All three systems share the same four pillars — Social Impact, Social Responsibility, Social Justice, and Social Accountability — and the same Bronze-through-Platinum certification levels. What changes is the lens.
+            All three systems share the same four pillars, Social Impact, Social Responsibility, Social Justice, and Social Accountability, and the same Bronze-through-Platinum certification levels. What changes is the lens.
           </p>
         </div>
       </div>
@@ -83,7 +83,7 @@ const ratingSystems = [
     number: '01',
     title: 'Buildings + Interiors',
     description:
-      'For new construction, renovations, and interior fit-outs. Evaluates how the physical design of indoor spaces serves the health, dignity, and opportunity of every person who enters.',
+      'Covers the spectrum of social equity considerations in design and construction: from understanding your social impact before breaking ground, to your governance practices, the equity of your procurement decisions, and the human rights standards that apply to everyone involved in building it.',
     href: '/rating-system/buildings-interiors',
     audience: 'Developers, architects, interior designers',
     credits: '30+ measurable credits',
@@ -92,7 +92,7 @@ const ratingSystems = [
     number: '02',
     title: 'Operations + Maintenance',
     description:
-      'For existing buildings. Measures how daily operations, facility management, vendor procurement, and tenant engagement sustain social equity over time.',
+      'Measures how operations reflect a consistent commitment to the people your building serves: through responsible governance, meaningful community engagement, fair labor standards, and health and safety practices that extend to occupants and neighbors alike.',
     href: '/rating-system/operations-maintenance',
     audience: 'Property managers, facility teams, building operators',
     credits: '35+ measurable credits',
@@ -101,7 +101,7 @@ const ratingSystems = [
     number: '03',
     title: 'Community Development',
     description:
-      'For neighborhood-scale projects. Evaluates how development shapes the social fabric of an entire community — from local hiring and cultural preservation to public space access and economic inclusion.',
+      'Examines social equity at the broadest scale: how a project assesses and manages its impact on the surrounding community, how governance and investments contribute to resilience, how procurement and capital access create opportunity, and how human rights and health standards hold across an entire development.',
     href: '/rating-system/community-development',
     audience: 'CDOs, municipalities, master planners',
     credits: '40+ measurable credits',
@@ -176,15 +176,15 @@ function PillarsConnection() {
             <em className="italic font-normal text-seam-300">four pillars</em>
           </h2>
           <p className="mt-6 text-[17px] text-warm-400 max-w-2xl mx-auto leading-relaxed">
-            Regardless of which rating system you pursue, certification requires demonstrated progress across all four pillars. You cannot earn a high level by excelling in one area while ignoring another.
+            Regardless of which rating system you pursue, certification requires demonstrated progress across all four pillars. Each certification level reflects progress across all four pillars. The path to Platinum is built on consistent, documented commitment at every level of the Standard.
           </p>
 
           <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: 'Social Impact', href: '/standard/social-impact', description: 'Measurable outcomes for people and communities.' },
-              { title: 'Social Responsibility', href: '/standard/social-responsibility', description: 'Ethical practices in procurement, labor, and governance.' },
-              { title: 'Social Justice', href: '/standard/social-justice', description: 'Addressing systemic inequity through the built environment.' },
-              { title: 'Social Accountability', href: '/standard/social-accountability', description: 'Transparency, reporting, and stakeholder engagement.' },
+              { title: 'Social Impact', href: '/standard/social-impact', description: 'Identify and engage who your project affects and measure whether your efforts are working.' },
+              { title: 'Social Responsibility', href: '/standard/social-responsibility', description: 'Build equity into how your organization operates through governance, community engagement, and investments.' },
+              { title: 'Social Justice', href: '/standard/social-justice', description: 'Advance equity across procurement, the workplace, the community, and in access to capital.' },
+              { title: 'Social Accountability', href: '/standard/social-accountability', description: 'Uphold human rights across the supply chain, support safe working conditions, and protect the health of those your project touches.' },
             ].map((pillar) => (
               <Link
                 key={pillar.title}
@@ -263,7 +263,7 @@ function CtaBlock() {
           <em className="italic font-normal text-seam-600">track for your project?</em>
         </h2>
         <p className="mt-6 text-[17px] text-warm-500 max-w-xl mx-auto">
-          Whether you are certifying a new building, improving operations at an existing one, or developing an entire neighborhood — there is a path for you.
+          Whether you are certifying a new building, improving operations at an existing one, or developing an entire neighborhood, there is a path for you.
         </p>
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <Link

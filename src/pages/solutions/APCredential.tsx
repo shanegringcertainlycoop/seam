@@ -23,7 +23,7 @@ function Hero() {
               </em>
             </h1>
             <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-              The qualification for practitioners who lead social equity certification in the built environment. Build a practice, join a directory, shape the field.
+              The qualification for practitioners who lead social equity certification in the built environment. Build your practice, join the directory, and shape the future of social equity.
             </p>
             <div className="hero-cta mt-10 flex flex-wrap gap-4">
               <Link
@@ -72,7 +72,7 @@ const benefits = [
     ),
     title: 'Establish your expertise',
     description:
-      'Demonstrate fluency across the four pillars of social equity in the built environment. Clients and employers recognize the AP credential as evidence of deep domain knowledge.',
+      'Demonstrate fluency across the four pillars of social equity in the built environment. Clients and employers recognize the AP credential as evidence of deep expertise in social sustainability.',
   },
   {
     icon: (
@@ -232,11 +232,11 @@ const audiences = [
   },
   {
     title: 'Real estate professionals',
-    description: 'Lead certification engagements for developers, owners, and operators seeking SEAM credentials for their buildings.',
+    description: 'Lead certification engagements for developers, owners, and operators seeking SEAM achievements for their buildings.',
   },
   {
     title: 'Community development leaders',
-    description: "Translate community voice into measurable outcomes through the Standard's participatory evaluation framework.",
+    description: "Translate community voice into measurable outcomes through the Standard's built-in participation engagements.",
   },
 ]
 

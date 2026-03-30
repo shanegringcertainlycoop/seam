@@ -37,15 +37,13 @@ function Hero() {
       <div className="hero-enter relative mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-28 w-full">
         <div className="max-w-3xl">
           <h1 className="hero-title font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
-            Buildings should serve{' '}
+            Buildings impact everyone.{' '}
             <em className="font-display italic font-normal text-warm-200">
-              the people inside them
+              How can they uplift all?
             </em>
           </h1>
           <p className="hero-subtitle mt-8 max-w-2xl text-[clamp(1.1rem,1.5vw,1.25rem)] leading-relaxed text-warm-200">
-            SEAM is the first system built to measure what matters most about the
-            places we live and work: whether they advance social equity for the
-            communities they touch.
+            From the labor you source to the manufacturers you choose and the communities you touch, your building leaves a lasting impression. SEAM was created to make it a positive one.
           </p>
           <div className="hero-cta mt-12 flex flex-wrap gap-4">
             <Link
@@ -79,12 +77,11 @@ function Mission() {
             Our purpose
           </p>
           <p className="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-warm-900">
-            We believe belonging is a cause{' '}
+            When buildings are{' '}
             <em className="italic font-normal text-warm-500">
-              and performance is a consequence.
+              designed and operated
             </em>{' '}
-            When buildings are designed and operated with social equity at their core,
-            communities thrive and investments outperform.
+            with social equity as a focus, and not an afterthought, communities thrive and investments outperform. SEAM is the world's first standard built to advance social equity in commercial real estate.
           </p>
         </div>
       </div>
@@ -134,25 +131,25 @@ function Stats() {
 const pillars = [
   {
     number: '01',
-    title: 'Health + Wellness',
+    title: 'Social Impact',
     description:
       'Indoor environments that protect and promote the physical and mental health of every occupant, worker, and visitor.',
   },
   {
     number: '02',
-    title: 'Economic Equity',
+    title: 'Social Responsibility',
     description:
       'Procurement, employment, and wealth-building practices that create opportunity for historically excluded communities.',
   },
   {
     number: '03',
-    title: 'Accessibility + Inclusion',
+    title: 'Social Justice',
     description:
       'Spaces designed so that everyone can participate fully, regardless of ability, language, or identity.',
   },
   {
     number: '04',
-    title: 'Community + Culture',
+    title: 'Social Accountability',
     description:
       'Programming and governance that honor the social fabric of the neighborhoods buildings inhabit.',
   },
@@ -201,7 +198,7 @@ function Pillars() {
 /* ─── Section 4: Products ─── */
 const products = [
   {
-    label: 'Certification',
+    label: 'SEAM Certification',
     title: 'Full building certification',
     description:
       'Bronze through Platinum certification across three tracks: Buildings + Interiors, Operations + Maintenance, and Community Development.',
@@ -212,23 +209,23 @@ const products = [
     label: 'SEAM Approved',
     title: 'Activity-level verification',
     description:
-      'Verify individual social equity activities without committing to full certification. A standalone credential or a pathway into it.',
+      'Verify individual social equity activities without committing to full certification.',
     href: '/approved',
     audience: 'For operators, managers, and anchor institutions',
   },
   {
-    label: 'AP Credential',
+    label: 'SEAM AP Credential',
     title: 'Professional accreditation',
     description:
-      'The qualification for practitioners who lead certification work. Build a practice, join a directory, shape the field.',
+      'The qualification for practitioners who lead certification work. Build your practice, join the directory, shape the field.',
     href: '/ap-credential',
     audience: 'For consultants and sustainability professionals',
   },
   {
-    label: 'Commons',
-    title: 'Membership community',
+    label: 'COMMUNITY',
+    title: 'SEAM Membership',
     description:
-      'Resources, peer connection, and ongoing support for organizations and individuals committed to the Standard.',
+      'Resources, peer connection, and ongoing support for organizations and individuals committed to improving social equity.',
     href: '/commons',
     audience: 'For all professional audiences',
   },
@@ -246,7 +243,7 @@ function Products() {
             What we offer
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Products built for{' '}
+            SEAM is built for{' '}
             <em className="italic font-normal">where you are</em>
           </h2>
         </div>
@@ -285,14 +282,14 @@ function Products() {
 const projects = [
   {
     name: 'The Jack',
-    location: 'Kansas City, MO',
-    level: 'Gold Certified',
+    location: 'Seattle, Washington, USA',
+    level: 'Bronze Certified',
     description:
       'A mixed-use development demonstrating that social equity and financial performance reinforce each other.',
   },
   {
-    name: 'Interface',
-    location: 'Portland, OR',
+    name: 'Interface HQ',
+    location: 'Atlanta, GA',
     level: 'Silver Certified',
     description:
       'Corporate headquarters redesigned around the communities and workers who give the building its life.',
@@ -363,7 +360,7 @@ const resources = [
   },
   {
     title: 'ROSSI Calculator',
-    description: 'Translate social equity outcomes into the financial language decision-makers use.',
+    description: 'Translate social equity outcomes into the financial language decision-makers understand.',
     cta: 'Try ROSSI',
     href: '/resources/rossi',
   },
@@ -374,10 +371,10 @@ const resources = [
     href: '/resources/blog',
   },
   {
-    title: 'Courses & Webinars',
-    description: 'Build your understanding of social equity in the built environment. Free and open.',
-    cta: 'Enroll',
-    href: '/resources/courses',
+    title: 'Open Membership',
+    description: 'Join the starting tier of our membership program to learn, participate, and join conversations.',
+    cta: 'Enroll for free',
+    href: '/community',
   },
 ]
 
@@ -434,8 +431,7 @@ function CtaBlock() {
           <em className="italic font-normal text-warm-400">worth belonging to?</em>
         </h2>
         <p className="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
-          Whether you are certifying a building, earning a credential, or exploring the Standard
-          for the first time, we will help you find the right path.
+          Whether you are certifying a building, earning a credential, or exploring the SEAM Standard for the first time, we'll help you find the place you belong.
         </p>
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <Link
@@ -462,11 +458,11 @@ export default function Home() {
     <>
       <SEO
         path="/"
-        description="SEAM is the first certification system that measures social equity in buildings. Bronze through Platinum certification across Health + Wellness, Economic Equity, Accessibility + Inclusion, and Community + Culture."
+        description="SEAM is the first certification system that measures social equity in buildings. Bronze through Platinum certification across Social Impact, Social Responsibility, Social Justice, and Social Accountability."
         jsonLd={faqSchema([
           {
             question: 'What is SEAM certification?',
-            answer: 'SEAM is the first certification system built to measure social equity in the built environment. It evaluates buildings across four interdependent pillars: Health + Wellness, Economic Equity, Accessibility + Inclusion, and Community + Culture, with levels from Bronze through Platinum.',
+            answer: 'SEAM is the first certification system built to measure social equity in the built environment. It evaluates buildings across four interdependent pillars: Social Impact, Social Responsibility, Social Justice, and Social Accountability, with levels from Bronze through Platinum.',
           },
           {
             question: 'How is SEAM different from LEED or WELL?',

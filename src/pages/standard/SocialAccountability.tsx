@@ -33,7 +33,7 @@ function Hero() {
             </em>
           </h1>
           <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            Transparency, reporting, and stakeholder engagement. Social Accountability is the pillar that ensures commitments are kept, progress is visible, and communities have a voice in evaluation.
+            Every building is connected to people far beyond its walls. Social Accountability is the pillar that addresses the full reach of that connection, from the materials sourced and the suppliers hired to the health and safety of everyone the project impacts.
           </p>
           <div className="hero-cta mt-10 flex flex-wrap gap-4">
             <Link
@@ -67,14 +67,13 @@ function Overview() {
             What is Social Accountability
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Keeping promises{' '}
-            <em className="italic font-normal">visible and verifiable</em>
+            Accountability goes beyond the building
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            Social Accountability within the SEAM Standard evaluates whether a building or development project maintains transparency about its social equity commitments and performance. It demands that projects create mechanisms for ongoing reporting, independent verification, and meaningful community participation in evaluation.
+            A building's impact doesn't begin at the job site and it doesn't end at the property line. Social Accountability within the SEAM Standard addresses the people who are often furthest from the conversation: the workers in the supply chain whose labor produced the materials inside the building, the contractors on site whose safety depends on clear standards, and the occupants and community members whose health and well-being are shaped by how the project is managed.
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            This pillar ensures that certification is not a one-time achievement but a continuous, publicly visible commitment — one that communities can trust because they can see it, question it, and shape it.
+            This pillar sets a clear bar for human rights, health, and safety across the full reach of your project.
           </p>
         </div>
       </div>
@@ -85,29 +84,29 @@ function Overview() {
 /* ─── Credit Areas ─── */
 const creditAreas = [
   {
-    title: 'Transparent Reporting',
+    title: 'Ethical Materials Procurement',
     description:
-      'Evaluate whether social equity data is collected, published, and made accessible to stakeholders. Assess public dashboards, annual impact reports, and data disclosure practices that allow communities to track performance over time.',
+      'Understand the human rights implications of the materials that go into your building. This objective guides you through establishing a socially sustainable procurement policy, conducting a supply chain risk assessment, sourcing materials free from forced and child labor, and taking corrective action when violations are identified.',
   },
   {
-    title: 'Stakeholder Engagement',
+    title: 'Ethical Suppliers Procurement',
     description:
-      'Measure the depth and authenticity of community participation in project planning, operation, and evaluation. Assess advisory boards, town halls, surveys, and co-design processes that give affected communities genuine decision-making power.',
+      'Extend your human rights commitments to the people who work for the companies you hire. This means requiring that your contractors, suppliers, and tenants provide living wages and decent working conditions, and taking responsibility for addressing violations when they surface in your supply chain.',
   },
   {
-    title: 'Third-Party Verification',
+    title: 'Human Rights Reporting',
     description:
-      'Document independent review processes that validate social equity claims. Evaluate the use of accredited assessors, peer review, and external audits that ensure performance data is accurate and unbiased.',
+      'Communicate openly about your project\'s human rights impacts and how you are addressing them. This includes public-facing reporting on your approach and a formal grievance mechanism that gives workers and community members a direct channel to raise concerns without fear of retaliation.',
   },
   {
-    title: 'Grievance Mechanisms',
+    title: 'Human Rights Awareness',
     description:
-      'Assess whether formal channels exist for occupants, workers, and community members to raise concerns, report violations, and seek resolution. Evaluate the accessibility, responsiveness, and independence of complaint processes.',
+      'Build the knowledge and capacity within your organization to identify and respond to human rights risks. This covers training for procurement staff on human rights standards and contributing to broader industry education that raises the bar across commercial real estate.',
   },
   {
-    title: 'Community Feedback Loops',
+    title: 'Health + Safety',
     description:
-      'Track whether project teams systematically collect, analyze, and act on feedback from the people their buildings serve. Evaluate continuous improvement practices that close the gap between commitment and lived experience.',
+      'Protect the physical wellbeing of everyone your project touches. This includes enhancing health and wellness for building occupants, safeguarding the health of the surrounding community, maintaining safe and healthy job sites for construction workers, and upholding structural safety standards for all spaces.',
   },
 ]
 
@@ -124,7 +123,7 @@ function CreditAreas() {
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Five dimensions of{' '}
-            <em className="italic font-normal">verified transparency</em>
+            <em className="italic font-normal">accountable improvement.</em>
           </h2>
         </div>
 
@@ -156,17 +155,17 @@ const ratingSystems = [
   {
     title: 'Buildings + Interiors',
     description:
-      'For new construction and renovations, Social Accountability credits evaluate the transparency mechanisms designed into the project from the start — public commitments, reporting frameworks, and community engagement processes embedded in the development agreement.',
+      'For new construction and renovations, Social Accountability credits address the human rights implications of your design and construction decisions: the materials you specify, the suppliers you contract, the labor conditions on your job site, and the health and wellness standards built into the finished space.',
   },
   {
     title: 'Operations + Maintenance',
     description:
-      'For existing buildings, Social Accountability credits assess ongoing transparency — annual impact reports, occupant satisfaction surveys, grievance resolution rates, and the accessibility of performance data to tenants, workers, and neighbors.',
+      'For existing buildings, Social Accountability credits focus on the ongoing human rights and health commitments embedded in day-to-day operations: supplier labor standards, living wage requirements for vendors and tenants, occupant wellness, and the grievance channels that keep those commitments visible and enforceable.',
   },
   {
     title: 'Community Development',
     description:
-      'For neighborhood-scale projects, Social Accountability credits measure district-wide transparency — community advisory structures, public data dashboards, independent audits, and feedback systems that operate at the scale of the development.',
+      'For neighborhood-scale projects, Social Accountability credits examine human rights and health and safety at a broader scale: how procurement practices ripple through local supply chains, how community health is protected across the development footprint, and how the project contributes to raising industry standards in the communities it shapes.',
   },
 ]
 
@@ -223,7 +222,7 @@ function WhyItMatters() {
             <em className="italic font-normal text-seam-300">Accountability provides it.</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-2xl mx-auto">
-            Communities have heard promises before. The Social Accountability pillar ensures that SEAM-certified projects earn trust through action — with transparent data, independent verification, and formal mechanisms that give stakeholders the power to hold project teams to their word.
+            Commitments to human rights and worker safety are only as strong as the systems behind them. Social Accountability gives projects the framework to identify risks across their supply chain, set clear standards for the people who build and occupy their buildings, and communicate openly about how those standards are being upheld. That's what turns a commitment into something people can actually count on.
           </p>
         </div>
       </div>
@@ -270,7 +269,7 @@ export default function SocialAccountability() {
     <>
       <SEO
         title="Social Accountability — SEAM Standard Pillar"
-        description="The Social Accountability pillar of the SEAM Standard ensures transparency, reporting, and stakeholder engagement: transparent reporting, stakeholder engagement, third-party verification, grievance mechanisms, and community feedback loops."
+        description="The Social Accountability pillar of the SEAM Standard addresses the full human rights and health and safety reach of your project: ethical materials procurement, ethical suppliers procurement, human rights reporting, human rights awareness, and health and safety."
         path="/standard/social-accountability"
         jsonLd={[
           breadcrumbSchema([

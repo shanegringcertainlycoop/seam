@@ -24,7 +24,7 @@ function Hero() {
               </em>
             </h1>
             <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-              SEAM Approved verifies individual social equity activities without requiring full building certification. These are standalone achievements or an on-ramp to your certification journey.
+              The SEAM Approved program verifies individual social equity activities without requiring full building certification. These are standalone achievements or an on-ramp to your certification journey.
             </p>
             <div className="hero-cta mt-10 flex flex-wrap gap-4">
               <Link
@@ -251,7 +251,7 @@ const steps = [
   },
   {
     number: '04',
-    title: 'Earn your credential',
+    title: 'Earn your mark of approval',
     description: 'Receive the SEAM Approved mark for the verified activity. Your organization is listed in the SEAM directory. Repeat for additional activities at any time.',
   },
 ]

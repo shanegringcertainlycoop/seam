@@ -33,7 +33,7 @@ function Hero() {
             </em>
           </h1>
           <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            Ethical practices in procurement, labor, and governance. Social Responsibility ensures that how a building is built and operated reflects a commitment to fairness at every level of the supply chain.
+            How an organization operates says as much as what it builds. Social Responsibility focuses on the governance practices, community engagement, and social investments that turn values into consistent, documented action.
           </p>
           <div className="hero-cta mt-10 flex flex-wrap gap-4">
             <Link
@@ -67,14 +67,13 @@ function Overview() {
             What is Social Responsibility
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Ethical practices at{' '}
-            <em className="italic font-normal">every level</em>
+            Building equity from the inside out
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            Social Responsibility within the SEAM Standard evaluates the ethical practices embedded in how buildings are procured, built, operated, and governed. It examines the full lifecycle of a project — from the materials sourced and the vendors hired to the wages paid and the labor protections enforced.
+            Any organization can make a commitment to social equity. Social Responsibility within the SEAM Standard asks how that commitment shows up in practice: in the governance structures that hold your organization accountable, in the community programs that go beyond a donation, and in the social investments that build capacity rather than dependency.
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            This pillar ensures that the process of creating and maintaining the built environment is as equitable as the outcomes it delivers.
+            This pillar is about becoming the kind of organization whose actions consistently match its values.
           </p>
         </div>
       </div>
@@ -85,29 +84,34 @@ function Overview() {
 /* ─── Credit Areas ─── */
 const creditAreas = [
   {
-    title: 'Responsible Procurement',
+    title: 'Education + Awareness',
     description:
-      'Evaluate purchasing policies that prioritize local, minority-owned, women-owned, and disadvantaged business enterprises. Track procurement spend allocation and vendor qualification processes that expand opportunity.',
+      'Equip your project team with a working understanding of social responsibility principles and put that knowledge into practice publicly. This covers interactive training at both the project and property level, as well as transparent, public-facing communication that reports honestly on your social responsibility commitments and performance.',
   },
   {
-    title: 'Living Wages',
+    title: 'Voluntary Initiatives',
     description:
-      'Assess whether all workers involved in the construction, operation, and maintenance of a building earn wages sufficient to meet the cost of living in their community. Measure wage floors, benefits, and pay equity.',
+      'Align your project with recognized external frameworks and initiatives that address social responsibility in the commercial real estate sector. Participation signals credibility, builds accountability, and connects your work to a broader field of practice.',
   },
   {
-    title: 'Vendor Diversity',
+    title: 'Responsible Policies',
     description:
-      'Track the diversity of the supply chain across race, gender, geography, and business size. Evaluate mentorship programs, capacity-building initiatives, and long-term vendor development strategies.',
+      'Embed social responsibility into your project\'s governance through site-specific policies that set clear expectations for how your organization and its project teams operate. Written, implemented policies are what turn intentions into accountable practice.',
   },
   {
-    title: 'Ethical Supply Chains',
+    title: 'Impacted Party Materiality',
     description:
-      'Document material sourcing practices that avoid exploitative labor, environmentally destructive extraction, and opaque supply chains. Verify transparency from raw material to finished installation.',
+      'Identify and prioritize the issues that matter most to the people your project affects. This objective goes beyond general engagement to understand what your affected communities actually care about, so that your social responsibility efforts are directed where they\'ll have the most relevance and impact.',
   },
   {
-    title: 'Labor Protections',
+    title: 'Community Development',
     description:
-      'Assess worker safety standards, anti-retaliation policies, collective bargaining rights, and grievance mechanisms for all construction and operational workers. Evaluate training, advancement, and workforce development programs.',
+      'Design and execute community involvement programs that address real, community-identified goals. This includes direct volunteer engagement that moves beyond financial support toward genuine human connection and shared purpose between your project and the people around it.',
+  },
+  {
+    title: 'Community Resilience',
+    description:
+      'Invest financial resources in ways that build a community\'s long-term capacity rather than creating ongoing dependency. The SEAM Standard draws a clear distinction between one-time donations and investments that strengthen a community\'s ability to sustain itself over time.',
   },
 ]
 
@@ -123,8 +127,7 @@ function CreditAreas() {
             Key credit areas
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Five dimensions of{' '}
-            <em className="italic font-normal">ethical practice</em>
+            Six ways responsible organizations take action
           </h2>
         </div>
 
@@ -156,17 +159,17 @@ const ratingSystems = [
   {
     title: 'Buildings + Interiors',
     description:
-      'For new construction and renovations, Social Responsibility credits evaluate procurement practices during design and construction — who builds the building, where materials come from, and whether the construction process itself advances equity.',
+      'For new construction and renovations, Social Responsibility credits focus on how your organization governs the project from the start: training your team on social responsibility principles, establishing site-specific policies, aligning with recognized voluntary initiatives, and building meaningful relationships with the community your project will affect.',
   },
   {
     title: 'Operations + Maintenance',
     description:
-      'For existing buildings, Social Responsibility credits assess ongoing vendor relationships, janitorial and maintenance wages, procurement policies, and the ethical standards embedded in day-to-day building operations.',
+      'For existing buildings, Social Responsibility credits assess whether your ongoing operations reflect a consistent commitment to the communities around you: through transparent public communication, active community involvement programs, and social investments that contribute to long-term neighborhood resilience.',
   },
   {
     title: 'Community Development',
     description:
-      'For neighborhood-scale projects, Social Responsibility credits measure the equity of development processes — community benefit agreements, local hiring commitments, and supply chain practices across the entire project.',
+      'For neighborhood-scale projects, Social Responsibility credits examine how governance, community engagement, and social investment work together at a broader scale, assessing whether the organization behind the project is genuinely accountable to the communities it is shaping.',
   },
 ]
 
@@ -223,7 +226,7 @@ function WhyItMatters() {
             <em className="italic font-normal text-seam-300">How you build matters.</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-2xl mx-auto">
-            A building cannot claim to advance social equity if the workers who built it were underpaid, the vendors who supplied it were excluded, or the materials inside it were sourced through exploitation. Social Responsibility closes the gap between what a building represents and how it was made.
+            A certified building reflects the organizations behind it. The governance structures, community relationships, and social investments that go into a project don't always show up in the finished product, but they determine whether the work was done with integrity. Social Responsibility is how SEAM helps organizations be accountable to the full picture of what responsible development requires.
           </p>
         </div>
       </div>
@@ -243,7 +246,7 @@ function CtaBlock() {
           <em className="italic font-normal text-seam-600">responsibly?</em>
         </h2>
         <p className="mt-6 text-[17px] text-warm-500 max-w-xl mx-auto">
-          Explore the full SEAM Standard or start your project today to embed ethical practices into every phase of development.
+          Explore the full SEAM Standard or start your project today to build the governance, relationships, and investments that make your equity commitments real.
         </p>
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <Link
@@ -270,7 +273,7 @@ export default function SocialResponsibility() {
     <>
       <SEO
         title="Social Responsibility — SEAM Standard Pillar"
-        description="The Social Responsibility pillar of the SEAM Standard evaluates ethical practices in procurement, labor, and governance: responsible procurement, living wages, vendor diversity, ethical supply chains, and labor protections."
+        description="The Social Responsibility pillar of the SEAM Standard evaluates how organizations turn equity commitments into action: education and awareness, voluntary initiatives, responsible policies, impacted party materiality, community development, and community resilience."
         path="/standard/social-responsibility"
         jsonLd={[
           breadcrumbSchema([

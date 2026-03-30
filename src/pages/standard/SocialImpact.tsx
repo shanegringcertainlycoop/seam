@@ -33,7 +33,7 @@ function Hero() {
             </em>
           </h1>
           <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            Measurable outcomes for people and communities. Social Impact is the pillar that asks the essential question: did this project make life better for the people it touches?
+            Measurable outcomes for people and communities. Social Impact is the pillar that builds the evidence behind your project's wide-ranging effect on the people and communities it reaches.
           </p>
           <div className="hero-cta mt-10 flex flex-wrap gap-4">
             <Link
@@ -71,7 +71,7 @@ function Overview() {
             <em className="italic font-normal">measured and verified</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            Social Impact within the SEAM Standard evaluates the tangible, measurable outcomes a building or development project delivers for the people and communities it serves. It moves beyond intent to evidence — tracking changes in health, education, economic mobility, and housing stability that can be directly attributed to the built environment.
+            Most projects make assumptions about who they affect and how. Social Impact within the SEAM Standard replaces those assumptions with a structured process: understand the social context of your project before you build, engage the people most likely to be affected, and put monitoring systems in place to track whether your efforts are actually working. The result is a project that can demonstrate its social value with real evidence, not just good intentions.
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-warm-500 max-w-xl">
             This pillar ensures that every certified project can demonstrate real, documented improvements in the lives of its occupants, workers, and neighbors.
@@ -85,19 +85,19 @@ function Overview() {
 /* ─── Credit Areas ─── */
 const creditAreas = [
   {
-    title: 'Community Health Outcomes',
+    title: 'Contextual Analysis',
     description:
-      'Track improvements in physical and mental health indicators for building occupants and surrounding communities. Measure access to healthcare services, wellness programming, and healthy building features that reduce chronic disease risk.',
+      'Before you can manage your project\'s social impact, you need to understand it. Contextual Analysis guides you through identifying who your project affects, mapping your value chain, establishing a social baseline, and designing an engagement plan that\'s built for the specific community at hand.',
   },
   {
-    title: 'Educational Access',
+    title: 'Impacted Party Engagement',
     description:
-      'Evaluate how the project expands access to educational resources, workforce training, and lifelong learning opportunities. Assess partnerships with schools, libraries, and training providers that create pathways to knowledge.',
+      'The people most affected by your project have the clearest view of what it will mean for them. This objective builds the process for actively collecting, analyzing, and responding to their feedback throughout development, so that the decisions you make reflect what you actually heard.',
   },
   {
-    title: 'Economic Mobility',
+    title: 'Monitoring + Evaluation',
     description:
-      'Measure the project\'s contribution to income growth, wealth building, and financial stability for residents and local workers. Track job creation, career advancement programs, and access to financial services.',
+      'Knowing your intent isn\'t enough. Monitoring and Evaluation puts systems in place to track whether your project\'s social impact is moving in the right direction, using established indicators and regular assessment cycles to turn good intentions into documented outcomes.',
   },
   {
     title: 'Housing Stability',
@@ -123,8 +123,7 @@ function CreditAreas() {
             Key credit areas
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Five dimensions of{' '}
-            <em className="italic font-normal">measurable impact</em>
+            A structured path from assessment to evidence.
           </h2>
         </div>
 
@@ -156,17 +155,17 @@ const ratingSystems = [
   {
     title: 'Buildings + Interiors',
     description:
-      'For new construction and renovations, Social Impact credits evaluate how design decisions — from unit mix to amenity programming — create measurable health, educational, and economic outcomes for future occupants and surrounding neighborhoods.',
+      'For new construction and renovations, Social Impact credits guide you through assessing your project\'s social context before you build, identifying who will be affected and how, and establishing the baseline you\'ll need to measure progress over time.',
   },
   {
     title: 'Operations + Maintenance',
     description:
-      'For existing buildings, Social Impact credits measure ongoing outcomes: Are tenants healthier? Are workers earning more? Is the community more stable? Operational practices are evaluated against baseline community indicators.',
+      'For existing buildings, Social Impact credits focus on whether your ongoing engagement with residents, workers, and the surrounding community reflects what you learned during assessment, and whether you have systems in place to track and respond to what\'s changing.',
   },
   {
     title: 'Community Development',
     description:
-      'For neighborhood-scale projects, Social Impact credits assess district-wide outcomes across health, education, housing, and economic mobility. Impact is measured at the population level with longitudinal tracking.',
+      'For neighborhood-scale projects, Social Impact credits apply the same structured process at a broader scale: mapping the full range of people your project affects, engaging them meaningfully across the development process, and tracking impact across a wider population over time.',
   },
 ]
 
@@ -223,7 +222,7 @@ function WhyItMatters() {
             <em className="italic font-normal text-seam-300">Impact proves it.</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-2xl mx-auto">
-            Without measurable impact, social equity commitments remain aspirational. The Social Impact pillar demands evidence — verified outcomes that demonstrate a project is not just well-intentioned, but genuinely effective at improving the conditions of the people it serves.
+            Without a structured way to measure what's happening, social equity commitments are just that: commitments. Social Impact gives your project the process and the proof to show that your work is making a real difference for the people it reaches.
           </p>
         </div>
       </div>
@@ -270,7 +269,7 @@ export default function SocialImpact() {
     <>
       <SEO
         title="Social Impact — SEAM Standard Pillar"
-        description="The Social Impact pillar of the SEAM Standard measures tangible outcomes for people and communities: health, education, economic mobility, housing stability, and displacement prevention."
+        description="The Social Impact pillar of the SEAM Standard measures tangible outcomes for people and communities: contextual analysis, impacted party engagement, monitoring and evaluation, housing stability, and displacement prevention."
         path="/standard/social-impact"
         jsonLd={[
           breadcrumbSchema([

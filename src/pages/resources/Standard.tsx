@@ -50,10 +50,10 @@ function Belief() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={ref} className="reveal-fade-up max-w-4xl mx-auto text-center">
           <blockquote className="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-warm-900">
-            &ldquo;When people feel like they belong in a space, everything performs better — the building, the business, the community.&rdquo;
+            &ldquo;When we account for human impact — from initial design and material sourcing to ongoing operations — everything performs better: the building, the business, the community, the factory worker 1,000 miles away.&rdquo;
           </blockquote>
           <p className="mt-10 text-[17px] leading-relaxed text-warm-500 max-w-2xl mx-auto">
-            Belonging is not a finishing touch. It is a foundation — designed into the structure, sourced into the materials, built into the relationships with the community before the first wall goes up. The SEAM Standard gives organizations the framework to do that work with rigor, integrity, and proof.
+            Equity addresses human impact: in a building, in a community, in the supply chain. It isn't a nice-to-have or an afterthought. It's the foundation — designed into the structure, sourced into the materials, and built into the partnerships throughout the community. The SEAM Standard gives organizations the guidance to do that work with rigor, integrity, and proof.
           </p>
         </div>
       </div>
@@ -67,7 +67,7 @@ const differentiators = [
   { number: '02', title: 'No offsetting of harm', seam: 'Avoiding negative impact must come before earning points for positive initiatives — the scoring design enforces this sequence.', others: 'Allow positive-impact points to offset negative performance — a project can do harm and still earn certification.' },
   { number: '03', title: 'Impact-aligned levels', seam: 'Certification levels align directly to social impact goals — Bronze through Platinum correspond to acting to avoid harm, preventing harm, achieving positive impact, and contributing to lasting change.', others: 'Certification levels based on point thresholds — a project can earn a higher level without demonstrating meaningful improvement for people.' },
   { number: '04', title: 'Leading indicators', seam: 'Measures the principles and processes that cause change, so organizations know they are on the right track before harm is done.', others: 'Measure lagging indicators — outcomes after work is complete. In social issues, that can mean harm has already occurred by the time measurement happens.' },
-  { number: '05', title: 'Roadmap design', seam: 'A roadmap structure with ordered, prerequisite activities — ensuring foundational work is done before more advanced initiatives can begin.', others: 'Activities can be completed in any order, often leading to advanced initiatives built on a missing foundation.' },
+  { number: '05', title: 'Roadmap design', seam: 'A roadmap with ordered, prerequisite activities, and the guidance to put those activities into practice, to help the work progress with confidence.', others: 'Activities can be completed in any order, often leading to advanced initiatives built on a missing foundation.' },
   { number: '06', title: 'Project-level scope', seam: 'Social initiatives apply to the specific project and the people it touches, with additional recognition for organization-level implementation.', others: 'Organization-wide scope — a heavier lift for organizations early in their social equity journey, and harder to connect to real impact on people in specific places.' },
 ]
 
@@ -83,7 +83,7 @@ function WhySEAM() {
             Built different.{' '}<em className="italic font-normal">Designed to matter.</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            Other certifications measure what organizations do. SEAM measures whether it works — for the people it is meant to serve.
+            SEAM measures the human impact of a building and provides guidance on how to verifiably improve that impact for everyone.
           </p>
         </div>
 
@@ -120,7 +120,7 @@ const pillars = [
     number: '01',
     title: 'Social Impact',
     href: '/standard/social-impact',
-    description: 'Reduce poverty and inequality by identifying and managing the social, cultural, and economic impacts of development — before they happen.',
+    description: 'Address social, cultural, and economic effects of your development project before they happen through structured assessments and meaningful community engagement.',
     concepts: ['Impact Assessment: Contextual Assessment, Impacted Party Engagement, Monitoring + Evaluation'],
     icon: '/icons/pillar-social-impact.png',
   },
@@ -128,7 +128,7 @@ const pillars = [
     number: '02',
     title: 'Social Responsibility',
     href: '/standard/social-responsibility',
-    description: 'Strengthen civil society and promote capacity through responsible, sustainable development practices at every level of the organization.',
+    description: 'Strengthen organizational policies, community involvement, and social investment practices to reflect a commitment to responsible development.',
     concepts: ['Transformational Governance (5 objectives)', 'Community Involvement', 'Social Investment'],
     icon: '/icons/pillar-social-responsibility.png',
   },
@@ -136,7 +136,7 @@ const pillars = [
     number: '03',
     title: 'Social Justice',
     href: '/standard/social-justice',
-    description: 'Promote root cause strategies that lead to equal access to social resources — in procurement, in the workplace, in the community, in capital.',
+    description: 'Advance meaningful social sustainability practices across procurement, the workplace, the community, and capital access decision making.',
     concepts: ['Social Equity + Justice (Procurement, Workplace, Community, Capital)', 'Social Justice Innovation'],
     icon: '/icons/pillar-social-justice.png',
   },
@@ -144,7 +144,7 @@ const pillars = [
     number: '04',
     title: 'Social Accountability',
     href: '/standard/social-accountability',
-    description: 'Protect fundamental human rights and freedoms — and create safe, healthy workplaces and environments for everyone the building touches.',
+    description: 'Uphold human rights across your project\'s full value chain through ethical materials and supplier practices, along with health, well-being, and safety standards.',
     concepts: ['Human Rights (Ethical Materials, Ethical Suppliers, Reporting, Education)', 'Health + Safety'],
     icon: '/icons/pillar-social-accountability.png',
   },
@@ -167,7 +167,7 @@ function Framework() {
             Four pillars. Eight concepts.{' '}<em className="italic font-normal">One standard.</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            The SEAM Standard organizes social equity into a structured, logical framework — aligned to the UN Sustainable Development Goals and grounded in internationally recognized principles.
+            The SEAM Standard organizes social equity into a structured framework grounded in internationally recognized principles and aligned to the UN Sustainable Development Goals. Each pillar addresses a distinct dimension of social sustainability in the built environment.
           </p>
         </div>
 
@@ -216,10 +216,10 @@ function Framework() {
 
 /* ─── How It Works (structure) ─── */
 const layers = [
-  { title: 'Pillars', count: '4', description: 'The four organizing themes of social equity in the built environment. Every activity connects back to a pillar — so users always understand the why behind each requirement.' },
-  { title: 'Concepts', count: '8', description: 'Eight focused areas within the pillars, each addressing a specific social theme — from impact assessment and human rights to social equity in procurement and community investment.' },
-  { title: 'Objectives', count: '21', description: 'Twenty-one specific, measurable goals within each concept — defining what the project is trying to achieve, with clear rationale and connection to internationally recognized standards.' },
-  { title: 'Activities', count: '50+', description: 'The individual actions that drive certification — each with defined requirements, a clear scoring rubric, documentation standards, and a referenced international source. Activities are the unit of measurement.' },
+  { title: 'Pillars', count: '4', description: 'The four organizing themes of social equity in the built environment. Every concept, objective, and activity connects back to a pillar so you always understand the why behind your efforts.' },
+  { title: 'Concepts', count: '8', description: 'Within the pillars, eight focus areas address specific themes from impact assessments and human rights practices to equity in procurement and more.' },
+  { title: 'Objectives', count: '21', description: 'Measurable objectives define goals within each concept, giving a clear path to progress with rationale and connection to internationally recognized standards.' },
+  { title: 'Activities', count: '50+', description: 'The individual actions that drive equitable change. Each activity has defined requirements, clear scoring rubrics, documentation standards, and implementation instructions so nothing is left to guessing.' },
 ]
 
 function NestingGraphic() {
@@ -267,10 +267,10 @@ function HowItWorks() {
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
           <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">How it works</p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            A structure built for{' '}<em className="italic font-normal">real impact</em>
+            Structured to leave a{' '}<em className="italic font-normal">lasting impact</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            The SEAM Standard is not a checklist. It is a layered framework that builds from foundation to impact — with each level informing and enabling the next.
+            The SEAM Standard is a layered framework that builds from foundation to impact, with each level informing and enabling the next.
           </p>
         </div>
 
@@ -322,7 +322,7 @@ function CertLevels() {
             Recognition that reflects{' '}<em className="italic font-normal">real progress</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            Four levels aligned to the Impact Management Project&apos;s ABC framework — avoiding harm, benefiting people, contributing to solutions. Level reflects impact, not just points.
+            Four levels of SEAM Certification align to the Impact Management Project&apos;s ABCs: avoiding harm, benefiting people, and contributing to solutions.
           </p>
         </div>
 
@@ -355,7 +355,7 @@ const ratings = [
   { code: 'B+I:D', title: 'Buildings + Interiors: Developer', description: 'Ground-up construction and major renovations where the owner assumes developer responsibilities — project ownership, financing, construction supervision, and tenant leasing management.', href: '/rating-system/buildings-interiors' },
   { code: 'B+I:O', title: 'Buildings + Interiors: Occupier', description: 'Construction or renovation projects where the owner occupies the space — fit-outs, interior buildouts, and workplace environments where the owner is the primary occupant.', href: '/rating-system/buildings-interiors' },
   { code: 'O+M:D', title: 'Operations + Management: Developer', description: 'Existing assets being operated and managed by the developer — applying social equity standards to the ongoing performance and management of a building or portfolio.', href: '/rating-system/operations-maintenance' },
-  { code: 'O+M:O', title: 'Operations + Management: Occupier', description: 'Ongoing operations by an occupier — applying the Standard to the management of an occupied space, including workplace practices, supply chain, and community relationships.', href: '/rating-system/operations-maintenance' },
+  { code: 'O+M:O', title: 'Operations + Management: Occupier', description: 'Ongoing operations by an occupier — applying social equity practices to the management of an occupied space, including workplace practices, supply chain, and community relationships.', href: '/rating-system/operations-maintenance' },
 ]
 
 function RatingSystems() {
@@ -370,7 +370,7 @@ function RatingSystems() {
             Tailored to{' '}<em className="italic font-normal">how you build</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            Not every activity applies to every project. Four active rating systems ensure that certification reflects your specific project type and role.
+            Not every activity will apply to every project. SEAM's rating systems ensure that certification reflects your project type and role.
           </p>
         </div>
 
@@ -391,9 +391,9 @@ function RatingSystems() {
 
 /* ─── Framework Design Principles ─── */
 const principles = [
-  { number: '01', title: 'Timely contextual analysis', description: 'A Social Impact Assessment is required for every certification — because people are complex, communities change, and no two projects share the same context. The SIA shapes everything that follows.' },
+  { number: '01', title: 'Timely contextual analysis', description: 'Assessments are critical for social equity to take root within a project. Because people are complex and communities change, no two projects will be the same. And assessments help shape everything that follows.' },
   { number: '02', title: 'No offsetting of harm', description: 'The scoring design prevents positive-impact points from masking harm. Preventing harm is a prerequisite for earning recognition for positive endeavors — full stop.' },
-  { number: '03', title: 'Logic model structure', description: 'Activities follow a causal logic model — connecting inputs, processes, outputs, and outcomes in a way that shows the pathway from action to impact.' },
+  { number: '03', title: 'Logic model structure', description: 'Activities follow a causal logic model connecting inputs, processes, outputs, and outcomes in a way that shows the pathway from action to impact.' },
   { number: '04', title: 'Human rights-weighted scoring', description: 'Points are weighted based on the salience of human rights issues — directing organizations to prioritize activities that matter most, not just those that are easiest to complete.' },
   { number: '05', title: 'Roadmap design', description: "Driver activities establish prerequisites for more advanced work. Organizations cannot skip foundational steps — because in social equity, a flawed foundation does not just underperform. It can cause harm." },
   { number: '06', title: 'Impact-aligned levels', description: 'Certification levels reflect where an organization stands on the spectrum of social impact — not just how many points they have accumulated. Level means something because level is defined by what changes for people.' },
@@ -411,7 +411,7 @@ function DesignPrinciples() {
             Social equity embedded{' '}<em className="italic font-normal">by design</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            The SEAM Standard does not bolt equity onto a compliance framework. It engineers equity into the scoring logic itself — in six distinct ways.
+            The SEAM Standard does not bolt equity onto a compliance framework. We engineer it into the scoring logic itself in six distinct ways.
           </p>
         </div>
 

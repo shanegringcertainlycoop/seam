@@ -33,7 +33,7 @@ function Hero() {
             </em>
           </h1>
           <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            Addressing systemic inequity through the built environment. Social Justice is the pillar that confronts the historical patterns of exclusion embedded in how we build, zone, and invest.
+            Real estate shapes who has access to opportunity, and who doesn't. The Social Justice pillar addresses issues that historically impact how we build, zone, invest, and support impacted parties.
           </p>
           <div className="hero-cta mt-10 flex flex-wrap gap-4">
             <Link
@@ -67,11 +67,11 @@ function Overview() {
             What is Social Justice in the SEAM Standard
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Confronting inequity through{' '}
+            Elevating just decision making through{' '}
             <em className="italic font-normal">the built environment</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            Social Justice within the SEAM Standard evaluates whether a building or development project actively works to dismantle the systems of exclusion that have shaped the built environment for generations. It recognizes that buildings are not neutral — they are products of zoning, lending, planning, and investment decisions that have historically concentrated harm in specific communities.
+            Buildings don't exist in a vacuum. Every project makes choices — about who gets hired, who can afford to be there, how the surrounding community is affected, and how far that impact actually reaches. Social Justice within the SEAM Standard helps projects make those decisions with intention, using a structured framework that addresses procurement, the workplace, the community, and access to capital.
           </p>
           <p className="mt-4 text-[17px] leading-relaxed text-warm-500 max-w-xl">
             This pillar demands that certified projects move beyond neutrality to become instruments of repair, designing spaces that restore access, preserve culture, and redistribute opportunity.
@@ -85,29 +85,34 @@ function Overview() {
 /* ─── Credit Areas ─── */
 const creditAreas = [
   {
-    title: 'Anti-Displacement',
+    title: 'Procurement',
     description:
-      'Evaluate proactive strategies that prevent the involuntary removal of existing residents, businesses, and cultural institutions. Assess community land trusts, right-to-return policies, and equitable development agreements that protect long-term community stability.',
+      'Build inclusive practices into how you hire suppliers, award contracts, and structure leases. From tier-one vendors to tenant agreements, this objective helps ensure that the economic opportunity your project creates reaches a broader range of people and businesses.',
   },
   {
-    title: 'Inclusive Design',
+    title: 'The Workplace',
     description:
-      'Measure whether the built environment is designed for full participation by people of all abilities, ages, languages, and identities. Assess universal design principles, multilingual wayfinding, gender-inclusive facilities, and culturally responsive spaces.',
+      'Establish fair treatment, equal pay, and inclusive design standards for everyone who works in or on your project. This covers your organization\'s own practices as well as the expectations you set for your contractors and suppliers.',
   },
   {
-    title: 'Equitable Access',
+    title: 'The Community',
     description:
-      'Track whether amenities, services, and opportunities created by the project are accessible to the people who need them most. Evaluate affordability, transportation access, digital connectivity, and public benefit provisions.',
+      'Understand and actively manage your project\'s relationship with the community around it. This includes avoiding involuntary displacement, promoting local employment, and taking responsibility for negative impacts when they occur.',
   },
   {
-    title: 'Cultural Preservation',
+    title: 'Capital Access',
     description:
-      'Document how the project honors, protects, and amplifies the cultural identity of the community it inhabits. Assess arts integration, heritage preservation, community narrative spaces, and protections against cultural erasure.',
+      'Broaden who has access to the financial opportunities your project creates. This objective looks at how equity capital and debt financing are structured, and whether historically underrepresented groups have a meaningful seat at the table.',
   },
   {
-    title: 'Reparative Development',
+    title: 'Social Justice Industry Innovation',
     description:
-      'Evaluate whether the project explicitly addresses historical harm through its design, programming, and investment structure. Measure wealth-building mechanisms for historically excluded communities, restorative land use, and community ownership models.',
+      'Go beyond the baseline. This objective recognizes projects and organizations that are advancing new models, programs, and partnerships that push the commercial real estate industry toward more equitable outcomes.',
+  },
+  {
+    title: 'Design for Embodied Justice',
+    description:
+      'Put equity into the physical decisions of the project itself. This objective supports design features that address root causes of inequity, centering the voices and needs of communities that have historically been left out of the design process.',
   },
 ]
 
@@ -123,8 +128,7 @@ function CreditAreas() {
             Key credit areas
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Five dimensions of{' '}
-            <em className="italic font-normal">systemic repair</em>
+            Six dimensions driving equity, inclusion, and innovation.
           </h2>
         </div>
 
@@ -156,17 +160,17 @@ const ratingSystems = [
   {
     title: 'Buildings + Interiors',
     description:
-      'For new construction and renovations, Social Justice credits evaluate how design decisions address historical inequity — from inclusive space planning and universal accessibility to anti-displacement commitments and culturally responsive architecture.',
+      'For new construction and renovations, Social Justice credits focus on the decisions made during design and development: who you hire, how the space is designed for full participation, how you treat the people who build and occupy it, and what your project means for the community around it.',
   },
   {
     title: 'Operations + Maintenance',
     description:
-      'For existing buildings, Social Justice credits assess whether ongoing operations actively promote equity — through inclusive programming, accessible services, cultural events, and governance structures that center the voices of historically excluded communities.',
+      'For existing buildings, Social Justice credits look at how your ongoing operations hold up against the same standards. Fair treatment of staff and contractors, inclusive access to services and amenities, and active engagement with the surrounding community all come into scope.',
   },
   {
     title: 'Community Development',
     description:
-      'For neighborhood-scale projects, Social Justice credits measure systemic impact — anti-displacement at the district level, equitable infrastructure investment, reparative land use policies, and community ownership structures that redistribute power.',
+      'For neighborhood-scale projects, Social Justice credits examine impact at a broader level: how procurement and employment practices ripple into the local economy, how capital opportunities are structured, and how the project\'s design reflects the needs of the people it most directly affects.',
   },
 ]
 
@@ -270,7 +274,7 @@ export default function SocialJustice() {
     <>
       <SEO
         title="Social Justice — SEAM Standard Pillar"
-        description="The Social Justice pillar of the SEAM Standard addresses systemic inequity through the built environment: anti-displacement, inclusive design, equitable access, cultural preservation, and reparative development."
+        description="The Social Justice pillar of the SEAM Standard addresses systemic inequity through the built environment: procurement, the workplace, the community, capital access, industry innovation, and design for embodied justice."
         path="/standard/social-justice"
         jsonLd={[
           breadcrumbSchema([
