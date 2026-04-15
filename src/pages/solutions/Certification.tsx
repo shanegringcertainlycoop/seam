@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import { useReveal } from '../../hooks/useReveal'
+import { useCountUp } from '../../hooks/useCountUp'
 
-import SEO, { faqSchema, breadcrumbSchema } from '../../components/SEO'
+import SEO, { breadcrumbSchema } from '../../components/SEO'
 
 /* ─── Hero ─── */
 function Hero() {
@@ -20,11 +20,11 @@ function Hero() {
             <h1 className="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
               Certify that your building{' '}
               <em className="font-display italic font-normal text-seam-300">
-                advances social equity
+                improves human impact
               </em>
             </h1>
             <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-              SEAM Certification is the first system that measures what matters most about the places we live and work — whether they serve the people inside them. Bronze through Platinum across three tracks.
+              SEAM Certification is a first-of-its-kind operating system for managing human impact in real estate, from design, construction, and procurement through day-to-day operations.
             </p>
             <div className="hero-cta mt-10 flex flex-wrap gap-4">
               <Link
@@ -67,40 +67,142 @@ function Hero() {
   )
 }
 
-/* ─── Certification Tracks ─── */
-const tracks = [
+/* ─── Business Case ─── */
+function BusinessCase() {
+  const headerRef = useReveal()
+  const gapRef = useReveal(0.2)
+  const engagementRef = useReveal(0.1)
+  const closerRef = useReveal(0.2)
+
+  const s1 = useCountUp(23, { suffix: '%' })
+  const s2 = useCountUp(17, { suffix: '%' })
+  const s3 = useCountUp(51, { suffix: '%' })
+  const s4 = useCountUp(10, { suffix: '%' })
+
+  const engagement = [
+    { ...s1, label: 'higher profitability' },
+    { ...s2, label: 'higher productivity' },
+    { ...s3, label: 'lower employee turnover' },
+    { ...s4, label: 'higher customer loyalty' },
+  ]
+
+  return (
+    <section className="py-24 lg:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-20">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+            The business case
+          </p>
+          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            Equity impacts your bottom line.
+          </h2>
+        </div>
+
+        {/* The Gap */}
+        <div ref={gapRef} className="reveal-fade-up grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div className="rounded-2xl bg-warm-900 p-10 lg:p-12">
+            <div className="flex items-baseline gap-3 mb-4">
+              <span className="font-display text-[clamp(3rem,6vw,5rem)] tracking-[-0.04em] text-white leading-none">
+                93%
+              </span>
+              <span className="font-display text-[clamp(3rem,6vw,5rem)] tracking-[-0.04em] text-warm-600 leading-none">
+                vs 8%
+              </span>
+            </div>
+            <p className="text-[17px] leading-relaxed text-warm-400 max-w-md">
+              of companies say they have a social value strategy in place — but only 8% can be considered market leaders in delivering measurable results.
+            </p>
+            <p className="mt-6 text-[13px] text-warm-600">
+              JLL Research · 800+ senior decision makers · 12 global markets
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-warm-50 p-10 lg:p-12 flex flex-col justify-between">
+            <div>
+              <span className="font-display text-[clamp(3rem,6vw,5rem)] tracking-[-0.04em] text-seam-600 leading-none block">
+                $6.7T
+              </span>
+              <p className="mt-4 text-[17px] leading-relaxed text-warm-500 max-w-md">
+                The potential addressable market for corporate social responsibility in America alone.
+              </p>
+            </div>
+            <p className="mt-6 text-[13px] text-warm-400">
+              JLL Research
+            </p>
+          </div>
+        </div>
+
+        {/* Engagement Stats */}
+        <div ref={engagementRef} className="reveal-fade-up rounded-2xl border border-warm-100 p-10 lg:p-12 mb-6">
+          <p className="text-[17px] text-warm-500 mb-10 max-w-xl">
+            Companies that put people first see measurable returns. Highly engaged organizations outperform their peers by:
+          </p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {engagement.map((s) => (
+              <div key={s.label} className="text-center">
+                <span
+                  ref={s.ref}
+                  className="block font-display text-[clamp(2.5rem,5vw,4rem)] tracking-[-0.04em] text-seam-600"
+                >
+                  {s.display}
+                </span>
+                <span className="block mt-2 text-[14px] text-warm-500 uppercase tracking-[0.08em]">
+                  {s.label}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-[13px] text-warm-400">
+            Gallup Q12 Meta-Analysis, 11th Edition · 736 studies
+          </p>
+        </div>
+
+        {/* McKinsey Closer */}
+        <div ref={closerRef} className="reveal-fade-up rounded-2xl bg-seam-900 p-10 lg:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 lg:gap-16 items-center">
+            <span className="font-display text-[clamp(3rem,6vw,5rem)] tracking-[-0.04em] text-white leading-none whitespace-nowrap">
+              +7pp
+            </span>
+            <div>
+              <p className="text-[17px] leading-relaxed text-seam-200 max-w-2xl">
+                Companies that combine strong ESG performance with revenue growth deliver 7 percentage points higher total shareholder return — and are more than twice as likely to achieve revenue growth above 10% annually.
+              </p>
+              <p className="mt-4 text-[13px] text-seam-400">
+                McKinsey · 2,269 companies · 2017–2021
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── Rating Systems (Tracks) ─── */
+const ratingSystems = [
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
-      </svg>
-    ),
-    title: 'Buildings + Interiors',
+    title: 'Buildings + Interiors:\nDevelopers',
     description:
-      'For new construction, major renovations, and interior fit-outs. Evaluates how the physical environment is designed and built to advance social equity from day one.',
-    audience: 'Developers, architects, owners',
+      'For ground-up construction and major renovations. Evaluates social equity across design, procurement, supply chain, and community impact.',
+    audience: 'Developers, ownership groups, capital providers',
   },
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
-      </svg>
-    ),
-    title: 'Operations + Maintenance',
+    title: 'Buildings + Interiors:\nOccupiers',
     description:
-      'For existing buildings seeking certification based on how they operate. Measures ongoing practices in procurement, programming, staffing, and community engagement.',
-    audience: 'Property managers, facility teams',
+      'For tenants and property owners fitting out a space without landlord duties. Evaluates social equity in how the space is designed, sourced, and built.',
+    audience: 'Tenants, interior designers, fit-out contractors',
   },
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-      </svg>
-    ),
-    title: 'Community Development',
+    title: 'Operations + Maintenance:\nDevelopers',
     description:
-      'For neighborhood-scale initiatives, campuses, and districts. Evaluates how development projects engage, employ, and create wealth for the communities they touch.',
-    audience: 'Anchor institutions, CDFIs, municipalities',
+      'For building owners acting as landlord. Evaluates governance, community engagement, labor standards, and human rights across ongoing operations.',
+    audience: 'Owners, asset managers, portfolio managers',
+  },
+  {
+    title: 'Operations + Maintenance:\nOccupiers',
+    description:
+      'For tenants managing day-to-day operations without landlord duties. Evaluates how procurement, staffing, and community relationships reflect ongoing social equity commitments.',
+    audience: 'Tenants, facility teams, property managers',
   },
 ]
 
@@ -113,22 +215,21 @@ function Tracks() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
           <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
-            Three tracks
+            Four rating systems
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Choose the track that fits{' '}
+            Choose the rating system that fits{' '}
             <em className="italic font-normal">your project</em>
           </h2>
         </div>
 
-        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {tracks.map((t) => (
+        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {ratingSystems.map((t) => (
             <div
               key={t.title}
               className="reveal-child group rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
             >
-              <div className="text-gold-500 mb-6">{t.icon}</div>
-              <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
+              <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4 whitespace-pre-line">
                 {t.title}
               </h3>
               <p className="text-[16px] leading-relaxed text-warm-500 mb-6">
@@ -147,27 +248,31 @@ function Tracks() {
 const pillars = [
   {
     number: '01',
-    title: 'Social Accountability',
+    title: 'Social Impact',
+    icon: '/icons/pillar-social-impact.png',
     description:
-      'Indoor environments that protect and promote the physical and mental health of every occupant, worker, and visitor. Air quality, thermal comfort, biophilic design, and restorative space.',
+      'Identify who your project affects, engage them meaningfully, and measure whether your efforts are actually working.',
   },
   {
     number: '02',
     title: 'Social Responsibility',
+    icon: '/icons/pillar-social-responsibility.png',
     description:
-      'Procurement, employment, and wealth-building practices that create opportunity for historically excluded communities. Local hiring, diverse supply chains, living wages.',
+      'Build equity into how your organization operates through governance practices, community engagement, and social investments that reflect your values.',
   },
   {
     number: '03',
     title: 'Social Justice',
+    icon: '/icons/pillar-social-justice.png',
     description:
-      'Spaces designed so that everyone can participate fully, regardless of ability, language, or identity. Universal design, wayfinding, cultural responsiveness, and digital access.',
+      'Advance equity and inclusion across procurement, the workplace, the community, and access to capital, while pushing the field forward.',
   },
   {
     number: '04',
-    title: 'Social Impact',
+    title: 'Social Accountability',
+    icon: '/icons/pillar-social-accountability.png',
     description:
-      'Programming and governance that honor the social fabric of the neighborhoods buildings inhabit. Community voice in evaluation, arts integration, public benefit provisions.',
+      'Uphold human rights across your supply chain, support safe working conditions, and protect the health of the people your project touches.',
   },
 ]
 
@@ -184,7 +289,7 @@ function Pillars() {
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Four{' '}
-            <em className="italic font-normal">pillars</em>
+            <em className="italic font-normal">pillars of the SEAM Standard</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
             Much like your building, social equity is an ecosystem of interdependent efforts. With progress in each SEAM pillar, you move closer to certification.
@@ -195,21 +300,26 @@ function Pillars() {
           {pillars.map((pillar, i) => (
             <div
               key={pillar.number}
-              className={`reveal-child grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 py-10 lg:py-12 ${
+              className={`reveal-child relative grid grid-cols-1 lg:grid-cols-[80px_auto_1fr] gap-6 lg:gap-12 items-center py-10 lg:py-12 ${
                 i < pillars.length - 1 ? 'border-b border-warm-200' : ''
               }`}
             >
-              <div className="lg:col-span-1">
+              <div>
                 <span className="font-display text-[clamp(1.5rem,2vw,2rem)] tracking-[-0.02em] text-seam-500">
                   {pillar.number}
                 </span>
               </div>
-              <div className="lg:col-span-4">
+              <div className="flex items-center gap-6">
+                <img
+                  src={pillar.icon}
+                  alt=""
+                  className="hidden lg:block h-[128px] w-auto object-contain pointer-events-none"
+                />
                 <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900">
                   {pillar.title}
                 </h3>
               </div>
-              <div className="lg:col-span-7">
+              <div>
                 <p className="text-[16px] lg:text-[17px] leading-relaxed text-warm-500">
                   {pillar.description}
                 </p>
@@ -234,17 +344,17 @@ const steps = [
   },
   {
     title: 'Implement and verify',
-    description: 'Execute your plan. A third-party reviewer verifies performance through documentation review, site visits, and community engagement surveys.',
+    description: 'Execute your plan. A third-party reviewer verifies performance through documentation review and community engagement surveys.',
   },
   {
     title: 'Earn your certification',
-    description: 'Receive your Bronze, Silver, Gold, or Platinum certification. Recertify every three years to maintain your credential and demonstrate ongoing commitment.',
+    description: 'Receive your Bronze, Silver, Gold, or Platinum certification. O+M certification recertifies every three years to maintain the achievement and demonstrate ongoing commitment.',
   },
 ]
 
 function HowItWorks() {
   const headerRef = useReveal()
-  const gridRef = useReveal(0.1)
+  const timelineRef = useReveal(0.05)
 
   return (
     <section className="py-24 lg:py-32">
@@ -259,21 +369,44 @@ function HowItWorks() {
           </h2>
         </div>
 
-        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div ref={timelineRef} className="reveal-stagger relative">
+          {/* Vertical spine — hidden on mobile */}
+          <div className="hidden lg:block absolute left-[39px] top-0 bottom-0 w-px bg-warm-200" />
+
           {steps.map((step, i) => (
             <div
               key={step.title}
-              className="reveal-child rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+              className="reveal-child group relative grid grid-cols-1 lg:grid-cols-[80px_1fr] gap-6 lg:gap-12 pb-16 last:pb-0"
             >
-              <span className="text-[14px] font-medium text-seam-500 mb-4 block">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
-                {step.title}
-              </h3>
-              <p className="text-[16px] leading-relaxed text-warm-500">
-                {step.description}
-              </p>
+              {/* Node */}
+              <div className="hidden lg:flex flex-col items-center">
+                <div className="relative z-10 flex h-[80px] w-[80px] items-center justify-center rounded-full border-2 border-warm-200 bg-white group-hover:border-seam-500 transition-colors duration-300">
+                  <span className="font-display text-[28px] tracking-[-0.02em] text-seam-600">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="rounded-2xl border border-warm-100 p-8 lg:p-10 group-hover:border-warm-200 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-300">
+                <span className="lg:hidden text-[14px] font-medium text-seam-500 mb-3 block">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-[16px] leading-relaxed text-warm-500 max-w-2xl">
+                  {step.description}
+                </p>
+                {i === 0 && (
+                  <Link
+                    to="/get-started"
+                    className="inline-flex items-center mt-5 rounded-full bg-warm-900 px-6 py-3 text-[14px] font-medium text-white hover:bg-warm-800 transition-colors duration-300"
+                  >
+                    Register now &rarr;
+                  </Link>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -286,19 +419,19 @@ function HowItWorks() {
 const differentiators = [
   {
     title: 'Social equity, not just sustainability',
-    description: 'LEED measures environmental performance. WELL measures wellness. SEAM is the perfect complement to measure the relationship between a building and the people it touches.',
+    description: 'Environmental certifications measure how a building performs for the planet. Wellness certifications measure how it performs for physical health. SEAM complements both by measuring how it performs for people, communities, and those in the supply chain the building touches.',
   },
   {
     title: 'A holistic approach',
-    description: "You can't earn Platinum in one pillar and ignore the others. Every certification level requires demonstrated progress across all four pillars.",
+    description: "Each certification level reflects demonstrated progress across all four pillars. The path to Platinum is built on transformative, long-term solutions across the Standard's pillars.",
   },
   {
     title: 'Community voice in evaluation',
-    description: "Certification isn't just a paperwork exercise. Third-party verification includes surveys and interviews with occupants, workers, and neighbors.",
+    description: "Certification isn't just a paperwork exercise. SEAM includes activities that incorporate direct surveys and interviews with occupants, workers, and neighbors.",
   },
   {
     title: 'Ongoing verification',
-    description: 'SEAM certification requires recertification every three years. Buildings must demonstrate sustained commitment, not a one-time achievement.',
+    description: 'SEAM Operation + Maintenance Certification requires recertification every three years. Buildings must demonstrate sustained commitment to social equity.',
   },
 ]
 
@@ -314,7 +447,7 @@ function Differentiators() {
             What makes us different
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            <em className="italic font-normal">A social equity standard.</em>
+            <em className="italic font-normal">The only social equity standard for real estate</em>
           </h2>
         </div>
 
@@ -361,135 +494,25 @@ function Testimonial() {
   )
 }
 
-/* ─── FAQ ─── */
-const faqs = [
-  {
-    q: 'How long does certification take?',
-    a: 'Timeline varies by track and project complexity. Buildings + Interiors typically takes 12 to 18 months from registration to certification. Operations + Maintenance can be faster for buildings with existing social equity programs.',
-  },
-  {
-    q: 'How much does certification cost?',
-    a: 'Pricing is based on project size and track. Registration fees cover the initial assessment scope. Verification fees are separate. Community members and portfolio subscribers receive discounted rates.',
-  },
-  {
-    q: 'Do we need a SEAM AP on our team?',
-    a: 'At least one SEAM Accredited Professional must be on the project team for full certification submissions. APs guide the assessment process, identify gaps, and prepare documentation for third-party review.',
-  },
-  {
-    q: 'How is SEAM different from LEED or WELL?',
-    a: 'SEAM is complementary, not competitive. LEED measures environmental performance. WELL measures occupant wellness. SEAM measures social equity — the relationship between a building and the communities it touches. Many projects pursue multiple certifications.',
-  },
-  {
-    q: 'What are the certification levels?',
-    a: 'Bronze, Silver, Gold, and Platinum. Each level requires increasing performance across all four pillars. Scoring is interdependent — you cannot earn a high level by excelling in one pillar while ignoring others.',
-  },
-  {
-    q: 'How often do we need to recertify?',
-    a: 'Every three years. Recertification verifies ongoing commitment through updated documentation, occupant surveys, and evidence of continued community engagement. Buildings must demonstrate sustained performance, not a one-time achievement.',
-  },
-]
-
-function FAQ() {
+/* ─── Pricing (placeholder) ─── */
+function Pricing() {
   const headerRef = useReveal()
-  const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="py-24 lg:py-32 bg-warm-50 overflow-hidden">
+    <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-start">
-          <div>
-            <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-              <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
-                Frequently asked
-              </p>
-              <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-                Questions about{' '}
-                <em className="italic font-normal">certification</em>
-              </h2>
-            </div>
-
-            <div>
-              {faqs.map((faq, i) => (
-                <div key={i} className="border-b border-warm-200">
-                  <button
-                    onClick={() => setOpen(open === i ? null : i)}
-                    aria-expanded={open === i}
-                    aria-controls={`faq-answer-${i}`}
-                    className="flex w-full items-center justify-between py-6 text-left"
-                  >
-                    <span className="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
-                      {faq.q}
-                    </span>
-                    <svg
-                      className={`shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 ${
-                        open === i ? 'rotate-45' : ''
-                      }`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={2}
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                  </button>
-                  <div
-                    id={`faq-answer-${i}`}
-                    role="region"
-                    className={`grid transition-all duration-300 ${
-                      open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <p className="pb-6 text-[16px] leading-relaxed text-warm-500 max-w-2xl">
-                        {faq.a}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="hidden lg:block sticky top-32">
-            <img
-              src="/images/faq-certification.jpg"
-              alt="The Jack — a SEAM-certified building in the city skyline"
-              className="w-full aspect-[3/4] object-cover rounded-2xl"
-            />
-          </div>
+        <div ref={headerRef} className="reveal-slide-left max-w-2xl">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+            Frequently asked
+          </p>
+          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            Pricing
+          </h2>
         </div>
-      </div>
-    </section>
-  )
-}
-
-/* ─── CTA ─── */
-function CtaBlock() {
-  const ref = useReveal()
-
-  return (
-    <section className="py-24 lg:py-32 bg-warm-900">
-      <div ref={ref} className="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
-        <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
-          Ready to certify a building that{' '}
-          <em className="italic font-normal text-seam-300">serves its community?</em>
-        </h2>
-        <p className="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
-          Register your project today or download the Standard to explore the framework on your own terms.
-        </p>
-        <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <Link
-            to="/get-started"
-            className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
-          >
-            Register your project
-          </Link>
-          <Link
-            to="/resources/standard"
-            className="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
-          >
-            Access the Standard
-          </Link>
+        <div className="mt-16 bg-warm-50 rounded-2xl h-[300px] flex items-center justify-center">
+          <p className="text-[15px] text-warm-400 italic">
+            Pricing details — coming soon
+          </p>
         </div>
       </div>
     </section>
@@ -497,32 +520,28 @@ function CtaBlock() {
 }
 
 /* ─── Page ─── */
-const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
-
 export default function Certification() {
   return (
     <>
       <SEO
         title="SEAM Certification"
-        description="SEAM Certification is the first system that measures social equity in the built environment. Bronze through Platinum certification across three tracks: Buildings + Interiors, Operations + Maintenance, and Community Development."
+        description="SEAM Certification is the first system that measures social equity in the built environment. Bronze through Platinum certification across four rating systems."
         path="/certification"
-        jsonLd={[
-          faqSchema(faqItems),
+        jsonLd={
           breadcrumbSchema([
             { name: 'Home', path: '/' },
             { name: 'Certification', path: '/certification' },
-          ]),
-        ] as unknown as Record<string, unknown>}
+          ])
+        }
       />
       <Hero />
-      {/* StatsBar removed */}
-      <Tracks />
+      <BusinessCase />
       <Pillars />
       <HowItWorks />
       <Differentiators />
+      <Tracks />
       <Testimonial />
-      <FAQ />
-      <CtaBlock />
+      <Pricing />
     </>
   )
 }

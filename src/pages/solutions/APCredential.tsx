@@ -23,20 +23,20 @@ function Hero() {
               </em>
             </h1>
             <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-              The qualification for practitioners who lead social equity certification in the built environment. Build your practice, join the directory, and shape the future of social equity.
+              The credential for professionals who want to guide people-centered projects in the built environment. Gain a credential you can use to guide real projects and expand your advisory value.
             </p>
             <div className="hero-cta mt-10 flex flex-wrap gap-4">
               <Link
                 to="/get-started"
                 className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
               >
-                Start your application
+                Become a SEAM AP
               </Link>
               <Link
                 to="/resources/courses"
                 className="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300"
               >
-                Explore prep courses
+                See program details
               </Link>
             </div>
           </div>
@@ -70,9 +70,9 @@ const benefits = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
       </svg>
     ),
-    title: 'Establish your expertise',
+    title: 'Strengthen your expertise',
     description:
-      'Demonstrate fluency across the four pillars of social equity in the built environment. Clients and employers recognize the AP credential as evidence of deep expertise in social sustainability.',
+      'Build fluency across the four pillars of social equity in the built environment. The AP credential signals deep, applied knowledge that clients and employers recognize.',
   },
   {
     icon: (
@@ -80,9 +80,9 @@ const benefits = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
       </svg>
     ),
-    title: 'Join the practitioner network',
+    title: 'Join a global practitioner network',
     description:
-      'Get listed in the SEAM directory, connect with certified project teams, and access peer learning opportunities through the community.',
+      'Get listed in the SEAM directory, connect with certified project teams, and access peer learning and collaboration opportunities worldwide.',
   },
   {
     icon: (
@@ -119,7 +119,7 @@ function WhyEarn() {
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             A credential that{' '}
-            <em className="italic font-normal">opens doors</em>
+            <em className="italic font-normal text-seam-600">sets you apart</em>
           </h2>
         </div>
 
@@ -148,15 +148,15 @@ function WhyEarn() {
 const steps = [
   {
     number: '01',
-    title: 'Meet the prerequisites',
+    title: 'No prior SEAM experience required',
     description:
-      'Hold a relevant degree or equivalent professional experience in sustainability, real estate, community development, DEI, or a related field.',
+      'The program is designed for professionals from any background — sustainability, real estate, DEI, community development, public health, or related fields. No prerequisites to enroll.',
   },
   {
     number: '02',
     title: 'Complete the prep coursework',
     description:
-      'Work through the self-paced SEAM AP Preparation Course covering all four pillars, the certification process, and the ROSSI financial framework.',
+      'Work through the self-paced SEAM AP Preparation Course covering all four pillars, the certification process, and how to apply SEAM activities in commercial real estate.',
   },
   {
     number: '03',
@@ -185,7 +185,7 @@ function HowItWorks() {
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Four steps to{' '}
-            <em className="italic font-normal">accreditation</em>
+            <em className="italic font-normal text-seam-600">accreditation</em>
           </h2>
         </div>
 
@@ -252,8 +252,8 @@ function WhoItsFor() {
             Who it's for
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Built for practitioners{' '}
-            <em className="italic font-normal">ready to lead</em>
+            Built for professionals{' '}
+            <em className="italic font-normal text-seam-600">ready to lead</em>
           </h2>
         </div>
 
@@ -280,23 +280,26 @@ function WhoItsFor() {
 /* ─── Featured APs ─── */
 const featuredAPs = [
   {
-    name: 'Maya Richardson',
-    title: 'SEAM AP · Director, Urban Equity Partners',
-    image: '/images/placeholder-ap-1.jpg',
+    name: 'Alexandra Bull',
+    title: 'Senior Sustainability & Wellness Consultant',
+    image: '/images/ap-alexandra-bull.jpg',
+    logo: '/images/logo-jll.jpg',
     quote:
       'The AP credential connected my background in public health to the built environment in a way that developers and investors actually respond to.',
   },
   {
-    name: 'David Okonkwo',
-    title: 'SEAM AP · Senior Consultant, Greenbridge Advisory',
-    image: '/images/placeholder-ap-2.jpg',
+    name: 'Christian Mayer',
+    title: 'Senior Project Manager',
+    image: '/images/ap-christian-mayer.jpg',
+    logo: '/images/logo-jll.jpg',
     quote:
       'Within six months of earning my AP, I was leading certification engagements for three projects. The credential gave me immediate credibility with building owners.',
   },
   {
-    name: 'Elena Vásquez',
-    title: 'SEAM AP · Founder, Comunidad Design Lab',
-    image: '/images/placeholder-ap-3.jpg',
+    name: 'Melina Gorrebeeck',
+    title: 'Social Value Expert',
+    image: '/images/ap-melina-gorrebeeck.jpg',
+    logo: '/images/logo-lammp.jpg',
     quote:
       'SEAM gave me a structured framework to translate twenty years of community organizing into measurable outcomes that show up in project financing.',
   },
@@ -315,7 +318,7 @@ function FeaturedAPs() {
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Practitioners leading{' '}
-            <em className="italic font-normal">the work</em>
+            <em className="italic font-normal text-seam-600">the work</em>
           </h2>
         </div>
 
@@ -336,11 +339,22 @@ function FeaturedAPs() {
                 <blockquote className="text-[16px] leading-relaxed text-warm-600 italic">
                   "{ap.quote}"
                 </blockquote>
-                <div className="mt-6 pt-6 border-t border-warm-100">
-                  <p className="text-[16px] font-medium text-warm-900">
-                    {ap.name}
-                  </p>
-                  <p className="text-[14px] text-warm-500 mt-1">{ap.title}</p>
+                <div className="mt-6 pt-6 border-t border-warm-100 flex items-center justify-between">
+                  <div>
+                    <p className="text-[16px] font-medium text-warm-900">
+                      {ap.name}
+                    </p>
+                    <p className="text-[14px] text-warm-500 mt-1">{ap.title}</p>
+                  </div>
+                  {ap.logo ? (
+                    <img src={ap.logo} alt="" className="w-24 h-24 rounded-lg object-contain shrink-0 ml-4" />
+                  ) : (
+                    <div className="w-10 h-10 rounded-lg bg-warm-100 border border-warm-200 flex items-center justify-center shrink-0 ml-4">
+                      <svg className="w-5 h-5 text-warm-300" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+                      </svg>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -420,7 +434,7 @@ function FAQ() {
               </p>
               <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
                 Questions about{' '}
-                <em className="italic font-normal">the AP credential</em>
+                <em className="italic font-normal text-seam-600">the AP credential</em>
               </h2>
             </div>
 
@@ -479,6 +493,107 @@ function FAQ() {
   )
 }
 
+/* ─── Pricing ─── */
+function Pricing() {
+  const headerRef = useReveal()
+  const cardsRef = useReveal(0.1)
+
+  return (
+    <section className="py-24 lg:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20 mx-auto text-center">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+            Pricing
+          </p>
+          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            Invest in your{' '}
+            <em className="italic font-normal text-seam-600">credential</em>
+          </h2>
+        </div>
+
+        <div ref={cardsRef} className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Bundle card */}
+          <div className="reveal-child rounded-2xl border-2 border-seam-500 p-10 lg:p-12 relative">
+            <span className="absolute -top-3.5 left-8 bg-seam-500 text-white text-[12px] font-medium uppercase tracking-[0.1em] px-4 py-1.5 rounded-full">
+              Best value
+            </span>
+            <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-2">
+              AP Credential Bundle
+            </h3>
+            <p className="text-[15px] text-warm-500 mb-8">
+              Everything you need to earn your SEAM AP
+            </p>
+            <div className="flex items-baseline gap-3 mb-8">
+              <span className="font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.03em] text-warm-900">
+                $389
+              </span>
+              <span className="text-[16px] text-warm-400 line-through">$518</span>
+            </div>
+            <ul className="space-y-4 mb-10">
+              {[
+                'Self-paced preparation course',
+                'Proctored online examination',
+                'Digital credential & seal',
+                'SEAM directory listing',
+                'Community membership included',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-[15px] text-warm-600">
+                  <svg className="w-5 h-5 text-seam-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link
+              to="/get-started"
+              className="block w-full text-center rounded-full bg-seam-500 px-8 py-4 text-[16px] font-medium text-white hover:bg-seam-600 transition-colors duration-300"
+            >
+              Get started
+            </Link>
+          </div>
+
+          {/* Training only card */}
+          <div className="reveal-child rounded-2xl border border-warm-200 p-10 lg:p-12">
+            <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-2">
+              Training Only
+            </h3>
+            <p className="text-[15px] text-warm-500 mb-8">
+              Learn the SEAM Standard at your own pace
+            </p>
+            <div className="flex items-baseline gap-3 mb-8">
+              <span className="font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.03em] text-warm-900">
+                $129
+              </span>
+            </div>
+            <ul className="space-y-4 mb-10">
+              {[
+                'Self-paced preparation course',
+                'All four pillar modules',
+                'Certification process overview',
+                'Income-qualified rate available',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-[15px] text-warm-600">
+                  <svg className="w-5 h-5 text-seam-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link
+              to="/resources/courses"
+              className="block w-full text-center rounded-full border border-warm-300 px-8 py-4 text-[16px] font-medium text-warm-900 hover:border-warm-400 transition-colors duration-300"
+            >
+              Enroll in course
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ─── CTA ─── */
 function CtaBlock() {
   const ref = useReveal()
@@ -488,7 +603,7 @@ function CtaBlock() {
       <div ref={ref} className="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
         <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
           Ready to lead the next generation of{' '}
-          <em className="italic font-normal text-seam-300">equitable buildings?</em>
+          <em className="italic font-normal text-seam-400">equitable buildings?</em>
         </h2>
         <p className="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
           Start the AP preparation course today or reach out with questions about the credential.
@@ -520,7 +635,7 @@ export default function APCredential() {
     <>
       <SEO
         title="SEAM AP Credential"
-        description="Become a SEAM Accredited Professional. The qualification for practitioners who lead social equity certification in the built environment. Build a practice, join a directory, shape the field."
+        description="Become a SEAM Accredited Professional. The credential for professionals who guide people-centered projects in the built environment. Build a practice, join the directory, shape the field."
         path="/ap-credential"
         jsonLd={[
           faqSchema(faqItems),
@@ -538,6 +653,7 @@ export default function APCredential() {
       <FeaturedAPs />
       <Testimonial />
       <FAQ />
+      <Pricing />
       <CtaBlock />
     </>
   )

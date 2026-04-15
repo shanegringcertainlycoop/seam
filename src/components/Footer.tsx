@@ -69,8 +69,7 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <img src="/logos/seam-wordmark.png" alt="SEAM" className="h-8 w-auto" />
             <p className="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-sm">
-              Social equity in the built environment. We believe that where people live and work
-              should reflect their dignity.
+              Real estate has a human impact. SEAM exists to make that impact positive, for everyone connected to it.
             </p>
           </div>
 

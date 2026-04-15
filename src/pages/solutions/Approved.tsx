@@ -18,26 +18,20 @@ function Hero() {
               Activity-Level Verification
             </span>
             <h1 className="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
-              Verify the equity work{' '}
+              Verify the human impact work{' '}
               <em className="font-display italic font-normal text-seam-300">
                 you already do
               </em>
             </h1>
             <p className="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-              The SEAM Approved program verifies individual social equity activities without requiring full building certification. These are standalone achievements or an on-ramp to your certification journey.
+              SEAM Approved Marks verify individual SEAM activities without requiring full project certification. Each Approved Mark stands on its own as a recognized achievement, and each one can count toward full certification if you choose to pursue it.
             </p>
             <div className="hero-cta mt-10 flex flex-wrap gap-4">
               <Link
-                to="/get-started"
+                to="#marks"
                 className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
               >
-                Get SEAM Approved
-              </Link>
-              <Link
-                to="/certification"
-                className="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300"
-              >
-                Compare to full certification
+                Explore available marks
               </Link>
             </div>
           </div>
@@ -68,15 +62,15 @@ function Hero() {
 
 /* ─── Stats Bar ─── */
 function StatsBar() {
-  const s1 = useCountUp(50, { suffix: '+' })
+  const s1 = useCountUp(9, { suffix: '' })
   const s2 = useCountUp(4, { suffix: '' })
   const s3 = useCountUp(1, { suffix: '' })
   const ref = useReveal(0.2)
 
   const stats = [
-    { ...s1, label: 'Verifiable activities' },
+    { ...s1, label: 'Approved Marks' },
     { ...s2, label: 'Pillar categories' },
-    { ...s3, label: 'Activity at a time' },
+    { ...s3, label: 'Mark at a time' },
   ]
 
   return (
@@ -110,8 +104,8 @@ const comparisons = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
       </svg>
     ),
-    title: 'Start with one activity',
-    description: "Full certification evaluates your entire building across four pillars. SEAM Approved lets you verify a single practice — like a local hiring program, an air quality protocol, or a community advisory board — and build from there.",
+    title: 'Create recognized proof',
+    description: 'Turn one activity into something credible and externally recognizable.',
   },
   {
     icon: (
@@ -119,8 +113,8 @@ const comparisons = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
       </svg>
     ),
-    title: 'Faster turnaround',
-    description: "Activity verification takes weeks, not months. Submit documentation for a specific practice, receive third-party review, and earn your SEAM Approved stamp on a timeline that fits operational cycles.",
+    title: 'Give leadership something tangible',
+    description: 'Show real progress with a concrete, verifiable achievement.',
   },
   {
     icon: (
@@ -128,8 +122,8 @@ const comparisons = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
       </svg>
     ),
-    title: 'A natural on-ramp',
-    description: "Every SEAM Approved activity counts toward full certification. As you verify more practices, you accumulate credit across the four pillars — making the step to Bronze, Silver, Gold, or Platinum smaller each time.",
+    title: 'Strengthen market positioning',
+    description: 'Differentiate your building or organization with more than internal claims.',
   },
   {
     icon: (
@@ -137,8 +131,8 @@ const comparisons = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
       </svg>
     ),
-    title: 'Standalone credibility',
-    description: "SEAM Approved is a real designation, not a participation trophy. Third-party verified, publicly listed, and recognized by capital providers and compliance teams as a diligence signal for social performance.",
+    title: 'Start without overcommitting',
+    description: 'Take a focused first step without pursuing full certification.',
   },
 ]
 
@@ -154,8 +148,8 @@ function HowItsDifferent() {
             How it works
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Full certification is not the only{' '}
-            <em className="italic font-normal">path forward</em>
+            Why organizations use{' '}
+            <em className="italic font-normal text-seam-600">Approved Marks</em>
           </h2>
         </div>
 
@@ -180,50 +174,127 @@ function HowItsDifferent() {
   )
 }
 
-/* ─── Example Activities ─── */
-const activities = [
-  { pillar: 'Social Accountability', examples: ['Indoor air quality monitoring program', 'Biophilic design integration', 'Mental health and restorative space access', 'Thermal comfort and occupant control'] },
-  { pillar: 'Social Responsibility', examples: ['Local and diverse procurement policy', 'Living wage commitment', 'Workforce development and apprenticeship', 'Community wealth-building partnership'] },
-  { pillar: 'Social Justice', examples: ['Universal design beyond code compliance', 'Multilingual wayfinding and signage', 'Digital accessibility standards', 'Culturally responsive programming'] },
-  { pillar: 'Social Impact', examples: ['Community advisory board governance', 'Arts and cultural integration', 'Public benefit and open-access provisions', 'Neighborhood engagement reporting'] },
+/* ─── ROI Placeholder ─── */
+function ROIPlaceholder() {
+  const ref = useReveal()
+
+  return (
+    <section ref={ref} className="reveal-fade-up py-24 lg:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div className="max-w-2xl mb-16">
+          <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+            How it works
+          </p>
+          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            ROI
+          </h2>
+        </div>
+        <div className="rounded-2xl bg-warm-100 border-2 border-dashed border-warm-300 h-64 flex items-center justify-center">
+          <p className="text-warm-400 text-[17px]">ROI data section — coming soon</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── Approved Marks ─── */
+const approvedMarks = [
+  {
+    code: 'CIa1.1',
+    category: 'Community Development',
+    title: 'Social Initiative Partnership',
+    description: 'Design and execute a volunteer-led community initiative built around goals identified by the people your project impacts — guided by a defined logic model and evaluated for real outcomes.',
+  },
+  {
+    code: 'CIa1.2',
+    category: 'Community Development',
+    title: 'Social Initiative Event',
+    description: 'Put the initiative from CIa1.1 into action, with project team members participating directly and attendance tracked as a percentage of the full team.',
+  },
+  {
+    code: 'TGa3.1',
+    category: 'Responsible Policies',
+    title: 'Construction',
+    description: 'Integrate site-specific ethics and fair operating policies — including anti-harassment, anti-corruption, and a Supplier Code of Conduct — into the governance of your construction project.',
+  },
+  {
+    code: 'TGa3.2',
+    category: 'Responsible Policies',
+    title: 'Operations',
+    description: 'Embed the same ethical conduct and fair operating standards into the governance framework of your operating property.',
+  },
+  {
+    code: 'SJa1.1',
+    category: 'Supplier Procurement',
+    title: 'Tier 1 Inclusion',
+    description: 'Set diversity targets for your Tier 1 supplier pool and implement an inclusive procurement policy that eliminates discrimination across hiring, contracting, and pay.',
+  },
+  {
+    code: 'SJa2.4',
+    category: 'Pay Equity',
+    title: 'Gender Pay Equity',
+    description: 'Analyze, remediate, and monitor the gender wage gap across all project employees — with equal pay for equal work as the documented standard.',
+  },
+  {
+    code: 'SJa2.5',
+    category: 'Pay Equity',
+    title: 'Diversity Pay Equity',
+    description: 'Apply the same wage gap analysis and remediation requirements across all diversity characteristics, including race, ethnicity, disability, and age.',
+  },
+  {
+    code: 'HRa2.1',
+    category: 'Living Wage',
+    title: 'Owner Living Wage',
+    description: 'Ensure every employee assigned to the project is paid at or above the living wage for their region, verified against a documented benchmark.',
+  },
+  {
+    code: 'HRa2.3',
+    category: 'Living Wage',
+    title: 'Supplier Living Wage',
+    description: 'Extend the living wage requirement to all Tier 1 suppliers through contract terms, with compliance monitored throughout the project.',
+  },
 ]
 
-function ExampleActivities() {
+function ApprovedMarks() {
   const headerRef = useReveal()
   const gridRef = useReveal(0.1)
 
   return (
-    <section className="py-24 lg:py-32 bg-warm-50">
+    <section id="marks" className="py-24 lg:py-32 bg-warm-50">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div ref={headerRef} className="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
           <p className="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
-            What you can verify
+            Available Approved Marks
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Activities across{' '}
-            <em className="italic font-normal">all four pillars</em>
+            Turn your work into{' '}
+            <em className="italic font-normal text-seam-600">recognized progress</em>
           </h2>
           <p className="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-            Pick from a list of activities in the SEAM Standard. Each is verified to earn credit toward its pillar and full certification if you decide to pursue it.
+            Pick from the following list of SEAM Approved Marks. Each is verified to earn credit toward full certification if you choose to pursue it.
           </p>
         </div>
 
-        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {activities.map((a) => (
-            <div key={a.pillar} className="reveal-child rounded-2xl bg-white p-5 sm:p-8 lg:p-10">
-              <h3 className="font-display text-[18px] lg:text-[20px] tracking-[-0.02em] text-warm-900 mb-5">
-                {a.pillar}
+        <div ref={gridRef} className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {approvedMarks.map((mark) => (
+            <div
+              key={mark.code}
+              className="reveal-child rounded-2xl bg-white p-8 lg:p-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span className="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-mono font-medium text-seam-700">
+                  {mark.code}
+                </span>
+                <span className="text-[12px] font-medium uppercase tracking-[0.1em] text-warm-400">
+                  {mark.category}
+                </span>
+              </div>
+              <h3 className="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">
+                {mark.title}
               </h3>
-              <ul className="space-y-3">
-                {a.examples.map((ex) => (
-                  <li key={ex} className="flex items-start gap-2.5 text-[15px] leading-snug text-warm-500">
-                    <svg className="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                    {ex}
-                  </li>
-                ))}
-              </ul>
+              <p className="text-[15px] leading-relaxed text-warm-500">
+                {mark.description}
+              </p>
             </div>
           ))}
         </div>
@@ -237,12 +308,12 @@ const steps = [
   {
     number: '01',
     title: 'Select an activity',
-    description: 'Browse the SEAM Standard and choose the activity that best represents the social equity work your organization is already doing or plans to implement.',
+    description: 'Select from the available SEAM Approved Marks based on the work your organization is already doing or plans to implement.',
   },
   {
     number: '02',
     title: 'Submit documentation',
-    description: 'Provide evidence of implementation: policies, program data, third-party agreements, occupant feedback, or operational records that demonstrate the activity in practice.',
+    description: "Provide the documentation that the activity specifies. We'll help you understand exactly what evidence we need to verify your achievement.",
   },
   {
     number: '03',
@@ -251,14 +322,14 @@ const steps = [
   },
   {
     number: '04',
-    title: 'Earn your mark of approval',
-    description: 'Receive the SEAM Approved mark for the verified activity. Your organization is listed in the SEAM directory. Repeat for additional activities at any time.',
+    title: 'Earn verified recognition',
+    description: 'Receive the SEAM Approved Mark for the verified activity. Your organization is listed in the SEAM directory. Repeat for additional Marks at any time.',
   },
 ]
 
 function Process() {
   const headerRef = useReveal()
-  const stepsRef = useReveal(0.1)
+  const timelineRef = useReveal(0.05)
 
   return (
     <section className="py-24 lg:py-32">
@@ -269,30 +340,37 @@ function Process() {
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Four steps to{' '}
-            <em className="italic font-normal">verification</em>
+            <em className="italic font-normal text-seam-600">approval</em>
           </h2>
         </div>
 
-        <div ref={stepsRef} className="reveal-stagger">
-          {steps.map((step, i) => (
+        <div ref={timelineRef} className="reveal-stagger relative">
+          {/* Vertical spine — hidden on mobile */}
+          <div className="hidden lg:block absolute left-[39px] top-0 bottom-0 w-px bg-warm-200" />
+
+          {steps.map((step) => (
             <div
               key={step.number}
-              className={`reveal-child grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 py-10 lg:py-12 ${
-                i < steps.length - 1 ? 'border-b border-warm-200' : ''
-              }`}
+              className="reveal-child group relative grid grid-cols-1 lg:grid-cols-[80px_1fr] gap-6 lg:gap-12 pb-16 last:pb-0"
             >
-              <div className="lg:col-span-1">
-                <span className="font-display text-[clamp(1.5rem,2vw,2rem)] tracking-[-0.02em] text-seam-500">
+              {/* Node */}
+              <div className="hidden lg:flex flex-col items-center">
+                <div className="relative z-10 flex h-[80px] w-[80px] items-center justify-center rounded-full border-2 border-warm-200 bg-white group-hover:border-seam-500 transition-colors duration-300">
+                  <span className="font-display text-[28px] tracking-[-0.02em] text-seam-600">
+                    {step.number}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="rounded-2xl border border-warm-100 p-8 lg:p-10 group-hover:border-warm-200 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-300">
+                <span className="lg:hidden text-[14px] font-medium text-seam-500 mb-3 block">
                   {step.number}
                 </span>
-              </div>
-              <div className="lg:col-span-4">
-                <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900">
+                <h3 className="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">
                   {step.title}
                 </h3>
-              </div>
-              <div className="lg:col-span-7">
-                <p className="text-[16px] lg:text-[17px] leading-relaxed text-warm-500">
+                <p className="text-[16px] leading-relaxed text-warm-500 max-w-2xl">
                   {step.description}
                 </p>
               </div>
@@ -337,7 +415,7 @@ function WhoItsFor() {
           </p>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             For organizations{' '}
-            <em className="italic font-normal">ready to lead</em>
+            <em className="italic font-normal text-seam-600">ready to lead</em>
           </h2>
         </div>
 
@@ -427,7 +505,7 @@ function FAQ() {
               </p>
               <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
                 Questions about{' '}
-                <em className="italic font-normal">SEAM Approved</em>
+                <em className="italic font-normal text-seam-600">SEAM Approved</em>
               </h2>
             </div>
 
@@ -495,7 +573,7 @@ function CtaBlock() {
       <div ref={ref} className="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
         <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
           Start with one activity.{' '}
-          <em className="italic font-normal text-seam-300">Build from there.</em>
+          <em className="italic font-normal text-seam-400">Build from there.</em>
         </h2>
         <p className="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
           Verify the social equity work your building already does and get recognition for your efforts.
@@ -527,7 +605,7 @@ export default function Approved() {
     <>
       <SEO
         title="SEAM Approved"
-        description="SEAM Approved verifies individual social equity activities without requiring full building certification. A standalone credential or a natural on-ramp to full SEAM certification."
+        description="SEAM Approved Marks verify individual SEAM activities without requiring full project certification. Each Mark stands on its own as a recognized achievement and counts toward full certification."
         path="/approved"
         jsonLd={[
           faqSchema(faqItems),
@@ -541,7 +619,8 @@ export default function Approved() {
       <Hero />
       <StatsBar />
       <HowItsDifferent />
-      <ExampleActivities />
+      <ROIPlaceholder />
+      <ApprovedMarks />
       <Process />
       <WhoItsFor />
       <Testimonial />

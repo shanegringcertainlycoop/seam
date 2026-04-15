@@ -174,7 +174,7 @@ const resources: NavGroup = {
 }
 
 const audiences: NavGroup = {
-  label: 'Who We Serve',
+  label: 'Who SEAM Is For',
   links: [
     {
       label: 'Developers & Owners',
