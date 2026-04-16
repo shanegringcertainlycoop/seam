@@ -343,6 +343,14 @@ const audiences = [
             role="img"
             aria-label="SEAM framework: four pillars, eight concepts, twenty-one objectives, and fifty-plus activities arranged as a radial diagram"
           >
+            <!-- Tier zone rings (crisp colored bands behind everything) -->
+            <g class="orb-zones" aria-hidden="true">
+              <circle class="orb-zone" data-zone="pillars" cx={CX} cy={CY} r="88" fill="none" stroke="#3a5c67" stroke-width="79" />
+              <circle class="orb-zone" data-zone="concepts" cx={CX} cy={CY} r="160" fill="none" stroke="#4e7685" stroke-width="66" />
+              <circle class="orb-zone" data-zone="objectives" cx={CX} cy={CY} r="222" fill="none" stroke="#a3c8d3" stroke-width="59" />
+              <circle class="orb-zone" data-zone="activities" cx={CX} cy={CY} r="276" fill="none" stroke="#D78825" stroke-width="48" />
+            </g>
+
             <!-- Guide rings -->
             <g aria-hidden="true">
               <circle cx={CX} cy={CY} r={R_PILLARS} fill="none" stroke="#d9d6cf" stroke-width="1" stroke-dasharray="2 4" />
@@ -435,19 +443,6 @@ const audiences = [
               </div>
             </div>
           ))}
-
-          <!-- Lasting impact beat -->
-          <div class="reveal-child flex gap-6 pt-7 pl-4 -ml-4">
-            <div class="shrink-0 w-[60px] flex items-start">
-              <svg class="w-7 h-7 text-seam-600 mt-1" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-display italic text-[20px] lg:text-[24px] tracking-[-0.02em] text-seam-600 mb-2">Lasting impact</h3>
-              <p class="text-[15px] lg:text-[16px] leading-relaxed text-warm-600">Each layer informs the next — from organizing pillars, down to the specific activities that create change on the ground. That&rsquo;s how a standard produces outcomes that compound over time.</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -580,7 +575,29 @@ const audiences = [
     .orbital-module .orb-nodes circle,
   .orbital-module .orb-lines line,
   .orbital-module .tier-entry {
-    transition: opacity 220ms ease, background-color 220ms ease, transform 220ms ease;
+    transition: opacity 220ms ease, background-color 220ms ease, transform 220ms ease, filter 320ms ease;
+  }
+
+  /* Zone rings: faint color wash by default, saturated when active */
+  .orbital-module .orb-zone {
+    opacity: 0.06;
+    transition: opacity 380ms ease;
+  }
+  .orbital-module[data-active-tier="pillars"] .orb-zone[data-zone="pillars"],
+  .orbital-module[data-active-tier="concepts"] .orb-zone[data-zone="concepts"],
+  .orbital-module[data-active-tier="objectives"] .orb-zone[data-zone="objectives"],
+  .orbital-module[data-active-tier="activities"] .orb-zone[data-zone="activities"] {
+    opacity: 0.32;
+  }
+  /* Non-matching zones recede further */
+  .orbital-module[data-active-tier] .orb-zone {
+    opacity: 0.025;
+  }
+  .orbital-module[data-active-tier="pillars"] .orb-zone[data-zone="pillars"],
+  .orbital-module[data-active-tier="concepts"] .orb-zone[data-zone="concepts"],
+  .orbital-module[data-active-tier="objectives"] .orb-zone[data-zone="objectives"],
+  .orbital-module[data-active-tier="activities"] .orb-zone[data-zone="activities"] {
+    opacity: 0.32;
   }
 
   /* Dim non-matching SVG elements when a tier is active */
