@@ -1,0 +1,446 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../../lib/seo-helpers'
+
+const differentiators = [
+  { number: '01', title: 'Contextual assessment', seam: 'Requires a Social Impact Assessment for every project — understanding the people, the place, and the issues material to this specific context before any other work begins.', others: 'Prescribe social goals without understanding of community context or what issues are actually material to the project.' },
+  { number: '02', title: 'No offsetting of harm', seam: 'Avoiding negative impact must come before earning points for positive initiatives — the scoring design enforces this sequence.', others: 'Allow positive-impact points to offset negative performance — a project can do harm and still earn certification.' },
+  { number: '03', title: 'Impact-aligned levels', seam: 'Certification levels align directly to social impact goals — Bronze through Platinum correspond to acting to avoid harm, preventing harm, achieving positive impact, and contributing to lasting change.', others: 'Certification levels based on point thresholds — a project can earn a higher level without demonstrating meaningful improvement for people.' },
+  { number: '04', title: 'Leading indicators', seam: 'Measures the principles and processes that cause change, so organizations know they are on the right track before harm is done.', others: 'Measure lagging indicators — outcomes after work is complete. In social issues, that can mean harm has already occurred by the time measurement happens.' },
+  { number: '05', title: 'Roadmap design', seam: 'A roadmap with ordered, prerequisite activities, and the guidance to put those activities into practice, to help the work progress with confidence.', others: 'Activities can be completed in any order, often leading to advanced initiatives built on a missing foundation.' },
+  { number: '06', title: 'Project-level scope', seam: 'Social initiatives apply to the specific project and the people it touches, with additional recognition for organization-level implementation.', others: 'Organization-wide scope — a heavier lift for organizations early in their social equity journey, and harder to connect to real impact on people in specific places.' },
+]
+
+const pillars = [
+  {
+    number: '01',
+    title: 'Social Impact',
+    href: '/standard/social-impact',
+    description: 'Address social, cultural, and economic effects of your development project before they happen through structured assessments and meaningful community engagement.',
+    concepts: ['Impact Assessment: Contextual Assessment, Impacted Party Engagement, Monitoring + Evaluation'],
+    icon: '/icons/pillar-social-impact.png',
+  },
+  {
+    number: '02',
+    title: 'Social Responsibility',
+    href: '/standard/social-responsibility',
+    description: 'Strengthen organizational policies, community involvement, and social investment practices to reflect a commitment to responsible development.',
+    concepts: ['Transformational Governance (5 objectives)', 'Community Involvement', 'Social Investment'],
+    icon: '/icons/pillar-social-responsibility.png',
+  },
+  {
+    number: '03',
+    title: 'Social Justice',
+    href: '/standard/social-justice',
+    description: 'Advance meaningful social sustainability practices across procurement, the workplace, the community, and capital access decision making.',
+    concepts: ['Social Equity + Justice (Procurement, Workplace, Community, Capital)', 'Social Justice Innovation'],
+    icon: '/icons/pillar-social-justice.png',
+  },
+  {
+    number: '04',
+    title: 'Social Accountability',
+    href: '/standard/social-accountability',
+    description: "Uphold human rights across your project's full value chain through ethical materials and supplier practices, along with health, well-being, and safety standards.",
+    concepts: ['Human Rights (Ethical Materials, Ethical Suppliers, Reporting, Education)', 'Health + Safety'],
+    icon: '/icons/pillar-social-accountability.png',
+  },
+]
+
+const layers = [
+  { title: 'Pillars', count: '4', description: 'The four organizing themes of social equity in the built environment. Every concept, objective, and activity connects back to a pillar so you always understand the why behind your efforts.' },
+  { title: 'Concepts', count: '8', description: 'Within the pillars, eight focus areas address specific themes from impact assessments and human rights practices to equity in procurement and more.' },
+  { title: 'Objectives', count: '21', description: 'Measurable objectives define goals within each concept, giving a clear path to progress with rationale and connection to internationally recognized standards.' },
+  { title: 'Activities', count: '50+', description: 'The individual actions that drive equitable change. Each activity has defined requirements, clear scoring rubrics, documentation standards, and implementation instructions so nothing is left to guessing.' },
+]
+
+const ringData = [
+  { label: 'Pillars', count: '4', bg: 'bg-seam-900', text: 'text-white', countColor: 'text-seam-300', size: 'w-[480px] h-[480px]', pt: 'pt-5' },
+  { label: 'Concepts', count: '8', bg: 'bg-seam-700', text: 'text-white', countColor: 'text-seam-300', size: 'w-[360px] h-[360px]', pt: 'pt-5' },
+  { label: 'Objectives', count: '21', bg: 'bg-seam-500', text: 'text-white', countColor: 'text-seam-200', size: 'w-[260px] h-[260px]', pt: 'pt-4' },
+  { label: 'Activities', count: '50+', bg: 'bg-gold-400', text: 'text-warm-900', countColor: 'text-warm-800', size: 'w-[120px] h-[120px]', pt: 'pt-2' },
+]
+
+const levels = [
+  { name: 'Bronze', tagline: 'Acting to avoid harm', description: 'The project is making measurable progress toward international social targets. Foundational activities are in place. Harm is being identified and addressed.', imp: 'Act to Avoid Harm', logo: '/logos/cert-bronze.png' },
+  { name: 'Silver', tagline: 'Preventing harm', description: 'The project has moved from awareness to active prevention — with a demonstrated commitment to growing into positive social impact over time.', imp: 'Act to Avoid Harm (advanced)', logo: '/logos/cert-silver.png' },
+  { name: 'Gold', tagline: 'Achieving positive impact', description: 'The project is actively improving the well-being of impacted parties. Social outcomes fall within a sustainable range — real benefit, not just reduced harm.', imp: 'Benefit Impacted Parties', logo: '/logos/cert-gold.png' },
+  { name: 'Platinum', tagline: 'Contributing to solutions', description: 'The project is setting the standard for the industry — achieving lasting positive impact at scale, with benefits that extend beyond the project itself.', imp: 'Contribute to Solutions', logo: '/logos/cert-platinum.png' },
+]
+
+const levelIntensities = ['bg-seam-700/10', 'bg-seam-700/20', 'bg-seam-800/70', 'bg-seam-900/85']
+const levelTextColors = ['text-seam-800', 'text-seam-800', 'text-white', 'text-white']
+const levelSubColors = ['text-gold-500', 'text-gold-500', 'text-seam-200', 'text-seam-200']
+const levelBodyColors = ['text-warm-500', 'text-warm-500', 'text-seam-100/80', 'text-seam-100/80']
+const levelBorderColors = ['border-seam-600/20', 'border-seam-600/20', 'border-seam-400/20', 'border-seam-400/20']
+
+const ratings = [
+  { code: 'B+I:D', title: 'Buildings + Interiors: Developer', description: 'Ground-up construction and major renovations where the owner assumes developer responsibilities — project ownership, financing, construction supervision, and tenant leasing management.', href: '/rating-system/buildings-interiors' },
+  { code: 'B+I:O', title: 'Buildings + Interiors: Occupier', description: 'Construction or renovation projects where the owner occupies the space — fit-outs, interior buildouts, and workplace environments where the owner is the primary occupant.', href: '/rating-system/buildings-interiors' },
+  { code: 'O+M:D', title: 'Operations + Management: Developer', description: 'Existing assets being operated and managed by the developer — applying social equity standards to the ongoing performance and management of a building or portfolio.', href: '/rating-system/operations-maintenance' },
+  { code: 'O+M:O', title: 'Operations + Management: Occupier', description: 'Ongoing operations by an occupier — applying social equity practices to the management of an occupied space, including workplace practices, supply chain, and community relationships.', href: '/rating-system/operations-maintenance' },
+]
+
+const principles = [
+  { number: '01', title: 'Timely contextual analysis', description: 'Assessments are critical for social equity to take root within a project. Because people are complex and communities change, no two projects will be the same. And assessments help shape everything that follows.' },
+  { number: '02', title: 'No offsetting of harm', description: 'The scoring design prevents positive-impact points from masking harm. Preventing harm is a prerequisite for earning recognition for positive endeavors — full stop.' },
+  { number: '03', title: 'Logic model structure', description: 'Activities follow a causal logic model connecting inputs, processes, outputs, and outcomes in a way that shows the pathway from action to impact.' },
+  { number: '04', title: 'Human rights-weighted scoring', description: 'Points are weighted based on the salience of human rights issues — directing organizations to prioritize activities that matter most, not just those that are easiest to complete.' },
+  { number: '05', title: 'Roadmap design', description: "Driver activities establish prerequisites for more advanced work. Organizations cannot skip foundational steps — because in social equity, a flawed foundation does not just underperform. It can cause harm." },
+  { number: '06', title: 'Impact-aligned levels', description: 'Certification levels reflect where an organization stands on the spectrum of social impact — not just how many points they have accumulated. Level means something because level is defined by what changes for people.' },
+]
+
+const audiences = [
+  {
+    title: 'CRE decision-makers',
+    subtitle: 'Developers, owners, architects',
+    quote: 'When people feel like they belong in a space, everything performs better — the building, the business, the community.',
+    description: 'The SEAM Standard gives you the framework to build for belonging, and the verified recognition to show it. Whether you are managing ESG commitments, responding to investor expectations, or building something worth being proud of.',
+    href: '/who-we-serve/developers-owners',
+  },
+  {
+    title: 'Operators + managers',
+    subtitle: 'Property managers, asset managers',
+    quote: 'The buildings that perform best are the ones where people actually want to be.',
+    description: 'SEAM certification helps operators connect social practices to performance outcomes — occupancy, retention, tenant satisfaction, and community relationships. A structured, measurable framework for the work many operators are already doing.',
+    href: '/who-we-serve/property-managers',
+  },
+  {
+    title: 'Social equity practitioners',
+    subtitle: 'Sustainability, ESG, impact teams',
+    quote: 'SEAM gives the work language, structure, and proof — not just intention.',
+    description: 'For professionals leading social equity efforts inside real estate organizations, SEAM provides the rigor that makes the work credible — internally and externally. It translates commitment into a framework that can be measured, verified, and communicated.',
+    href: '/who-we-serve/impact-professionals',
+  },
+]
+---
+
+<SiteLayout
+  title="The SEAM Standard"
+  description="The first social equity certification purpose-built for commercial real estate. Four pillars, eight concepts, twenty-one objectives — a rigorous framework that embeds belonging into how buildings are conceived, built, and managed."
+  path="/resources/standard"
+  jsonLd={breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Resources', path: '/resources/standard' },
+    { name: 'The Standard', path: '/resources/standard' },
+  ])}
+>
+
+  <!-- Hero -->
+  <section class="relative z-20 min-h-[80vh] flex items-center bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    <img
+      src="/icons/standard-hero-building.png"
+      alt=""
+      class="absolute right-[-5%] bottom-0 translate-y-[15%] w-[clamp(560px,75vw,1100px)] pointer-events-none select-none z-30"
+    />
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
+      <div class="hero-enter max-w-3xl">
+        <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+          The SEAM Standard&trade;
+        </span>
+        <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white max-w-2xl">
+          The framework for belonging{' '}
+          <em class="font-display italic font-normal text-seam-300">
+            in the built environment
+          </em>
+        </h1>
+        <p class="hero-subtitle mt-8 max-w-lg text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+          The first social equity certification purpose-built for commercial real estate. A rigorous, human-centered standard that embeds belonging into every stage of how buildings are conceived, built, and managed.
+        </p>
+        <div class="hero-cta mt-10 flex flex-wrap gap-4">
+          <a href="/get-started" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+            Explore the Standard
+          </a>
+          <a href="#levels" class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300">
+            View certification levels
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Belief Statement -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-fade-up max-w-4xl mx-auto text-center">
+        <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-warm-900">
+          &ldquo;When we account for human impact — from initial design and material sourcing to ongoing operations — everything performs better: the building, the business, the community, the factory worker 1,000 miles away.&rdquo;
+        </blockquote>
+        <p class="mt-10 text-[17px] leading-relaxed text-warm-500 max-w-2xl mx-auto">
+          Equity addresses human impact: in a building, in a community, in the supply chain. It isn't a nice-to-have or an afterthought. It's the foundation — designed into the structure, sourced into the materials, and built into the partnerships throughout the community. The SEAM Standard gives organizations the guidance to do that work with rigor, integrity, and proof.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why SEAM -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Why SEAM</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Built different.{' '}<em class="italic font-normal">Designed to matter.</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          SEAM measures the human impact of a building and provides guidance on how to verifiably improve that impact for everyone.
+        </p>
+      </div>
+
+      <div class="reveal-stagger space-y-4">
+        {differentiators.map((d) => (
+          <div class="reveal-child rounded-2xl bg-white border border-warm-100 overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+              <div class="lg:col-span-1 p-6 lg:p-8 flex items-start">
+                <span class="font-display text-[clamp(1.2rem,1.5vw,1.5rem)] tracking-[-0.02em] text-seam-500">{d.number}</span>
+              </div>
+              <div class="lg:col-span-3 px-6 lg:px-0 lg:py-8">
+                <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900">{d.title}</h3>
+              </div>
+              <div class="lg:col-span-4 p-6 lg:p-8 lg:border-l border-warm-100">
+                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-500 mb-2 block">SEAM</span>
+                <p class="text-[15px] leading-relaxed text-warm-600">{d.seam}</p>
+              </div>
+              <div class="lg:col-span-4 p-6 lg:p-8 lg:border-l border-warm-100 bg-warm-50/50">
+                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500 mb-2 block">Others</span>
+                <p class="text-[15px] leading-relaxed text-warm-500">{d.others}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The Framework -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-12">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">The framework</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Four pillars. Eight concepts.{' '}<em class="italic font-normal">One standard.</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          The SEAM Standard organizes social equity into a structured framework grounded in internationally recognized principles and aligned to the UN Sustainable Development Goals. Each pillar addresses a distinct dimension of social sustainability in the built environment.
+        </p>
+      </div>
+
+      <div class="reveal-fade-up flex flex-wrap gap-4 sm:gap-8 mb-10 lg:mb-16">
+        <div class="flex items-baseline gap-2">
+          <span class="font-display text-[32px] tracking-[-0.04em] text-gold-500" data-count-target="4" data-count-suffix="">4</span>
+          <span class="text-[14px] text-warm-500">Pillars</span>
+        </div>
+        <span class="text-warm-200">&middot;</span>
+        <div class="flex items-baseline gap-2">
+          <span class="font-display text-[32px] tracking-[-0.04em] text-gold-500" data-count-target="8" data-count-suffix="">8</span>
+          <span class="text-[14px] text-warm-500">Concepts</span>
+        </div>
+        <span class="text-warm-200">&middot;</span>
+        <div class="flex items-baseline gap-2">
+          <span class="font-display text-[32px] tracking-[-0.04em] text-gold-500" data-count-target="21" data-count-suffix="">21</span>
+          <span class="text-[14px] text-warm-500">Objectives</span>
+        </div>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
+        {pillars.map((p) => (
+          <a href={p.href} class="reveal-child group relative rounded-2xl border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] overflow-hidden">
+            <img src={p.icon} alt="" class="absolute -top-4 -right-4 w-48 h-48 object-contain opacity-90 pointer-events-none" />
+            <span class="relative text-[14px] font-medium text-seam-500 mb-4 block">Pillar {p.number}</span>
+            <h3 class="relative font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4 group-hover:text-gold-600 transition-colors">{p.title}</h3>
+            <p class="text-[16px] leading-relaxed text-warm-500 mb-6">{p.description}</p>
+            <ul class="space-y-2 border-t border-warm-100 pt-5">
+              {p.concepts.map((c) => (
+                <li class="flex items-start gap-2.5 text-[14px] leading-snug text-warm-500">
+                  <svg class="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  {c}
+                </li>
+              ))}
+            </ul>
+            <span class="inline-block mt-6 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">Explore pillar &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">How it works</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Structured to leave a{' '}<em class="italic font-normal">lasting impact</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          The SEAM Standard is a layered framework that builds from foundation to impact, with each level informing and enabling the next.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Nesting graphic -->
+        <div class="reveal-scale hidden lg:block">
+          <div class="relative w-[480px] h-[480px] mx-auto">
+            {ringData.map((ring, i) => (
+              <div
+                class={`absolute rounded-3xl ${ring.bg} ${ring.size} flex flex-col items-center justify-start transition-all duration-500`}
+                style={`top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: ${i};`}
+              >
+                <div class={`text-center ${ring.pt}`}>
+                  <span class={`block text-[12px] font-medium uppercase tracking-[0.15em] ${ring.countColor}`}>
+                    {ring.label}
+                  </span>
+                  <span class={`block font-display text-[22px] tracking-[-0.02em] leading-tight ${ring.text}`}>
+                    {ring.count}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Text descriptions -->
+        <div class="reveal-stagger">
+          {layers.map((layer, i) => (
+            <div class={`reveal-child flex gap-6 py-8 ${i < layers.length - 1 ? 'border-b border-warm-200' : ''}`}>
+              <div class="shrink-0">
+                <span class="block font-display text-[28px] tracking-[-0.04em] text-gold-500">
+                  {layer.count}
+                </span>
+              </div>
+              <div>
+                <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-2">{layer.title}</h3>
+                <p class="text-[16px] leading-relaxed text-warm-500">{layer.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certification Levels -->
+  <section id="levels" class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Certification levels</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Recognition that reflects{' '}<em class="italic font-normal">real progress</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          Four levels of SEAM Certification align to the Impact Management Project&apos;s ABCs: avoiding harm, benefiting people, and contributing to solutions.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {levels.map((level, i) => (
+          <div class={`reveal-child relative rounded-2xl ${levelIntensities[i]} p-8 lg:p-10 overflow-hidden`}>
+            <img src={level.logo} alt={`${level.name} certification`} class="absolute -top-4 -right-4 w-28 h-28 object-contain opacity-60 drop-shadow-lg" />
+            <h3 class={`relative font-display text-[28px] tracking-[-0.02em] ${levelTextColors[i]}`}>{level.name}</h3>
+            <p class={`mt-1 text-[14px] font-medium ${levelSubColors[i]}`}>{level.tagline}</p>
+            <p class={`mt-4 text-[15px] leading-relaxed ${levelBodyColors[i]}`}>{level.description}</p>
+            <p class={`mt-5 text-[12px] uppercase tracking-[0.1em] ${levelSubColors[i]} border-t ${levelBorderColors[i]} pt-4`}>
+              IMP: {level.imp}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Rating Systems -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Rating systems</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Tailored to{' '}<em class="italic font-normal">how you build</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          Not every activity will apply to every project. SEAM's rating systems ensure that certification reflects your project type and role.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
+        {ratings.map((r) => (
+          <a href={r.href} class="reveal-child group rounded-2xl bg-white p-8 lg:p-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <span class="inline-block rounded-lg bg-seam-50 px-3 py-1.5 text-[13px] font-mono font-medium text-gold-600 mb-4">{r.code}</span>
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-600 transition-colors">{r.title}</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">{r.description}</p>
+            <span class="inline-block mt-4 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">Explore rating system &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Framework Design Principles -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Framework design</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Social equity embedded{' '}<em class="italic font-normal">by design</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          The SEAM Standard does not bolt equity onto a compliance framework. We engineer it into the scoring logic itself in six distinct ways.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {principles.map((p) => (
+          <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10">
+            <span class="text-[14px] font-medium text-seam-500 mb-3 block">{p.number}</span>
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{p.title}</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">{p.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who It's For -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Who it serves</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Built for everyone{' '}<em class="italic font-normal">the building touches</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {audiences.map((a) => (
+          <a href={a.href} class="reveal-child group rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <h3 class="font-display text-[22px] lg:text-[24px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors">{a.title}</h3>
+            <p class="text-[14px] text-warm-500 mt-1 mb-6">{a.subtitle}</p>
+            <blockquote class="text-[15px] italic leading-relaxed text-gold-600 border-l-2 border-seam-500 pl-4 mb-6">
+              &ldquo;{a.quote}&rdquo;
+            </blockquote>
+            <p class="text-[15px] leading-relaxed text-warm-500">{a.description}</p>
+            <span class="inline-block mt-4 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">Learn more &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        Ready to build for{' '}<em class="italic font-normal text-seam-300">belonging?</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        Start where you are. The SEAM Standard is designed to meet organizations at their stage of readiness — whether that is exploring what equity means for your portfolio or pursuing full certification today.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a href="/certification" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Start certification</a>
+        <a href="/get-started" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Access the Standard</a>
+        <a href="/ap-credential" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Find a SEAM AP</a>
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>

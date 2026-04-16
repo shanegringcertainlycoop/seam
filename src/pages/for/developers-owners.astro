@@ -1,0 +1,351 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
+
+/* --- Data --- */
+
+const challenges = [
+  {
+    pain: 'ESG commitments with no social proof',
+    solution: "SEAM certification provides third-party-verified evidence of social equity outcomes. These aren't promises or policies. It's measured performance across four social equity pillars.",
+  },
+  {
+    pain: 'Tenant and community skepticism',
+    solution: 'Certification includes community voice in evaluation. Occupant surveys and neighborhood engagement are built into the verification process — not bolted on as marketing.',
+  },
+  {
+    pain: 'Capital providers asking for social diligence',
+    solution: 'SEAM is GRESB-aligned and designed for institutional reporting. The ROSSI Calculator translates social outcomes into the financial language investors and insurers speak.',
+  },
+  {
+    pain: 'Competing certifications that ignore equity',
+    solution: 'LEED measures environmental performance. WELL measures wellness. SEAM measures the one dimension they both miss: the relationship between a building and the people it touches.',
+  },
+]
+
+const products = [
+  {
+    label: 'Certification',
+    title: 'Full building certification',
+    description: 'Bronze through Platinum across Buildings + Interiors, Operations + Maintenance, or Community Development tracks.',
+    href: '/certification',
+    fit: 'Best for new developments and major renovations where social equity is part of the business plan from day one.',
+    logo: '/logos/cert-platinum.png',
+  },
+  {
+    label: 'SEAM Approved',
+    title: 'Activity-level verification',
+    description: 'Verify individual social equity practices without committing to full certification. A standalone credential or a pathway into it.',
+    href: '/approved',
+    fit: 'Best for existing assets where you want to credential specific programs — local hiring, community advisory boards, procurement policies.',
+    logo: '/logos/approved-wordmark.png',
+  },
+  {
+    label: 'ROSSI Calculator',
+    title: 'Financial modeling',
+    description: 'Translate social equity outcomes into financial language. Model project-level and portfolio-level impact, GRESB alignment, and insurance risk reduction.',
+    href: '/resources/rossi',
+    fit: 'Best for capital conversations — investor decks, insurance negotiations, and ESG reporting.',
+  },
+]
+
+const outcomes = [
+  { metric: 'Reduced turnover', detail: 'Certified buildings report lower vacancy rates because tenants feel genuine investment in community, not just square footage.' },
+  { metric: 'Premium positioning', detail: 'Social equity certification differentiates your asset in a market where environmental certifications are table stakes.' },
+  { metric: 'Capital alignment', detail: 'GRESB-aligned data and ROSSI modeling give institutional investors the social diligence signal they increasingly require.' },
+  { metric: 'Risk mitigation', detail: 'Ongoing community engagement and third-party verification reduce reputational, regulatory, and insurance risk exposure.' },
+]
+
+const faqs = [
+  {
+    q: 'How does SEAM certification affect property value?',
+    a: 'Certified buildings report reduced vacancy, higher tenant satisfaction, and stronger renewal rates. The ROSSI Calculator models project-level financial impact including insurance risk reduction, GRESB alignment, and tenant retention value.',
+  },
+  {
+    q: 'Is SEAM certification compatible with LEED and WELL?',
+    a: 'Yes. SEAM is designed to complement environmental and wellness certifications. Many projects pursue SEAM alongside LEED or WELL — each measures a different dimension of building performance.',
+  },
+  {
+    q: 'What if our building is already built and operating?',
+    a: 'The Operations + Maintenance track is specifically designed for existing buildings. It evaluates ongoing practices — procurement, programming, staffing, community engagement — rather than design and construction decisions.',
+  },
+  {
+    q: 'How do investors view SEAM certification?',
+    a: 'SEAM provides GRESB-aligned social performance data that institutional investors increasingly require. The ROSSI Calculator translates social outcomes into financial language for investor decks, ESG reports, and insurance negotiations.',
+  },
+  {
+    q: 'Can we start with SEAM Approved before full certification?',
+    a: 'Yes. Many developers start by verifying individual practices through SEAM Approved, then pursue full certification as the portfolio matures. Every approved activity counts toward certification credit.',
+  },
+]
+
+const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
+
+const jsonLd = [
+  faqSchema(faqItems),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Who We Serve', path: '/for/developers-owners' },
+    { name: 'Developers & Owners', path: '/for/developers-owners' },
+  ]),
+]
+---
+
+<SiteLayout
+  title="For Developers & Owners"
+  description="SEAM certification gives developers and owners a measurable, third-party-verified signal that their buildings advance social equity. Reduce turnover, attract mission-aligned capital, and differentiate your asset."
+  path="/for/developers-owners"
+  jsonLd={jsonLd}
+>
+
+  <!-- ─── Hero ─── -->
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0">
+      <img
+        src="/images/hero-developers.jpg"
+        alt="Real estate development with social equity focus"
+        class="h-full w-full object-cover object-center"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
+      <div class="hero-enter max-w-4xl mx-auto text-center">
+        <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+          For Developers &amp; Owners
+        </span>
+        <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          Differentiate your asset.{' '}
+          <em class="font-display italic font-normal text-seam-300">
+            Attract mission-aligned capital.
+          </em>
+        </h1>
+        <p class="hero-subtitle mt-8 max-w-xl mx-auto text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+          SEAM programming gives developers and owners a measurable, third-party-verified signal that their buildings advance social equity and meet the demands of investors, tenants, and communities alike.
+        </p>
+        <div class="hero-cta mt-10 flex flex-wrap gap-4 justify-center">
+          <a
+            href="/get-started"
+            class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+          >
+            Start a project
+          </a>
+          <a
+            href="/certification"
+            class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300"
+          >
+            Explore certification
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Pain Points / Solutions ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+          The challenge
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          You know equity matters.{' '}
+          <em class="italic font-normal">Now show it.</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger space-y-6">
+        {challenges.map((c) => (
+          <div
+            class="reveal-child grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 rounded-2xl border border-warm-100 p-5 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+          >
+            <div>
+              <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-500 mb-3 block">
+                The problem
+              </span>
+              <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900">
+                {c.pain}
+              </h3>
+            </div>
+            <div>
+              <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-500 mb-3 block">
+                How SEAM helps
+              </span>
+              <p class="text-[16px] leading-relaxed text-warm-500">
+                {c.solution}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Products for You ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+          Your toolkit
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Products built for{' '}
+          <em class="italic font-normal">your decisions</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6 pt-10">
+        {products.map((p) => (
+          <a
+            href={p.href}
+            class="reveal-child group relative overflow-visible rounded-2xl bg-white border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+          >
+            {p.logo && (
+              <div class="absolute -top-7 right-4 sm:-top-8 sm:right-8">
+                {p.logo.includes('member-') ? (
+                  <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden drop-shadow-sm">
+                    <img src={p.logo} alt="" class="w-full h-full object-cover scale-[1.35]" />
+                  </div>
+                ) : (
+                  <img src={p.logo} alt="" class={`w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-sm ${p.logo.includes('approved-wordmark') ? 'bg-[#01313d] rounded-lg p-2' : ''}`} />
+                )}
+              </div>
+            )}
+            <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-500 mb-2 block">
+              {p.label}
+            </span>
+            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
+              {p.title}
+            </h3>
+            <p class="text-[16px] leading-relaxed text-warm-500 mb-6">
+              {p.description}
+            </p>
+            <p class="text-[14px] leading-relaxed text-warm-500 italic border-t border-warm-100 pt-5">
+              {p.fit}
+            </p>
+            <span class="inline-block mt-4 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">
+              Learn more &rarr;
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Outcomes ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+          The business case
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Equity is the{' '}
+          <em class="italic font-normal">asset strategy</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {outcomes.map((o) => (
+          <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10">
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
+              {o.metric}
+            </h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">
+              {o.detail}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Testimonial ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <svg class="mx-auto mb-8 w-12 h-12 text-warm-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+        </svg>
+        <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
+          SEAM gave us the language to show our LP group that social equity is not a concession — it is the thesis. Our certified buildings outperform the rest of the portfolio on every retention metric.
+        </blockquote>
+        <div class="mt-10">
+          <p class="text-[16px] font-medium text-white">Alex Medina</p>
+          <p class="text-[14px] text-warm-400 mt-1">
+            Managing Partner &middot; Civic Capital Partners
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+          Frequently asked
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Questions from{' '}
+          <em class="italic font-normal">developers &amp; owners</em>
+        </h2>
+      </div>
+
+      <div class="max-w-3xl">
+        {faqs.map((faq) => (
+          <details class="border-b border-warm-200 group">
+            <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
+                {faq.q}
+              </span>
+              <svg
+                class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </summary>
+            <div class="pb-6">
+              <p class="text-[16px] leading-relaxed text-warm-500 max-w-2xl">
+                {faq.a}
+              </p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        Build something{' '}
+        <em class="italic font-normal text-seam-300">worth investing in</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        Register your project, model the financial case, or talk to our team about what certification looks like for your portfolio.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a
+          href="/get-started"
+          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+        >
+          Start a project
+        </a>
+        <a
+          href="/resources/rossi"
+          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+        >
+          Try the ROSSI Calculator
+        </a>
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>

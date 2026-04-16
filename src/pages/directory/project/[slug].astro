@@ -1,0 +1,273 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../../../lib/seo-helpers'
+import { certifiedProjects, seamAPs } from '../../../data/directory'
+
+const { slug } = Astro.params
+const project = certifiedProjects.find((p) => p.slug === slug)
+if (!project) return Astro.redirect('/directory?tab=projects', 404)
+
+const leadAP = project.apLead
+  ? seamAPs.find((ap) => ap.slug === project.apLead)
+  : null
+
+const relatedProjects = certifiedProjects
+  .filter(
+    (p) =>
+      p.slug !== project.slug &&
+      (p.ratingSystem === project.ratingSystem ||
+        p.certificationLevel === project.certificationLevel),
+  )
+  .slice(0, 3)
+
+const levelColors: Record<string, string> = {
+  Bronze: 'bg-amber-100 text-amber-800',
+  Silver: 'bg-gray-100 text-gray-700',
+  Gold: 'bg-gold-400/10 text-gold-600',
+  Platinum: 'bg-seam-50 text-seam-700',
+}
+
+function formatCompletionDate(dateStr: string) {
+  const [year, month] = dateStr.split('-')
+  const date = new Date(parseInt(year), parseInt(month) - 1)
+  return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+}
+
+const jsonLd = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Directory', path: '/directory' },
+  { name: project.name, path: `/directory/project/${project.slug}` },
+])
+---
+<SiteLayout
+  title={`${project.name} — ${project.certificationLevel} Certified`}
+  description={project.description.slice(0, 160)}
+  path={`/directory/project/${project.slug}`}
+  jsonLd={jsonLd}
+>
+  {/* Hero Image */}
+  <section class="reveal-fade relative min-h-[50vh] lg:min-h-[60vh] flex items-end bg-warm-900 overflow-hidden">
+    <img
+      src={project.image}
+      alt={project.name}
+      class="absolute inset-0 w-full h-full object-cover opacity-60"
+      onerror="this.style.display='none'"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900 via-warm-900/60 to-transparent"></div>
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 pb-16 lg:pb-20 pt-40">
+      <a
+        href="/directory?tab=projects"
+        class="inline-flex items-center gap-2 text-[14px] text-white/60 hover:text-white/90 transition-colors mb-8"
+      >
+        &larr; All Certified Projects
+      </a>
+      <span
+        class={`inline-block rounded-full px-4 py-1.5 text-[13px] font-medium mb-4 ${
+          levelColors[project.certificationLevel] || 'bg-warm-50 text-warm-600'
+        }`}
+      >
+        {project.certificationLevel}
+      </span>
+      <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white mb-4">
+        {project.name}
+      </h1>
+      <p class="text-[17px] text-white/70">
+        {project.location.city}, {project.location.state}
+      </p>
+    </div>
+  </section>
+
+  {/* Content */}
+  <section class="py-16 lg:py-24">
+    <div class="reveal-fade-up mx-auto max-w-[1400px] px-6 lg:px-10">
+      {/* Key Facts Grid */}
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 pb-16 border-b border-warm-100">
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-2">
+            Certification
+          </p>
+          <p class="text-[17px] font-medium text-warm-900">
+            {project.certificationLevel}
+          </p>
+        </div>
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-2">
+            Rating System
+          </p>
+          <p class="text-[17px] font-medium text-warm-900">
+            {project.ratingSystem}
+          </p>
+        </div>
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-2">
+            Size
+          </p>
+          <p class="text-[17px] font-medium text-warm-900">{project.size}</p>
+        </div>
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-2">
+            Completed
+          </p>
+          <p class="text-[17px] font-medium text-warm-900">
+            {formatCompletionDate(project.completionDate)}
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-12 lg:gap-16 items-start">
+        {/* Main */}
+        <div>
+          <h2 class="font-display text-[28px] lg:text-[32px] tracking-[-0.02em] text-warm-900 mb-6">
+            About this project
+          </h2>
+          <p class="text-[17px] leading-[1.8] text-warm-600 mb-12">
+            {project.description}
+          </p>
+
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-6">
+            Highlights
+          </h3>
+          <ul class="space-y-4">
+            {project.highlights.map((h) => (
+              <li class="flex items-start gap-3">
+                <svg
+                  class="w-5 h-5 text-seam-500 mt-0.5 shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="text-[16px] leading-relaxed text-warm-600">
+                  {h}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Sidebar */}
+        <div class="space-y-8">
+          <div class="rounded-2xl border border-warm-100 p-6">
+            <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-3">
+              Owner
+            </p>
+            <p class="text-[16px] font-medium text-warm-900 mb-6">
+              {project.owner}
+            </p>
+
+            {leadAP && (
+              <>
+                <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-3">
+                  Lead AP
+                </p>
+                <a
+                  href={`/directory/ap/${leadAP.slug}`}
+                  class="group flex items-center gap-3"
+                >
+                  <div class="w-10 h-10 rounded-full bg-warm-100 overflow-hidden shrink-0">
+                    <img
+                      src={leadAP.photo}
+                      alt={leadAP.name}
+                      class="w-full h-full object-cover"
+                      onerror="this.style.display='none'"
+                    />
+                  </div>
+                  <div>
+                    <p class="text-[15px] font-medium text-warm-900 group-hover:text-gold-600 transition-colors">
+                      {leadAP.name}
+                    </p>
+                    <p class="text-[13px] text-warm-500">
+                      {leadAP.credentials}
+                    </p>
+                  </div>
+                </a>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Related Projects */}
+  {relatedProjects.length > 0 && (
+    <section class="py-20 lg:py-28 bg-warm-50">
+      <div class="reveal-fade-up mx-auto max-w-[1400px] px-6 lg:px-10">
+        <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-10">
+          Related projects
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {relatedProjects.map((rp) => (
+            <a
+              href={`/directory/project/${rp.slug}`}
+              class="group block rounded-2xl bg-white border border-warm-100 overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+            >
+              <div class="h-48 bg-warm-100 overflow-hidden">
+                <img
+                  src={rp.image}
+                  alt={rp.name}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  onerror="this.style.display='none'"
+                />
+              </div>
+              <div class="p-6">
+                <span
+                  class={`inline-block rounded-full px-3 py-1 text-[12px] font-medium mb-3 ${
+                    levelColors[rp.certificationLevel] ||
+                    'bg-warm-50 text-warm-600'
+                  }`}
+                >
+                  {rp.certificationLevel}
+                </span>
+                <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 mb-1">
+                  {rp.name}
+                </h3>
+                <p class="text-[14px] text-warm-500">
+                  {rp.location.city}, {rp.location.state}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* CTA */}
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-6">
+        Certify your building
+      </h2>
+      <p class="text-[17px] leading-relaxed text-warm-500 max-w-2xl mx-auto mb-10">
+        Whether new construction or existing operations, SEAM certification
+        measures what matters for the people in and around your building.
+      </p>
+      <a
+        href="/certification"
+        class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors"
+      >
+        Explore certification
+        <svg
+          class="ml-2 w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+          />
+        </svg>
+      </a>
+    </div>
+  </section>
+</SiteLayout>

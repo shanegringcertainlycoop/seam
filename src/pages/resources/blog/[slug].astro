@@ -1,0 +1,221 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro'
+import { blogPostingSchema, breadcrumbSchema } from '../../../lib/seo-helpers'
+import { posts } from '../../../data/blog'
+
+const { slug } = Astro.params
+const post = posts.find((p) => p.slug === slug)
+
+if (!post) {
+  return Astro.redirect('/resources/blog', 404)
+}
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  })
+}
+
+/* ─── Markdown-ish body parsing in frontmatter ─── */
+type Block =
+  | { type: 'h2'; text: string }
+  | { type: 'bold-p'; text: string }
+  | { type: 'rich-p'; parts: { bold: boolean; text: string }[] }
+  | { type: 'ul'; items: string[] }
+  | { type: 'ol'; items: string[] }
+  | { type: 'p'; text: string }
+
+const blocks: Block[] = post.body
+  .split('\n\n')
+  .map((b) => b.trim())
+  .filter(Boolean)
+  .map<Block>((trimmed) => {
+    if (trimmed.startsWith('## ')) {
+      return { type: 'h2', text: trimmed.replace('## ', '') }
+    }
+    if (trimmed.startsWith('**') && trimmed.endsWith('**')) {
+      return { type: 'bold-p', text: trimmed.replace(/\*\*/g, '') }
+    }
+    if (/^\d+\.\s/.test(trimmed)) {
+      const items = trimmed.split('\n').filter((l) => /^\d+\.\s/.test(l)).map((l) => l.replace(/^\d+\.\s/, ''))
+      return { type: 'ol', items }
+    }
+    if (trimmed.includes('\n- ') || trimmed.startsWith('- ')) {
+      const items = trimmed.split('\n').filter((l) => l.startsWith('- ')).map((l) => l.replace('- ', ''))
+      return { type: 'ul', items }
+    }
+    if (trimmed.includes('**')) {
+      const parts = trimmed.split(/(\*\*.*?\*\*)/g).map((part) => ({
+        bold: part.startsWith('**') && part.endsWith('**'),
+        text: part.replace(/\*\*/g, ''),
+      }))
+      return { type: 'rich-p', parts }
+    }
+    return { type: 'p', text: trimmed }
+  })
+
+/* ─── Related posts ─── */
+const related = posts
+  .filter((p) => p.slug !== post.slug)
+  .sort((a, b) => {
+    const aMatch = a.category === post.category ? 0 : 1
+    const bMatch = b.category === post.category ? 0 : 1
+    return aMatch - bMatch
+  })
+  .slice(0, 3)
+
+const jsonLd = [
+  blogPostingSchema(post),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/resources/blog' },
+    { name: post.title, path: `/resources/blog/${post.slug}` },
+  ]),
+]
+---
+<SiteLayout
+  title={post.title}
+  description={post.excerpt}
+  path={`/resources/blog/${post.slug}`}
+  type="article"
+  article={{
+    author: post.author.name,
+    publishedTime: post.date,
+    section: post.category,
+  }}
+  jsonLd={jsonLd}
+>
+  {/* Article Header */}
+  <article>
+    <header class="pt-28 sm:pt-30 lg:pt-32 pb-8 lg:pb-16">
+      <div class="mx-auto max-w-3xl px-6 lg:px-10">
+        <a
+          href="/resources/blog"
+          class="inline-flex items-center gap-2 text-[14px] text-warm-500 hover:text-warm-700 transition-colors mb-10"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+          All articles
+        </a>
+
+        <span class="inline-block rounded-full bg-seam-50 text-gold-600 px-4 py-1.5 text-[13px] font-medium mb-6">
+          {post.category}
+        </span>
+
+        <h1 class="font-display text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-8">
+          {post.title}
+        </h1>
+
+        <div class="flex flex-wrap items-center gap-4 text-[15px] text-warm-500">
+          <div>
+            <span class="text-warm-900 font-medium">{post.author.name}</span>
+            <span class="text-warm-300 mx-1">/</span>
+            <span>{post.author.role}</span>
+          </div>
+          <span class="w-1 h-1 rounded-full bg-warm-300"></span>
+          <span>{formatDate(post.date)}</span>
+          <span class="w-1 h-1 rounded-full bg-warm-300"></span>
+          <span>{post.readTime}</span>
+        </div>
+      </div>
+    </header>
+
+    {/* Divider */}
+    <div class="mx-auto max-w-3xl px-6 lg:px-10">
+      <div class="border-t border-warm-100 mb-12"></div>
+    </div>
+
+    {/* Body */}
+    <div class="mx-auto max-w-3xl px-6 lg:px-10 pb-20 lg:pb-28">
+      <div class="prose-seam">
+        {blocks.map((block) => {
+          if (block.type === 'h2') {
+            return (
+              <h2 class="font-display text-[28px] lg:text-[32px] tracking-[-0.02em] text-warm-900 mt-14 mb-6">
+                {block.text}
+              </h2>
+            )
+          }
+          if (block.type === 'bold-p') {
+            return (
+              <p class="text-[17px] leading-relaxed text-warm-900 font-medium mt-8 mb-3">
+                {block.text}
+              </p>
+            )
+          }
+          if (block.type === 'rich-p') {
+            return (
+              <p class="text-[17px] leading-[1.8] text-warm-600 mb-6">
+                {block.parts.map((part) =>
+                  part.bold ? (
+                    <strong class="font-medium text-warm-900">{part.text}</strong>
+                  ) : (
+                    <span>{part.text}</span>
+                  )
+                )}
+              </p>
+            )
+          }
+          if (block.type === 'ul') {
+            return (
+              <ul class="mb-6 space-y-2 pl-1">
+                {block.items.map((item) => (
+                  <li class="text-[17px] leading-[1.8] text-warm-600 flex gap-3">
+                    <span class="text-seam-500 mt-[2px] shrink-0">&bull;</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+          if (block.type === 'ol') {
+            return (
+              <ol class="mb-6 space-y-2 pl-1">
+                {block.items.map((item, j) => (
+                  <li class="text-[17px] leading-[1.8] text-warm-600 flex gap-3">
+                    <span class="text-seam-500 font-medium shrink-0 w-5 text-right">
+                      {j + 1}.
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ol>
+            )
+          }
+          return (
+            <p class="text-[17px] leading-[1.8] text-warm-600 mb-6">{block.text}</p>
+          )
+        })}
+      </div>
+    </div>
+  </article>
+
+  {/* Related */}
+  {related.length > 0 && (
+    <section class="py-20 lg:py-28 bg-warm-50">
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.2] tracking-[-0.02em] text-warm-900 mb-12">
+          Keep reading
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {related.map((rp) => (
+            <a href={`/resources/blog/${rp.slug}`} class="group block">
+              <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-500 mb-3 block">
+                {rp.category}
+              </span>
+              <h3 class="font-display text-[20px] leading-[1.25] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-gold-600 transition-colors duration-300">
+                {rp.title}
+              </h3>
+              <p class="text-[14px] text-warm-500">
+                {rp.author.name} &middot; {rp.readTime}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</SiteLayout>
