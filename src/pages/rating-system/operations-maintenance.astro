@@ -3,56 +3,120 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../lib/seo-helpers'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
-const stats = [
-  { value: '5', suffix: '', label: 'Credit categories' },
-  { value: '4', suffix: '', label: 'Certification levels' },
-  { value: '35', suffix: '+', label: 'Measurable credits' },
-  { value: '3', suffix: ' yr', label: 'Recertification cycle' },
+const approaches = [
+  {
+    label: 'O+M:',
+    title: 'Developers',
+    description:
+      'For projects where you own the building or space and oversee its long-term operations, maintenance, and act as landlord. This includes property owners who manage tenant relationships, oversee building-wide operations, and have control over major operational decisions.',
+    href: '/get-started',
+  },
+  {
+    label: 'O+M:',
+    title: 'Occupiers',
+    description:
+      "For projects where you are a tenant or property owner with no landlord duties or control over tenant leasing. This covers situations where you operate within a space but don't control the broader building operations or tenant relationships.",
+    href: '/get-started',
+  },
 ]
 
 const categories = [
   {
-    title: 'Maintenance Protocols',
+    title: 'Management & Reporting',
     description:
-      'Preventive maintenance schedules, responsive repair systems, and service standards that ensure every occupant receives consistent, high-quality building performance.',
-    iconPath: 'M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z',
+      'Demonstrate ongoing commitment through operational policies, regular community communication, impact tracking systems, and transparent reporting on how your building serves its occupants and neighbors.',
+    iconPath: 'M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z',
   },
   {
-    title: 'Vendor Diversity',
+    title: 'Vendor & Contractor Relations',
     description:
-      'Procurement practices that prioritize local, minority-owned, women-owned, and disadvantaged business enterprises in supply chains, contracts, and service agreements.',
-    iconPath: 'M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z',
+      'Apply ethical standards to everyone who keeps your building running. Set clear expectations for service contractors, establish ethical procurement policies, and verify that suppliers meet human rights and labor standards.',
+    iconPath: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z',
   },
   {
-    title: 'Occupant Wellness Programs',
+    title: 'Staff & Workplace Standards',
     description:
-      'Health screenings, wellness initiatives, mental health resources, and fitness programming that are accessible and equitably available to all building occupants and staff.',
-    iconPath: 'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z',
+      'Create equitable employment practices within your building operations. This covers fair compensation, professional development opportunities, workplace safety, and inclusive management practices for all building staff.',
+    iconPath: 'M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z',
   },
   {
-    title: 'Energy + Waste Management',
+    title: 'Tenant & Community Relations',
     description:
-      'Operational energy efficiency, waste reduction, and recycling programs that minimize environmental burden while ensuring equitable access to clean, comfortable conditions.',
-    iconPath: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z',
-  },
-  {
-    title: 'Community Programming',
-    description:
-      'Events, partnerships, and programming that connect the building to its surrounding neighborhood — creating shared value and strengthening the social fabric of the community.',
+      'Build active relationships beyond lease agreements. Provide tenant services that support success, develop community programs, establish local partnerships, and maintain ongoing dialogue with neighbors.',
     iconPath: 'M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z',
+  },
+  {
+    title: 'Health & Safety Management',
+    description:
+      'Maintain building systems and practices that protect everyone who enters. This covers ongoing maintenance standards, occupant wellness programs, emergency preparedness, and proactive health and safety protocols.',
+    iconPath: 'M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z',
+  },
+  {
+    title: 'Monitoring & Improvement',
+    description:
+      "Track and improve your building's social impact over time through regular monitoring, feedback collection, performance assessment, and adaptive management practices that respond to changing community needs.",
+    iconPath: 'M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941',
   },
 ]
 
 const audienceCards = [
-  { title: 'Property Managers', description: 'Demonstrate measurable social equity outcomes to tenants, investors, and communities through verified operational practices.' },
-  { title: 'Facility Teams', description: 'Apply a structured framework to maintenance, procurement, and service delivery that centers the needs of every building occupant.' },
-  { title: 'Building Operators', description: 'Track and improve the operational practices that most directly shape occupant experience, wellness, and community connection.' },
+  {
+    title: 'Property Managers',
+    description: 'Demonstrate measurable social equity outcomes to tenants, investors, and communities through verified operational practices.',
+    image: '/images/operations-maintenance/audience-property.jpg',
+  },
+  {
+    title: 'Facility Teams',
+    description: 'Apply a structured framework to maintenance, procurement, and service delivery that centers the needs of every building occupant.',
+    image: '/images/operations-maintenance/audience-facility.jpg',
+  },
+  {
+    title: 'Building Operators',
+    description: 'Track and improve the operational practices that shape how equitably your building serves the people inside it and the community around it.',
+    image: '/images/operations-maintenance/audience-operators.jpg',
+  },
+  {
+    title: 'Capital Providers',
+    description: 'Assess and demonstrate the social equity performance of assets in your portfolio through a structured, verified operational framework.',
+    image: '/images/operations-maintenance/audience-capital.jpg',
+  },
+]
+
+const levels = [
+  {
+    number: '01',
+    title: 'Bronze',
+    description:
+      'Foundational commitment. The project meets baseline requirements across all four pillars, with a primary focus on identifying and avoiding harm to the people it affects.',
+    image: '/logos/cert-bronze.png',
+  },
+  {
+    number: '02',
+    title: 'Silver',
+    description:
+      'Meaningful progress. The project goes beyond baseline in multiple areas and demonstrates documented outcomes that measurably benefit the people and communities it serves.',
+    image: '/logos/cert-silver.png',
+  },
+  {
+    number: '03',
+    title: 'Gold',
+    description:
+      'Active leadership. The project achieves high performance across all pillars, with innovative approaches that actively contribute to more equitable outcomes in procurement, the workplace, the community, and the supply chain.',
+    image: '/logos/cert-gold.png',
+  },
+  {
+    number: '04',
+    title: 'Platinum',
+    description:
+      'Industry benchmark. The project sets a standard for what social equity in the built environment can look like, with transformative, documented contributions to solutions that extend beyond the project itself.',
+    image: '/logos/cert-platinum.png',
+  },
 ]
 ---
 
 <SiteLayout
   title="Operations + Maintenance Rating System — SEAM"
-  description="The SEAM Operations + Maintenance rating system evaluates ongoing building management for social equity. Maintenance protocols, vendor diversity, occupant wellness, energy management, and community programming."
+  description="The SEAM Operations + Maintenance rating system evaluates how existing buildings are managed day-to-day for social equity. Management, vendor relations, staff standards, tenant and community relations, health and safety, and monitoring."
   path="/rating-system/operations-maintenance"
   jsonLd={breadcrumbSchema([
     { name: 'Home', path: '/' },
@@ -62,8 +126,23 @@ const audienceCards = [
 >
 
   <!-- Hero -->
-  <section class="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+  <section class="relative min-h-[80vh] flex items-center bg-warm-900">
+    <div class="absolute inset-0 overflow-hidden">
+      <img
+        src="/images/operations-maintenance/hero-cafe.jpg"
+        alt=""
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-warm-900/85 via-warm-900/60 to-seam-900/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    </div>
+
+    <!-- O+M product logo, straddles hero/overview boundary -->
+    <img
+      src="/images/operations-maintenance/om-badge.png"
+      alt="SEAM Operations + Maintenance"
+      class="hidden lg:block absolute right-[5%] xl:right-[8%] bottom-0 translate-y-1/2 w-[240px] xl:w-[280px] pointer-events-none select-none z-10"
+    />
 
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
       <div class="max-w-3xl hero-enter">
@@ -84,7 +163,7 @@ const audienceCards = [
           </em>
         </h1>
         <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-          The rating system for ongoing management of existing buildings. Measure how daily operations, facility management, vendor procurement, and tenant engagement advance social equity over time.
+          The rating system for existing buildings. Operations + Maintenance measures whether the day-to-day decisions within a building reflect a genuine, lasting commitment to the people it serves and the communities around it.
         </p>
         <div class="hero-cta mt-10 flex flex-wrap gap-4">
           <a
@@ -104,72 +183,93 @@ const audienceCards = [
     </div>
   </section>
 
-  <!-- Stats Bar -->
-  <section class="reveal-fade-up bg-warm-50 border-b border-warm-100">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-14">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-        {stats.map((s) => (
-          <div class="text-center">
-            <span
-              class="block font-display text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] text-gold-500"
-              data-count-target={s.value}
-              data-count-suffix={s.suffix}
-            >
-              {s.value}{s.suffix}
-            </span>
-            <span class="block mt-1 text-[14px] text-warm-500 uppercase tracking-[0.08em]">
-              {s.label}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- Overview -->
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+      <div class="reveal-slide-left max-w-2xl">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
           Overview
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Equity is not a one-time{' '}
-          <em class="italic font-normal">achievement</em>
+          <em class="italic font-normal text-seam-300">achievement</em>
         </h2>
+        <div class="mt-8 space-y-6 text-[17px] leading-relaxed text-warm-500">
+          <p>
+            The Operations + Maintenance rating system evaluates how existing buildings are managed day-to-day. A building can be designed with equity in mind and still fall short if operations don&rsquo;t sustain that commitment over time.
+          </p>
+          <p>
+            This track applies the four pillars of the SEAM Standard to the ongoing decisions that matter most: how your organization governs itself, how you engage and invest in the surrounding community, how you advance equity across procurement and in the workplace, and how you uphold human rights and health standards for everyone the building touches.
+          </p>
+        </div>
       </div>
 
-      <div class="reveal-fade-up grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-        <div>
-          <p class="text-[17px] leading-relaxed text-warm-500">
-            The Operations + Maintenance track evaluates how existing buildings are managed day-to-day. A building can be designed equitably and still fail the people inside it if operations do not sustain that commitment over time.
-          </p>
-          <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
-            This track measures the ongoing practices that shape occupant experience — from facility management and vendor procurement to tenant engagement and community programming. It recognizes that social equity is a continuous practice, not a certificate on the wall.
-          </p>
-        </div>
-        <div>
-          <p class="text-[17px] leading-relaxed text-warm-500">
-            For existing buildings that were not originally designed with equity in mind, this track provides a pathway to certification based on how they operate today. It rewards the operational decisions that most directly affect the people who live, work, and gather inside.
-          </p>
-        </div>
+      <div class="reveal-fade-up mt-12 lg:mt-16 max-w-2xl">
+        <p class="text-[17px] leading-relaxed text-warm-500">
+          For buildings that were not originally designed with equity in mind, this track provides a clear pathway to certification based on how they operate today.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Credit Categories -->
+  <!-- Two Approaches -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-12 lg:mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+          Two approaches
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Choose your application.
+        </h2>
+        <p class="mt-8 text-[17px] leading-relaxed text-warm-500">
+          SEAM&rsquo;s Operations + Maintenance rating system has two applications based on your level of control and responsibility in the building.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {approaches.map((approach) => (
+          <a
+            href={approach.href}
+            class="reveal-child group block rounded-2xl border border-warm-100 p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+          >
+            <span class="text-[14px] font-medium text-seam-600 mb-3 block">
+              {approach.label}
+            </span>
+            <h3 class="font-display text-[26px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-6">
+              {approach.title}
+            </h3>
+            <p class="text-[17px] leading-relaxed text-warm-500 mb-10">
+              {approach.description}
+            </p>
+            <span class="inline-flex items-center text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">
+              Start project <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <p class="mt-12 text-center text-[17px] leading-relaxed text-warm-500 max-w-3xl mx-auto">
+        Not sure which applies to your project?{' '}
+        <a href="/contact" class="text-warm-900 underline underline-offset-4 decoration-warm-300 hover:decoration-warm-900 transition-colors">Contact our team</a>{' '}
+        to determine the right application for your specific situation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Activity Categories -->
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
-          Credit categories
+          Activity categories
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Measure what happens{' '}
-          <em class="italic font-normal">after move-in</em>
+          <em class="italic font-normal text-seam-300">after move-in</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-          Operations credits evaluate the daily decisions that determine whether a building sustains its commitment to the people it serves.
+          SEAM activities help address the daily decisions that determine whether a building sustains its commitment to the people it serves.
         </p>
       </div>
 
@@ -207,19 +307,81 @@ const audienceCards = [
         <p class="mt-6 text-[17px] text-warm-400 max-w-2xl mx-auto leading-relaxed">
           The Operations + Maintenance track is designed for property managers, facility teams, and building operators who understand that equity is sustained through daily practice, not a one-time project.
         </p>
+      </div>
 
-        <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {audienceCards.map((a) => (
-            <div class="rounded-2xl border border-warm-700 p-8 lg:p-10 text-left">
-              <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-white mb-3">
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        {audienceCards.map((a) => (
+          <div class="flex flex-col rounded-2xl border border-warm-700 overflow-hidden text-left">
+            <div class="p-8 lg:p-10 flex-1">
+              <h3 class="font-display text-[20px] lg:text-[24px] tracking-[-0.02em] text-white mb-3">
                 {a.title}
               </h3>
-              <p class="text-[15px] leading-relaxed text-warm-400">
+              <p class="text-[15px] lg:text-[16px] leading-relaxed text-warm-400">
                 {a.description}
               </p>
             </div>
-          ))}
-        </div>
+            {a.image && (
+              <div class="mt-auto h-40 lg:h-48 w-full overflow-hidden">
+                <img
+                  src={a.image}
+                  alt=""
+                  class="h-full w-full object-cover"
+                />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Certification Levels -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+          Certification levels
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Bronze through{' '}
+          <em class="italic font-normal text-seam-600">Platinum</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          Each certification level reflects demonstrated progress across all four pillars. The path to Platinum is built on consistent, documented commitment at every level of the Standard.
+        </p>
+      </div>
+
+      <div class="reveal-stagger">
+        {levels.map((level, i) => (
+          <div
+            class={`reveal-child grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-12 py-10 lg:py-12 ${
+              i < levels.length - 1 ? 'border-b border-warm-200' : ''
+            }`}
+          >
+            <div class="lg:col-span-1">
+              <span class="font-display text-[clamp(1.5rem,2vw,2rem)] tracking-[-0.02em] text-seam-500">
+                {level.number}
+              </span>
+            </div>
+            <div class="lg:col-span-2">
+              <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900">
+                {level.title}
+              </h3>
+            </div>
+            <div class="lg:col-span-3 flex justify-center lg:justify-start">
+              <img
+                src={level.image}
+                alt={`SEAM ${level.title} certification badge`}
+                class="h-28 w-28 object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)]"
+              />
+            </div>
+            <div class="lg:col-span-6">
+              <p class="text-[16px] lg:text-[17px] leading-relaxed text-warm-500">
+                {level.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -228,18 +390,18 @@ const audienceCards = [
   <section class="py-24 lg:py-32 bg-warm-900">
     <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
       <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
-        Ready to certify how your building{' '}
-        <em class="italic font-normal text-seam-300">operates every day?</em>
+        Ready to operate with{' '}
+        <em class="italic font-normal text-seam-300">lasting commitment?</em>
       </h2>
       <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
-        Register your project today or download the Standard to explore the Operations + Maintenance framework.
+        Register your building today or download the Standard to explore the Operations + Maintenance framework.
       </p>
       <div class="mt-12 flex flex-wrap justify-center gap-4">
         <a
           href="/get-started"
           class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
         >
-          Register your project
+          Register your building
         </a>
         <a
           href="/resources/standard"

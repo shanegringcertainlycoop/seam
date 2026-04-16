@@ -5,31 +5,24 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
 const ratingSystems = [
   {
-    number: '01',
+    number: '01 — For the Design and Construction Phase',
     title: 'Buildings + Interiors',
     description:
       'Covers the spectrum of social equity considerations in design and construction: from understanding your social impact before breaking ground, to your governance practices, the equity of your procurement decisions, and the human rights standards that apply to everyone involved in building it.',
     href: '/rating-system/buildings-interiors',
-    audience: 'Developers, architects, interior designers',
-    credits: '30+ measurable credits',
+    audience: 'Developers, owner occupiers, designers',
+    credits: '60+ measurable credits',
+    badge: '/images/badge-bi.png',
   },
   {
-    number: '02',
+    number: '02 — For Existing Building Operations',
     title: 'Operations + Maintenance',
     description:
       'Measures how operations reflect a consistent commitment to the people your building serves: through responsible governance, meaningful community engagement, fair labor standards, and health and safety practices that extend to occupants and neighbors alike.',
     href: '/rating-system/operations-maintenance',
     audience: 'Property managers, facility teams, building operators',
-    credits: '35+ measurable credits',
-  },
-  {
-    number: '03',
-    title: 'Community Development',
-    description:
-      'Examines social equity at the broadest scale: how a project assesses and manages its impact on the surrounding community, how governance and investments contribute to resilience, how procurement and capital access create opportunity, and how human rights and health standards hold across an entire development.',
-    href: '/rating-system/community-development',
-    audience: 'CDOs, municipalities, master planners',
-    credits: '40+ measurable credits',
+    credits: '50+ measurable credits',
+    badge: '/images/badge-om.png',
   },
 ]
 
@@ -50,7 +43,7 @@ const certLevels = [
 
 <SiteLayout
   title="Rating Systems — SEAM Standard"
-  description="The SEAM Standard includes three rating systems: Buildings + Interiors for new construction, Operations + Maintenance for existing buildings, and Community Development for neighborhood-scale projects. Each measures social equity across four pillars."
+  description="The SEAM Standard includes two rating systems: Buildings + Interiors for new construction and design, and Operations + Maintenance for existing buildings. Each measures social equity across four pillars."
   path="/rating-system"
   jsonLd={breadcrumbSchema([
     { name: 'Home', path: '/' },
@@ -60,7 +53,13 @@ const certLevels = [
 >
 
   <!-- Hero -->
-  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-warm-900">
+    <img
+      src="/images/hero-rating-systems.jpg"
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-warm-900/85 via-warm-900/60 to-seam-900/70"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
 
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
@@ -76,13 +75,13 @@ const certLevels = [
           The SEAM Standard
         </span>
         <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
-          Three rating systems.{' '}
+          Building or operating?{' '}
           <em class="font-display italic font-normal text-seam-300">
-            One standard.
+            Find the perfect fit.
           </em>
         </h1>
         <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-          The SEAM Standard measures social equity through three distinct rating systems each built for a different stage of how buildings and communities are conceived, managed, and grown.
+          Flexible rating systems match any project to the SEAM Activities that fit it best. Based on project type and owner role, they keep the process focused, relevant, and project-specific.
         </p>
         <div class="hero-cta mt-10 flex flex-wrap gap-4">
           <a
@@ -100,6 +99,10 @@ const certLevels = [
         </div>
       </div>
     </div>
+    <div class="hidden lg:flex absolute -bottom-10 right-12 items-end gap-4 z-10">
+      <img src="/images/badge-bi.png" alt="Buildings + Interiors" class="w-44 h-auto object-contain drop-shadow-2xl rounded-sm" />
+      <img src="/images/badge-om.png" alt="Operations + Maintenance" class="w-44 h-auto object-contain drop-shadow-2xl rounded-sm" />
+    </div>
   </section>
 
   <!-- Overview -->
@@ -110,14 +113,14 @@ const certLevels = [
           How it works
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          A system for every stage of{' '}
-          <em class="italic font-normal">the built environment</em>
+          A system for any project in{' '}
+          <em class="italic font-normal text-seam-600">the built environment</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-          Social equity does not begin or end with design. It must be embedded in how buildings are planned, how they operate day-to-day, and how entire neighborhoods evolve. Each SEAM rating system addresses a different dimension so every project can find the right entry point.
+          Not every project is the same, and not every owner plays the same role. SEAM&rsquo;s rating systems are organized by project types, like construction and renovation, or ongoing operations, and owner role, so your certification framework includes only the activities relevant to your specific context.
         </p>
         <p class="mt-4 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-          All three systems share the same four pillars, Social Impact, Social Responsibility, Social Justice, and Social Accountability, and the same Bronze-through-Platinum certification levels. What changes is the lens.
+          Our rating systems share the same four pillars, Social Impact, Social Responsibility, Social Justice, and Social Accountability, and the same Bronze-through-Platinum certification levels. What changes is the lens.
         </p>
       </div>
     </div>
@@ -128,39 +131,44 @@ const certLevels = [
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
-          Choose your track
+          Choose your system
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Three systems,{' '}
-          <em class="italic font-normal">one commitment</em>
+          A flexible approach{' '}
+          <em class="italic font-normal text-seam-600">for any project.</em>
         </h2>
       </div>
 
-      <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8 pt-12">
         {ratingSystems.map((system) => (
           <a
             href={system.href}
-            class="reveal-child group rounded-2xl bg-white border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col"
+            class="reveal-child group relative rounded-2xl bg-white border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col"
           >
-            <span class="text-[14px] font-medium text-seam-500 mb-4 block">
+            <img
+              src={system.badge}
+              alt=""
+              class="absolute -top-10 right-10 w-28 h-auto object-contain drop-shadow-lg rounded-sm"
+            />
+            <span class="text-[13px] font-medium text-seam-600 mb-4 block tracking-tight">
               {system.number}
             </span>
             <h3 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4">
               {system.title}
             </h3>
-            <p class="text-[16px] leading-relaxed text-warm-500 mb-6 flex-1">
+            <p class="text-[16px] leading-relaxed text-warm-500 mb-8 flex-1">
               {system.description}
             </p>
-            <div class="pt-6 border-t border-warm-100 space-y-2">
-              <p class="text-[13px] text-warm-500">
-                <span class="font-medium text-warm-600">{system.credits}</span>
+            <div class="pt-6 border-t border-warm-100 space-y-1">
+              <p class="text-[13px] font-medium text-warm-700">
+                {system.credits}
               </p>
               <p class="text-[13px] text-warm-500">
                 For {system.audience}
               </p>
             </div>
             <span class="inline-block mt-6 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">
-              Explore this track &rarr;
+              Explore this rating system &rarr;
             </span>
           </a>
         ))}
@@ -176,7 +184,7 @@ const certLevels = [
           Shared foundation
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
-          Every track is built on{' '}
+          Every rating system is built on{' '}
           <em class="italic font-normal text-seam-300">four pillars</em>
         </h2>
         <p class="mt-6 text-[17px] text-warm-400 max-w-2xl mx-auto leading-relaxed">
@@ -211,10 +219,10 @@ const certLevels = [
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Bronze through{' '}
-          <em class="italic font-normal">Platinum</em>
+          <em class="italic font-normal text-seam-600">Platinum</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl mx-auto">
-          All three rating systems use the same four-tier certification structure. Each level requires progressively deeper commitment across all four pillars.
+          Both rating systems use the same four-tier certification structure. Each level requires progressively deeper commitment across all four pillars.
         </p>
 
         <div class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -234,25 +242,25 @@ const certLevels = [
   </section>
 
   <!-- CTA -->
-  <section class="py-24 lg:py-32 bg-warm-50">
+  <section class="py-24 lg:py-32 bg-warm-900">
     <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
-      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 max-w-3xl mx-auto">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
         Ready to find the right{' '}
-        <em class="italic font-normal text-seam-600">track for your project?</em>
+        <em class="italic font-normal text-seam-300">path for your project?</em>
       </h2>
-      <p class="mt-6 text-[17px] text-warm-500 max-w-xl mx-auto">
-        Whether you are certifying a new building, improving operations at an existing one, or developing an entire neighborhood, there is a path for you.
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        Whether you&rsquo;re certifying a new building or improving operations at an existing one, there&rsquo;s a path for you.
       </p>
       <div class="mt-12 flex flex-wrap justify-center gap-4">
         <a
           href="/get-started"
-          class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300"
+          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
         >
           Start your project
         </a>
         <a
           href="/resources/standard"
-          class="inline-flex items-center rounded-full border border-warm-300 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-400 transition-colors duration-300"
+          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
         >
           Access the Standard
         </a>
