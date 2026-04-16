@@ -47,18 +47,74 @@ const pillars = [
 ]
 
 const layers = [
-  { title: 'Pillars', count: '4', description: 'The four organizing themes of social equity in the built environment. Every concept, objective, and activity connects back to a pillar so you always understand the why behind your efforts.' },
-  { title: 'Concepts', count: '8', description: 'Within the pillars, eight focus areas address specific themes from impact assessments and human rights practices to equity in procurement and more.' },
-  { title: 'Objectives', count: '21', description: 'Measurable objectives define goals within each concept, giving a clear path to progress with rationale and connection to internationally recognized standards.' },
-  { title: 'Activities', count: '50+', description: 'The individual actions that drive equitable change. Each activity has defined requirements, clear scoring rubrics, documentation standards, and implementation instructions so nothing is left to guessing.' },
+  { id: 'pillars', title: 'Pillars', count: '4', description: 'The four organizing themes of social equity in the built environment. Every concept, objective, and activity connects back to a pillar so you always understand the why behind your efforts.' },
+  { id: 'concepts', title: 'Concepts', count: '8', description: 'Within the pillars, eight focus areas address specific themes from impact assessments and human rights practices to equity in procurement and more.' },
+  { id: 'objectives', title: 'Objectives', count: '21', description: 'Measurable objectives define goals within each concept, giving a clear path to progress with rationale and connection to internationally recognized standards.' },
+  { id: 'activities', title: 'Activities', count: '50+', description: 'The individual actions that drive equitable change. Each activity has defined requirements, clear scoring rubrics, documentation standards, and implementation instructions so nothing is left to guessing.' },
 ]
 
-const ringData = [
-  { label: 'Pillars', count: '4', bg: 'bg-seam-900', text: 'text-white', countColor: 'text-seam-300', size: 'w-[480px] h-[480px]', pt: 'pt-5' },
-  { label: 'Concepts', count: '8', bg: 'bg-seam-700', text: 'text-white', countColor: 'text-seam-300', size: 'w-[360px] h-[360px]', pt: 'pt-5' },
-  { label: 'Objectives', count: '21', bg: 'bg-seam-500', text: 'text-white', countColor: 'text-seam-200', size: 'w-[260px] h-[260px]', pt: 'pt-4' },
-  { label: 'Activities', count: '50+', bg: 'bg-gold-400', text: 'text-warm-900', countColor: 'text-warm-800', size: 'w-[120px] h-[120px]', pt: 'pt-2' },
+// ─── Orbital framework geometry ───
+const VB_W = 800
+const VB_H = 720
+const CX = VB_W / 2
+const CY = VB_H / 2
+const R_PILLARS = 95
+const R_CONCEPTS = 160
+const R_OBJECTIVES = 225
+
+const polar = (r, deg) => {
+  const a = ((deg - 90) * Math.PI) / 180
+  return { x: +(CX + r * Math.cos(a)).toFixed(2), y: +(CY + r * Math.sin(a)).toFixed(2) }
+}
+
+const pillarsGeo = [
+  { id: 'p0', angle: 0, label: 'SOCIAL IMPACT' },
+  { id: 'p1', angle: 90, label: 'SOCIAL RESPONSIBILITY' },
+  { id: 'p2', angle: 180, label: 'SOCIAL JUSTICE' },
+  { id: 'p3', angle: 270, label: 'SOCIAL ACCOUNTABILITY' },
 ]
+
+const conceptsGeo = [
+  { id: 'c0', pillar: 'p0', angle: -22 },
+  { id: 'c1', pillar: 'p0', angle: 0 },
+  { id: 'c2', pillar: 'p0', angle: 22 },
+  { id: 'c3', pillar: 'p1', angle: 90 },
+  { id: 'c4', pillar: 'p2', angle: 170 },
+  { id: 'c5', pillar: 'p2', angle: 190 },
+  { id: 'c6', pillar: 'p3', angle: 260 },
+  { id: 'c7', pillar: 'p3', angle: 280 },
+]
+
+// Distribute 21 objectives across 8 concepts: 3,3,3,3,3,2,2,2
+const objectivesGeo = []
+const objsPerConcept = [3, 3, 3, 3, 3, 2, 2, 2]
+conceptsGeo.forEach((c, i) => {
+  const count = objsPerConcept[i]
+  const offsets = count === 3 ? [-7, 0, 7] : [-4, 4]
+  offsets.forEach((off) => {
+    objectivesGeo.push({ id: `o${objectivesGeo.length}`, concept: c.id, angle: c.angle + off })
+  })
+})
+
+// Distribute 52 activities across 21 objectives: first 10 get 3, remaining 11 get 2 (10*3+11*2=52)
+const activitiesGeo = []
+objectivesGeo.forEach((o, i) => {
+  const count = i < 10 ? 3 : 2
+  const aOffsets = count === 3 ? [-3, 0, 3] : [-2, 2]
+  const aRadii = count === 3 ? [263, 275, 287] : [268, 283]
+  aOffsets.forEach((off, ai) => {
+    activitiesGeo.push({ id: `a${activitiesGeo.length}`, objective: o.id, angle: o.angle + off, r: aRadii[ai] })
+  })
+})
+
+const pillarPos = pillarsGeo.map((p) => ({ ...p, ...polar(R_PILLARS, p.angle) }))
+const conceptPos = conceptsGeo.map((c) => ({ ...c, ...polar(R_CONCEPTS, c.angle) }))
+const objectivePos = objectivesGeo.map((o) => ({ ...o, ...polar(R_OBJECTIVES, o.angle) }))
+const activityPos = activitiesGeo.map((a) => ({ ...a, ...polar(a.r, a.angle) }))
+
+const pById = (id) => pillarPos.find((p) => p.id === id)
+const cById = (id) => conceptPos.find((c) => c.id === id)
+const oById = (id) => objectivePos.find((o) => o.id === id)
 
 const levels = [
   { name: 'Bronze', tagline: 'Acting to avoid harm', description: 'The project is making measurable progress toward international social targets. Foundational activities are in place. Harm is being identified and addressed.', imp: 'Act to Avoid Harm', logo: '/logos/cert-bronze.png' },
@@ -278,43 +334,120 @@ const audiences = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <!-- Nesting graphic -->
-        <div class="reveal-scale hidden lg:block">
-          <div class="relative w-[480px] h-[480px] mx-auto">
-            {ringData.map((ring, i) => (
-              <div
-                class={`absolute rounded-3xl ${ring.bg} ${ring.size} flex flex-col items-center justify-start transition-all duration-500`}
-                style={`top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: ${i};`}
-              >
-                <div class={`text-center ${ring.pt}`}>
-                  <span class={`block text-[12px] font-medium uppercase tracking-[0.15em] ${ring.countColor}`}>
-                    {ring.label}
-                  </span>
-                  <span class={`block font-display text-[22px] tracking-[-0.02em] leading-tight ${ring.text}`}>
-                    {ring.count}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div class="orbital-module grid grid-cols-1 lg:grid-cols-[minmax(0,55%)_minmax(0,45%)] gap-10 lg:gap-12 items-center" data-orbital-module>
+        <!-- Orbital diagram -->
+        <div class="reveal-scale order-2 lg:order-1">
+          <svg
+            viewBox={`0 0 ${VB_W} ${VB_H}`}
+            class="w-full h-auto max-w-[620px] mx-auto"
+            role="img"
+            aria-label="SEAM framework: four pillars, eight concepts, twenty-one objectives, and fifty-plus activities arranged as a radial diagram"
+          >
+            <!-- Guide rings -->
+            <g aria-hidden="true">
+              <circle cx={CX} cy={CY} r={R_PILLARS} fill="none" stroke="#d9d6cf" stroke-width="1" stroke-dasharray="2 4" />
+              <circle cx={CX} cy={CY} r={R_CONCEPTS} fill="none" stroke="#d9d6cf" stroke-width="1" stroke-dasharray="2 4" />
+              <circle cx={CX} cy={CY} r={R_OBJECTIVES} fill="none" stroke="#d9d6cf" stroke-width="1" stroke-dasharray="2 4" />
+            </g>
+
+            <!-- Activity connection lines (amber) -->
+            <g class="orb-lines" data-tier="activities" stroke="#bf7520" stroke-width="0.6" opacity="0.32">
+              {activityPos.map((a) => {
+                const o = oById(a.objective)
+                return <line x1={o.x} y1={o.y} x2={a.x} y2={a.y} />
+              })}
+            </g>
+
+            <!-- Objective connection lines (teal) -->
+            <g class="orb-lines" data-tier="objectives" stroke="#3a5c67" stroke-width="0.8" opacity="0.35">
+              {objectivePos.map((o) => {
+                const c = cById(o.concept)
+                return <line x1={c.x} y1={c.y} x2={o.x} y2={o.y} />
+              })}
+            </g>
+
+            <!-- Concept connection lines (teal) -->
+            <g class="orb-lines" data-tier="concepts" stroke="#3a5c67" stroke-width="1" opacity="0.4">
+              {conceptPos.map((c) => {
+                const p = pById(c.pillar)
+                return <line x1={p.x} y1={p.y} x2={c.x} y2={c.y} />
+              })}
+            </g>
+
+            <!-- Pillar connection lines (from center) -->
+            <g class="orb-lines" data-tier="pillars" stroke="#3a5c67" stroke-width="1.2" opacity="0.45">
+              {pillarPos.map((p) => <line x1={CX} y1={CY} x2={p.x} y2={p.y} />)}
+            </g>
+
+            <!-- Activity nodes -->
+            <g class="orb-nodes" data-tier="activities" fill="#bf7520">
+              {activityPos.map((a) => <circle cx={a.x} cy={a.y} r="3" />)}
+            </g>
+
+            <!-- Objective nodes -->
+            <g class="orb-nodes" data-tier="objectives" fill="#3a5c67">
+              {objectivePos.map((o) => <circle cx={o.x} cy={o.y} r="3.5" />)}
+            </g>
+
+            <!-- Concept nodes -->
+            <g class="orb-nodes" data-tier="concepts" fill="#3a5c67">
+              {conceptPos.map((c) => <circle cx={c.x} cy={c.y} r="6" />)}
+            </g>
+
+            <!-- Pillar nodes -->
+            <g class="orb-nodes" data-tier="pillars" fill="#3a5c67">
+              {pillarPos.map((p) => <circle cx={p.x} cy={p.y} r="13" />)}
+            </g>
+
+            <!-- Center disk with SEAM wordmark -->
+            <g aria-hidden="true">
+              <circle cx={CX} cy={CY} r="48" fill="#00313C" />
+              <text x={CX} y={CY + 7} text-anchor="middle" font-family="ui-serif, Georgia, 'Times New Roman', serif" font-style="italic" font-size="22" fill="#a3c8d3" letter-spacing="0.06em">SEAM</text>
+            </g>
+
+            <!-- Pillar labels -->
+            <g fill="#6b6b68" font-size="11" font-weight="600" letter-spacing="0.15em" style="text-transform: uppercase;">
+              <text x={CX} y="24" text-anchor="middle">SOCIAL IMPACT</text>
+              <text x={VB_W - 10} y={CY + 4} text-anchor="end">SOCIAL RESPONSIBILITY</text>
+              <text x={CX} y={VB_H - 10} text-anchor="middle">SOCIAL JUSTICE</text>
+              <text x="10" y={CY + 4} text-anchor="start">SOCIAL ACCOUNTABILITY</text>
+            </g>
+          </svg>
         </div>
 
-        <!-- Text descriptions -->
-        <div class="reveal-stagger">
-          {layers.map((layer, i) => (
-            <div class={`reveal-child flex gap-6 py-8 ${i < layers.length - 1 ? 'border-b border-warm-200' : ''}`}>
-              <div class="shrink-0">
-                <span class="block font-display text-[28px] tracking-[-0.04em] text-gold-600">
+        <!-- Linked text tiers -->
+        <div class="reveal-stagger order-1 lg:order-2">
+          {layers.map((layer) => (
+            <div
+              class="reveal-child tier-entry group flex gap-6 py-6 lg:py-7 px-4 -mx-4 rounded-xl border-b border-warm-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-seam-500"
+              data-tier-entry
+              data-tier={layer.id}
+              tabindex="0"
+            >
+              <div class="shrink-0 w-[60px]">
+                <span class="block font-display text-[28px] lg:text-[32px] tracking-[-0.04em] text-gold-600">
                   {layer.count}
                 </span>
               </div>
               <div>
-                <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-2">{layer.title}</h3>
-                <p class="text-[16px] leading-relaxed text-warm-600">{layer.description}</p>
+                <h3 class="font-display text-[20px] lg:text-[24px] tracking-[-0.02em] text-warm-900 mb-2">{layer.title}</h3>
+                <p class="text-[15px] lg:text-[16px] leading-relaxed text-warm-600">{layer.description}</p>
               </div>
             </div>
           ))}
+
+          <!-- Lasting impact beat -->
+          <div class="reveal-child flex gap-6 pt-7 pl-4 -ml-4">
+            <div class="shrink-0 w-[60px] flex items-start">
+              <svg class="w-7 h-7 text-seam-600 mt-1" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-display italic text-[20px] lg:text-[24px] tracking-[-0.02em] text-seam-600 mb-2">Lasting impact</h3>
+              <p class="text-[15px] lg:text-[16px] leading-relaxed text-warm-600">Each layer informs the next — from organizing pillars, down to the specific activities that create change on the ground. That&rsquo;s how a standard produces outcomes that compound over time.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -442,5 +575,126 @@ const audiences = [
       </div>
     </div>
   </section>
+
+  <style is:global>
+    .orbital-module .orb-nodes circle,
+  .orbital-module .orb-lines line,
+  .orbital-module .tier-entry {
+    transition: opacity 220ms ease, background-color 220ms ease, transform 220ms ease;
+  }
+
+  /* Dim non-matching SVG elements when a tier is active */
+  .orbital-module[data-active-tier] .orb-nodes,
+  .orbital-module[data-active-tier] .orb-lines {
+    opacity: 0.18;
+  }
+  .orbital-module[data-active-tier="pillars"] .orb-nodes[data-tier="pillars"],
+  .orbital-module[data-active-tier="pillars"] .orb-lines[data-tier="pillars"],
+  .orbital-module[data-active-tier="concepts"] .orb-nodes[data-tier="concepts"],
+  .orbital-module[data-active-tier="concepts"] .orb-lines[data-tier="concepts"],
+  .orbital-module[data-active-tier="objectives"] .orb-nodes[data-tier="objectives"],
+  .orbital-module[data-active-tier="objectives"] .orb-lines[data-tier="objectives"],
+  .orbital-module[data-active-tier="activities"] .orb-nodes[data-tier="activities"],
+  .orbital-module[data-active-tier="activities"] .orb-lines[data-tier="activities"] {
+    opacity: 1;
+  }
+
+  /* Also keep inner rings fully visible when an outer tier is active (so the tree reads) */
+  .orbital-module[data-active-tier="concepts"] .orb-nodes[data-tier="pillars"],
+  .orbital-module[data-active-tier="concepts"] .orb-lines[data-tier="pillars"],
+  .orbital-module[data-active-tier="objectives"] .orb-nodes[data-tier="pillars"],
+  .orbital-module[data-active-tier="objectives"] .orb-lines[data-tier="pillars"],
+  .orbital-module[data-active-tier="objectives"] .orb-nodes[data-tier="concepts"],
+  .orbital-module[data-active-tier="objectives"] .orb-lines[data-tier="concepts"],
+  .orbital-module[data-active-tier="activities"] .orb-nodes[data-tier="pillars"],
+  .orbital-module[data-active-tier="activities"] .orb-lines[data-tier="pillars"],
+  .orbital-module[data-active-tier="activities"] .orb-nodes[data-tier="concepts"],
+  .orbital-module[data-active-tier="activities"] .orb-lines[data-tier="concepts"],
+  .orbital-module[data-active-tier="activities"] .orb-nodes[data-tier="objectives"],
+  .orbital-module[data-active-tier="activities"] .orb-lines[data-tier="objectives"] {
+    opacity: 0.55;
+  }
+
+  /* Text entries: dim non-matching, highlight active */
+  .orbital-module[data-active-tier] .tier-entry {
+    opacity: 0.4;
+  }
+  .orbital-module[data-active-tier="pillars"] .tier-entry[data-tier="pillars"],
+  .orbital-module[data-active-tier="concepts"] .tier-entry[data-tier="concepts"],
+  .orbital-module[data-active-tier="objectives"] .tier-entry[data-tier="objectives"],
+  .orbital-module[data-active-tier="activities"] .tier-entry[data-tier="activities"] {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Hover affordance on text entries when no tier is active */
+  .orbital-module:not([data-active-tier]) .tier-entry:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orbital-module .orb-nodes circle,
+    .orbital-module .orb-lines line,
+    .orbital-module .tier-entry {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const root = document.querySelector('[data-orbital-module]')
+    if (!root) return
+
+    const entries = root.querySelectorAll('[data-tier-entry]')
+    const nodeGroups = root.querySelectorAll('.orb-nodes[data-tier]')
+
+    const setTier = (tier) => {
+      if (tier) root.setAttribute('data-active-tier', tier)
+      else root.removeAttribute('data-active-tier')
+    }
+
+    let locked = false
+
+    entries.forEach((entry) => {
+      const tier = entry.getAttribute('data-tier')
+      entry.addEventListener('mouseenter', () => { if (!locked) setTier(tier) })
+      entry.addEventListener('mouseleave', () => { if (!locked) setTier(null) })
+      entry.addEventListener('focus', () => setTier(tier))
+      entry.addEventListener('blur', () => { if (!locked) setTier(null) })
+      entry.addEventListener('click', () => {
+        const current = module.getAttribute('data-active-tier')
+        if (current === tier && locked) {
+          locked = false
+          setTier(null)
+        } else {
+          locked = true
+          setTier(tier)
+        }
+      })
+      entry.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          entry.click()
+        }
+      })
+    })
+
+    nodeGroups.forEach((group) => {
+      const tier = group.getAttribute('data-tier')
+      group.addEventListener('mouseenter', () => { if (!locked) setTier(tier) })
+      group.addEventListener('mouseleave', () => { if (!locked) setTier(null) })
+    })
+
+    // Click outside to unlock
+    document.addEventListener('click', (e) => {
+      if (!locked) return
+      if (!root.contains(e.target)) {
+        locked = false
+        setTier(null)
+      }
+    })
+  })()
+</script>
 
 </SiteLayout>
