@@ -1,0 +1,150 @@
+---
+import Navbar from '../components/Navbar.astro'
+import Footer from '../components/Footer.astro'
+import ScrollProgress from '../components/ScrollProgress.astro'
+import '../styles/global.css'
+import {
+  SITE_URL,
+  SITE_NAME,
+  DEFAULT_IMAGE,
+  DEFAULT_DESCRIPTION,
+} from '../lib/seo-helpers'
+
+interface Props {
+  title?: string
+  description?: string
+  path?: string
+  image?: string
+  type?: 'website' | 'article'
+  article?: {
+    author: string
+    publishedTime: string
+    section: string
+  }
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[]
+}
+
+const {
+  title,
+  description = DEFAULT_DESCRIPTION,
+  path = '',
+  image = DEFAULT_IMAGE,
+  type = 'website',
+  article,
+  jsonLd,
+} = Astro.props
+
+const fullTitle = title
+  ? `${title} | ${SITE_NAME}`
+  : 'SEAM — Social Equity Certification for the Built Environment'
+const url = `${SITE_URL}${path}`
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+
+    <!-- Static meta -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="SEAM, Inc." />
+
+    <!-- GEO: Generative Engine Optimization -->
+    <meta name="citation_title" content="SEAM — Social Equity Certification for the Built Environment" />
+    <meta name="citation_author" content="SEAM, Inc." />
+    <meta name="citation_date" content="2024" />
+    <meta name="speakable" content="true" />
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="United States" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Article-specific -->
+    {article && <meta property="article:author" content={article.author} />}
+    {article && <meta property="article:published_time" content={article.publishedTime} />}
+    {article && <meta property="article:section" content={article.section} />}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SEAM",
+      "legalName": "SEAM, Inc.",
+      "url": SITE_URL,
+      "description": "SEAM is the first certification system built to measure social equity in the built environment. The SEAM Standard evaluates buildings across four pillars: Health + Wellness, Economic Equity, Accessibility + Inclusion, and Community + Culture.",
+      "foundingDate": "2024",
+      "sameAs": [],
+      "knowsAbout": [
+        "Social equity certification", "Built environment", "ESG real estate",
+        "GRESB alignment", "Social sustainability", "DEI in real estate",
+        "Building certification systems", "Community development", "Equitable housing"
+      ],
+      "offers": [
+        { "@type": "Service", "name": "SEAM Certification", "description": "Full building certification from Bronze through Platinum across three tracks." },
+        { "@type": "Service", "name": "SEAM Approved", "description": "Standalone activity-level verification for individual social equity practices." },
+        { "@type": "Service", "name": "SEAM AP Credential", "description": "Professional accreditation for practitioners who lead SEAM certification engagements." }
+      ]
+    })} />
+
+    <!-- WebSite Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SEAM",
+      "url": SITE_URL,
+      "description": "SEAM is the first certification system built to measure social equity in the built environment.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${SITE_URL}/resources/blog?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".hero-subtitle", "[data-speakable]"]
+      }
+    })} />
+
+    <!-- Page-specific JSON-LD -->
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+  </head>
+  <body>
+    <div class="min-h-screen bg-white font-sans text-warm-700 antialiased">
+      <a href="#main-content" class="skip-to-content">Skip to main content</a>
+      <ScrollProgress />
+      <Navbar />
+      <main id="main-content">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+
+    <!-- Global scripts -->
+    <script src="../scripts/reveal.ts"></script>
+    <script src="../scripts/count-up.ts"></script>
+  </body>
+</html>

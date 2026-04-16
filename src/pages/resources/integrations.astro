@@ -1,0 +1,477 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../../lib/seo-helpers'
+
+const heroStats = [
+  { value: '14+', label: 'LEED credits recognized' },
+  { value: '9+', label: 'WELL features recognized' },
+  { value: '3', label: 'Fitwel star levels mapped' },
+  { value: '8 of 17', label: 'UN SDGs directly supported' },
+]
+
+const steps = [
+  {
+    number: '01',
+    title: 'Identify your existing credits',
+    description:
+      'Use the crosswalk tables below to see which credits and features you\u2019ve already documented that qualify toward SEAM activities.',
+  },
+  {
+    number: '02',
+    title: 'Map them to SEAM activities',
+    description:
+      'Each overlap is rated at 60%, 80%, or 100% recognition. Some activities carry over fully; others may need supplemental documentation.',
+  },
+  {
+    number: '03',
+    title: 'Apply toward certification',
+    description:
+      'Recognized credits count toward your SEAM score directly. Your SEAM AP can identify the most efficient path given your existing work.',
+  },
+]
+
+const leedRows = [
+  { credit: 'Surrounding Density & Diverse Uses', category: 'LT', activity: 'Community Development (C3)', pillar: 'Social Responsibility', recognition: 80 },
+  { credit: 'Access to Quality Transit', category: 'LT', activity: 'Community Resilience (C4)', pillar: 'Social Responsibility', recognition: 60 },
+  { credit: 'Place + Community Connectivity', category: 'SS', activity: 'Impacted Party Engagement (C1)', pillar: 'Social Impact', recognition: 100 },
+  { credit: 'Construction Activity Pollution Prevention', category: 'SS', activity: 'Community Resilience (C4)', pillar: 'Social Responsibility', recognition: 60 },
+  { credit: 'Enhanced Indoor Air Quality Strategies', category: 'EQ', activity: 'Health, Safety + Wellness (C8)', pillar: 'Social Accountability', recognition: 80 },
+  { credit: 'Daylight', category: 'EQ', activity: 'Health, Safety + Wellness (C8)', pillar: 'Social Accountability', recognition: 60 },
+  { credit: 'Building Product Disclosure & Optimization', category: 'MR', activity: 'Ethical Materials Procurement (C7)', pillar: 'Social Justice', recognition: 80 },
+]
+
+const wellRows = [
+  { feature: 'Air Quality Standards', concept: 'Air', activity: 'Health, Safety + Wellness (C8)', pillar: 'Social Accountability', recognition: 100 },
+  { feature: 'Visual Lighting Design', concept: 'Light', activity: 'Health, Safety + Wellness (C8)', pillar: 'Social Accountability', recognition: 80 },
+  { feature: 'Thermal Comfort', concept: 'Thermal', activity: 'Health, Safety + Wellness (C8)', pillar: 'Social Accountability', recognition: 80 },
+  { feature: 'Access to Nature', concept: 'Community', activity: 'Community Resilience (C4)', pillar: 'Social Responsibility', recognition: 60 },
+  { feature: 'Workplace Accommodations', concept: 'Community', activity: 'Equity + Inclusion in Workplace (C5)', pillar: 'Social Justice', recognition: 100 },
+  { feature: 'Stress + Addiction Treatment', concept: 'Mind', activity: 'Health, Safety + Wellness (C8)', pillar: 'Social Accountability', recognition: 60 },
+  { feature: 'Emergency Preparedness', concept: 'Safety', activity: 'Health, Safety + Wellness (C8)', pillar: 'Social Accountability', recognition: 80 },
+]
+
+const fitwelImp = [
+  {
+    letter: 'A',
+    impact: 'Act to avoid harm',
+    star: 'Fitwel 1 Star',
+    description:
+      'Demonstrates foundational healthy building environments. Meets SEAM\u2019s baseline requirement for HSa1.1.',
+  },
+  {
+    letter: 'B',
+    impact: 'Benefit impacted parties',
+    star: 'Fitwel 2 Stars',
+    description:
+      'Demonstrates higher levels of healthy building environments. Meets SEAM\u2019s intermediate scoring threshold for HSa1.1.',
+  },
+  {
+    letter: 'C',
+    impact: 'Contribute to solutions',
+    star: 'Fitwel 3 Stars',
+    description:
+      'Demonstrates the highest level of healthy building environments. Meets SEAM\u2019s full contribution scoring for HSa1.1.',
+  },
+]
+
+const fitwelRows = [
+  { level: '1 Star', impact: 'Act to avoid harm', activity: 'Health, Safety + Wellness (HSa1.1)', pillar: 'Social Accountability', recognition: 60 },
+  { level: '2 Stars', impact: 'Benefit impacted parties', activity: 'Health, Safety + Wellness (HSa1.1)', pillar: 'Social Accountability', recognition: 80 },
+  { level: '3 Stars', impact: 'Contribute to solutions', activity: 'Health, Safety + Wellness (HSa1.1)', pillar: 'Social Accountability', recognition: 100 },
+]
+
+const sdgRows = [
+  { sdg: 'SDG 3', goal: 'Good Health & Well-Being', pillars: ['Social Accountability', 'Social Responsibility'] },
+  { sdg: 'SDG 5', goal: 'Gender Equality', pillars: ['Social Justice', 'Social Accountability'] },
+  { sdg: 'SDG 8', goal: 'Decent Work & Economic Growth', pillars: ['Social Justice', 'Social Accountability'] },
+  { sdg: 'SDG 10', goal: 'Reduced Inequalities', pillars: ['Social Impact', 'Social Justice'] },
+  { sdg: 'SDG 11', goal: 'Sustainable Cities & Communities', pillars: ['Social Impact', 'Social Responsibility', 'Social Justice'] },
+  { sdg: 'SDG 12', goal: 'Responsible Consumption & Production', pillars: ['Social Accountability', 'Social Justice'] },
+  { sdg: 'SDG 16', goal: 'Peace, Justice & Strong Institutions', pillars: ['Social Accountability', 'Social Responsibility'] },
+  { sdg: 'SDG 17', goal: 'Partnerships for the Goals', pillars: ['Social Responsibility', 'Social Impact'] },
+]
+
+function recognitionClass(pct: number) {
+  if (pct === 100) return 'bg-seam-100 text-seam-800 border border-seam-200'
+  if (pct === 80) return 'bg-gold-100 text-gold-800 border border-gold-200'
+  return 'bg-warm-100 text-warm-700 border border-warm-200'
+}
+
+const jsonLd = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Resources', path: '/resources/integrations' },
+  { name: 'Integrations', path: '/resources/integrations' },
+])
+---
+<SiteLayout
+  title="Integrations"
+  description="SEAM complements the certification programs you're already in. See how LEED, WELL, Fitwel, and UN SDG work map directly into SEAM activities and count toward certification."
+  path="/resources/integrations"
+  jsonLd={jsonLd}
+>
+  <!-- ─── Hero ─── -->
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
+      <div class="max-w-4xl hero-enter">
+        <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+          Integrations
+        </span>
+        <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          Your existing work{' '}
+          <em class="font-display italic font-normal text-seam-300">goes further here.</em>
+        </h1>
+        <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+          SEAM was designed to complement the frameworks you&apos;re already in &mdash; not compete with them. Work you&apos;ve documented for LEED, WELL, Fitwel, and other recognized standards maps directly into SEAM activities. So does your ESG reporting language, if it&apos;s built around the UN SDGs.
+        </p>
+      </div>
+
+      <!-- Hero stat strip -->
+      <div class="hero-cta mt-16 grid grid-cols-2 lg:grid-cols-4 gap-px bg-warm-700/40 rounded-2xl overflow-hidden border border-warm-700/50">
+        {heroStats.map((s) => (
+          <div class="bg-warm-900/60 backdrop-blur-sm p-6 lg:p-8">
+            <p class="font-display text-[clamp(1.75rem,3vw,2.5rem)] tracking-[-0.04em] text-seam-300">{s.value}</p>
+            <p class="mt-2 text-[13px] text-warm-400 leading-snug">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How it works ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">How it works</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Four frameworks.{' '}
+          <em class="italic font-normal">One complete picture.</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
+          LEED addresses environmental performance. WELL and Fitwel address health and wellness. SEAM addresses social equity. Together they give any project a comprehensive sustainability profile &mdash; and your work in any one of them strengthens the others.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {steps.map((step) => (
+          <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10">
+            <span class="font-display text-[40px] tracking-[-0.04em] text-gold-500">{step.number}</span>
+            <h3 class="mt-4 font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{step.title}</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── LEED ─── -->
+  <section id="leed" class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-3xl mb-12 lg:mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">LEED v4 + v4.1</p>
+        <h2 class="font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Your LEED credits don&apos;t stop at{' '}
+          <em class="italic font-normal">environmental performance.</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
+          Social equity work you&apos;ve already documented &mdash; in community connectivity, access to services, inclusive design, and materials transparency &mdash; maps directly into SEAM activities across all four pillars.
+        </p>
+      </div>
+
+      <!-- Inline metric badges -->
+      <div class="reveal-fade-up flex flex-wrap gap-4 mb-12">
+        <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
+          <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">14+</span>
+          <span class="ml-2 text-warm-500">credits mapped</span>
+        </div>
+        <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
+          <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">3</span>
+          <span class="ml-2 text-warm-500">LEED categories with overlap</span>
+        </div>
+        <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
+          <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">4</span>
+          <span class="ml-2 text-warm-500">SEAM pillars touched</span>
+        </div>
+      </div>
+
+      <!-- Crosswalk table -->
+      <div class="reveal-fade-up rounded-2xl bg-white border border-warm-100 overflow-hidden">
+        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500">
+          <div class="col-span-4">LEED credit</div>
+          <div class="col-span-1">Category</div>
+          <div class="col-span-3">SEAM activity</div>
+          <div class="col-span-3">SEAM pillar</div>
+          <div class="col-span-1 text-right">Recognition</div>
+        </div>
+        {leedRows.map((row, i) => (
+          <div class={`grid grid-cols-1 lg:grid-cols-12 gap-4 px-6 lg:px-8 py-5 lg:py-6 ${i !== 0 ? 'border-t border-warm-100' : ''}`}>
+            <div class="lg:col-span-4">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">LEED credit</p>
+              <p class="font-medium text-[16px] text-warm-900">{row.credit}</p>
+            </div>
+            <div class="lg:col-span-1 text-[15px] text-warm-500">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">Category</p>
+              {row.category}
+            </div>
+            <div class="lg:col-span-3 text-[15px] text-warm-700">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM activity</p>
+              {row.activity}
+            </div>
+            <div class="lg:col-span-3 text-[15px] text-warm-500">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM pillar</p>
+              {row.pillar}
+            </div>
+            <div class="lg:col-span-1 lg:text-right">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">Recognition</p>
+              <span class={`inline-block rounded-full px-3 py-1 text-[12px] font-medium ${recognitionClass(row.recognition)}`}>
+                {row.recognition}%
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl border-l-2 border-warm-200 pl-5">
+        Formal recognition by GBCI is in progress. Credits listed here reflect SEAM Standard v1.1 guidance pending bilateral agreement. The full crosswalk appendix is available in the Standard download.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── WELL ─── -->
+  <section id="well" class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-3xl mb-12 lg:mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">WELL v2</p>
+        <h2 class="font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Health and wellness work maps directly into SEAM &mdash;{' '}
+          <em class="italic font-normal">no duplicate documentation required.</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
+          SEAM treats WELL certification as direct evidence for its health and safety activities. What you&apos;ve already built in WELL carries over. Your score improves with your certification level.
+        </p>
+      </div>
+
+      <div class="reveal-fade-up flex flex-wrap gap-4 mb-12">
+        <div class="rounded-full bg-warm-50 border border-warm-100 px-5 py-2.5 text-[14px]">
+          <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">9+</span>
+          <span class="ml-2 text-warm-500">features mapped</span>
+        </div>
+        <div class="rounded-full bg-warm-50 border border-warm-100 px-5 py-2.5 text-[14px]">
+          <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">4</span>
+          <span class="ml-2 text-warm-500">WELL concepts with overlap</span>
+        </div>
+        <div class="rounded-full bg-warm-50 border border-warm-100 px-5 py-2.5 text-[14px]">
+          <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">3</span>
+          <span class="ml-2 text-warm-500">SEAM pillars touched</span>
+        </div>
+      </div>
+
+      <div class="reveal-fade-up rounded-2xl border border-warm-100 overflow-hidden">
+        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500">
+          <div class="col-span-4">WELL feature</div>
+          <div class="col-span-1">Concept</div>
+          <div class="col-span-3">SEAM activity</div>
+          <div class="col-span-3">SEAM pillar</div>
+          <div class="col-span-1 text-right">Recognition</div>
+        </div>
+        {wellRows.map((row, i) => (
+          <div class={`grid grid-cols-1 lg:grid-cols-12 gap-4 px-6 lg:px-8 py-5 lg:py-6 ${i !== 0 ? 'border-t border-warm-100' : ''}`}>
+            <div class="lg:col-span-4">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">WELL feature</p>
+              <p class="font-medium text-[16px] text-warm-900">{row.feature}</p>
+            </div>
+            <div class="lg:col-span-1 text-[15px] text-warm-500">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">Concept</p>
+              {row.concept}
+            </div>
+            <div class="lg:col-span-3 text-[15px] text-warm-700">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM activity</p>
+              {row.activity}
+            </div>
+            <div class="lg:col-span-3 text-[15px] text-warm-500">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM pillar</p>
+              {row.pillar}
+            </div>
+            <div class="lg:col-span-1 lg:text-right">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">Recognition</p>
+              <span class={`inline-block rounded-full px-3 py-1 text-[12px] font-medium ${recognitionClass(row.recognition)}`}>
+                {row.recognition}%
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl border-l-2 border-warm-200 pl-5">
+        Formal recognition by IWBI is in progress. Work completed under WELL Building Standard is accepted as documented evidence for SEAM&apos;s health and wellness activities per SEAM Standard v1.1.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Fitwel ─── -->
+  <section id="fitwel" class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-3xl mb-12 lg:mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Fitwel</p>
+        <h2 class="font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Fitwel star levels map directly to SEAM&apos;s{' '}
+          <em class="italic font-normal">impact scoring framework.</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
+          Of all SEAM&apos;s recognized integrations, Fitwel has the most direct structural alignment. Each star level corresponds precisely to one of SEAM&apos;s three IMP impact goals &mdash; Act to Avoid Harm, Benefit Impacted Parties, and Contribute to Solutions.
+        </p>
+      </div>
+
+      <div class="reveal-fade-up flex flex-wrap gap-4 mb-16">
+        <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
+          <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">3</span>
+          <span class="ml-2 text-warm-500">star levels mapped</span>
+        </div>
+        <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
+          <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">1:1</span>
+          <span class="ml-2 text-warm-500">alignment with IMP ABC framework</span>
+        </div>
+        <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
+          <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">12 pts</span>
+          <span class="ml-2 text-warm-500">available in SEAM at full recognition</span>
+        </div>
+      </div>
+
+      <!-- IMP ABC alignment -->
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        {fitwelImp.map((row) => (
+          <div class="reveal-child rounded-2xl bg-white border border-warm-100 p-8 lg:p-10">
+            <div class="flex items-start gap-4 mb-6">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold-100 font-display text-[24px] tracking-[-0.02em] text-gold-700">
+                {row.letter}
+              </span>
+              <div>
+                <p class="text-[11px] font-medium uppercase tracking-[0.12em] text-warm-400 mb-1">{row.star}</p>
+                <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900">{row.impact}</p>
+              </div>
+            </div>
+            <p class="text-[15px] leading-relaxed text-warm-500">{row.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Crosswalk table -->
+      <div class="reveal-fade-up rounded-2xl bg-white border border-warm-100 overflow-hidden">
+        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500">
+          <div class="col-span-2">Fitwel level</div>
+          <div class="col-span-3">IMP impact goal</div>
+          <div class="col-span-3">SEAM activity</div>
+          <div class="col-span-3">SEAM pillar</div>
+          <div class="col-span-1 text-right">Recognition</div>
+        </div>
+        {fitwelRows.map((row, i) => (
+          <div class={`grid grid-cols-1 lg:grid-cols-12 gap-4 px-6 lg:px-8 py-5 lg:py-6 ${i !== 0 ? 'border-t border-warm-100' : ''}`}>
+            <div class="lg:col-span-2">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">Fitwel level</p>
+              <p class="font-medium text-[16px] text-warm-900">{row.level}</p>
+            </div>
+            <div class="lg:col-span-3 text-[15px] text-warm-500">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">IMP impact goal</p>
+              {row.impact}
+            </div>
+            <div class="lg:col-span-3 text-[15px] text-warm-700">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM activity</p>
+              {row.activity}
+            </div>
+            <div class="lg:col-span-3 text-[15px] text-warm-500">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM pillar</p>
+              {row.pillar}
+            </div>
+            <div class="lg:col-span-1 lg:text-right">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">Recognition</p>
+              <span class={`inline-block rounded-full px-3 py-1 text-[12px] font-medium ${recognitionClass(row.recognition)}`}>
+                {row.recognition}%
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl border-l-2 border-warm-200 pl-5">
+        Fitwel is recognized by SEAM as a qualifying healthy building certification under Activity HSa1.1. Each star level aligns with SEAM&apos;s IMP-based impact scoring tiers. The 12 available points reflect the full scoring range for that activity.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── UN SDGs ─── -->
+  <section id="sdgs" class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-3xl mb-12 lg:mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">UN Sustainable Development Goals</p>
+        <h2 class="font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          A direct line to{' '}
+          <em class="italic font-normal">the language your organization already uses.</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
+          SEAM&apos;s four pillars were built in alignment with the UN SDGs. When leadership or investors ask how your real estate decisions connect to global ESG commitments, the answer is already in your SEAM documentation.
+        </p>
+      </div>
+
+      <div class="reveal-fade-up rounded-2xl border border-warm-100 overflow-hidden">
+        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500">
+          <div class="col-span-2">SDG</div>
+          <div class="col-span-4">Goal</div>
+          <div class="col-span-6">SEAM pillars</div>
+        </div>
+        {sdgRows.map((row, i) => (
+          <div class={`grid grid-cols-1 lg:grid-cols-12 gap-4 px-6 lg:px-8 py-5 lg:py-6 ${i !== 0 ? 'border-t border-warm-100' : ''}`}>
+            <div class="lg:col-span-2">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SDG</p>
+              <p class="font-display text-[18px] tracking-[-0.02em] text-warm-900">{row.sdg}</p>
+            </div>
+            <div class="lg:col-span-4">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">Goal</p>
+              <p class="font-medium text-[16px] text-warm-900">{row.goal}</p>
+            </div>
+            <div class="lg:col-span-6">
+              <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM pillars</p>
+              <div class="flex flex-wrap gap-2">
+                {row.pillars.map((pillar) => (
+                  <span class="inline-block rounded-full bg-warm-50 border border-warm-100 px-3 py-1 text-[13px] text-warm-700">
+                    {pillar}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl border-l-2 border-warm-200 pl-5">
+        SDG mappings follow SEAM Standard v1.1 and the UN Guiding Principles on Business and Human Rights. These mappings can be referenced directly in ESG reporting and investor disclosures.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        Ready to see where your project{' '}
+        <em class="italic font-normal text-seam-300">already stands?</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        A SEAM Accredited Professional can walk through your existing documentation and identify which SEAM activities you&apos;re closest to completing.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a
+          href="/directory?tab=aps"
+          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+        >
+          Find a SEAM AP
+        </a>
+        <a
+          href="/resources/standard"
+          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+        >
+          Download the Standard
+        </a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

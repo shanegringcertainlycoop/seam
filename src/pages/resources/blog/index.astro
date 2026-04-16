@@ -1,0 +1,186 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../../../lib/seo-helpers'
+import { posts, categories, type BlogPost } from '../../../data/blog'
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  })
+}
+
+const url = new URL(Astro.request.url)
+const activeCategory = url.searchParams.get('category') || 'All'
+
+const featured = posts.find((p) => p.featured)
+const showFeatured =
+  !!featured && (activeCategory === 'All' || featured.category === activeCategory)
+
+const filtered: BlogPost[] =
+  activeCategory === 'All'
+    ? posts.filter((p) => !p.featured)
+    : posts.filter(
+        (p) => p.category === activeCategory && !(p.featured && showFeatured)
+      )
+
+const jsonLd = [
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Resources', path: '/resources/blog' },
+    { name: 'Blog', path: '/resources/blog' },
+  ]),
+]
+---
+<SiteLayout
+  title="Blog & Insights"
+  description="Lessons from SEAM-certified projects, practitioner perspectives, sector analysis, and updates on the Standard and ROSSI calculator."
+  path="/resources/blog"
+  jsonLd={jsonLd}
+>
+  {/* Header */}
+  <section class="relative min-h-[50vh] flex items-end overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    {/* Background image */}
+    <div class="absolute inset-0">
+      <img
+        src="/images/hero-blog.jpg"
+        alt="Insights from social equity practitioners"
+        class="h-full w-full object-cover object-center"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    </div>
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-16 lg:py-24 w-full">
+      <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-300 mb-6">
+        Blog & Insights
+      </p>
+      <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white max-w-3xl">
+        Lessons from the field,{' '}
+        <em class="italic font-normal text-warm-300">not the boardroom</em>
+      </h1>
+      <p class="mt-6 text-[18px] leading-relaxed text-warm-300 max-w-2xl">
+        Practitioner perspectives, certified project outcomes, and honest analysis
+        of what social equity in the built environment looks like in practice.
+      </p>
+    </div>
+  </section>
+
+  {/* Featured */}
+  {featured && showFeatured && (
+    <section class="pt-12 pb-16">
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <a
+          href={`/resources/blog/${featured.slug}`}
+          class="group block rounded-2xl bg-warm-900 p-6 sm:p-10 lg:p-14 min-h-[360px] sm:min-h-[480px] flex flex-col justify-end relative overflow-hidden"
+        >
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-900 via-warm-900/90 to-warm-900/50"></div>
+          <div class="relative">
+            <span class="inline-block rounded-full bg-gold-400/90 px-4 py-1.5 text-[12px] font-medium text-white mb-6">
+              {featured.category}
+            </span>
+            <h2 class="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.15] tracking-[-0.03em] text-white mb-4 group-hover:text-warm-200 transition-colors duration-300">
+              {featured.title}
+            </h2>
+            <p class="text-[17px] leading-relaxed text-warm-300 mb-6 max-w-2xl">
+              {featured.excerpt}
+            </p>
+            <div class="flex items-center gap-4 text-[14px] text-warm-400">
+              <span>{featured.author.name}</span>
+              <span class="w-1 h-1 rounded-full bg-warm-600"></span>
+              <span>{formatDate(featured.date)}</span>
+              <span class="w-1 h-1 rounded-full bg-warm-600"></span>
+              <span>{featured.readTime}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+
+  {/* Category Filter */}
+  <section class="sticky top-[88px] z-30 bg-white/95 backdrop-blur-md border-b border-warm-100">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="flex gap-2 overflow-x-auto py-4 scrollbar-hide">
+        {categories.map((cat) => (
+          <a
+            href={cat === 'All' ? '/resources/blog' : `/resources/blog?category=${encodeURIComponent(cat)}`}
+            class={`shrink-0 rounded-full px-5 py-2.5 text-[14px] font-medium transition-all duration-200 ${
+              activeCategory === cat
+                ? 'bg-warm-900 text-white'
+                : 'bg-warm-50 text-warm-500 hover:bg-warm-100 hover:text-warm-700'
+            }`}
+          >
+            {cat}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Article Grid */}
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      {filtered.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-8 gap-y-10 lg:gap-y-14">
+          {filtered.map((post) => (
+            <a href={`/resources/blog/${post.slug}`} class="group block">
+              <div class="rounded-2xl bg-warm-50 p-8 lg:p-10 mb-5 min-h-[200px] flex items-end transition-all duration-300 group-hover:bg-warm-100/80 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
+                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-500">
+                  {post.category}
+                </span>
+              </div>
+              <h3 class="font-display text-[22px] lg:text-[24px] leading-[1.2] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-gold-600 transition-colors duration-300">
+                {post.title}
+              </h3>
+              <p class="text-[15px] leading-relaxed text-warm-500 mb-4 line-clamp-2">
+                {post.excerpt}
+              </p>
+              <div class="flex items-center gap-3 text-[13px] text-warm-500">
+                <span>{post.author.name}</span>
+                <span class="w-1 h-1 rounded-full bg-warm-300"></span>
+                <span>{formatDate(post.date)}</span>
+                <span class="w-1 h-1 rounded-full bg-warm-300"></span>
+                <span>{post.readTime}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20">
+          <p class="text-[17px] text-warm-500">
+            No articles in this category yet. Check back soon.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  {/* Newsletter CTA */}
+  <section class="py-20 lg:py-28 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.2] tracking-[-0.02em] text-warm-900 mb-4">
+        Stay in the conversation
+      </h2>
+      <p class="text-[17px] text-warm-500 mb-10 max-w-lg mx-auto">
+        New articles, certified project announcements, and Standard updates
+        delivered to your inbox. No noise.
+      </p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault()">
+        <label for="newsletter-email" class="sr-only">Email address</label>
+        <input
+          id="newsletter-email"
+          type="email"
+          placeholder="you@company.com"
+          autocomplete="email"
+          class="flex-1 rounded-full border border-warm-200 bg-white px-6 py-3.5 text-[15px] text-warm-900 placeholder:text-warm-400 outline-none focus:border-warm-400 transition-colors"
+        />
+        <button
+          type="submit"
+          class="rounded-full bg-warm-900 px-8 py-3.5 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+</SiteLayout>

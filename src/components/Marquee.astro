@@ -1,0 +1,30 @@
+---
+interface Props {
+  items: string[]
+  speed?: number
+  separator?: string
+}
+
+const {
+  items,
+  speed = 30,
+  separator = '\u00A0\u00A0\u2022\u00A0\u00A0',
+} = Astro.props
+
+const text = items.join(separator)
+const doubled = `${text}${separator}${text}${separator}`
+---
+<div
+  class="overflow-hidden py-6 bg-warm-50 border-y border-warm-100"
+  aria-hidden="true"
+  role="presentation"
+>
+  <div
+    class="marquee-track whitespace-nowrap"
+    style={`--marquee-duration: ${speed}s`}
+  >
+    <span class="inline-block font-display text-[clamp(1rem,2vw,1.5rem)] tracking-[-0.01em] text-warm-300 select-none">
+      {doubled}
+    </span>
+  </div>
+</div>

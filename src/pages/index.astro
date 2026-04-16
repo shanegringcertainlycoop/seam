@@ -1,0 +1,674 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { faqSchema, breadcrumbSchema } from '../lib/seo-helpers'
+
+/* ─── Section 2a: Ecosystem Visualization ─── */
+const hotspots = [
+  {
+    id: 1,
+    x: 48,
+    y: 45,
+    title: 'Tenants + occupants inside the building',
+    body:
+      'The people who live, work, and gather here every day. Indoor environment, access, affordability, and belonging shape their daily experience — and their long-term health.',
+  },
+  {
+    id: 2,
+    x: 62,
+    y: 64,
+    title: 'Facilities + management professionals who run it',
+    body:
+      'The teams keeping the building alive. Fair wages, training pathways, and safe working conditions determine whether operations sustain people or wear them down.',
+  },
+  {
+    id: 3,
+    x: 82,
+    y: 54,
+    title: 'Workers + contractors who built it',
+    body:
+      'The trades who put the building up. Prevailing wage, apprenticeship access, and site safety decide whether construction builds careers or just structures.',
+  },
+  {
+    id: 4,
+    x: 78,
+    y: 80,
+    title: 'Residents + community who neighbor it',
+    body:
+      "The blocks, schools, and small businesses shaped by the building's presence. Displacement, traffic, jobs, and public space all ripple outward from every project.",
+  },
+  {
+    id: 5,
+    x: 18,
+    y: 50,
+    title: 'Vendors + manufacturers who supply it',
+    body:
+      'Every product specified carries a supply chain. Local sourcing, minority- and women-owned businesses, and ethical manufacturing turn procurement into equity.',
+  },
+  {
+    id: 6,
+    x: 88,
+    y: 12,
+    title: 'Laborers who source, collect, and refine it',
+    body:
+      'Materials start in mines, forests, mills, and factories often far from sight. Fair labor and human rights at the raw-material level are where real accountability begins.',
+  },
+]
+
+/* ─── Section 2b: Stats ─── */
+const stats = [
+  { value: 23, suffix: '%', label: 'higher profitability' },
+  { value: 17, suffix: '%', label: 'higher productivity' },
+  { value: 51, suffix: '%', label: 'lower employee turnover' },
+  { value: 10, suffix: '%', label: 'higher customer loyalty' },
+]
+
+/* ─── Section 3: Products ─── */
+const products = [
+  {
+    label: 'SEAM Certification',
+    title: 'Full building certification',
+    description:
+      'Bronze through Platinum certification across three tracks: Buildings + Interiors, Operations + Maintenance, and Community Development.',
+    href: '/certification',
+    audience: 'For developers, owners, and capital providers',
+    logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
+  },
+  {
+    label: 'SEAM Approved',
+    title: 'Activity-level verification',
+    description:
+      'Verify individual social equity activities without committing to full certification.',
+    href: '/approved',
+    audience: 'For operators, managers, and anchor institutions',
+    logo: '/logos/approved-wordmark.png',
+  },
+  {
+    label: 'SEAM AP Credential',
+    title: 'Professional accreditation',
+    description:
+      'The qualification for practitioners who lead certification work. Build your practice, join the directory, shape the field.',
+    href: '/ap-credential',
+    audience: 'For consultants and sustainability professionals',
+    logo: '/logos/ap-seal.png',
+  },
+  {
+    label: 'COMMUNITY',
+    title: 'SEAM Membership',
+    description:
+      'Resources, peer connection, and ongoing support for organizations and individuals committed to improving social equity.',
+    href: '/commons',
+    audience: 'For all professional audiences',
+    logo: '/logos/member-organization.png',
+    logo2: '/logos/member-individual.png',
+  },
+]
+
+/* ─── Section 5: Proof / Certified Projects ─── */
+const projects = [
+  {
+    name: 'The Jack',
+    location: 'Seattle, Washington, USA',
+    level: 'Bronze Certified',
+    description:
+      'A mixed-use development demonstrating that social equity and financial performance reinforce each other.',
+  },
+  {
+    name: 'Interface HQ',
+    location: 'Atlanta, GA',
+    level: 'Silver Certified',
+    description:
+      'Corporate headquarters redesigned around the communities and workers who give the building its life.',
+  },
+]
+
+/* ─── Section 6: Resources ─── */
+const resources = [
+  {
+    title: 'Open Membership',
+    description: 'Join the starting tier of our membership program to learn, participate, and join conversations.',
+    cta: 'Enroll for free',
+    href: '/community',
+  },
+  {
+    title: 'The SEAM Standard',
+    description: 'The full framework, free to download. Built on international human rights principles.',
+    cta: 'Download',
+    href: '/resources/standard',
+  },
+  {
+    title: 'ROSSI Calculator',
+    description: 'Translate social equity outcomes into the financial language decision-makers understand.',
+    cta: 'Try ROSSI',
+    href: '/resources/rossi',
+  },
+  {
+    title: 'Blog & Insights',
+    description: 'Lessons from certified projects, practitioner perspectives, and sector analysis.',
+    cta: 'Read',
+    href: '/resources/blog',
+  },
+]
+
+const jsonLd = [
+  faqSchema([
+    {
+      question: 'What is SEAM certification?',
+      answer:
+        'SEAM is the first certification system built to measure social equity in the built environment. It evaluates buildings across four interdependent pillars: Social Impact, Social Responsibility, Social Justice, and Social Accountability, with levels from Bronze through Platinum.',
+    },
+    {
+      question: 'How is SEAM different from LEED or WELL?',
+      answer:
+        'SEAM is complementary to LEED, WELL, and Fitwel. While those systems focus on environmental performance and physical wellness, SEAM measures social equity — the relationship between a building and the people it touches. SEAM requires ongoing verification, community voice in evaluation, and interdependent scoring across all four pillars.',
+    },
+    {
+      question: 'What is SEAM Approved?',
+      answer:
+        'SEAM Approved is a standalone activity-level verification program. Organizations can verify individual social equity practices without committing to full certification. It serves as both a standalone credential and a natural on-ramp to full SEAM certification.',
+    },
+    {
+      question: 'What is the ROSSI Calculator?',
+      answer:
+        'ROSSI (Return on Social Sustainability Investment) translates social equity outcomes into financial language. It models project-level and portfolio-level impact, GRESB alignment, and insurance risk reduction to help capital providers evaluate social sustainability investments.',
+    },
+  ]),
+  breadcrumbSchema([{ name: 'Home', path: '/' }]),
+]
+---
+<SiteLayout
+  description="SEAM is the first certification system that measures social equity in buildings. Bronze through Platinum certification across Social Impact, Social Responsibility, Social Justice, and Social Accountability."
+  path="/"
+  jsonLd={jsonLd}
+>
+  <!-- ─── Section 1: Hero ─── -->
+  <section class="relative min-h-[90vh] flex items-end overflow-hidden">
+    <!-- Background image -->
+    <div class="absolute inset-0">
+      <img
+        data-parallax="0.25"
+        src="/hero.png"
+        alt="People gathered in conversation beneath the columns of a modern building"
+        class="hero-image h-full w-full object-cover object-center scale-105"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/10"></div>
+    </div>
+
+    <div class="hero-enter relative mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-28 w-full">
+      <div class="max-w-3xl">
+        <h1 class="hero-title font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          Buildings have a human impact.{' '}
+          <em class="font-display italic font-normal text-warm-200">
+            How far does yours reach?
+          </em>
+        </h1>
+        <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.1rem,1.5vw,1.25rem)] leading-relaxed text-warm-200">
+          From the labor you source to the manufacturers you choose and the communities you touch, your building leaves a lasting impression. SEAM was created to make it a positive one.
+        </p>
+        <div class="hero-cta mt-12 flex flex-wrap gap-4">
+          <a
+            href="/get-started"
+            class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+          >
+            Start a project
+          </a>
+          <a
+            href="/about/mission"
+            class="inline-flex items-center rounded-full border border-white/30 px-8 py-4 text-[16px] font-medium text-white hover:border-white/60 transition-colors duration-300"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Section 2: Mission ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-fade-up max-w-3xl mx-auto text-center">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          Our purpose
+        </p>
+        <p class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-warm-900">
+          When buildings are{' '}
+          <em class="italic font-normal text-seam-600">
+            designed and operated
+          </em>{' '}
+          with social equity as a focus, and not an afterthought, communities thrive and investments outperform. SEAM is the world's first standard built to advance social equity in commercial real estate.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Section 2a: Ecosystem Visualization ─── -->
+  <section class="bg-warm-50 py-20 lg:py-28">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-fade-up max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">
+          Who your building touches
+        </p>
+        <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.2] tracking-[-0.02em] text-warm-900">
+          Every building reaches{' '}
+          <em class="italic font-normal text-seam-600">six groups of people.</em>
+        </h2>
+        <p class="mt-4 text-[15px] text-warm-500">
+          Hover or tap a dot to see who.
+        </p>
+      </div>
+
+      <div
+        id="ecosystem-container"
+        class="relative mx-auto w-full max-w-[1100px] aspect-[7/5] overflow-hidden rounded-xl"
+      >
+        <img
+          src="/images/ecosystem-building.png"
+          alt="Isometric illustration of a building and its surrounding ecosystem"
+          class="absolute inset-0 h-full w-full object-cover object-top select-none pointer-events-none"
+          draggable="false"
+        />
+
+        {hotspots.map((spot) => {
+          const translateX = spot.x < 20 ? '-20%' : spot.x > 80 ? '-80%' : '-50%'
+          return (
+            <button
+              type="button"
+              data-hotspot-id={spot.id}
+              aria-label={spot.title}
+              aria-expanded="false"
+              class="hotspot absolute -translate-x-1/2 -translate-y-1/2 group flex items-center justify-center outline-none"
+              style={`left: ${spot.x}%; top: ${spot.y}%;`}
+            >
+              {/* Halo — subtle, grows gently on active */}
+              <span
+                class="hotspot-halo absolute rounded-full bg-seam-600/15 transition-transform duration-[400ms] ease-out h-8 w-8 md:h-11 md:w-11"
+              ></span>
+              {/* Inner dot — subtle scale + ring change */}
+              <span
+                class="hotspot-dot relative block rounded-full bg-seam-600 ring-white shadow-[0_2px_8px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-[250ms] ease-out h-3 w-3 md:h-4 md:w-4 ring-2 scale-100"
+              ></span>
+              {/* Tooltip (desktop) — always mounted, fades in/out */}
+              <div
+                role="tooltip"
+                aria-hidden="true"
+                data-hotspot-tooltip={spot.id}
+                class="hidden md:block pointer-events-none absolute left-1/2 top-full mt-4 w-[300px] rounded-2xl bg-white p-5 text-left shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-warm-100 z-10 transition-opacity duration-200 ease-out opacity-0"
+                style={`transform: translateX(${translateX});`}
+              >
+                <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
+                  {spot.title}
+                </p>
+                <p class="text-[14px] leading-relaxed text-warm-500">
+                  {spot.body}
+                </p>
+              </div>
+            </button>
+          )
+        })}
+      </div>
+
+      <!-- Mobile info panel — shows the active hotspot below the image -->
+      <div class="md:hidden mt-6 min-h-[160px]">
+        <div id="ecosystem-mobile-empty" class="text-center text-[14px] text-warm-400 pt-6">
+          Tap any dot above to learn more.
+        </div>
+        {hotspots.map((spot) => (
+          <div
+            data-hotspot-panel={spot.id}
+            class="hotspot-mobile-panel hidden rounded-2xl bg-white p-5 border border-warm-100 shadow-[0_8px_24px_rgba(0,0,0,0.06)]"
+          >
+            <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-2">
+              Tap a dot
+            </p>
+            <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
+              {spot.title}
+            </p>
+            <p class="text-[14px] leading-relaxed text-warm-500">
+              {spot.body}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Section 2b: Stats ─── -->
+  <section class="reveal-fade-up pt-20 lg:pt-24 pb-px border-b border-warm-100">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <p class="text-[17px] text-warm-400 max-w-xl mb-10">
+        Businesses that prioritize improving human impact outperform their peers by:
+      </p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        {stats.map((s) => (
+          <div class="text-center">
+            <span
+              class="block font-display text-[clamp(2.5rem,5vw,4rem)] tracking-[-0.04em] text-seam-600"
+              data-count-target={s.value}
+              data-count-suffix={s.suffix}
+            >0</span>
+            <span class="block mt-2 text-[14px] text-warm-500 uppercase tracking-[0.08em]">
+              {s.label}
+            </span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 mb-10 text-[17px] text-warm-400">
+        (Gallup Q12 Meta-Analysis, 11th Edition, 736 studies)
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Section 3: Products ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          What we offer
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          SEAM is built for{' '}
+          <em class="italic font-normal text-seam-600">where you are</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
+        {products.map((product) => (
+          <a
+            href={product.href}
+            class="reveal-child group relative overflow-visible rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+          >
+            <div class="absolute -top-10 right-8 flex items-end pointer-events-none">
+              {product.logos ? (
+                <div class="flex items-end -space-x-12">
+                  {product.logos.map((logo) => (
+                    <img
+                      src={logo}
+                      alt=""
+                      class="h-24 w-auto object-contain"
+                    />
+                  ))}
+                </div>
+              ) : product.logo2 ? (
+                <div class="flex items-end">
+                  <img
+                    src={product.logo}
+                    alt=""
+                    class="h-24 w-auto object-contain"
+                  />
+                  <img
+                    src={product.logo2}
+                    alt=""
+                    class="h-24 w-auto object-contain -ml-16"
+                  />
+                </div>
+              ) : product.logo?.includes('approved-wordmark') ? (
+                <div class="h-24 w-24 bg-[#01313d] rounded-xl flex items-center justify-center p-3">
+                  <img
+                    src={product.logo}
+                    alt=""
+                    class="w-full object-contain brightness-0 invert"
+                  />
+                </div>
+              ) : (
+                <img
+                  src={product.logo}
+                  alt=""
+                  class="h-24 w-auto object-contain"
+                />
+              )}
+            </div>
+            <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-seam-600 mb-2 block">
+              {product.label}
+            </span>
+            <h3 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4">
+              {product.title}
+            </h3>
+            <p class="text-[16px] leading-relaxed text-warm-500 mb-6">
+              {product.description}
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-[14px] text-warm-400">{product.audience}</span>
+              <span class="text-warm-400 group-hover:text-warm-900 group-hover:translate-x-1 transition-all duration-300">
+                &rarr;
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Section 5: Proof / Certified Projects ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          Proof
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Buildings already{' '}
+          <em class="italic font-normal text-seam-600">leading the way</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
+        {projects.map((project) => (
+          <div
+            class="reveal-child group relative rounded-2xl bg-warm-900 p-10 lg:p-12 min-h-[360px] flex flex-col justify-end overflow-hidden"
+          >
+            {/* Placeholder for future project imagery */}
+            <div class="absolute inset-0 bg-gradient-to-t from-warm-900 via-warm-900/80 to-warm-900/40"></div>
+            <div class="relative">
+              <span class="inline-block rounded-full bg-seam-600 px-4 py-1.5 text-[12px] font-medium text-white mb-4">
+                {project.level}
+              </span>
+              <h3 class="font-display text-[28px] lg:text-[32px] tracking-[-0.02em] text-white mb-2">
+                {project.name}
+              </h3>
+              <p class="text-[15px] text-warm-300 mb-3">{project.location}</p>
+              <p class="text-[16px] leading-relaxed text-warm-400">
+                {project.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a
+          href="/about/projects"
+          class="text-[15px] font-medium text-warm-900 underline underline-offset-4 decoration-warm-300 hover:decoration-warm-900 transition-colors duration-300"
+        >
+          View all certified projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Section 6: Resources ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          Open resources
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Start here,{' '}
+          <em class="italic font-normal text-seam-600">no commitment required</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {resources.map((resource) => (
+          <a
+            href={resource.href}
+            class="reveal-child group rounded-2xl bg-warm-50 p-8 lg:p-10 transition-all duration-300 hover:bg-warm-100/80"
+          >
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
+              {resource.title}
+            </h3>
+            <p class="text-[15px] leading-relaxed text-warm-500 mb-8">
+              {resource.description}
+            </p>
+            <span class="text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
+              {resource.cta} &rarr;
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Section 7: CTA ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        Ready to build something{' '}
+        <em class="italic font-normal text-seam-400">worth belonging to?</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        Whether you are certifying a building, earning a credential, or exploring the SEAM Standard for the first time, we'll help you find the place you belong.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a
+          href="/get-started"
+          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+        >
+          Get started
+        </a>
+        <a
+          href="/resources/standard"
+          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+        >
+          Download the Standard
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax script (only used on the home hero) -->
+  <script src="../scripts/parallax.ts"></script>
+
+  <!-- Ecosystem hotspot interactivity -->
+  <script>
+    function initEcosystemHotspots() {
+      const container = document.getElementById('ecosystem-container')
+      if (!container) return
+
+      const hotspots = container.querySelectorAll<HTMLButtonElement>('.hotspot')
+      const tooltips = container.querySelectorAll<HTMLElement>('[data-hotspot-tooltip]')
+      const mobileEmpty = document.getElementById('ecosystem-mobile-empty')
+      const mobilePanels = document.querySelectorAll<HTMLElement>('.hotspot-mobile-panel')
+
+      let hovered: string | null = null
+      let locked: string | null = null
+
+      function getActive(): string | null {
+        return locked ?? hovered
+      }
+
+      function applyState() {
+        const active = getActive()
+
+        // Hotspot dot/halo states
+        hotspots.forEach((btn) => {
+          const id = btn.dataset.hotspotId ?? ''
+          const isActive = active === id
+          btn.setAttribute('aria-expanded', String(isActive))
+
+          const halo = btn.querySelector<HTMLElement>('.hotspot-halo')
+          const dot = btn.querySelector<HTMLElement>('.hotspot-dot')
+
+          if (halo) {
+            if (isActive) {
+              halo.classList.remove('h-8', 'w-8', 'md:h-11', 'md:w-11')
+              halo.classList.add('h-10', 'w-10', 'md:h-14', 'md:w-14')
+            } else {
+              halo.classList.remove('h-10', 'w-10', 'md:h-14', 'md:w-14')
+              halo.classList.add('h-8', 'w-8', 'md:h-11', 'md:w-11')
+            }
+          }
+
+          if (dot) {
+            if (isActive) {
+              dot.classList.remove('h-3', 'w-3', 'md:h-4', 'md:w-4', 'ring-2', 'scale-100')
+              dot.classList.add('h-3.5', 'w-3.5', 'md:h-5', 'md:w-5', 'ring-[3px]', 'md:ring-4', 'scale-110')
+            } else {
+              dot.classList.remove('h-3.5', 'w-3.5', 'md:h-5', 'md:w-5', 'ring-[3px]', 'md:ring-4', 'scale-110')
+              dot.classList.add('h-3', 'w-3', 'md:h-4', 'md:w-4', 'ring-2', 'scale-100')
+            }
+          }
+        })
+
+        // Tooltip opacity (desktop)
+        tooltips.forEach((tt) => {
+          const id = tt.dataset.hotspotTooltip ?? ''
+          const isActive = active === id
+          tt.setAttribute('aria-hidden', String(!isActive))
+          tt.style.opacity = isActive ? '1' : '0'
+        })
+
+        // Mobile panel
+        let anyActive = false
+        mobilePanels.forEach((panel) => {
+          const id = panel.dataset.hotspotPanel ?? ''
+          const isActive = active === id
+          if (isActive) {
+            panel.classList.remove('hidden')
+            anyActive = true
+          } else {
+            panel.classList.add('hidden')
+          }
+        })
+        if (mobileEmpty) {
+          if (anyActive) mobileEmpty.classList.add('hidden')
+          else mobileEmpty.classList.remove('hidden')
+        }
+      }
+
+      hotspots.forEach((btn) => {
+        const id = btn.dataset.hotspotId ?? ''
+
+        btn.addEventListener('mouseenter', () => {
+          hovered = id
+          applyState()
+        })
+        btn.addEventListener('mouseleave', () => {
+          hovered = null
+          applyState()
+        })
+        btn.addEventListener('focus', () => {
+          hovered = id
+          applyState()
+        })
+        btn.addEventListener('blur', () => {
+          hovered = null
+          applyState()
+        })
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation()
+          locked = locked === id ? null : id
+          applyState()
+        })
+      })
+
+      // Close locked tooltip on outside click
+      document.addEventListener('mousedown', (e) => {
+        if (locked === null) return
+        if (!container.contains(e.target as Node)) {
+          locked = null
+          applyState()
+        }
+      })
+
+      applyState()
+    }
+
+    document.addEventListener('astro:page-load', initEcosystemHotspots)
+    // Fallback: if astro:page-load doesn't fire (no view transitions), run on DOMContentLoaded
+    if (document.readyState !== 'loading') {
+      initEcosystemHotspots()
+    } else {
+      document.addEventListener('DOMContentLoaded', initEcosystemHotspots)
+    }
+  </script>
+</SiteLayout>
