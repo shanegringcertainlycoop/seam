@@ -3,12 +3,12 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
 
 const included = [
-  { title: 'Activity templates', description: 'Pre-built documentation for every activity in the Standard. Start from proven formats instead of blank pages.' },
-  { title: 'Course library', description: 'Self-paced courses covering the Standard, pillar deep-dives, the certification process, and the ROSSI financial framework.' },
-  { title: 'Practitioner network', description: 'Connect with SEAM APs, project teams, and peers. Referral pipeline, co-practice opportunities, and collaborative problem-solving.' },
-  { title: 'CEU tracking', description: 'Automatic continuing education credit tracking for AP renewal. Courses, webcasts, and peer sessions all count.' },
-  { title: 'ROSSI access', description: 'Model the financial impact of social equity outcomes for client presentations, investor decks, and project proposals.' },
-  { title: 'Standard development input', description: 'Participate in advisory sessions and pilot programs. Help shape the next version of the SEAM Standard.' },
+  { title: 'Access to The Stitch', description: 'Our member community platform, with pre-built documentation templates for every activity in the Standard. Start from proven formats instead of blank pages.' },
+  { title: 'Discounts on Certifications and Events', description: 'Member pricing on SEAM Approved verification, full certification fees, the AP exam, and in-person events throughout the year.' },
+  { title: 'Recognition in the SEAM Directory', description: 'A public profile in the SEAM practitioner directory. Connect with APs, project teams, and peers. Receive inbound referrals from organizations seeking expertise.' },
+  { title: 'Resources & Expert Insights', description: 'Self-paced courses covering the Standard, pillar deep-dives, certification process, and the ROSSI framework. Automatic CEU credit tracking for AP renewal.' },
+  { title: 'Content Sharing in the SEAM Network', description: 'Publish case studies, project write-ups, and research to a network of practitioners. Model the financial impact of social equity outcomes with ROSSI.' },
+  { title: 'A Community Built for Impact', description: 'Participate in advisory sessions, pilot new activities, and help shape future versions of the SEAM Standard. Your voice moves the field forward.' },
 ]
 
 const tiers = [
@@ -16,31 +16,23 @@ const tiers = [
     name: 'Open',
     price: 'Free',
     period: '',
-    description: 'For professionals exploring SEAM and seeking to get involved. No commitment required.',
-    features: ['Download the full SEAM Standard', 'Browse the practitioner directory', 'Attend public webcasts and events', 'Monthly newsletter with field updates'],
+    description: 'For those exploring SEAM and seeking to get involved. No commitment required.',
+    features: ['Download the full SEAM Standard', 'Join critical conversations', 'Attend public webcasts and events', 'Monthly newsletter with field updates'],
     cta: 'Get started free',
+    href: '/get-started',
     highlighted: false,
-    note: '',
+    badge: '/logos/member-individual.png',
   },
   {
-    name: 'Practitioner',
-    price: '$249',
-    period: '/year',
-    description: 'For professionals pursuing or holding the AP credential. Full community access.',
-    features: ['Everything in Open', 'Activity documentation templates', 'Full course library with CEU credit', 'Practitioner network and referrals', 'Basic ROSSI Calculator access', 'CEU tracking dashboard', 'Access to SEAM project referrals', 'Discounted SEAM Approved verification'],
-    cta: 'Join as Practitioner',
-    highlighted: true,
-    note: '',
-  },
-  {
-    name: 'Education',
+    name: 'Changemaker',
     price: '$99',
     period: '/year',
-    description: 'Income-qualified rate for students, early-career professionals, and nonprofit staff.',
-    features: ['Income-qualified pricing (self-reported)', 'Mentorship matching with senior APs', 'Priority access to fellowship programs'],
-    cta: 'Apply for Educational',
-    highlighted: false,
-    note: 'Available to students, professionals with under 3 years of experience, and staff at nonprofits with budgets under $5M.',
+    description: 'Includes tools, access, + discounts to support deeper SEAM engagement.',
+    features: ['Everything in Open and Education', 'Activity documentation templates', 'SEAM AP exam fee covered', 'Full course library with CEU credit', 'Practitioner network and referrals', 'Basic ROSSI Calculator access', 'CEU tracking dashboard', 'Access to SEAM project referrals', 'Discounted SEAM Approved verification'],
+    cta: 'Join as a Changemaker',
+    href: 'https://community.seamcertification.org/plans/1975151',
+    highlighted: true,
+    badge: '/logos/member-changemaker.png',
   },
 ]
 
@@ -52,11 +44,11 @@ const personas = [
 ]
 
 const faqs = [
-  { q: 'Can I upgrade or downgrade at any time?', a: 'Yes. Upgrade from Open to Practitioner or Education at any time — your billing starts immediately. Downgrade at the end of your annual billing cycle.' },
-  { q: 'Is the Education tier really honor-system?', a: 'Yes. Self-reported eligibility for students, early-career professionals (under 3 years), and nonprofit staff (organizations under $5M budget). We trust our community.' },
-  { q: 'Do Practitioner benefits carry over if I let my membership lapse?', a: 'Course completions and CEU records are permanent. Template access, ROSSI, and network features require an active membership. Re-join anytime to restore access.' },
-  { q: 'How does the AP exam discount work?', a: 'Practitioner and Education members receive $50 off the AP exam registration fee. The discount is applied automatically when you register through your member dashboard.' },
-  { q: 'Can my employer reimburse individual membership?', a: 'Yes. We provide invoices and receipts suitable for professional development reimbursement. Many employers cover Practitioner membership as a continuing education benefit.' },
+  { q: 'Can I upgrade or downgrade at any time?', a: 'Yes. Upgrade from Open to Changemaker or Special Access at any time — your billing starts immediately. Downgrade at the end of your annual billing cycle.' },
+  { q: 'Is the Education tier really honor-system?', a: 'Yes. Special Access pricing is self-reported and available to students, early-career professionals (under 3 years), and nonprofit staff (organizations under $5M budget). We trust our community.' },
+  { q: 'Do Changemaker benefits carry over if I let my membership lapse?', a: 'Course completions and CEU records are permanent. Template access, ROSSI, and network features require an active membership. Re-join anytime to restore access.' },
+  { q: 'How does the AP exam discount work?', a: 'Changemaker members have the SEAM AP exam fee covered as part of their membership. Register for the exam through your member dashboard to claim the benefit.' },
+  { q: 'Can my employer reimburse individual membership?', a: 'Yes. We provide invoices and receipts suitable for professional development reimbursement. Many employers cover Changemaker membership as a continuing education benefit.' },
 ]
 
 const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
@@ -73,7 +65,7 @@ const jsonLd = [
 
 <SiteLayout
   title="Individual Membership"
-  description="Individual community membership for SEAM practitioners. Open (free), Practitioner ($249/yr), and Education ($99/yr) tiers with templates, courses, ROSSI access, and practitioner network."
+  description="Individual community membership for SEAM practitioners. Open (free) and Changemaker ($99/yr) tiers with templates, courses, ROSSI access, practitioner network, and discounted certification fees. Special Access available for students and global members."
   path="/community/individual"
   jsonLd={jsonLd}
 >
@@ -94,14 +86,14 @@ const jsonLd = [
           Individual Membership
         </span>
         <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
-          Your practice. <em class="font-display italic font-normal text-seam-300">Your pace.</em>
+          Your commitment. <em class="font-display italic font-normal text-seam-300">Your pace.</em>
         </h1>
         <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-          The built environment shapes who thrives and who doesn't. Membership connects you to the people and tools rewriting that story — wherever you are in the work.
+          The built environment can shape who thrives and who doesn't. Membership connects you to the people advancing social equity and the tools to move you forward, wherever you are in the work.
         </p>
         <div class="hero-cta mt-10 flex flex-wrap gap-4">
-          <a href="/get-started" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
-            Join as Practitioner
+          <a href="https://community.seamcertification.org/plans/1975151" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+            Join as Changemaker
           </a>
           <a href="#pricing" class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300">
             Compare tiers
@@ -109,7 +101,10 @@ const jsonLd = [
         </div>
       </div>
     </div>
-    <img src="/logos/member-individual.png" alt="Individual membership" class="hidden lg:block absolute -bottom-44 right-16 w-[26rem] h-[26rem] object-contain drop-shadow-2xl z-10" />
+    <div class="hidden lg:flex absolute -bottom-24 right-12 items-end gap-0 z-10">
+      <img src="/logos/member-individual.png" alt="Individual membership" class="w-64 h-64 object-contain drop-shadow-2xl -mr-12" />
+      <img src="/logos/member-changemaker.png" alt="Changemaker membership" class="w-64 h-64 object-contain drop-shadow-2xl" />
+    </div>
   </section>
 
   <!-- What's Included -->
@@ -118,7 +113,7 @@ const jsonLd = [
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">What you get</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Tools to build <em class="italic font-normal">a real practice</em>
+          Tools to build <em class="italic font-normal text-seam-600">a real practice</em>
         </h2>
       </div>
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -138,16 +133,17 @@ const jsonLd = [
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Pricing</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Pick what <em class="italic font-normal">you need</em>
+          Pick what <em class="italic font-normal text-seam-600">you need</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
           Start free with Open. Upgrade when you are ready. Downgrade or cancel anytime.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-12">
         {tiers.map((tier) => (
-          <div class={`rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-warm-900 text-white ring-2 ring-seam-500' : 'bg-white border border-warm-100'}`}>
+          <div class={`relative overflow-visible rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-warm-900 text-white' : 'bg-white border border-warm-100'}`}>
+            <img src={tier.badge} alt="" class="absolute -top-12 right-10 w-24 h-24 object-contain drop-shadow-lg" />
             <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
             <div class="mt-3 flex items-baseline gap-1">
               <span class={`font-display text-[40px] tracking-[-0.04em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.price}</span>
@@ -166,15 +162,33 @@ const jsonLd = [
               ))}
             </ul>
 
-            {tier.note && (
-              <p class={`mt-6 text-[13px] leading-relaxed italic ${tier.highlighted ? 'text-warm-400' : 'text-warm-500'}`}>{tier.note}</p>
-            )}
-
-            <a href="/get-started" class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
+            <a href={tier.href} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
               {tier.cta}
             </a>
           </div>
         ))}
+
+        <!-- Right column: SEAM AP + Special Access info boxes -->
+        <div class="flex flex-col gap-6">
+          <a href="/ap-credential" class="group rounded-2xl bg-white border border-warm-100 p-8 lg:p-10 flex flex-col transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900 mb-4">SEAM AP credential</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500 flex-1">
+              Earn the Accredited Professional credential to certify your expertise. Changemaker members receive discounted exam registration.
+            </p>
+            <span class="mt-6 inline-flex items-center text-[15px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">
+              Check out SEAM AP &rarr;
+            </span>
+          </a>
+          <a href="/get-started" class="group rounded-2xl bg-white border border-warm-100 p-8 lg:p-10 flex flex-col transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900 mb-4">Special Access</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500 flex-1">
+              For students, global members, nonprofit staff, and early-career professionals. Income-qualified, honor system. Available to students, those with under 3 years of experience, and staff at nonprofits with budgets under $5M.
+            </p>
+            <span class="mt-6 inline-flex items-center text-[15px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">
+              Apply now &rarr;
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -185,7 +199,7 @@ const jsonLd = [
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Who it serves</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Wherever you are <em class="italic font-normal">in your journey</em>
+          Wherever you are <em class="italic font-normal text-seam-600">in your journey</em>
         </h2>
       </div>
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -205,11 +219,11 @@ const jsonLd = [
       <div class="max-w-4xl mx-auto text-center">
         <svg class="mx-auto mb-8 w-12 h-12 text-warm-600" fill="currentColor" viewBox="0 0 24 24"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" /></svg>
         <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
-          I joined as Practitioner, earned the AP three months later, and had my first client referral from the network within the same quarter. The Practitioner tier paid for itself before the year was up.
+          I joined as a Changemaker, earned the AP three months later, and had my first client referral from the network within the same quarter. The Changemaker tier paid for itself before the year was up.
         </blockquote>
         <div class="mt-10">
           <p class="text-[16px] font-medium text-white">Tanya Brooks</p>
-          <p class="text-[14px] text-warm-400 mt-1">SEAM AP &middot; Practitioner Member</p>
+          <p class="text-[14px] text-warm-400 mt-1">SEAM AP &middot; Changemaker Member</p>
         </div>
       </div>
     </div>
@@ -218,24 +232,33 @@ const jsonLd = [
   <!-- FAQ -->
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Frequently asked</p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Questions about <em class="italic font-normal">individual membership</em>
-        </h2>
-      </div>
-      <div class="max-w-3xl">
-        {faqs.map((faq) => (
-          <details class="border-b border-warm-200 group">
-            <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-              <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
-              <svg class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-            </summary>
-            <div class="pb-6">
-              <p class="text-[16px] leading-relaxed text-warm-500 max-w-2xl">{faq.a}</p>
-            </div>
-          </details>
-        ))}
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-start">
+        <div>
+          <div class="reveal-slide-left max-w-2xl mb-12 lg:mb-16">
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Frequently asked</p>
+            <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+              Questions about <em class="italic font-normal text-seam-600">individual membership</em>
+            </h2>
+          </div>
+          <div>
+            {faqs.map((faq) => (
+              <details class="border-b border-warm-200 group">
+                <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
+                  <svg class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                </summary>
+                <div class="pb-6">
+                  <p class="text-[16px] leading-relaxed text-warm-500 max-w-2xl">{faq.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+        <div class="reveal-scale hidden lg:block">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img src="/images/individual-faq.jpg" alt="SEAM Changemaker member" class="w-full h-full object-cover" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -246,7 +269,7 @@ const jsonLd = [
       <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
         Start free. <em class="italic font-normal text-seam-300">Grow when you are ready.</em>
       </h2>
-      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">Open costs nothing. Practitioner pays for itself with one client referral.</p>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">Open costs nothing. Changemaker pays for itself with one client referral.</p>
       <div class="mt-12 flex flex-wrap justify-center gap-4">
         <a href="/get-started" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Join the community</a>
         <a href="/ap-credential" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Earn the AP credential</a>

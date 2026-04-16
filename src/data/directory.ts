@@ -25,7 +25,6 @@ export interface CertifiedProject {
   ratingSystem:
     | 'Buildings + Interiors'
     | 'Operations + Maintenance'
-    | 'Community Development'
   description: string
   completionDate: string
   size: string
@@ -137,7 +136,7 @@ export const seamAPs: SeamAP[] = [
     organization: 'Evergreen Impact',
     location: { city: 'Denver', state: 'CO' },
     specialties: ['Community Development', 'Neighborhood Scale', 'Community Engagement'],
-    bio: 'Rachel works exclusively on community development rating system projects, helping neighborhoods and districts pursue SEAM certification at a scale larger than individual buildings. Her background in urban planning gives her a unique perspective on how the Standard applies to public spaces, streetscapes, and mixed-use districts.',
+    bio: 'Rachel focuses on neighborhood-scale community development projects, helping property owners and community organizations apply SEAM certification to mixed-use developments. Her background in urban planning gives her a unique perspective on how the Standard applies to public spaces, streetscapes, and the surrounding community.',
     credentials: 'SEAM AP',
     dateCredentialed: '2025-09-01',
     projectsLed: 2,
@@ -254,26 +253,6 @@ export const certifiedProjects: CertifiedProject[] = [
       'GRESB score improvement of 18 points attributed to SEAM practices',
     ],
     apLead: 'david-okonkwo',
-  },
-  {
-    slug: 'lakewood-village',
-    name: 'Lakewood Village',
-    image: '/images/directory/project-lakewood-village.jpg',
-    location: { city: 'Denver', state: 'CO' },
-    certificationLevel: 'Silver',
-    ratingSystem: 'Community Development',
-    description:
-      'A neighborhood-scale certification covering a 12-block mixed-use district in Denver. Lakewood Village demonstrated the Community Development rating system at scale, coordinating across multiple property owners, public spaces, and community organizations to achieve district-wide social equity outcomes.',
-    completionDate: '2025-10',
-    size: '12-block district / 45 acres',
-    owner: 'Lakewood Community Development Corporation',
-    highlights: [
-      'First Community Development rating system certification',
-      'Coordinated 8 property owners under single certification umbrella',
-      'Public space activation program serving 3,000+ residents monthly',
-      'District-wide living wage commitment from all participating employers',
-    ],
-    apLead: 'rachel-greenspan',
   },
   {
     slug: 'houston-methodist-pavilion',
@@ -465,7 +444,6 @@ export const ratingSystems = [
   'All',
   'Buildings + Interiors',
   'Operations + Maintenance',
-  'Community Development',
 ] as const
 
 export const activityCategories = [

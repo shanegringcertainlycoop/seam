@@ -3,47 +3,82 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
 
 const reasons = [
-  { title: 'Team-wide access', description: 'Give your entire team — property managers, sustainability leads, community liaisons, executives — access to the same templates, courses, and tools. No per-seat subscriptions.' },
-  { title: 'Portfolio ROSSI modeling', description: 'Model social equity impact across your entire portfolio. Aggregate GRESB-aligned data, benchmark properties against each other, and generate board-ready reporting.' },
-  { title: 'Volume verification pricing', description: 'Discounted SEAM Approved and certification fees when rolling out across multiple properties. Builder and Steward tiers include priority reviewer scheduling.' },
-  { title: 'Dedicated onboarding', description: 'A SEAM team member works with your organization to map existing programs to the Standard, identify quick wins, and build a certification roadmap tailored to your portfolio.' },
-  { title: 'Standard development influence', description: 'Steward members sit on the advisory council. Shape how the Standard evolves, pilot new activities before public release, and co-author case studies.' },
-  { title: 'Co-branded recognition', description: 'Steward members receive co-branded case studies, directory placement, and speaking opportunities at SEAM events. Public leadership in the movement.' },
+  { title: 'Access to The Stitch', description: 'Give your entire team — property managers, sustainability leads, community liaisons, executives — access to the same templates, courses, and tools in our members-only community platform.' },
+  { title: 'AP Training and Exam Credits', description: 'Ladder and Arc tiers include complimentary SEAM AP training and exam credits for team members. Build in-house expertise without per-seat costs.' },
+  { title: 'Recognition on the SEAM Site & Directory', description: 'Showcase your commitment with a listing in the Member Directory and recognition on the SEAM website — text listing, logo, or featured placement depending on tier.' },
+  { title: 'Discounts for Certifications & Events', description: 'Tiered discounts on SEAM Approved verification, full certification fees, and events throughout the year. Scale your investment alongside your portfolio.' },
+  { title: 'Thought Leadership Opportunities', description: 'Submit blog posts, featured articles, and webinars. Arc members help shape future versions of the Standard and the direction of the movement.' },
+  { title: 'Support the Movement, Build Your Reputation', description: 'Event sponsorships, use of membership logos, and co-branded content opportunities. Public leadership in the movement for social equity in the built environment.' },
 ]
 
 const tiers = [
   {
-    name: 'Contributor',
-    price: 'Custom',
-    description: 'For organizations beginning their SEAM journey. Access to templates and basic portfolio tools.',
-    features: ['5 team seats', 'Activity documentation templates', 'Basic ROSSI Calculator', 'Quarterly webinars and office hours', 'Standard member directory listing', 'Discounted SEAM Approved fees'],
-    cta: 'Request pricing',
-    highlighted: false,
-  },
-  {
-    name: 'Builder',
-    price: 'Custom',
-    description: 'For organizations actively pursuing certification or rolling out SEAM Approved across properties.',
-    features: ['15 team seats', 'Full ROSSI Calculator with portfolio modeling', 'Priority reviewer scheduling', 'Dedicated onboarding session', 'Full course library for all seats', 'Discounted certification fees', 'Volume SEAM Approved pricing', 'Quarterly strategy check-ins'],
-    cta: 'Request pricing',
-    highlighted: true,
-  },
-  {
-    name: 'Steward',
-    price: 'Custom',
-    description: 'For institutions leading the movement. Maximum influence, unlimited scale.',
-    features: ['Unlimited team seats', 'Portfolio ROSSI with benchmarking', 'Advisory council seat', 'Co-branded case studies', 'Custom training for your team', 'Volume certification pricing', 'Priority access to pilot programs', 'Speaking opportunities at SEAM events', 'Executive briefings and board presentations'],
+    name: 'Standing',
+    price: '$1,600',
+    period: '/year',
+    description: 'For organizations beginning their SEAM journey. Access to The Stitch and foundational benefits.',
+    features: [
+      'Access to The Stitch members-only hub',
+      '5% discount on certifications and events',
+      'Eligibility to sponsor events',
+      'Recognition in the Member Directory',
+      'Recognition on the SEAM website (text listing)',
+      '3 included employee individual memberships',
+    ],
     cta: 'Talk to our team',
     highlighted: false,
+    badge: '/logos/member-standing.png',
+  },
+  {
+    name: 'Ladder',
+    price: '$6,000',
+    period: '/year',
+    description: 'For organizations actively pursuing certification or rolling out SEAM Approved across properties.',
+    features: [
+      'Access to The Stitch members-only hub',
+      '10% discount on certifications and events',
+      'Eligibility to sponsor events',
+      'Recognition in the Member Directory',
+      'Recognition on the SEAM website (logo)',
+      'Ability to submit a blog post on SEAM\u2019s website',
+      '10 included employee individual memberships',
+      '1 complimentary AP training and exam',
+    ],
+    cta: 'Talk to our team',
+    highlighted: true,
+    badge: '/logos/member-ladder.png',
+  },
+  {
+    name: 'Arc',
+    price: '$18,000',
+    period: '/year',
+    description: 'For institutions leading the movement. Maximum influence and recognition.',
+    features: [
+      'Access to The Stitch members-only hub',
+      '15% discount on certifications and events',
+      'Eligibility to sponsor events',
+      'Recognition on the SEAM website (logo, featured)',
+      'Submit featured articles & webinars',
+      'Use of the membership logo',
+      '25 included employee individual memberships',
+      '5 complimentary AP trainings and exams',
+      '1 included event sponsorship',
+    ],
+    cta: 'Talk to our team',
+    highlighted: false,
+    badge: '/logos/member-arc.png',
   },
 ]
 
-const orgs = [
-  { title: 'Real estate operators', description: 'Property management firms rolling out social equity programs across a portfolio. Use SEAM Approved to designate existing practices at scale.' },
-  { title: 'Developers and ownership groups', description: 'Organizations pursuing full certification for new developments or existing assets. Portfolio ROSSI modeling for investor and board reporting.' },
-  { title: 'Anchor institutions', description: 'Hospitals, universities, and civic buildings using SEAM to formalize community benefit commitments and report on social impact outcomes.' },
-  { title: 'Consulting and advisory firms', description: 'Firms offering SEAM Certification services to clients. Team-wide access to templates, courses, and ROSSI tools for project delivery.' },
+const memberLogos = [
+  { src: '/logos/members/jamestown.png', alt: 'Jamestown', height: 'h-16' },
+  { src: '/logos/members/hitt.png', alt: 'HITT', height: 'h-20' },
+  { src: '/logos/members/jll.png', alt: 'JLL', height: 'h-24' },
+  { src: '/logos/members/interface.png', alt: 'Interface', height: 'h-20' },
+  { src: '/logos/members/leapley.png', alt: 'Leapley Construction', height: 'h-24' },
 ]
+
+const memberNames = ['THM Advisors', 'Val Interiors', 'Brightworks']
 
 const faqs = [
   { q: 'How does team seat allocation work?', a: 'Each organization tier includes a set number of seats. Every seat holder gets full individual-level access — templates, courses, ROSSI, and network. Seat assignments can be changed quarterly through your admin dashboard.' },
@@ -68,7 +103,7 @@ const jsonLd = [
 
 <SiteLayout
   title="Organization Membership"
-  description="Organization community membership for teams and institutions. Contributor, Builder, and Steward tiers with team seats, portfolio ROSSI, dedicated onboarding, and volume certification pricing."
+  description="Organization community membership for teams and institutions. Standing ($1,600/yr), Ladder ($6,000/yr), and Arc ($18,000/yr) tiers with team seats, AP training credits, discounted certifications, and recognition on the SEAM site and directory."
   path="/community/organization"
   jsonLd={jsonLd}
 >
@@ -92,7 +127,7 @@ const jsonLd = [
           Equip your team. <em class="font-display italic font-normal text-seam-300">Scale the commitment.</em>
         </h1>
         <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-          Contributor, Builder, and Steward tiers for teams and institutions. Portfolio tools, team seats, dedicated onboarding, and volume pricing for organizations serious about advancing social equity.
+          Standing, Ladder, and Arc tiers for teams and institutions. Portfolio tools, team seats, dedicated onboarding, and volume pricing designed for organizations ready to make social equity a defining part of how they operate.
         </p>
         <div class="hero-cta mt-10 flex flex-wrap gap-4">
           <a href="/get-started" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
@@ -104,7 +139,11 @@ const jsonLd = [
         </div>
       </div>
     </div>
-    <img src="/logos/member-organization.png" alt="Organization membership" class="hidden lg:block absolute -bottom-44 right-16 w-[26rem] h-[26rem] object-contain drop-shadow-2xl z-10" />
+    <div class="hidden lg:flex absolute -bottom-24 right-12 items-end gap-0 z-10">
+      <img src="/logos/member-standing.png" alt="Standing membership" class="w-56 h-56 object-contain drop-shadow-2xl -mr-10" />
+      <img src="/logos/member-ladder.png" alt="Ladder membership" class="w-56 h-56 object-contain drop-shadow-2xl -mr-10" />
+      <img src="/logos/member-arc.png" alt="Arc membership" class="w-56 h-56 object-contain drop-shadow-2xl" />
+    </div>
   </section>
 
   <!-- Why Org Membership -->
@@ -113,7 +152,7 @@ const jsonLd = [
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Why organizations join</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Impact is the destination. <em class="italic font-normal">Membership is the engine.</em>
+          Impact is the destination. <em class="italic font-normal text-seam-600">Membership is the engine.</em>
         </h2>
       </div>
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -133,18 +172,22 @@ const jsonLd = [
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Organization tiers</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Scale your commitment <em class="italic font-normal">with your portfolio</em>
+          Scale your commitment <em class="italic font-normal text-seam-600">with your portfolio</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
           Organization pricing is based on portfolio size and scope. All tiers include annual billing with the option to add seats and properties mid-cycle.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-12">
         {tiers.map((tier) => (
-          <div class={`rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-warm-900 text-white ring-2 ring-seam-500' : 'bg-white border border-warm-100'}`}>
+          <div class={`relative rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-warm-900 text-white' : 'bg-white border border-warm-100'}`}>
+            <img src={tier.badge} alt="" class="absolute -top-12 right-10 w-24 h-24 object-contain drop-shadow-lg" />
             <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
-            <p class={`mt-2 font-display text-[20px] tracking-[-0.02em] ${tier.highlighted ? 'text-seam-300' : 'text-gold-500'}`}>{tier.price}</p>
+            <div class="mt-5 flex items-baseline gap-1">
+              <span class={`font-display text-[40px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.price}</span>
+              <span class={`text-[15px] ${tier.highlighted ? 'text-warm-300' : 'text-warm-500'}`}>{tier.period}</span>
+            </div>
             <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-warm-300' : 'text-warm-500'}`}>{tier.description}</p>
 
             <ul class="mt-8 space-y-3 flex-1">
@@ -173,15 +216,17 @@ const jsonLd = [
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Who joins</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Organizations who <em class="italic font-normal">understand the future</em>
+          Organizations who <em class="italic font-normal text-seam-600">understand the future</em>
         </h2>
       </div>
-      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {orgs.map((o) => (
-          <div class="reveal-child rounded-2xl bg-warm-50 p-8 lg:p-10">
-            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{o.title}</h3>
-            <p class="text-[15px] leading-relaxed text-warm-500">{o.description}</p>
-          </div>
+      <div class="reveal-fade-up flex flex-wrap items-center justify-center lg:justify-between gap-x-12 gap-y-10 mb-16">
+        {memberLogos.map((logo) => (
+          <img src={logo.src} alt={logo.alt} class={`${logo.height} w-auto object-contain`} />
+        ))}
+      </div>
+      <div class="reveal-fade-up flex flex-wrap items-center justify-center lg:justify-around gap-x-12 gap-y-6">
+        {memberNames.map((name) => (
+          <span class="font-display text-[clamp(1.75rem,3vw,2.75rem)] tracking-[-0.02em] text-warm-900">{name}</span>
         ))}
       </div>
     </div>
@@ -193,11 +238,11 @@ const jsonLd = [
       <div class="max-w-4xl mx-auto text-center">
         <svg class="mx-auto mb-8 w-12 h-12 text-warm-600" fill="currentColor" viewBox="0 0 24 24"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" /></svg>
         <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
-          Builder membership let us roll out SEAM Approved across twelve properties in one quarter. The dedicated onboarding mapped our existing programs to the Standard in a single session. We stopped reinventing the wheel.
+          Ladder membership let us roll out SEAM Approved across our portfolio in one quarter. Access to The Stitch mapped our existing programs to the Standard, and the AP training gave our team the credential to lead the work in-house. We stopped reinventing the wheel.
         </blockquote>
         <div class="mt-10">
-          <p class="text-[16px] font-medium text-white">Rachel Okonkwo</p>
-          <p class="text-[14px] text-warm-400 mt-1">VP of Social Impact &middot; Vantage Communities</p>
+          <p class="text-[16px] font-medium text-white">Tebogo &ldquo;Tebby&rdquo; Modisagape</p>
+          <p class="text-[14px] text-warm-400 mt-1">President of Val Interiors &middot; Ladder Member</p>
         </div>
       </div>
     </div>
@@ -206,24 +251,33 @@ const jsonLd = [
   <!-- FAQ -->
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Frequently asked</p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Questions about <em class="italic font-normal">organization membership</em>
-        </h2>
-      </div>
-      <div class="max-w-3xl">
-        {faqs.map((faq) => (
-          <details class="border-b border-warm-200 group">
-            <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-              <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
-              <svg class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-            </summary>
-            <div class="pb-6">
-              <p class="text-[16px] leading-relaxed text-warm-500 max-w-2xl">{faq.a}</p>
-            </div>
-          </details>
-        ))}
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-start">
+        <div>
+          <div class="reveal-slide-left max-w-2xl mb-12 lg:mb-16">
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Frequently asked</p>
+            <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+              Questions about <em class="italic font-normal text-seam-600">organization membership</em>
+            </h2>
+          </div>
+          <div>
+            {faqs.map((faq) => (
+              <details class="border-b border-warm-200 group">
+                <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
+                  <svg class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                </summary>
+                <div class="pb-6">
+                  <p class="text-[16px] leading-relaxed text-warm-500 max-w-2xl">{faq.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+        <div class="reveal-scale hidden lg:block">
+          <div class="aspect-[603/699] overflow-hidden rounded-2xl">
+            <img src="/images/organization-faq.jpg" alt="SEAM organization member at work" class="w-full h-full object-cover" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
