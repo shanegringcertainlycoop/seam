@@ -150,7 +150,7 @@ const jsonLd = [
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Why organizations join</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Why organizations join</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Impact is the destination. <em class="italic font-normal text-seam-600">Membership is the engine.</em>
         </h2>
@@ -159,7 +159,7 @@ const jsonLd = [
         {reasons.map((r) => (
           <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{r.title}</h3>
-            <p class="text-[15px] leading-relaxed text-warm-500">{r.description}</p>
+            <p class="text-[15px] leading-relaxed text-warm-600">{r.description}</p>
           </div>
         ))}
       </div>
@@ -170,11 +170,11 @@ const jsonLd = [
   <section id="pricing" class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Organization tiers</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Organization tiers</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Scale your commitment <em class="italic font-normal text-seam-600">with your portfolio</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
           Organization pricing is based on portfolio size and scope. All tiers include annual billing with the option to add seats and properties mid-cycle.
         </p>
       </div>
@@ -186,13 +186,13 @@ const jsonLd = [
             <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
             <div class="mt-5 flex items-baseline gap-1">
               <span class={`font-display text-[40px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.price}</span>
-              <span class={`text-[15px] ${tier.highlighted ? 'text-warm-300' : 'text-warm-500'}`}>{tier.period}</span>
+              <span class={`text-[15px] ${tier.highlighted ? 'text-warm-300' : 'text-warm-600'}`}>{tier.period}</span>
             </div>
-            <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-warm-300' : 'text-warm-500'}`}>{tier.description}</p>
+            <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-warm-300' : 'text-warm-600'}`}>{tier.description}</p>
 
             <ul class="mt-8 space-y-3 flex-1">
               {tier.features.map((f) => (
-                <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-warm-200' : 'text-warm-500'}`}>
+                <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-warm-200' : 'text-warm-600'}`}>
                   <svg class={`shrink-0 w-4 h-4 mt-0.5 ${tier.highlighted ? 'text-seam-400' : 'text-seam-500'}`} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
@@ -214,7 +214,7 @@ const jsonLd = [
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Who joins</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Who joins</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Organizations who <em class="italic font-normal text-seam-600">understand the future</em>
         </h2>
@@ -236,7 +236,7 @@ const jsonLd = [
   <section class="py-24 lg:py-32 bg-warm-900">
     <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="max-w-4xl mx-auto text-center">
-        <svg class="mx-auto mb-8 w-12 h-12 text-warm-600" fill="currentColor" viewBox="0 0 24 24"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" /></svg>
+        <svg class="mx-auto mb-8 w-12 h-12 text-warm-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" /></svg>
         <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
           Ladder membership let us roll out SEAM Approved across our portfolio in one quarter. Access to The Stitch mapped our existing programs to the Standard, and the AP training gave our team the credential to lead the work in-house. We stopped reinventing the wheel.
         </blockquote>
@@ -254,7 +254,7 @@ const jsonLd = [
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-start">
         <div>
           <div class="reveal-slide-left max-w-2xl mb-12 lg:mb-16">
-            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Frequently asked</p>
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
             <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
               Questions about <em class="italic font-normal text-seam-600">organization membership</em>
             </h2>
@@ -264,10 +264,10 @@ const jsonLd = [
               <details class="border-b border-warm-200 group">
                 <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                   <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
-                  <svg class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                  <svg class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                 </summary>
                 <div class="pb-6">
-                  <p class="text-[16px] leading-relaxed text-warm-500 max-w-2xl">{faq.a}</p>
+                  <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">{faq.a}</p>
                 </div>
               </details>
             ))}

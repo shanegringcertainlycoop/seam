@@ -142,12 +142,12 @@ const jsonLd = breadcrumbSchema([
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">How it works</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">How it works</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Four frameworks.{' '}
           <em class="italic font-normal text-seam-600">One complete picture.</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
           LEED addresses environmental performance. WELL and Fitwel address health and wellness. SEAM addresses social equity. Together they give any project a comprehensive sustainability profile &mdash; and your work in any one of them strengthens the others.
         </p>
       </div>
@@ -155,9 +155,9 @@ const jsonLd = breadcrumbSchema([
       <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
         {steps.map((step) => (
           <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10">
-            <span class="font-display text-[40px] tracking-[-0.04em] text-gold-500">{step.number}</span>
+            <span class="font-display text-[40px] tracking-[-0.04em] text-gold-600">{step.number}</span>
             <h3 class="mt-4 font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{step.title}</h3>
-            <p class="text-[15px] leading-relaxed text-warm-500">{step.description}</p>
+            <p class="text-[15px] leading-relaxed text-warm-600">{step.description}</p>
           </div>
         ))}
       </div>
@@ -168,12 +168,12 @@ const jsonLd = breadcrumbSchema([
   <section id="leed" class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-3xl mb-12 lg:mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">LEED v4 + v4.1</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">LEED v4 + v4.1</p>
         <h2 class="font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Your LEED credits don&apos;t stop at{' '}
           <em class="italic font-normal text-seam-600">environmental performance.</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
           Social equity work you&apos;ve already documented &mdash; in community connectivity, access to services, inclusive design, and materials transparency &mdash; maps directly into SEAM activities across all four pillars.
         </p>
       </div>
@@ -182,21 +182,21 @@ const jsonLd = breadcrumbSchema([
       <div class="reveal-fade-up flex flex-wrap gap-4 mb-12">
         <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
           <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">14+</span>
-          <span class="ml-2 text-warm-500">credits mapped</span>
+          <span class="ml-2 text-warm-600">credits mapped</span>
         </div>
         <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
           <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">3</span>
-          <span class="ml-2 text-warm-500">LEED categories with overlap</span>
+          <span class="ml-2 text-warm-600">LEED categories with overlap</span>
         </div>
         <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
           <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">4</span>
-          <span class="ml-2 text-warm-500">SEAM pillars touched</span>
+          <span class="ml-2 text-warm-600">SEAM pillars touched</span>
         </div>
       </div>
 
       <!-- Crosswalk table -->
       <div class="reveal-fade-up rounded-2xl bg-white border border-warm-100 overflow-hidden">
-        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500">
+        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-600">
           <div class="col-span-4">LEED credit</div>
           <div class="col-span-1">Category</div>
           <div class="col-span-3">SEAM activity</div>
@@ -209,7 +209,7 @@ const jsonLd = breadcrumbSchema([
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">LEED credit</p>
               <p class="font-medium text-[16px] text-warm-900">{row.credit}</p>
             </div>
-            <div class="lg:col-span-1 text-[15px] text-warm-500">
+            <div class="lg:col-span-1 text-[15px] text-warm-600">
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">Category</p>
               {row.category}
             </div>
@@ -217,7 +217,7 @@ const jsonLd = breadcrumbSchema([
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM activity</p>
               {row.activity}
             </div>
-            <div class="lg:col-span-3 text-[15px] text-warm-500">
+            <div class="lg:col-span-3 text-[15px] text-warm-600">
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM pillar</p>
               {row.pillar}
             </div>
@@ -231,7 +231,7 @@ const jsonLd = breadcrumbSchema([
         ))}
       </div>
 
-      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl border-l-2 border-warm-200 pl-5">
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-600 max-w-3xl border-l-2 border-warm-200 pl-5">
         Formal recognition by GBCI is in progress. Credits listed here reflect SEAM Standard v1.1 guidance pending bilateral agreement. The full crosswalk appendix is available in the Standard download.
       </p>
     </div>
@@ -241,12 +241,12 @@ const jsonLd = breadcrumbSchema([
   <section id="well" class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-3xl mb-12 lg:mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">WELL v2</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">WELL v2</p>
         <h2 class="font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Health and wellness work maps directly into SEAM &mdash;{' '}
           <em class="italic font-normal text-seam-600">no duplicate documentation required.</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
           SEAM treats WELL certification as direct evidence for its health and safety activities. What you&apos;ve already built in WELL carries over. Your score improves with your certification level.
         </p>
       </div>
@@ -254,20 +254,20 @@ const jsonLd = breadcrumbSchema([
       <div class="reveal-fade-up flex flex-wrap gap-4 mb-12">
         <div class="rounded-full bg-warm-50 border border-warm-100 px-5 py-2.5 text-[14px]">
           <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">9+</span>
-          <span class="ml-2 text-warm-500">features mapped</span>
+          <span class="ml-2 text-warm-600">features mapped</span>
         </div>
         <div class="rounded-full bg-warm-50 border border-warm-100 px-5 py-2.5 text-[14px]">
           <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">4</span>
-          <span class="ml-2 text-warm-500">WELL concepts with overlap</span>
+          <span class="ml-2 text-warm-600">WELL concepts with overlap</span>
         </div>
         <div class="rounded-full bg-warm-50 border border-warm-100 px-5 py-2.5 text-[14px]">
           <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">3</span>
-          <span class="ml-2 text-warm-500">SEAM pillars touched</span>
+          <span class="ml-2 text-warm-600">SEAM pillars touched</span>
         </div>
       </div>
 
       <div class="reveal-fade-up rounded-2xl border border-warm-100 overflow-hidden">
-        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500">
+        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-600">
           <div class="col-span-4">WELL feature</div>
           <div class="col-span-1">Concept</div>
           <div class="col-span-3">SEAM activity</div>
@@ -280,7 +280,7 @@ const jsonLd = breadcrumbSchema([
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">WELL feature</p>
               <p class="font-medium text-[16px] text-warm-900">{row.feature}</p>
             </div>
-            <div class="lg:col-span-1 text-[15px] text-warm-500">
+            <div class="lg:col-span-1 text-[15px] text-warm-600">
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">Concept</p>
               {row.concept}
             </div>
@@ -288,7 +288,7 @@ const jsonLd = breadcrumbSchema([
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM activity</p>
               {row.activity}
             </div>
-            <div class="lg:col-span-3 text-[15px] text-warm-500">
+            <div class="lg:col-span-3 text-[15px] text-warm-600">
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM pillar</p>
               {row.pillar}
             </div>
@@ -302,7 +302,7 @@ const jsonLd = breadcrumbSchema([
         ))}
       </div>
 
-      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl border-l-2 border-warm-200 pl-5">
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-600 max-w-3xl border-l-2 border-warm-200 pl-5">
         Formal recognition by IWBI is in progress. Work completed under WELL Building Standard is accepted as documented evidence for SEAM&apos;s health and wellness activities per SEAM Standard v1.1.
       </p>
     </div>
@@ -312,12 +312,12 @@ const jsonLd = breadcrumbSchema([
   <section id="fitwel" class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-3xl mb-12 lg:mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Fitwel</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Fitwel</p>
         <h2 class="font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Fitwel star levels map directly to SEAM&apos;s{' '}
           <em class="italic font-normal text-seam-600">impact scoring framework.</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
           Of all SEAM&apos;s recognized integrations, Fitwel has the most direct structural alignment. Each star level corresponds precisely to one of SEAM&apos;s three IMP impact goals &mdash; Act to Avoid Harm, Benefit Impacted Parties, and Contribute to Solutions.
         </p>
       </div>
@@ -325,15 +325,15 @@ const jsonLd = breadcrumbSchema([
       <div class="reveal-fade-up flex flex-wrap gap-4 mb-16">
         <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
           <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">3</span>
-          <span class="ml-2 text-warm-500">star levels mapped</span>
+          <span class="ml-2 text-warm-600">star levels mapped</span>
         </div>
         <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
           <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">1:1</span>
-          <span class="ml-2 text-warm-500">alignment with IMP ABC framework</span>
+          <span class="ml-2 text-warm-600">alignment with IMP ABC framework</span>
         </div>
         <div class="rounded-full bg-white border border-warm-100 px-5 py-2.5 text-[14px]">
           <span class="font-display text-[18px] tracking-[-0.02em] text-warm-900">12 pts</span>
-          <span class="ml-2 text-warm-500">available in SEAM at full recognition</span>
+          <span class="ml-2 text-warm-600">available in SEAM at full recognition</span>
         </div>
       </div>
 
@@ -350,14 +350,14 @@ const jsonLd = breadcrumbSchema([
                 <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900">{row.impact}</p>
               </div>
             </div>
-            <p class="text-[15px] leading-relaxed text-warm-500">{row.description}</p>
+            <p class="text-[15px] leading-relaxed text-warm-600">{row.description}</p>
           </div>
         ))}
       </div>
 
       <!-- Crosswalk table -->
       <div class="reveal-fade-up rounded-2xl bg-white border border-warm-100 overflow-hidden">
-        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500">
+        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-600">
           <div class="col-span-2">Fitwel level</div>
           <div class="col-span-3">IMP impact goal</div>
           <div class="col-span-3">SEAM activity</div>
@@ -370,7 +370,7 @@ const jsonLd = breadcrumbSchema([
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">Fitwel level</p>
               <p class="font-medium text-[16px] text-warm-900">{row.level}</p>
             </div>
-            <div class="lg:col-span-3 text-[15px] text-warm-500">
+            <div class="lg:col-span-3 text-[15px] text-warm-600">
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">IMP impact goal</p>
               {row.impact}
             </div>
@@ -378,7 +378,7 @@ const jsonLd = breadcrumbSchema([
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM activity</p>
               {row.activity}
             </div>
-            <div class="lg:col-span-3 text-[15px] text-warm-500">
+            <div class="lg:col-span-3 text-[15px] text-warm-600">
               <p class="lg:hidden text-[11px] uppercase tracking-[0.1em] text-warm-400 mb-1">SEAM pillar</p>
               {row.pillar}
             </div>
@@ -392,7 +392,7 @@ const jsonLd = breadcrumbSchema([
         ))}
       </div>
 
-      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl border-l-2 border-warm-200 pl-5">
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-600 max-w-3xl border-l-2 border-warm-200 pl-5">
         Fitwel is recognized by SEAM as a qualifying healthy building certification under Activity HSa1.1. Each star level aligns with SEAM&apos;s IMP-based impact scoring tiers. The 12 available points reflect the full scoring range for that activity.
       </p>
     </div>
@@ -402,18 +402,18 @@ const jsonLd = breadcrumbSchema([
   <section id="sdgs" class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-3xl mb-12 lg:mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">UN Sustainable Development Goals</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">UN Sustainable Development Goals</p>
         <h2 class="font-display text-[clamp(1.75rem,3.5vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           A direct line to{' '}
           <em class="italic font-normal text-seam-600">the language your organization already uses.</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
           SEAM&apos;s four pillars were built in alignment with the UN SDGs. When leadership or investors ask how your real estate decisions connect to global ESG commitments, the answer is already in your SEAM documentation.
         </p>
       </div>
 
       <div class="reveal-fade-up rounded-2xl border border-warm-100 overflow-hidden">
-        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500">
+        <div class="hidden lg:grid grid-cols-12 gap-4 px-8 py-5 bg-warm-50 border-b border-warm-100 text-[12px] font-medium uppercase tracking-[0.1em] text-warm-600">
           <div class="col-span-2">SDG</div>
           <div class="col-span-4">Goal</div>
           <div class="col-span-6">SEAM pillars</div>
@@ -442,7 +442,7 @@ const jsonLd = breadcrumbSchema([
         ))}
       </div>
 
-      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl border-l-2 border-warm-200 pl-5">
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-600 max-w-3xl border-l-2 border-warm-200 pl-5">
         SDG mappings follow SEAM Standard v1.1 and the UN Guiding Principles on Business and Human Rights. These mappings can be referenced directly in ESG reporting and investor disclosures.
       </p>
     </div>

@@ -219,7 +219,7 @@ function logoClass(logo: string) {
                         {section.href ? (
                           <a
                             href={section.href}
-                            class="block px-3 pb-2 text-[11px] font-medium uppercase tracking-[0.15em] text-warm-400 hover:text-gold-500 transition-colors"
+                            class="block px-3 pb-2 text-[11px] font-medium uppercase tracking-[0.15em] text-warm-400 hover:text-gold-600 transition-colors"
                           >
                             {section.heading} &rarr;
                           </a>
@@ -268,7 +268,7 @@ function logoClass(logo: string) {
                             The full SEAM framework, free to download.
                           </span>
                         </div>
-                        <span class="text-warm-400 group-hover/std:text-gold-500 transition-colors">
+                        <span class="text-warm-400 group-hover/std:text-gold-600 transition-colors">
                           &rarr;
                         </span>
                       </a>
@@ -310,14 +310,14 @@ function logoClass(logo: string) {
                     {group.featured && (
                       <div class="col-span-2 rounded-r-2xl bg-warm-50 p-6 flex flex-col justify-end">
                         <a href={group.featured.href} class="group/feat block">
-                          <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-2">Featured</p>
+                          <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-2">Featured</p>
                           <p class="text-[15px] font-medium text-warm-900 group-hover/feat:text-gold-600 transition-colors">
                             {group.featured.label}
                           </p>
                           <p class="mt-1 text-[13px] leading-snug text-warm-400">
                             {group.featured.description}
                           </p>
-                          <span class="inline-block mt-3 text-[13px] font-medium text-gold-500">Learn more &rarr;</span>
+                          <span class="inline-block mt-3 text-[13px] font-medium text-gold-600">Learn more &rarr;</span>
                         </a>
                       </div>
                     )}
@@ -385,7 +385,7 @@ function logoClass(logo: string) {
                   {section.href ? (
                     <a
                       href={section.href}
-                      class="block pt-2 pb-1 text-[12px] font-medium uppercase tracking-[0.12em] text-warm-400 hover:text-gold-500 transition-colors"
+                      class="block pt-2 pb-1 text-[12px] font-medium uppercase tracking-[0.12em] text-warm-400 hover:text-gold-600 transition-colors"
                     >
                       {section.heading} &rarr;
                     </a>
@@ -397,7 +397,7 @@ function logoClass(logo: string) {
                   {section.links.map((link) => (
                     <a
                       href={link.href}
-                      class="block py-2.5 text-[16px] text-warm-500 hover:text-warm-900"
+                      class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900"
                     >
                       {link.label}
                     </a>
@@ -408,7 +408,7 @@ function logoClass(logo: string) {
               group.links.map((link) => (
                 <a
                   href={link.href}
-                  class="block py-2.5 text-[16px] text-warm-500 hover:text-warm-900"
+                  class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900"
                 >
                   {link.label}
                 </a>
@@ -417,7 +417,7 @@ function logoClass(logo: string) {
             {group.featured && (
               <a
                 href={group.featured.href}
-                class="block py-2.5 text-[16px] text-gold-500"
+                class="block py-2.5 text-[16px] text-gold-600"
               >
                 {group.featured.label}
               </a>
@@ -486,9 +486,9 @@ function logoClass(logo: string) {
       textLinks.forEach((link) => {
         if (solid) {
           link.classList.remove('text-white/80', 'hover:text-white')
-          link.classList.add('text-warm-500', 'hover:text-warm-900')
+          link.classList.add('text-warm-600', 'hover:text-warm-900')
         } else {
-          link.classList.remove('text-warm-500', 'hover:text-warm-900')
+          link.classList.remove('text-warm-600', 'hover:text-warm-900')
           link.classList.add('text-white/80', 'hover:text-white')
         }
       })
@@ -497,9 +497,9 @@ function logoClass(logo: string) {
       if (mobileToggle) {
         if (solid) {
           mobileToggle.classList.remove('text-white')
-          mobileToggle.classList.add('text-warm-500')
+          mobileToggle.classList.add('text-warm-600')
         } else {
-          mobileToggle.classList.remove('text-warm-500')
+          mobileToggle.classList.remove('text-warm-600')
           mobileToggle.classList.add('text-white')
         }
       }

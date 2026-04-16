@@ -107,7 +107,7 @@ const jsonLd = [
             class={`shrink-0 rounded-full px-5 py-2.5 text-[14px] font-medium transition-all duration-200 ${
               activeCategory === cat
                 ? 'bg-warm-900 text-white'
-                : 'bg-warm-50 text-warm-500 hover:bg-warm-100 hover:text-warm-700'
+                : 'bg-warm-50 text-warm-600 hover:bg-warm-100 hover:text-warm-700'
             }`}
           >
             {cat}
@@ -125,17 +125,17 @@ const jsonLd = [
           {filtered.map((post) => (
             <a href={`/resources/blog/${post.slug}`} class="group block">
               <div class="rounded-2xl bg-warm-50 p-8 lg:p-10 mb-5 min-h-[200px] flex items-end transition-all duration-300 group-hover:bg-warm-100/80 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-500">
+                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-600">
                   {post.category}
                 </span>
               </div>
               <h3 class="font-display text-[22px] lg:text-[24px] leading-[1.2] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-gold-600 transition-colors duration-300">
                 {post.title}
               </h3>
-              <p class="text-[15px] leading-relaxed text-warm-500 mb-4 line-clamp-2">
+              <p class="text-[15px] leading-relaxed text-warm-600 mb-4 line-clamp-2">
                 {post.excerpt}
               </p>
-              <div class="flex items-center gap-3 text-[13px] text-warm-500">
+              <div class="flex items-center gap-3 text-[13px] text-warm-600">
                 <span>{post.author.name}</span>
                 <span class="w-1 h-1 rounded-full bg-warm-300"></span>
                 <span>{formatDate(post.date)}</span>
@@ -147,7 +147,7 @@ const jsonLd = [
         </div>
       ) : (
         <div class="text-center py-20">
-          <p class="text-[17px] text-warm-500">
+          <p class="text-[17px] text-warm-600">
             No articles in this category yet. Check back soon.
           </p>
         </div>
@@ -161,7 +161,7 @@ const jsonLd = [
       <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.2] tracking-[-0.02em] text-warm-900 mb-4">
         Stay in the conversation
       </h2>
-      <p class="text-[17px] text-warm-500 mb-10 max-w-lg mx-auto">
+      <p class="text-[17px] text-warm-600 mb-10 max-w-lg mx-auto">
         New articles, certified project announcements, and Standard updates
         delivered to your inbox. No noise.
       </p>

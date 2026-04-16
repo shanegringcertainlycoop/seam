@@ -73,7 +73,7 @@ const jsonLd = breadcrumbSchema([
 // Pill style helpers for active/inactive state
 const activePillClass = 'bg-seam-700 text-white active'
 const inactivePillClass =
-  'bg-warm-50 text-warm-500 hover:bg-warm-100 hover:text-warm-700'
+  'bg-warm-50 text-warm-600 hover:bg-warm-100 hover:text-warm-700'
 ---
 <SiteLayout
   title="Directory"
@@ -85,7 +85,7 @@ const inactivePillClass =
   <section class="relative min-h-[50vh] flex items-end bg-warm-900 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-warm-900 via-warm-900/95 to-warm-900"></div>
     <div class="reveal-fade-up relative mx-auto max-w-[1400px] px-6 lg:px-10 pb-16 lg:pb-20 pt-40">
-      <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+      <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
         Directory
       </p>
       <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white mb-6 max-w-4xl">
@@ -108,7 +108,7 @@ const inactivePillClass =
             class={`shrink-0 rounded-full px-5 py-2.5 text-[14px] font-medium transition-all duration-200 ${
               activeTab === tab.key
                 ? 'bg-warm-900 text-white'
-                : 'bg-warm-50 text-warm-500 hover:bg-warm-100 hover:text-warm-700'
+                : 'bg-warm-50 text-warm-600 hover:bg-warm-100 hover:text-warm-700'
             }`}
           >
             {tab.label}
@@ -270,10 +270,10 @@ const inactivePillClass =
                     <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 truncate">
                       {ap.name}
                     </h3>
-                    <p class="text-[14px] text-warm-500 truncate">{ap.organization}</p>
+                    <p class="text-[14px] text-warm-600 truncate">{ap.organization}</p>
                   </div>
                 </div>
-                <p class="text-[14px] text-warm-500 mb-4">
+                <p class="text-[14px] text-warm-600 mb-4">
                   {ap.location.city}, {ap.location.state}
                 </p>
                 <div class="flex flex-wrap gap-1.5 mb-4">
@@ -336,7 +336,7 @@ const inactivePillClass =
                   <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 mb-2">
                     {p.name}
                   </h3>
-                  <p class="text-[14px] text-warm-500 mb-2">
+                  <p class="text-[14px] text-warm-600 mb-2">
                     {p.location.city}, {p.location.state}
                   </p>
                   <p class="text-[13px] text-warm-400">{p.ratingSystem}</p>
@@ -376,7 +376,7 @@ const inactivePillClass =
                 <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 mb-2">
                   {a.name}
                 </h3>
-                <p class="text-[14px] text-warm-500 mb-2">{a.organization}</p>
+                <p class="text-[14px] text-warm-600 mb-2">{a.organization}</p>
                 <p class="text-[13px] text-warm-400">
                   {a.location.city}, {a.location.state}
                 </p>
@@ -387,7 +387,7 @@ const inactivePillClass =
 
       {/* Empty State (toggled by script) */}
       <div class="text-center py-20 hidden" data-directory-empty>
-        <p class="text-[17px] text-warm-500 mb-4">
+        <p class="text-[17px] text-warm-600 mb-4">
           No results match your current filters.
         </p>
         <button
@@ -407,7 +407,7 @@ const inactivePillClass =
       <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-6">
         {cta.heading}
       </h2>
-      <p class="text-[17px] leading-relaxed text-warm-500 max-w-2xl mx-auto mb-10">
+      <p class="text-[17px] leading-relaxed text-warm-600 max-w-2xl mx-auto mb-10">
         {cta.body}
       </p>
       <a

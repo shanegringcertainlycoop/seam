@@ -95,12 +95,12 @@ function initDirectoryFilter() {
       if (pill.dataset.filterType !== type) return
       if (pill.dataset.filterValue === value) {
         pill.classList.add('active')
-        pill.classList.remove('bg-warm-50', 'text-warm-500', 'hover:bg-warm-100', 'hover:text-warm-700')
+        pill.classList.remove('bg-warm-50', 'text-warm-600', 'hover:bg-warm-100', 'hover:text-warm-700')
         pill.classList.add('bg-seam-700', 'text-white')
       } else {
         pill.classList.remove('active')
         pill.classList.remove('bg-seam-700', 'text-white')
-        pill.classList.add('bg-warm-50', 'text-warm-500', 'hover:bg-warm-100', 'hover:text-warm-700')
+        pill.classList.add('bg-warm-50', 'text-warm-600', 'hover:bg-warm-100', 'hover:text-warm-700')
       }
     })
   }
