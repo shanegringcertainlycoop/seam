@@ -1,0 +1,387 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
+
+/* --- Data --- */
+
+const disciplines = [
+  { title: 'Architects', detail: 'Embed equity into massing, programming, and material decisions from concept through construction documents.' },
+  { title: 'Interior Designers', detail: 'Specify materials, finishes, and furnishings that meet human rights, supply chain, and occupant health standards.' },
+  { title: 'General Contractors', detail: 'Document fair labor, local hiring, and procurement practices that earn certification credit and win RFPs.' },
+  { title: 'Engineers & Consultants', detail: 'MEP, structural, and civil teams contribute to the social outcomes of every project — now measurably.' },
+]
+
+const challenges = [
+  {
+    pain: 'Clients ask for ESG and you have nothing to point to',
+    solution: 'SEAM gives your firm a third-party-verified framework for the social pillar. Use it in pursuits, design narratives, and post-occupancy reports — backed by measured outcomes, not platitudes.',
+  },
+  {
+    pain: 'Equity language without equity proof',
+    solution: 'The Standard turns values into specifications. Every credit is a defined activity with documentation requirements, so your team can show exactly what was done and why it matters.',
+  },
+  {
+    pain: 'RFPs increasingly require social impact qualifications',
+    solution: 'A SEAM AP credential on the team and certified projects in the portfolio differentiate your firm against competitors who treat equity as a footnote.',
+  },
+  {
+    pain: 'Sustainability scope creep with no extra fee',
+    solution: 'SEAM is a defined scope of work. It is billable, schedulable, and supported by templates that reduce documentation burden — not another ask layered onto an already-thin design fee.',
+  },
+]
+
+const products = [
+  {
+    label: 'AP Credential',
+    title: 'Become a SEAM AP',
+    description: 'The professional qualification for practitioners leading certification projects. Add the credential to your team and signal expertise to every client.',
+    href: '/ap-credential',
+    fit: 'Best for project leads, sustainability directors, and anyone shaping how social equity shows up in design and construction.',
+    logo: '/logos/ap-seal.png',
+  },
+  {
+    label: 'Certification',
+    title: 'Pursue full certification',
+    description: 'Bronze through Platinum across Buildings + Interiors and Operations + Maintenance. The defining credential for socially equitable buildings.',
+    href: '/certification',
+    fit: 'Best for projects where the client has committed to social equity as a design driver from day one.',
+    logo: '/logos/cert-platinum.png',
+  },
+  {
+    label: 'Community',
+    title: 'Join the practitioner network',
+    description: 'Templates for every activity, courses with CEU credit, peer learning, and a directory of vetted practitioners. Free Open tier or full Changemaker access.',
+    href: '/community/individual',
+    fit: 'Best for practitioners who want to shorten the learning curve and build a practice around the Standard.',
+    logo: '/logos/member-changemaker.png',
+  },
+]
+
+const outcomes = [
+  { metric: 'Win more pursuits', detail: 'Differentiate proposals with verifiable social outcomes. Move beyond marketing language into measurable, third-party-backed claims.' },
+  { metric: 'Defensible specifications', detail: 'Use the Standard to anchor specs in human rights, fair labor, and supply chain ethics. Defend decisions with documented criteria.' },
+  { metric: 'Career advancement', detail: 'The AP credential is portable expertise. It travels with practitioners across firms, project types, and markets.' },
+  { metric: 'Stronger client relationships', detail: 'Help clients show their boards, investors, and tenants what the building actually delivers — not just what it was designed to deliver.' },
+]
+
+const faqs = [
+  {
+    q: 'How does SEAM fit alongside LEED, WELL, and Fitwel?',
+    a: 'SEAM addresses the social pillar that environmental and wellness certifications largely leave aside. Many projects pursue SEAM in parallel with LEED or WELL — the Standard is designed to integrate, not compete.',
+  },
+  {
+    q: 'Do I need to be a SEAM AP to work on a certified project?',
+    a: 'No, but most certified projects involve at least one AP on the team. The credential streamlines documentation, accelerates review, and demonstrates qualification to clients and reviewers alike.',
+  },
+  {
+    q: 'How is documentation managed during design and construction?',
+    a: 'The Standard provides activity-level templates for every credit. Documentation is built into normal project workflows — not bolted on at the end. Members get full access to the template library.',
+  },
+  {
+    q: 'Can our firm earn credit on projects we do not design from scratch?',
+    a: 'Yes. SEAM Approved verifies individual activities — fair labor, local hiring, community engagement, equitable procurement — without requiring full project certification. It is a path to credentialing your practices on any project.',
+  },
+  {
+    q: 'How do we bill for SEAM scope?',
+    a: 'SEAM scope is most often billed as an additional service or sustainability consulting line item. The Standard is structured so the work is defined, scoped, and schedulable — not open-ended. Many firms also offer it as a value-add tied to certification fee budgets.',
+  },
+]
+
+const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
+
+const jsonLd = [
+  faqSchema(faqItems),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Who We Serve', path: '/for/building-professionals' },
+    { name: 'Building Professionals', path: '/for/building-professionals' },
+  ]),
+]
+---
+
+<SiteLayout
+  title="For Building Professionals"
+  description="SEAM gives architects, interior designers, contractors, and engineers a measurable framework for embedding social equity into the buildings they shape. Win more pursuits, defend specifications, and earn the AP credential."
+  path="/for/building-professionals"
+  jsonLd={jsonLd}
+>
+
+  <!-- ─── Hero ─── -->
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0">
+      <img
+        src="/images/buildings-interiors/hero-studio.jpg"
+        alt="Architects and designers shaping equitable spaces"
+        class="h-full w-full object-cover object-center"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
+      <div class="hero-enter max-w-4xl mx-auto text-center">
+        <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+          For Building Professionals
+        </span>
+        <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          Design for people.{' '}
+          <em class="font-display italic font-normal text-seam-300">
+            Prove it with the Standard.
+          </em>
+        </h1>
+        <p class="hero-subtitle mt-8 max-w-xl mx-auto text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+          Architects, interior designers, contractors, and engineers shape the social outcomes of every building. SEAM gives your team a measurable, defensible framework for the work you already care about.
+        </p>
+        <div class="hero-cta mt-10 flex flex-wrap gap-4 justify-center">
+          <a
+            href="/ap-credential"
+            class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+          >
+            Earn the AP Credential
+          </a>
+          <a
+            href="/resources/standard"
+            class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300"
+          >
+            Access the Standard
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Disciplines ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Who this is for
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Every discipline that shapes a building{' '}
+          <em class="italic font-normal text-seam-600">shapes its impact</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {disciplines.map((d) => (
+          <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">
+              {d.title}
+            </h3>
+            <p class="text-[16px] leading-relaxed text-warm-600">
+              {d.detail}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Pain Points / Solutions ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          The challenge
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Equity is in your work.{' '}
+          <em class="italic font-normal text-seam-600">Now make it visible.</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger space-y-6">
+        {challenges.map((c) => (
+          <div
+            class="reveal-child grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 rounded-2xl bg-white border border-warm-100 p-5 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+          >
+            <div>
+              <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600 mb-3 block">
+                The problem
+              </span>
+              <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900">
+                {c.pain}
+              </h3>
+            </div>
+            <div>
+              <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-3 block">
+                How SEAM helps
+              </span>
+              <p class="text-[16px] leading-relaxed text-warm-600">
+                {c.solution}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Products for You ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Your toolkit
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Built for{' '}
+          <em class="italic font-normal text-seam-600">practitioners</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6 pt-10">
+        {products.map((p) => (
+          <a
+            href={p.href}
+            class="reveal-child group relative overflow-visible rounded-2xl bg-white border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+          >
+            {p.logo && (
+              <div class="absolute -top-7 right-4 sm:-top-8 sm:right-8">
+                {p.logo.includes('member-') ? (
+                  <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden drop-shadow-sm">
+                    <img src={p.logo} alt="" class="w-full h-full object-cover scale-[1.35]" />
+                  </div>
+                ) : (
+                  <img src={p.logo} alt="" class={`w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-sm ${p.logo.includes('approved-wordmark') ? 'bg-[#01313d] rounded-lg p-2' : ''}`} />
+                )}
+              </div>
+            )}
+            <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-2 block">
+              {p.label}
+            </span>
+            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
+              {p.title}
+            </h3>
+            <p class="text-[16px] leading-relaxed text-warm-600 mb-6">
+              {p.description}
+            </p>
+            <p class="text-[14px] leading-relaxed text-warm-600 italic border-t border-warm-100 pt-5">
+              {p.fit}
+            </p>
+            <span class="inline-block mt-4 text-[14px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+              Learn more &rarr;
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Outcomes ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          The practice case
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          A credential that{' '}
+          <em class="italic font-normal text-seam-600">earns its keep</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {outcomes.map((o) => (
+          <div class="reveal-child rounded-2xl bg-white border border-warm-100 p-8 lg:p-10">
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
+              {o.metric}
+            </h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">
+              {o.detail}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Testimonial ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <svg class="mx-auto mb-8 w-12 h-12 text-warm-400" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+        </svg>
+        <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
+          We used to say our work was equitable. Now we can prove it. Two SEAM APs on the team and the AP credential on every pitch deck — it has changed how clients hear us.
+        </blockquote>
+        <div class="mt-10">
+          <p class="text-[16px] font-medium text-white">Priya Anand</p>
+          <p class="text-[14px] text-warm-400 mt-1">
+            Principal &middot; Field Studio Architecture
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Frequently asked
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Questions from{' '}
+          <em class="italic font-normal text-seam-600">building professionals</em>
+        </h2>
+      </div>
+
+      <div class="max-w-3xl">
+        {faqs.map((faq) => (
+          <details class="border-b border-warm-200 group">
+            <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
+                {faq.q}
+              </span>
+              <svg
+                class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </summary>
+            <div class="pb-6">
+              <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">
+                {faq.a}
+              </p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        Practice the work.{' '}
+        <em class="italic font-normal text-seam-300">Earn the credential.</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        Join a network of practitioners shaping the social pillar of the built environment. Free Open membership, full Changemaker access, or take the AP exam.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a
+          href="/ap-credential"
+          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+        >
+          Earn the AP Credential
+        </a>
+        <a
+          href="/community/individual"
+          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+        >
+          Join the Community
+        </a>
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>

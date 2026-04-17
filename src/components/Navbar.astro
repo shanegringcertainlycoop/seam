@@ -85,6 +85,11 @@ const theStandard: NavGroup = {
       href: '/rating-system',
       links: [
         {
+          label: 'All Rating Systems',
+          href: '/rating-system',
+          description: 'Choose the right path for your project type and role.',
+        },
+        {
           label: 'Buildings + Interiors',
           href: '/rating-system/buildings-interiors',
           description: 'Design and construction of equitable indoor environments.',
@@ -145,6 +150,7 @@ const audiences: NavGroup = {
   label: 'Who SEAM Is For',
   links: [
     { label: 'Developers & Owners', href: '/for/developers-owners', description: 'Reduce turnover, attract mission-aligned capital, and differentiate your asset in the market.' },
+    { label: 'Building Professionals', href: '/for/building-professionals', description: 'Architects, interior designers, contractors, and engineers shaping equitable spaces.' },
     { label: 'Property Managers & Facility Teams', href: '/for/operators', description: 'Turn the equity work you already do into a verified credential that strengthens renewals.' },
     { label: 'Capital Providers & Compliance', href: '/for/capital-providers', description: 'A diligence signal for social risk. GRESB-aligned data, international compliance-ready.' },
     { label: 'Social Impact Professionals', href: '/for/impact-professionals', description: 'Earn the AP credential, join a practitioner network, and build a practice around the Standard.' },
@@ -212,7 +218,62 @@ function logoClass(logo: string) {
               data-dropdown-panel={idx}
             >
               {group.sections?.length ? (
-                <div class="rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] w-[720px]">
+                <div class={`rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] ${group.label === 'The Standard' ? 'w-[820px]' : 'w-[760px]'} overflow-hidden`}>
+                  {/* Standard featured hero at top */}
+                  {group.label === 'The Standard' && group.featured && (
+                    <div class="grid grid-cols-[1fr_auto] items-stretch gap-6 bg-gradient-to-br from-warm-900 via-warm-900 to-seam-900 px-8 py-7 border-b border-warm-100">
+                      <div class="flex flex-col justify-between py-1">
+                        <div>
+                          <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold-400 mb-3">
+                            Featured
+                          </p>
+                          <p class="font-display text-[28px] leading-[1.1] tracking-[-0.02em] text-white">
+                            {group.featured.label}
+                          </p>
+                          <p class="mt-3 text-[13px] leading-relaxed text-warm-300 max-w-[320px]">
+                            The complete social equity framework for the built environment. Free and open.
+                          </p>
+                        </div>
+                        <div class="mt-5 flex flex-wrap items-center gap-2">
+                          <a
+                            href={group.featured.href}
+                            class="inline-flex items-center rounded-full bg-white px-4 py-2 text-[13px] font-medium text-warm-900 hover:bg-warm-100 transition-colors"
+                          >
+                            Learn more
+                          </a>
+                          <a
+                            href="/community/individual"
+                            class="inline-flex items-center rounded-full border border-white/30 px-4 py-2 text-[13px] font-medium text-white hover:border-white/60 hover:bg-white/5 transition-colors"
+                          >
+                            Access with free Open Membership
+                          </a>
+                        </div>
+                      </div>
+                      {/* Stylized document cover */}
+                      <div class="shrink-0 flex items-center">
+                        <svg viewBox="0 0 120 160" class="h-[150px] w-auto drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)]" aria-hidden="true">
+                          <defs>
+                            <linearGradient id="nav-doc-cover" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stop-color="#0c1f24" />
+                              <stop offset="100%" stop-color="#1a3640" />
+                            </linearGradient>
+                          </defs>
+                          <g transform="rotate(-4 60 80)">
+                            <rect x="18" y="8" width="96" height="148" rx="2" fill="#f7f5f0" opacity="0.18" />
+                            <rect x="12" y="5" width="98" height="150" rx="2" fill="#f7f5f0" opacity="0.32" />
+                            <rect x="6" y="2" width="100" height="152" rx="2.5" fill="url(#nav-doc-cover)" stroke="#3a5c67" stroke-width="0.5" />
+                            <text x="16" y="22" fill="#D78825" font-size="5" font-weight="600" letter-spacing="1.8">THE STANDARD</text>
+                            <rect x="16" y="26" width="14" height="0.6" fill="#D78825" />
+                            <text x="16" y="76" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="26" letter-spacing="-1">SEAM</text>
+                            <text x="16" y="90" fill="#a3c8d3" font-size="4.5" letter-spacing="0.3">Social Equity</text>
+                            <text x="16" y="97" fill="#a3c8d3" font-size="4.5" letter-spacing="0.3">Assessment Method</text>
+                            <rect x="16" y="142" width="30" height="0.4" fill="#6b8a93" />
+                            <text x="16" y="150" fill="#6b8a93" font-size="3.8" letter-spacing="1">v1.0 / 2026</text>
+                          </g>
+                        </svg>
+                      </div>
+                    </div>
+                  )}
                   <div class="grid grid-cols-2 divide-x divide-warm-100">
                     {group.sections.map((section) => (
                       <div class="p-6 space-y-1">
@@ -253,27 +314,6 @@ function logoClass(logo: string) {
                       </div>
                     ))}
                   </div>
-                  {/* Standard footer for sectioned dropdowns */}
-                  {group.label === 'The Standard' && (
-                    <div class="border-t border-warm-100 px-6 py-4">
-                      <a
-                        href="/resources/standard"
-                        class="group/std flex items-center justify-between rounded-xl px-3 py-3 transition-colors duration-150 hover:bg-warm-50"
-                      >
-                        <div>
-                          <span class="block text-[15px] font-medium text-warm-900 group-hover/std:text-gold-600">
-                            Explore the Standard
-                          </span>
-                          <span class="block mt-0.5 text-[13px] leading-snug text-warm-400">
-                            The full SEAM framework, free to download.
-                          </span>
-                        </div>
-                        <span class="text-warm-400 group-hover/std:text-gold-600 transition-colors">
-                          &rarr;
-                        </span>
-                      </a>
-                    </div>
-                  )}
                 </div>
               ) : (
                 <div class={`rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] ${group.featured ? 'w-[640px]' : 'w-[480px]'}`}>

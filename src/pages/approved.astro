@@ -153,12 +153,6 @@ const faqs = [
   },
 ]
 
-const statsBarItems = [
-  { target: 9, suffix: '', label: 'Approved Marks' },
-  { target: 4, suffix: '', label: 'Pillar categories' },
-  { target: 1, suffix: '', label: 'Mark at a time' },
-]
-
 const barHeights = [14, 10, 16, 8, 18, 12]
 
 const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
@@ -228,28 +222,6 @@ const jsonLd = [
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Stats Bar ─── -->
-  <section class="reveal-fade-up bg-warm-50 border-b border-warm-100">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-14">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {statsBarItems.map((s) => (
-          <div class="text-center">
-            <span
-              data-count-target={String(s.target)}
-              data-count-suffix={s.suffix}
-              class="block font-display text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] text-gold-600"
-            >
-              0{s.suffix}
-            </span>
-            <span class="block mt-1 text-[14px] text-warm-600 uppercase tracking-[0.08em]">
-              {s.label}
-            </span>
-          </div>
-        ))}
       </div>
     </div>
   </section>
