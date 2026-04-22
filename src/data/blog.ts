@@ -7,6 +7,7 @@ export interface BlogPost {
   date: string
   readTime: string
   featured?: boolean
+  image?: { src: string; alt: string }
   body: string
 }
 
@@ -273,6 +274,7 @@ The interdependent scoring ensures that certification reflects holistic performa
     author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
     date: '2024-12-17',
     readTime: '5 min read',
+    image: { src: '/images/blog/seam-ap-credential-launch.jpg', alt: 'SEAM Accredited Professional credential seal' },
     body: `SEAM, Inc. has unveiled the <a href="/ap-credential">SEAM Accredited Professionals (AP)</a> program — a certification initiative that enables professionals worldwide to guide developers, property owners, and occupiers through SEAM's comprehensive <a href="/certification">certification framework</a>, promoting dignity, community well-being, and economic opportunity in real estate projects.
 
 ## Why the AP credential matters
@@ -302,6 +304,7 @@ Professionals interested in the credential can learn more about eligibility, pre
     author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
     date: '2022-11-15',
     readTime: '4 min read',
+    image: { src: '/images/blog/cre-industry-first.jpg', alt: 'SEAM Inc. logo — the first social impact certification for commercial real estate' },
     body: `SEAM, Inc., a nonprofit led by commercial real estate veterans Rainey Shane and Alex Demestihas, has unveiled <a href="/certification">SEAM Certification</a> — the first social impact certification program designed specifically for commercial real estate.
 
 ## Addressing a critical gap
@@ -329,6 +332,7 @@ Seattle-based Urban Visions registered the first SEAM Certification pilot projec
     author: { name: 'Bianca Barragán', role: 'Bisnow' },
     date: '2022-11-16',
     readTime: '4 min read',
+    image: { src: '/images/blog/bisnow-launch.jpg', alt: 'Commercial real estate cityscape — Bisnow coverage of SEAM certification launch' },
     body: `<em>Originally published in <a href="https://www.bisnow.com/national/news/commercial-real-estate/seam-social-equity-certification-116429" rel="noopener noreferrer" target="_blank">Bisnow</a>.</em>
 
 A new nonprofit called SEAM Inc. (social equity assessment method) has launched a <a href="/certification">certification program</a> to standardize social impact measurement in commercial real estate development.
@@ -360,6 +364,7 @@ The organization also offers <a href="/ap-credential">professional accreditation
     author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
     date: '2023-10-09',
     readTime: '6 min read',
+    image: { src: '/images/blog/why-i-created-seam.jpg', alt: 'Rainey Shane, co-founder of SEAM' },
     body: `The question I hear most often is: how does someone go from commercial real estate to building a social equity certification? The honest answer is that the two were never as separate as the industry assumed.
 
 ## The supply chain problem
@@ -395,6 +400,7 @@ But we are early. The body of evidence is small. The practitioner network is gro
     author: { name: 'Melissa Daniel', role: 'Architecture is Political Podcast' },
     date: '2023-09-12',
     readTime: '4 min read',
+    image: { src: '/images/blog/architecture-is-political.jpg', alt: 'Rainey Shane on the Architecture is Political podcast' },
     body: `<em>Originally featured on the <a href="https://www.archispolly.online/episodes/seam" rel="noopener noreferrer" target="_blank">Architecture is Political podcast</a>, hosted by Melissa Daniel.</em>
 
 Rainey Shane, co-founder of SEAM, joined the Architecture is Political podcast for an extended conversation on what it means to measure social equity in commercial real estate — and why the industry needs a dedicated framework to do it.
@@ -426,6 +432,7 @@ Professionals interested in leading certification work can explore the <a href="
     author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
     date: '2023-10-24',
     readTime: '7 min read',
+    image: { src: '/images/blog/embodied-suffering.jpg', alt: 'The Jack building in Seattle — the first SEAM-certified project' },
     body: `The term "embodied suffering" describes the human cost hidden inside building materials — forced labor in quarries, child labor in mines, unsafe conditions in factories, and trafficking across supply chains that deliver products to construction sites worldwide.
 
 The scale is staggering. Between June 2022 and December 2023, more than 2,500 shipments valued at $2.2 billion — including PVCs, solar panels, and other building materials — were denied entry to the United States due to forced labor concerns.

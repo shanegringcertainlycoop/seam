@@ -73,6 +73,13 @@ const jsonLd = [
           href={`/resources/blog/${featured.slug}`}
           class="group block rounded-2xl bg-warm-900 p-6 sm:p-10 lg:p-14 min-h-[360px] sm:min-h-[480px] flex flex-col justify-end relative overflow-hidden"
         >
+          {featured.image && (
+            <img
+              src={featured.image.src}
+              alt={featured.image.alt}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          )}
           <div class="absolute inset-0 bg-gradient-to-t from-warm-900 via-warm-900/90 to-warm-900/50"></div>
           <div class="relative">
             <span class="inline-block rounded-full bg-gold-400/90 px-4 py-1.5 text-[12px] font-medium text-white mb-6">
@@ -124,8 +131,16 @@ const jsonLd = [
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-8 gap-y-10 lg:gap-y-14">
           {filtered.map((post) => (
             <a href={`/resources/blog/${post.slug}`} class="group block">
-              <div class="rounded-2xl bg-warm-50 p-8 lg:p-10 mb-5 min-h-[200px] flex items-end transition-all duration-300 group-hover:bg-warm-100/80 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-600">
+              <div class="rounded-2xl bg-warm-50 mb-5 min-h-[200px] flex items-end transition-all duration-300 group-hover:bg-warm-100/80 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden relative">
+                {post.image ? (
+                  <img
+                    src={post.image.src}
+                    alt={post.image.alt}
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : null}
+                <span class={`relative z-10 text-[12px] font-medium uppercase tracking-[0.1em] m-4 px-3 py-1.5 rounded-full ${post.image ? 'bg-white/90 text-gold-600' : 'text-gold-600 p-8 lg:p-10'}`}>
                   {post.category}
                 </span>
               </div>
