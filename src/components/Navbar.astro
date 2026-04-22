@@ -221,7 +221,7 @@ function logoClass(logo: string) {
                 <div class={`rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] ${group.label === 'The Standard' ? 'w-[820px]' : 'w-[760px]'} overflow-hidden`}>
                   {/* Standard featured hero at top */}
                   {group.label === 'The Standard' && group.featured && (
-                    <div class="grid grid-cols-[1fr_auto] items-stretch gap-6 bg-gradient-to-br from-warm-900 via-warm-900 to-seam-900 px-8 py-7 border-b border-warm-100">
+                    <div class="relative grid grid-cols-[1fr_300px] items-stretch bg-gradient-to-br from-warm-900 via-warm-900 to-seam-900 px-8 py-7 border-b border-warm-100 overflow-hidden">
                       <div class="flex flex-col justify-between py-1">
                         <div>
                           <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold-400 mb-3">
@@ -249,28 +249,13 @@ function logoClass(logo: string) {
                           </a>
                         </div>
                       </div>
-                      {/* Stylized document cover */}
-                      <div class="shrink-0 flex items-center">
-                        <svg viewBox="0 0 120 160" class="h-[150px] w-auto drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)]" aria-hidden="true">
-                          <defs>
-                            <linearGradient id="nav-doc-cover" x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stop-color="#0c1f24" />
-                              <stop offset="100%" stop-color="#1a3640" />
-                            </linearGradient>
-                          </defs>
-                          <g transform="rotate(-4 60 80)">
-                            <rect x="18" y="8" width="96" height="148" rx="2" fill="#f7f5f0" opacity="0.18" />
-                            <rect x="12" y="5" width="98" height="150" rx="2" fill="#f7f5f0" opacity="0.32" />
-                            <rect x="6" y="2" width="100" height="152" rx="2.5" fill="url(#nav-doc-cover)" stroke="#3a5c67" stroke-width="0.5" />
-                            <text x="16" y="22" fill="#D78825" font-size="5" font-weight="600" letter-spacing="1.8">THE STANDARD</text>
-                            <rect x="16" y="26" width="14" height="0.6" fill="#D78825" />
-                            <text x="16" y="76" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="26" letter-spacing="-1">SEAM</text>
-                            <text x="16" y="90" fill="#a3c8d3" font-size="4.5" letter-spacing="0.3">Social Equity</text>
-                            <text x="16" y="97" fill="#a3c8d3" font-size="4.5" letter-spacing="0.3">Assessment Method</text>
-                            <rect x="16" y="142" width="30" height="0.4" fill="#6b8a93" />
-                            <text x="16" y="150" fill="#6b8a93" font-size="3.8" letter-spacing="1">v1.0 / 2026</text>
-                          </g>
-                        </svg>
+                      {/* Standard book cover */}
+                      <div class="absolute -right-8 -top-4 -bottom-4 w-[320px] overflow-hidden">
+                        <img
+                          src="/images/seam-standard-book.png"
+                          alt="The SEAM Standard book cover"
+                          class="absolute right-2 top-1/2 -translate-y-[45%] h-[280px] w-auto drop-shadow-[0_16px_32px_rgba(0,0,0,0.4)] rotate-[12deg]"
+                        />
                       </div>
                     </div>
                   )}

@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
 import { breadcrumbSchema, SITE_URL } from '../lib/seo-helpers'
+import { team } from '../data/team'
 
 const values = [
   {
@@ -17,27 +18,12 @@ const values = [
   },
 ]
 
-const founders = [
-  {
-    name: 'Rainey Shane',
-    role: 'Co-Founder',
-    bio: '15+ years commercial real estate experience, mostly in adaptive reuse. Rainey is passionate about anti-trafficking, combatting modern slavery, and is a Rescue Team Operator for child trafficking and forced labor rescue missions.',
-    image: '/team/rainey.jpg',
-  },
-  {
-    name: 'Alex Demestihas',
-    role: 'Co-Founder',
-    bio: '15+ years commercial real estate experience covering multi-family and large corporate headquarters. Alex is passionate about causes involving human rights and spends his volunteer efforts focused on immigration rights.',
-    image: '/team/alex.jpg',
-  },
-]
-
 const jsonLd = [
   breadcrumbSchema([
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
   ]),
-  ...founders.map((f) => ({
+  ...team.map((f) => ({
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: f.name,
@@ -158,8 +144,8 @@ const jsonLd = [
         </h2>
       </div>
 
-      <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {founders.map((f) => (
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {team.map((f) => (
           <div
             class="reveal-child rounded-2xl border border-warm-100 overflow-hidden transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
           >
@@ -168,16 +154,17 @@ const jsonLd = [
                 src={f.image}
                 alt={f.name}
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
-            <div class="p-10 lg:p-12">
+            <div class="p-8 lg:p-10">
               <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-2">
                 {f.role}
               </p>
-              <h3 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4">
+              <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
                 {f.name}
               </h3>
-              <p class="text-[16px] leading-relaxed text-warm-600">
+              <p class="text-[15px] leading-relaxed text-warm-600">
                 {f.bio}
               </p>
             </div>
