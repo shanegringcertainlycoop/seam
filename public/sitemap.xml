@@ -92,6 +92,11 @@
 
   <!-- Blog posts -->
   <url>
+    <loc>https://seamcertification.org/resources/blog/what-the-jack-teaches-us-about-human-centric-real-estate</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://seamcertification.org/resources/blog/seam-ap-credential-launch</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>

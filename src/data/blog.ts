@@ -13,6 +13,7 @@ export interface BlogPost {
 
 export const categories = [
   'All',
+  'Certified Projects',
   'News',
   'In the Press',
   'Practitioner Perspectives',
@@ -20,6 +21,58 @@ export const categories = [
 ] as const
 
 export const posts: BlogPost[] = [
+  {
+    slug: 'what-the-jack-teaches-us-about-human-centric-real-estate',
+    title: 'What The Jack teaches us about human-centric real estate',
+    excerpt:
+      'As the first SEAM-certified project in the world, The Jack in Seattle\'s Pioneer Square demonstrates what happens when 1,043 community voices shape a building\'s operations — and what that model means for the industry.',
+    category: 'Certified Projects',
+    author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
+    date: '2024-10-30',
+    readTime: '6 min read',
+    featured: true,
+    image: { src: '/images/blog/the-jack-pioneer-square.jpg', alt: 'The Jack building in Seattle\'s Pioneer Square, designed by Olson Kundig. Photo by Nic Lehoux' },
+    body: `The Jack is a 175,000 SF, eight-level mixed-use building at 74 S. Jackson Street in Seattle's historic Pioneer Square District. Designed by Olson Kundig and developed by Urban Visions, it opened in 2023 as the first building in the world to achieve <a href="/certification">SEAM Certification</a>.
+
+That distinction matters — not because it was first, but because of what the process revealed about what human-centric real estate actually requires.
+
+## What made The Jack different
+
+Most certification stories begin with design intent. The Jack's begins with listening. Before pursuing SEAM Certification, Urban Visions engaged 1,043 community members in the surrounding Pioneer Square neighborhood. That is not a survey. That is a statistically robust sample large enough to represent genuine community priorities rather than the loudest voices in a public meeting.
+
+What the community asked for was not what the development team expected. The input reshaped ground-floor retail strategy, influenced programming decisions, and created accountability mechanisms that persist beyond the construction phase.
+
+## Bronze certification, platinum lessons
+
+The Jack achieved Bronze under the SEAM O+M: Developer rating system. Some observers asked why not Gold or Platinum on the first attempt. The answer reflects something important about how <a href="/resources/standard">the Standard</a> works.
+
+SEAM Certification is not a design exercise. It is an operational commitment measured over time. Bronze on a first certification, with clear documentation and genuine community engagement, is more meaningful than a higher tier achieved through selective compliance. The Jack's team chose rigor over optics.
+
+## What the pilot process taught us
+
+As the inaugural SEAM Certification pilot, The Jack did not just earn a credential. It stress-tested the entire framework. Urban Visions collaborated with SEAM to refine 143 certification processes, enhance 262 elements in the Standard, and calibrate 46 scorecard activities.
+
+Every one of those refinements made the framework more actionable for the projects that followed. The Jack's contribution to SEAM is not just its certification — it is the infrastructure of accountability that every subsequent project inherits.
+
+## The four pillars in practice
+
+The Jack's certification was evaluated across the four interdependent pillars of the SEAM Standard:
+
+- <a href="/standard/social-impact">Social Impact</a>: measurable outcomes for the people and communities the building touches
+- <a href="/standard/social-responsibility">Social Responsibility</a>: ethical practices in procurement, labor, and governance
+- <a href="/standard/social-justice">Social Justice</a>: addressing systemic inequity through the built environment
+- <a href="/standard/social-accountability">Social Accountability</a>: transparency, reporting, and stakeholder engagement
+
+The interdependence is the point. A building cannot score well in one pillar while ignoring another. Social equity is a system, not a checklist.
+
+## What this means for the industry
+
+The Jack demonstrates that social equity certification is not aspirational — it is operational. The community engagement model, the documentation rigor, and the ongoing accountability structure are all replicable. They are also compatible with financial performance; Urban Visions has not reported any tension between certification requirements and project economics.
+
+For developers considering <a href="/certification">SEAM Certification</a>, The Jack offers a clear precedent. For practitioners, the <a href="/ap-credential">SEAM AP credential</a> provides the training to lead this work. And for the communities that buildings serve, The Jack proves that their voice can be more than advisory — it can be structural.
+
+Todd Lee, EVP at Urban Visions, put it simply: "A certification that solely focuses on social equity within the built environment is long overdue."`,
+  },
   {
     slug: 'seam-ap-credential-launch',
     title: 'SEAM launches the AP credential: empowering real estate to champion people-centered practices',
@@ -29,7 +82,6 @@ export const posts: BlogPost[] = [
     author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
     date: '2024-12-17',
     readTime: '5 min read',
-    featured: true,
     image: { src: '/images/blog/seam-ap-credential-launch.jpg', alt: 'SEAM Accredited Professional credential seal' },
     body: `SEAM, Inc. has unveiled the <a href="/ap-credential">SEAM Accredited Professionals (AP)</a> program — a certification initiative that enables professionals worldwide to guide developers, property owners, and occupiers through SEAM's comprehensive <a href="/certification">certification framework</a>, promoting dignity, community well-being, and economic opportunity in real estate projects.
 
