@@ -121,6 +121,36 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://seamcertification.org/resources/blog/seam-ap-credential-launch</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/blog/cre-industry-first-social-impact-certification</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/blog/bisnow-social-impact-certification-launches</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/blog/why-i-created-seam</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/blog/architecture-is-political-seam-deep-dive</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/blog/embodied-suffering-building-materials</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
   <!-- Audience pages -->
   <url>
