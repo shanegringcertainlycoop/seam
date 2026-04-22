@@ -141,11 +141,11 @@ const faqs = [
   },
   {
     q: 'How much does it cost?',
-    a: 'Pricing is per activity. Community members receive discounted verification fees. Volume pricing is available for organizations verifying multiple activities or rolling out Approved across a portfolio.',
+    a: 'Pricing is per activity. <a href="/community" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Community members</a> receive discounted verification fees. Volume pricing is available for organizations verifying multiple activities or rolling out Approved across a portfolio. See <a href="/pricing" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">pricing details</a>.',
   },
   {
     q: 'Do we need a SEAM AP for activity verification?',
-    a: 'No. A SEAM AP is not required for SEAM Approved submissions. However, working with an AP can strengthen your documentation and increase the likelihood of first-submission approval.',
+    a: 'No. A <a href="/ap-credential" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM AP</a> is not required for SEAM Approved submissions. However, working with an AP can strengthen your documentation and increase the likelihood of first-submission approval.',
   },
   {
     q: 'How long does the credential last?',
@@ -168,8 +168,8 @@ const jsonLd = [
 ---
 
 <SiteLayout
-  title="SEAM Approved"
-  description="SEAM Approved Marks verify individual SEAM activities without requiring full project certification. Each Mark stands on its own as a recognized achievement and counts toward full certification."
+  title="SEAM Approved — Activity-Level Equity Verification"
+  description="Verify individual social equity practices without full certification. Each SEAM Approved Mark counts toward full certification."
   path="/approved"
   jsonLd={jsonLd}
 >
@@ -192,7 +192,7 @@ const jsonLd = [
             </em>
           </h1>
           <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            SEAM Approved Marks verify individual SEAM activities without requiring full project certification. Each Approved Mark stands on its own as a recognized achievement, and each one can count toward full certification if you choose to pursue it.
+            SEAM Approved Marks verify individual activities from the <a href="/resources/standard" class="underline decoration-white/30 hover:decoration-white/60 transition-colors">SEAM Standard</a> without requiring full <a href="/certification" class="underline decoration-white/30 hover:decoration-white/60 transition-colors">project certification</a>. Each Approved Mark stands on its own as a recognized achievement, and each one can count toward full certification if you choose to pursue it.
           </p>
           <div class="hero-cta mt-10 flex flex-wrap gap-4">
             <a
@@ -261,23 +261,6 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ─── ROI Placeholder ─── -->
-  <section class="reveal-fade-up py-24 lg:py-32">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-2xl mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
-          How it works
-        </p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          ROI
-        </h2>
-      </div>
-      <div class="rounded-2xl bg-warm-100 border-2 border-dashed border-warm-300 h-64 flex items-center justify-center">
-        <p class="text-warm-400 text-[17px]">ROI data section — coming soon</p>
-      </div>
-    </div>
-  </section>
-
   <!-- ─── Approved Marks ─── -->
   <section id="marks" class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -290,7 +273,7 @@ const jsonLd = [
           <em class="italic font-normal text-seam-600">recognized progress</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
-          Pick from the following list of SEAM Approved Marks. Each is verified to earn credit toward full certification if you choose to pursue it.
+          Pick from the following list of SEAM Approved Marks. Each is verified to earn credit toward full <a href="/certification" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM Certification</a> if you choose to pursue it.
         </p>
       </div>
 

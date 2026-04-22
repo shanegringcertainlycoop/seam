@@ -243,6 +243,19 @@
   animation: none !important;
 }
 
+/* ─── Blog Prose Links ─── */
+
+.prose-seam a {
+  color: var(--color-seam-600);
+  text-decoration: underline;
+  text-decoration-color: var(--color-warm-300);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.2s;
+}
+.prose-seam a:hover {
+  text-decoration-color: var(--color-seam-600);
+}
+
 /* ─── Accessibility: Focus Visible ─── */
 
 :focus-visible {

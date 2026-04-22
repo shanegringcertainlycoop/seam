@@ -1,4 +1,5 @@
-export const SITE_URL = 'https://vermillion-kitten-16c3ae.netlify.app'
+export const SITE_URL =
+  import.meta.env.SITE_URL || import.meta.env.URL || 'https://seamcertification.org'
 export const SITE_NAME = 'SEAM'
 export const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`
 export const DEFAULT_DESCRIPTION =
@@ -14,7 +15,7 @@ export function blogPostingSchema(post: {
 }) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: post.title,
     description: post.excerpt,
     author: {
@@ -26,13 +27,19 @@ export function blogPostingSchema(post: {
       '@type': 'Organization',
       name: 'SEAM',
       url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/favicon.svg`,
+      },
     },
     datePublished: post.date,
+    dateModified: post.date,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `${SITE_URL}/resources/blog/${post.slug}`,
     },
-    articleBody: post.body.slice(0, 500),
+    articleBody: post.body.slice(0, 1000),
+    wordCount: post.body.split(/\s+/).length,
     url: `${SITE_URL}/resources/blog/${post.slug}`,
   }
 }

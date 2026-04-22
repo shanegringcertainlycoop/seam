@@ -2,127 +2,154 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core pages -->
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/</loc>
+    <loc>https://seamcertification.org/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/about</loc>
+    <loc>https://seamcertification.org/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/get-started</loc>
+    <loc>https://seamcertification.org/get-started</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/pricing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Solutions -->
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/certification</loc>
+    <loc>https://seamcertification.org/certification</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/approved</loc>
+    <loc>https://seamcertification.org/approved</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/ap-credential</loc>
+    <loc>https://seamcertification.org/ap-credential</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Community -->
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/commons</loc>
+    <loc>https://seamcertification.org/community</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/commons/individual</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/commons/organization</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
 
   <!-- Resources -->
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/resources/standard</loc>
+    <loc>https://seamcertification.org/resources/standard</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/resources/rossi</loc>
+    <loc>https://seamcertification.org/resources/rossi</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/resources/blog</loc>
+    <loc>https://seamcertification.org/resources/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/resources/courses</loc>
+    <loc>https://seamcertification.org/resources/courses</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
+  <!-- Standard pillar pages -->
+  <url>
+    <loc>https://seamcertification.org/standard/social-impact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/standard/social-responsibility</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/standard/social-justice</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/standard/social-accountability</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Blog posts -->
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/resources/blog/the-jack-one-year-later</loc>
+    <loc>https://seamcertification.org/resources/blog/the-jack-one-year-later</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/resources/blog/rossi-v2-financial-language</loc>
+    <loc>https://seamcertification.org/resources/blog/rossi-v2-financial-language</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/resources/blog/why-not-just-add-dei-to-leed</loc>
+    <loc>https://seamcertification.org/resources/blog/why-not-just-add-dei-to-leed</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/resources/blog/ap-field-report-interface-portland</loc>
+    <loc>https://seamcertification.org/resources/blog/ap-field-report-interface-portland</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/resources/blog/seam-approved-first-six-months</loc>
+    <loc>https://seamcertification.org/resources/blog/seam-approved-first-six-months</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/resources/blog/four-pillars-explained</loc>
+    <loc>https://seamcertification.org/resources/blog/four-pillars-explained</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Audience pages -->
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/for/developers-owners</loc>
+    <loc>https://seamcertification.org/for/developers-owners</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/for/operators</loc>
+    <loc>https://seamcertification.org/for/operators</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/for/capital-providers</loc>
+    <loc>https://seamcertification.org/for/capital-providers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vermillion-kitten-16c3ae.netlify.app/for/impact-professionals</loc>
+    <loc>https://seamcertification.org/for/impact-professionals</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/for/building-professionals</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/for/people</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

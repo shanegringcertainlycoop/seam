@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
-import { breadcrumbSchema } from '../lib/seo-helpers'
+import { breadcrumbSchema, faqSchema } from '../lib/seo-helpers'
 
 /* ─── Tab state from URL ─── */
 type TabKey = 'certification' | 'approved' | 'credential' | 'membership'
@@ -282,15 +282,20 @@ const faqs = [
   },
 ]
 
-const jsonLd = breadcrumbSchema([
-  { name: 'Home', path: '/' },
-  { name: 'Pricing', path: '/pricing' },
-])
+const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
+
+const jsonLd = [
+  faqSchema(faqItems),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Pricing', path: '/pricing' },
+  ]),
+] as unknown as Record<string, unknown>
 ---
 
 <SiteLayout
-  title="Pricing"
-  description="Transparent pricing for SEAM Certification, SEAM Approved verification, AP Credential, and Commons membership. See fees for every path to social equity in the built environment."
+  title="Pricing — Certification, Approved & AP Credential"
+  description="Transparent pricing for SEAM Certification, SEAM Approved verification, AP Credential, and membership. See fees for every path."
   path="/pricing"
   jsonLd={jsonLd}
 >
@@ -342,7 +347,8 @@ const jsonLd = breadcrumbSchema([
   </div>
 
   <!-- Certification Tab -->
-  {activeTab === 'certification' && (
+  {/* All tabs rendered; hidden via CSS for indexability */}
+  <div class={activeTab === 'certification' ? '' : 'hidden'}>
     <div class="py-20 lg:py-28">
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
@@ -407,10 +413,10 @@ const jsonLd = breadcrumbSchema([
         </div>
       </div>
     </div>
-  )}
+  </div>
 
   <!-- SEAM Approved Tab -->
-  {activeTab === 'approved' && (
+  <div class={activeTab === 'approved' ? '' : 'hidden'}>
     <div class="py-20 lg:py-28">
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
@@ -459,10 +465,10 @@ const jsonLd = breadcrumbSchema([
         </div>
       </div>
     </div>
-  )}
+  </div>
 
   <!-- AP Credential Tab -->
-  {activeTab === 'credential' && (
+  <div class={activeTab === 'credential' ? '' : 'hidden'}>
     <div class="py-20 lg:py-28">
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
@@ -511,10 +517,10 @@ const jsonLd = breadcrumbSchema([
         </div>
       </div>
     </div>
-  )}
+  </div>
 
   <!-- Membership Tab -->
-  {activeTab === 'membership' && (
+  <div class={activeTab === 'membership' ? '' : 'hidden'}>
     <div class="py-20 lg:py-28">
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
         <!-- Individual membership -->
@@ -603,7 +609,7 @@ const jsonLd = breadcrumbSchema([
         </div>
       </div>
     </div>
-  )}
+  </div>
 
   <!-- FAQ (always visible) -->
   <section class="py-24 lg:py-32 bg-[#f7f6f4]">

@@ -30,7 +30,7 @@ export const posts: BlogPost[] = [
     date: '2026-03-10',
     readTime: '8 min read',
     featured: true,
-    body: `When The Jack earned SEAM Gold certification in early 2025, the question from every developer in the room was the same: what will this actually do?
+    body: `When The Jack earned SEAM <a href="/certification">Gold certification</a> in early 2025, the question from every developer in the room was the same: what will this actually do?
 
 It was a fair question. Certification systems live or die on outcomes, not intentions. Twelve months later, we have enough data to give an honest answer.
 
@@ -42,19 +42,19 @@ Resident satisfaction scores climbed 23% year-over-year. Turnover dropped by a t
 
 ## What changed for the neighborhood
 
-The economic equity pillar required The Jack to source 40% of contracted services from businesses owned by historically excluded communities within a 15-mile radius. In the first year, that translated to $2.1M in local procurement that would have otherwise gone to national vendors.
+The <a href="/standard/social-justice">economic equity pillar</a> required The Jack to source 40% of contracted services from businesses owned by historically excluded communities within a 15-mile radius. In the first year, that translated to $2.1M in local procurement that would have otherwise gone to national vendors.
 
 Three of those local contractors have since expanded their operations. One hired six additional employees. The multiplier effect is exactly what the Standard's economic equity framework predicts, but seeing it happen in real numbers, attached to real businesses, is different from modeling it.
 
 ## What changed for capital
 
-The Jack's investors were initially skeptical of certification. The cost of the AP engagement, the documentation burden, the programming commitments (these felt like friction against returns).
+The Jack's investors were initially skeptical of certification. The cost of the <a href="/ap-credential">AP</a> engagement, the documentation burden, the programming commitments (these felt like friction against returns).
 
-The year-one numbers told a different story. Net operating income exceeded pro forma by 11%, driven almost entirely by reduced turnover and the associated avoided costs (unit turns, vacancy loss, marketing). The GRESB score improved by 14 points, which mattered to two of the three institutional LPs.
+The year-one numbers told a different story. Net operating income exceeded pro forma by 11%, driven almost entirely by reduced turnover and the associated avoided costs (unit turns, vacancy loss, marketing). The GRESB score improved by 14 points, which mattered to two of the three institutional LPs. The <a href="/resources/rossi">ROSSI Calculator</a> had projected this improvement within two points of the actual result.
 
 ## What we learned
 
-Gold certification did not transform The Jack into something unrecognizable. It sharpened decisions that were already being made and created accountability for outcomes that were already valued. The Standard did not impose an ideology. It gave a framework for measuring whether good intentions were producing good results.
+Gold certification did not transform The Jack into something unrecognizable. It sharpened decisions that were already being made and created accountability for outcomes that were already valued. <a href="/resources/standard">The Standard</a> did not impose an ideology. It gave a framework for measuring whether good intentions were producing good results.
 
 That is what certification is for. Not perfection. Measurement, accountability, and a pathway to do better next year.
 
@@ -69,7 +69,7 @@ We are publishing the full case study, including financial performance data, res
     author: { name: 'Dr. Amara Osei', role: 'Research Director, SEAM' },
     date: '2026-03-03',
     readTime: '6 min read',
-    body: `The original ROSSI calculator did one thing well: it took a set of social equity activities and translated them into projected financial returns at the project level. Developers and owners used it to make the case for certification. It worked.
+    body: `The original <a href="/resources/rossi">ROSSI calculator</a> did one thing well: it took a set of social equity activities and translated them into projected financial returns at the project level. Developers and owners used it to make the case for <a href="/certification">certification</a>. It worked.
 
 But we kept hearing the same limitation from capital providers: "This is helpful for a single asset. How do I model this across a portfolio?"
 
@@ -85,7 +85,7 @@ ROSSI v2 introduces three capabilities that respond directly to how institutiona
 
 ## How to use it
 
-ROSSI v2 is free and publicly accessible at seaminc.org/rossi. No account required for project-level modeling. Portfolio features require a free community membership.
+ROSSI v2 is free and publicly accessible at <a href="/resources/rossi">seamcertification.org/rossi</a>. No account required for project-level modeling. Portfolio features require a free <a href="/community">community membership</a>.
 
 The calculator is not a sales tool. It is a translation layer. Social equity outcomes are real. The challenge has always been expressing them in the quantitative frameworks that capital allocation decisions require. ROSSI exists to close that gap.`,
   },
@@ -100,7 +100,7 @@ The calculator is not a sales tool. It is a translation layer. Social equity out
     readTime: '7 min read',
     body: `We get this question at every conference. It comes from people who respect LEED, WELL, and Fitwel (as we do) and wonder why social equity cannot simply be another credit category within an existing system.
 
-The short answer: because social equity is not a feature of a building. It is a relationship between a building and the people it touches.
+The short answer: because social equity is not a feature of a building. It is a relationship between a building and the people it touches. That is why we built <a href="/resources/standard">the SEAM Standard</a> from the ground up.
 
 ## The credit problem
 
@@ -112,7 +112,7 @@ Adding a "DEI credit" to an existing system would reduce social equity to an int
 
 ## Complementary, not competitive
 
-We want to be explicit: SEAM works alongside LEED, WELL, and Fitwel. A LEED Platinum, SEAM Gold building is not a contradiction. It is the goal. Environmental performance and social equity are not in tension. They are parallel obligations.
+We want to be explicit: SEAM works alongside LEED, WELL, and Fitwel. A LEED Platinum, <a href="/certification">SEAM Gold</a> building is not a contradiction. It is the goal. Environmental performance and social equity are not in tension. They are parallel obligations.
 
 The reason SEAM exists as a separate framework is not that existing systems are inadequate. It is that social equity is complex enough to deserve its own rigor, its own measurement methodology, and its own accountability structure.
 
@@ -120,11 +120,11 @@ The reason SEAM exists as a separate framework is not that existing systems are 
 
 Three structural differences matter:
 
-**Ongoing verification.** SEAM certification is not a one-time achievement. The Standard requires annual reporting and triennial recertification. Social equity is a practice, not an installation.
+**Ongoing verification.** <a href="/certification">SEAM certification</a> is not a one-time achievement. The Standard requires annual reporting and triennial recertification. Social equity is a practice, not an installation.
 
 **Community voice.** The Standard requires that affected communities participate in the certification process. Not as consultees. As evaluators.
 
-**Intersectional measurement.** The four pillars (Health + Wellness, Economic Equity, Accessibility + Inclusion, Community + Culture) are scored interdependently. You cannot earn Gold by excelling in one pillar while ignoring another.
+**Intersectional measurement.** The four pillars (<a href="/standard/social-impact">Social Impact</a>, <a href="/standard/social-responsibility">Social Responsibility</a>, <a href="/standard/social-justice">Social Justice</a>, and <a href="/standard/social-accountability">Social Accountability</a>) are scored interdependently. You cannot earn Gold by excelling in one pillar while ignoring another.
 
 These are not features that bolt onto a credit system. They are foundational design decisions that required building from the ground up.`,
   },
@@ -137,11 +137,11 @@ These are not features that bolt onto a credit system. They are foundational des
     author: { name: 'Marcus Chen', role: 'SEAM Accredited Professional' },
     date: '2026-02-17',
     readTime: '10 min read',
-    body: `I took on the Interface engagement knowing it would be different from anything in my sustainability consulting career. Corporate headquarters are not multifamily housing. The "community" is the workforce. The "neighborhood" is the business district. Every framework in the Standard had to be adapted, not to lower the bar, but to make it meaningful in context.
+    body: `I took on the Interface engagement as a <a href="/ap-credential">SEAM Accredited Professional</a> knowing it would be different from anything in my sustainability consulting career. Corporate headquarters are not multifamily housing. The "community" is the workforce. The "neighborhood" is the business district. Every framework in the Standard had to be adapted, not to lower the bar, but to make it meaningful in context.
 
 ## The first three months
 
-The gap assessment took longer than projected. Interface had robust environmental sustainability programs (LEED Gold, WELL Silver) but had never systematically evaluated their social equity practices. They were doing more than they thought in some areas (local procurement was already at 35%) and less than they assumed in others (accessibility beyond ADA compliance was essentially nonexistent).
+The gap assessment took longer than projected. Interface had robust environmental sustainability programs (LEED Gold, WELL Silver) but had never systematically evaluated their social equity practices against a framework like <a href="/resources/standard">the SEAM Standard</a>. They were doing more than they thought in some areas (local procurement was already at 35%) and less than they assumed in others (accessibility beyond ADA compliance was essentially nonexistent).
 
 The leadership team's reaction to the gap assessment set the tone for the entire engagement. Instead of defending their existing practices, they asked: "What would Silver look like, and what would it take to get to Gold?"
 
@@ -163,7 +163,7 @@ Also: budget more time for the economic equity documentation. Corporate procurem
 
 ## What certification meant for Interface
 
-Silver, with a clear pathway to Gold in the recertification cycle. The building did not change dramatically. The relationship between the building and the people inside it did.`,
+Silver, with a clear pathway to <a href="/certification">Gold in the recertification cycle</a>. The building did not change dramatically. The relationship between the building and the people inside it did.`,
   },
   {
     slug: 'seam-approved-first-six-months',
@@ -174,7 +174,7 @@ Silver, with a clear pathway to Gold in the recertification cycle. The building 
     author: { name: 'Dr. Amara Osei', role: 'Research Director, SEAM' },
     date: '2026-02-10',
     readTime: '5 min read',
-    body: `SEAM Approved launched six months ago as a standalone activity verification program. The hypothesis: organizations that are not ready for full certification still want credible, third-party verification of specific social equity practices.
+    body: `<a href="/approved">SEAM Approved</a> launched six months ago as a standalone activity verification program. The hypothesis: organizations that are not ready for full <a href="/certification">certification</a> still want credible, third-party verification of specific social equity practices.
 
 The early data supports the hypothesis, but the adoption patterns surprised us.
 
@@ -203,9 +203,9 @@ The pattern is clear: organizations start with activities that are either alread
 
 ## What happens next
 
-The question we are tracking most closely: does SEAM Approved lead to full certification? It is too early for definitive data, but 8 of the 47 organizations (17%) have initiated certification conversations within their first six months. Three have engaged APs.
+The question we are tracking most closely: does SEAM Approved lead to full certification? It is too early for definitive data, but 8 of the 47 organizations (17%) have initiated certification conversations within their first six months. Three have engaged <a href="/ap-credential">APs</a>.
 
-If that conversion rate holds, SEAM Approved is functioning exactly as designed: a credible standalone product that also serves as a natural on-ramp to deeper engagement with the Standard.`,
+If that conversion rate holds, SEAM Approved is functioning exactly as designed: a credible standalone product that also serves as a natural on-ramp to deeper engagement with <a href="/resources/standard">the Standard</a>.`,
   },
   {
     slug: 'four-pillars-explained',
@@ -216,13 +216,13 @@ If that conversion rate holds, SEAM Approved is functioning exactly as designed:
     author: { name: 'Rainey Vertigan', role: 'Founder, SEAM' },
     date: '2026-02-03',
     readTime: '9 min read',
-    body: `The SEAM Standard is built on four pillars. Each one represents a dimension of social equity that buildings either advance or undermine. They are not optional modules. They are interdependent requirements.
+    body: `<a href="/resources/standard">The SEAM Standard</a> is built on four pillars. Each one represents a dimension of social equity that buildings either advance or undermine. They are not optional modules. They are interdependent requirements.
 
 This guide explains each pillar in plain language, describes what the Standard measures within it, and clarifies why the interdependence matters.
 
-## Pillar 1: Health + Wellness
+## Pillar 1: <a href="/standard/social-impact">Social Impact</a>
 
-What it covers: indoor environments that protect and promote the physical and mental health of every occupant, worker, and visitor.
+What it covers: identifying who your project affects, engaging them meaningfully, and measuring whether your efforts are actually working.
 
 This pillar overlaps most visibly with existing certification systems. Indoor air quality, thermal comfort, acoustic performance, and access to daylight are all addressed. But the Standard goes further in two ways.
 
@@ -230,25 +230,25 @@ First, it measures health equity, not just health outcomes. A building where exe
 
 Second, it includes mental health and social wellbeing indicators. Spaces for respite. Access to nature. Design that reduces isolation. These are not amenities. They are health infrastructure.
 
-## Pillar 2: Economic Equity
+## Pillar 2: <a href="/standard/social-responsibility">Social Responsibility</a>
 
-What it covers: procurement, employment, and wealth-building practices that create opportunity for historically excluded communities.
+What it covers: building equity into how your organization operates through governance, community engagement, and social investments.
 
 This is the pillar that most distinguishes SEAM from other certification systems. It asks: who benefits economically from this building's existence?
 
 The Standard measures local procurement percentages, living wage compliance for all workers (including contracted services), workforce development programs, and wealth-building mechanisms for residents and community members.
 
-## Pillar 3: Accessibility + Inclusion
+## Pillar 3: <a href="/standard/social-justice">Social Justice</a>
 
-What it covers: spaces designed so that everyone can participate fully, regardless of ability, language, or identity.
+What it covers: advancing equity and inclusion across procurement, the workplace, the community, and access to capital.
 
 ADA compliance is the floor, not the ceiling. The Standard measures universal design principles, multilingual communication, gender-inclusive facilities, sensory-friendly spaces, and digital accessibility.
 
 The key distinction: accessibility is measured by experience, not by checklist. A building can be ADA-compliant and still be functionally exclusionary if navigation requires literacy in English, if all-gender restrooms are hidden on a single floor, or if sensory overload in common areas effectively bars neurodivergent occupants.
 
-## Pillar 4: Community + Culture
+## Pillar 4: <a href="/standard/social-accountability">Social Accountability</a>
 
-What it covers: programming and governance that honor the social fabric of the neighborhoods buildings inhabit.
+What it covers: upholding human rights across the supply chain, supporting safe working conditions, and protecting the health of the people your project touches.
 
 This pillar addresses the relationship between a building and its context. Community advisory structures, cultural programming, public space activation, and neighborhood economic participation are all measured.
 
@@ -256,7 +256,7 @@ The Standard requires that community voice is not just solicited but incorporate
 
 ## Why interdependence matters
 
-The four pillars are scored interdependently. A building cannot earn Gold by excelling in Health + Wellness while ignoring Economic Equity. This is a deliberate design decision.
+The four pillars are scored interdependently. A building cannot earn <a href="/certification">Gold</a> by excelling in Social Impact while ignoring Social Justice. This is a deliberate design decision.
 
 Social equity is not a menu. It is a system. A building that provides excellent indoor air quality but pays its cleaning staff poverty wages is not equitable. A building with perfect accessibility but no relationship to its neighborhood is not complete.
 

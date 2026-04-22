@@ -35,6 +35,7 @@ const pillars = [
   {
     number: '01',
     title: 'Social Impact',
+    href: '/standard/social-impact',
     icon: '/icons/pillar-social-impact.png',
     description:
       'Identify who your project affects, engage them meaningfully, and measure whether your efforts are actually working.',
@@ -42,6 +43,7 @@ const pillars = [
   {
     number: '02',
     title: 'Social Responsibility',
+    href: '/standard/social-responsibility',
     icon: '/icons/pillar-social-responsibility.png',
     description:
       'Build equity into how your organization operates through governance practices, community engagement, and social investments that reflect your values.',
@@ -49,6 +51,7 @@ const pillars = [
   {
     number: '03',
     title: 'Social Justice',
+    href: '/standard/social-justice',
     icon: '/icons/pillar-social-justice.png',
     description:
       'Advance equity and inclusion across procurement, the workplace, the community, and access to capital, while pushing the field forward.',
@@ -56,6 +59,7 @@ const pillars = [
   {
     number: '04',
     title: 'Social Accountability',
+    href: '/standard/social-accountability',
     icon: '/icons/pillar-social-accountability.png',
     description:
       'Uphold human rights across your supply chain, support safe working conditions, and protect the health of the people your project touches.',
@@ -69,7 +73,7 @@ const steps = [
   },
   {
     title: 'Complete the assessment',
-    description: 'Work with a SEAM AP to evaluate your building across all four pillars. Document existing practices, identify gaps, and build an implementation plan.',
+    description: 'Work with a <a href="/ap-credential" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM AP</a> to evaluate your building across all four pillars. Document existing practices, identify gaps, and build an implementation plan.',
   },
   {
     title: 'Implement and verify',
@@ -121,8 +125,8 @@ const jsonLd = breadcrumbSchema([
 ---
 
 <SiteLayout
-  title="SEAM Certification"
-  description="SEAM Certification is the first system that measures social equity in the built environment. Bronze through Platinum certification across four rating systems."
+  title="Social Equity Certification for Buildings"
+  description="SEAM is the first certification for social equity in buildings. Bronze through Platinum levels across four rating systems. Start your project today."
   path="/certification"
   jsonLd={jsonLd}
 >
@@ -306,7 +310,7 @@ const jsonLd = breadcrumbSchema([
                 class="hidden lg:block h-[128px] w-auto object-contain pointer-events-none"
               />
               <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900">
-                {pillar.title}
+                <a href={pillar.href} class="hover:text-seam-600 transition-colors">{pillar.title}</a>
               </h3>
             </div>
             <div>
@@ -454,21 +458,23 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 
-  <!-- ─── Pricing (placeholder) ─── -->
-  <section class="py-24 lg:py-32">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-slide-left max-w-2xl">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
-          Frequently asked
-        </p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Pricing
-        </h2>
-      </div>
-      <div class="mt-16 bg-warm-50 rounded-2xl h-[300px] flex items-center justify-center">
-        <p class="text-[15px] text-warm-400 italic">
-          Pricing details — coming soon
-        </p>
+  <!-- ─── Pricing CTA ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+        Investment
+      </p>
+      <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 max-w-2xl mx-auto">
+        Certification pricing for{' '}
+        <em class="italic font-normal text-seam-600">every project size</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-600 max-w-xl mx-auto">
+        Certification, <a href="/approved" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM Approved</a>, and <a href="/ap-credential" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">AP Credential</a> pricing with community member discounts.
+      </p>
+      <div class="mt-10">
+        <a href="/pricing" class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">
+          View pricing &rarr;
+        </a>
       </div>
     </div>
   </section>

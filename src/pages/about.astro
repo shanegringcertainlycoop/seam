@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
-import { breadcrumbSchema } from '../lib/seo-helpers'
+import { breadcrumbSchema, SITE_URL } from '../lib/seo-helpers'
 
 const values = [
   {
@@ -37,12 +37,25 @@ const jsonLd = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
   ]),
+  ...founders.map((f) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: f.name,
+    jobTitle: f.role,
+    worksFor: {
+      '@type': 'Organization',
+      name: 'SEAM, Inc.',
+      url: SITE_URL,
+    },
+    description: f.bio,
+    image: `${SITE_URL}${f.image}`,
+  })),
 ]
 ---
 
 <SiteLayout
-  title="About SEAM — Our Mission"
-  description="SEAM, Inc. is a US 501(c)(3) nonprofit dedicated to embedding social equity into the construction and real estate sectors. Learn about our mission, values, and the people behind the Standard."
+  title="About SEAM — Social Equity Nonprofit for Real Estate"
+  description="SEAM, Inc. is a 501(c)(3) nonprofit embedding social equity into real estate. Meet the founders and learn about our mission."
   path="/about"
   jsonLd={jsonLd}
 >
@@ -89,13 +102,13 @@ const jsonLd = [
         </div>
         <div class="space-y-6">
           <p class="text-[17px] leading-relaxed text-warm-600">
-            SEAM is an impact-driven, membership-based nonprofit that developed and maintains the SEAM social equity rating system for commercial real estate. We believe the built environment should uplift everyone.
+            SEAM, Inc. is a US 501(c)(3) nonprofit organization that developed and maintains the <a href="/resources/standard" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM Standard</a> — the first social equity rating system for commercial real estate. We believe the built environment should uplift everyone.
           </p>
           <p class="text-[17px] leading-relaxed text-warm-600">
-            Our mission is to provide the tools, resources, and framework to help projects and organizations put people at the center of their real estate projects. By promoting equity and fairness, we aim to transform how the industry thinks about development — making it more inclusive, just, and impactful for all communities.
+            Our mission is to provide the tools, resources, and framework to help projects and organizations put people at the center of their real estate projects. Through <a href="/certification" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM Certification</a>, <a href="/approved" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM Approved</a> verification, the <a href="/ap-credential" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">AP Credential</a>, and the <a href="/resources/rossi" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">ROSSI Calculator</a>, we are transforming how the industry thinks about development — making it more inclusive, just, and impactful for all communities.
           </p>
           <p class="text-[17px] leading-relaxed text-warm-600">
-            Our certification program is designed to guide and recognize those committed to making social equity a cornerstone of their projects. Together, we can shape a future where every person, regardless of their background, benefits from the places they live, work, and interact.
+            The SEAM Standard evaluates buildings across four interdependent pillars: <a href="/standard/social-impact" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Social Impact</a>, <a href="/standard/social-responsibility" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Social Responsibility</a>, <a href="/standard/social-justice" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Social Justice</a>, and <a href="/standard/social-accountability" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Social Accountability</a>. Together, we can shape a future where every person, regardless of their background, benefits from the places they live, work, and interact.
           </p>
         </div>
       </div>

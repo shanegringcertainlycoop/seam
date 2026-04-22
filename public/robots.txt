@@ -20,4 +20,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://vermillion-kitten-16c3ae.netlify.app/sitemap.xml
+Sitemap: https://seamcertification.org/sitemap.xml
