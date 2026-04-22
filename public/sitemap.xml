@@ -92,36 +92,6 @@
 
   <!-- Blog posts -->
   <url>
-    <loc>https://seamcertification.org/resources/blog/the-jack-one-year-later</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/resources/blog/rossi-v2-financial-language</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/resources/blog/why-not-just-add-dei-to-leed</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/resources/blog/ap-field-report-interface-portland</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/resources/blog/seam-approved-first-six-months</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/resources/blog/four-pillars-explained</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://seamcertification.org/resources/blog/seam-ap-credential-launch</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
