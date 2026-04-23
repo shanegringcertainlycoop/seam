@@ -4,6 +4,7 @@ interface NavLink {
   href: string
   description: string
   logo?: string
+  logos?: string[]
 }
 
 interface NavSection {
@@ -30,7 +31,7 @@ const solutions: NavGroup = {
           label: 'Certification',
           href: '/certification',
           description: 'Full building certification across three tracks, Bronze through Platinum.',
-          logo: '/logos/cert-platinum.png',
+          logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
         },
         {
           label: 'SEAM Approved',
@@ -58,13 +59,13 @@ const solutions: NavGroup = {
           label: 'Individual Membership',
           href: '/community/individual',
           description: 'A la carte commitments at multiple price points. Pick what you need.',
-          logo: '/logos/member-individual.png',
+          logos: ['/logos/member-individual.png', '/logos/member-changemaker.png'],
         },
         {
           label: 'Organization Membership',
           href: '/community/organization',
           description: 'Contributor, Builder, and Steward tiers for teams and institutions.',
-          logo: '/logos/member-organization.png',
+          logos: ['/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
         },
       ],
     },
@@ -160,9 +161,7 @@ const audiences: NavGroup = {
 
 const dropdowns = [solutions, theStandard, audiences, resources]
 
-function logoClass(logo: string) {
-  if (logo.includes('approved-wordmark')) return 'w-11 h-11 bg-[#01313d] rounded-lg p-1.5'
-  if (logo.includes('member-')) return 'w-14 h-14 rounded-full'
+function logoClass(_logo: string) {
   return 'w-11 h-11'
 }
 ---
@@ -279,13 +278,23 @@ function logoClass(logo: string) {
                             href={link.href}
                             class="group/item flex items-center gap-4 rounded-xl px-3 py-3 transition-colors duration-150 hover:bg-warm-50"
                           >
-                            {link.logo && (
+                            {link.logos ? (
+                              <div class="flex items-center shrink-0 -space-x-3">
+                                {link.logos.map((src) => (
+                                  <img
+                                    src={src}
+                                    alt=""
+                                    class="w-10 h-10 object-contain drop-shadow-sm"
+                                  />
+                                ))}
+                              </div>
+                            ) : link.logo ? (
                               <img
                                 src={link.logo}
                                 alt=""
                                 class={`object-contain shrink-0 ${logoClass(link.logo)}`}
                               />
-                            )}
+                            ) : null}
                             <div>
                               <span class="block text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600">
                                 {link.label}
@@ -316,9 +325,7 @@ function logoClass(logo: string) {
                             <img
                               src={link.logo}
                               alt=""
-                              class={`w-10 h-10 object-contain shrink-0 ${
-                                link.logo.includes('approved-wordmark') ? 'bg-[#01313d] rounded-md p-1.5 brightness-0 invert' : ''
-                              }`}
+                              class="w-10 h-10 object-contain shrink-0"
                             />
                           )}
                           <div>

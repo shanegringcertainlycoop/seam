@@ -37,7 +37,7 @@ const products = [
     description: 'Require or incentivize SEAM certification across portfolio assets. Standardized social performance data flows into ESG reports without manual reconciliation.',
     href: '/certification',
     fit: 'Best for institutional owners setting social performance requirements across holdings.',
-    logo: '/logos/cert-platinum.png',
+    logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
   },
   {
     label: 'The Standard',
@@ -162,9 +162,17 @@ const jsonLd = [
       <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6 pt-10">
         {products.map((p) => (
           <a href={p.href} class="reveal-child group relative overflow-visible rounded-2xl bg-white border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-            {p.logo && (
-              <div class="absolute -top-7 right-4 sm:-top-8 sm:right-8">
-                <img src={p.logo} alt="" class="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-sm" />
+            {(p.logos || p.logo) && (
+              <div class="absolute -top-5 right-3 sm:-top-8 sm:right-8">
+                {p.logos ? (
+                  <div class="flex items-end -space-x-2 sm:-space-x-4">
+                    {p.logos.map((src) => (
+                      <img src={src} alt="" class="w-7 h-7 sm:w-14 sm:h-14 object-contain drop-shadow-sm" />
+                    ))}
+                  </div>
+                ) : (
+                  <img src={p.logo} alt="" class="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-sm" />
+                )}
               </div>
             )}
             <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-2 block">{p.label}</span>

@@ -34,7 +34,7 @@ const products = [
     description: 'Look for SEAM-certified buildings when choosing where to live, work, or gather. Bronze through Platinum tells you the depth of commitment.',
     href: '/certification',
     fit: "When you\u2019re evaluating a new apartment, office, or community space \u2014 check whether it\u2019s SEAM-certified.",
-    logo: '/logos/cert-platinum.png',
+    logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
   },
   {
     label: 'Directory',
@@ -203,14 +203,16 @@ const jsonLd = [
             href={p.href}
             class="reveal-child group relative overflow-visible rounded-2xl bg-white border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
           >
-            {p.logo && (
-              <div class="absolute -top-7 right-4 sm:-top-8 sm:right-8">
-                {p.logo.includes('member-') ? (
-                  <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden drop-shadow-sm">
-                    <img src={p.logo} alt="" class="w-full h-full object-cover scale-[1.35]" />
+            {(p.logos || p.logo) && (
+              <div class="absolute -top-5 right-3 sm:-top-8 sm:right-8">
+                {p.logos ? (
+                  <div class="flex items-end -space-x-2 sm:-space-x-4">
+                    {p.logos.map((src) => (
+                      <img src={src} alt="" class="w-7 h-7 sm:w-14 sm:h-14 object-contain drop-shadow-sm" />
+                    ))}
                   </div>
                 ) : (
-                  <img src={p.logo} alt="" class={`w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-sm ${p.logo.includes('approved-wordmark') ? 'bg-[#01313d] rounded-lg p-2' : ''}`} />
+                  <img src={p.logo} alt="" class="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-sm" />
                 )}
               </div>
             )}

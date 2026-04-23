@@ -23,55 +23,46 @@ export const categories = [
 export const posts: BlogPost[] = [
   {
     slug: 'what-the-jack-teaches-us-about-human-centric-real-estate',
-    title: 'What The Jack teaches us about human-centric real estate',
+    title: "What 'The Jack' teaches us about human-centric real estate",
     excerpt:
-      'As the first SEAM-certified project in the world, The Jack in Seattle\'s Pioneer Square demonstrates what happens when 1,043 community voices shape a building\'s operations — and what that model means for the industry.',
+      'When Urban Visions set out to certify The Jack in Seattle\'s Pioneer Square, there was no SEAM playbook. They helped us write one — and the lessons are worth sharing with every developer serious about the people their buildings affect.',
     category: 'Certified Projects',
-    author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
-    date: '2024-10-30',
-    readTime: '6 min read',
+    author: { name: 'Chris Pirschel', role: 'CMO, SEAM' },
+    date: '2025-03-25',
+    readTime: '2 min read',
     featured: true,
-    image: { src: '/images/blog/the-jack-pioneer-square.jpg', alt: 'The Jack building in Seattle\'s Pioneer Square, designed by Olson Kundig. Photo by Nic Lehoux' },
-    body: `The Jack is a 175,000 SF, eight-level mixed-use building at 74 S. Jackson Street in Seattle's historic Pioneer Square District. Designed by Olson Kundig and developed by Urban Visions, it opened in 2023 as the first building in the world to achieve <a href="/certification">SEAM Certification</a>.
+    image: { src: '/images/blog/the-jack-pioneer-square.jpg', alt: 'The Jack office building in Seattle, the world\'s first SEAM Certified location' },
+    body: `When Urban Visions set out to certify The Jack in Seattle's Pioneer Square, there was no SEAM playbook. They helped us write one, and the lessons from that process are worth sharing with every developer who is serious about the people their buildings affect.
 
-That distinction matters — not because it was first, but because of what the process revealed about what human-centric real estate actually requires.
+The Jack is a mixed-use building in one of Seattle's most storied neighborhoods. For Urban Visions, <a href="/certification">SEAM Certification</a> wasn't about collecting a credential. It was about doing the work, genuinely, and being willing to let that work be measured.
 
-## What made The Jack different
+Here's what we learned together.
 
-Most certification stories begin with design intent. The Jack's begins with listening. Before pursuing SEAM Certification, Urban Visions engaged 1,043 community members in the surrounding Pioneer Square neighborhood. That is not a survey. That is a statistically robust sample large enough to represent genuine community priorities rather than the loudest voices in a public meeting.
+## Start with the people, not the building
 
-What the community asked for was not what the development team expected. The input reshaped ground-floor retail strategy, influenced programming decisions, and created accountability mechanisms that persist beyond the construction phase.
+A core premise of the SEAM process was helping Urban Visions understand who was actually affected by this project. More than just future tenants or the immediate block, they needed the full picture of people whose lives intersected with The Jack: residents, workers, neighboring businesses, and the broader Pioneer Square community, in addition to the tenants who would occupy the building.
 
-## Bronze certification, platinum lessons
+SEAM Certification's Impacted Party Engagement process created the structure for that analysis. More than 1,000 community voices were documented, not as public comment on a finished plan, but as input that shaped the project while it could still be shaped. That's a meaningful distinction. All too often, community engagement in real estate happens after the design is locked and with little ability to make meaningful adjustments.
 
-The Jack achieved Bronze under the SEAM O+M: Developer rating system. Some observers asked why not Gold or Platinum on the first attempt. The answer reflects something important about how <a href="/resources/standard">the Standard</a> works.
+## What certification actually required
 
-SEAM Certification is not a design exercise. It is an operational commitment measured over time. Bronze on a first certification, with clear documentation and genuine community engagement, is more meaningful than a higher tier achieved through selective compliance. The Jack's team chose rigor over optics.
+The Jack received Bronze Operations + Maintenance certification, the first project in the world to earn that designation with SEAM.
 
-## What the pilot process taught us
+Achieving it meant actively working through four pillars of equity: <a href="/standard/social-impact">Social Impact</a>, <a href="/standard/social-responsibility">Social Responsibility</a>, <a href="/standard/social-justice">Social Justice</a>, and <a href="/standard/social-accountability">Social Accountability</a>.
 
-As the inaugural SEAM Certification pilot, The Jack did not just earn a credential. It stress-tested the entire framework. Urban Visions collaborated with SEAM to refine 143 certification processes, enhance 262 elements in the Standard, and calibrate 46 scorecard activities.
+In practice, that resulted in documented community engagement and resulting impact on decision-making, new inclusive design features, neighborhood safety investments, and operational policies shaped by what the community said they actually needed.
 
-Every one of those refinements made the framework more actionable for the projects that followed. The Jack's contribution to SEAM is not just its certification — it is the infrastructure of accountability that every subsequent project inherits.
+One of the more surprising outcomes was what happened in the contracting process. Every contractor incorporated the human rights requirements into their contracts without pushback. That's not something we take for granted. It means the social impact commitments Urban Visions made didn't stop at the owner level. They traveled down the supply chain and into the working conditions of the people who built and operate the building. That's what extending equity into a project actually looks like.
 
-## The four pillars in practice
+And the <a href="/resources/standard">SEAM framework</a> is meant to build on itself. Each certification cycle creates a baseline of data and documentation that makes the next round more informed and more impactful. Urban Visions now has that foundation.
 
-The Jack's certification was evaluated across the four interdependent pillars of the SEAM Standard:
+## The lesson worth taking
 
-- <a href="/standard/social-impact">Social Impact</a>: measurable outcomes for the people and communities the building touches
-- <a href="/standard/social-responsibility">Social Responsibility</a>: ethical practices in procurement, labor, and governance
-- <a href="/standard/social-justice">Social Justice</a>: addressing systemic inequity through the built environment
-- <a href="/standard/social-accountability">Social Accountability</a>: transparency, reporting, and stakeholder engagement
+The Jack has the potential to serve up to 459 building occupants. That's a lot of people whose daily experience — the building's design, its operations, its relationship to the surrounding neighborhood — gets shaped by decisions made long before they walk through the door.
 
-The interdependence is the point. A building cannot score well in one pillar while ignoring another. Social equity is a system, not a checklist.
+SEAM Certification aims to give developers a structured way to make those decisions with an underpinning of best-in-class research, so the decisions they make are grounded in something that creates real impact.
 
-## What this means for the industry
-
-The Jack demonstrates that social equity certification is not aspirational — it is operational. The community engagement model, the documentation rigor, and the ongoing accountability structure are all replicable. They are also compatible with financial performance; Urban Visions has not reported any tension between certification requirements and project economics.
-
-For developers considering <a href="/certification">SEAM Certification</a>, The Jack offers a clear precedent. For practitioners, the <a href="/ap-credential">SEAM AP credential</a> provides the training to lead this work. And for the communities that buildings serve, The Jack proves that their voice can be more than advisory — it can be structural.
-
-Todd Lee, EVP at Urban Visions, put it simply: "A certification that solely focuses on social equity within the built environment is long overdue."`,
+The result is a project that aims to perform better for the business and help create genuine value for the people affected by it.`,
   },
   {
     slug: 'seam-ap-credential-launch',
@@ -164,40 +155,165 @@ SEAM's inaugural certification covers Seattle's The Jack, an office and retail d
 The organization also offers <a href="/ap-credential">professional accreditation</a>, with 16 individuals in the beta program at launch.`,
   },
   {
-    slug: 'why-i-created-seam',
-    title: 'Why I created SEAM: the social equity assessment tool',
+    slug: 'pursuing-leed-head-start-seam-certification',
+    title: 'Pursuing LEED? That gives you a head start in SEAM Certification',
     excerpt:
-      'Rainey Shane shares the personal and professional journey that led to creating the SEAM Standard — from forced labor rescue missions to a certification framework for commercial real estate.',
+      'SEAM has developed a crosswalk mapping three LEED Social Equity Pilot Credits to specific SEAM activities — showing where your LEED efforts translate into a head start within SEAM Certification.',
+    category: 'The Standard',
+    author: { name: 'SEAM, Inc.', role: '' },
+    date: '2025-04-22',
+    readTime: '4 min read',
+    body: `If you're working on a LEED project, there's a good chance some of the work you're already doing moves you meaningfully closer to <a href="/certification">SEAM Certification</a>. SEAM has developed a crosswalk that maps three LEED Social Equity Pilot Credits to specific SEAM activities, identifying exactly where your LEED efforts translate into a head start within SEAM Certification.
+
+This isn't about making the two certifications interchangeable. They're not. SEAM goes deeper on social equity than any environmental or wellness certifications are designed to. But for project teams already committed to LEED, the crosswalk reduces redundancy and makes it easier to understand where you're already building toward both.
+
+Here's what the three LEED Social Equity Pilot Credits map to within SEAM.
+
+## IPpc89: Social equity within the community
+
+This pilot credit is built around community engagement: defining the community your project affects, partnering with local organizations, collecting feedback, and implementing strategies to improve equity. Each of those steps has a corresponding activity in SEAM's Impacted Party Engagement framework.
+
+If you've completed Option 2 (the community-focused path), your community profile work maps to SEAM's activity around understanding who is likely to be affected by your project. Your engagement planning maps to SEAM's requirement to create a reliable, credible, and efficient impacted party engagement plan. And your community programs and volunteer initiatives map to SEAM activities around community involvement partnerships.
+
+One difference worth noting: LEED's definition of community focuses on the immediate area around a project. SEAM's definition is broader in application, extending to workers in the supply chain and others who may be affected upstream or downstream. That's where the partial nature of the alignment comes in, and where SEAM builds on the foundation your LEED work creates.
+
+## IPpc90: Social equity within the project team and operations staff
+
+This pilot credit addresses how your organization treats the people who build and operate your building. SEAM recognizes this work in several places.
+
+If you're paying a living or prevailing wage under Option 1, that maps to SEAM's requirement that suppliers provide a living wage, with points awarded based on the percentage of workers covered. Work around equitable supplier procurement maps to SEAM's Equity + Inclusion in Tier 1 Supplier Procurement activity. And if your path to this credit involved local community employment initiatives, that maps directly to SEAM's activity promoting local community employment.
+
+Option 2, which focuses on organizational social responsibility, maps to SEAM activities around voluntary social responsibility initiatives and implementing site-specific governance policies during both construction and operations.
+
+## IPpc144: Social equity within the supply chain
+
+This pilot credit focuses on ethically sourced materials. If you've pursued it, your work maps to SEAM's Ethical Sourcing of Products and Materials activity. SEAM recognizes ethically sourced materials that align with approved certifications, and the work you've done to identify and document ethical sourcing practices for LEED directly informs what SEAM needs to see.
+
+## How to use the crosswalk
+
+The SEAM + LEED crosswalk document walks through each alignment in detail, including the specific SEAM points available for each pilot credit and what additional documentation your project team needs to submit to claim them. For project teams pursuing both certifications, it's a practical tool for understanding where your efforts compound rather than compete.
+
+If you're already pursuing or hold a LEED certification and want to understand what SEAM Certification would require on top of what you've done, <a href="/get-started">we're glad to walk you through it</a>.`,
+  },
+  {
+    slug: 'community-engagement-usually-starts-wrong-place',
+    title: 'Community engagement usually starts in the wrong place',
+    excerpt:
+      'Most community engagement in CRE happens after the design is locked. SEAM\'s Impacted Party Engagement framework flips the sequence — consult communities before designs finalize.',
+    category: 'Practitioner Perspectives',
+    author: { name: 'SEAM, Inc.', role: '' },
+    date: '2025-04-13',
+    readTime: '3 min read',
+    body: `Here's how community engagement typically unfolds in commercial real estate: developers prepare materials, schedule public meetings, and invite residents to learn about their project. Renderings are displayed. Q&A sessions occur. Community members react to what they've been shown.
+
+However, this approach conflates education with genuine engagement. The underlying logic seems sound — informed feedback requires informed residents — yet it rests on a flawed assumption: that feedback quality depends on how much residents understand the project, rather than how well developers understand the community.
+
+## The real expertise lies with residents
+
+Residents aren't commercial real estate experts, nor do they need to be. They are unparalleled authorities on their own neighborhoods: what's lacking, what functions poorly, what they value, observed changes, and what risks being lost.
+
+This local knowledge should inform development before design decisions solidify. By the time renderings appear, critical choices — building orientation, street relationships, parking solutions, and intended users — are already locked in. Requesting feedback at this stage puts residents in a reactive position rather than a collaborative one. This explains project rejections and developer frustration.
+
+## A better sequence
+
+The improved approach is straightforward: consult communities before designs finalize. Learn what residents appreciate about their neighborhood, what doesn't work, and what's missing. Integrate these insights into your team's planning. Then present designs that already reflect community input.
+
+This isn't co-design in the sense of transferring design authority to residents. Professional expertise remains with developers and engineers. Rather, the timing and focus of listening changes.
+
+## Better outcomes
+
+Projects incorporating early community input experience less opposition, smoother approvals, and stronger operational goodwill. Benefits manifest in timelines, costs, and long-term performance.
+
+Additionally, quality improves. Early conversations reveal informal gathering spaces, critical transit connections, and historical context that market studies miss — details that strengthen design decisions.
+
+SEAM's Impacted Party Engagement framework operationalizes this logic by structuring listening, documenting insights, and creating processes for community input to shape decisions. The industry has typically viewed community engagement as a risk to mitigate; it's actually an asset when approached strategically.`,
+  },
+  {
+    slug: 'why-i-left-jll-to-work-on-seam-full-time',
+    title: 'Why I left JLL to work on SEAM full time',
+    excerpt:
+      'Rainey Shane shares the personal journey from volunteering on child rescue missions to founding a social equity certification for commercial real estate — and why she left JLL to lead it.',
     category: 'Practitioner Perspectives',
     author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
-    date: '2023-10-09',
-    readTime: '6 min read',
+    date: '2025-04-06',
+    readTime: '3 min read',
     image: { src: '/images/blog/why-i-created-seam.jpg', alt: 'Rainey Shane, co-founder of SEAM' },
-    body: `The question I hear most often is: how does someone go from commercial real estate to building a social equity certification? The honest answer is that the two were never as separate as the industry assumed.
+    body: `I used to fly into countries I'd never been to, meet children I'd never forget, and come home to manage real estate projects I couldn't look at the same way twice.
 
-## The supply chain problem
+For years I lived in that dissonance. On one side, volunteer work with nonprofits in developing countries — rescue missions for child trafficking and forced labor. On the other, a career in commercial real estate at JLL, managing projects whose supply chains I knew, in some cases, were connected to the very conditions I was fighting against on weekends.
 
-For fifteen years I worked in commercial real estate at JLL, mostly in adaptive reuse. During that time I also volunteered as a rescue team operator for child trafficking and forced labor missions. The connection between those two worlds became impossible to ignore.
+## The gap no one was filling
 
-Every building has a supply chain. Every supply chain touches labor. And some of that labor — in quarries, mills, and factories far from the job site — operates under conditions that would be unrecognizable to the developers who specified the materials. The gap between intent and reality in our industry is not a small gap. It is systemic.
+The commercial real estate industry had rigorous frameworks for measuring environmental performance. LEED for energy and materials. WELL for health and wellness. But when it came to the social dimension — labor practices, community effects, equity concerns — the industry relied on self-reporting and good intentions.
 
-## From awareness to framework
+There was no systematic way to measure whether a building was having a positive social impact on the people it touched. No third-party verification. No accountability structure. Just voluntary commitments with no way to evaluate whether they were working.
 
-Awareness is not enough. I needed a framework — something that could translate the complexity of social equity into the operational language that real estate professionals already use. Something with the rigor of <a href="/certification">LEED or WELL</a>, but focused entirely on people.
+## Building the Standard
 
-That is what <a href="/resources/standard">the SEAM Standard</a> became. Not a checklist. Not a pledge. A measurement system with independent verification, community voice in evaluation, and ongoing accountability.
+In 2018, a colleague and I began developing what became <a href="/resources/standard">the SEAM Standard</a>. Over six years, we grounded it in international frameworks including UN Human Rights principles and International Labour Organization guidelines. The standard underwent independent verification.
 
-## What SEAM actually measures
+We evaluated buildings across four interdependent pillars: <a href="/standard/social-impact">Social Impact</a>, <a href="/standard/social-responsibility">Social Responsibility</a>, <a href="/standard/social-justice">Social Justice</a>, and <a href="/standard/social-accountability">Social Accountability</a>. Each pillar contains specific activities with defined documentation requirements. Projects earn Bronze through Platinum based on performance across all four.
 
-SEAM evaluates buildings across four interdependent pillars: <a href="/standard/social-impact">Social Impact</a>, <a href="/standard/social-responsibility">Social Responsibility</a>, <a href="/standard/social-justice">Social Justice</a>, and <a href="/standard/social-accountability">Social Accountability</a>. Each pillar contains specific activities with defined documentation requirements. Projects earn Bronze through Platinum based on performance across all four.
+## Making the leap
 
-The key design decision was interdependence. A building cannot earn Gold by excelling in one area while ignoring another. Social equity is a system, not a menu.
+The SEAM Standard launched in 2024. The first certified project — <a href="/resources/blog/what-the-jack-teaches-us-about-human-centric-real-estate">The Jack in Seattle</a> — was completed in 2025. That same year, I departed JLL to lead SEAM full-time.
 
-## The road ahead
+It wasn't a dramatic decision. It was the next step in work I'd already been doing for years. The <a href="/ap-credential">credential program</a> targets professionals — architects, construction managers, sustainability directors — seeking structured, evidence-based approaches to implementing social equity in real estate development.
 
-We have completed pilot projects in the US, Canada, and Australia. The first certified building — The Jack in Seattle — is demonstrating that social equity certification and financial performance are not in tension. They reinforce each other.
+The industry is just beginning to understand that the "S" in ESG requires the same rigor as the "E." That is what SEAM exists to provide.`,
+  },
+  {
+    slug: 'why-is-measuring-the-s-in-esg-still-so-hard',
+    title: 'Why is measuring the S in ESG still so hard?',
+    excerpt:
+      'The sustainability field has tried to measure social impact using tools built for environmental performance. SEAM takes a different approach — rooted in social science methodology and logic models.',
+    category: 'The Standard',
+    author: { name: 'SEAM, Inc.', role: '' },
+    date: '2025-03-30',
+    readTime: '5 min read',
+    body: `There is a thermometer on the wall of nearly every commercial building in America. It tells you exactly what the temperature is, to the degree. You can argue about whether 68 is the right number, but you cannot argue about what the number is. The measurement is clean, reliable, and replicable.
 
-But we are early. The body of evidence is small. The practitioner network is growing. And the industry is just beginning to understand that the "S" in ESG requires the same rigor as the "E." That is what SEAM exists to provide.`,
+Now try measuring whether the people in that building feel like they belong there.
+
+That's not a rhetorical provocation. It's the actual challenge at the center of social sustainability, and it explains — more honestly than most people will say out loud — why the S in ESG keeps getting treated as the complicated cousin no one quite knows how to seat at the table.
+
+## The category error hiding in plain sight
+
+For the better part of a decade, the sustainability field has tried to measure social impact using the same tools it developed for environmental performance. On the surface, this seems reasonable: both involve data, both involve targets, both involve third-party verification.
+
+But things and people are not the same kind of subject.
+
+When you measure a building's carbon footprint, you're working in physical science. The variables are knowable, the relationships stable, and the studies replicable because the underlying reality doesn't change much year to year. A kilogram of CO2 is a kilogram of CO2 in 2015 and in 2025.
+
+Social science doesn't work that way. People change. The conditions that shape what a particular intervention means to a particular group of people shift constantly: across time, across cultures, and sometimes across a single city block. A program that reduces economic displacement in one neighborhood might have no effect, or even a negative one, two miles away.
+
+When you apply physical-science thinking to social questions, you get proxy metrics. You count diverse vendors and believe it signals inclusion. You tally volunteer hours and believe it is community investment. None of those numbers are lies. But a proxy is an informed guess about a relationship between activity and outcome that hasn't been proven yet. Treated as an outcome, it's a placeholder pretending to be an answer.
+
+This is the honest reason the S remains hard to measure. Not because the people working on it aren't trying. But because the field largely inherited a measurement philosophy built for a different kind of problem.
+
+## Taking a different approach
+
+When SEAM developed its framework, the organization knew it needed an approach rooted in social science methodology. The logic model — developed in social program evaluation and international development — offered a proven way to measure human outcomes rigorously.
+
+A logic model maps the chain of causation between what you do and what actually changes. It has five stages:
+
+1. **Inputs:** The resources you commit
+2. **Activities:** What you do with them
+3. **Outputs:** Direct, countable products (e.g., number of community participants, percentage of contracts awarded to diverse suppliers)
+4. **Outcomes:** Changes in conditions resulting from activities (e.g., reduced displacement, improved economic mobility, stronger community trust)
+5. **Impact:** The portion of changes actually attributable to your project, rather than what would have happened anyway
+
+That last distinction separates substantive impact measurement from preliminary reporting. Claiming positive outcomes is straightforward. Attributing them honestly requires isolating your contribution, accounting for baseline conditions, and specifying precisely how much change you can claim credit for. This represents the only rigorous version of impact measurement.
+
+## Where we are, and where we're going
+
+SEAM acknowledges current limitations: the field cannot yet guarantee specific, quantifiable outcomes for every context. Social science lacks the comprehensive evidentiary datasets needed to offer such certainty immediately.
+
+What <a href="/certification">SEAM Certification</a> does accomplish is establish foundations. Every certified project generates structured, comparable data. Applications document inputs, activities, and outputs in standardized formats, allowing correlations across projects and building the evidence base for future precision.
+
+This mirrors environmental certification's development trajectory — the field didn't arrive with perfect evidence initially but accumulated data project-by-project over years.
+
+The S in ESG is hard because it should be. We're trying to measure what happens to people, and people deserve that level of care.`,
   },
   {
     slug: 'architecture-is-political-seam-deep-dive',

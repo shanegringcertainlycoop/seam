@@ -31,6 +31,7 @@ export interface CertifiedProject {
   owner: string
   highlights: string[]
   apLead?: string
+  blogPost?: string
 }
 
 export interface ApprovedActivity {
@@ -177,22 +178,23 @@ export const certifiedProjects: CertifiedProject[] = [
   {
     slug: 'the-jack',
     name: 'The Jack',
-    image: '/images/directory/project-the-jack.jpg',
-    location: { city: 'Kansas City', state: 'MO' },
-    certificationLevel: 'Gold',
-    ratingSystem: 'Buildings + Interiors',
+    image: '/images/directory/the-jack.jpg',
+    location: { city: 'Seattle', state: 'WA' },
+    certificationLevel: 'Bronze',
+    ratingSystem: 'Operations + Maintenance',
     description:
-      'A 240-unit multifamily development that became one of the first SEAM Gold certified buildings in the country. The Jack demonstrated that social equity certification drives measurable outcomes: 23% improvement in resident satisfaction, $2.1M in redirected local procurement, and 11% NOI improvement over pro forma in year one.',
+      'A mixed-use building in Seattle\'s Pioneer Square — the first project in the world to achieve SEAM Certification. Urban Visions engaged more than 1,000 community voices to shape the project, and every contractor incorporated human rights requirements into their contracts.',
     completionDate: '2025-01',
-    size: '240 units / 285,000 SF',
-    owner: 'Pennrose Development',
+    size: '175,000 SF',
+    owner: 'Urban Visions',
     highlights: [
-      'Resident-led community programming exceeding Gold requirements',
-      '$2.1M annual local procurement from historically excluded businesses',
-      '40% of contracted services sourced within 15-mile radius',
-      'Community advisory board with binding governance authority',
+      'First SEAM-certified building in the world',
+      '1,000+ community voices documented through Impacted Party Engagement',
+      'Human rights requirements incorporated into all contractor agreements',
+      'Serves up to 459 building occupants across mixed uses',
     ],
     apLead: 'diana-torres',
+    blogPost: '/resources/blog/what-the-jack-teaches-us-about-human-centric-real-estate',
   },
   {
     slug: 'interface-hq',

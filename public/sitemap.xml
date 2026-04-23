@@ -112,7 +112,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://seamcertification.org/resources/blog/why-i-created-seam</loc>
+    <loc>https://seamcertification.org/resources/blog/pursuing-leed-head-start-seam-certification</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/blog/community-engagement-usually-starts-wrong-place</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/blog/why-i-left-jll-to-work-on-seam-full-time</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/blog/why-is-measuring-the-s-in-esg-still-so-hard</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>

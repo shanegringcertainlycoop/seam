@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
 import { faqSchema, breadcrumbSchema } from '../lib/seo-helpers'
+import { certifiedProjects } from '../data/directory'
 
 /* ─── Section 2a: Ecosystem Visualization ─── */
 const hotspots = [
@@ -98,28 +99,19 @@ const products = [
       'Resources, peer connection, and ongoing support for organizations and individuals committed to improving social equity.',
     href: '/community',
     audience: 'For all professional audiences',
-    logo: '/logos/member-organization.png',
-    logo2: '/logos/member-individual.png',
+    logos: ['/logos/member-individual.png', '/logos/member-changemaker.png', '/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
   },
 ]
 
 /* ─── Section 5: Proof / Certified Projects ─── */
-const projects = [
-  {
-    name: 'The Jack',
-    location: 'Seattle, Washington, USA',
-    level: 'Bronze Certified',
-    description:
-      'A mixed-use development demonstrating that social equity and financial performance reinforce each other.',
-  },
-  {
-    name: 'Interface HQ',
-    location: 'Atlanta, GA',
-    level: 'Silver Certified',
-    description:
-      'Corporate headquarters redesigned around the communities and workers who give the building its life.',
-  },
-]
+const projects = certifiedProjects.slice(0, 2).map((p) => ({
+  name: p.name,
+  location: `${p.location.city}, ${p.location.state}`,
+  level: `${p.certificationLevel} Certified`,
+  description: p.description,
+  image: p.image,
+  href: `/directory/project/${p.slug}`,
+}))
 
 /* ─── Section 6: Resources ─── */
 const resources = [
@@ -187,7 +179,7 @@ const jsonLd = [
       <img
         data-parallax="0.25"
         src="/hero.png"
-        alt="People gathered in conversation beneath the columns of a modern building"
+        alt="The Jack building in Seattle's Pioneer Square — the world's first SEAM Certified commercial real estate location"
         class="hero-image h-full w-full object-cover object-center scale-105"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/10"></div>
@@ -376,43 +368,22 @@ const jsonLd = [
             href={product.href}
             class="reveal-child group relative overflow-visible rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
           >
-            <div class="absolute -top-10 right-8 flex items-end pointer-events-none">
+            <div class="absolute -top-5 sm:-top-10 right-4 sm:right-8 flex items-end pointer-events-none">
               {product.logos ? (
-                <div class="flex items-end -space-x-12">
+                <div class="flex items-end -space-x-2 sm:-space-x-6">
                   {product.logos.map((logo) => (
                     <img
                       src={logo}
                       alt=""
-                      class="h-24 w-auto object-contain"
+                      class="w-9 h-9 sm:w-24 sm:h-24 object-contain drop-shadow-md"
                     />
                   ))}
-                </div>
-              ) : product.logo2 ? (
-                <div class="flex items-end">
-                  <img
-                    src={product.logo}
-                    alt=""
-                    class="h-24 w-auto object-contain"
-                  />
-                  <img
-                    src={product.logo2}
-                    alt=""
-                    class="h-24 w-auto object-contain -ml-16"
-                  />
-                </div>
-              ) : product.logo?.includes('approved-wordmark') ? (
-                <div class="h-24 w-24 bg-[#01313d] rounded-xl flex items-center justify-center p-3">
-                  <img
-                    src={product.logo}
-                    alt=""
-                    class="w-full object-contain brightness-0 invert"
-                  />
                 </div>
               ) : (
                 <img
                   src={product.logo}
                   alt=""
-                  class="h-24 w-auto object-contain"
+                  class="w-16 h-16 sm:w-24 sm:h-24 object-contain drop-shadow-md"
                 />
               )}
             </div>
@@ -452,11 +423,17 @@ const jsonLd = [
 
       <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project) => (
-          <div
-            class="reveal-child group relative rounded-2xl bg-warm-900 p-10 lg:p-12 min-h-[360px] flex flex-col justify-end overflow-hidden"
+          <a
+            href={project.href}
+            class="reveal-child group relative rounded-2xl bg-warm-900 p-10 lg:p-12 min-h-[360px] flex flex-col justify-end overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
           >
-            {/* Placeholder for future project imagery */}
-            <div class="absolute inset-0 bg-gradient-to-t from-warm-900 via-warm-900/80 to-warm-900/40"></div>
+            <img
+              src={project.image}
+              alt={project.name}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-warm-900/90 via-warm-900/40 to-transparent"></div>
             <div class="relative">
               <span class="inline-block rounded-full bg-seam-600 px-4 py-1.5 text-[12px] font-medium text-white mb-4">
                 {project.level}
@@ -469,7 +446,7 @@ const jsonLd = [
                 {project.description}
               </p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 
