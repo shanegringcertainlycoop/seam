@@ -10,6 +10,7 @@ export interface SeamAP {
   specialties: string[]
   bio: string
   credentials: 'SEAM AP' | 'SEAM AP+'
+  membershipTier?: 'Open' | 'Changemaker'
   linkedIn?: string
   website?: string
   dateCredentialed: string
@@ -68,6 +69,7 @@ export const seamAPs: SeamAP[] = [
     specialties: ['Corporate Headquarters', 'Mixed-Use', 'Accessibility'],
     bio: 'Marcus brings over a decade of sustainability consulting experience to the SEAM framework. His work at Interface Portland demonstrated how corporate headquarters can achieve meaningful social equity outcomes without compromising operational efficiency. He specializes in bridging the gap between environmental and social certification systems, helping clients see SEAM as a complement to their existing LEED and WELL investments.',
     credentials: 'SEAM AP+',
+    membershipTier: 'Changemaker',
     linkedIn: 'https://linkedin.com/in/marcus-chen',
     website: 'https://equitablefutures.com',
     dateCredentialed: '2025-03-15',
@@ -83,6 +85,7 @@ export const seamAPs: SeamAP[] = [
     specialties: ['Multifamily', 'Community Development', 'Economic Equity'],
     bio: 'Diana led the certification process for The Jack, one of the first SEAM Gold projects in the country. Her approach to community engagement has become a model for practitioners working in multifamily housing. She is particularly skilled at translating community voice requirements into governance structures that property managers can sustain long-term.',
     credentials: 'SEAM AP+',
+    membershipTier: 'Changemaker',
     linkedIn: 'https://linkedin.com/in/diana-torres',
     dateCredentialed: '2025-01-10',
     projectsLed: 6,
@@ -97,6 +100,7 @@ export const seamAPs: SeamAP[] = [
     specialties: ['Affordable Housing', 'Health + Wellness', 'Workforce'],
     bio: 'James focuses on affordable housing projects where social equity certification can strengthen grant applications and community development financing. His background in public health informs his approach to the Health + Wellness pillar, where he helps clients design indoor environments that address health disparities rather than just meeting baseline performance thresholds.',
     credentials: 'SEAM AP',
+    membershipTier: 'Open',
     dateCredentialed: '2025-06-20',
     projectsLed: 2,
   },
@@ -110,6 +114,7 @@ export const seamAPs: SeamAP[] = [
     specialties: ['Operations + Maintenance', 'Procurement', 'Cultural Programming'],
     bio: 'Priya specializes in operations and maintenance certification, helping existing buildings achieve SEAM recognition without major capital expenditure. Her procurement methodology has helped clients redirect millions in annual spending toward locally owned and minority-owned businesses while maintaining or improving service quality.',
     credentials: 'SEAM AP+',
+    membershipTier: 'Changemaker',
     linkedIn: 'https://linkedin.com/in/priya-sharma',
     website: 'https://sharmaequity.com',
     dateCredentialed: '2025-04-05',
@@ -125,6 +130,7 @@ export const seamAPs: SeamAP[] = [
     specialties: ['Capital Strategy', 'GRESB Alignment', 'Portfolio Certification'],
     bio: 'David approaches SEAM certification from the capital side, helping institutional investors understand and communicate the financial performance of socially equitable buildings. His work translating SEAM outcomes into GRESB-compatible reporting has made him a key resource for capital providers entering the social equity space.',
     credentials: 'SEAM AP',
+    membershipTier: 'Changemaker',
     linkedIn: 'https://linkedin.com/in/david-okonkwo',
     dateCredentialed: '2025-08-12',
     projectsLed: 3,
@@ -139,6 +145,7 @@ export const seamAPs: SeamAP[] = [
     specialties: ['Community Development', 'Neighborhood Scale', 'Community Engagement'],
     bio: 'Rachel focuses on neighborhood-scale community development projects, helping property owners and community organizations apply SEAM certification to mixed-use developments. Her background in urban planning gives her a unique perspective on how the Standard applies to public spaces, streetscapes, and the surrounding community.',
     credentials: 'SEAM AP',
+    membershipTier: 'Open',
     dateCredentialed: '2025-09-01',
     projectsLed: 2,
   },
@@ -152,6 +159,7 @@ export const seamAPs: SeamAP[] = [
     specialties: ['Healthcare Facilities', 'Accessibility', 'Health + Wellness'],
     bio: 'Omar focuses on healthcare and anchor institution projects where accessibility and health equity intersect. His work at Houston Methodist demonstrated how hospital systems can use the SEAM framework to evaluate not just patient-facing spaces but also the working environments of every employee, from surgeons to custodial staff.',
     credentials: 'SEAM AP+',
+    membershipTier: 'Changemaker',
     linkedIn: 'https://linkedin.com/in/omar-hassan',
     dateCredentialed: '2025-05-18',
     projectsLed: 4,
@@ -166,6 +174,7 @@ export const seamAPs: SeamAP[] = [
     specialties: ['Mixed-Use', 'Multifamily', 'Economic Equity'],
     bio: 'Elena brings extensive experience in Southern California real estate to SEAM certification. She has developed a streamlined gap assessment methodology that reduces the pre-certification timeline by 30%, making the process more accessible for mid-market developers who lack dedicated sustainability teams.',
     credentials: 'SEAM AP',
+    membershipTier: 'Changemaker',
     website: 'https://vasquezassociates.com',
     dateCredentialed: '2025-07-22',
     projectsLed: 3,

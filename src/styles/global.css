@@ -44,6 +44,18 @@
   --color-sage: #DFECE2;
 }
 
+/* ─── Left-aligned heading line break before italic em ─── */
+
+h1 > em,
+h2 > em {
+  display: block;
+}
+
+.text-center h1 > em,
+.text-center h2 > em {
+  display: inline;
+}
+
 /* ─── Scroll Reveal Animations ─── */
 
 .reveal-fade-up {

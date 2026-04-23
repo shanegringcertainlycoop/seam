@@ -1,6 +1,9 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
+import { seamAPs } from '../../data/directory'
+
+const individualMembers = seamAPs.filter((ap) => ap.membershipTier === 'Open' || ap.membershipTier === 'Changemaker')
 
 const included = [
   { title: 'Access to The Stitch', description: 'Our member community platform, with pre-built documentation templates for every activity in the Standard. Start from proven formats instead of blank pages.' },
@@ -209,6 +212,55 @@ const jsonLd = [
             <p class="text-[15px] leading-relaxed text-warm-600">{p.description}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Members -->
+  <section class="py-24 lg:py-32 bg-gradient-to-b from-warm-900 to-warm-800">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">From the directory</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
+          Members making <em class="italic font-normal text-seam-300">an impact</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-xl">
+          Individual and Changemaker members leading certification projects and advancing social equity across the built environment.
+        </p>
+      </div>
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {individualMembers.map((member) => (
+          <a href={`/directory/${member.slug}`} class="reveal-child group rounded-2xl bg-white/5 border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:border-white/20">
+            <div class="flex items-start gap-4 mb-4">
+              <img
+                src={member.photo}
+                alt={member.name}
+                class="w-14 h-14 rounded-full object-cover shrink-0 ring-2 ring-white/10"
+              />
+              <div class="min-w-0">
+                <p class="text-[16px] font-medium text-white truncate group-hover:text-seam-300 transition-colors">{member.name}</p>
+                <p class="text-[13px] text-warm-400 truncate">{member.title}</p>
+              </div>
+            </div>
+            <p class="text-[13px] text-warm-400 mb-4">{member.organization}</p>
+            <div class="flex items-center gap-2">
+              <img
+                src={member.membershipTier === 'Changemaker' ? '/logos/member-changemaker.png' : '/logos/member-individual.png'}
+                alt={`${member.membershipTier} member`}
+                class="w-6 h-6 object-contain"
+              />
+              <span class="text-[12px] font-medium text-warm-300">{member.membershipTier} Member</span>
+              {member.credentials && (
+                <span class="ml-auto text-[11px] font-medium text-gold-400 bg-gold-400/10 rounded-full px-2 py-0.5">{member.credentials}</span>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="mt-12 text-center">
+        <a href="/directory" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
+          View full directory &rarr;
+        </a>
       </div>
     </div>
   </section>
