@@ -187,7 +187,7 @@ export const certifiedProjects: CertifiedProject[] = [
   {
     slug: 'the-jack',
     name: 'The Jack',
-    image: '/images/directory/the-jack.jpg',
+    image: '/images/directory/the-jack.avif',
     location: { city: 'Seattle', state: 'WA' },
     certificationLevel: 'Bronze',
     ratingSystem: 'Operations + Maintenance',

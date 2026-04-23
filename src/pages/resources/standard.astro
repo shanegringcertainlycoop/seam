@@ -554,19 +554,108 @@ const audiences = [
     </div>
   </section>
 
+  <!-- ─── Download the Standard Form ─── -->
+  <section id="download" class="py-24 lg:py-32 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div class="reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
+            Download
+          </p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
+            Access the
+            <em class="italic font-normal text-seam-300">SEAM Standard</em>
+          </h2>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-lg">
+            The SEAM Standard is available for free for non-commercial use. Tell us a bit about yourself and we'll send the download to your inbox.
+          </p>
+          <ul class="mt-8 space-y-4">
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Free for non-commercial use
+            </li>
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Delivered straight to your inbox
+            </li>
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              4 pillars, 8 concepts, 21 objectives, 50+ activities
+            </li>
+          </ul>
+        </div>
+
+        <div class="reveal-fade-up">
+          <form id="standard-form" class="rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] p-8 lg:p-10 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="std-firstname" class="block text-[13px] font-medium text-warm-300 mb-2">First Name *</label>
+                <input type="text" id="std-firstname" name="firstname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="std-lastname" class="block text-[13px] font-medium text-warm-300 mb-2">Last Name *</label>
+                <input type="text" id="std-lastname" name="lastname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="std-email" class="block text-[13px] font-medium text-warm-300 mb-2">Email *</label>
+              <input type="email" id="std-email" name="email" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="std-company" class="block text-[13px] font-medium text-warm-300 mb-2">Company Name *</label>
+                <input type="text" id="std-company" name="company" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="std-jobtitle" class="block text-[13px] font-medium text-warm-300 mb-2">Job Title *</label>
+                <input type="text" id="std-jobtitle" name="jobtitle" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="std-job_function" class="block text-[13px] font-medium text-warm-300 mb-2">Primary Job Function</label>
+              <select id="std-job_function" name="primary_job_function" class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                <option value="" class="bg-warm-900">Select...</option>
+                <option value="Architecture + engineering" class="bg-warm-900">Architecture + engineering</option>
+                <option value="Developer" class="bg-warm-900">Developer</option>
+                <option value="Owner occupier" class="bg-warm-900">Owner occupier</option>
+                <option value="Property management" class="bg-warm-900">Property management</option>
+                <option value="Investor or debt institution" class="bg-warm-900">Investor or debt institution</option>
+                <option value="Certifications Professional/Consultant" class="bg-warm-900">Certifications Professional/Consultant</option>
+                <option value="NGO/Charity" class="bg-warm-900">NGO/Charity</option>
+                <option value="CSR/DEI/ESG professional" class="bg-warm-900">CSR/DEI/ESG professional</option>
+                <option value="General contractor or subcontractor" class="bg-warm-900">General contractor or subcontractor</option>
+                <option value="Other" class="bg-warm-900">Other</option>
+              </select>
+            </div>
+            <div class="flex items-start gap-3 pt-2">
+              <input type="checkbox" id="std-content-policy" name="content_use_policy" required class="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/[0.08] text-seam-500 focus:ring-seam-400/50 focus:ring-offset-0" />
+              <label for="std-content-policy" class="text-[13px] leading-snug text-warm-400">
+                I have read and agree to the <a href="mailto:admin@seamcertification.org" class="text-seam-300 underline underline-offset-2 hover:text-seam-200 transition-colors">Content Use Policy</a>. The SEAM Standard is made available for free for non-commercial use. Commercial use requires consent. *
+              </label>
+            </div>
+            <button type="submit" class="w-full rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+              Download the Standard
+            </button>
+            <p id="standard-form-status" class="text-[13px] text-center text-warm-400 hidden"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section class="py-24 lg:py-32 bg-warm-900">
+  <section class="py-24 lg:py-32 bg-warm-50">
     <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
-      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
-        Ready to build for{' '}<em class="italic font-normal text-seam-300">belonging?</em>
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 max-w-3xl mx-auto">
+        Ready to build for{' '}<em class="italic font-normal text-seam-600">belonging?</em>
       </h2>
-      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+      <p class="mt-6 text-[17px] text-warm-600 max-w-xl mx-auto">
         Start where you are. The SEAM Standard is designed to meet organizations at their stage of readiness — whether that is exploring what equity means for your portfolio or pursuing full certification today.
       </p>
       <div class="mt-12 flex flex-wrap justify-center gap-4">
-        <a href="/certification" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Start certification</a>
-        <a href="/get-started" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Access the Standard</a>
-        <a href="/ap-credential" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Find a SEAM AP</a>
+        <a href="/certification" class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">Start certification</a>
+        <a href="#download" class="inline-flex items-center rounded-full border border-warm-300 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-500 transition-colors duration-300">Download the Standard</a>
+        <a href="/ap-credential" class="inline-flex items-center rounded-full border border-warm-300 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-500 transition-colors duration-300">Find a SEAM AP</a>
       </div>
     </div>
   </section>
@@ -712,6 +801,75 @@ const audiences = [
       }
     })
   })()
+</script>
+
+<script>
+  function initStandardForm() {
+    const form = document.getElementById('standard-form') as HTMLFormElement | null
+    if (!form) return
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+      const statusEl = document.getElementById('standard-form-status')!
+      const original = btn.textContent
+
+      btn.disabled = true
+      btn.textContent = 'Submitting...'
+      statusEl.classList.add('hidden')
+
+      const data = new FormData(form)
+      const fields = [
+        { objectTypeId: '0-1', name: 'firstname', value: data.get('firstname') },
+        { objectTypeId: '0-1', name: 'lastname', value: data.get('lastname') },
+        { objectTypeId: '0-1', name: 'email', value: data.get('email') },
+        { objectTypeId: '0-1', name: 'company', value: data.get('company') },
+        { objectTypeId: '0-1', name: 'jobtitle', value: data.get('jobtitle') },
+        { objectTypeId: '0-1', name: 'primary_job_function', value: data.get('primary_job_function') || '' },
+        { objectTypeId: '0-1', name: 'content_use_policy', value: 'true' },
+      ]
+
+      try {
+        const res = await fetch(
+          'https://api.hsforms.com/submissions/v3/integration/submit/46821728/7f2e5ff4-6df9-42b6-a8bf-faa32018c06e',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields,
+              context: {
+                pageUri: window.location.href,
+                pageName: 'The SEAM Standard',
+              },
+            }),
+          }
+        )
+
+        if (res.ok) {
+          form.reset()
+          statusEl.textContent = "Thank you for your interest! Check your email for your SEAM Standard download."
+          statusEl.classList.remove('hidden', 'text-red-400')
+          statusEl.classList.add('text-seam-300')
+        } else {
+          throw new Error('Submission failed')
+        }
+      } catch (_err) {
+        statusEl.textContent = 'Something went wrong. Please try again or email admin@seamcertification.org.'
+        statusEl.classList.remove('hidden', 'text-seam-300')
+        statusEl.classList.add('text-red-400')
+      } finally {
+        btn.disabled = false
+        btn.textContent = original
+      }
+    })
+  }
+
+  document.addEventListener('astro:page-load', initStandardForm)
+  if (document.readyState !== 'loading') {
+    initStandardForm()
+  } else {
+    document.addEventListener('DOMContentLoaded', initStandardForm)
+  }
 </script>
 
 </SiteLayout>

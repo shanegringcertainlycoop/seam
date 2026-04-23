@@ -104,6 +104,19 @@ const differentiators = [
   },
 ]
 
+const levels = [
+  { name: 'Bronze', tagline: 'Acting to avoid harm', description: 'The project is making measurable progress toward international social targets. Foundational activities are in place. Harm is being identified and addressed.', imp: 'Act to Avoid Harm', logo: '/logos/cert-bronze.png' },
+  { name: 'Silver', tagline: 'Preventing harm', description: 'The project has moved from awareness to active prevention — with a demonstrated commitment to growing into positive social impact over time.', imp: 'Act to Avoid Harm (advanced)', logo: '/logos/cert-silver.png' },
+  { name: 'Gold', tagline: 'Achieving positive impact', description: 'The project is actively improving the well-being of impacted parties. Social outcomes fall within a sustainable range — real benefit, not just reduced harm.', imp: 'Benefit Impacted Parties', logo: '/logos/cert-gold.png' },
+  { name: 'Platinum', tagline: 'Contributing to solutions', description: 'The project is setting the standard for the industry — achieving lasting positive impact at scale, with benefits that extend beyond the project itself.', imp: 'Contribute to Solutions', logo: '/logos/cert-platinum.png' },
+]
+
+const levelIntensities = ['bg-seam-700/10', 'bg-seam-700/20', 'bg-seam-800/70', 'bg-seam-900/85']
+const levelTextColors = ['text-seam-800', 'text-seam-800', 'text-white', 'text-white']
+const levelSubColors = ['text-gold-600', 'text-gold-600', 'text-seam-200', 'text-seam-200']
+const levelBodyColors = ['text-warm-600', 'text-warm-600', 'text-seam-100/80', 'text-seam-100/80']
+const levelBorderColors = ['border-seam-600/20', 'border-seam-600/20', 'border-seam-400/20', 'border-seam-400/20']
+
 const engagement = [
   { target: 23, suffix: '%', label: 'higher profitability' },
   { target: 17, suffix: '%', label: 'higher productivity' },
@@ -111,12 +124,6 @@ const engagement = [
   { target: 10, suffix: '%', label: 'higher customer loyalty' },
 ]
 
-const heroBadges = [
-  { src: '/logos/cert-bronze.png', alt: 'Bronze certification', style: 'width:220px;height:220px;bottom:0;left:0;z-index:0' },
-  { src: '/logos/cert-silver.png', alt: 'Silver certification', style: 'width:220px;height:220px;bottom:60px;left:60px;z-index:1' },
-  { src: '/logos/cert-gold.png', alt: 'Gold certification', style: 'width:220px;height:220px;bottom:120px;left:120px;z-index:2' },
-  { src: '/logos/cert-platinum.png', alt: 'Platinum certification', style: 'width:220px;height:220px;bottom:180px;left:180px;z-index:3' },
-]
 
 const jsonLd = breadcrumbSchema([
   { name: 'Home', path: '/' },
@@ -133,8 +140,15 @@ const jsonLd = breadcrumbSchema([
 
   <!-- ─── Hero ─── -->
   <section class="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-    <!-- Gradient overlay -->
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    <!-- Background image -->
+    <div class="absolute inset-0">
+      <img
+        src="/hero.png"
+        alt="The Jack building in Seattle's Pioneer Square — the world's first SEAM Certified location"
+        class="h-full w-full object-cover object-center"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/10"></div>
+    </div>
 
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -167,18 +181,37 @@ const jsonLd = breadcrumbSchema([
           </div>
         </div>
 
-        <!-- Certification badges — diagonal cascade -->
-        <div class="hidden lg:flex justify-center items-center">
-          <div class="relative w-[420px] h-[420px]">
-            {heroBadges.map((badge) => (
+        <!-- Featured project glass card -->
+        <div class="hidden lg:flex justify-end items-center">
+          <a href="/directory/project/the-jack" class="group block w-[320px] rounded-2xl bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] shadow-[0_8px_32px_rgba(0,0,0,0.15)] overflow-hidden transition-all duration-300 hover:bg-white/[0.1] hover:border-white/[0.2]">
+            <div class="aspect-[16/10] overflow-hidden">
               <img
-                src={badge.src}
-                alt={badge.alt}
-                style={badge.style}
-                class="absolute object-contain drop-shadow-lg"
+                src="/images/directory/project/the-jack.avif"
+                alt="The Jack — world's first SEAM Certified building"
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-300"
               />
-            ))}
-          </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-[15px] font-medium text-white/90">The Jack</p>
+                  <p class="text-[12px] text-white/40 mt-0.5">Seattle, WA &middot; 175,000 SF</p>
+                </div>
+                <img
+                  src="/logos/cert-bronze.png"
+                  alt="SEAM Bronze Certified"
+                  class="w-10 h-10 object-contain shrink-0 drop-shadow-md"
+                />
+              </div>
+              <p class="mt-3 text-[12px] leading-relaxed text-white/35">
+                First SEAM-certified building in the world. 1,000+ community voices documented.
+              </p>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-[11px] font-medium text-white/25">Urban Visions &middot; O+M</span>
+                <span class="text-[11px] font-medium text-white/30 group-hover:text-white/50 transition-colors">View &rarr;</span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -380,8 +413,37 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 
+  <!-- ─── Certification Levels ─── -->
+  <section id="levels" class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Certification levels</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Recognition that reflects{' '}<em class="italic font-normal text-seam-600">real progress</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
+          Four levels of SEAM Certification align to the Impact Management Project&apos;s ABCs: avoiding harm, benefiting people, and contributing to solutions.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
+        {levels.map((level, i) => (
+          <div class={`reveal-child relative rounded-2xl ${levelIntensities[i]} pt-14 pb-8 px-8 lg:pt-14 lg:pb-10 lg:px-10`}>
+            <img src={level.logo} alt={`${level.name} certification`} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" />
+            <h3 class={`relative font-display text-[28px] tracking-[-0.02em] ${levelTextColors[i]}`}>{level.name}</h3>
+            <p class={`mt-1 text-[14px] font-medium ${levelSubColors[i]}`}>{level.tagline}</p>
+            <p class={`mt-4 text-[15px] leading-relaxed ${levelBodyColors[i]}`}>{level.description}</p>
+            <p class={`mt-5 text-[12px] uppercase tracking-[0.1em] ${levelSubColors[i]} border-t ${levelBorderColors[i]} pt-4`}>
+              IMP: {level.imp}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ─── What Makes SEAM Different ─── -->
-  <section class="py-24 lg:py-32 bg-warm-50">
+  <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
@@ -458,25 +520,304 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 
-  <!-- ─── Pricing CTA ─── -->
+  <!-- ─── Pricing ─── -->
   <section class="py-24 lg:py-32 bg-warm-50">
-    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
-      <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
-        Investment
-      </p>
-      <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 max-w-2xl mx-auto">
-        Certification pricing for{' '}
-        <em class="italic font-normal text-seam-600">every project size</em>
-      </h2>
-      <p class="mt-6 text-[17px] text-warm-600 max-w-xl mx-auto">
-        Certification, <a href="/approved" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM Approved</a>, and <a href="/ap-credential" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">AP Credential</a> pricing with community member discounts.
-      </p>
-      <div class="mt-10">
-        <a href="/pricing" class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">
-          View pricing &rarr;
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Investment
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Certification pricing for
+          <em class="italic font-normal text-seam-600">every project size</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
+          Pricing is based on project size and rating system. Registration locks in your fee schedule for 24 months. Recertification is required every 3 years.
+        </p>
+      </div>
+
+      <div class="reveal-stagger space-y-12">
+        <!-- Buildings + Interiors -->
+        <div class="reveal-child">
+          <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-2">Buildings + Interiors</h3>
+          <p class="text-[15px] text-warm-600 mb-6">New construction and major renovations. The most comprehensive path to SEAM Certification.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[600px]">
+              <thead>
+                <tr class="border-b border-warm-200">
+                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Project Size</th>
+                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Registration</th>
+                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Verification</th>
+                  <th class="text-left py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Recertification</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-warm-100">
+                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Small</span><span class="block text-[13px] text-warm-600 mt-0.5">Under 50,000 sq ft</span></td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$3,500</td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$12,500</td>
+                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$7,500</td>
+                </tr>
+                <tr class="border-b border-warm-100">
+                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Medium</span><span class="block text-[13px] text-warm-600 mt-0.5">50,000 – 250,000 sq ft</span></td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$5,000</td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$22,500</td>
+                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$13,500</td>
+                </tr>
+                <tr class="border-b border-warm-100">
+                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Large</span><span class="block text-[13px] text-warm-600 mt-0.5">Over 250,000 sq ft</span></td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$7,500</td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$35,000</td>
+                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$21,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Operations + Maintenance -->
+        <div class="reveal-child">
+          <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-2">Operations + Maintenance</h3>
+          <p class="text-[15px] text-warm-600 mb-6">Existing buildings seeking certification through operational practices and ongoing programs.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[600px]">
+              <thead>
+                <tr class="border-b border-warm-200">
+                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Project Size</th>
+                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Registration</th>
+                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Verification</th>
+                  <th class="text-left py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Recertification</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-warm-100">
+                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Small</span><span class="block text-[13px] text-warm-600 mt-0.5">Under 50,000 sq ft</span></td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$2,500</td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$9,500</td>
+                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$5,700</td>
+                </tr>
+                <tr class="border-b border-warm-100">
+                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Medium</span><span class="block text-[13px] text-warm-600 mt-0.5">50,000 – 250,000 sq ft</span></td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$3,500</td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$17,500</td>
+                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$10,500</td>
+                </tr>
+                <tr class="border-b border-warm-100">
+                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Large</span><span class="block text-[13px] text-warm-600 mt-0.5">Over 250,000 sq ft</span></td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$5,000</td>
+                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$27,500</td>
+                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$16,500</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community discount note -->
+      <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8">
+        <p class="text-[15px] leading-relaxed text-seam-700">
+          <strong class="font-semibold">Community member discount:</strong> Organizations with an active Ladder or Arc membership receive 10 – 20% off verification fees. Volume discounts available for portfolios of 5+ projects.{' '}
+          <a href="/community/organization" class="underline hover:text-seam-900 transition-colors">Learn about organization membership &rarr;</a>
+        </p>
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a
+          href="https://seam.outgrow.us/SEAMcert-project-costs"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300"
+        >
+          Estimate your project cost &rarr;
+        </a>
+        <a href="/pricing" class="inline-flex items-center rounded-full border border-warm-200 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-300 transition-colors duration-300">
+          View all pricing
         </a>
       </div>
     </div>
   </section>
+
+  <!-- ─── Get Started Form ─── -->
+  <section id="get-started" class="py-24 lg:py-32 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div class="reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
+            Start a project
+          </p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
+            Getting started with
+            <em class="italic font-normal text-seam-300">SEAM Certification</em>
+          </h2>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-lg">
+            Tell us about your project and we'll connect you with the right resources — whether that's a SEAM AP, a gap assessment, or just a conversation about where to begin.
+          </p>
+          <ul class="mt-8 space-y-4">
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              No commitment required
+            </li>
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Typical response within 2 business days
+            </li>
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              We'll match you with a SEAM AP if needed
+            </li>
+          </ul>
+        </div>
+
+        <div class="reveal-fade-up">
+          <form id="cert-form" class="rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] p-8 lg:p-10 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="firstname" class="block text-[13px] font-medium text-warm-300 mb-2">First Name *</label>
+                <input type="text" id="firstname" name="firstname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="lastname" class="block text-[13px] font-medium text-warm-300 mb-2">Last Name *</label>
+                <input type="text" id="lastname" name="lastname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-[13px] font-medium text-warm-300 mb-2">Work Email *</label>
+              <input type="email" id="email" name="email" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="company" class="block text-[13px] font-medium text-warm-300 mb-2">Company Name *</label>
+                <input type="text" id="company" name="company" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="jobtitle" class="block text-[13px] font-medium text-warm-300 mb-2">Job Title *</label>
+                <input type="text" id="jobtitle" name="jobtitle" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="job_function" class="block text-[13px] font-medium text-warm-300 mb-2">Primary Job Function</label>
+              <select id="job_function" name="primary_job_function" class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                <option value="" class="bg-warm-900">Select...</option>
+                <option value="Architecture + engineering" class="bg-warm-900">Architecture + engineering</option>
+                <option value="Developer" class="bg-warm-900">Developer</option>
+                <option value="Owner occupier" class="bg-warm-900">Owner occupier</option>
+                <option value="Property management" class="bg-warm-900">Property management</option>
+                <option value="Investor or debt institution" class="bg-warm-900">Investor or debt institution</option>
+                <option value="Certifications Professional/Consultant" class="bg-warm-900">Certifications Professional/Consultant</option>
+                <option value="NGO/Charity" class="bg-warm-900">NGO/Charity</option>
+                <option value="CSR/DEI/ESG professional" class="bg-warm-900">CSR/DEI/ESG professional</option>
+                <option value="General contractor or subcontractor" class="bg-warm-900">General contractor or subcontractor</option>
+                <option value="Other" class="bg-warm-900">Other</option>
+              </select>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="project_type" class="block text-[13px] font-medium text-warm-300 mb-2">Project Type *</label>
+                <select id="project_type" name="project_type" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                  <option value="" class="bg-warm-900">Select...</option>
+                  <option value="Buildings + Interiors (best for new construction)" class="bg-warm-900">Buildings + Interiors</option>
+                  <option value="Operations + Maintenance (best for existing structures)" class="bg-warm-900">Operations + Maintenance</option>
+                  <option value="Not sure yet" class="bg-warm-900">Not sure yet</option>
+                  <option value="Explore SEAM for my organization" class="bg-warm-900">Explore for my org</option>
+                </select>
+              </div>
+              <div>
+                <label for="project_stage" class="block text-[13px] font-medium text-warm-300 mb-2">Project Stage *</label>
+                <select id="project_stage" name="project_stage" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                  <option value="" class="bg-warm-900">Select...</option>
+                  <option value="Early Concept" class="bg-warm-900">Early Concept</option>
+                  <option value="In Design" class="bg-warm-900">In Design</option>
+                  <option value="Under Construction" class="bg-warm-900">Under Construction</option>
+                  <option value="Existing Building" class="bg-warm-900">Existing Building</option>
+                  <option value="No Active Project Yet" class="bg-warm-900">No Active Project Yet</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="comments" class="block text-[13px] font-medium text-warm-300 mb-2">Any additional details you'd like to share?</label>
+              <textarea id="comments" name="getting_started_comments" rows="3" class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+              Get started
+            </button>
+            <p id="cert-form-status" class="text-[13px] text-center text-warm-400 hidden"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function initCertForm() {
+      const form = document.getElementById('cert-form') as HTMLFormElement | null
+      if (!form) return
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+        const statusEl = document.getElementById('cert-form-status')!
+        const original = btn.textContent
+
+        btn.disabled = true
+        btn.textContent = 'Submitting…'
+        statusEl.classList.add('hidden')
+
+        const data = new FormData(form)
+        const fields = [
+          { objectTypeId: '0-1', name: 'firstname', value: data.get('firstname') },
+          { objectTypeId: '0-1', name: 'lastname', value: data.get('lastname') },
+          { objectTypeId: '0-1', name: 'email', value: data.get('email') },
+          { objectTypeId: '0-1', name: 'company', value: data.get('company') },
+          { objectTypeId: '0-1', name: 'jobtitle', value: data.get('jobtitle') },
+          { objectTypeId: '0-1', name: 'primary_job_function', value: data.get('primary_job_function') || '' },
+          { objectTypeId: '0-1', name: 'project_type', value: data.get('project_type') || '' },
+          { objectTypeId: '0-1', name: 'project_stage', value: data.get('project_stage') || '' },
+          { objectTypeId: '0-1', name: 'getting_started_comments', value: data.get('getting_started_comments') || '' },
+        ]
+
+        try {
+          const res = await fetch(
+            'https://api.hsforms.com/submissions/v3/integration/submit/46821728/a1c918a5-4788-4aa6-9749-2625ea0816c9',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                fields,
+                context: {
+                  pageUri: window.location.href,
+                  pageName: 'Certification',
+                },
+              }),
+            }
+          )
+
+          if (res.ok) {
+            form.reset()
+            statusEl.textContent = "Thank you! We'll be in touch within 2 business days."
+            statusEl.classList.remove('hidden', 'text-red-400')
+            statusEl.classList.add('text-seam-300')
+          } else {
+            throw new Error('Submission failed')
+          }
+        } catch (_err) {
+          statusEl.textContent = 'Something went wrong. Please try again or email us directly.'
+          statusEl.classList.remove('hidden', 'text-seam-300')
+          statusEl.classList.add('text-red-400')
+        } finally {
+          btn.disabled = false
+          btn.textContent = original
+        }
+      })
+    }
+
+    document.addEventListener('astro:page-load', initCertForm)
+    if (document.readyState !== 'loading') {
+      initCertForm()
+    } else {
+      document.addEventListener('DOMContentLoaded', initCertForm)
+    }
+  </script>
 
 </SiteLayout>

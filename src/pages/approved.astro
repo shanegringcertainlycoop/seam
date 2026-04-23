@@ -206,10 +206,16 @@ const jsonLd = [
 
         <!-- SEAM Approved logo -->
         <div class="hidden lg:flex justify-center">
-          <div class="relative">
-            <div class="absolute inset-0 -m-8 rounded-full border border-seam-500/20 animate-[spin_30s_linear_infinite]"></div>
-            <div class="absolute inset-0 -m-16 rounded-full border border-seam-400/10 animate-[spin_45s_linear_infinite_reverse]"></div>
-            <img src="/logos/approved-wordmark.png" alt="SEAM Approved" class="w-56 h-56 object-contain drop-shadow-2xl" />
+          <div class="relative w-56 h-56 flex items-center justify-center">
+            <!-- Burst ripple rings — fast outward pulse with gold tint -->
+            <div class="approved-ripple absolute inset-[-8px] rounded-full border-2 border-gold-400/40" style="animation-delay: 0s;"></div>
+            <div class="approved-ripple absolute inset-[-8px] rounded-full border-2 border-gold-400/30" style="animation-delay: 1s;"></div>
+            <div class="approved-ripple absolute inset-[-8px] rounded-full border-2 border-gold-400/20" style="animation-delay: 2s;"></div>
+            <div class="approved-ripple absolute inset-[-8px] rounded-full border border-seam-300/15" style="animation-delay: 0.5s;"></div>
+            <div class="approved-ripple absolute inset-[-8px] rounded-full border border-seam-300/10" style="animation-delay: 1.5s;"></div>
+            <!-- Warm glow behind mark -->
+            <div class="absolute inset-[-20px] rounded-full bg-gold-400/[0.06] approved-glow"></div>
+            <img src="/logos/approved-wordmark.png" alt="SEAM Approved" class="relative w-56 h-56 object-contain drop-shadow-2xl" />
           </div>
         </div>
       </div>

@@ -1,0 +1,404 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../lib/seo-helpers'
+
+/* ─── Data Arrays ─── */
+
+const steps = [
+  {
+    title: 'Register your project',
+    description: 'Tell us about your building, activity, or organization. We\u2019ll confirm eligibility and outline the right path forward.',
+  },
+  {
+    title: 'Complete the assessment',
+    description: 'Work with a SEAM AP to evaluate performance across the Standard\u2019s four pillars \u2014 Social Impact, Social Responsibility, Social Justice, and Social Accountability.',
+  },
+  {
+    title: 'Implement and verify',
+    description: 'Execute your plan and submit documentation. A third-party reviewer verifies performance through evidence review and community engagement.',
+  },
+  {
+    title: 'Earn your certification',
+    description: 'Receive your Bronze, Silver, Gold, or Platinum designation \u2014 or your SEAM Approved mark. Demonstrate your commitment to social equity.',
+  },
+]
+
+const paths = [
+  {
+    title: 'Certify a building',
+    description: 'Pursue SEAM Certification for new construction, renovations, or existing buildings across four rating systems and four certification levels.',
+    href: '/certification',
+    cta: 'Learn about certification',
+  },
+  {
+    title: 'Verify an activity',
+    description: 'Get SEAM Approved status for products, services, and programs that contribute to social equity outcomes in the built environment.',
+    href: '/approved',
+    cta: 'Learn about SEAM Approved',
+  },
+  {
+    title: 'Become a SEAM AP',
+    description: 'Earn the SEAM Accredited Professional credential and guide projects through the certification process as a qualified advisor.',
+    href: '/ap-credential',
+    cta: 'Learn about the credential',
+  },
+]
+
+const faqs = [
+  {
+    question: 'What happens after I submit?',
+    answer: 'Our team reviews your submission and responds within two business days. We\u2019ll schedule an introductory call to discuss your goals, confirm the right path, and connect you with a SEAM AP if appropriate.',
+  },
+  {
+    question: 'Do I need a SEAM AP?',
+    answer: 'A SEAM Accredited Professional is required for certification projects. They guide teams through the Standard, manage documentation, and coordinate with third-party reviewers. We can match you with one.',
+  },
+  {
+    question: 'How long does certification take?',
+    answer: 'Timelines vary based on project type and stage. A typical certification takes 6\u201312 months from registration to award. SEAM Approved applications are generally faster.',
+  },
+  {
+    question: 'Is there a cost to get started?',
+    answer: 'Submitting this form is free and carries no commitment. Certification and SEAM Approved fees depend on project size and type \u2014 <a href="/pricing" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">view pricing</a> for details.',
+  },
+]
+
+const jsonLd = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Get Started', path: '/get-started' },
+])
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer.replace(/<[^>]*>/g, ''),
+    },
+  })),
+}
+---
+
+<SiteLayout
+  title="Get Started with SEAM | Certification, SEAM Approved & AP Credential"
+  description="Start your social equity journey. Whether you're pursuing SEAM Certification, SEAM Approved status, or the AP credential, we'll help you find the right path."
+  path="/get-started"
+  jsonLd={[jsonLd, faqJsonLd]}
+>
+
+  <!-- ─── Hero ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl">
+        <p class="hero-enter text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
+          Start a project
+        </p>
+        <h1 class="hero-enter font-display text-[clamp(2.5rem,5vw,4rem)] leading-[1.08] tracking-[-0.03em] text-white" style="animation-delay:.05s">
+          Let's find the <em class="italic font-normal text-seam-300">right path</em> for you
+        </h1>
+        <p class="hero-enter mt-6 text-[18px] leading-relaxed text-warm-400 max-w-2xl" style="animation-delay:.1s">
+          Whether you're exploring certification for a building, seeking SEAM Approved status for a product or service, or looking to become a SEAM AP &mdash; start here.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How It Works ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          The process
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          From registration to{' '}
+          <em class="italic font-normal text-seam-600">certification</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger relative">
+        <!-- Vertical spine — hidden on mobile -->
+        <div class="hidden lg:block absolute left-[39px] top-0 bottom-0 w-px bg-warm-200"></div>
+
+        {steps.map((step, i) => (
+          <div
+            class="reveal-child group relative grid grid-cols-1 lg:grid-cols-[80px_1fr] gap-6 lg:gap-12 pb-16 last:pb-0"
+          >
+            <!-- Node -->
+            <div class="hidden lg:flex flex-col items-center">
+              <div class="relative z-10 flex h-[80px] w-[80px] items-center justify-center rounded-full border-2 border-warm-200 bg-white group-hover:border-seam-500 transition-colors duration-300">
+                <span class="font-display text-[28px] tracking-[-0.02em] text-seam-600">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="rounded-2xl border border-warm-100 p-8 lg:p-10 group-hover:border-warm-200 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-300">
+              <span class="lg:hidden text-[14px] font-medium text-seam-500 mb-3 block">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">
+                {step.title}
+              </h3>
+              <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── What You Can Do ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          What you can do
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Three paths to{' '}
+          <em class="italic font-normal text-seam-600">social equity</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6">
+        {paths.map((path) => (
+          <div class="reveal-child rounded-2xl border border-warm-100 bg-white p-8 lg:p-10 flex flex-col">
+            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">
+              {path.title}
+            </h3>
+            <p class="text-[16px] leading-relaxed text-warm-600 mb-8 flex-1">
+              {path.description}
+            </p>
+            <a
+              href={path.href}
+              class="inline-flex items-center rounded-full border border-warm-200 px-6 py-3 text-[14px] font-medium text-warm-700 hover:bg-warm-50 hover:border-warm-300 transition-colors duration-300 self-start"
+            >
+              {path.cta} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Get Started Form ─── -->
+  <section id="form" class="py-24 lg:py-32 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div class="reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
+            Start a project
+          </p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
+            Tell us about{' '}
+            <em class="italic font-normal text-seam-300">your project</em>
+          </h2>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-lg">
+            Share a few details and we'll connect you with the right resources &mdash; whether that's a SEAM AP, a gap assessment, or just a conversation about where to begin.
+          </p>
+          <ul class="mt-8 space-y-4">
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              No commitment required
+            </li>
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Typical response within 2 business days
+            </li>
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              We'll match you with a SEAM AP if needed
+            </li>
+          </ul>
+        </div>
+
+        <div class="reveal-fade-up">
+          <form id="get-started-form" class="rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] p-8 lg:p-10 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="firstname" class="block text-[13px] font-medium text-warm-300 mb-2">First Name *</label>
+                <input type="text" id="firstname" name="firstname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="lastname" class="block text-[13px] font-medium text-warm-300 mb-2">Last Name *</label>
+                <input type="text" id="lastname" name="lastname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-[13px] font-medium text-warm-300 mb-2">Work Email *</label>
+              <input type="email" id="email" name="email" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="company" class="block text-[13px] font-medium text-warm-300 mb-2">Company Name *</label>
+                <input type="text" id="company" name="company" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="jobtitle" class="block text-[13px] font-medium text-warm-300 mb-2">Job Title *</label>
+                <input type="text" id="jobtitle" name="jobtitle" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="job_function" class="block text-[13px] font-medium text-warm-300 mb-2">Primary Job Function</label>
+              <select id="job_function" name="primary_job_function" class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                <option value="" class="bg-warm-900">Select...</option>
+                <option value="Architecture + engineering" class="bg-warm-900">Architecture + engineering</option>
+                <option value="Developer" class="bg-warm-900">Developer</option>
+                <option value="Owner occupier" class="bg-warm-900">Owner occupier</option>
+                <option value="Property management" class="bg-warm-900">Property management</option>
+                <option value="Investor or debt institution" class="bg-warm-900">Investor or debt institution</option>
+                <option value="Certifications Professional/Consultant" class="bg-warm-900">Certifications Professional/Consultant</option>
+                <option value="NGO/Charity" class="bg-warm-900">NGO/Charity</option>
+                <option value="CSR/DEI/ESG professional" class="bg-warm-900">CSR/DEI/ESG professional</option>
+                <option value="General contractor or subcontractor" class="bg-warm-900">General contractor or subcontractor</option>
+                <option value="Other" class="bg-warm-900">Other</option>
+              </select>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="project_type" class="block text-[13px] font-medium text-warm-300 mb-2">Project Type *</label>
+                <select id="project_type" name="project_type" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                  <option value="" class="bg-warm-900">Select...</option>
+                  <option value="Buildings + Interiors (best for new construction)" class="bg-warm-900">Buildings + Interiors</option>
+                  <option value="Operations + Maintenance (best for existing structures)" class="bg-warm-900">Operations + Maintenance</option>
+                  <option value="Not sure yet" class="bg-warm-900">Not sure yet</option>
+                  <option value="Explore SEAM for my organization" class="bg-warm-900">Explore for my org</option>
+                </select>
+              </div>
+              <div>
+                <label for="project_stage" class="block text-[13px] font-medium text-warm-300 mb-2">Project Stage *</label>
+                <select id="project_stage" name="project_stage" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                  <option value="" class="bg-warm-900">Select...</option>
+                  <option value="Early Concept" class="bg-warm-900">Early Concept</option>
+                  <option value="In Design" class="bg-warm-900">In Design</option>
+                  <option value="Under Construction" class="bg-warm-900">Under Construction</option>
+                  <option value="Existing Building" class="bg-warm-900">Existing Building</option>
+                  <option value="No Active Project Yet" class="bg-warm-900">No Active Project Yet</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="comments" class="block text-[13px] font-medium text-warm-300 mb-2">Any additional details you'd like to share?</label>
+              <textarea id="comments" name="getting_started_comments" rows="3" class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+              Get started
+            </button>
+            <p id="get-started-form-status" class="text-[13px] text-center text-warm-400 hidden"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Common questions
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Frequently <em class="italic font-normal text-seam-600">asked</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger max-w-3xl space-y-6">
+        {faqs.map((faq) => (
+          <details class="reveal-child group rounded-2xl border border-warm-100 bg-white">
+            <summary class="flex items-center justify-between cursor-pointer p-8 lg:p-10 list-none [&::-webkit-details-marker]:hidden">
+              <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 pr-8">
+                {faq.question}
+              </h3>
+              <svg class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </summary>
+            <div class="px-8 pb-8 lg:px-10 lg:pb-10 -mt-2">
+              <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl" set:html={faq.answer} />
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function initGetStartedForm() {
+      const form = document.getElementById('get-started-form') as HTMLFormElement | null
+      if (!form) return
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+        const statusEl = document.getElementById('get-started-form-status')!
+        const original = btn.textContent
+
+        btn.disabled = true
+        btn.textContent = 'Submitting\u2026'
+        statusEl.classList.add('hidden')
+
+        const data = new FormData(form)
+        const fields = [
+          { objectTypeId: '0-1', name: 'firstname', value: data.get('firstname') },
+          { objectTypeId: '0-1', name: 'lastname', value: data.get('lastname') },
+          { objectTypeId: '0-1', name: 'email', value: data.get('email') },
+          { objectTypeId: '0-1', name: 'company', value: data.get('company') },
+          { objectTypeId: '0-1', name: 'jobtitle', value: data.get('jobtitle') },
+          { objectTypeId: '0-1', name: 'primary_job_function', value: data.get('primary_job_function') || '' },
+          { objectTypeId: '0-1', name: 'project_type', value: data.get('project_type') || '' },
+          { objectTypeId: '0-1', name: 'project_stage', value: data.get('project_stage') || '' },
+          { objectTypeId: '0-1', name: 'getting_started_comments', value: data.get('getting_started_comments') || '' },
+        ]
+
+        try {
+          const res = await fetch(
+            'https://api.hsforms.com/submissions/v3/integration/submit/46821728/a1c918a5-4788-4aa6-9749-2625ea0816c9',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                fields,
+                context: {
+                  pageUri: window.location.href,
+                  pageName: 'Get Started',
+                },
+              }),
+            }
+          )
+
+          if (res.ok) {
+            form.reset()
+            statusEl.textContent = "Thank you! We\u2019ll be in touch within 2 business days."
+            statusEl.classList.remove('hidden', 'text-red-400')
+            statusEl.classList.add('text-seam-300')
+          } else {
+            throw new Error('Submission failed')
+          }
+        } catch (_err) {
+          statusEl.textContent = 'Something went wrong. Please try again or email us directly.'
+          statusEl.classList.remove('hidden', 'text-seam-300')
+          statusEl.classList.add('text-red-400')
+        } finally {
+          btn.disabled = false
+          btn.textContent = original
+        }
+      })
+    }
+
+    document.addEventListener('astro:page-load', initGetStartedForm)
+    if (document.readyState !== 'loading') {
+      initGetStartedForm()
+    } else {
+      document.addEventListener('DOMContentLoaded', initGetStartedForm)
+    }
+  </script>
+
+</SiteLayout>
