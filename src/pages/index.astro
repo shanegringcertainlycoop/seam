@@ -229,7 +229,9 @@ const jsonLd = [
           <em class="italic font-normal text-seam-600">
             designed and operated
           </em>{' '}
-          with social equity as a focus, and not an afterthought, communities thrive and investments outperform. SEAM is the world's first standard built to advance social equity in commercial real estate.
+          with social equity as a focus, and not an afterthought, communities thrive and investments outperform.
+          <br /><br />
+          <img src="/logos/seam-wordmark.png" alt="SEAM" class="inline-block h-[1.1em] w-auto align-baseline brightness-0 -mb-[0.05em]" /> is the world's first standard built to advance social equity in commercial real estate.
         </p>
       </div>
     </div>
@@ -464,6 +466,63 @@ const jsonLd = [
     </div>
   </section>
 
+  <!-- ─── Section 5b: Community Faces ─── -->
+  <section class="py-24 lg:py-32 overflow-hidden">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          The people behind the Standard
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Practitioners, leaders, and{' '}
+          <em class="italic font-normal text-seam-600">changemakers</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
+          SEAM APs, member organizations, and community members building the social equity ecosystem in the built environment.
+        </p>
+      </div>
+
+      <div class="reveal-stagger flex flex-wrap justify-center gap-4 lg:gap-5 max-w-5xl mx-auto">
+        {[
+          { src: '/images/team/rainey-shane.png', name: 'Rainey Shane', role: 'Co-Founder' },
+          { src: '/images/team/alex-demestihas.png', name: 'Alex Demestihas', role: 'Co-Founder' },
+          { src: '/images/ap-alexandra-bull.jpg', name: 'Alexandra Bull', role: 'SEAM AP' },
+          { src: '/images/ap-christian-mayer.jpg', name: 'Christian Mayer', role: 'SEAM AP' },
+          { src: '/images/ap-melina-gorrebeeck.jpg', name: 'Melina Gorrebeeck', role: 'SEAM AP' },
+          { src: '/images/team/chris-pirschel.jpg', name: 'Chris Pirschel', role: 'CMO' },
+          { src: '/images/team/shane-gring.jpg', name: 'Shane Gring', role: 'COO' },
+        ].map((person) => (
+          <div class="reveal-child group relative">
+            <div class="w-20 h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden ring-2 ring-white shadow-[0_4px_16px_rgba(0,0,0,0.1)] transition-transform duration-300 group-hover:scale-110">
+              <img
+                src={person.src}
+                alt={person.name}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none text-center whitespace-nowrap">
+              <p class="text-[13px] font-medium text-warm-900">{person.name}</p>
+              <p class="text-[11px] text-warm-500">{person.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="reveal-fade-up mt-14 text-center">
+        <a
+          href="/directory"
+          class="inline-flex items-center rounded-full border border-warm-200 px-6 py-3 text-[15px] font-medium text-warm-700 hover:border-warm-400 hover:text-warm-900 transition-colors duration-300"
+        >
+          Browse the full directory
+          <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── Section 6: Resources ─── -->
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -592,7 +651,7 @@ const jsonLd = [
       const mobilePanels = document.querySelectorAll<HTMLElement>('.hotspot-mobile-panel')
 
       let hovered: string | null = null
-      let locked: string | null = null
+      let locked: string | null = '1'
 
       function getActive(): string | null {
         return locked ?? hovered
