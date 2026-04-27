@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
-import { breadcrumbSchema } from '../lib/seo-helpers'
+import { breadcrumbSchema, faqSchema } from '../lib/seo-helpers'
 
 /* ─── Tab state from URL ─── */
 type TabKey = 'certification' | 'approved' | 'credential' | 'membership'
@@ -108,10 +108,10 @@ const credentialTiers = [
     name: 'Exam + Prep Course',
     price: '$595',
     period: '',
-    description: 'The recommended path. Combines the full preparation course with your exam registration at a bundled rate.',
+    description: 'The recommended path. Combines the Foundations: Social Equity in the Built Environment course with your exam registration at a bundled rate.',
     features: [
       'Everything in Exam Only',
-      '40-hour self-paced prep course',
+      'Foundations: Social Equity in the Built Environment course',
       'Practice exams and flashcards',
       'Study group access',
       'Instructor office hours',
@@ -192,7 +192,7 @@ const individualTiers = [
 
 const organizationTiers = [
   {
-    name: 'Contributor',
+    name: 'Standing',
     price: '$2,500',
     period: '/year',
     description: 'For organizations beginning their SEAM journey. Access to templates and basic portfolio tools.',
@@ -208,7 +208,7 @@ const organizationTiers = [
     highlighted: false,
   },
   {
-    name: 'Builder',
+    name: 'Ladder',
     price: '$7,500',
     period: '/year',
     description: 'For organizations actively pursuing certification or rolling out SEAM Approved across properties.',
@@ -222,11 +222,11 @@ const organizationTiers = [
       'Volume SEAM Approved pricing',
       'Quarterly strategy check-ins',
     ],
-    cta: 'Start as Builder',
+    cta: 'Start as Ladder',
     highlighted: true,
   },
   {
-    name: 'Steward',
+    name: 'Arc',
     price: '$18,000',
     period: '/year',
     description: 'For institutions leading the movement. Maximum influence, unlimited scale.',
@@ -254,7 +254,7 @@ const faqs = [
   },
   {
     q: 'Do Commons members get discounts on certification and verification fees?',
-    a: 'Yes. Individual Practitioner members receive 15% off SEAM Approved single-activity fees and $50 off the AP exam. Organization members at Builder tier receive 10% off certification fees, and Steward members receive 20% off.',
+    a: 'Yes. Individual Practitioner members receive 15% off SEAM Approved single-activity fees and $50 off the AP exam. Organization members at Ladder tier receive 10% off certification fees, and Arc members receive 20% off.',
   },
   {
     q: 'How long does a certification remain valid?',
@@ -262,7 +262,7 @@ const faqs = [
   },
   {
     q: 'Is there volume pricing for portfolios with many buildings?',
-    a: 'Yes. Organizations certifying 5 or more projects can access portfolio pricing through an Organization membership at the Builder or Steward tier. Contact our team for a custom quote.',
+    a: 'Yes. Organizations certifying 5 or more projects can access portfolio pricing through an Organization membership at the Ladder or Arc tier. Contact our team for a custom quote.',
   },
   {
     q: 'What is included in the registration fee?',
@@ -270,7 +270,7 @@ const faqs = [
   },
   {
     q: 'Can my AP exam fee be covered by my organization?',
-    a: 'Yes. Many organizations cover exam and membership fees for their team. Organization members at Builder and Steward tiers include full course library access for all seats, and exam fees can be invoiced to the organization.',
+    a: 'Yes. Many organizations cover exam and membership fees for their team. Organization members at Ladder and Arc tiers include full course library access for all seats, and exam fees can be invoiced to the organization.',
   },
   {
     q: 'What payment methods do you accept?',
@@ -282,15 +282,20 @@ const faqs = [
   },
 ]
 
-const jsonLd = breadcrumbSchema([
-  { name: 'Home', path: '/' },
-  { name: 'Pricing', path: '/pricing' },
-])
+const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
+
+const jsonLd = [
+  faqSchema(faqItems),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Pricing', path: '/pricing' },
+  ]),
+] as unknown as Record<string, unknown>
 ---
 
 <SiteLayout
-  title="Pricing"
-  description="Transparent pricing for SEAM Certification, SEAM Approved verification, AP Credential, and Commons membership. See fees for every path to social equity in the built environment."
+  title="Pricing — Certification, Approved & AP Credential"
+  description="Transparent pricing for SEAM Certification, SEAM Approved verification, AP Credential, and membership. See fees for every path."
   path="/pricing"
   jsonLd={jsonLd}
 >
@@ -331,7 +336,7 @@ const jsonLd = breadcrumbSchema([
             class={`whitespace-nowrap rounded-full px-5 py-2.5 text-[14px] font-medium transition-colors duration-200 ${
               activeTab === tab.key
                 ? 'bg-warm-900 text-white'
-                : 'text-warm-500 hover:bg-warm-100 hover:text-warm-700'
+                : 'text-warm-600 hover:bg-warm-100 hover:text-warm-700'
             }`}
           >
             {tab.label}
@@ -342,15 +347,16 @@ const jsonLd = breadcrumbSchema([
   </div>
 
   <!-- Certification Tab -->
-  {activeTab === 'certification' && (
+  {/* All tabs rendered; hidden via CSS for indexability */}
+  <div class={activeTab === 'certification' ? '' : 'hidden'}>
     <div class="py-20 lg:py-28">
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Full Certification</p>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Full Certification</p>
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Bronze through Platinum <em class="italic font-normal text-seam-600">across three tracks</em>
           </h2>
-          <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
             Pricing is based on project size and rating system. Registration locks in your fee schedule for 24 months. Recertification is required every 3 years.
           </p>
         </div>
@@ -359,16 +365,16 @@ const jsonLd = breadcrumbSchema([
           {certificationTracks.map((track) => (
             <div class="reveal-child">
               <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-2">{track.name}</h3>
-              <p class="text-[15px] text-warm-500 mb-6">{track.description}</p>
+              <p class="text-[15px] text-warm-600 mb-6">{track.description}</p>
 
               <div class="overflow-x-auto">
                 <table class="w-full min-w-[600px]">
                   <thead>
                     <tr class="border-b border-warm-200">
-                      <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-500">Project Size</th>
-                      <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-500">Registration</th>
-                      <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-500">Verification</th>
-                      <th class="text-left py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-500">Recertification</th>
+                      <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Project Size</th>
+                      <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Registration</th>
+                      <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Verification</th>
+                      <th class="text-left py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Recertification</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -376,7 +382,7 @@ const jsonLd = breadcrumbSchema([
                       <tr class="border-b border-warm-100">
                         <td class="py-5 pr-6">
                           <span class="block text-[16px] font-medium text-warm-900">{tier.size}</span>
-                          <span class="block text-[13px] text-warm-500 mt-0.5">{tier.sqft}</span>
+                          <span class="block text-[13px] text-warm-600 mt-0.5">{tier.sqft}</span>
                         </td>
                         <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">{tier.registration}</td>
                         <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">{tier.verification}</td>
@@ -392,7 +398,7 @@ const jsonLd = breadcrumbSchema([
 
         <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8">
           <p class="text-[15px] leading-relaxed text-seam-700">
-            <strong class="font-semibold">Community member discount:</strong> Organizations with an active Builder or Steward membership receive 10 – 20% off verification fees. Volume discounts available for portfolios of 5+ projects.{' '}
+            <strong class="font-semibold">Community member discount:</strong> Organizations with an active Ladder or Arc membership receive 10 – 20% off verification fees. Volume discounts available for portfolios of 5+ projects.{' '}
             <a href="/community/organization" class="underline hover:text-seam-900 transition-colors">Learn about organization membership &rarr;</a>
           </p>
         </div>
@@ -407,18 +413,18 @@ const jsonLd = breadcrumbSchema([
         </div>
       </div>
     </div>
-  )}
+  </div>
 
   <!-- SEAM Approved Tab -->
-  {activeTab === 'approved' && (
+  <div class={activeTab === 'approved' ? '' : 'hidden'}>
     <div class="py-20 lg:py-28">
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">SEAM Approved</p>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">SEAM Approved</p>
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Verify activities <em class="italic font-normal text-seam-600">at any scale</em>
           </h2>
-          <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
             SEAM Approved lets you verify individual practices against the Standard — standalone or as a stepping stone to full certification. Start small and scale up.
           </p>
         </div>
@@ -429,13 +435,13 @@ const jsonLd = breadcrumbSchema([
               <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
               <div class="mt-3 flex items-baseline gap-1">
                 <span class={`font-display text-[42px] tracking-[-0.04em] ${tier.highlighted ? 'text-gold-300' : 'text-warm-900'}`}>{tier.price}</span>
-                <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-500'}`}>{tier.period}</span>
+                <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-600'}`}>{tier.period}</span>
               </div>
-              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-500'}`}>{tier.description}</p>
+              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-600'}`}>{tier.description}</p>
 
               <ul class="mt-8 space-y-3 flex-1">
                 {tier.features.map((f) => (
-                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-500'}`}>
+                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-600'}`}>
                     <svg class={`shrink-0 w-4 h-4 mt-0.5 ${tier.highlighted ? 'text-gold-400' : 'text-seam-500'}`} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
@@ -453,24 +459,24 @@ const jsonLd = breadcrumbSchema([
 
         <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8">
           <p class="text-[15px] leading-relaxed text-seam-700">
-            <strong class="font-semibold">Community member discount:</strong> Practitioner-level individual members receive 15% off single activity fees. Organization members at Builder tier and above receive volume pricing automatically.{' '}
+            <strong class="font-semibold">Community member discount:</strong> Practitioner-level individual members receive 15% off single activity fees. Organization members at Ladder tier and above receive volume pricing automatically.{' '}
             <a href="/community" class="underline hover:text-seam-900 transition-colors">Join the Community &rarr;</a>
           </p>
         </div>
       </div>
     </div>
-  )}
+  </div>
 
   <!-- AP Credential Tab -->
-  {activeTab === 'credential' && (
+  <div class={activeTab === 'credential' ? '' : 'hidden'}>
     <div class="py-20 lg:py-28">
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">AP Credential</p>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">AP Credential</p>
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Invest in <em class="italic font-normal text-seam-600">your expertise</em>
           </h2>
-          <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
             The SEAM Accredited Professional credential signals mastery of the Standard and the ability to lead projects toward certification. Prepare, pass, and maintain.
           </p>
         </div>
@@ -481,13 +487,13 @@ const jsonLd = breadcrumbSchema([
               <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
               <div class="mt-3 flex items-baseline gap-1">
                 <span class={`font-display text-[42px] tracking-[-0.04em] ${tier.highlighted ? 'text-gold-300' : 'text-warm-900'}`}>{tier.price}</span>
-                {tier.period && <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-500'}`}>{tier.period}</span>}
+                {tier.period && <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-600'}`}>{tier.period}</span>}
               </div>
-              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-500'}`}>{tier.description}</p>
+              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-600'}`}>{tier.description}</p>
 
               <ul class="mt-8 space-y-3 flex-1">
                 {tier.features.map((f) => (
-                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-500'}`}>
+                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-600'}`}>
                     <svg class={`shrink-0 w-4 h-4 mt-0.5 ${tier.highlighted ? 'text-gold-400' : 'text-seam-500'}`} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
@@ -511,19 +517,19 @@ const jsonLd = breadcrumbSchema([
         </div>
       </div>
     </div>
-  )}
+  </div>
 
   <!-- Membership Tab -->
-  {activeTab === 'membership' && (
+  <div class={activeTab === 'membership' ? '' : 'hidden'}>
     <div class="py-20 lg:py-28">
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
         <!-- Individual membership -->
         <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Individual Membership</p>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Individual Membership</p>
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Your practice, <em class="italic font-normal text-seam-600">your pace</em>
           </h2>
-          <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
             Start free. Upgrade when you are ready. Downgrade or cancel anytime.
           </p>
         </div>
@@ -534,13 +540,13 @@ const jsonLd = breadcrumbSchema([
               <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
               <div class="mt-3 flex items-baseline gap-1">
                 <span class={`font-display text-[42px] tracking-[-0.04em] ${tier.highlighted ? 'text-gold-300' : 'text-warm-900'}`}>{tier.price}</span>
-                {tier.period && <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-500'}`}>{tier.period}</span>}
+                {tier.period && <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-600'}`}>{tier.period}</span>}
               </div>
-              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-500'}`}>{tier.description}</p>
+              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-600'}`}>{tier.description}</p>
 
               <ul class="mt-8 space-y-3 flex-1">
                 {tier.features.map((f) => (
-                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-500'}`}>
+                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-600'}`}>
                     <svg class={`shrink-0 w-4 h-4 mt-0.5 ${tier.highlighted ? 'text-gold-400' : 'text-seam-500'}`} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
@@ -550,7 +556,7 @@ const jsonLd = breadcrumbSchema([
               </ul>
 
               {tier.note && (
-                <p class={`mt-6 text-[13px] leading-relaxed italic ${tier.highlighted ? 'text-seam-300' : 'text-warm-500'}`}>{tier.note}</p>
+                <p class={`mt-6 text-[13px] leading-relaxed italic ${tier.highlighted ? 'text-seam-300' : 'text-warm-600'}`}>{tier.note}</p>
               )}
 
               <a href="/get-started" class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-seam-800 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
@@ -565,11 +571,11 @@ const jsonLd = breadcrumbSchema([
 
         <!-- Organization membership -->
         <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Organization Membership</p>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Organization Membership</p>
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
             Scale your commitment <em class="italic font-normal text-seam-600">with your portfolio</em>
           </h2>
-          <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
             Organization pricing includes annual billing with the option to add seats and properties mid-cycle.
           </p>
         </div>
@@ -580,13 +586,13 @@ const jsonLd = breadcrumbSchema([
               <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
               <div class="mt-3 flex items-baseline gap-1">
                 <span class={`font-display text-[42px] tracking-[-0.04em] ${tier.highlighted ? 'text-gold-300' : 'text-warm-900'}`}>{tier.price}</span>
-                {tier.period && <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-500'}`}>{tier.period}</span>}
+                {tier.period && <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-600'}`}>{tier.period}</span>}
               </div>
-              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-500'}`}>{tier.description}</p>
+              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-600'}`}>{tier.description}</p>
 
               <ul class="mt-8 space-y-3 flex-1">
                 {tier.features.map((f) => (
-                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-500'}`}>
+                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-600'}`}>
                     <svg class={`shrink-0 w-4 h-4 mt-0.5 ${tier.highlighted ? 'text-gold-400' : 'text-seam-500'}`} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
@@ -603,13 +609,13 @@ const jsonLd = breadcrumbSchema([
         </div>
       </div>
     </div>
-  )}
+  </div>
 
   <!-- FAQ (always visible) -->
   <section class="py-24 lg:py-32 bg-[#f7f6f4]">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">FAQ</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">FAQ</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Common questions <em class="italic font-normal text-seam-600">answered</em>
         </h2>
@@ -621,7 +627,7 @@ const jsonLd = breadcrumbSchema([
             <summary class="w-full flex items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden group">
               <span class="text-[16px] lg:text-[17px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.q}</span>
               <svg
-                class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45"
+                class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="2"
@@ -631,7 +637,7 @@ const jsonLd = breadcrumbSchema([
               </svg>
             </summary>
             <div class="pb-6">
-              <p class="text-[15px] leading-relaxed text-warm-500 pr-12">{faq.a}</p>
+              <p class="text-[15px] leading-relaxed text-warm-600 pr-12">{faq.a}</p>
             </div>
           </details>
         ))}

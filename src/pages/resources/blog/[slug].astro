@@ -85,6 +85,7 @@ const jsonLd = [
     publishedTime: post.date,
     section: post.category,
   }}
+  citationDate={post.date}
   jsonLd={jsonLd}
 >
   {/* Article Header */}
@@ -93,7 +94,7 @@ const jsonLd = [
       <div class="mx-auto max-w-3xl px-6 lg:px-10">
         <a
           href="/resources/blog"
-          class="inline-flex items-center gap-2 text-[14px] text-warm-500 hover:text-warm-700 transition-colors mb-10"
+          class="inline-flex items-center gap-2 text-[14px] text-warm-600 hover:text-warm-700 transition-colors mb-10"
         >
           <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -109,7 +110,7 @@ const jsonLd = [
           {post.title}
         </h1>
 
-        <div class="flex flex-wrap items-center gap-4 text-[15px] text-warm-500">
+        <div class="flex flex-wrap items-center gap-4 text-[15px] text-warm-600">
           <div>
             <span class="text-warm-900 font-medium">{post.author.name}</span>
             <span class="text-warm-300 mx-1">/</span>
@@ -123,6 +124,19 @@ const jsonLd = [
       </div>
     </header>
 
+    {/* Hero image */}
+    {post.image && (
+      <div class="mx-auto max-w-3xl px-6 lg:px-10 mb-10">
+        <div class="rounded-2xl overflow-hidden">
+          <img
+            src={post.image.src}
+            alt={post.image.alt}
+            class="w-full h-auto object-cover max-h-[480px]"
+          />
+        </div>
+      </div>
+    )}
+
     {/* Divider */}
     <div class="mx-auto max-w-3xl px-6 lg:px-10">
       <div class="border-t border-warm-100 mb-12"></div>
@@ -134,16 +148,12 @@ const jsonLd = [
         {blocks.map((block) => {
           if (block.type === 'h2') {
             return (
-              <h2 class="font-display text-[28px] lg:text-[32px] tracking-[-0.02em] text-warm-900 mt-14 mb-6">
-                {block.text}
-              </h2>
+              <h2 class="font-display text-[28px] lg:text-[32px] tracking-[-0.02em] text-warm-900 mt-14 mb-6" set:html={block.text} />
             )
           }
           if (block.type === 'bold-p') {
             return (
-              <p class="text-[17px] leading-relaxed text-warm-900 font-medium mt-8 mb-3">
-                {block.text}
-              </p>
+              <p class="text-[17px] leading-relaxed text-warm-900 font-medium mt-8 mb-3" set:html={block.text} />
             )
           }
           if (block.type === 'rich-p') {
@@ -151,9 +161,9 @@ const jsonLd = [
               <p class="text-[17px] leading-[1.8] text-warm-600 mb-6">
                 {block.parts.map((part) =>
                   part.bold ? (
-                    <strong class="font-medium text-warm-900">{part.text}</strong>
+                    <strong class="font-medium text-warm-900" set:html={part.text} />
                   ) : (
-                    <span>{part.text}</span>
+                    <span set:html={part.text} />
                   )
                 )}
               </p>
@@ -165,7 +175,7 @@ const jsonLd = [
                 {block.items.map((item) => (
                   <li class="text-[17px] leading-[1.8] text-warm-600 flex gap-3">
                     <span class="text-seam-500 mt-[2px] shrink-0">&bull;</span>
-                    <span>{item}</span>
+                    <span set:html={item} />
                   </li>
                 ))}
               </ul>
@@ -179,14 +189,14 @@ const jsonLd = [
                     <span class="text-seam-500 font-medium shrink-0 w-5 text-right">
                       {j + 1}.
                     </span>
-                    <span>{item}</span>
+                    <span set:html={item} />
                   </li>
                 ))}
               </ol>
             )
           }
           return (
-            <p class="text-[17px] leading-[1.8] text-warm-600 mb-6">{block.text}</p>
+            <p class="text-[17px] leading-[1.8] text-warm-600 mb-6" set:html={block.text} />
           )
         })}
       </div>
@@ -203,13 +213,13 @@ const jsonLd = [
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           {related.map((rp) => (
             <a href={`/resources/blog/${rp.slug}`} class="group block">
-              <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-500 mb-3 block">
+              <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-3 block">
                 {rp.category}
               </span>
               <h3 class="font-display text-[20px] leading-[1.25] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-gold-600 transition-colors duration-300">
                 {rp.title}
               </h3>
-              <p class="text-[14px] text-warm-500">
+              <p class="text-[14px] text-warm-600">
                 {rp.author.name} &middot; {rp.readTime}
               </p>
             </a>

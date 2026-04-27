@@ -1,0 +1,234 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { faqSchema, breadcrumbSchema } from '../lib/seo-helpers'
+
+const sections = [
+  {
+    id: 'general',
+    label: 'General',
+    faqs: [
+      { q: 'What is SEAM certification?', a: 'SEAM is the first certification system built to measure social equity in the built environment. It evaluates buildings across four interdependent pillars: Social Impact, Social Responsibility, Social Justice, and Social Accountability, with levels from Bronze through Platinum.', source: '/', sourceLabel: 'Home' },
+      { q: 'How is SEAM different from LEED or WELL?', a: 'SEAM is complementary to LEED, WELL, and Fitwel. While those systems focus on environmental performance and physical wellness, SEAM measures social equity — the relationship between a building and the people it touches. SEAM requires ongoing verification, community voice in evaluation, and interdependent scoring across all four pillars.', source: '/', sourceLabel: 'Home' },
+      { q: 'How does SEAM fit alongside LEED, WELL, and Fitwel?', a: 'SEAM addresses the social pillar that environmental and wellness certifications largely leave aside. Many projects pursue SEAM in parallel with LEED or WELL — the Standard is designed to integrate, not compete.', source: '/for/building-professionals', sourceLabel: 'Building Professionals' },
+      { q: 'What is the ROSSI Calculator?', a: 'ROSSI (Return on Social Sustainability Investment) translates social equity outcomes into financial language. It models project-level and portfolio-level impact, GRESB alignment, and insurance risk reduction to help capital providers evaluate social sustainability investments.', source: '/', sourceLabel: 'Home' },
+    ],
+  },
+  {
+    id: 'certification',
+    label: 'Certification',
+    faqs: [
+      { q: 'How long does certification take?', a: 'Timelines vary based on project type and stage. A typical certification takes 6–12 months from registration to award. SEAM Approved applications are generally faster.', source: '/get-started', sourceLabel: 'Get Started' },
+      { q: 'How long does a certification remain valid?', a: 'SEAM Certification is valid for 3 years. After that, projects must recertify to maintain their certification level. Recertification fees are approximately 60% of the original verification fee.', source: '/pricing', sourceLabel: 'Pricing' },
+      { q: 'Do I need a SEAM AP?', a: 'A SEAM Accredited Professional is required for certification projects. They guide teams through the Standard, manage documentation, and coordinate with third-party reviewers. We can match you with one.', source: '/get-started', sourceLabel: 'Get Started' },
+      { q: 'What happens after I submit a get-started form?', a: 'Our team reviews your submission and responds within two business days. We\u2019ll schedule an introductory call to discuss your goals, confirm the right path, and connect you with a SEAM AP if appropriate.', source: '/get-started', sourceLabel: 'Get Started' },
+      { q: 'Is there a cost to get started?', a: 'Submitting the get-started form is free and carries no commitment. Certification and SEAM Approved fees depend on project size and type \u2014 <a href="/pricing" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">view pricing</a> for details.', source: '/get-started', sourceLabel: 'Get Started' },
+      { q: 'What is included in the registration fee?', a: 'Registration gives you access to the online project portal, documentation templates, a preliminary review of your project scope, and locks in your fee schedule for 24 months. It is a separate fee from the verification review.', source: '/pricing', sourceLabel: 'Pricing' },
+      { q: 'What is the verification methodology?', a: 'SEAM certification uses independent third-party review including documentation assessment, site verification, and community engagement surveys. Reviewers are credentialed and follow standardized protocols. All certifications require recertification every three years.', source: '/for/capital-providers', sourceLabel: 'Capital Providers' },
+      { q: 'How is documentation managed during design and construction?', a: 'The Standard provides activity-level templates for every credit. Documentation is built into normal project workflows \u2014 not bolted on at the end. Members get full access to the template library.', source: '/for/building-professionals', sourceLabel: 'Building Professionals' },
+      { q: 'What if our building is already built and operating?', a: 'The Operations + Maintenance track is specifically designed for existing buildings. It evaluates ongoing practices \u2014 procurement, programming, staffing, community engagement \u2014 rather than design and construction decisions.', source: '/for/developers-owners', sourceLabel: 'Developers & Owners' },
+      { q: 'What if our building is older and not ADA-perfect?', a: 'The Standard evaluates progress, not perfection. The Accessibility + Inclusion pillar includes universal design improvements, digital access, multilingual wayfinding, and cultural responsiveness \u2014 not just physical code compliance.', source: '/for/operators', sourceLabel: 'Operators' },
+    ],
+  },
+  {
+    id: 'approved',
+    label: 'SEAM Approved',
+    faqs: [
+      { q: 'What is SEAM Approved?', a: 'SEAM Approved is a standalone activity-level verification program. Organizations can verify individual social equity practices without committing to full certification. It serves as both a standalone credential and a natural on-ramp to full SEAM certification.', source: '/', sourceLabel: 'Home' },
+      { q: 'How is SEAM Approved different from full certification?', a: 'Full certification evaluates your entire building across all four pillars. SEAM Approved verifies a single activity at a time. Both are third-party verified and publicly listed, but Approved is faster, more focused, and lower commitment.', source: '/approved', sourceLabel: 'SEAM Approved' },
+      { q: 'Does SEAM Approved count toward full certification?', a: 'Yes. Every verified activity earns credit toward its pillar. If you later pursue full certification, your SEAM Approved activities carry forward \u2014 reducing the scope and timeline of the certification process.', source: '/approved', sourceLabel: 'SEAM Approved' },
+      { q: 'Can I start with SEAM Approved and upgrade to full Certification later?', a: 'Yes. Every verified activity earns pathway credit toward full certification. Many organizations start by verifying 3 to 5 activities and then transition to a full certification track when they are ready.', source: '/pricing', sourceLabel: 'Pricing' },
+      { q: 'How long does verification take?', a: 'Most activity verifications are completed within four to six weeks from documentation submission. Timeline depends on the complexity of the activity and the completeness of your initial submission.', source: '/approved', sourceLabel: 'SEAM Approved' },
+      { q: 'Do we need a SEAM AP for activity verification?', a: 'No. A <a href="/ap-credential" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM AP</a> is not required for SEAM Approved submissions. However, working with an AP can strengthen your documentation and increase the likelihood of first-submission approval.', source: '/approved', sourceLabel: 'SEAM Approved' },
+      { q: 'How long does the Approved credential last?', a: 'SEAM Approved credentials are valid for three years. Renewal requires updated documentation demonstrating that the verified activity remains in practice.', source: '/approved', sourceLabel: 'SEAM Approved' },
+    ],
+  },
+  {
+    id: 'ap',
+    label: 'SEAM AP Credential',
+    faqs: [
+      { q: 'What are the prerequisites for the SEAM AP?', a: 'Candidates should hold a bachelor\u2019s degree in a related field (architecture, urban planning, sustainability, social work, public health, real estate, or similar) or have three or more years of professional experience in community development, DEI, ESG, or the built environment.', source: '/ap-credential', sourceLabel: 'AP Credential' },
+      { q: 'How long does the Foundations course take?', a: 'The self-paced Foundations: Social Equity in the Built Environment course typically takes 30 to 40 hours to complete. Most candidates finish within six to eight weeks while working full-time. All materials are available online.', source: '/ap-credential', sourceLabel: 'AP Credential' },
+      { q: 'What does the exam cover?', a: 'The exam tests applied knowledge across all four pillars of the SEAM Standard, the certification process, the ROSSI financial framework, and scenario-based project decision-making.', source: '/ap-credential', sourceLabel: 'AP Credential' },
+      { q: 'How much does the AP credential cost?', a: 'The Foundations course and exam fee are bundled at a single price. Community members receive a discount. Renewal every three years requires continuing education credits \u2014 no re-examination.', source: '/ap-credential', sourceLabel: 'AP Credential' },
+      { q: 'Is the AP credential required to work on SEAM projects?', a: 'No. Any professional can contribute to a SEAM certification project. However, having at least one SEAM AP on the project team is required for full certification submissions.', source: '/ap-credential', sourceLabel: 'AP Credential' },
+      { q: 'How do I maintain my credential?', a: 'Complete 30 continuing education units (CEUs) within each three-year renewal cycle. CEUs can be earned through project work, teaching, publishing, standard development contributions, and approved courses.', source: '/ap-credential', sourceLabel: 'AP Credential' },
+      { q: 'What does a SEAM AP actually do on a project?', a: 'APs lead the certification assessment \u2014 evaluating a building across all four pillars, identifying gaps, building an implementation plan, preparing documentation for third-party review, and guiding the project team through verification.', source: '/for/impact-professionals', sourceLabel: 'Impact Professionals' },
+      { q: 'How do I find project opportunities after earning the AP?', a: 'APs are listed in the SEAM directory, which project teams use to find qualified practitioners. Community membership provides additional networking, co-practice opportunities, and referral access.', source: '/for/impact-professionals', sourceLabel: 'Impact Professionals' },
+    ],
+  },
+  {
+    id: 'membership',
+    label: 'Membership',
+    faqs: [
+      { q: 'What is the difference between Individual and Organization membership?', a: 'Individual membership is for practitioners, consultants, and professionals. Organization membership provides team seats, portfolio tools, and institutional benefits for companies, nonprofits, and institutions working with the Standard.', source: '/community', sourceLabel: 'Community' },
+      { q: 'Can I try the community before committing?', a: 'Yes. The Open tier is free and gives you access to the Standard, the directory, and public webcasts. Upgrade to Changemaker or an organization tier when you are ready for full access.', source: '/community', sourceLabel: 'Community' },
+      { q: 'Can I upgrade or downgrade at any time?', a: 'Yes. Upgrade from Open to Changemaker or Special Access at any time \u2014 your billing starts immediately. Downgrade at the end of your annual billing cycle.', source: '/community/individual', sourceLabel: 'Individual Membership' },
+      { q: 'Do Changemaker benefits carry over if I let my membership lapse?', a: 'Course completions and CEU records are permanent. Template access, ROSSI, and network features require an active membership. Re-join anytime to restore access.', source: '/community/individual', sourceLabel: 'Individual Membership' },
+      { q: 'Can my employer reimburse individual membership?', a: 'Yes. We provide invoices and receipts suitable for professional development reimbursement. Many employers cover Changemaker membership as a continuing education benefit.', source: '/community/individual', sourceLabel: 'Individual Membership' },
+      { q: 'How does team seat allocation work?', a: 'Each organization tier includes a set number of seats. Every seat holder gets full individual-level access \u2014 templates, courses, ROSSI, and network. Seat assignments can be changed quarterly through your admin dashboard.', source: '/community/organization', sourceLabel: 'Organization Membership' },
+      { q: 'Can we add seats or properties mid-cycle?', a: 'Yes. Additional seats and properties can be added at any time. Pricing is prorated for the remainder of your annual billing cycle.', source: '/community/organization', sourceLabel: 'Organization Membership' },
+      { q: 'Can I earn CEUs through the community?', a: 'Yes. Courses, webcasts, and peer learning sessions carry CEU credit toward SEAM AP renewal. Your CEU progress is tracked automatically in your member dashboard.', source: '/community', sourceLabel: 'Community' },
+    ],
+  },
+  {
+    id: 'pricing',
+    label: 'Pricing & Payment',
+    faqs: [
+      { q: 'Do members get discounts on certification?', a: 'Yes. Changemaker and organization members receive discounted SEAM Approved verification fees and full certification pricing. Ladder and Arc organization tiers include volume pricing for portfolio rollouts.', source: '/community', sourceLabel: 'Community' },
+      { q: 'Is there volume pricing for portfolios with many buildings?', a: 'Yes. Organizations certifying 5 or more projects can access portfolio pricing through an Organization membership at the Ladder or Arc tier. Contact our team for a custom quote.', source: '/pricing', sourceLabel: 'Pricing' },
+      { q: 'Can my AP exam fee be covered by my organization?', a: 'Yes. Many organizations cover exam and membership fees for their team. Organization members at Ladder and Arc tiers include full course library access for all seats, and exam fees can be invoiced to the organization.', source: '/pricing', sourceLabel: 'Pricing' },
+      { q: 'What payment methods do you accept?', a: 'We accept credit cards, ACH transfers, and wire transfers. Organization memberships and certification fees above $5,000 can be invoiced with Net 30 terms.', source: '/pricing', sourceLabel: 'Pricing' },
+      { q: 'Is there a refund policy?', a: 'Registration fees are non-refundable once your project is entered into review. Membership fees can be refunded within 30 days of purchase. Exam fees can be transferred to a later date but are non-refundable.', source: '/pricing', sourceLabel: 'Pricing' },
+    ],
+  },
+  {
+    id: 'rossi',
+    label: 'ROSSI Calculator',
+    faqs: [
+      { q: 'Is ROSSI free to use?', a: 'Basic ROSSI access is included with Community Practitioner membership and all organization tiers. The full portfolio modeling tool is available with Ladder and Arc organization membership.', source: '/resources/rossi', sourceLabel: 'ROSSI Calculator' },
+      { q: 'How long does it take to complete?', a: 'The core calculator takes less than 20 questions. Project-level modeling can be completed in a single session. Portfolio-level analysis may take longer depending on the number of properties.', source: '/resources/rossi', sourceLabel: 'ROSSI Calculator' },
+      { q: 'What data do I need to get started with ROSSI?', a: 'Basic property information: building size, occupancy type, tenant count, and current social equity programs. The calculator guides you through each input \u2014 no financial modeling expertise required.', source: '/resources/rossi', sourceLabel: 'ROSSI Calculator' },
+      { q: 'How does ROSSI relate to GRESB?', a: 'ROSSI outputs are aligned with GRESB social indicators. The portfolio model generates GRESB-ready data that feeds directly into your annual submission without manual translation.', source: '/resources/rossi', sourceLabel: 'ROSSI Calculator' },
+      { q: 'Can I use ROSSI results in investor presentations?', a: 'Yes. ROSSI generates presentation-ready outputs including projected ROI, retention impact, risk reduction estimates, and GRESB alignment scoring. Many users include ROSSI models in investor decks, board presentations, and acquisition proposals.', source: '/resources/rossi', sourceLabel: 'ROSSI Calculator' },
+      { q: 'Is the ROSSI methodology peer-reviewed?', a: 'ROSSI is built on peer-reviewed research from 2019 to 2024 and extends the NYU Stern ROSI methodology. The SEAM advisory council reviews and updates the underlying research base annually.', source: '/resources/rossi', sourceLabel: 'ROSSI Calculator' },
+    ],
+  },
+  {
+    id: 'audiences',
+    label: 'By Role',
+    faqs: [
+      { q: 'How does SEAM certification affect property value?', a: 'Certified buildings report reduced vacancy, higher tenant satisfaction, and stronger renewal rates. The ROSSI Calculator models project-level financial impact including insurance risk reduction, GRESB alignment, and tenant retention value.', source: '/for/developers-owners', sourceLabel: 'Developers & Owners' },
+      { q: 'Do we need ownership approval to pursue SEAM?', a: 'SEAM Approved can often be pursued at the property management level for existing programs. Full certification typically requires ownership involvement, but starting with Approved gives you verified results to bring to that conversation.', source: '/for/operators', sourceLabel: 'Operators' },
+      { q: 'How much time does certification add to our workload?', a: 'SEAM Approved verifies practices you\u2019re already running. The documentation effort is modest \u2014 most teams complete a submission in a few hours. Full certification is more involved but spreads across 12 to 18 months.', source: '/for/operators', sourceLabel: 'Operators' },
+      { q: 'Can we verify practices across multiple properties?', a: 'Yes. Community membership includes portfolio tools for rolling out SEAM Approved across multiple properties. Volume pricing is available for organizations verifying the same activity across a portfolio.', source: '/for/operators', sourceLabel: 'Operators' },
+      { q: 'How does SEAM align with GRESB?', a: 'SEAM certification data maps directly to GRESB social indicators. Certified projects generate standardized performance data that feeds into GRESB submissions. The ROSSI Calculator produces GRESB-aligned scoring at both project and portfolio levels.', source: '/for/capital-providers', sourceLabel: 'Capital Providers' },
+      { q: 'Can SEAM data be used for SFDR reporting?', a: 'SEAM\u2019s four pillars align with SFDR principal adverse impact indicators related to social and governance factors. The Standard\u2019s community engagement, employment, and accessibility metrics provide evidence for Article 8 and Article 9 fund disclosures.', source: '/for/capital-providers', sourceLabel: 'Capital Providers' },
+      { q: 'What does SEAM certification mean for me as a tenant?', a: 'It means your building has been independently verified against standards for air quality, accessibility, community investment, and fair labor practices. Certification is earned through measurable performance, not self-reporting.', source: '/for/people', sourceLabel: 'People & Communities' },
+      { q: 'How can I find SEAM-certified buildings near me?', a: 'The <a href="/directory" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM Directory</a> lets you browse certified projects by location, certification level, and rating system track. You can see exactly what each building has been verified for.', source: '/for/people', sourceLabel: 'People & Communities' },
+    ],
+  },
+]
+
+const allFaqs = sections.flatMap((s) => s.faqs.map((f) => ({ question: f.q, answer: f.a })))
+
+const jsonLd = [
+  faqSchema(allFaqs),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'FAQ', path: '/faq' },
+  ]),
+] as unknown as Record<string, unknown>
+---
+
+<SiteLayout
+  title="Frequently Asked Questions — SEAM Certification"
+  description="Answers to common questions about SEAM Certification, SEAM Approved, the AP credential, membership, pricing, and the ROSSI Calculator."
+  path="/faq"
+  jsonLd={jsonLd}
+>
+
+  <!-- ─── Hero ─── -->
+  <section class="relative min-h-[50vh] flex items-end bg-warm-900 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-warm-900 via-warm-900/95 to-warm-900"></div>
+    <div class="reveal-fade-up relative mx-auto max-w-[1400px] px-6 lg:px-10 pb-16 lg:pb-20 pt-40">
+      <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
+        FAQ
+      </p>
+      <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white mb-6 max-w-3xl">
+        Frequently asked questions
+      </h1>
+      <p class="text-[17px] lg:text-[19px] leading-relaxed text-warm-400 max-w-2xl">
+        Everything you need to know about SEAM — certification, credentials, membership, and more.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Topic Nav ─── -->
+  <section class="sticky top-[88px] z-30 bg-white/95 backdrop-blur-md border-b border-warm-100">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="flex gap-2 overflow-x-auto py-4 scrollbar-hide">
+        {sections.map((section) => (
+          <a
+            href={`#${section.id}`}
+            class="shrink-0 rounded-full px-5 py-2.5 text-[14px] font-medium bg-warm-50 text-warm-600 hover:bg-warm-100 hover:text-warm-700 transition-all duration-200"
+          >
+            {section.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ Sections ─── -->
+  {sections.map((section) => (
+    <section id={section.id} class="py-16 lg:py-20 border-b border-warm-100 last:border-b-0">
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-16">
+          <div class="lg:sticky lg:top-48 lg:self-start">
+            <h2 class="font-display text-[28px] lg:text-[32px] tracking-[-0.02em] text-warm-900">
+              {section.label}
+            </h2>
+          </div>
+
+          <div>
+            {section.faqs.map((faq) => (
+              <details class="border-b border-warm-200 group last:border-b-0">
+                <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">
+                    {faq.q}
+                  </span>
+                  <svg
+                    class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                </summary>
+                <div class="pb-6">
+                  <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl" set:html={faq.a} />
+                  <a
+                    href={faq.source}
+                    class="inline-block mt-3 text-[13px] font-medium text-warm-400 hover:text-warm-600 transition-colors"
+                  >
+                    From: {faq.sourceLabel} &rarr;
+                  </a>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ─── CTA ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        Still have questions?{' '}
+        <em class="italic font-normal text-seam-600">Let's talk.</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        Reach out to our team or start with a free get-started form — no commitment required.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a
+          href="/get-started"
+          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+        >
+          Get started
+        </a>
+        <a
+          href="/community"
+          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+        >
+          Join the community
+        </a>
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>

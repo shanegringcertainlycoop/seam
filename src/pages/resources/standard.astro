@@ -47,18 +47,74 @@ const pillars = [
 ]
 
 const layers = [
-  { title: 'Pillars', count: '4', description: 'The four organizing themes of social equity in the built environment. Every concept, objective, and activity connects back to a pillar so you always understand the why behind your efforts.' },
-  { title: 'Concepts', count: '8', description: 'Within the pillars, eight focus areas address specific themes from impact assessments and human rights practices to equity in procurement and more.' },
-  { title: 'Objectives', count: '21', description: 'Measurable objectives define goals within each concept, giving a clear path to progress with rationale and connection to internationally recognized standards.' },
-  { title: 'Activities', count: '50+', description: 'The individual actions that drive equitable change. Each activity has defined requirements, clear scoring rubrics, documentation standards, and implementation instructions so nothing is left to guessing.' },
+  { id: 'pillars', title: 'Pillars', count: '4', description: 'The four organizing themes of social equity in the built environment. Every concept, objective, and activity connects back to a pillar so you always understand the why behind your efforts.' },
+  { id: 'concepts', title: 'Concepts', count: '8', description: 'Within the pillars, eight focus areas address specific themes from impact assessments and human rights practices to equity in procurement and more.' },
+  { id: 'objectives', title: 'Objectives', count: '21', description: 'Measurable objectives define goals within each concept, giving a clear path to progress with rationale and connection to internationally recognized standards.' },
+  { id: 'activities', title: 'Activities', count: '50+', description: 'The individual actions that drive equitable change. Each activity has defined requirements, clear scoring rubrics, documentation standards, and implementation instructions so nothing is left to guessing.' },
 ]
 
-const ringData = [
-  { label: 'Pillars', count: '4', bg: 'bg-seam-900', text: 'text-white', countColor: 'text-seam-300', size: 'w-[480px] h-[480px]', pt: 'pt-5' },
-  { label: 'Concepts', count: '8', bg: 'bg-seam-700', text: 'text-white', countColor: 'text-seam-300', size: 'w-[360px] h-[360px]', pt: 'pt-5' },
-  { label: 'Objectives', count: '21', bg: 'bg-seam-500', text: 'text-white', countColor: 'text-seam-200', size: 'w-[260px] h-[260px]', pt: 'pt-4' },
-  { label: 'Activities', count: '50+', bg: 'bg-gold-400', text: 'text-warm-900', countColor: 'text-warm-800', size: 'w-[120px] h-[120px]', pt: 'pt-2' },
+// ─── Orbital framework geometry ───
+const VB_W = 800
+const VB_H = 720
+const CX = VB_W / 2
+const CY = VB_H / 2
+const R_PILLARS = 95
+const R_CONCEPTS = 160
+const R_OBJECTIVES = 225
+
+const polar = (r, deg) => {
+  const a = ((deg - 90) * Math.PI) / 180
+  return { x: +(CX + r * Math.cos(a)).toFixed(2), y: +(CY + r * Math.sin(a)).toFixed(2) }
+}
+
+const pillarsGeo = [
+  { id: 'p0', angle: 0, label: 'SOCIAL IMPACT' },
+  { id: 'p1', angle: 90, label: 'SOCIAL RESPONSIBILITY' },
+  { id: 'p2', angle: 180, label: 'SOCIAL JUSTICE' },
+  { id: 'p3', angle: 270, label: 'SOCIAL ACCOUNTABILITY' },
 ]
+
+const conceptsGeo = [
+  { id: 'c0', pillar: 'p0', angle: -22 },
+  { id: 'c1', pillar: 'p0', angle: 0 },
+  { id: 'c2', pillar: 'p0', angle: 22 },
+  { id: 'c3', pillar: 'p1', angle: 90 },
+  { id: 'c4', pillar: 'p2', angle: 170 },
+  { id: 'c5', pillar: 'p2', angle: 190 },
+  { id: 'c6', pillar: 'p3', angle: 260 },
+  { id: 'c7', pillar: 'p3', angle: 280 },
+]
+
+// Distribute 21 objectives across 8 concepts: 3,3,3,3,3,2,2,2
+const objectivesGeo = []
+const objsPerConcept = [3, 3, 3, 3, 3, 2, 2, 2]
+conceptsGeo.forEach((c, i) => {
+  const count = objsPerConcept[i]
+  const offsets = count === 3 ? [-7, 0, 7] : [-4, 4]
+  offsets.forEach((off) => {
+    objectivesGeo.push({ id: `o${objectivesGeo.length}`, concept: c.id, angle: c.angle + off })
+  })
+})
+
+// Distribute 52 activities across 21 objectives: first 10 get 3, remaining 11 get 2 (10*3+11*2=52)
+const activitiesGeo = []
+objectivesGeo.forEach((o, i) => {
+  const count = i < 10 ? 3 : 2
+  const aOffsets = count === 3 ? [-3, 0, 3] : [-2, 2]
+  const aRadii = count === 3 ? [263, 275, 287] : [268, 283]
+  aOffsets.forEach((off, ai) => {
+    activitiesGeo.push({ id: `a${activitiesGeo.length}`, objective: o.id, angle: o.angle + off, r: aRadii[ai] })
+  })
+})
+
+const pillarPos = pillarsGeo.map((p) => ({ ...p, ...polar(R_PILLARS, p.angle) }))
+const conceptPos = conceptsGeo.map((c) => ({ ...c, ...polar(R_CONCEPTS, c.angle) }))
+const objectivePos = objectivesGeo.map((o) => ({ ...o, ...polar(R_OBJECTIVES, o.angle) }))
+const activityPos = activitiesGeo.map((a) => ({ ...a, ...polar(a.r, a.angle) }))
+
+const pById = (id) => pillarPos.find((p) => p.id === id)
+const cById = (id) => conceptPos.find((c) => c.id === id)
+const oById = (id) => objectivePos.find((o) => o.id === id)
 
 const levels = [
   { name: 'Bronze', tagline: 'Acting to avoid harm', description: 'The project is making measurable progress toward international social targets. Foundational activities are in place. Harm is being identified and addressed.', imp: 'Act to Avoid Harm', logo: '/logos/cert-bronze.png' },
@@ -69,8 +125,8 @@ const levels = [
 
 const levelIntensities = ['bg-seam-700/10', 'bg-seam-700/20', 'bg-seam-800/70', 'bg-seam-900/85']
 const levelTextColors = ['text-seam-800', 'text-seam-800', 'text-white', 'text-white']
-const levelSubColors = ['text-gold-500', 'text-gold-500', 'text-seam-200', 'text-seam-200']
-const levelBodyColors = ['text-warm-500', 'text-warm-500', 'text-seam-100/80', 'text-seam-100/80']
+const levelSubColors = ['text-gold-600', 'text-gold-600', 'text-seam-200', 'text-seam-200']
+const levelBodyColors = ['text-warm-600', 'text-warm-600', 'text-seam-100/80', 'text-seam-100/80']
 const levelBorderColors = ['border-seam-600/20', 'border-seam-600/20', 'border-seam-400/20', 'border-seam-400/20']
 
 const ratings = [
@@ -166,7 +222,7 @@ const audiences = [
         <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-warm-900">
           &ldquo;When we account for human impact — from initial design and material sourcing to ongoing operations — everything performs better: the building, the business, the community, the factory worker 1,000 miles away.&rdquo;
         </blockquote>
-        <p class="mt-10 text-[17px] leading-relaxed text-warm-500 max-w-2xl mx-auto">
+        <p class="mt-10 text-[17px] leading-relaxed text-warm-600 max-w-2xl mx-auto">
           Equity addresses human impact: in a building, in a community, in the supply chain. It isn't a nice-to-have or an afterthought. It's the foundation — designed into the structure, sourced into the materials, and built into the partnerships throughout the community. The SEAM Standard gives organizations the guidance to do that work with rigor, integrity, and proof.
         </p>
       </div>
@@ -177,11 +233,11 @@ const audiences = [
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Why SEAM</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Why SEAM</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Built different.{' '}<em class="italic font-normal text-seam-600">Designed to matter.</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
           SEAM measures the human impact of a building and provides guidance on how to verifiably improve that impact for everyone.
         </p>
       </div>
@@ -197,12 +253,12 @@ const audiences = [
                 <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900">{d.title}</h3>
               </div>
               <div class="lg:col-span-4 p-6 lg:p-8 lg:border-l border-warm-100">
-                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-500 mb-2 block">SEAM</span>
+                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-2 block">SEAM</span>
                 <p class="text-[15px] leading-relaxed text-warm-600">{d.seam}</p>
               </div>
               <div class="lg:col-span-4 p-6 lg:p-8 lg:border-l border-warm-100 bg-warm-50/50">
-                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-warm-500 mb-2 block">Others</span>
-                <p class="text-[15px] leading-relaxed text-warm-500">{d.others}</p>
+                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-warm-600 mb-2 block">Others</span>
+                <p class="text-[15px] leading-relaxed text-warm-600">{d.others}</p>
               </div>
             </div>
           </div>
@@ -215,29 +271,29 @@ const audiences = [
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-12">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">The framework</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The framework</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Four pillars. Eight concepts.{' '}<em class="italic font-normal text-seam-600">One standard.</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
           The SEAM Standard organizes social equity into a structured framework grounded in internationally recognized principles and aligned to the UN Sustainable Development Goals. Each pillar addresses a distinct dimension of social sustainability in the built environment.
         </p>
       </div>
 
       <div class="reveal-fade-up flex flex-wrap gap-4 sm:gap-8 mb-10 lg:mb-16">
         <div class="flex items-baseline gap-2">
-          <span class="font-display text-[32px] tracking-[-0.04em] text-gold-500" data-count-target="4" data-count-suffix="">4</span>
-          <span class="text-[14px] text-warm-500">Pillars</span>
+          <span class="font-display text-[32px] tracking-[-0.04em] text-gold-600" data-count-target="4" data-count-suffix="">4</span>
+          <span class="text-[14px] text-warm-600">Pillars</span>
         </div>
         <span class="text-warm-200">&middot;</span>
         <div class="flex items-baseline gap-2">
-          <span class="font-display text-[32px] tracking-[-0.04em] text-gold-500" data-count-target="8" data-count-suffix="">8</span>
-          <span class="text-[14px] text-warm-500">Concepts</span>
+          <span class="font-display text-[32px] tracking-[-0.04em] text-gold-600" data-count-target="8" data-count-suffix="">8</span>
+          <span class="text-[14px] text-warm-600">Concepts</span>
         </div>
         <span class="text-warm-200">&middot;</span>
         <div class="flex items-baseline gap-2">
-          <span class="font-display text-[32px] tracking-[-0.04em] text-gold-500" data-count-target="21" data-count-suffix="">21</span>
-          <span class="text-[14px] text-warm-500">Objectives</span>
+          <span class="font-display text-[32px] tracking-[-0.04em] text-gold-600" data-count-target="21" data-count-suffix="">21</span>
+          <span class="text-[14px] text-warm-600">Objectives</span>
         </div>
       </div>
 
@@ -247,10 +303,10 @@ const audiences = [
             <img src={p.icon} alt="" class="absolute -top-4 -right-4 w-48 h-48 object-contain opacity-90 pointer-events-none" />
             <span class="relative text-[14px] font-medium text-seam-500 mb-4 block">Pillar {p.number}</span>
             <h3 class="relative font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4 group-hover:text-gold-600 transition-colors">{p.title}</h3>
-            <p class="text-[16px] leading-relaxed text-warm-500 mb-6">{p.description}</p>
+            <p class="text-[16px] leading-relaxed text-warm-600 mb-6">{p.description}</p>
             <ul class="space-y-2 border-t border-warm-100 pt-5">
               {p.concepts.map((c) => (
-                <li class="flex items-start gap-2.5 text-[14px] leading-snug text-warm-500">
+                <li class="flex items-start gap-2.5 text-[14px] leading-snug text-warm-600">
                   <svg class="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
@@ -258,7 +314,7 @@ const audiences = [
                 </li>
               ))}
             </ul>
-            <span class="inline-block mt-6 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">Explore pillar &rarr;</span>
+            <span class="inline-block mt-6 text-[14px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">Explore pillar &rarr;</span>
           </a>
         ))}
       </div>
@@ -269,49 +325,121 @@ const audiences = [
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">How it works</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">How it works</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Structured to leave a{' '}<em class="italic font-normal text-seam-600">lasting impact</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
           The SEAM Standard is a layered framework that builds from foundation to impact, with each level informing and enabling the next.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <!-- Nesting graphic -->
-        <div class="reveal-scale hidden lg:block">
-          <div class="relative w-[480px] h-[480px] mx-auto">
-            {ringData.map((ring, i) => (
-              <div
-                class={`absolute rounded-3xl ${ring.bg} ${ring.size} flex flex-col items-center justify-start transition-all duration-500`}
-                style={`top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: ${i};`}
-              >
-                <div class={`text-center ${ring.pt}`}>
-                  <span class={`block text-[12px] font-medium uppercase tracking-[0.15em] ${ring.countColor}`}>
-                    {ring.label}
-                  </span>
-                  <span class={`block font-display text-[22px] tracking-[-0.02em] leading-tight ${ring.text}`}>
-                    {ring.count}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div class="orbital-module grid grid-cols-1 lg:grid-cols-[minmax(0,55%)_minmax(0,45%)] gap-10 lg:gap-12 items-center" data-orbital-module>
+        <!-- Orbital diagram -->
+        <div class="reveal-scale order-2 lg:order-1">
+          <svg
+            viewBox={`0 0 ${VB_W} ${VB_H}`}
+            class="w-full h-auto max-w-[620px] mx-auto"
+            role="img"
+            aria-label="SEAM framework: four pillars, eight concepts, twenty-one objectives, and fifty-plus activities arranged as a radial diagram"
+          >
+            <!-- Tier zone rings (crisp colored bands behind everything) -->
+            <g class="orb-zones" aria-hidden="true">
+              <circle class="orb-zone" data-zone="pillars" cx={CX} cy={CY} r="88" fill="none" stroke="#3a5c67" stroke-width="79" />
+              <circle class="orb-zone" data-zone="concepts" cx={CX} cy={CY} r="160" fill="none" stroke="#4e7685" stroke-width="66" />
+              <circle class="orb-zone" data-zone="objectives" cx={CX} cy={CY} r="222" fill="none" stroke="#a3c8d3" stroke-width="59" />
+              <circle class="orb-zone" data-zone="activities" cx={CX} cy={CY} r="276" fill="none" stroke="#D78825" stroke-width="48" />
+            </g>
+
+            <!-- Guide rings -->
+            <g aria-hidden="true">
+              <circle cx={CX} cy={CY} r={R_PILLARS} fill="none" stroke="#d9d6cf" stroke-width="1" stroke-dasharray="2 4" />
+              <circle cx={CX} cy={CY} r={R_CONCEPTS} fill="none" stroke="#d9d6cf" stroke-width="1" stroke-dasharray="2 4" />
+              <circle cx={CX} cy={CY} r={R_OBJECTIVES} fill="none" stroke="#d9d6cf" stroke-width="1" stroke-dasharray="2 4" />
+            </g>
+
+            <!-- Activity connection lines (amber) -->
+            <g class="orb-lines" data-tier="activities" stroke="#bf7520" stroke-width="0.6" opacity="0.32">
+              {activityPos.map((a) => {
+                const o = oById(a.objective)
+                return <line x1={o.x} y1={o.y} x2={a.x} y2={a.y} />
+              })}
+            </g>
+
+            <!-- Objective connection lines (teal) -->
+            <g class="orb-lines" data-tier="objectives" stroke="#3a5c67" stroke-width="0.8" opacity="0.35">
+              {objectivePos.map((o) => {
+                const c = cById(o.concept)
+                return <line x1={c.x} y1={c.y} x2={o.x} y2={o.y} />
+              })}
+            </g>
+
+            <!-- Concept connection lines (teal) -->
+            <g class="orb-lines" data-tier="concepts" stroke="#3a5c67" stroke-width="1" opacity="0.4">
+              {conceptPos.map((c) => {
+                const p = pById(c.pillar)
+                return <line x1={p.x} y1={p.y} x2={c.x} y2={c.y} />
+              })}
+            </g>
+
+            <!-- Pillar connection lines (from center) -->
+            <g class="orb-lines" data-tier="pillars" stroke="#3a5c67" stroke-width="1.2" opacity="0.45">
+              {pillarPos.map((p) => <line x1={CX} y1={CY} x2={p.x} y2={p.y} />)}
+            </g>
+
+            <!-- Activity nodes -->
+            <g class="orb-nodes" data-tier="activities" fill="#bf7520">
+              {activityPos.map((a) => <circle cx={a.x} cy={a.y} r="3" />)}
+            </g>
+
+            <!-- Objective nodes -->
+            <g class="orb-nodes" data-tier="objectives" fill="#3a5c67">
+              {objectivePos.map((o) => <circle cx={o.x} cy={o.y} r="3.5" />)}
+            </g>
+
+            <!-- Concept nodes -->
+            <g class="orb-nodes" data-tier="concepts" fill="#3a5c67">
+              {conceptPos.map((c) => <circle cx={c.x} cy={c.y} r="6" />)}
+            </g>
+
+            <!-- Pillar nodes -->
+            <g class="orb-nodes" data-tier="pillars" fill="#3a5c67">
+              {pillarPos.map((p) => <circle cx={p.x} cy={p.y} r="13" />)}
+            </g>
+
+            <!-- Center disk with SEAM wordmark -->
+            <g aria-hidden="true">
+              <circle cx={CX} cy={CY} r="48" fill="#00313C" />
+              <text x={CX} y={CY + 7} text-anchor="middle" font-family="ui-serif, Georgia, 'Times New Roman', serif" font-style="italic" font-size="22" fill="#a3c8d3" letter-spacing="0.06em">SEAM</text>
+            </g>
+
+            <!-- Pillar labels -->
+            <g fill="#6b6b68" font-size="11" font-weight="600" letter-spacing="0.15em" style="text-transform: uppercase;">
+              <text x={CX} y="24" text-anchor="middle">SOCIAL IMPACT</text>
+              <text x={VB_W - 10} y={CY + 4} text-anchor="end">SOCIAL RESPONSIBILITY</text>
+              <text x={CX} y={VB_H - 10} text-anchor="middle">SOCIAL JUSTICE</text>
+              <text x="10" y={CY + 4} text-anchor="start">SOCIAL ACCOUNTABILITY</text>
+            </g>
+          </svg>
         </div>
 
-        <!-- Text descriptions -->
-        <div class="reveal-stagger">
-          {layers.map((layer, i) => (
-            <div class={`reveal-child flex gap-6 py-8 ${i < layers.length - 1 ? 'border-b border-warm-200' : ''}`}>
-              <div class="shrink-0">
-                <span class="block font-display text-[28px] tracking-[-0.04em] text-gold-500">
+        <!-- Linked text tiers -->
+        <div class="reveal-stagger order-1 lg:order-2">
+          {layers.map((layer) => (
+            <div
+              class="reveal-child tier-entry group flex gap-6 py-6 lg:py-7 px-4 -mx-4 rounded-xl border-b border-warm-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-seam-500"
+              data-tier-entry
+              data-tier={layer.id}
+              tabindex="0"
+            >
+              <div class="shrink-0 w-[60px]">
+                <span class="block font-display text-[28px] lg:text-[32px] tracking-[-0.04em] text-gold-600">
                   {layer.count}
                 </span>
               </div>
               <div>
-                <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-2">{layer.title}</h3>
-                <p class="text-[16px] leading-relaxed text-warm-500">{layer.description}</p>
+                <h3 class="font-display text-[20px] lg:text-[24px] tracking-[-0.02em] text-warm-900 mb-2">{layer.title}</h3>
+                <p class="text-[15px] lg:text-[16px] leading-relaxed text-warm-600">{layer.description}</p>
               </div>
             </div>
           ))}
@@ -324,11 +452,11 @@ const audiences = [
   <section id="levels" class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Certification levels</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Certification levels</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Recognition that reflects{' '}<em class="italic font-normal text-seam-600">real progress</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
           Four levels of SEAM Certification align to the Impact Management Project&apos;s ABCs: avoiding harm, benefiting people, and contributing to solutions.
         </p>
       </div>
@@ -353,11 +481,11 @@ const audiences = [
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Rating systems</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Rating systems</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Tailored to{' '}<em class="italic font-normal text-seam-600">how you build</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
           Not every activity will apply to every project. SEAM's rating systems ensure that certification reflects your project type and role.
         </p>
       </div>
@@ -367,8 +495,8 @@ const audiences = [
           <a href={r.href} class="reveal-child group rounded-2xl bg-white p-8 lg:p-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
             <span class="inline-block rounded-lg bg-seam-50 px-3 py-1.5 text-[13px] font-mono font-medium text-gold-600 mb-4">{r.code}</span>
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-600 transition-colors">{r.title}</h3>
-            <p class="text-[15px] leading-relaxed text-warm-500">{r.description}</p>
-            <span class="inline-block mt-4 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">Explore rating system &rarr;</span>
+            <p class="text-[15px] leading-relaxed text-warm-600">{r.description}</p>
+            <span class="inline-block mt-4 text-[14px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">Explore rating system &rarr;</span>
           </a>
         ))}
       </div>
@@ -379,11 +507,11 @@ const audiences = [
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Framework design</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Framework design</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Social equity embedded{' '}<em class="italic font-normal text-seam-600">by design</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
           The SEAM Standard does not bolt equity onto a compliance framework. We engineer it into the scoring logic itself in six distinct ways.
         </p>
       </div>
@@ -393,7 +521,7 @@ const audiences = [
           <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10">
             <span class="text-[14px] font-medium text-seam-500 mb-3 block">{p.number}</span>
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{p.title}</h3>
-            <p class="text-[15px] leading-relaxed text-warm-500">{p.description}</p>
+            <p class="text-[15px] leading-relaxed text-warm-600">{p.description}</p>
           </div>
         ))}
       </div>
@@ -404,7 +532,7 @@ const audiences = [
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Who it serves</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Who it serves</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Built for everyone{' '}<em class="italic font-normal text-seam-600">the building touches</em>
         </h2>
@@ -414,33 +542,334 @@ const audiences = [
         {audiences.map((a) => (
           <a href={a.href} class="reveal-child group rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
             <h3 class="font-display text-[22px] lg:text-[24px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors">{a.title}</h3>
-            <p class="text-[14px] text-warm-500 mt-1 mb-6">{a.subtitle}</p>
+            <p class="text-[14px] text-warm-600 mt-1 mb-6">{a.subtitle}</p>
             <blockquote class="text-[15px] italic leading-relaxed text-gold-600 border-l-2 border-seam-500 pl-4 mb-6">
               &ldquo;{a.quote}&rdquo;
             </blockquote>
-            <p class="text-[15px] leading-relaxed text-warm-500">{a.description}</p>
-            <span class="inline-block mt-4 text-[14px] font-medium text-gold-500 group-hover:text-gold-600 transition-colors">Learn more &rarr;</span>
+            <p class="text-[15px] leading-relaxed text-warm-600">{a.description}</p>
+            <span class="inline-block mt-4 text-[14px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">Learn more &rarr;</span>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-24 lg:py-32 bg-warm-900">
-    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
-      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
-        Ready to build for{' '}<em class="italic font-normal text-seam-300">belonging?</em>
-      </h2>
-      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
-        Start where you are. The SEAM Standard is designed to meet organizations at their stage of readiness — whether that is exploring what equity means for your portfolio or pursuing full certification today.
-      </p>
-      <div class="mt-12 flex flex-wrap justify-center gap-4">
-        <a href="/certification" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Start certification</a>
-        <a href="/get-started" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Access the Standard</a>
-        <a href="/ap-credential" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Find a SEAM AP</a>
+  <!-- ─── Download the Standard Form ─── -->
+  <section id="download" class="py-24 lg:py-32 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div class="reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
+            Download
+          </p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
+            Access the
+            <em class="italic font-normal text-seam-300">SEAM Standard</em>
+          </h2>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-lg">
+            The SEAM Standard is available for free for non-commercial use. Tell us a bit about yourself and we'll send the download to your inbox.
+          </p>
+          <ul class="mt-8 space-y-4">
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Free for non-commercial use
+            </li>
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Delivered straight to your inbox
+            </li>
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              4 pillars, 8 concepts, 21 objectives, 50+ activities
+            </li>
+          </ul>
+        </div>
+
+        <div class="reveal-fade-up">
+          <form id="standard-form" class="rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] p-8 lg:p-10 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="std-firstname" class="block text-[13px] font-medium text-warm-300 mb-2">First Name *</label>
+                <input type="text" id="std-firstname" name="firstname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="std-lastname" class="block text-[13px] font-medium text-warm-300 mb-2">Last Name *</label>
+                <input type="text" id="std-lastname" name="lastname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="std-email" class="block text-[13px] font-medium text-warm-300 mb-2">Email *</label>
+              <input type="email" id="std-email" name="email" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="std-company" class="block text-[13px] font-medium text-warm-300 mb-2">Company Name *</label>
+                <input type="text" id="std-company" name="company" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="std-jobtitle" class="block text-[13px] font-medium text-warm-300 mb-2">Job Title *</label>
+                <input type="text" id="std-jobtitle" name="jobtitle" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="std-job_function" class="block text-[13px] font-medium text-warm-300 mb-2">Primary Job Function</label>
+              <select id="std-job_function" name="primary_job_function" class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                <option value="" class="bg-warm-900">Select...</option>
+                <option value="Architecture + engineering" class="bg-warm-900">Architecture + engineering</option>
+                <option value="Developer" class="bg-warm-900">Developer</option>
+                <option value="Owner occupier" class="bg-warm-900">Owner occupier</option>
+                <option value="Property management" class="bg-warm-900">Property management</option>
+                <option value="Investor or debt institution" class="bg-warm-900">Investor or debt institution</option>
+                <option value="Certifications Professional/Consultant" class="bg-warm-900">Certifications Professional/Consultant</option>
+                <option value="NGO/Charity" class="bg-warm-900">NGO/Charity</option>
+                <option value="CSR/DEI/ESG professional" class="bg-warm-900">CSR/DEI/ESG professional</option>
+                <option value="General contractor or subcontractor" class="bg-warm-900">General contractor or subcontractor</option>
+                <option value="Other" class="bg-warm-900">Other</option>
+              </select>
+            </div>
+            <div class="flex items-start gap-3 pt-2">
+              <input type="checkbox" id="std-content-policy" name="content_use_policy" required class="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/[0.08] text-seam-500 focus:ring-seam-400/50 focus:ring-offset-0" />
+              <label for="std-content-policy" class="text-[13px] leading-snug text-warm-400">
+                I have read and agree to the <a href="mailto:admin@seamcertification.org" class="text-seam-300 underline underline-offset-2 hover:text-seam-200 transition-colors">Content Use Policy</a>. The SEAM Standard is made available for free for non-commercial use. Commercial use requires consent. *
+              </label>
+            </div>
+            <button type="submit" class="w-full rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+              Download the Standard
+            </button>
+            <p id="standard-form-status" class="text-[13px] text-center text-warm-400 hidden"></p>
+          </form>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 max-w-3xl mx-auto">
+        Ready to build for{' '}<em class="italic font-normal text-seam-600">belonging?</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-600 max-w-xl mx-auto">
+        Start where you are. The SEAM Standard is designed to meet organizations at their stage of readiness — whether that is exploring what equity means for your portfolio or pursuing full certification today.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a href="/certification" class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">Start certification</a>
+        <a href="#download" class="inline-flex items-center rounded-full border border-warm-300 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-500 transition-colors duration-300">Download the Standard</a>
+        <a href="/ap-credential" class="inline-flex items-center rounded-full border border-warm-300 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-500 transition-colors duration-300">Find a SEAM AP</a>
+      </div>
+    </div>
+  </section>
+
+  <style is:global>
+    .orbital-module .orb-nodes circle,
+  .orbital-module .orb-lines line,
+  .orbital-module .tier-entry {
+    transition: opacity 220ms ease, background-color 220ms ease, transform 220ms ease, filter 320ms ease;
+  }
+
+  /* Zone rings: faint color wash by default, saturated when active */
+  .orbital-module .orb-zone {
+    opacity: 0.06;
+    transition: opacity 380ms ease;
+  }
+  .orbital-module[data-active-tier="pillars"] .orb-zone[data-zone="pillars"],
+  .orbital-module[data-active-tier="concepts"] .orb-zone[data-zone="concepts"],
+  .orbital-module[data-active-tier="objectives"] .orb-zone[data-zone="objectives"],
+  .orbital-module[data-active-tier="activities"] .orb-zone[data-zone="activities"] {
+    opacity: 0.32;
+  }
+  /* Non-matching zones recede further */
+  .orbital-module[data-active-tier] .orb-zone {
+    opacity: 0.025;
+  }
+  .orbital-module[data-active-tier="pillars"] .orb-zone[data-zone="pillars"],
+  .orbital-module[data-active-tier="concepts"] .orb-zone[data-zone="concepts"],
+  .orbital-module[data-active-tier="objectives"] .orb-zone[data-zone="objectives"],
+  .orbital-module[data-active-tier="activities"] .orb-zone[data-zone="activities"] {
+    opacity: 0.32;
+  }
+
+  /* Dim non-matching SVG elements when a tier is active */
+  .orbital-module[data-active-tier] .orb-nodes,
+  .orbital-module[data-active-tier] .orb-lines {
+    opacity: 0.18;
+  }
+  .orbital-module[data-active-tier="pillars"] .orb-nodes[data-tier="pillars"],
+  .orbital-module[data-active-tier="pillars"] .orb-lines[data-tier="pillars"],
+  .orbital-module[data-active-tier="concepts"] .orb-nodes[data-tier="concepts"],
+  .orbital-module[data-active-tier="concepts"] .orb-lines[data-tier="concepts"],
+  .orbital-module[data-active-tier="objectives"] .orb-nodes[data-tier="objectives"],
+  .orbital-module[data-active-tier="objectives"] .orb-lines[data-tier="objectives"],
+  .orbital-module[data-active-tier="activities"] .orb-nodes[data-tier="activities"],
+  .orbital-module[data-active-tier="activities"] .orb-lines[data-tier="activities"] {
+    opacity: 1;
+  }
+
+  /* Also keep inner rings fully visible when an outer tier is active (so the tree reads) */
+  .orbital-module[data-active-tier="concepts"] .orb-nodes[data-tier="pillars"],
+  .orbital-module[data-active-tier="concepts"] .orb-lines[data-tier="pillars"],
+  .orbital-module[data-active-tier="objectives"] .orb-nodes[data-tier="pillars"],
+  .orbital-module[data-active-tier="objectives"] .orb-lines[data-tier="pillars"],
+  .orbital-module[data-active-tier="objectives"] .orb-nodes[data-tier="concepts"],
+  .orbital-module[data-active-tier="objectives"] .orb-lines[data-tier="concepts"],
+  .orbital-module[data-active-tier="activities"] .orb-nodes[data-tier="pillars"],
+  .orbital-module[data-active-tier="activities"] .orb-lines[data-tier="pillars"],
+  .orbital-module[data-active-tier="activities"] .orb-nodes[data-tier="concepts"],
+  .orbital-module[data-active-tier="activities"] .orb-lines[data-tier="concepts"],
+  .orbital-module[data-active-tier="activities"] .orb-nodes[data-tier="objectives"],
+  .orbital-module[data-active-tier="activities"] .orb-lines[data-tier="objectives"] {
+    opacity: 0.55;
+  }
+
+  /* Text entries: dim non-matching, highlight active */
+  .orbital-module[data-active-tier] .tier-entry {
+    opacity: 0.4;
+  }
+  .orbital-module[data-active-tier="pillars"] .tier-entry[data-tier="pillars"],
+  .orbital-module[data-active-tier="concepts"] .tier-entry[data-tier="concepts"],
+  .orbital-module[data-active-tier="objectives"] .tier-entry[data-tier="objectives"],
+  .orbital-module[data-active-tier="activities"] .tier-entry[data-tier="activities"] {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Hover affordance on text entries when no tier is active */
+  .orbital-module:not([data-active-tier]) .tier-entry:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orbital-module .orb-nodes circle,
+    .orbital-module .orb-lines line,
+    .orbital-module .tier-entry {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const root = document.querySelector('[data-orbital-module]')
+    if (!root) return
+
+    const entries = root.querySelectorAll('[data-tier-entry]')
+    const nodeGroups = root.querySelectorAll('.orb-nodes[data-tier]')
+
+    const setTier = (tier) => {
+      if (tier) root.setAttribute('data-active-tier', tier)
+      else root.removeAttribute('data-active-tier')
+    }
+
+    let locked = false
+
+    entries.forEach((entry) => {
+      const tier = entry.getAttribute('data-tier')
+      entry.addEventListener('mouseenter', () => { if (!locked) setTier(tier) })
+      entry.addEventListener('mouseleave', () => { if (!locked) setTier(null) })
+      entry.addEventListener('focus', () => setTier(tier))
+      entry.addEventListener('blur', () => { if (!locked) setTier(null) })
+      entry.addEventListener('click', () => {
+        const current = module.getAttribute('data-active-tier')
+        if (current === tier && locked) {
+          locked = false
+          setTier(null)
+        } else {
+          locked = true
+          setTier(tier)
+        }
+      })
+      entry.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          entry.click()
+        }
+      })
+    })
+
+    nodeGroups.forEach((group) => {
+      const tier = group.getAttribute('data-tier')
+      group.addEventListener('mouseenter', () => { if (!locked) setTier(tier) })
+      group.addEventListener('mouseleave', () => { if (!locked) setTier(null) })
+    })
+
+    // Click outside to unlock
+    document.addEventListener('click', (e) => {
+      if (!locked) return
+      if (!root.contains(e.target)) {
+        locked = false
+        setTier(null)
+      }
+    })
+  })()
+</script>
+
+<script>
+  function initStandardForm() {
+    const form = document.getElementById('standard-form') as HTMLFormElement | null
+    if (!form) return
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+      const statusEl = document.getElementById('standard-form-status')!
+      const original = btn.textContent
+
+      btn.disabled = true
+      btn.textContent = 'Submitting...'
+      statusEl.classList.add('hidden')
+
+      const data = new FormData(form)
+      const fields = [
+        { objectTypeId: '0-1', name: 'firstname', value: data.get('firstname') },
+        { objectTypeId: '0-1', name: 'lastname', value: data.get('lastname') },
+        { objectTypeId: '0-1', name: 'email', value: data.get('email') },
+        { objectTypeId: '0-1', name: 'company', value: data.get('company') },
+        { objectTypeId: '0-1', name: 'jobtitle', value: data.get('jobtitle') },
+        { objectTypeId: '0-1', name: 'primary_job_function', value: data.get('primary_job_function') || '' },
+        { objectTypeId: '0-1', name: 'content_use_policy', value: 'true' },
+      ]
+
+      try {
+        const res = await fetch(
+          'https://api.hsforms.com/submissions/v3/integration/submit/46821728/7f2e5ff4-6df9-42b6-a8bf-faa32018c06e',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields,
+              context: {
+                pageUri: window.location.href,
+                pageName: 'The SEAM Standard',
+              },
+            }),
+          }
+        )
+
+        if (res.ok) {
+          form.reset()
+          statusEl.textContent = "Thank you for your interest! Check your email for your SEAM Standard download."
+          statusEl.classList.remove('hidden', 'text-red-400')
+          statusEl.classList.add('text-seam-300')
+        } else {
+          throw new Error('Submission failed')
+        }
+      } catch (_err) {
+        statusEl.textContent = 'Something went wrong. Please try again or email admin@seamcertification.org.'
+        statusEl.classList.remove('hidden', 'text-seam-300')
+        statusEl.classList.add('text-red-400')
+      } finally {
+        btn.disabled = false
+        btn.textContent = original
+      }
+    })
+  }
+
+  document.addEventListener('astro:page-load', initStandardForm)
+  if (document.readyState !== 'loading') {
+    initStandardForm()
+  } else {
+    document.addEventListener('DOMContentLoaded', initStandardForm)
+  }
+</script>
 
 </SiteLayout>

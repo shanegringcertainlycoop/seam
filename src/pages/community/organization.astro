@@ -4,7 +4,7 @@ import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
 
 const reasons = [
   { title: 'Access to The Stitch', description: 'Give your entire team — property managers, sustainability leads, community liaisons, executives — access to the same templates, courses, and tools in our members-only community platform.' },
-  { title: 'AP Training and Exam Credits', description: 'Ladder and Arc tiers include complimentary SEAM AP training and exam credits for team members. Build in-house expertise without per-seat costs.' },
+  { title: 'Foundations Course and Exam Credits', description: 'Ladder and Arc tiers include complimentary Foundations: Social Equity in the Built Environment course and exam credits for team members. Build in-house expertise without per-seat costs.' },
   { title: 'Recognition on the SEAM Site & Directory', description: 'Showcase your commitment with a listing in the Member Directory and recognition on the SEAM website — text listing, logo, or featured placement depending on tier.' },
   { title: 'Discounts for Certifications & Events', description: 'Tiered discounts on SEAM Approved verification, full certification fees, and events throughout the year. Scale your investment alongside your portfolio.' },
   { title: 'Thought Leadership Opportunities', description: 'Submit blog posts, featured articles, and webinars. Arc members help shape future versions of the Standard and the direction of the movement.' },
@@ -84,9 +84,9 @@ const faqs = [
   { q: 'How does team seat allocation work?', a: 'Each organization tier includes a set number of seats. Every seat holder gets full individual-level access — templates, courses, ROSSI, and network. Seat assignments can be changed quarterly through your admin dashboard.' },
   { q: 'Can we add seats or properties mid-cycle?', a: 'Yes. Additional seats and properties can be added at any time. Pricing is prorated for the remainder of your annual billing cycle.' },
   { q: 'Is organization pricing public?', a: 'Pricing is based on portfolio size, property count, and scope. Contact our team for a quote tailored to your organization. All tiers are billed annually.' },
-  { q: 'What does dedicated onboarding include?', a: 'A SEAM team member reviews your existing social equity programs, maps them to Standard activities, identifies quick wins for SEAM Approved, and builds a certification roadmap. Builder tier includes one session; Steward includes ongoing strategy check-ins.' },
+  { q: 'What does dedicated onboarding include?', a: 'A SEAM team member reviews your existing social equity programs, maps them to Standard activities, identifies quick wins for SEAM Approved, and builds a certification roadmap. Ladder tier includes one session; Arc includes ongoing strategy check-ins.' },
   { q: 'Can our team members also hold individual memberships?', a: 'Organization seats provide full individual-level access. Separate individual memberships are not needed. Team members who are SEAM APs can track CEUs through their organization seat.' },
-  { q: 'What is the advisory council?', a: 'Steward members sit on the advisory council that informs Standard development. The council meets quarterly, reviews proposed changes, pilots new activities, and provides strategic input on the direction of the SEAM ecosystem.' },
+  { q: 'What is the advisory council?', a: 'Arc members sit on the advisory council that informs Standard development. The council meets quarterly, reviews proposed changes, pilots new activities, and provides strategic input on the direction of the SEAM ecosystem.' },
 ]
 
 const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
@@ -150,7 +150,7 @@ const jsonLd = [
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Why organizations join</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Why organizations join</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Impact is the destination. <em class="italic font-normal text-seam-600">Membership is the engine.</em>
         </h2>
@@ -159,7 +159,7 @@ const jsonLd = [
         {reasons.map((r) => (
           <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{r.title}</h3>
-            <p class="text-[15px] leading-relaxed text-warm-500">{r.description}</p>
+            <p class="text-[15px] leading-relaxed text-warm-600">{r.description}</p>
           </div>
         ))}
       </div>
@@ -170,11 +170,11 @@ const jsonLd = [
   <section id="pricing" class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Organization tiers</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Organization tiers</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Scale your commitment <em class="italic font-normal text-seam-600">with your portfolio</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
           Organization pricing is based on portfolio size and scope. All tiers include annual billing with the option to add seats and properties mid-cycle.
         </p>
       </div>
@@ -186,13 +186,13 @@ const jsonLd = [
             <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
             <div class="mt-5 flex items-baseline gap-1">
               <span class={`font-display text-[40px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.price}</span>
-              <span class={`text-[15px] ${tier.highlighted ? 'text-warm-300' : 'text-warm-500'}`}>{tier.period}</span>
+              <span class={`text-[15px] ${tier.highlighted ? 'text-warm-300' : 'text-warm-600'}`}>{tier.period}</span>
             </div>
-            <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-warm-300' : 'text-warm-500'}`}>{tier.description}</p>
+            <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-warm-300' : 'text-warm-600'}`}>{tier.description}</p>
 
             <ul class="mt-8 space-y-3 flex-1">
               {tier.features.map((f) => (
-                <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-warm-200' : 'text-warm-500'}`}>
+                <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-warm-200' : 'text-warm-600'}`}>
                   <svg class={`shrink-0 w-4 h-4 mt-0.5 ${tier.highlighted ? 'text-seam-400' : 'text-seam-500'}`} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
@@ -201,11 +201,14 @@ const jsonLd = [
               ))}
             </ul>
 
-            <a href="/get-started" class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
-              {tier.cta}
-            </a>
           </div>
         ))}
+      </div>
+
+      <div class="reveal-fade-up mt-12 text-center">
+        <a href="#contact" class="inline-flex items-center rounded-full bg-warm-900 px-10 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">
+          Talk to our team
+        </a>
       </div>
     </div>
   </section>
@@ -214,7 +217,7 @@ const jsonLd = [
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Who joins</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Who joins</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Organizations who <em class="italic font-normal text-seam-600">understand the future</em>
         </h2>
@@ -236,7 +239,7 @@ const jsonLd = [
   <section class="py-24 lg:py-32 bg-warm-900">
     <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="max-w-4xl mx-auto text-center">
-        <svg class="mx-auto mb-8 w-12 h-12 text-warm-600" fill="currentColor" viewBox="0 0 24 24"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" /></svg>
+        <svg class="mx-auto mb-8 w-12 h-12 text-warm-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" /></svg>
         <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
           Ladder membership let us roll out SEAM Approved across our portfolio in one quarter. Access to The Stitch mapped our existing programs to the Standard, and the AP training gave our team the credential to lead the work in-house. We stopped reinventing the wheel.
         </blockquote>
@@ -254,7 +257,7 @@ const jsonLd = [
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-start">
         <div>
           <div class="reveal-slide-left max-w-2xl mb-12 lg:mb-16">
-            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">Frequently asked</p>
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
             <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
               Questions about <em class="italic font-normal text-seam-600">organization membership</em>
             </h2>
@@ -264,10 +267,10 @@ const jsonLd = [
               <details class="border-b border-warm-200 group">
                 <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                   <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
-                  <svg class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                  <svg class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                 </summary>
                 <div class="pb-6">
-                  <p class="text-[16px] leading-relaxed text-warm-500 max-w-2xl">{faq.a}</p>
+                  <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">{faq.a}</p>
                 </div>
               </details>
             ))}
@@ -282,18 +285,176 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-24 lg:py-32 bg-warm-900">
-    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
-      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
-        Your portfolio deserves <em class="italic font-normal text-seam-300">a social equity strategy</em>
-      </h2>
-      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">Talk to our team about the right tier for your organization. Custom scoping, portfolio pricing, and dedicated onboarding.</p>
-      <div class="mt-12 flex flex-wrap justify-center gap-4">
-        <a href="/get-started" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Request a quote</a>
-        <a href="/community" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Community overview</a>
+  <!-- ─── Get in Touch ─── -->
+  <section id="contact" class="py-24 lg:py-32 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div class="reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
+            Get in touch
+          </p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
+            Your portfolio deserves
+            <em class="italic font-normal text-seam-300">a social equity strategy</em>
+          </h2>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-lg">
+            Talk to our team about the right tier for your organization. Custom scoping, portfolio pricing, and dedicated onboarding.
+          </p>
+          <ul class="mt-8 space-y-4">
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Standing, Ladder, and Arc tiers
+            </li>
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Portfolio and multi-year pricing available
+            </li>
+            <li class="flex items-start gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Typical response within 2 business days
+            </li>
+          </ul>
+        </div>
+
+        <div class="reveal-fade-up">
+          <form id="org-membership-form" class="rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] p-8 lg:p-10 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="org-firstname" class="block text-[13px] font-medium text-warm-300 mb-2">First Name *</label>
+                <input type="text" id="org-firstname" name="firstname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="org-lastname" class="block text-[13px] font-medium text-warm-300 mb-2">Last Name *</label>
+                <input type="text" id="org-lastname" name="lastname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="org-email" class="block text-[13px] font-medium text-warm-300 mb-2">Work Email *</label>
+              <input type="email" id="org-email" name="email" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="org-company" class="block text-[13px] font-medium text-warm-300 mb-2">Company Name *</label>
+                <input type="text" id="org-company" name="company" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="org-jobtitle" class="block text-[13px] font-medium text-warm-300 mb-2">Job Title *</label>
+                <input type="text" id="org-jobtitle" name="jobtitle" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="org-employees" class="block text-[13px] font-medium text-warm-300 mb-2">Number of Employees *</label>
+                <select id="org-employees" name="numemployees" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                  <option value="" class="bg-warm-900">Select...</option>
+                  <option value="1-5" class="bg-warm-900">1-5</option>
+                  <option value="5-25" class="bg-warm-900">5-25</option>
+                  <option value="25-50" class="bg-warm-900">25-50</option>
+                  <option value="50-100" class="bg-warm-900">50-100</option>
+                  <option value="100-500" class="bg-warm-900">100-500</option>
+                  <option value="500-1000" class="bg-warm-900">500-1,000</option>
+                  <option value="1000+" class="bg-warm-900">1,000+</option>
+                </select>
+              </div>
+              <div>
+                <label for="org-job-function" class="block text-[13px] font-medium text-warm-300 mb-2">Primary Job Function</label>
+                <select id="org-job-function" name="primary_job_function" class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                  <option value="" class="bg-warm-900">Select...</option>
+                  <option value="Architecture + engineering" class="bg-warm-900">Architecture + engineering</option>
+                  <option value="Developer" class="bg-warm-900">Developer</option>
+                  <option value="Owner occupier" class="bg-warm-900">Owner occupier</option>
+                  <option value="Property management" class="bg-warm-900">Property management</option>
+                  <option value="Investor or debt institution" class="bg-warm-900">Investor or debt institution</option>
+                  <option value="Certifications Professional/Consultant" class="bg-warm-900">Certifications Professional/Consultant</option>
+                  <option value="NGO/Charity" class="bg-warm-900">NGO/Charity</option>
+                  <option value="CSR/DEI/ESG professional" class="bg-warm-900">CSR/DEI/ESG professional</option>
+                  <option value="General contractor or subcontractor" class="bg-warm-900">General contractor or subcontractor</option>
+                  <option value="Other" class="bg-warm-900">Other</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="org-comments" class="block text-[13px] font-medium text-warm-300 mb-2">Any additional details you'd like to share?</label>
+              <textarea id="org-comments" name="getting_started_comments" rows="3" class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+              Request a quote
+            </button>
+            <p id="org-form-status" class="text-[13px] text-center text-warm-400 hidden"></p>
+          </form>
+        </div>
       </div>
     </div>
   </section>
+
+  <script>
+    function initOrgForm() {
+      const form = document.getElementById('org-membership-form') as HTMLFormElement | null
+      if (!form) return
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+        const statusEl = document.getElementById('org-form-status')!
+        const original = btn.textContent
+
+        btn.disabled = true
+        btn.textContent = 'Submitting...'
+        statusEl.classList.add('hidden')
+
+        const data = new FormData(form)
+        const fields = [
+          { objectTypeId: '0-1', name: 'firstname', value: data.get('firstname') },
+          { objectTypeId: '0-1', name: 'lastname', value: data.get('lastname') },
+          { objectTypeId: '0-1', name: 'email', value: data.get('email') },
+          { objectTypeId: '0-1', name: 'company', value: data.get('company') },
+          { objectTypeId: '0-1', name: 'numemployees', value: data.get('numemployees') || '' },
+          { objectTypeId: '0-1', name: 'jobtitle', value: data.get('jobtitle') },
+          { objectTypeId: '0-1', name: 'primary_job_function', value: data.get('primary_job_function') || '' },
+          { objectTypeId: '0-1', name: 'getting_started_comments', value: data.get('getting_started_comments') || '' },
+        ]
+
+        try {
+          const res = await fetch(
+            'https://api.hsforms.com/submissions/v3/integration/submit/46821728/0f29a4a9-2ab7-4237-98b3-f4be59964370',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                fields,
+                context: {
+                  pageUri: window.location.href,
+                  pageName: 'Organization Membership',
+                },
+              }),
+            }
+          )
+
+          if (res.ok) {
+            form.reset()
+            statusEl.textContent = "Thank you! We'll be in touch within 2 business days."
+            statusEl.classList.remove('hidden', 'text-red-400')
+            statusEl.classList.add('text-seam-300')
+          } else {
+            throw new Error('Submission failed')
+          }
+        } catch (_err) {
+          statusEl.textContent = 'Something went wrong. Please email admin@seamcertification.org directly.'
+          statusEl.classList.remove('hidden', 'text-seam-300')
+          statusEl.classList.add('text-red-400')
+        } finally {
+          btn.disabled = false
+          btn.textContent = original
+        }
+      })
+    }
+
+    document.addEventListener('astro:page-load', initOrgForm)
+    if (document.readyState !== 'loading') {
+      initOrgForm()
+    } else {
+      document.addEventListener('DOMContentLoaded', initOrgForm)
+    }
+  </script>
 
 </SiteLayout>

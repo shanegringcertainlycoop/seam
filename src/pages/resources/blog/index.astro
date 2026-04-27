@@ -28,14 +28,14 @@ const filtered: BlogPost[] =
 const jsonLd = [
   breadcrumbSchema([
     { name: 'Home', path: '/' },
-    { name: 'Resources', path: '/resources/blog' },
+    { name: 'Resources', path: '/resources/standard' },
     { name: 'Blog', path: '/resources/blog' },
   ]),
 ]
 ---
 <SiteLayout
-  title="Blog & Insights"
-  description="Lessons from SEAM-certified projects, practitioner perspectives, sector analysis, and updates on the Standard and ROSSI calculator."
+  title="Social Equity Blog — Insights from the Field"
+  description="Certified project outcomes, practitioner perspectives, and analysis of social equity in the built environment from SEAM."
   path="/resources/blog"
   jsonLd={jsonLd}
 >
@@ -55,8 +55,8 @@ const jsonLd = [
         Blog & Insights
       </p>
       <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white max-w-3xl">
-        Lessons from the field,{' '}
-        <em class="italic font-normal text-seam-300">not the boardroom</em>
+        Our common{' '}
+        <em class="italic font-normal text-seam-300">thread</em>
       </h1>
       <p class="mt-6 text-[18px] leading-relaxed text-warm-300 max-w-2xl">
         Practitioner perspectives, certified project outcomes, and honest analysis
@@ -73,6 +73,13 @@ const jsonLd = [
           href={`/resources/blog/${featured.slug}`}
           class="group block rounded-2xl bg-warm-900 p-6 sm:p-10 lg:p-14 min-h-[360px] sm:min-h-[480px] flex flex-col justify-end relative overflow-hidden"
         >
+          {featured.image && (
+            <img
+              src={featured.image.src}
+              alt={featured.image.alt}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          )}
           <div class="absolute inset-0 bg-gradient-to-t from-warm-900 via-warm-900/90 to-warm-900/50"></div>
           <div class="relative">
             <span class="inline-block rounded-full bg-gold-400/90 px-4 py-1.5 text-[12px] font-medium text-white mb-6">
@@ -107,7 +114,7 @@ const jsonLd = [
             class={`shrink-0 rounded-full px-5 py-2.5 text-[14px] font-medium transition-all duration-200 ${
               activeCategory === cat
                 ? 'bg-warm-900 text-white'
-                : 'bg-warm-50 text-warm-500 hover:bg-warm-100 hover:text-warm-700'
+                : 'bg-warm-50 text-warm-600 hover:bg-warm-100 hover:text-warm-700'
             }`}
           >
             {cat}
@@ -124,18 +131,26 @@ const jsonLd = [
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-8 gap-y-10 lg:gap-y-14">
           {filtered.map((post) => (
             <a href={`/resources/blog/${post.slug}`} class="group block">
-              <div class="rounded-2xl bg-warm-50 p-8 lg:p-10 mb-5 min-h-[200px] flex items-end transition-all duration-300 group-hover:bg-warm-100/80 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-                <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-gold-500">
+              <div class="rounded-2xl bg-warm-50 mb-5 min-h-[200px] flex items-end transition-all duration-300 group-hover:bg-warm-100/80 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden relative">
+                {post.image ? (
+                  <img
+                    src={post.image.src}
+                    alt={post.image.alt}
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : null}
+                <span class={`relative z-10 text-[12px] font-medium uppercase tracking-[0.1em] m-4 px-3 py-1.5 rounded-full ${post.image ? 'bg-white/90 text-gold-600' : 'text-gold-600 p-8 lg:p-10'}`}>
                   {post.category}
                 </span>
               </div>
               <h3 class="font-display text-[22px] lg:text-[24px] leading-[1.2] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-gold-600 transition-colors duration-300">
                 {post.title}
               </h3>
-              <p class="text-[15px] leading-relaxed text-warm-500 mb-4 line-clamp-2">
+              <p class="text-[15px] leading-relaxed text-warm-600 mb-4 line-clamp-2">
                 {post.excerpt}
               </p>
-              <div class="flex items-center gap-3 text-[13px] text-warm-500">
+              <div class="flex items-center gap-3 text-[13px] text-warm-600">
                 <span>{post.author.name}</span>
                 <span class="w-1 h-1 rounded-full bg-warm-300"></span>
                 <span>{formatDate(post.date)}</span>
@@ -147,7 +162,7 @@ const jsonLd = [
         </div>
       ) : (
         <div class="text-center py-20">
-          <p class="text-[17px] text-warm-500">
+          <p class="text-[17px] text-warm-600">
             No articles in this category yet. Check back soon.
           </p>
         </div>
@@ -161,7 +176,7 @@ const jsonLd = [
       <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.2] tracking-[-0.02em] text-warm-900 mb-4">
         Stay in the conversation
       </h2>
-      <p class="text-[17px] text-warm-500 mb-10 max-w-lg mx-auto">
+      <p class="text-[17px] text-warm-600 mb-10 max-w-lg mx-auto">
         New articles, certified project announcements, and Standard updates
         delivered to your inbox. No noise.
       </p>

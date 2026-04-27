@@ -1,6 +1,10 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
 import { faqSchema, breadcrumbSchema } from '../lib/seo-helpers'
+import { certifiedProjects } from '../data/directory'
+import { posts } from '../data/blog'
+
+const recentPosts = posts.filter((p) => p.image).slice(0, 3)
 
 /* ─── Section 2a: Ecosystem Visualization ─── */
 const hotspots = [
@@ -68,7 +72,7 @@ const products = [
     label: 'SEAM Certification',
     title: 'Full building certification',
     description:
-      'Bronze through Platinum certification across two tracks: Buildings + Interiors and Operations + Maintenance.',
+      'Prove your building makes life better for the people it touches — from the workers who built it to the community around it.',
     href: '/certification',
     audience: 'For developers, owners, and capital providers',
     logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
@@ -77,7 +81,7 @@ const products = [
     label: 'SEAM Approved',
     title: 'Activity-level verification',
     description:
-      'Verify individual social equity activities without committing to full certification.',
+      'Not ready for full certification? Start with one verified activity and build from there.',
     href: '/approved',
     audience: 'For operators, managers, and anchor institutions',
     logo: '/logos/approved-wordmark.png',
@@ -86,7 +90,7 @@ const products = [
     label: 'SEAM AP Credential',
     title: 'Professional accreditation',
     description:
-      'The qualification for practitioners who lead certification work. Build your practice, join the directory, shape the field.',
+      'Become the person organizations call when they want to get social equity right. Lead projects, grow your practice.',
     href: '/ap-credential',
     audience: 'For consultants and sustainability professionals',
     logo: '/logos/ap-seal.png',
@@ -95,55 +99,46 @@ const products = [
     label: 'COMMUNITY',
     title: 'SEAM Membership',
     description:
-      'Resources, peer connection, and ongoing support for organizations and individuals committed to improving social equity.',
-    href: '/commons',
+      'Connect with practitioners doing this work across the industry. Events, peer groups, and tools — at every career stage.',
+    href: '/community',
     audience: 'For all professional audiences',
-    logo: '/logos/member-organization.png',
-    logo2: '/logos/member-individual.png',
+    logos: ['/logos/member-individual.png', '/logos/member-changemaker.png', '/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
   },
 ]
 
 /* ─── Section 5: Proof / Certified Projects ─── */
-const projects = [
-  {
-    name: 'The Jack',
-    location: 'Seattle, Washington, USA',
-    level: 'Bronze Certified',
-    description:
-      'A mixed-use development demonstrating that social equity and financial performance reinforce each other.',
-  },
-  {
-    name: 'Interface HQ',
-    location: 'Atlanta, GA',
-    level: 'Silver Certified',
-    description:
-      'Corporate headquarters redesigned around the communities and workers who give the building its life.',
-  },
-]
+const projects = certifiedProjects.slice(0, 2).map((p) => ({
+  name: p.name,
+  location: `${p.location.city}, ${p.location.state}`,
+  level: `${p.certificationLevel} Certified`,
+  description: p.description,
+  image: p.image,
+  href: `/directory/project/${p.slug}`,
+}))
 
 /* ─── Section 6: Resources ─── */
 const resources = [
   {
     title: 'Open Membership',
-    description: 'Join the starting tier of our membership program to learn, participate, and join conversations.',
+    description: 'Free to join. Show up, learn, and find your people in social equity.',
     cta: 'Enroll for free',
     href: '/community',
   },
   {
     title: 'The SEAM Standard',
-    description: 'The full framework, free to download. Built on international human rights principles.',
+    description: 'Four pillars, 50+ activities, zero cost. Read the framework everyone is talking about.',
     cta: 'Download',
     href: '/resources/standard',
   },
   {
     title: 'ROSSI Calculator',
-    description: 'Translate social equity outcomes into the financial language decision-makers understand.',
+    description: 'Put a dollar figure on doing the right thing. The business case, quantified.',
     cta: 'Try ROSSI',
     href: '/resources/rossi',
   },
   {
     title: 'Blog & Insights',
-    description: 'Lessons from certified projects, practitioner perspectives, and sector analysis.',
+    description: 'What we are learning from the first wave of certified projects — and what comes next.',
     cta: 'Read',
     href: '/resources/blog',
   },
@@ -176,7 +171,7 @@ const jsonLd = [
 ]
 ---
 <SiteLayout
-  description="SEAM is the first certification system that measures social equity in buildings. Bronze through Platinum certification across Social Impact, Social Responsibility, Social Justice, and Social Accountability."
+  description="SEAM is the first certification for social equity in buildings. Bronze through Platinum levels. Download the free Standard or start your project."
   path="/"
   jsonLd={jsonLd}
 >
@@ -187,7 +182,7 @@ const jsonLd = [
       <img
         data-parallax="0.25"
         src="/hero.png"
-        alt="People gathered in conversation beneath the columns of a modern building"
+        alt="The Jack building in Seattle's Pioneer Square — the world's first SEAM Certified commercial real estate location"
         class="hero-image h-full w-full object-cover object-center scale-105"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/10"></div>
@@ -212,7 +207,7 @@ const jsonLd = [
             Start a project
           </a>
           <a
-            href="/about/mission"
+            href="/about"
             class="inline-flex items-center rounded-full border border-white/30 px-8 py-4 text-[16px] font-medium text-white hover:border-white/60 transition-colors duration-300"
           >
             Learn more
@@ -234,7 +229,9 @@ const jsonLd = [
           <em class="italic font-normal text-seam-600">
             designed and operated
           </em>{' '}
-          with social equity as a focus, and not an afterthought, communities thrive and investments outperform. SEAM is the world's first standard built to advance social equity in commercial real estate.
+          with social equity as a focus, and not an afterthought, communities thrive and investments outperform.
+          <br /><br />
+          <img src="/logos/seam-wordmark.png" alt="SEAM" class="inline-block h-[1.1em] w-auto align-baseline brightness-0 -mb-[0.05em]" /> is the world's first standard built to advance social equity in commercial real estate.
         </p>
       </div>
     </div>
@@ -251,7 +248,7 @@ const jsonLd = [
           Every building reaches{' '}
           <em class="italic font-normal text-seam-600">six groups of people.</em>
         </h2>
-        <p class="mt-4 text-[15px] text-warm-500">
+        <p class="mt-4 text-[15px] text-warm-600">
           Hover or tap a dot to see who.
         </p>
       </div>
@@ -297,7 +294,7 @@ const jsonLd = [
                 <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
                   {spot.title}
                 </p>
-                <p class="text-[14px] leading-relaxed text-warm-500">
+                <p class="text-[14px] leading-relaxed text-warm-600">
                   {spot.body}
                 </p>
               </div>
@@ -322,7 +319,7 @@ const jsonLd = [
             <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
               {spot.title}
             </p>
-            <p class="text-[14px] leading-relaxed text-warm-500">
+            <p class="text-[14px] leading-relaxed text-warm-600">
               {spot.body}
             </p>
           </div>
@@ -345,7 +342,7 @@ const jsonLd = [
               data-count-target={s.value}
               data-count-suffix={s.suffix}
             >0</span>
-            <span class="block mt-2 text-[14px] text-warm-500 uppercase tracking-[0.08em]">
+            <span class="block mt-2 text-[14px] text-warm-600 uppercase tracking-[0.08em]">
               {s.label}
             </span>
           </div>
@@ -376,43 +373,22 @@ const jsonLd = [
             href={product.href}
             class="reveal-child group relative overflow-visible rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
           >
-            <div class="absolute -top-10 right-8 flex items-end pointer-events-none">
+            <div class="absolute -top-5 sm:-top-10 right-4 sm:right-8 flex items-end pointer-events-none">
               {product.logos ? (
-                <div class="flex items-end -space-x-12">
+                <div class="flex items-end -space-x-2 sm:-space-x-6">
                   {product.logos.map((logo) => (
                     <img
                       src={logo}
                       alt=""
-                      class="h-24 w-auto object-contain"
+                      class="w-9 h-9 sm:w-24 sm:h-24 object-contain drop-shadow-md"
                     />
                   ))}
-                </div>
-              ) : product.logo2 ? (
-                <div class="flex items-end">
-                  <img
-                    src={product.logo}
-                    alt=""
-                    class="h-24 w-auto object-contain"
-                  />
-                  <img
-                    src={product.logo2}
-                    alt=""
-                    class="h-24 w-auto object-contain -ml-16"
-                  />
-                </div>
-              ) : product.logo?.includes('approved-wordmark') ? (
-                <div class="h-24 w-24 bg-[#01313d] rounded-xl flex items-center justify-center p-3">
-                  <img
-                    src={product.logo}
-                    alt=""
-                    class="w-full object-contain brightness-0 invert"
-                  />
                 </div>
               ) : (
                 <img
                   src={product.logo}
                   alt=""
-                  class="h-24 w-auto object-contain"
+                  class="w-16 h-16 sm:w-24 sm:h-24 object-contain drop-shadow-md"
                 />
               )}
             </div>
@@ -422,7 +398,7 @@ const jsonLd = [
             <h3 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4">
               {product.title}
             </h3>
-            <p class="text-[16px] leading-relaxed text-warm-500 mb-6">
+            <p class="text-[16px] leading-relaxed text-warm-600 mb-6">
               {product.description}
             </p>
             <div class="flex items-center justify-between">
@@ -452,11 +428,17 @@ const jsonLd = [
 
       <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project) => (
-          <div
-            class="reveal-child group relative rounded-2xl bg-warm-900 p-10 lg:p-12 min-h-[360px] flex flex-col justify-end overflow-hidden"
+          <a
+            href={project.href}
+            class="reveal-child group relative rounded-2xl bg-warm-900 p-10 lg:p-12 min-h-[360px] flex flex-col justify-end overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
           >
-            {/* Placeholder for future project imagery */}
-            <div class="absolute inset-0 bg-gradient-to-t from-warm-900 via-warm-900/80 to-warm-900/40"></div>
+            <img
+              src={project.image}
+              alt={project.name}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-warm-900/90 via-warm-900/40 to-transparent"></div>
             <div class="relative">
               <span class="inline-block rounded-full bg-seam-600 px-4 py-1.5 text-[12px] font-medium text-white mb-4">
                 {project.level}
@@ -469,7 +451,7 @@ const jsonLd = [
                 {project.description}
               </p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 
@@ -479,6 +461,63 @@ const jsonLd = [
           class="text-[15px] font-medium text-warm-900 underline underline-offset-4 decoration-warm-300 hover:decoration-warm-900 transition-colors duration-300"
         >
           View all certified projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Section 5b: Community Faces ─── -->
+  <section class="py-24 lg:py-32 overflow-hidden">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          The people behind the Standard
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Practitioners, leaders, and{' '}
+          <em class="italic font-normal text-seam-600">changemakers</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
+          SEAM APs, member organizations, and community members building the social equity ecosystem in the built environment.
+        </p>
+      </div>
+
+      <div class="reveal-stagger flex flex-wrap justify-center gap-4 lg:gap-5 max-w-5xl mx-auto">
+        {[
+          { src: '/images/team/rainey-shane.png', name: 'Rainey Shane', role: 'Co-Founder' },
+          { src: '/images/team/alex-demestihas.png', name: 'Alex Demestihas', role: 'Co-Founder' },
+          { src: '/images/ap-alexandra-bull.jpg', name: 'Alexandra Bull', role: 'SEAM AP' },
+          { src: '/images/ap-christian-mayer.jpg', name: 'Christian Mayer', role: 'SEAM AP' },
+          { src: '/images/ap-melina-gorrebeeck.jpg', name: 'Melina Gorrebeeck', role: 'SEAM AP' },
+          { src: '/images/team/chris-pirschel.jpg', name: 'Chris Pirschel', role: 'CMO' },
+          { src: '/images/team/shane-gring.jpg', name: 'Shane Gring', role: 'COO' },
+        ].map((person) => (
+          <div class="reveal-child group relative">
+            <div class="w-20 h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden ring-2 ring-white shadow-[0_4px_16px_rgba(0,0,0,0.1)] transition-transform duration-300 group-hover:scale-110">
+              <img
+                src={person.src}
+                alt={person.name}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none text-center whitespace-nowrap">
+              <p class="text-[13px] font-medium text-warm-900">{person.name}</p>
+              <p class="text-[11px] text-warm-500">{person.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="reveal-fade-up mt-14 text-center">
+        <a
+          href="/directory"
+          class="inline-flex items-center rounded-full border border-warm-200 px-6 py-3 text-[15px] font-medium text-warm-700 hover:border-warm-400 hover:text-warm-900 transition-colors duration-300"
+        >
+          Browse the full directory
+          <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
         </a>
       </div>
     </div>
@@ -506,7 +545,7 @@ const jsonLd = [
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
               {resource.title}
             </h3>
-            <p class="text-[15px] leading-relaxed text-warm-500 mb-8">
+            <p class="text-[15px] leading-relaxed text-warm-600 mb-8">
               {resource.description}
             </p>
             <span class="text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
@@ -518,7 +557,59 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ─── Section 7: CTA ─── -->
+  <!-- ─── Section 7: Recent Articles ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">
+          Blog &amp; Insights
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          From the field,
+          <em class="italic font-normal text-seam-600">for the field</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-8">
+        {recentPosts.map((post) => (
+          <a
+            href={`/resources/blog/${post.slug}`}
+            class="reveal-child group rounded-2xl overflow-hidden bg-white border border-warm-100 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-warm-200"
+          >
+            {post.image && (
+              <div class="aspect-[16/9] overflow-hidden">
+                <img
+                  src={post.image.src}
+                  alt={post.image.alt}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            )}
+            <div class="p-6 lg:p-8">
+              <p class="text-[12px] font-medium uppercase tracking-[0.12em] text-seam-600 mb-3">{post.category}</p>
+              <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 leading-snug group-hover:text-seam-700 transition-colors">
+                {post.title}
+              </h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-warm-500 line-clamp-2">{post.excerpt}</p>
+              <div class="mt-4 flex items-center gap-2 text-[13px] text-warm-400">
+                <span>{post.author.name}</span>
+                <span>&middot;</span>
+                <span>{post.readTime}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a href="/resources/blog" class="inline-flex items-center rounded-full border border-warm-200 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-300 hover:text-warm-900 transition-colors duration-300">
+          View all articles &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Section 8: CTA ─── -->
   <section class="py-24 lg:py-32 bg-warm-900">
     <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
       <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
@@ -560,7 +651,7 @@ const jsonLd = [
       const mobilePanels = document.querySelectorAll<HTMLElement>('.hotspot-mobile-panel')
 
       let hovered: string | null = null
-      let locked: string | null = null
+      let locked: string | null = '1'
 
       function getActive(): string | null {
         return locked ?? hovered

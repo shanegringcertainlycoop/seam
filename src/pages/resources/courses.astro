@@ -1,0 +1,257 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../../lib/seo-helpers'
+
+const courses = [
+  {
+    title: 'CRE Familiarization Course',
+    format: 'Self-paced',
+    description: 'An introduction to commercial real estate (CRE) fundamentals designed for professionals seeking to understand the industry and prepare for the Foundations: Social Equity in the Built Environment course, with no prior CRE background required.',
+  },
+  {
+    title: 'Foundations: Social Equity in the Built Environment',
+    format: 'Self-paced',
+    price: '$129',
+    description: 'This training is designed to provide the knowledge and tools you need to apply social equity principles to real-world projects. It\u2019s self-paced, allowing you to learn on your schedule.',
+  },
+]
+
+const webinars = [
+  {
+    title: 'Introducing SEAM Approved Marks & Endorsements',
+    date: 'Thu, May 28 · 12:00 PM – 1:00 PM EDT',
+    description: 'A special event introducing the SEAM Approved Marks and Endorsements program.',
+    recurring: false,
+    rsvp: 'https://community.seamcertification.org/events/introducing-seam-approved-marks-endorsements?instance_index=20260528T160000Z',
+  },
+  {
+    title: 'SEAM Certification Coaching Call',
+    date: 'Every Thursday · 12:00 PM ET',
+    description: 'A weekly coaching call for teams actively pursuing SEAM Certification. Get guidance on documentation, implementation, and the review process.',
+    recurring: true,
+    rsvp: 'https://community.seamcertification.org/spaces/17584816/events/seam-certification-coaching-call/list',
+  },
+  {
+    title: 'Monthly Member Meetup',
+    date: 'Every 2nd Tuesday · 1:00 PM – 2:00 PM EST',
+    description: 'A recurring members-only session to connect, share progress, and learn from fellow practitioners working on SEAM projects.',
+    recurring: true,
+  },
+]
+
+const advisoryCalls = [
+  {
+    title: 'SEAM Technical Advisory Group',
+    date: 'Monthly — schedule TBA',
+    description: 'A monthly meeting for Technical Advisory Group members to review Standard updates, discuss implementation challenges, and shape the future of the SEAM framework.',
+  },
+]
+
+const jsonLd = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Resources', path: '/resources/blog' },
+  { name: 'Courses & Webinars', path: '/resources/courses' },
+]) as unknown as Record<string, unknown>
+---
+
+<SiteLayout
+  title="Courses & Webinars — Learn Social Equity at Your Own Pace"
+  description="Free and open courses on the SEAM Standard, certification process, and social equity in the built environment. Plus live webinars with practitioners."
+  path="/resources/courses"
+  jsonLd={jsonLd}
+>
+
+  <!-- ─── Hero ─── -->
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
+      <div class="hero-enter max-w-3xl">
+        <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+          Courses & Webinars
+        </span>
+        <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          Learn social equity{' '}
+          <em class="font-display italic font-normal text-seam-300">
+            at your own pace
+          </em>
+        </h1>
+        <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+          Free courses, live webinars, and practitioner-led sessions to help you understand the SEAM Standard and put it into practice.
+        </p>
+        <div class="hero-cta mt-10 flex flex-wrap gap-4">
+          <a
+            href="#courses"
+            class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+          >
+            Browse courses
+          </a>
+          <a
+            href="#webinars"
+            class="inline-flex items-center rounded-full border border-white/30 px-8 py-4 text-[16px] font-medium text-white hover:border-white/60 hover:bg-white/[0.04] transition-colors duration-300"
+          >
+            Upcoming webinars
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Courses ─── -->
+  <section id="courses" class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Self-paced courses
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Go deep on{' '}
+          <em class="italic font-normal text-seam-600">what matters</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
+          Structured learning for every level — from your first introduction to the Standard through advanced exam preparation.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8">
+        {courses.map((course) => (
+          <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-medium text-seam-700">
+                {course.format}
+              </span>
+              {course.price && (
+                <span class="inline-flex items-center rounded-full bg-gold-50 border border-gold-200 px-3 py-1 text-[12px] font-medium text-gold-700">
+                  {course.price}
+                </span>
+              )}
+            </div>
+            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
+              {course.title}
+            </h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">
+              {course.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Webinars ─── -->
+  <section id="webinars" class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Live webinars
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Learn from{' '}
+          <em class="italic font-normal text-seam-600">practitioners</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
+          Live sessions with the people building, certifying, and operating SEAM projects. All webinars are free and include open Q&A.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8">
+        {webinars.map((webinar) => (
+          <div class="reveal-child rounded-2xl bg-white p-8 lg:p-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <div class="flex items-center gap-3 mb-5">
+              {webinar.recurring ? (
+                <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-medium text-seam-700">
+                  Recurring
+                </span>
+              ) : (
+                <span class="inline-flex items-center rounded-full bg-gold-50 border border-gold-200 px-3 py-1 text-[12px] font-medium text-gold-700">
+                  Special Event
+                </span>
+              )}
+            </div>
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
+              {webinar.title}
+            </h3>
+            <p class="text-[15px] leading-relaxed text-warm-600 mb-4">
+              {webinar.description}
+            </p>
+            <p class="text-[13px] font-medium text-seam-600">
+              {webinar.date}
+            </p>
+            {webinar.rsvp && (
+              <a
+                href={webinar.rsvp}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center rounded-full bg-warm-900 px-6 py-3 text-[14px] font-medium text-white hover:bg-warm-800 transition-colors duration-300 mt-6"
+              >
+                RSVP
+                <svg class="w-3.5 h-3.5 ml-2" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Advisory Calls ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Advisory
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Technical{' '}
+          <em class="italic font-normal text-seam-600">advisory group</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger max-w-2xl">
+        {advisoryCalls.map((call) => (
+          <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
+              {call.title}
+            </h3>
+            <p class="text-[15px] leading-relaxed text-warm-600 mb-4">
+              {call.description}
+            </p>
+            <p class="text-[13px] font-medium text-seam-600">
+              {call.date}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        Ready to go deeper?{' '}
+        <em class="italic font-normal text-seam-600">Start with the Standard.</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        Download the SEAM Standard for free, or join the community to access courses, webinars, and practitioner resources.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a
+          href="/resources/standard"
+          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+        >
+          Read the Standard
+        </a>
+        <a
+          href="/community"
+          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+        >
+          Join the community
+        </a>
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>

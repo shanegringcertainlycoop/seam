@@ -44,6 +44,18 @@
   --color-sage: #DFECE2;
 }
 
+/* ─── Left-aligned heading line break before italic em ─── */
+
+h1 > em,
+h2 > em {
+  display: block;
+}
+
+.text-center h1 > em,
+.text-center h2 > em {
+  display: inline;
+}
+
 /* ─── Scroll Reveal Animations ─── */
 
 .reveal-fade-up {
@@ -135,6 +147,54 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ─── Approved: burst ripple — fast rings that shoot outward and fade ─── */
+@keyframes approvedRipple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+.approved-ripple {
+  animation: approvedRipple 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes approvedGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+.approved-glow {
+  animation: approvedGlow 3s ease-in-out infinite;
+}
+
+/* ─── AP Credential: breathing orbits — slow expand/contract rings ─── */
+@keyframes apOrbit {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.3;
+  }
+}
+.ap-orbit {
+  animation: apOrbit 4s ease-in-out infinite;
+}
+@keyframes apBreathe {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+}
+.ap-breathe {
+  animation: apBreathe 5s ease-in-out infinite;
 }
 
 /* Parallax-like slow drift for hero image */
@@ -241,6 +301,19 @@
   opacity: 1 !important;
   transform: none !important;
   animation: none !important;
+}
+
+/* ─── Blog Prose Links ─── */
+
+.prose-seam a {
+  color: var(--color-seam-600);
+  text-decoration: underline;
+  text-decoration-color: var(--color-warm-300);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.2s;
+}
+.prose-seam a:hover {
+  text-decoration-color: var(--color-seam-600);
 }
 
 /* ─── Accessibility: Focus Visible ─── */

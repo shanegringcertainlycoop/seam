@@ -22,6 +22,7 @@ interface Props {
     section: string
   }
   jsonLd?: Record<string, unknown> | Record<string, unknown>[]
+  citationDate?: string
 }
 
 const {
@@ -32,7 +33,11 @@ const {
   type = 'website',
   article,
   jsonLd,
+  citationDate,
 } = Astro.props
+
+const citationAuthor = article?.author || 'SEAM, Inc.'
+const resolvedCitationDate = citationDate || article?.publishedTime || '2026'
 
 const fullTitle = title
   ? `${title} | ${SITE_NAME}`
@@ -55,9 +60,9 @@ const url = `${SITE_URL}${path}`
     <meta name="author" content="SEAM, Inc." />
 
     <!-- GEO: Generative Engine Optimization -->
-    <meta name="citation_title" content="SEAM — Social Equity Certification for the Built Environment" />
-    <meta name="citation_author" content="SEAM, Inc." />
-    <meta name="citation_date" content="2024" />
+    <meta name="citation_title" content={fullTitle} />
+    <meta name="citation_author" content={citationAuthor} />
+    <meta name="citation_date" content={resolvedCitationDate} />
     <meta name="speakable" content="true" />
     <meta name="geo.region" content="US" />
     <meta name="geo.placename" content="United States" />
@@ -94,9 +99,11 @@ const url = `${SITE_URL}${path}`
       "name": "SEAM",
       "legalName": "SEAM, Inc.",
       "url": SITE_URL,
-      "description": "SEAM is the first certification system built to measure social equity in the built environment. The SEAM Standard evaluates buildings across four pillars: Health + Wellness, Economic Equity, Accessibility + Inclusion, and Community + Culture.",
+      "description": "SEAM is the first certification system built to measure social equity in the built environment. The SEAM Standard evaluates buildings across four pillars: Social Impact, Social Responsibility, Social Justice, and Social Accountability.",
       "foundingDate": "2024",
-      "sameAs": [],
+      "sameAs": [
+        "https://www.linkedin.com/company/seaminc"
+      ],
       "knowsAbout": [
         "Social equity certification", "Built environment", "ESG real estate",
         "GRESB alignment", "Social sustainability", "DEI in real estate",

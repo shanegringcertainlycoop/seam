@@ -141,22 +141,16 @@ const faqs = [
   },
   {
     q: 'How much does it cost?',
-    a: 'Pricing is per activity. Community members receive discounted verification fees. Volume pricing is available for organizations verifying multiple activities or rolling out Approved across a portfolio.',
+    a: 'Pricing is per activity. <a href="/community" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Community members</a> receive discounted verification fees. Volume pricing is available for organizations verifying multiple activities or rolling out Approved across a portfolio. See <a href="/pricing" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">pricing details</a>.',
   },
   {
     q: 'Do we need a SEAM AP for activity verification?',
-    a: 'No. A SEAM AP is not required for SEAM Approved submissions. However, working with an AP can strengthen your documentation and increase the likelihood of first-submission approval.',
+    a: 'No. A <a href="/ap-credential" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM AP</a> is not required for SEAM Approved submissions. However, working with an AP can strengthen your documentation and increase the likelihood of first-submission approval.',
   },
   {
     q: 'How long does the credential last?',
     a: 'SEAM Approved credentials are valid for three years. Renewal requires updated documentation demonstrating that the verified activity remains in practice.',
   },
-]
-
-const statsBarItems = [
-  { target: 9, suffix: '', label: 'Approved Marks' },
-  { target: 4, suffix: '', label: 'Pillar categories' },
-  { target: 1, suffix: '', label: 'Mark at a time' },
 ]
 
 const barHeights = [14, 10, 16, 8, 18, 12]
@@ -174,8 +168,8 @@ const jsonLd = [
 ---
 
 <SiteLayout
-  title="SEAM Approved"
-  description="SEAM Approved Marks verify individual SEAM activities without requiring full project certification. Each Mark stands on its own as a recognized achievement and counts toward full certification."
+  title="SEAM Approved — Activity-Level Equity Verification"
+  description="Verify individual social equity practices without full certification. Each SEAM Approved Mark counts toward full certification."
   path="/approved"
   jsonLd={jsonLd}
 >
@@ -198,7 +192,7 @@ const jsonLd = [
             </em>
           </h1>
           <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            SEAM Approved Marks verify individual SEAM activities without requiring full project certification. Each Approved Mark stands on its own as a recognized achievement, and each one can count toward full certification if you choose to pursue it.
+            SEAM Approved Marks verify individual activities from the <a href="/resources/standard" class="underline decoration-white/30 hover:decoration-white/60 transition-colors">SEAM Standard</a> without requiring full <a href="/certification" class="underline decoration-white/30 hover:decoration-white/60 transition-colors">project certification</a>. Each Approved Mark stands on its own as a recognized achievement, and each one can count toward full certification if you choose to pursue it.
           </p>
           <div class="hero-cta mt-10 flex flex-wrap gap-4">
             <a
@@ -212,44 +206,18 @@ const jsonLd = [
 
         <!-- SEAM Approved logo -->
         <div class="hidden lg:flex justify-center">
-          <div class="relative">
-            <div class="absolute inset-0 -m-8 rounded-full border border-seam-500/20 animate-[spin_30s_linear_infinite]"></div>
-            <div class="absolute inset-0 -m-16 rounded-full border border-seam-400/10 animate-[spin_45s_linear_infinite_reverse]"></div>
-            <div class="w-56 h-56 rounded-2xl bg-[#01313d] flex flex-col items-center justify-center shadow-2xl shadow-seam-900/40 p-8">
-              <div class="flex gap-1.5 mb-4">
-                {barHeights.map((h) => (
-                  <div class="w-1.5 bg-white/80 rounded-full" style={`height:${h}px`}></div>
-                ))}
-              </div>
-              <img src="/logos/approved-wordmark.png" alt="SEAM" class="w-36 object-contain brightness-0 invert mb-2" />
-              <span class="text-[18px] font-medium uppercase tracking-[0.08em] text-white">
-                Approved
-              </span>
-            </div>
+          <div class="relative w-56 h-56 flex items-center justify-center">
+            <!-- Burst ripple rings — fast outward pulse with gold tint -->
+            <div class="approved-ripple absolute inset-[-8px] rounded-full border-2 border-gold-400/40" style="animation-delay: 0s;"></div>
+            <div class="approved-ripple absolute inset-[-8px] rounded-full border-2 border-gold-400/30" style="animation-delay: 1s;"></div>
+            <div class="approved-ripple absolute inset-[-8px] rounded-full border-2 border-gold-400/20" style="animation-delay: 2s;"></div>
+            <div class="approved-ripple absolute inset-[-8px] rounded-full border border-seam-300/15" style="animation-delay: 0.5s;"></div>
+            <div class="approved-ripple absolute inset-[-8px] rounded-full border border-seam-300/10" style="animation-delay: 1.5s;"></div>
+            <!-- Warm glow behind mark -->
+            <div class="absolute inset-[-20px] rounded-full bg-gold-400/[0.06] approved-glow"></div>
+            <img src="/logos/approved-wordmark.png" alt="SEAM Approved" class="relative w-56 h-56 object-contain drop-shadow-2xl" />
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Stats Bar ─── -->
-  <section class="reveal-fade-up bg-warm-50 border-b border-warm-100">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-14">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {statsBarItems.map((s) => (
-          <div class="text-center">
-            <span
-              data-count-target={String(s.target)}
-              data-count-suffix={s.suffix}
-              class="block font-display text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] text-gold-500"
-            >
-              0{s.suffix}
-            </span>
-            <span class="block mt-1 text-[14px] text-warm-500 uppercase tracking-[0.08em]">
-              {s.label}
-            </span>
-          </div>
-        ))}
       </div>
     </div>
   </section>
@@ -258,7 +226,7 @@ const jsonLd = [
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
           How it works
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -272,7 +240,7 @@ const jsonLd = [
           <div
             class="reveal-child group rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
           >
-            <div class="text-gold-500 mb-6">
+            <div class="text-gold-600 mb-6">
               <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d={c.iconPath} />
               </svg>
@@ -280,7 +248,7 @@ const jsonLd = [
             <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
               {c.title}
             </h3>
-            <p class="text-[16px] leading-relaxed text-warm-500">
+            <p class="text-[16px] leading-relaxed text-warm-600">
               {c.description}
             </p>
           </div>
@@ -289,36 +257,19 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ─── ROI Placeholder ─── -->
-  <section class="reveal-fade-up py-24 lg:py-32">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-2xl mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
-          How it works
-        </p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          ROI
-        </h2>
-      </div>
-      <div class="rounded-2xl bg-warm-100 border-2 border-dashed border-warm-300 h-64 flex items-center justify-center">
-        <p class="text-warm-400 text-[17px]">ROI data section — coming soon</p>
-      </div>
-    </div>
-  </section>
-
   <!-- ─── Approved Marks ─── -->
   <section id="marks" class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
           Available Approved Marks
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Turn your work into{' '}
           <em class="italic font-normal text-seam-600">recognized progress</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-500 max-w-xl">
-          Pick from the following list of SEAM Approved Marks. Each is verified to earn credit toward full certification if you choose to pursue it.
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
+          Pick from the following list of SEAM Approved Marks. Each is verified to earn credit toward full <a href="/certification" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM Certification</a> if you choose to pursue it.
         </p>
       </div>
 
@@ -338,7 +289,7 @@ const jsonLd = [
             <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">
               {mark.title}
             </h3>
-            <p class="text-[15px] leading-relaxed text-warm-500">
+            <p class="text-[15px] leading-relaxed text-warm-600">
               {mark.description}
             </p>
           </div>
@@ -351,7 +302,7 @@ const jsonLd = [
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
           The process
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -385,7 +336,7 @@ const jsonLd = [
               <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">
                 {step.title}
               </h3>
-              <p class="text-[16px] leading-relaxed text-warm-500 max-w-2xl">
+              <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">
                 {step.description}
               </p>
             </div>
@@ -399,7 +350,7 @@ const jsonLd = [
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
           Who it serves
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -414,7 +365,7 @@ const jsonLd = [
             <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">
               {a.title}
             </h3>
-            <p class="text-[15px] leading-relaxed text-warm-500">
+            <p class="text-[15px] leading-relaxed text-warm-600">
               {a.description}
             </p>
           </div>
@@ -423,11 +374,120 @@ const jsonLd = [
     </div>
   </section>
 
+  <!-- ─── Pricing ─── -->
+  <section id="pricing" class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Pricing
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Simple, transparent{' '}
+          <em class="italic font-normal text-seam-600">pricing</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
+          Choose the option that fits your organization. Every verified activity earns credit toward full SEAM Certification.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+        <!-- Single Activity -->
+        <div class="reveal-child rounded-2xl border border-warm-100 bg-white p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-4">
+            Single Activity
+          </p>
+          <div class="flex items-baseline gap-1 mb-2">
+            <span class="font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.03em] text-warm-900">$750</span>
+          </div>
+          <p class="text-[15px] text-warm-500 mb-8">per activity verification</p>
+          <ul class="space-y-4 mb-10">
+            <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
+              <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              One SEAM Approved Mark
+            </li>
+            <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
+              <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              Third-party verification
+            </li>
+            <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
+              <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              Directory listing &amp; credential
+            </li>
+            <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
+              <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              Counts toward full certification
+            </li>
+          </ul>
+          <a
+            href="/get-started"
+            class="inline-flex items-center justify-center w-full rounded-full border-2 border-warm-900 px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-900 hover:text-white transition-colors duration-300"
+          >
+            Get started
+          </a>
+        </div>
+
+        <!-- Bundle -->
+        <div class="reveal-child relative rounded-2xl border-2 border-seam-500 bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+          <span class="absolute -top-3.5 left-8 inline-block rounded-full bg-seam-600 px-4 py-1 text-[12px] font-medium text-white tracking-wide uppercase">
+            Best value
+          </span>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-4">
+            Bundle
+          </p>
+          <div class="flex items-baseline gap-1 mb-2">
+            <span class="font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.03em] text-warm-900">$2,000</span>
+          </div>
+          <p class="text-[15px] text-warm-500 mb-8">3–5 thematic activities</p>
+          <ul class="space-y-4 mb-10">
+            <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
+              <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              3–5 related Approved Marks
+            </li>
+            <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
+              <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              Grouped by theme for deeper impact
+            </li>
+            <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
+              <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              Up to 60% savings vs. individual
+            </li>
+            <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
+              <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              Accelerated path to certification
+            </li>
+          </ul>
+          <a
+            href="/get-started"
+            class="inline-flex items-center justify-center w-full rounded-full bg-seam-600 px-8 py-4 text-[16px] font-medium text-white hover:bg-seam-700 transition-colors duration-300"
+          >
+            Get started with a bundle
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── Testimonial ─── -->
   <section class="py-24 lg:py-32 bg-warm-900">
     <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="max-w-4xl mx-auto text-center">
-        <svg class="mx-auto mb-8 w-12 h-12 text-warm-600" fill="currentColor" viewBox="0 0 24 24">
+        <svg class="mx-auto mb-8 w-12 h-12 text-warm-400" fill="currentColor" viewBox="0 0 24 24">
           <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
         </svg>
         <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
@@ -449,7 +509,7 @@ const jsonLd = [
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-start">
         <div>
           <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-500 mb-6">
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
               Frequently asked
             </p>
             <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
@@ -466,7 +526,7 @@ const jsonLd = [
                     {faq.q}
                   </span>
                   <svg
-                    class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45"
+                    class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="2"
@@ -476,7 +536,7 @@ const jsonLd = [
                   </svg>
                 </summary>
                 <div class="pb-6">
-                  <p class="text-[16px] leading-relaxed text-warm-500 max-w-2xl">
+                  <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">
                     {faq.a}
                   </p>
                 </div>

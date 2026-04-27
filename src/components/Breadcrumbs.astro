@@ -18,13 +18,13 @@ const { items, light = false } = Astro.props
       return (
         <li class="flex items-center gap-1.5">
           {i > 0 && (
-            <span class={light ? 'text-warm-500' : 'text-warm-400/60'}>/</span>
+            <span class={light ? 'text-warm-600' : 'text-warm-400/60'}>/</span>
           )}
           {isLast || !crumb.href ? (
             <span
               class={
                 light
-                  ? 'text-warm-500 font-medium'
+                  ? 'text-warm-600 font-medium'
                   : 'text-white/70 font-medium'
               }
             >
