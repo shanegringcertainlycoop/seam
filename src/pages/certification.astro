@@ -6,28 +6,18 @@ import { breadcrumbSchema } from '../lib/seo-helpers'
 
 const ratingSystems = [
   {
-    title: 'Buildings + Interiors:\nDevelopers',
+    title: 'Buildings + Interiors',
     description:
-      'For ground-up construction and major renovations. Evaluates social equity across design, procurement, supply chain, and community impact.',
-    audience: 'Developers, ownership groups, capital providers',
+      'For new construction, major renovations, and tenant fit-outs. Evaluates social equity across design, procurement, supply chain, and community impact.',
+    href: '/rating-system/buildings-interiors',
+    logo: '/logos/rating-bi.png',
   },
   {
-    title: 'Buildings + Interiors:\nOccupiers',
+    title: 'Operations + Maintenance',
     description:
-      'For tenants and property owners fitting out a space without landlord duties. Evaluates social equity in how the space is designed, sourced, and built.',
-    audience: 'Tenants, interior designers, fit-out contractors',
-  },
-  {
-    title: 'Operations + Maintenance:\nDevelopers',
-    description:
-      'For building owners acting as landlord. Evaluates governance, community engagement, labor standards, and human rights across ongoing operations.',
-    audience: 'Owners, asset managers, portfolio managers',
-  },
-  {
-    title: 'Operations + Maintenance:\nOccupiers',
-    description:
-      'For tenants managing day-to-day operations without landlord duties. Evaluates how procurement, staffing, and community relationships reflect ongoing social equity commitments.',
-    audience: 'Tenants, facility teams, property managers',
+      'For ongoing building management — whether you own or occupy. Evaluates governance, community engagement, labor standards, and human rights in day-to-day operations.',
+    href: '/rating-system/operations-maintenance',
+    logo: '/logos/rating-om.png',
   },
 ]
 
@@ -186,7 +176,7 @@ const jsonLd = breadcrumbSchema([
           <a href="/directory/project/the-jack" class="group block w-[320px] rounded-2xl bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] shadow-[0_8px_32px_rgba(0,0,0,0.15)] overflow-hidden transition-all duration-300 hover:bg-white/[0.1] hover:border-white/[0.2]">
             <div class="aspect-[16/10] overflow-hidden">
               <img
-                src="/images/directory/project/the-jack.avif"
+                src="/images/directory/the-jack.avif"
                 alt="The Jack — world's first SEAM Certified building"
                 class="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-300"
               />
@@ -474,7 +464,7 @@ const jsonLd = breadcrumbSchema([
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
-          Four rating systems
+          Two rating systems
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Choose the rating system that fits{' '}
@@ -482,19 +472,23 @@ const jsonLd = breadcrumbSchema([
         </h2>
       </div>
 
-      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
         {ratingSystems.map((t) => (
-          <div
+          <a
+            href={t.href}
             class="reveal-child group rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
           >
-            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4 whitespace-pre-line">
+            <img src={t.logo} alt="" class="w-14 h-14 object-contain mb-6" />
+            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors mb-4">
               {t.title}
             </h3>
             <p class="text-[16px] leading-relaxed text-warm-600 mb-6">
               {t.description}
             </p>
-            <span class="text-[14px] text-warm-600">{t.audience}</span>
-          </div>
+            <span class="text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
+              Learn more &rarr;
+            </span>
+          </a>
         ))}
       </div>
     </div>
