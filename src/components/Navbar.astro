@@ -140,15 +140,27 @@ const theStandard: NavGroup = {
 
 const resources: NavGroup = {
   label: 'Resources',
-  links: [
-    { label: 'Directory', href: '/directory', description: 'Browse certified projects, credentialed professionals, and verified activities.' },
-{ label: 'ROSSI Calculator', href: '/resources/rossi', description: 'Put a dollar figure on doing the right thing.' },
-    { label: 'Integrations', href: '/resources/integrations', description: 'How SEAM pairs with LEED, WELL, Fitwel, and the UN SDGs.' },
-    { label: 'Blog & Insights', href: '/resources/blog', description: 'Stories from the first wave of certified projects.' },
-    { label: 'Courses & Webinars', href: '/resources/courses', description: 'Learn social equity at your own pace. Free and open.' },
-    { label: 'FAQ', href: '/faq', description: 'Answers to the most common questions about SEAM.' },
-    { label: 'About SEAM', href: '/about', description: 'Our mission, team, and the story behind the Standard.' },
-    { label: 'Shop', href: 'https://seamstore.org/', description: 'Gear, merch, and resources from SEAM.', external: true },
+  links: [],
+  sections: [
+    {
+      heading: 'Learn',
+      links: [
+        { label: 'ROI of Social Equity', href: '/resources/roi', description: 'The financial case, backed by research.' },
+        { label: 'Courses & Webinars', href: '/resources/courses', description: 'Self-paced learning and live sessions.' },
+        { label: 'Blog & Insights', href: '/resources/blog', description: 'Stories from the field.' },
+        { label: 'Integrations', href: '/resources/integrations', description: 'LEED, WELL, Fitwel, and the UN SDGs.' },
+        { label: 'FAQ', href: '/faq', description: 'Common questions, answered.' },
+      ],
+    },
+    {
+      heading: 'Tools & More',
+      links: [
+        { label: 'ROSSI Calculator', href: '/resources/rossi', description: 'Quantify your social equity ROI.' },
+        { label: 'Directory', href: '/directory', description: 'Projects, professionals, and organizations.' },
+        { label: 'About SEAM', href: '/about', description: 'Our mission and team.' },
+        { label: 'Shop', href: 'https://seamstore.org/', description: 'Gear and merch.', external: true },
+      ],
+    },
   ],
 }
 

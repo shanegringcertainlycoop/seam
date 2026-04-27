@@ -1,0 +1,437 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { faqSchema, breadcrumbSchema } from '../../lib/seo-helpers'
+
+const headlineStats = [
+  { value: '39%', label: 'Diverse executive teams are 39% more likely to financially outperform their peers', source: 'McKinsey, 2023', href: 'https://www.mckinsey.com/featured-insights/diversity-and-inclusion/diversity-matters-even-more-the-case-for-holistic-impact' },
+  { value: '4–8%', label: 'Certified buildings command a 4–8% rent premium over non-certified peers', source: 'CBRE, 2024', href: 'https://www.cbre.com/insights/viewpoints/green-is-good-the-endurance-of-the-rent-premium-in-leed-certified-us-office-buildings' },
+  { value: '51%', label: 'Inclusive, high-engagement workplaces see 51% lower employee turnover', source: 'Gallup Q12 Meta-Analysis', href: 'https://www.gallup.com/workplace/321725/gallup-q12-meta-analysis-report.aspx' },
+  { value: '8.6%', label: 'Each point of tenant satisfaction lifts lease renewal likelihood by 8.6%', source: 'MIT Center for Real Estate', href: 'https://mitcre.mit.edu/' },
+]
+
+const pillars = [
+  {
+    id: 'outperformance',
+    tag: 'Financial performance',
+    title: 'Diverse, equitable organizations outperform their peers',
+    intro: 'This is not a hypothesis. It is a pattern confirmed across thousands of companies and a decade of longitudinal research.',
+    stats: [
+      { figure: '39%', context: 'Companies in the top quartile for gender diversity on executive teams are 39% more likely to financially outperform bottom-quartile peers. For ethnic diversity, the advantage is 27%.', source: 'McKinsey, Diversity Matters Even More, 2023', href: 'https://www.mckinsey.com/featured-insights/diversity-and-inclusion/diversity-matters-even-more-the-case-for-holistic-impact' },
+      { figure: '23%', context: 'Teams with high engagement — driven by inclusion, psychological safety, and equitable management — show 23% higher profitability and 17% higher productivity.', source: 'Gallup Q12 Meta-Analysis, 736 studies', href: 'https://www.gallup.com/workplace/321725/gallup-q12-meta-analysis-report.aspx' },
+      { figure: '10%', context: 'Inclusive workplaces generate 10% higher customer loyalty ratings, driven by employees who feel seen, supported, and empowered to serve.', source: 'Gallup Q12 Meta-Analysis', href: 'https://www.gallup.com/workplace/321725/gallup-q12-meta-analysis-report.aspx' },
+    ],
+    takeaway: 'Social equity is not a cost center. It is a performance multiplier that compounds across every business function.',
+  },
+  {
+    id: 'retention',
+    tag: 'Tenant retention',
+    title: 'Tenants stay longer in buildings that invest in people',
+    intro: 'Vacancy is the most expensive line item in commercial real estate. Every month a unit sits empty costs more than any equity program ever will.',
+    stats: [
+      { figure: '8.6%', context: 'For every one-point increase in tenant satisfaction (on a 1–5 scale), lease renewal likelihood improves by 8.6%. Social equity programs — community events, inclusive amenities, responsive management — move that score.', source: 'MIT Center for Real Estate', href: 'https://mitcre.mit.edu/' },
+      { figure: '54%', context: 'More than 54% of market-rate apartment renters renewed their leases in late 2024 — a 120 basis-point increase year-over-year. The buildings winning renewals are the ones investing in resident experience.', source: 'RealPage Market Analytics', href: 'https://heyrenew.com/blog/resident-retention-is-climbing' },
+      { figure: '12%', context: 'SEAM-certified assets in portfolio modeling show an average 12% tenant retention lift, translating directly to reduced vacancy costs and more predictable cash flows.', source: 'ROSSI Portfolio Modeling', href: '/resources/rossi' },
+    ],
+    takeaway: 'Every percentage point of retention you gain by investing in community is a percentage point of vacancy you never have to fill.',
+  },
+  {
+    id: 'risk',
+    tag: 'Risk reduction',
+    title: 'Social equity reduces risk across the entire asset lifecycle',
+    intro: 'Insurance underwriters, regulators, and investors are all converging on the same conclusion: unmanaged social risk is a material liability.',
+    stats: [
+      { figure: '23%', context: 'Portfolio-level ROSSI modeling shows a 23% risk reduction across certified assets — from lower insurance claims to reduced reputational exposure and regulatory friction.', source: 'ROSSI Portfolio Modeling', href: '/resources/rossi' },
+      { figure: '70%', context: 'More than 70% of corporate occupiers now include sustainability performance in site selection criteria. Buildings without verified social performance are increasingly excluded from consideration.', source: 'CBRE Occupier Sentiment Survey, 2024', href: 'https://www.cbre.com/insights/books/us-real-estate-market-outlook-2025/office-occupier' },
+      { figure: '$7T', context: 'GRESB now benchmarks over $7 trillion in global real estate assets. Investors are not asking whether to measure social performance — they are asking which buildings score highest.', source: 'GRESB, 2024', href: 'https://www.gresb.com/2024-real-estate-assessment-results/' },
+    ],
+    takeaway: 'The risk of doing nothing is no longer theoretical. It is measurable, and it is growing.',
+  },
+  {
+    id: 'value',
+    tag: 'Asset value',
+    title: 'Certified buildings command higher rents and sale prices',
+    intro: 'The market is not subtle about this. Certified assets trade at a premium. Uncertified assets are beginning to trade at a discount.',
+    stats: [
+      { figure: '4–8%', context: 'LEED-certified buildings earn a 4–8% rent premium over non-certified peers, after controlling for age, size, renovation, and location. The premium has held through post-pandemic market corrections.', source: 'CBRE, 2024', href: 'https://www.cbre.com/insights/viewpoints/green-is-good-the-endurance-of-the-rent-premium-in-leed-certified-us-office-buildings' },
+      { figure: '25.3%', context: 'Certified Class A urban office buildings command up to a 25.3% sales premium per square foot compared to uncertified equivalents.', source: 'CBRE Capital Markets', href: 'https://www.cbre.com/press-releases/leed-certified-office-buildings-command-higher-rents' },
+      { figure: '1% vs 27%', context: 'In major markets, the highest-quality building stock has vacancy rates as low as 1%, while the lowest-quality stock faces vacancy as high as 27%. Quality certifications are the dividing line.', source: 'JLL, 2024', href: 'https://www.jll.com/en-us/insights/the-next-frontier-for-green-building-certifications' },
+    ],
+    takeaway: 'Green certifications are becoming less of a differentiator and more of a requirement. Social certification is the next frontier.',
+  },
+  {
+    id: 'talent',
+    tag: 'Talent & productivity',
+    title: 'The buildings people choose to work in are the ones that value them',
+    intro: 'The war for talent moved from HR to real estate. Where your team works signals what you stand for.',
+    stats: [
+      { figure: '51%', context: 'Organizations with high engagement — built on inclusion, recognition, and equitable treatment — experience 51% lower turnover. In commercial real estate, that retention advantage flows from the building to its tenants.', source: 'Gallup Q12 Meta-Analysis, 736 studies', href: 'https://www.gallup.com/workplace/321725/gallup-q12-meta-analysis-report.aspx' },
+      { figure: '17%', context: 'Highly engaged, equitably managed teams deliver 17% higher productivity. Buildings that foster these conditions through design, programming, and operations become talent magnets.', source: 'Gallup Q12 Meta-Analysis', href: 'https://www.gallup.com/workplace/321725/gallup-q12-meta-analysis-report.aspx' },
+      { figure: '2x', context: 'The business case for diversity has more than doubled in a decade: from 15% outperformance likelihood in 2015 to 39% in 2023. The trajectory is accelerating, not flattening.', source: 'McKinsey Diversity Reports, 2015–2023', href: 'https://www.mckinsey.com/featured-insights/diversity-and-inclusion/diversity-matters-even-more-the-case-for-holistic-impact' },
+    ],
+    takeaway: 'Buildings designed for equity attract the people every organization is competing for.',
+  },
+]
+
+const faqs = [
+  { q: 'Is social equity really a financial driver, or just a cost?', a: 'The evidence is unambiguous. McKinsey\'s longitudinal research across thousands of companies shows that diverse, equitable organizations financially outperform their peers by 27–39%. Gallup\'s meta-analysis of 736 studies confirms 23% higher profitability and 51% lower turnover in high-engagement environments. These are not correlations — they are patterns that have strengthened over a decade of measurement.' },
+  { q: 'How do certified buildings financially outperform?', a: 'Certified buildings command 4–8% rent premiums (CBRE, 2024), up to 25.3% sales premiums for Class A assets, and dramatically lower vacancy rates. When you add tenant retention lifts of 8–12% and insurance risk reductions of up to 23%, the financial case compounds across every line item.' },
+  { q: 'Is this just greenwashing with a social label?', a: 'SEAM certification requires third-party verification across 21 objectives spanning four pillars. Every claim is measured, documented, and independently reviewed. The ROSSI Calculator uses peer-reviewed research from 2019–2024 extending the NYU Stern ROSI methodology. This is audited performance, not marketing language.' },
+  { q: 'What if our market does not demand social certification yet?', a: 'In 2015, green certification was optional. Today, 70% of corporate occupiers include sustainability in site selection. Social certification is on the same trajectory — early movers gain premium positioning, late movers pay to catch up. GRESB now benchmarks $7 trillion in assets, and social indicators are expanding every year.' },
+  { q: 'How do I make this case to my investment committee?', a: 'The ROSSI Calculator translates social equity outcomes into the four financial dimensions investment committees understand: tenant retention value, insurance risk reduction, operating cost impact, and ESG scoring improvement. It generates presentation-ready outputs in less than 20 questions.' },
+  { q: 'Can social equity coexist with cost discipline?', a: 'Social equity programs are not necessarily expensive — many involve operational changes, not capital expenditure. Local procurement, inclusive hiring, community programming, and accessible design are efficiency strategies that also happen to drive equity. ROSSI models the cost-benefit so you can invest where the returns are highest.' },
+]
+
+const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
+
+const jsonLd = [
+  faqSchema(faqItems),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Resources', path: '/resources/blog' },
+    { name: 'ROI of Social Equity', path: '/resources/roi' },
+  ]),
+]
+---
+<SiteLayout
+  title="The ROI of Social Equity in the Built Environment"
+  description="The financial case for social equity in commercial real estate is settled. Research from McKinsey, Gallup, CBRE, GRESB, and MIT shows that equitable buildings outperform, retain tenants longer, and command premium valuations."
+  path="/resources/roi"
+  jsonLd={jsonLd}
+>
+
+  <!-- ─── Hero ─── -->
+  <section class="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
+      <div class="hero-enter max-w-4xl">
+        <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+          The Business Case
+        </span>
+        <h1 class="hero-title font-display text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          Social equity isn't charity.{' '}
+          <br class="hidden lg:block" />
+          <em class="font-display italic font-normal text-seam-300">
+            It's competitive advantage.
+          </em>
+        </h1>
+        <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.1rem,1.5vw,1.3rem)] leading-relaxed text-warm-300">
+          The doubters aren't wrong to ask for evidence. They're wrong to ignore it. A decade of research across thousands of companies and millions of square feet tells the same story: buildings and organizations that invest in social equity outperform the ones that don't.
+        </p>
+        <div class="hero-cta mt-10 flex flex-wrap gap-4">
+          <a
+            href="#evidence"
+            class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+          >
+            See the evidence
+          </a>
+          <a
+            href="/resources/rossi"
+            class="inline-flex items-center rounded-full border border-white/30 px-8 py-4 text-[16px] font-medium text-white hover:border-white/60 hover:bg-white/[0.04] transition-colors duration-300"
+          >
+            Calculate your ROI
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Stats Marquee ─── -->
+  <section class="reveal-fade-up bg-warm-50 border-b border-warm-100">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        {headlineStats.map((s) => (
+          <div class="text-center lg:text-left">
+            <span class="block font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.04em] text-seam-700">{s.value}</span>
+            <p class="mt-2 text-[15px] leading-snug text-warm-700">{s.label}</p>
+            <a href={s.href} target={s.href.startsWith('/') ? undefined : '_blank'} rel={s.href.startsWith('/') ? undefined : 'noopener noreferrer'} class="inline-flex items-center gap-1 mt-2 text-[12px] text-seam-600 hover:text-seam-700 uppercase tracking-[0.08em] transition-colors">
+              {s.source}
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── The Skeptic's Question ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Addressing the doubt</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            "Show me the{' '}<em class="italic font-normal text-seam-600">numbers."</em>
+          </h2>
+        </div>
+        <div class="reveal-fade-up space-y-6">
+          <p class="text-[17px] leading-relaxed text-warm-600">
+            Every board, investment committee, and underwriting desk asks the same question: does this pencil out? For decades, social equity advocates answered with conviction. Now they can answer with data.
+          </p>
+          <p class="text-[17px] leading-relaxed text-warm-600">
+            The research below is drawn from McKinsey, Gallup, CBRE, JLL, MIT, GRESB, and NYU Stern — not from advocacy organizations, but from the institutions that Wall Street, institutional investors, and Fortune 500 companies already trust.
+          </p>
+          <p class="text-[17px] leading-relaxed text-warm-700 font-medium">
+            We didn't cherry-pick the studies. The studies cherry-picked the conclusion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Evidence Pillars ─── -->
+  <div id="evidence">
+    {pillars.map((pillar, i) => (
+      <section id={pillar.id} class={`py-24 lg:py-32 ${i % 2 === 0 ? 'bg-warm-50' : ''}`}>
+        <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+
+          <!-- Pillar Header -->
+          <div class="reveal-slide-left max-w-3xl mb-16 lg:mb-20">
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{pillar.tag}</p>
+            <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+              {pillar.title}
+            </h2>
+            <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-2xl">
+              {pillar.intro}
+            </p>
+          </div>
+
+          <!-- Stat Cards -->
+          <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {pillar.stats.map((stat) => (
+              <div class={`reveal-child rounded-2xl ${i % 2 === 0 ? 'bg-white' : 'border border-warm-100'} p-8 lg:p-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]`}>
+                <span class="block font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.04em] text-seam-700 mb-4">{stat.figure}</span>
+                <p class="text-[15px] leading-relaxed text-warm-700 mb-4">{stat.context}</p>
+                <a href={stat.href} target={stat.href.startsWith('/') ? undefined : '_blank'} rel={stat.href.startsWith('/') ? undefined : 'noopener noreferrer'} class="inline-flex items-center gap-1 text-[12px] text-seam-600 hover:text-seam-700 uppercase tracking-[0.06em] border-t border-warm-100 pt-4 transition-colors">
+                  {stat.source}
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <!-- Takeaway -->
+          <div class="reveal-fade-up mt-12 max-w-3xl">
+            <p class="text-[18px] lg:text-[20px] leading-relaxed text-warm-800 font-medium border-l-4 border-seam-500 pl-6">
+              {pillar.takeaway}
+            </p>
+          </div>
+
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- ─── Research Methodology ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-400 mb-6">Sources</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
+          Not our research.{' '}<em class="italic font-normal text-seam-300">Theirs.</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-xl">
+          Every claim on this page is sourced from peer-reviewed research, industry benchmarks, and institutional analysis. These are the organizations the market already trusts.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://www.mckinsey.com/featured-insights/diversity-and-inclusion/diversity-matters-even-more-the-case-for-holistic-impact" target="_blank" rel="noopener noreferrer" class="reveal-child group rounded-2xl bg-warm-800/50 border border-warm-700/40 p-8 lg:p-10 transition-all duration-300 hover:border-seam-500/40 hover:bg-warm-800/70">
+          <p class="font-display text-[22px] tracking-[-0.02em] text-white mb-2">McKinsey & Company</p>
+          <p class="text-[14px] text-warm-400 mb-4">"Diversity Matters Even More" series, 2015–2023</p>
+          <p class="text-[15px] leading-relaxed text-warm-300 mb-4">Longitudinal research across thousands of companies showing 27–39% greater likelihood of financial outperformance for diverse leadership teams.</p>
+          <span class="inline-flex items-center gap-1 text-[13px] text-seam-400 group-hover:text-seam-300 transition-colors">
+            Read the report
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+          </span>
+        </a>
+        <a href="https://www.gallup.com/workplace/321725/gallup-q12-meta-analysis-report.aspx" target="_blank" rel="noopener noreferrer" class="reveal-child group rounded-2xl bg-warm-800/50 border border-warm-700/40 p-8 lg:p-10 transition-all duration-300 hover:border-seam-500/40 hover:bg-warm-800/70">
+          <p class="font-display text-[22px] tracking-[-0.02em] text-white mb-2">Gallup</p>
+          <p class="text-[14px] text-warm-400 mb-4">Q12 Meta-Analysis, 11th Edition — 736 studies</p>
+          <p class="text-[15px] leading-relaxed text-warm-300 mb-4">23% higher profitability, 17% higher productivity, 51% lower turnover, and 10% higher customer loyalty in high-engagement workplaces.</p>
+          <span class="inline-flex items-center gap-1 text-[13px] text-seam-400 group-hover:text-seam-300 transition-colors">
+            Read the report
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+          </span>
+        </a>
+        <a href="https://www.cbre.com/insights/viewpoints/green-is-good-the-endurance-of-the-rent-premium-in-leed-certified-us-office-buildings" target="_blank" rel="noopener noreferrer" class="reveal-child group rounded-2xl bg-warm-800/50 border border-warm-700/40 p-8 lg:p-10 transition-all duration-300 hover:border-seam-500/40 hover:bg-warm-800/70">
+          <p class="font-display text-[22px] tracking-[-0.02em] text-white mb-2">CBRE</p>
+          <p class="text-[14px] text-warm-400 mb-4">Capital Markets & Occupier Research, 2024</p>
+          <p class="text-[15px] leading-relaxed text-warm-300 mb-4">4–8% rent premiums and up to 25.3% sales premiums for certified buildings. 70%+ of occupiers include sustainability in site selection.</p>
+          <span class="inline-flex items-center gap-1 text-[13px] text-seam-400 group-hover:text-seam-300 transition-colors">
+            Read the report
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+          </span>
+        </a>
+        <a href="https://www.gresb.com/2024-real-estate-assessment-results/" target="_blank" rel="noopener noreferrer" class="reveal-child group rounded-2xl bg-warm-800/50 border border-warm-700/40 p-8 lg:p-10 transition-all duration-300 hover:border-seam-500/40 hover:bg-warm-800/70">
+          <p class="font-display text-[22px] tracking-[-0.02em] text-white mb-2">GRESB</p>
+          <p class="text-[14px] text-warm-400 mb-4">Global Real Estate Sustainability Benchmark, 2024</p>
+          <p class="text-[15px] leading-relaxed text-warm-300 mb-4">Benchmarks $7 trillion in global real estate assets. Social performance indicators are expanding annually as investor demand grows.</p>
+          <span class="inline-flex items-center gap-1 text-[13px] text-seam-400 group-hover:text-seam-300 transition-colors">
+            View assessment results
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+          </span>
+        </a>
+        <a href="https://mitcre.mit.edu/" target="_blank" rel="noopener noreferrer" class="reveal-child group rounded-2xl bg-warm-800/50 border border-warm-700/40 p-8 lg:p-10 transition-all duration-300 hover:border-seam-500/40 hover:bg-warm-800/70">
+          <p class="font-display text-[22px] tracking-[-0.02em] text-white mb-2">MIT Center for Real Estate</p>
+          <p class="text-[14px] text-warm-400 mb-4">Tenant Satisfaction & Renewal Research</p>
+          <p class="text-[15px] leading-relaxed text-warm-300 mb-4">Every one-point increase in tenant satisfaction improves renewal likelihood by 8.6%. Community investment moves that score.</p>
+          <span class="inline-flex items-center gap-1 text-[13px] text-seam-400 group-hover:text-seam-300 transition-colors">
+            Visit MIT CRE
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+          </span>
+        </a>
+        <a href="https://www.stern.nyu.edu/experience-stern/about/departments-centers-initiatives/centers-of-research/center-sustainable-business/research/return-sustainability-investment-rosi" target="_blank" rel="noopener noreferrer" class="reveal-child group rounded-2xl bg-warm-800/50 border border-warm-700/40 p-8 lg:p-10 transition-all duration-300 hover:border-seam-500/40 hover:bg-warm-800/70">
+          <p class="font-display text-[22px] tracking-[-0.02em] text-white mb-2">NYU Stern</p>
+          <p class="text-[14px] text-warm-400 mb-4">Center for Sustainable Business — ROSI&trade; Methodology</p>
+          <p class="text-[15px] leading-relaxed text-warm-300 mb-4">The academic foundation for translating sustainability strategies into financial returns. ROSSI extends this framework for social factors in the built environment.</p>
+          <span class="inline-flex items-center gap-1 text-[13px] text-seam-400 group-hover:text-seam-300 transition-colors">
+            Explore the methodology
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ROSSI CTA ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-scale rounded-3xl bg-gradient-to-br from-seam-900 to-warm-900 p-12 lg:p-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-400 mb-6">ROSSI Calculator</p>
+            <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-white">
+              Stop arguing.{' '}<em class="italic font-normal text-seam-300">Start modeling.</em>
+            </h2>
+            <p class="mt-6 text-[17px] leading-relaxed text-warm-300 max-w-lg">
+              The ROSSI Calculator translates these research findings into project-specific financial projections. Model tenant retention, insurance risk reduction, operating costs, and ESG scoring in less than 20 questions.
+            </p>
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a
+                href="/resources/rossi"
+                class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+              >
+                Calculate your ROSSI
+              </a>
+              <a
+                href="/community"
+                class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+              >
+                Free with membership
+              </a>
+            </div>
+          </div>
+          <div class="hidden lg:flex justify-center">
+            <div class="w-72 rounded-2xl bg-warm-800/50 border border-warm-700/50 p-8 backdrop-blur-sm">
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-[13px] text-warm-500">Retention lift</span>
+                  <span class="font-display text-[18px] text-seam-400">+12%</span>
+                </div>
+                <div class="h-2 rounded-full bg-warm-700/50 overflow-hidden">
+                  <div class="h-full w-3/4 rounded-full bg-seam-500/60"></div>
+                </div>
+              </div>
+              <div class="space-y-3 mt-6">
+                <div class="flex justify-between items-center">
+                  <span class="text-[13px] text-warm-500">Risk reduction</span>
+                  <span class="font-display text-[18px] text-seam-400">-23%</span>
+                </div>
+                <div class="h-2 rounded-full bg-warm-700/50 overflow-hidden">
+                  <div class="h-full w-4/5 rounded-full bg-seam-500/60"></div>
+                </div>
+              </div>
+              <div class="space-y-3 mt-6">
+                <div class="flex justify-between items-center">
+                  <span class="text-[13px] text-warm-500">ESG scoring</span>
+                  <span class="font-display text-[18px] text-seam-400">+15 pts</span>
+                </div>
+                <div class="h-2 rounded-full bg-warm-700/50 overflow-hidden">
+                  <div class="h-full w-2/3 rounded-full bg-seam-500/60"></div>
+                </div>
+              </div>
+              <div class="mt-8 pt-6 border-t border-warm-700/50">
+                <p class="text-[12px] text-warm-600 uppercase tracking-[0.08em]">Portfolio ROI</p>
+                <p class="mt-1 font-display text-[36px] tracking-[-0.04em] text-seam-400">+18.4%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Testimonial ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <svg class="mx-auto mb-8 w-12 h-12 text-warm-300" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+        </svg>
+        <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-warm-900">
+          ROSSI gave us a way to present social equity to our investment committee in the only language they respond to — returns. The portfolio model showed a twelve percent retention lift and a twenty-three percent risk reduction across certified assets.
+        </blockquote>
+        <div class="mt-10">
+          <p class="text-[16px] font-medium text-warm-900">Sarah Kowalski</p>
+          <p class="text-[14px] text-warm-500 mt-1">Head of ESG &middot; Northbridge Capital Advisors</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">For the skeptics</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Hard questions.{' '}<em class="italic font-normal text-seam-600">Straight answers.</em>
+        </h2>
+      </div>
+      <div class="max-w-3xl">
+        {faqs.map((faq) => (
+          <details class="group border-b border-warm-200">
+            <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none">
+              <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
+              <svg class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </summary>
+            <div class="overflow-hidden">
+              <p class="pb-6 text-[16px] leading-relaxed text-warm-600 max-w-2xl">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Final CTA ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        The evidence is in.{' '}
+        <em class="italic font-normal text-seam-300">The question is what you do with it.</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        Model the financial impact for your building or portfolio. Or keep wondering what the competition already knows.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a
+          href="/resources/rossi"
+          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+        >
+          Calculate your ROSSI
+        </a>
+        <a
+          href="/get-started"
+          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+        >
+          Start with SEAM
+        </a>
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>
