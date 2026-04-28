@@ -14,10 +14,10 @@ const {
 } = Astro.props
 
 const stats = [
-  { value: '39%', label: 'more likely to outperform', detail: 'Diverse executive teams', source: 'McKinsey, 2023' },
-  { value: '4–8%', label: 'rent premium', detail: 'Certified buildings', source: 'CBRE, 2024' },
-  { value: '51%', label: 'lower turnover', detail: 'Inclusive workplaces', source: 'Gallup Q12' },
-  { value: '23%', label: 'risk reduction', detail: 'Certified asset portfolios', source: 'ROSSI Modeling' },
+  { value: '39%', label: 'more likely to outperform', detail: 'Diverse executive teams', source: 'McKinsey, 2023', logo: '/logos/mckinsey.svg' },
+  { value: '4–8%', label: 'rent premium', detail: 'Certified buildings', source: 'CBRE, 2024', logo: '/logos/cbre.svg' },
+  { value: '51%', label: 'lower turnover', detail: 'Inclusive workplaces', source: 'Gallup Q12', logo: '/logos/gallup.svg' },
+  { value: '23%', label: 'risk reduction', detail: 'Certified asset portfolios', source: 'ROSSI Modeling', logo: '/logos/seam-wordmark.png' },
 ]
 ---
 
@@ -39,6 +39,7 @@ const stats = [
     <div class="reveal-stagger grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
       {stats.map((s) => (
         <div class={`reveal-child rounded-2xl p-8 ${dark ? 'bg-warm-800/50 border border-warm-700/40' : 'border border-warm-100'}`}>
+          <img src={s.logo} alt="" class={`h-4 object-contain mb-3 ${dark ? 'opacity-40 brightness-200' : 'opacity-40 grayscale'}`} />
           <p class={`text-[13px] mb-1 ${dark ? 'text-warm-400' : 'text-warm-500'}`}>{s.detail}</p>
           <span class={`block font-display text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] leading-none ${dark ? 'text-seam-400' : 'text-seam-700'}`}>
             {s.value}
