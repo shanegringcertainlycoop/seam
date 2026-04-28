@@ -142,6 +142,13 @@ const url = `${SITE_URL}${path}`
   <body>
     <div class="min-h-screen bg-white font-sans text-warm-700 antialiased">
       <a href="#main-content" class="skip-to-content">Skip to main content</a>
+      <!-- ─── Sitewide Promo Banner ─── -->
+      <div id="promo-banner" class="fixed top-0 left-0 right-0 z-[60] bg-seam-600 text-white text-center py-3 px-6">
+        <p class="text-[14px] font-medium">
+          Limited time: AP Credential Bundle now <span class="line-through opacity-75">$587</span> <strong>$389</strong> — save $198.
+          <a href="/ap-credential#pricing" class="underline underline-offset-2 ml-1 hover:opacity-80 transition-opacity">Get started &rarr;</a>
+        </p>
+      </div>
       <ScrollProgress />
       <Navbar />
       <main id="main-content">
@@ -153,5 +160,20 @@ const url = `${SITE_URL}${path}`
     <!-- Global scripts -->
     <script src="../scripts/reveal.ts"></script>
     <script src="../scripts/count-up.ts"></script>
+    <script>
+      function adjustNavForBanner() {
+        const banner = document.getElementById('promo-banner')
+        const nav = document.getElementById('main-nav')
+        if (banner && nav) {
+          const h = banner.offsetHeight
+          nav.style.top = h + 'px'
+          document.body.style.paddingTop = h + 'px'
+        }
+      }
+      document.addEventListener('astro:page-load', adjustNavForBanner)
+      if (document.readyState !== 'loading') adjustNavForBanner()
+      else document.addEventListener('DOMContentLoaded', adjustNavForBanner)
+      window.addEventListener('resize', adjustNavForBanner)
+    </script>
   </body>
 </html>

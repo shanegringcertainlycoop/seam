@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
+import BusinessCaseBanner from '../components/BusinessCaseBanner.astro'
 import { breadcrumbSchema } from '../lib/seo-helpers'
 
 /* ─── Data Arrays ─── */
@@ -107,12 +108,6 @@ const levelSubColors = ['text-gold-600', 'text-gold-600', 'text-seam-200', 'text
 const levelBodyColors = ['text-warm-600', 'text-warm-600', 'text-seam-100/80', 'text-seam-100/80']
 const levelBorderColors = ['border-seam-600/20', 'border-seam-600/20', 'border-seam-400/20', 'border-seam-400/20']
 
-const engagement = [
-  { target: 23, suffix: '%', label: 'higher profitability' },
-  { target: 17, suffix: '%', label: 'higher productivity' },
-  { target: 51, suffix: '%', label: 'lower employee turnover' },
-  { target: 10, suffix: '%', label: 'higher customer loyalty' },
-]
 
 
 const jsonLd = breadcrumbSchema([
@@ -208,95 +203,10 @@ const jsonLd = breadcrumbSchema([
   </section>
 
   <!-- ─── Business Case ─── -->
-  <section class="py-24 lg:py-32">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-slide-left max-w-2xl mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
-          The business case
-        </p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Equity impacts your bottom line.
-        </h2>
-      </div>
-
-      <!-- The Gap -->
-      <div class="reveal-fade-up grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <div class="rounded-2xl bg-warm-900 p-10 lg:p-12">
-          <div class="flex items-baseline gap-3 mb-4">
-            <span class="font-display text-[clamp(3rem,6vw,5rem)] tracking-[-0.04em] text-white leading-none">
-              93%
-            </span>
-            <span class="font-display text-[clamp(3rem,6vw,5rem)] tracking-[-0.04em] text-warm-600 leading-none">
-              vs 8%
-            </span>
-          </div>
-          <p class="text-[17px] leading-relaxed text-warm-400 max-w-md">
-            of companies say they have a social value strategy in place — but only 8% can be considered market leaders in delivering measurable results.
-          </p>
-          <p class="mt-6 text-[13px] text-warm-600">
-            JLL Research &middot; 800+ senior decision makers &middot; 12 global markets
-          </p>
-        </div>
-
-        <div class="rounded-2xl bg-warm-50 p-10 lg:p-12 flex flex-col justify-between">
-          <div>
-            <span class="font-display text-[clamp(3rem,6vw,5rem)] tracking-[-0.04em] text-seam-600 leading-none block">
-              $6.7T
-            </span>
-            <p class="mt-4 text-[17px] leading-relaxed text-warm-600 max-w-md">
-              The potential addressable market for corporate social responsibility in America alone.
-            </p>
-          </div>
-          <p class="mt-6 text-[13px] text-warm-400">
-            JLL Research
-          </p>
-        </div>
-      </div>
-
-      <!-- Engagement Stats -->
-      <div class="reveal-fade-up rounded-2xl border border-warm-100 p-10 lg:p-12 mb-6">
-        <p class="text-[17px] text-warm-600 mb-10 max-w-xl">
-          Companies that put people first see measurable returns. Highly engaged organizations outperform their peers by:
-        </p>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {engagement.map((s) => (
-            <div class="text-center">
-              <span
-                data-count-target={String(s.target)}
-                data-count-suffix={s.suffix}
-                class="block font-display text-[clamp(2.5rem,5vw,4rem)] tracking-[-0.04em] text-seam-600"
-              >
-                0{s.suffix}
-              </span>
-              <span class="block mt-2 text-[14px] text-warm-600 uppercase tracking-[0.08em]">
-                {s.label}
-              </span>
-            </div>
-          ))}
-        </div>
-        <p class="mt-8 text-[13px] text-warm-400">
-          Gallup Q12 Meta-Analysis, 11th Edition &middot; 736 studies
-        </p>
-      </div>
-
-      <!-- McKinsey Closer -->
-      <div class="reveal-fade-up rounded-2xl bg-seam-900 p-10 lg:p-12">
-        <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 lg:gap-16 items-center">
-          <span class="font-display text-[clamp(3rem,6vw,5rem)] tracking-[-0.04em] text-white leading-none whitespace-nowrap">
-            +7pp
-          </span>
-          <div>
-            <p class="text-[17px] leading-relaxed text-seam-200 max-w-2xl">
-              Companies that combine strong ESG performance with revenue growth deliver 7 percentage points higher total shareholder return — and are more than twice as likely to achieve revenue growth above 10% annually.
-            </p>
-            <p class="mt-4 text-[13px] text-seam-400">
-              McKinsey &middot; 2,269 companies &middot; 2017–2021
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <BusinessCaseBanner
+    title="Equity impacts your bottom line."
+    summary="A decade of research confirms it — equitable organizations and certified buildings outperform their peers across every metric that matters."
+  />
 
   <!-- ─── The Four Pillars ─── -->
   <section class="py-24 lg:py-32 bg-warm-50">
