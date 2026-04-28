@@ -4,6 +4,7 @@ import { breadcrumbSchema } from '../../lib/seo-helpers'
 import {
   seamAPs,
   certifiedProjects,
+  memberOrgs,
   certificationLevels,
   ratingSystems,
 } from '../../data/directory'
@@ -15,16 +16,6 @@ const tabs: { key: Tab; label: string }[] = [
   { key: 'professionals', label: 'Professionals' },
   { key: 'organizations', label: 'Organizations' },
   { key: 'projects', label: 'Projects' },
-]
-
-interface MemberOrg {
-  name: string
-  tier: string
-  logo?: string
-}
-
-const memberOrgs: MemberOrg[] = [
-  // Add member organizations here
 ]
 
 const tabParam = new URL(Astro.request.url).searchParams.get('tab')
@@ -332,15 +323,16 @@ const inactivePillClass =
         {/* ── Organizations tab ── */}
         {activeTab === 'organizations' &&
           memberOrgs.map((org) => {
-            const searchText = [org.name, org.tier].join(' ').toLowerCase()
+            const searchText = [org.name, org.tier, org.description, ...org.sectors, org.location.city, org.location.state].join(' ').toLowerCase()
+            const tags = [org.tier, ...org.sectors].join('|')
             return (
               <div
                 data-directory-item
                 data-search-text={searchText}
-                data-tags=""
+                data-tags={tags}
                 class="group block rounded-2xl border border-warm-100 p-6 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
               >
-                <div class="flex items-center gap-4 mb-4">
+                <div class="flex items-start gap-4 mb-4">
                   <div class="w-14 h-14 rounded-xl bg-warm-50 shrink-0 overflow-hidden flex items-center justify-center">
                     {org.logo ? (
                       <img
@@ -358,10 +350,25 @@ const inactivePillClass =
                     <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 truncate">
                       {org.name}
                     </h3>
-                    <span class="inline-block rounded-full bg-gold-400/10 px-3 py-0.5 text-[12px] font-medium text-gold-600 mt-1">
-                      {org.tier}
-                    </span>
+                    <p class="text-[14px] text-warm-600 truncate">
+                      {[org.location.city, org.location.state].filter(Boolean).join(', ')}
+                    </p>
                   </div>
+                </div>
+                <p class="text-[14px] leading-relaxed text-warm-600 mb-4 line-clamp-3">
+                  {org.description}
+                </p>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class={`rounded-full px-3 py-1 text-[12px] font-medium ${
+                    org.tier === 'Founding Sponsor' ? 'bg-gold-400/10 text-gold-600' : 'bg-seam-50 text-seam-700'
+                  }`}>
+                    {org.tier}
+                  </span>
+                  {org.sectors.slice(0, 2).map((s) => (
+                    <span class="rounded-full bg-warm-50 px-3 py-1 text-[12px] text-warm-600">
+                      {s}
+                    </span>
+                  ))}
                 </div>
               </div>
             )

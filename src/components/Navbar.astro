@@ -299,15 +299,15 @@ function logoClass(_logo: string) {
                           </a>
                         </div>
                       </div>
-                      {/* Stacked cert badges */}
-                      <div class="flex items-center justify-center">
-                        <div class="flex flex-col -space-y-2">
-                          {['/logos/cert-platinum.png', '/logos/cert-gold.png', '/logos/cert-silver.png', '/logos/cert-bronze.png'].map((src, i) => (
+                      {/* Overlapping cert badges */}
+                      <div class="flex items-center justify-end -mr-4">
+                        <div class="flex items-center -space-x-14">
+                          {['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'].map((src, i) => (
                             <img
                               src={src}
                               alt=""
-                              class="w-16 h-16 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
-                              style={`position: relative; z-index: ${4 - i};`}
+                              class="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+                              style={`position: relative; z-index: ${i + 1}; width: ${100 + i * 16}px; height: ${100 + i * 16}px;`}
                             />
                           ))}
                         </div>

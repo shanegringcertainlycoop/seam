@@ -36,6 +36,17 @@ export interface CertifiedProject {
   blogPost?: string
 }
 
+export interface MemberOrg {
+  slug: string
+  name: string
+  logo?: string
+  tier: 'Founding Sponsor' | 'Member'
+  description: string
+  location: { city: string; state: string }
+  website?: string
+  sectors: string[]
+}
+
 export interface ApprovedActivity {
   slug: string
   name: string
@@ -284,6 +295,90 @@ export const seamAPs: SeamAP[] = [
     credentials: 'SEAM AP',
     dateCredentialed: '2025-11-18',
     projectsLed: 0,
+  },
+]
+
+/* ─── Member Organizations ─── */
+
+export const memberOrgs: MemberOrg[] = [
+  {
+    slug: 'jll',
+    name: 'JLL',
+    logo: '/logos/jll.png',
+    tier: 'Founding Sponsor',
+    description: 'A Fortune 500 global real estate services firm operating across 80+ countries. JLL was the first real estate company in the world to have a net-zero target validated by the Science Based Targets initiative and has committed to net-zero emissions from its own buildings by 2030.',
+    location: { city: 'Chicago', state: 'IL' },
+    website: 'https://www.jll.com',
+    sectors: ['Property Management', 'Investment Management', 'Sustainability Consulting'],
+  },
+  {
+    slug: 'jamestown',
+    name: 'Jamestown',
+    logo: '/logos/jamestown.png',
+    tier: 'Founding Sponsor',
+    description: 'A design-focused, vertically integrated real estate investment and management firm that has executed transactions totaling approximately $40 billion. Jamestown launched a formal sustainability program in 2008 and has committed to net-zero operational carbon by 2050.',
+    location: { city: 'Atlanta', state: 'GA' },
+    website: 'https://www.jamestownlp.com',
+    sectors: ['Real Estate Investment', 'Property Management', 'Mixed-Use Development'],
+  },
+  {
+    slug: 'hitt-contracting',
+    name: 'HITT Contracting',
+    logo: '/logos/hitt.png',
+    tier: 'Founding Sponsor',
+    description: 'One of the top 20 largest general contractors in the United States, founded in 1937. HITT is building a new 270,000 SF headquarters targeting LEED Platinum, net-zero energy, and net-zero carbon — with a 40,000 SF research lab in partnership with Virginia Tech.',
+    location: { city: 'Falls Church', state: 'VA' },
+    website: 'https://www.hitt.com',
+    sectors: ['Commercial Construction', 'Interior Fit-Out', 'Net-Zero Construction'],
+  },
+  {
+    slug: 'interface',
+    name: 'Interface',
+    logo: '/logos/interface.png',
+    tier: 'Founding Sponsor',
+    description: 'The world\'s largest manufacturer of modular carpet tile and a pioneer in corporate sustainability. In 1994, founder Ray Anderson launched "Mission Zero" to eliminate the company\'s negative environmental impact — Interface achieved carbon-neutral flooring across its entire product lifecycle.',
+    location: { city: 'Atlanta', state: 'GA' },
+    website: 'https://www.interface.com',
+    sectors: ['Flooring Manufacturing', 'Sustainable Materials', 'Carbon-Neutral Products'],
+  },
+  {
+    slug: 'leapley-construction',
+    name: 'Leapley Construction',
+    logo: '/logos/leapley.png',
+    tier: 'Founding Sponsor',
+    description: 'The largest female-owned interior contractor in Atlanta and a Top 5 Commercial Interior Contractor in the market. Leapley achieved 52% diverse supplier inclusion on the Microsoft Atlanta campus project and promotes construction material reuse through the Lifecycle Building Center.',
+    location: { city: 'Atlanta', state: 'GA' },
+    website: 'https://leapleyconstruction.com',
+    sectors: ['Commercial Interiors', 'Diverse Procurement', 'Tenant Improvement'],
+  },
+  {
+    slug: 'thm-advisors',
+    name: 'THM Advisors',
+    logo: '/logos/thm-advisors.svg',
+    tier: 'Member',
+    description: 'A certified Minority-Owned Business Enterprise that helps commercial real estate developers embed racial equity strategies into their operating models. THM designs career, community, contract, and capital strategies that promote equity and inclusion — including the DEI framework for Harvard\'s Enterprise Research Campus.',
+    location: { city: 'Boston', state: 'MA' },
+    website: 'https://www.thmcclory.com',
+    sectors: ['Equitable Development Advisory', 'DEI Strategy', 'Social Impact'],
+  },
+  {
+    slug: 'val-interiors',
+    name: 'Val Interiors',
+    logo: undefined,
+    tier: 'Member',
+    description: 'A commercial interiors firm contributing to social equity in the built environment through SEAM membership and sustainable interior construction practices.',
+    location: { city: '', state: '' },
+    sectors: ['Commercial Interiors'],
+  },
+  {
+    slug: 'brightworks-sustainability',
+    name: 'Brightworks Sustainability',
+    logo: '/logos/brightworks.svg',
+    tier: 'Member',
+    description: 'One of the most trusted sustainability consulting firms in the U.S., founded in 2001. Two-thirds of Brightworks\' 50+ team hold advanced degrees in engineering, architecture, and environmental policy. Their work spans LEED, WELL, Fitwel, and now SEAM certification consulting across 25+ industries.',
+    location: { city: 'Portland', state: 'OR' },
+    website: 'https://brightworks.net',
+    sectors: ['Sustainability Consulting', 'Green Building Certification', 'Healthy Buildings'],
   },
 ]
 

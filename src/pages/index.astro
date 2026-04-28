@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
+import BusinessCaseBanner from '../components/BusinessCaseBanner.astro'
 import { faqSchema, breadcrumbSchema } from '../lib/seo-helpers'
 import { certifiedProjects } from '../data/directory'
 import { posts } from '../data/blog'
@@ -59,13 +60,6 @@ const hotspots = [
 ]
 
 /* ─── Section 2b: Stats ─── */
-const stats = [
-  { value: 23, suffix: '%', label: 'higher profitability' },
-  { value: 17, suffix: '%', label: 'higher productivity' },
-  { value: 51, suffix: '%', label: 'lower employee turnover' },
-  { value: 10, suffix: '%', label: 'higher customer loyalty' },
-]
-
 /* ─── Section 3: Products ─── */
 const products = [
   {
@@ -328,31 +322,8 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ─── Section 2b: Stats ─── -->
-  <section class="reveal-fade-up pt-20 lg:pt-24 pb-px border-b border-warm-100">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <p class="text-[17px] text-warm-400 max-w-xl mb-10">
-        Businesses that prioritize improving human impact outperform their peers by:
-      </p>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-        {stats.map((s) => (
-          <div class="text-center">
-            <span
-              class="block font-display text-[clamp(2.5rem,5vw,4rem)] tracking-[-0.04em] text-seam-600"
-              data-count-target={s.value}
-              data-count-suffix={s.suffix}
-            >0</span>
-            <span class="block mt-2 text-[14px] text-warm-600 uppercase tracking-[0.08em]">
-              {s.label}
-            </span>
-          </div>
-        ))}
-      </div>
-      <p class="mt-6 mb-10 text-[17px] text-warm-400">
-        (Gallup Q12 Meta-Analysis, 11th Edition, 736 studies)
-      </p>
-    </div>
-  </section>
+  <!-- ─── Section 2b: Business Case ─── -->
+  <BusinessCaseBanner />
 
   <!-- ─── Section 3: Products ─── -->
   <section class="py-24 lg:py-32">
@@ -482,18 +453,32 @@ const jsonLd = [
         </p>
       </div>
 
-      <div class="reveal-stagger flex flex-wrap justify-center gap-4 lg:gap-5 max-w-5xl mx-auto">
+      <div class="reveal-stagger grid grid-cols-7 lg:grid-cols-11 gap-3 lg:gap-4 max-w-5xl mx-auto justify-items-center">
         {[
           { src: '/images/team/rainey-shane.png', name: 'Rainey Shane', role: 'Co-Founder' },
           { src: '/images/team/alex-demestihas.png', name: 'Alex Demestihas', role: 'Co-Founder' },
           { src: '/images/ap-alexandra-bull.jpg', name: 'Alexandra Bull', role: 'SEAM AP' },
           { src: '/images/ap-christian-mayer.jpg', name: 'Christian Mayer', role: 'SEAM AP' },
           { src: '/images/ap-melina-gorrebeeck.jpg', name: 'Melina Gorrebeeck', role: 'SEAM AP' },
+          { src: '/images/directory/ap-jennifer-beyer.jpg', name: 'Jennifer Beyer', role: 'SEAM AP' },
+          { src: '/images/directory/ap-patricia-raicht.jpg', name: 'Patricia Raicht', role: 'SEAM AP' },
+          { src: '/images/directory/ap-lonna-babu.jpg', name: 'Lonna Babu', role: 'SEAM AP' },
+          { src: '/images/directory/ap-karin-miller.jpg', name: 'Karin Miller', role: 'SEAM AP' },
+          { src: '/images/directory/ap-lina-daniel.jpg', name: 'Lina Daniel', role: 'SEAM AP' },
+          { src: '/images/directory/ap-max-kriegsfeld.jpg', name: 'Max Kriegsfeld', role: 'SEAM AP' },
+          { src: '/images/directory/ap-jayne-lee.jpg', name: 'Jayne Lee', role: 'SEAM AP' },
+          { src: '/images/directory/ap-hetvi-vora.jpg', name: 'Hetvi Vora', role: 'SEAM AP' },
+          { src: '/images/directory/ap-anna-fredlander.jpg', name: 'Anna Fredlander', role: 'SEAM AP' },
+          { src: '/images/directory/ap-monica-wentz.jpg', name: 'Monica Wentz', role: 'SEAM AP' },
+          { src: '/images/directory/ap-valerie-oliver.jpg', name: 'Valerie Oliver', role: 'SEAM AP' },
+          { src: '/images/directory/ap-jennifer-webb.jpg', name: 'Jennifer Webb', role: 'SEAM AP' },
+          { src: '/images/directory/ap-edward-wan.jpg', name: 'Edward Wan', role: 'SEAM AP' },
+          { src: '/images/directory/ap-eva-lo.png', name: 'Eva Lo', role: 'SEAM AP' },
           { src: '/images/team/chris-pirschel.jpg', name: 'Chris Pirschel', role: 'CMO' },
           { src: '/images/team/shane-gring.jpg', name: 'Shane Gring', role: 'COO' },
-        ].map((person) => (
-          <div class="reveal-child group relative">
-            <div class="w-20 h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden ring-2 ring-white shadow-[0_4px_16px_rgba(0,0,0,0.1)] transition-transform duration-300 group-hover:scale-110">
+        ].map((person, i) => (
+          <div class="reveal-child">
+            <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden ring-2 ring-white shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
               <img
                 src={person.src}
                 alt={person.name}
@@ -501,15 +486,32 @@ const jsonLd = [
                 loading="lazy"
               />
             </div>
-            <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none text-center whitespace-nowrap">
-              <p class="text-[13px] font-medium text-warm-900">{person.name}</p>
-              <p class="text-[11px] text-warm-500">{person.role}</p>
-            </div>
           </div>
         ))}
       </div>
 
-      <div class="reveal-fade-up mt-14 text-center">
+      <div class="reveal-stagger mt-12 flex flex-wrap justify-center items-center gap-8 lg:gap-12 max-w-4xl mx-auto">
+        {[
+          { src: '/logos/jll.png', name: 'JLL' },
+          { src: '/logos/interface.png', name: 'Interface' },
+          { src: '/logos/hitt.png', name: 'HITT Contracting' },
+          { src: '/logos/jamestown.png', name: 'Jamestown' },
+          { src: '/logos/leapley.png', name: 'Leapley Construction' },
+          { src: '/logos/thm-advisors.svg', name: 'THM Advisors' },
+          { src: '/logos/brightworks.svg', name: 'Brightworks Sustainability' },
+        ].sort(() => Math.random() - 0.5).map((org) => (
+          <div class="reveal-child">
+            <img
+              src={org.src}
+              alt={org.name}
+              class="h-7 lg:h-9 object-contain opacity-40 grayscale"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div class="reveal-fade-up mt-12 text-center">
         <a
           href="/directory"
           class="inline-flex items-center rounded-full border border-warm-200 px-6 py-3 text-[15px] font-medium text-warm-700 hover:border-warm-400 hover:text-warm-900 transition-colors duration-300"
