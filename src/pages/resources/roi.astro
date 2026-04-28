@@ -3,10 +3,10 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import { faqSchema, breadcrumbSchema } from '../../lib/seo-helpers'
 
 const headlineStats = [
-  { value: '39%', label: 'Diverse executive teams are 39% more likely to financially outperform their peers', source: 'McKinsey, 2023', href: 'https://www.mckinsey.com/featured-insights/diversity-and-inclusion/diversity-matters-even-more-the-case-for-holistic-impact' },
-  { value: '4–8%', label: 'Certified buildings command a 4–8% rent premium over non-certified peers', source: 'CBRE, 2024', href: 'https://www.cbre.com/insights/viewpoints/green-is-good-the-endurance-of-the-rent-premium-in-leed-certified-us-office-buildings' },
-  { value: '51%', label: 'Inclusive, high-engagement workplaces see 51% lower employee turnover', source: 'Gallup Q12 Meta-Analysis', href: 'https://www.gallup.com/workplace/321725/gallup-q12-meta-analysis-report.aspx' },
-  { value: '8.6%', label: 'Each point of tenant satisfaction lifts lease renewal likelihood by 8.6%', source: 'MIT Center for Real Estate', href: 'https://mitcre.mit.edu/' },
+  { value: '39%', label: 'Diverse executive teams are 39% more likely to financially outperform their peers', source: 'McKinsey, 2023', href: 'https://www.mckinsey.com/featured-insights/diversity-and-inclusion/diversity-matters-even-more-the-case-for-holistic-impact', logo: '/logos/mckinsey.svg' },
+  { value: '4–8%', label: 'Certified buildings command a 4–8% rent premium over non-certified peers', source: 'CBRE, 2024', href: 'https://www.cbre.com/insights/viewpoints/green-is-good-the-endurance-of-the-rent-premium-in-leed-certified-us-office-buildings', logo: '/logos/cbre.svg' },
+  { value: '51%', label: 'Inclusive, high-engagement workplaces see 51% lower employee turnover', source: 'Gallup Q12 Meta-Analysis', href: 'https://www.gallup.com/workplace/321725/gallup-q12-meta-analysis-report.aspx', logo: '/logos/gallup.svg' },
+  { value: '8.6%', label: 'Each point of tenant satisfaction lifts lease renewal likelihood by 8.6%', source: 'MIT Center for Real Estate', href: 'https://mitcre.mit.edu/', logo: '/logos/mit.svg' },
 ]
 
 const pillars = [
@@ -142,6 +142,7 @@ const jsonLd = [
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
         {headlineStats.map((s) => (
           <div class="text-center lg:text-left">
+            <img src={s.logo} alt="" class="h-5 object-contain opacity-40 grayscale mb-3 mx-auto lg:mx-0" />
             <span class="block font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.04em] text-seam-700">{s.value}</span>
             <p class="mt-2 text-[15px] leading-snug text-warm-700">{s.label}</p>
             <a href={s.href} target={s.href.startsWith('/') ? undefined : '_blank'} rel={s.href.startsWith('/') ? undefined : 'noopener noreferrer'} class="inline-flex items-center gap-1 mt-2 text-[12px] text-seam-600 hover:text-seam-700 uppercase tracking-[0.08em] transition-colors">
@@ -172,7 +173,7 @@ const jsonLd = [
             The research below is drawn from McKinsey, Gallup, CBRE, JLL, MIT, GRESB, and NYU Stern — not from advocacy organizations, but from the institutions that Wall Street, institutional investors, and Fortune 500 companies already trust.
           </p>
           <p class="text-[17px] leading-relaxed text-warm-700 font-medium">
-            We didn't cherry-pick the studies. The studies cherry-picked the conclusion.
+            We didn't build the case for social equity. The research did.
           </p>
         </div>
       </div>
