@@ -258,7 +258,8 @@ const jsonLd = [
       </div>
     </div>
 
-    <div class="mx-auto max-w-[1400px]">
+    <!-- Desktop: graphic + hotspots -->
+    <div class="hidden md:block mx-auto max-w-[1400px]">
       <div
         id="ecosystem-container"
         class="relative w-full aspect-[2/1]"
@@ -333,33 +334,78 @@ const jsonLd = [
         })}
       </div>
 
-      <!-- Mobile info panel — shows the active hotspot below the image -->
-      <div class="md:hidden mt-6 px-6 min-h-[160px]">
-        <div id="ecosystem-mobile-empty" class="text-center text-[14px] text-warm-400 pt-6">
-          Tap any dot above to learn more.
-        </div>
-        {hotspots.map((spot) => (
-          <div
-            data-hotspot-panel={spot.id}
-            class="hotspot-mobile-panel hidden rounded-2xl bg-white p-5 border border-warm-100 shadow-[0_8px_24px_rgba(0,0,0,0.06)]"
-          >
-            {spot.image && (
-              <img src={spot.image} alt="" class="w-full rounded-xl mb-4" />
+      <div class="reveal-fade-up mt-10 text-center hidden md:block">
+        <a
+          href="/social-equity-101"
+          class="inline-flex items-center text-[15px] font-medium text-seam-600 hover:text-warm-900 transition-colors duration-300"
+        >
+          Learn how it works
+          <svg class="ml-1.5 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile: swipeable card slider -->
+    <div class="md:hidden px-6">
+      <div
+        id="ecosystem-slider"
+        class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-6 px-6 pb-4"
+        style="-webkit-overflow-scrolling: touch; scrollbar-width: none;"
+      >
+        {hotspots.map((spot, i) => (
+          <div class="snap-center shrink-0 w-[85vw] max-w-[340px] rounded-2xl bg-warm-50 border border-warm-100 overflow-hidden">
+            {spot.image ? (
+              <img src={spot.image} alt="" class="w-full aspect-[3/2] object-cover" />
+            ) : (
+              <div class="w-full aspect-[3/2] bg-warm-100 flex items-center justify-center">
+                <span class="text-[40px] font-display text-warm-300">{i + 1}</span>
+              </div>
             )}
-            <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-2">
-              Tap a dot
-            </p>
-            <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
-              {spot.title}
-            </p>
-            <p class="text-[14px] leading-relaxed font-medium text-warm-800 mb-1">
-              {spot.intro}
-            </p>
-            <p class="text-[14px] leading-relaxed text-warm-500">
-              {spot.body}
-            </p>
+            <div class="p-5">
+              <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-2">
+                {i + 1} of 6
+              </p>
+              <p class="font-display text-[20px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
+                {spot.title}
+              </p>
+              <p class="text-[15px] leading-relaxed font-medium text-warm-800 mb-1">
+                {spot.intro}
+              </p>
+              <p class="text-[14px] leading-relaxed text-warm-500">
+                {spot.body}
+              </p>
+            </div>
           </div>
         ))}
+      </div>
+
+      <!-- Dot indicators -->
+      <div class="flex justify-center gap-2 mt-4" id="ecosystem-slider-dots">
+        {hotspots.map((_, i) => (
+          <button
+            type="button"
+            data-slide-dot={i}
+            class:list={[
+              'h-2 rounded-full transition-all duration-300',
+              i === 0 ? 'w-6 bg-seam-600' : 'w-2 bg-warm-300',
+            ]}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      <div class="mt-8 text-center">
+        <a
+          href="/social-equity-101"
+          class="inline-flex items-center text-[15px] font-medium text-seam-600 hover:text-warm-900 transition-colors duration-300"
+        >
+          Learn how it works
+          <svg class="ml-1.5 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
@@ -691,8 +737,6 @@ const jsonLd = [
 
       const hotspots = container.querySelectorAll<HTMLButtonElement>('.hotspot')
       const tooltips = container.querySelectorAll<HTMLElement>('[data-hotspot-tooltip]')
-      const mobileEmpty = document.getElementById('ecosystem-mobile-empty')
-      const mobilePanels = document.querySelectorAll<HTMLElement>('.hotspot-mobile-panel')
 
       let hovered: string | null = null
       let locked: string | null = '1'
@@ -743,22 +787,6 @@ const jsonLd = [
           tt.style.opacity = isActive ? '1' : '0'
         })
 
-        // Mobile panel
-        let anyActive = false
-        mobilePanels.forEach((panel) => {
-          const id = panel.dataset.hotspotPanel ?? ''
-          const isActive = active === id
-          if (isActive) {
-            panel.classList.remove('hidden')
-            anyActive = true
-          } else {
-            panel.classList.add('hidden')
-          }
-        })
-        if (mobileEmpty) {
-          if (anyActive) mobileEmpty.classList.add('hidden')
-          else mobileEmpty.classList.remove('hidden')
-        }
       }
 
       hotspots.forEach((btn) => {
@@ -787,10 +815,12 @@ const jsonLd = [
         })
       })
 
-      // Close locked tooltip on outside click
+      // Close locked tooltip on click anywhere outside a hotspot
       document.addEventListener('mousedown', (e) => {
         if (locked === null) return
-        if (!container.contains(e.target as Node)) {
+        const target = e.target as Node
+        const clickedHotspot = (target as Element).closest?.('.hotspot')
+        if (!clickedHotspot) {
           locked = null
           applyState()
         }
@@ -807,4 +837,60 @@ const jsonLd = [
       document.addEventListener('DOMContentLoaded', initEcosystemHotspots)
     }
   </script>
+
+  <!-- Mobile ecosystem slider -->
+  <script>
+    function initEcosystemSlider() {
+      const slider = document.getElementById('ecosystem-slider')
+      if (!slider) return
+
+      const dots = document.querySelectorAll<HTMLButtonElement>('[data-slide-dot]')
+      const cards = slider.children
+
+      // Update dots on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return
+            const idx = Array.from(cards).indexOf(entry.target as Element)
+            if (idx < 0) return
+            dots.forEach((dot, i) => {
+              if (i === idx) {
+                dot.classList.remove('w-2', 'bg-warm-300')
+                dot.classList.add('w-6', 'bg-seam-600')
+              } else {
+                dot.classList.remove('w-6', 'bg-seam-600')
+                dot.classList.add('w-2', 'bg-warm-300')
+              }
+            })
+          })
+        },
+        { root: slider, threshold: 0.6 }
+      )
+
+      Array.from(cards).forEach((card) => observer.observe(card))
+
+      // Tap dot to scroll
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const i = Number(dot.dataset.slideDot)
+          const card = cards[i] as HTMLElement
+          if (card) {
+            slider.scrollTo({ left: card.offsetLeft - slider.offsetLeft - 24, behavior: 'smooth' })
+          }
+        })
+      })
+    }
+
+    document.addEventListener('astro:page-load', initEcosystemSlider)
+    if (document.readyState !== 'loading') {
+      initEcosystemSlider()
+    } else {
+      document.addEventListener('DOMContentLoaded', initEcosystemSlider)
+    }
+  </script>
+
+  <style>
+    #ecosystem-slider::-webkit-scrollbar { display: none; }
+  </style>
 </SiteLayout>
