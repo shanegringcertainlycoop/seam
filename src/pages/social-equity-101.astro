@@ -1,0 +1,698 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { breadcrumbSchema, faqSchema } from '../lib/seo-helpers'
+
+const faqs = [
+  {
+    question: 'What is social equity in the built environment?',
+    answer:
+      'Social equity in the built environment means that the benefits and burdens of a building are distributed fairly among everyone it touches — from the people who use the space daily to the communities that supply its raw materials. It examines wages, working conditions, health impacts, community displacement, and supply chain labor practices as measurable outcomes of how a building is designed, built, and operated.',
+  },
+  {
+    question: 'Who is affected by a building\'s social impact?',
+    answer:
+      'Every building touches at least six groups of people: occupants who use the space daily, operators who maintain and service it, builders who construct it, neighbors who live and work around it, suppliers who manufacture its materials, and the origin communities where raw materials are extracted. Most building standards only address one or two of these groups.',
+  },
+  {
+    question: 'How is social equity different from ESG?',
+    answer:
+      'ESG (Environmental, Social, and Governance) is a reporting framework — it tells investors what a company discloses about its impacts. Social equity certification through SEAM is an operating standard — it defines specific practices, sets measurable thresholds, and requires third-party verification. ESG asks "did you report it?" SEAM asks "did you do it?"',
+  },
+  {
+    question: 'Can social equity be measured?',
+    answer:
+      'Yes, though it requires different metrics than environmental performance. SEAM measures scored activities like living wage commitments, benefits coverage rates, supplier audit completion, community impact assessments, and grievance resolution timelines. These are verified through documentation review, worker surveys, and third-party audits — similar to how LEED verifies energy performance.',
+  },
+  {
+    question: 'What is a social equity certification?',
+    answer:
+      'A social equity certification verifies that a building meets defined standards for fair treatment of all people it impacts. SEAM certification evaluates four pillars — Social Impact, Social Responsibility, Social Justice, and Social Accountability — through scored activities and third-party verification, resulting in a rating from Bronze through Platinum.',
+  },
+  {
+    question: 'Does social equity certification add cost?',
+    answer:
+      'Buildings already carry social costs — they are just externalized onto workers, neighbors, and supply chain communities. SEAM certification internalizes some of these costs while generating measurable returns: certified buildings see 51% less tenant turnover, 4–8% rent premiums, and reduced litigation exposure. The certification fee itself is comparable to LEED or WELL.',
+  },
+]
+
+const jsonLd = [
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Social Equity 101', path: '/social-equity-101' },
+  ]),
+  faqSchema(faqs),
+] as unknown as Record<string, unknown>
+---
+
+<SiteLayout
+  title="Social Equity 101 — What Buildings Owe the People They Touch"
+  description="Every building touches six groups of people. Learn what social equity in the built environment means, why it matters, and how it's measured."
+  path="/social-equity-101"
+  jsonLd={jsonLd}
+>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       1. HERO — Full-width 6-dimensions background
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="relative min-h-[85vh] flex items-end overflow-hidden bg-warm-900">
+    <img
+      src="/images/home/6-dimensions.png"
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover object-center select-none pointer-events-none opacity-30"
+      draggable="false"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900 via-warm-900/60 to-warm-900/30"></div>
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 pb-16 lg:pb-24 pt-40 w-full">
+      <div class="max-w-3xl hero-enter">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+          <ol class="flex items-center gap-2 text-[14px] text-warm-400">
+            <li><a href="/" class="hover:text-warm-300 transition-colors">Home</a></li>
+            <li aria-hidden="true" class="select-none">/</li>
+            <li aria-current="page" class="text-white font-medium">Social Equity 101</li>
+          </ol>
+        </nav>
+
+        <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          What does a building owe the people it touches?
+        </h1>
+
+        <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+          It's a strange question. We don't usually think of buildings as owing anyone anything.
+          But every building is a web of relationships — with the people who work inside it,
+          maintain it, build it, live near it, supply it, and extract its raw materials.
+          Social equity asks whether those relationships are fair.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       2. THE SETUP — Two-column: prose + 6-dimensions illustration
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-fade-up grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <!-- Prose -->
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+            The concept
+          </p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-8">
+            Every building is a set of decisions about people
+          </h2>
+          <div class="space-y-5 text-[17px] leading-relaxed text-warm-600">
+            <p>
+              Who gets paid a living wage to clean the floors? Who breathes the dust during
+              construction? Whose neighborhood absorbs the traffic and noise? Which communities
+              mine the raw materials?
+            </p>
+            <p>
+              These aren't abstract questions. They have dollar amounts, health outcomes,
+              and real people attached to them.
+            </p>
+            <p>
+              LEED measures environmental impact. WELL measures occupant wellness. But until now,
+              no standard has asked whether a building's broader human relationships are equitable.
+              That's what social equity in the built environment means — and that's what
+              <a href="/resources/standard" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM was built to measure</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6-Dimensions illustration -->
+        <div class="flex items-center justify-center">
+          <img
+            src="/images/home/6-dimensions.png"
+            alt="Six dimensions of social equity in buildings: Occupants, Operators, Builders, Neighbors, Suppliers, and Origin"
+            class="w-full max-w-[520px] h-auto"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PULL QUOTE
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-20 lg:py-24">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <blockquote class="reveal-fade max-w-3xl mx-auto text-center">
+        <p class="font-display italic text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.2] tracking-[-0.02em] text-warm-400">
+          "A building is not just a structure. It is a supply chain, a labor market,
+          a neighborhood force, and a set of choices about who matters."
+        </p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       3. THE SIX GROUPS — Alternating editorial blocks
+       ═══════════════════════════════════════════════════════════════════ -->
+
+  <!-- ─── 3a. Occupants (image left) ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="reveal-slide-left">
+          <img
+            src="/images/home/occupants.png"
+            alt="Illustration of building occupants"
+            class="w-full max-w-[520px] h-auto rounded-2xl"
+          />
+        </div>
+        <div class="reveal-slide-right">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">01 — Occupants</p>
+          <h3 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-3">
+            Who thrives inside?
+          </h3>
+          <p class="text-[17px] leading-relaxed text-warm-600 mb-8">
+            Every building creates micro-environments. The question is whether access to the best
+            conditions is distributed equitably — or just allocated by seniority and title.
+          </p>
+          <ul class="space-y-4">
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Ventilation distribution in typical office HVAC systems is uneven — perimeter zones near exterior walls receive meaningfully more outdoor air than interior zones, where partitions impair airflow.<sup class="text-seam-600"><a href="#sources">1</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Standard thermostat settings of 72°F are based on a 1960s metabolic model calibrated to the average male, overestimating female metabolic rates by <strong>up to 35%</strong>. Women report thermal dissatisfaction roughly <strong>50% more often</strong> than men.<sup class="text-seam-600"><a href="#sources">2, 3</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Workers with window access sleep an average of <strong>46 minutes more per night</strong>, yet daylight from side windows effectively vanishes beyond 20–25 feet — a distance that excludes most interior workstations in deep-plan offices.<sup class="text-seam-600"><a href="#sources">4</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              In a study of 40,000+ occupants across 304 buildings, <strong>over 59% of open-plan workers</strong> reported dissatisfaction with sound privacy — the top complaint — while enclosed offices remain reserved for senior staff.<sup class="text-seam-600"><a href="#sources">5</a></sup>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 3b. Operators (image right) ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="order-2 lg:order-1 reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">02 — Operators</p>
+          <h3 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-3">
+            Who keeps the lights on?
+          </h3>
+          <p class="text-[17px] leading-relaxed text-warm-600 mb-8">
+            The people who make a building function every day — custodians, security guards,
+            maintenance crews — are often the least visible and worst compensated.
+          </p>
+          <ul class="space-y-4">
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              The median janitor in a U.S. office building earns <strong>$17.27/hour</strong>. National average Class A office rent exceeds <strong>$39/SF</strong> — meaning a single square foot of leased space costs more per year than two hours of the cleaner's labor.<sup class="text-seam-600"><a href="#sources">6, 7</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Only about <strong>half of workers in service occupations</strong> have access to employer-provided health insurance, with coverage rates even lower among part-time and contracted building maintenance staff.<sup class="text-seam-600"><a href="#sources">8</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Cleaning crews work 10pm–6am, invisible to the tenants they serve. Private-sector night-shift premiums vary widely, often falling well below the federal government's standard <strong>10% differential</strong>.<sup class="text-seam-600"><a href="#sources">9</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Security guards in U.S. commercial buildings earn a median of <strong>$18.45/hour</strong>.<sup class="text-seam-600"><a href="#sources">10</a></sup>
+            </li>
+          </ul>
+        </div>
+        <div class="order-1 lg:order-2 reveal-slide-right">
+          <img
+            src="/images/home/operators.png"
+            alt="Illustration of building operators"
+            class="w-full max-w-[520px] h-auto rounded-2xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 3c. Builders (image left) ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="reveal-slide-left">
+          <img
+            src="/images/home/builders.png"
+            alt="Illustration of construction builders"
+            class="w-full max-w-[520px] h-auto rounded-2xl"
+          />
+        </div>
+        <div class="reveal-slide-right">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">03 — Builders</p>
+          <h3 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-3">
+            Who pours the concrete?
+          </h3>
+          <p class="text-[17px] leading-relaxed text-warm-600 mb-8">
+            Construction is one of the most dangerous industries in the world. The people who
+            physically create our buildings bear risks that rarely appear in project budgets.
+          </p>
+          <ul class="space-y-4">
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Construction workers face a fatal injury rate of <strong>9.2 per 100,000</strong> — nearly three times the all-industry average of 3.3 per 100,000.<sup class="text-seam-600"><a href="#sources">11</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              An estimated <strong>1 in 5 construction workers</strong> is misclassified as an independent contractor, losing access to benefits, overtime, and workers' compensation.<sup class="text-seam-600"><a href="#sources">12</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Heat-related illness kills an average of <strong>40+ U.S. workers per year</strong> across all industries, with construction workers accounting for roughly one-third of these deaths despite comprising only 7% of the workforce. Experts consider these figures significant underestimates.<sup class="text-seam-600"><a href="#sources">13</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Women hold <strong>fewer than 5% of active construction apprenticeships</strong>, and Black workers remain significantly underrepresented — in a $1.8 trillion industry.<sup class="text-seam-600"><a href="#sources">14</a></sup>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pull quote -->
+  <section class="py-20 lg:py-24 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <blockquote class="reveal-fade max-w-3xl mx-auto text-center">
+        <p class="font-display italic text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.2] tracking-[-0.02em] text-warm-400">
+          "The further from the lobby, the less we ask about fairness."
+        </p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ─── 3d. Neighbors (image right) ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="order-2 lg:order-1 reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">04 — Neighbors</p>
+          <h3 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-3">
+            Who lives with the consequences?
+          </h3>
+          <p class="text-[17px] leading-relaxed text-warm-600 mb-8">
+            A building doesn't stop at its property line. Its impacts ripple outward through
+            traffic, noise, shadow, displacement, and economic change.
+          </p>
+          <ul class="space-y-4">
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Heavy construction equipment generates <strong>80–101 dB at 50 feet</strong>. Even at 1,500 feet, noise from pile driving can exceed the EPA's residential outdoor guideline of <strong>55 dB</strong>.<sup class="text-seam-600"><a href="#sources">15, 16</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              New market-rate apartment construction can raise rents in nearby lower-priced buildings by <strong>4–7% within five years</strong>, even as it moderates rents in higher-priced surrounding buildings.<sup class="text-seam-600"><a href="#sources">17</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              A 500,000 SF office building generates an estimated <strong>5,500 daily vehicle trips</strong> under standard ITE assumptions, though actual counts vary by transit access and location.<sup class="text-seam-600"><a href="#sources">18</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Only a handful of U.S. cities require shadow studies for new development, and there is no federal solar access standard — even as new construction routinely shadows neighboring properties.<sup class="text-seam-600"><a href="#sources">19</a></sup>
+            </li>
+          </ul>
+        </div>
+        <div class="order-1 lg:order-2 reveal-slide-right">
+          <img
+            src="/images/home/neighbors.png"
+            alt="Illustration of building neighbors"
+            class="w-full max-w-[520px] h-auto rounded-2xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 3e. Suppliers (styled placeholder) ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="reveal-slide-left">
+          <div class="flex items-center justify-center bg-warm-100 rounded-2xl min-h-[360px] lg:min-h-[440px]">
+            <div class="text-center px-8">
+              <div class="w-20 h-20 rounded-full bg-seam-600 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                </svg>
+              </div>
+              <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-400">Illustration coming soon</p>
+              <p class="text-[15px] text-warm-400 mt-1">Suppliers</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-slide-right">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">05 — Suppliers</p>
+          <h3 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-3">
+            Who makes the materials?
+          </h3>
+          <p class="text-[17px] leading-relaxed text-warm-600 mb-8">
+            Every carpet tile, light fixture, and steel beam has a manufacturing story. Most of
+            those stories are invisible to the people who specify, install, and use them.
+          </p>
+          <ul class="space-y-4">
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              The majority of commercial furniture supply chains <strong>lack independent third-party labor audits</strong>, with certification programs like BIFMA LEVEL covering only a fraction of the market.<sup class="text-seam-600"><a href="#sources">20</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              A typical office fit-out relies on globally sourced materials — wood, metals, textiles, and building systems components — drawing from supply chains that <strong>span dozens of countries</strong>.<sup class="text-seam-600"><a href="#sources">21</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Building product transparency programs focus overwhelmingly on material health and environmental impact; <strong>labor practice disclosure across supply chains remains rare</strong> and largely voluntary.<sup class="text-seam-600"><a href="#sources">22</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Third-party certification for labor and environmental practices — such as FSC for wood — covers only a <strong>small fraction of the building materials market</strong>, with most non-wood materials lacking comparable frameworks.<sup class="text-seam-600"><a href="#sources">23</a></sup>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 3f. Origin (styled placeholder) ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="order-2 lg:order-1 reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">06 — Origin</p>
+          <h3 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-3">
+            Who extracts the raw materials?
+          </h3>
+          <p class="text-[17px] leading-relaxed text-warm-600 mb-8">
+            At the far end of every supply chain are extraction communities — the places where
+            sand, copper, steel, and rare earth minerals begin their journey into buildings.
+          </p>
+          <ul class="space-y-4">
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Workers exposed to respirable crystalline silica at the current OSHA permissible limit for a 45-year career face a lifetime silicosis risk of roughly <strong>1 in 20</strong>.<sup class="text-seam-600"><a href="#sources">24</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Copper mining for electrical systems <strong>displaces indigenous communities</strong> in Peru, Chile, and the DRC. A 2025 investigation found 77% of critical mineral mining incidents infringe on Indigenous Peoples' rights.<sup class="text-seam-600"><a href="#sources">25</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Steel production accounts for <strong>8% of global CO₂ emissions</strong> and concentrates health impacts in communities near blast furnaces.<sup class="text-seam-600"><a href="#sources">26</a></sup>
+            </li>
+            <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
+              Rare earth minerals in smart building systems are <strong>linked to forced labor</strong> in documented cases, with 77 companies identified in China's Xinjiang region operating in critical minerals industries.<sup class="text-seam-600"><a href="#sources">27</a></sup>
+            </li>
+          </ul>
+        </div>
+        <div class="order-1 lg:order-2 reveal-slide-right">
+          <div class="flex items-center justify-center bg-warm-100 rounded-2xl min-h-[360px] lg:min-h-[440px]">
+            <div class="text-center px-8">
+              <div class="w-20 h-20 rounded-full bg-seam-600 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                </svg>
+              </div>
+              <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-400">Illustration coming soon</p>
+              <p class="text-[15px] text-warm-400 mt-1">Origin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       4. THE SKEPTIC'S SECTION — Dark background
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-36 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl">
+        <div class="reveal-fade-up">
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white mb-4">
+            The objections you're already thinking
+          </h2>
+          <p class="text-[17px] lg:text-[19px] leading-relaxed text-warm-400 mb-16">
+            Fair questions deserve honest answers. Here are the four we hear most often.
+          </p>
+        </div>
+
+        <div class="reveal-stagger space-y-10">
+          <!-- Objection 1 -->
+          <div class="reveal-child pl-6 border-l-[3px] border-seam-500">
+            <p class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-white mb-3">"This sounds expensive."</p>
+            <p class="text-[16px] leading-relaxed text-warm-300">
+              Buildings already carry social costs — they're just externalized. When a janitor
+              relies on Medicaid because the building's service contract doesn't include health
+              insurance, taxpayers cover the difference. When construction workers are misclassified
+              as contractors, the cost of injuries shifts to public systems. SEAM doesn't add cost.
+              It makes existing costs visible — and gives you a framework to manage them.
+            </p>
+          </div>
+
+          <!-- Objection 2 -->
+          <div class="reveal-child pl-6 border-l-[3px] border-seam-500">
+            <p class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-white mb-3">"Isn't this what ESG covers?"</p>
+            <p class="text-[16px] leading-relaxed text-warm-300">
+              ESG is a reporting framework. It tells investors what a company discloses about its
+              impacts. SEAM is an operating standard — it defines specific practices, sets
+              measurable thresholds, and requires third-party verification. ESG asks "did you
+              report it?" SEAM asks "did you do it?" They're complementary, but they measure
+              different things.
+            </p>
+          </div>
+
+          <!-- Objection 3 -->
+          <div class="reveal-child pl-6 border-l-[3px] border-seam-500">
+            <p class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-white mb-3">"My tenants don't care about this."</p>
+            <p class="text-[16px] leading-relaxed text-warm-300">
+              The market is already pricing social performance into real estate decisions. Certified
+              green buildings consistently demonstrate lower vacancy and stronger tenant retention, and command
+              <strong class="text-white">4–8% rent premiums</strong>.<sup class="text-seam-400"><a href="#sources" class="text-seam-400">28</a></sup> Corporate tenants increasingly require social
+              impact data for their own ESG reporting. The question isn't whether tenants care — it's
+              whether they'll choose your building or the one down the street that can prove it.
+            </p>
+          </div>
+
+          <!-- Objection 4 -->
+          <div class="reveal-child pl-6 border-l-[3px] border-seam-500">
+            <p class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-white mb-3">"You can't measure this."</p>
+            <p class="text-[16px] leading-relaxed text-warm-300">
+              Hard, but not impossible. SEAM uses scored activities — documented practices with
+              defined thresholds — verified through documentation review, worker surveys, and
+              third-party audits. It's the same model that made LEED and WELL credible: define
+              what "good" looks like, require evidence, and let an independent reviewer confirm it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       5. THE FOUR PILLARS — Brief 4-card grid
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-fade-up text-center mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          The framework
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-4">
+          Four pillars of social equity
+        </h2>
+        <p class="text-[17px] leading-relaxed text-warm-600 max-w-xl mx-auto">
+          SEAM organizes social equity into four measurable domains, each with scored activities
+          and verification requirements.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a
+          href="/standard/social-impact"
+          class="reveal-child group flex flex-col justify-between p-7 rounded-2xl border border-warm-200 hover:border-seam-500 transition-colors min-h-[220px]"
+        >
+          <div>
+            <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-2">Social Impact</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">
+              Know who your project affects — and whether it is working.
+            </p>
+          </div>
+          <span class="mt-5 text-[14px] font-medium text-seam-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            Explore →
+          </span>
+        </a>
+
+        <a
+          href="/standard/social-responsibility"
+          class="reveal-child group flex flex-col justify-between p-7 rounded-2xl border border-warm-200 hover:border-seam-500 transition-colors min-h-[220px]"
+        >
+          <div>
+            <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-2">Social Responsibility</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">
+              Walk the talk on governance, community, and investment.
+            </p>
+          </div>
+          <span class="mt-5 text-[14px] font-medium text-seam-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            Explore →
+          </span>
+        </a>
+
+        <a
+          href="/standard/social-justice"
+          class="reveal-child group flex flex-col justify-between p-7 rounded-2xl border border-warm-200 hover:border-seam-500 transition-colors min-h-[220px]"
+        >
+          <div>
+            <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-2">Social Justice</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">
+              Equity across procurement, the workplace, and capital access.
+            </p>
+          </div>
+          <span class="mt-5 text-[14px] font-medium text-seam-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            Explore →
+          </span>
+        </a>
+
+        <a
+          href="/standard/social-accountability"
+          class="reveal-child group flex flex-col justify-between p-7 rounded-2xl border border-warm-200 hover:border-seam-500 transition-colors min-h-[220px]"
+        >
+          <div>
+            <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-2">Social Accountability</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">
+              Human rights, ethical sourcing, and worker well-being.
+            </p>
+          </div>
+          <span class="mt-5 text-[14px] font-medium text-seam-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            Explore →
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       6. CTA SECTION — Three path cards
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <h2 class="reveal-fade-up font-display text-[clamp(2rem,3.5vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 text-center mb-16">
+        Where to go from here
+      </h2>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-8">
+        <a
+          href="/resources/standard"
+          class="reveal-child group flex flex-col justify-between p-8 rounded-2xl bg-white hover:shadow-lg transition-shadow min-h-[240px]"
+        >
+          <div>
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-400 mb-4">Deep dive</p>
+            <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-2">Read the Standard</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">
+              The full SEAM framework — pillars, scored activities, and verification requirements.
+            </p>
+          </div>
+          <span class="mt-6 text-[14px] font-medium text-seam-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            Read now →
+          </span>
+        </a>
+
+        <a
+          href="/resources/roi"
+          class="reveal-child group flex flex-col justify-between p-8 rounded-2xl bg-white hover:shadow-lg transition-shadow min-h-[240px]"
+        >
+          <div>
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-400 mb-4">Business case</p>
+            <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-2">See the business case</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">
+              Rent premiums, tenant retention, litigation reduction, and ESG alignment — the numbers that matter.
+            </p>
+          </div>
+          <span class="mt-6 text-[14px] font-medium text-seam-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            See data →
+          </span>
+        </a>
+
+        <a
+          href="/get-started"
+          class="reveal-child group flex flex-col justify-between p-8 rounded-2xl bg-white hover:shadow-lg transition-shadow min-h-[240px]"
+        >
+          <div>
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-400 mb-4">Take action</p>
+            <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-2">Start a project</h3>
+            <p class="text-[15px] leading-relaxed text-warm-500">
+              Enroll a building, connect with a SEAM advisor, and begin the certification process.
+            </p>
+          </div>
+          <span class="mt-6 text-[14px] font-medium text-seam-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            Get started →
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SOURCES
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section id="sources" class="py-20 lg:py-24 bg-warm-50 border-t border-warm-100">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl">
+        <h2 class="reveal-fade-up font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-10">Sources</h2>
+        <ol class="reveal-fade-up space-y-3 text-[14px] leading-relaxed text-warm-500 list-decimal list-inside marker:text-warm-400 marker:font-medium">
+          <li>EPA, <em>"Ventilation and Air Quality in Offices,"</em> 2014; ASHRAE Standard 62.1</li>
+          <li>Kingma & van Marken Lichtenbelt, <em>"Energy consumption in buildings and female thermal demand,"</em> Nature Climate Change, 2015</li>
+          <li>Karjalainen, <em>"Thermal comfort and gender: a literature review,"</em> Indoor Air, 2012</li>
+          <li>Boubekri et al., <em>"Impact of Windows and Daylight Exposure on Overall Health and Sleep Quality of Office Workers,"</em> J. Clinical Sleep Medicine, 2014</li>
+          <li>Kim & de Dear, <em>"Workspace satisfaction: The privacy-communication trade-off in open-plan offices,"</em> J. Environmental Psychology, 2013</li>
+          <li>Bureau of Labor Statistics, Occupational Employment and Wage Statistics (SOC 37-2011), May 2024</li>
+          <li>CommercialCafe / CoStar, U.S. Office Market Trends, 2024</li>
+          <li>Bureau of Labor Statistics, <em>"Employee Benefits in the United States,"</em> March 2025</li>
+          <li>OPM, <em>"Night Pay for General Schedule Employees"</em>; BLS, ECEC supplemental pay data</li>
+          <li>Bureau of Labor Statistics, Occupational Employment and Wage Statistics (SOC 33-9032), May 2024</li>
+          <li>Bureau of Labor Statistics, Census of Fatal Occupational Injuries, 2024</li>
+          <li>Economic Policy Institute, <em>"(In)dependent Contractor Misclassification,"</em> 2020</li>
+          <li>BLS / EPA, Heat-Related Workplace Deaths data; CPWR Data Bulletin, 2025</li>
+          <li>Economic Policy Institute, <em>"Measuring diversity in construction apprenticeship programs,"</em> 2023; IWPR Apprenticeship Report, 2024</li>
+          <li>FHWA, <em>Highway Construction Noise Handbook,</em> 2006</li>
+          <li>EPA, <em>"Information on Levels of Environmental Noise Requisite to Protect Public Health and Welfare,"</em> 1974</li>
+          <li>Damiano & Frenier, <em>"Build baby build? Housing submarkets and the effects of new construction on existing rents,"</em> J. Urban Affairs, 2026</li>
+          <li>Institute of Transportation Engineers, Trip Generation Manual (Land Use Code 710), 11th Ed.</li>
+          <li>Kensek, <em>"Solar Access Zoning + Building Information Modeling,"</em> ASES</li>
+          <li>Fair Labor Association, <em>"Supply Chain Transparency"</em></li>
+          <li>JLL, <em>Global Office Fit-Out Cost Guide,</em> 2025</li>
+          <li>BuildingGreen, <em>"The Product Transparency Movement,"</em> 2014</li>
+          <li>USGBC, <em>"Building Product Disclosure and Optimization,"</em> LEED v4 credit</li>
+          <li>NIOSH, <em>"Health Effects of Occupational Exposure to Respirable Crystalline Silica,"</em> Publication 2002-129</li>
+          <li>Global Witness, <em>"Critical mineral mines tied to 111 violent incidents and protests on average a year,"</em> 2025</li>
+          <li>IEA, <em>"Emissions Measurement and Data Collection for a Net Zero Steel Industry,"</em> 2023; World Steel Association, 2025</li>
+          <li>Global Rights Compliance, reported in The Diplomat, <em>"Western Supply Chains Tied to Uyghur Forced Labor in China's Critical Minerals Boom,"</em> 2025</li>
+          <li>CBRE, <em>"Green Is Good: The Enduring Rent Premium of LEED-Certified U.S. Office Buildings,"</em> 2022; Fuerst & McAllister, 2009</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       7. FAQ — Accordion
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="reveal-fade-up font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 text-center mb-16">
+          Frequently asked questions
+        </h2>
+
+        <div class="reveal-fade-up">
+          {faqs.map((faq) => (
+            <details class="border-b border-warm-200 group last:border-b-0">
+              <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8 group-open:text-seam-600 transition-colors">
+                  {faq.question}
+                </span>
+                <svg
+                  class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-6">
+                <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>
