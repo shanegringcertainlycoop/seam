@@ -29,58 +29,453 @@ const comparisons = [
 
 const approvedMarks = [
   {
-    code: 'CIa1.1',
-    category: 'Community Development',
-    title: 'Social Initiative Partnership',
-    description: 'Design and execute a volunteer-led community initiative built around goals identified by the people your project impacts — guided by a defined logic model and evaluated for real outcomes.',
+    code: 'IAa2.4',
+    concept: 'Impact Assessment',
+    objective: 'Impacted Party Engagement',
+    title: 'Community Grievance Mechanism',
+    description: 'A documented, accessible channel for community members to raise complaints directly with the Owner \u2014 built on transparent intake, impartial investigation, and resolution within 30 days.',
+    modal: {
+      type: 'Driver',
+      appliesTo: ['B+I:D', 'B+I:O', 'O+M:D', 'O+M:O'],
+      outcomes: 'A standing channel for community members to raise complaints directly to the Owner, with a defined path from intake \u2192 acknowledgment \u2192 investigation \u2192 resolution \u2192 close-out. Functions as both a community engagement tool and a risk-mitigation system. Success looks like either (a) high community awareness of how to use the mechanism, or (b) a high resolution rate on validated grievances when they\u2019re filed.',
+      whatItTakes: {
+        intro: 'A documented procedure covering the full grievance lifecycle, with these design requirements:',
+        items: [
+          'At least two access points that work for everyone, including vulnerable groups (e.g., hotline, web form, complaint box, community liaison, NGO partner \u2014 mix of confidential, anonymous, semi-public, public)',
+          'Transparent process community members can understand',
+          'Independent and impartial \u2014 no undue influence',
+          'Confidentiality and anti-retaliation protections for the complainant',
+          'Resolution within 30 days maximum',
+          'Accountability \u2014 clear ownership for resolving each complaint',
+          'Remedies appropriate to the harm (compensation, corrective action, policy change)',
+          'Feedback to complainant on progress and outcome',
+          'Feedback channels so community can comment on the mechanism itself',
+          'Complainant confirms resolution before close, with follow-up after implementation',
+          'Active community awareness work \u2014 communications through churches, community centers, grocery stores, newspapers, online, regular reminders, anonymized case studies',
+          'GDPR-compliant records of all grievances and resolution trends, reported internally and externally',
+        ],
+      },
+      indicators: {
+        scenarios: [
+          { label: 'No grievances filed', text: '% of surveyed community members who understand the mechanism (awareness, how to file, what\u2019s reportable, confidence in impartiality)' },
+          { label: 'Grievances filed', text: '% of unique, validated grievances resolved to complainant\u2019s satisfaction. Context: number/nature of grievances, qualitative complainant feedback, average resolution time' },
+        ],
+        scoring: 'Both scale 1\u20135 points at 20 / 40 / 60 / 80 / 99\u2013100%.',
+      },
+      documentation: [
+        'Resources used (financial, human, material)',
+        'The written grievance mechanism itself',
+        'Access table \u2014 each access point, its audience, and content provided',
+        'Documentation of content at each access point (screenshots OK for digital)',
+        'Comprehensive grievance records \u2014 nature, date, actions, resolution, follow-up, satisfaction feedback (GDPR-compliant)',
+        'Communications informing the community the mechanism exists',
+        'Survey instruments used to assess awareness (if applicable)',
+        'Survey results showing understanding levels (if applicable)',
+        'Any actions taken in response to survey results to improve awareness',
+      ],
+    },
   },
   {
-    code: 'CIa1.2',
-    category: 'Community Development',
-    title: 'Social Initiative Event',
-    description: 'Put the initiative from CIa1.1 into action, with project team members participating directly and attendance tracked as a percentage of the full team.',
+    code: 'CIa1.1 + CIa1.2',
+    concept: 'Community Involvement',
+    objective: 'Community Development',
+    title: 'Community Involvement Initiative — Design and Participate',
+    description: 'Design a volunteer initiative around a goal identified by impacted parties (CIa1.1), then show up and execute it as a team (CIa1.2). Together they move community involvement from intention to action.',
+    modal: {
+      type: 'Driver',
+      appliesTo: ['B+I:D', 'B+I:O', 'O+M:D', 'O+M:O'],
+      outcomes: 'A team-led volunteer initiative that addresses a real, community-identified social issue \u2014 designed with rigor (logic model, evidence-based methods, equity safeguards) and executed with strong team participation. The pair creates measurable benefit for the target community, builds local capacity, and produces shared accountability between the project team and the people it impacts. CIa1.1 is the design and evaluation; CIa1.2 is the doing.',
+      whatItTakes: {
+        intro: 'CIa1.1 \u2014 Design & Execute the Initiative',
+        items: [
+          'Issue must trace back to impacted party engagement (IAa2.2) and the materiality assessment (TGa5.1/5.2)',
+          'Initiative is built on a defined logic model (inputs, activities, outputs, outcomes \u2014 see Appendix E), preferring existing Owner resources',
+          'Six design criteria: measurable positive impact, fairness and inclusion, cultural respect, active participation by the target population, multi-stakeholder collaboration, and transparent/accountable resource use',
+          'Use evidence-based strategies proven in similar contexts (bonus point)',
+          'Build local capacity so the work outlasts the initiative (bonus point)',
+          'Run an Impacted Party Satisfaction Survey (template in Appendix D) to measure perceived effectiveness',
+        ],
+        sections: [
+          {
+            intro: 'CIa1.2 \u2014 Participate in the Event',
+            items: [
+              'Event must come from the CIa1.1 design',
+              'Volunteers counted are members of the construction project or operating property team only (others welcome but don\u2019t count toward the rate)',
+              'All counted volunteers must be present for 100% of the event',
+              'Background checks required when working with vulnerable populations (children, elderly, immunocompromised), conducted by a reputable agency',
+            ],
+          },
+        ],
+      },
+      indicators: {
+        scenarios: [
+          { label: 'CIa1.1 \u2014 Performance', text: 'Impacted Party Satisfaction Rate (%) from a 5-point Likert survey averaged across questions, then normalized to 100. Context: the KPIs identified as outputs in the logic model.' },
+          { label: 'CIa1.2 \u2014 Performance', text: 'Volunteer Participation Rate (%) = team members who participated \u00f7 total team members. Context: total volunteer hours.' },
+        ],
+        scoring: 'CIa1.1: 40\u201359% \u2192 2 pts \u00b7 60\u201379% \u2192 4 pts \u00b7 80\u2013100% \u2192 6 pts. +2 pts for evidence-based strategies. +2 pts for capacity-building.\nCIa1.2: 55\u201364% \u2192 3 pts \u00b7 65\u201374% \u2192 5 pts \u00b7 75\u2013100% \u2192 10 pts.',
+      },
+      documentation: [
+        'CIa1.1: Resources used (financial, human, material)',
+        'CIa1.1: Impacted party engagement records linking to the social issue addressed (can reference IAa2.2 if already uploaded)',
+        'CIa1.1: Logic model with intended outcomes, steps, and top KPIs',
+        'CIa1.1: Initiative Design and Implementation Plan showing the six criteria are met, plus evidence base',
+        'CIa1.1: Evaluation Reports documenting impact, equity, cultural respect, participation, collaboration, and accountability',
+        'CIa1.1: Capacity Building Plan',
+        'CIa1.1: Copy of the Impacted Party Satisfaction Survey',
+        'CIa1.1: Survey results with encoded responses for calculation',
+        'CIa1.2: Resources used (financial, human, material)',
+        'CIa1.2: Event outline / agenda \u2014 activities, dates, times, details',
+        'CIa1.2: Attendance records \u2014 name, company, role; sign-in sheet, photos, or digital log proving 100% presence (GDPR-compliant)',
+        'CIa1.2: Background checks when working with vulnerable populations (GDPR-compliant)',
+      ],
+    },
   },
   {
-    code: 'TGa3.1',
-    category: 'Responsible Policies',
-    title: 'Construction',
-    description: 'Integrate site-specific ethics and fair operating policies — including anti-harassment, anti-corruption, and a Supplier Code of Conduct — into the governance of your construction project.',
-  },
-  {
-    code: 'TGa3.2',
-    category: 'Responsible Policies',
-    title: 'Operations',
-    description: 'Embed the same ethical conduct and fair operating standards into the governance framework of your operating property.',
+    code: 'TGa3.1 + TGa3.2',
+    concept: 'Transformational Governance',
+    objective: 'Responsible Policies',
+    title: 'Site-Specific Social Responsibility Policies',
+    description: 'Build site-specific ethics, fair operating practices, and supplier conduct policies into the governance of the work itself \u2014 TGa3.1 for construction projects, TGa3.2 for operating assets. Same requirements, applied to the right phase.',
+    modal: {
+      type: 'Driver',
+      appliesTo: ['B+I:D', 'B+I:O', 'O+M:D', 'O+M:O'],
+      outcomes: 'A documented governance backbone that codifies how the project (or property) treats people, partners, and power. The policies shape day-to-day decisions, set expectations for vendors and the value chain, and create reporting paths for misconduct. Together they make ethical conduct a baseline \u2014 not a value statement, but a governing instrument that\u2019s endorsed at the top, trained into the team, and reflected in how performance is rewarded.',
+      whatItTakes: {
+        intro: 'A site-specific Ethics & Fair Operating Practices Policy covering:',
+        items: [
+          'Bullying and harassment',
+          'Gifts and hospitality',
+          'Safety and health, including unauthorized weapons',
+          'Money laundering',
+          'Professional standards and conduct \u2014 including the obligation to dissent (any team member can flag a miscalculation regardless of hierarchy) and explicit support for minoritized groups and voices',
+          'Anti-corruption, anti-bribery, fair competition',
+          'Responsible political involvement (where applicable)',
+          'Respect for property rights, including IP',
+        ],
+        sections: [
+          {
+            intro: 'A Supplier Code of Conduct covering:',
+            items: [
+              'Compliance with international and local law, trade restrictions, sanctions, environmental laws',
+              'Anti-corruption, anti-bribery, anti-money laundering; transparency, accuracy, data security, privacy',
+              'Globally recognized labor standards \u2014 no harassment or discrimination, fair compensation, prohibition of forced or child labor, freedom of association and collective bargaining where legal',
+              'Local health and safety compliance',
+              'Training and awareness for high-risk roles',
+              'Open reporting channels for concerns and violations',
+              'Vendors must commit to the code and extend similar standards to their supply chains',
+            ],
+          },
+          {
+            intro: 'Operationalization of both policies through:',
+            items: [
+              'Senior leadership endorsement as a minimum standard',
+              'Training and awareness programs for employees and high-risk roles',
+              'A whistle-blower system with clear investigation, sanction, and authority-reporting processes',
+              'Internal controls against counterfeiting, piracy, and IP theft',
+              'Transparent reporting on outcomes',
+              'Regular review and improvement based on metrics and feedback',
+            ],
+          },
+          {
+            intro: 'To go beyond baseline:',
+            items: [
+              'Adopt the policies organization-wide (not just project-wide)',
+              'Adopt the Supplier Code of Conduct organization-wide',
+              'Communicate policy expectations clearly to business partners and value-chain entities (RFPs, vendor contracts, etc.)',
+              'Reflect policy commitments in personnel performance incentives',
+            ],
+          },
+        ],
+      },
+      indicators: {
+        scenarios: [
+          { label: 'Performance', text: '% of responsible governance achieved per the requirements. Context: average hours of anti-corruption training per employee per year, and average hours of ethics training per employee per year.' },
+        ],
+        scoring: '0% \u2014 does not meet Reqs. 1, 2, 3\n20% \u2014 Ethics, Fair Operating Practices, and Supplier Code of Conduct met\n40% \u2014 one additional requirement (#4 or #5) met\n60% \u2014 both Reqs. 4 and 5 met\n80% \u2014 three additional requirements met\n100% \u2014 all additional requirements met\n\nOutcome threshold: 20% \u2014 the floor for absence of harm.\n20% \u2192 1 pt \u00b7 40% \u2192 2 pts \u00b7 60% \u2192 3 pts \u00b7 80% \u2192 4 pts \u00b7 100% \u2192 5 pts',
+      },
+      documentation: [
+        'Resources used (financial, human, material)',
+        'Site-specific Fair Operating & Ethics Policy meeting all of Req. 1',
+        'Supplier Code of Conduct meeting all of Req. 2',
+        'Documentation of policy operationalization (Req. 3)',
+        'If applicable \u2014 evidence of organization-wide adoption of the ethics policy (top-management memo or email)',
+        'If applicable \u2014 evidence of organization-wide adoption of the fair operating practices policy',
+        'If applicable \u2014 copies of policies, contracts, RFPs, or agreements communicating expectations to business partners and value-chain entities',
+        'If applicable \u2014 performance evaluation documents tying policy commitments to personnel assessments or rewards (GDPR-compliant)',
+      ],
+      note: 'ISO 26000\u2019s \u201cPromoting Social Responsibility in the Value Chain\u201d requirement is intentionally excluded here \u2014 it\u2019s covered comprehensively under HR01: Ethical Materials Procurement.',
+    },
   },
   {
     code: 'SJa1.1',
-    category: 'Supplier Procurement',
-    title: 'Tier 1 Inclusion',
-    description: 'Set diversity targets for your Tier 1 supplier pool and implement an inclusive procurement policy that eliminates discrimination across hiring, contracting, and pay.',
+    concept: 'Social Equity + Justice',
+    objective: 'Equity + Inclusion in Procurement',
+    title: 'Tier 1 Supplier Procurement Inclusion',
+    description: 'Build inclusive procurement principles into every stage of how Tier 1 Suppliers are sourced, evaluated, and selected \u2014 from RFQ through contract \u2014 so diverse suppliers have real, equal access to project work.',
+    modal: {
+      type: 'Driver',
+      appliesTo: ['B+I:D', 'B+I:O', 'O+M:D', 'O+M:O'],
+      outcomes: 'A procurement process that\u2019s actively inclusive by design, not by default. The Owner adopts a non-discrimination policy covering both employees and suppliers, opens up the supplier pool through proactive outreach and simplified processes, and uses blind-bidding to remove identity from selection. The performance bar is real spend with diverse Tier 1 Suppliers \u2014 measured against industry benchmarks where 9% is average and 18\u201320% marks top performers.',
+      whatItTakes: {
+        intro: 'An adopted Inclusive Procurement Policy covering:',
+        items: [
+          'Non-discrimination in recruiting, hiring, promoting, and paying employees across race, ethnicity, color, religion, sex (including pregnancy, gender identity, sexual orientation), national origin, age, disability, genetic information, economic background, and cognitive differences',
+          'Non-discrimination in recruiting, hiring, and paying Suppliers across the same protected characteristics',
+          'Equal pay for equal work for both employees and Suppliers',
+          'Privacy safeguards for demographic data \u2014 explicit consent, jurisdiction-compliant handling, defined privacy policy',
+          'Internal communication of the policy and progress to employees and Suppliers',
+        ],
+        sections: [
+          {
+            intro: 'Integration into every procurement stage:',
+            items: [
+              'RFQ, RFP/tender, interview, selection \u2014 with the policy actively communicated to Suppliers throughout',
+              'Proactive outreach to diverse Suppliers, with a target that they make up at least 50% of the potential supplier pool',
+              'Blind-bidding \u2014 clear, objective evaluation criteria and a process that removes identifying information from proposals so selection is merit-based',
+              'Process simplification to lower the barrier for a broader supplier range \u2014 accessible documentation, supplier diversity portals, extended response timeframes, pre-qualification systems \u2014 without compromising competitive fairness',
+            ],
+          },
+          {
+            intro: 'To go beyond baseline:',
+            items: [
+              'Establish workforce and supplier training programs to prepare diverse Suppliers to participate in formal procurement, with proactive outreach to make sure they know about and can access the training',
+            ],
+          },
+        ],
+      },
+      indicators: {
+        scenarios: [
+          { label: 'Performance', text: '% of diverse Supplier spend on the project = (Total Tier 1 Diverse Supplier spend \u00f7 Total Tier 1 Supplier spend) \u00d7 100. Context: total number of diverse Tier 1 Suppliers working on the project.' },
+        ],
+        scoring: 'Reqs. 1\u20135 must all be satisfied to be eligible for points.\n5\u201312% diverse spend \u2192 3 pts \u00b7 13\u201319% \u2192 4 pts \u00b7 20%+ \u2192 6 pts \u00b7 50%+ \u2192 8 pts\n+1 pt \u2014 Req. 6 satisfied for one underrepresented supplier\n+2 pts \u2014 Req. 6 satisfied for two underrepresented suppliers\n\nIndustry context: construction averages 9% diverse spend; top performers achieve 18\u201320% (Supplier.io 2023 Benchmarking Report).',
+      },
+      documentation: [
+        'Resources used (financial, human, material)',
+        'Inclusive Procurement Policy meeting all requirements, with evidence of adoption',
+        'Evidence of communication to employees and Suppliers during procurement',
+        'RFP invitation list categorized by underrepresented vs. non-underrepresented groups, verifying \u226550% underrepresented, plus targeted recruiting documentation (communications, ads, invitations to bid)',
+        'Evidence of total Tier 1 Supplier spend',
+        'Evidence of total Tier 1 diverse Supplier spend, with third-party certifications (or workforce assignment spreadsheet)',
+        'Evidence of the blind-bidding process \u2014 redacted proposal samples, process guidelines, or tool specs',
+        'If applicable \u2014 documentation of procurement process simplification (accessible documentation, diversity portals, extended response times, pre-qualification systems)',
+        'If applicable \u2014 outreach activities to support underrepresented businesses (training materials, attendance records, joint-venture agreements, resources provided to diverse Suppliers)',
+      ],
+      note: 'This Activity covers Tier 1 Suppliers only \u2014 broader supply chain management is out of scope. It applies where the Owner has direct control over supplier selection.',
+    },
   },
   {
     code: 'SJa2.4',
-    category: 'Pay Equity',
-    title: 'Gender Pay Equity',
-    description: 'Analyze, remediate, and monitor the gender wage gap across all project employees — with equal pay for equal work as the documented standard.',
+    concept: 'Social Equity + Justice',
+    objective: 'Equity + Inclusion in the Workplace',
+    title: 'Gender Pay Equity for Equal Work',
+    description: 'Run a gender wage gap analysis across all work types on the project, close the gap through pay, benefits, or promotion adjustments, and put a recurring audit in place to keep it closed.',
+    modal: {
+      type: 'Driver',
+      appliesTo: ['B+I:D', 'B+I:O', 'O+M:D', 'O+M:O'],
+      outcomes: 'Equal pay for equal work, regardless of gender \u2014 verified, not assumed. The Activity moves through three stages: surface the gap with a structured analysis, close it through actual remediation, then keep it closed with at least annual review. Success means the post-remediation gap stays under 3% (the floor for \u201cdoing no harm\u201d) and ideally lands at zero.',
+      whatItTakes: {
+        intro: 'Core requirements:',
+        items: [
+          'A gender wage gap analysis across every work type on the project \u2014 comparing mean pay for female-identifying and nonbinary employees against male employees doing equal work',
+          'Active remediation of any identified gap for all Owner employees on the project, through compensation adjustment, benefits adjustment, or promotion',
+          'A recurring monitoring program \u2014 at minimum annually \u2014 through self-assessment with public reporting and/or third-party audit',
+        ],
+        sections: [
+          {
+            intro: 'The Standard recognizes three kinds of equal work:',
+            items: [
+              'Like work \u2014 the same or broadly similar tasks, knowledge, and skills',
+              'Work rated as equivalent \u2014 rated under a valid job evaluation scheme as equal in demand',
+              'Work of equal value \u2014 not similar and not formally rated as equivalent, but equal in demand (effort, skill, decision-making)',
+            ],
+          },
+        ],
+      },
+      indicators: {
+        scenarios: [
+          { label: 'Performance', text: 'The gender wage gap percentage after remediation (P2). Context 1: total number of female-identifying and nonbinary employees who had wages remediated. Context 2: percentage of the original wage gap that was remediated.' },
+          { label: 'Calculation', text: 'Combined (weighted) means across work types: subtract the FN combined mean from the M combined mean, divide by M, multiply by 100.' },
+        ],
+        scoring: 'Reqs. 1 and 2 must be satisfied to be eligible.\nOutcome threshold: post-remediation gap \u2264 3% \u2014 the floor for \u201cact to avoid harm.\u201d\n5.1\u201310% gap \u2192 2 pts \u00b7 3.1\u20135% \u2192 4 pts \u00b7 0.1\u20133% \u2192 6 pts \u00b7 0% gap \u2192 8 pts\n+2 pts \u2014 Req. 3 satisfied (recurring monitoring program in place)',
+      },
+      documentation: [
+        'Resources used (financial, human, material)',
+        'Third-party gender wage gap audit report stating the gap as a percentage (must not disclose employee data \u2014 only the method, calculation, and result)',
+        'Verification of commitment to recurring audits at intervals no longer than once per year',
+      ],
+      note: 'Pay differences are presumed to be sex-based unless the employer can identify a \u201cmaterial factor\u201d that\u2019s genuine, causal, significant, particular to the case, and not tainted by direct or indirect discrimination.',
+    },
   },
   {
     code: 'SJa2.5',
-    category: 'Pay Equity',
-    title: 'Diversity Pay Equity',
-    description: 'Apply the same wage gap analysis and remediation requirements across all diversity characteristics, including race, ethnicity, disability, and age.',
+    concept: 'Social Equity + Justice',
+    objective: 'Equity + Inclusion in the Workplace',
+    title: 'Diversity Pay Equity for Equal Work',
+    description: 'Run a wage gap analysis for employees from underrepresented groups across all work types on the project, close the gap through pay, benefits, or promotion, and put recurring audits in place.',
+    modal: {
+      type: 'Driver',
+      appliesTo: ['B+I:D', 'B+I:O', 'O+M:D', 'O+M:O'],
+      outcomes: 'Equal pay for equal work regardless of who\u2019s doing it. The Activity surfaces wage disparities tied to underrepresented status, remediates them through compensation or promotion, and locks in annual review. Together with SJa2.4 (gender), this Activity extends pay equity beyond the gender binary to cover the fuller range of vulnerable groups identified by the UN Guiding Principles on Business and Human Rights. Success means the post-remediation diversity pay gap stays under 3% \u2014 and ideally lands at zero.',
+      whatItTakes: {
+        intro: 'Core requirements:',
+        items: [
+          'A diversity wage gap analysis across every work type on the project, where diversity characteristics are self-identified by employees',
+          'Active remediation of any identified gap for all employees on the project, through compensation adjustment, benefits adjustment, or promotion',
+          'A recurring monitoring program \u2014 at minimum annually \u2014 through self-assessment with public reporting and/or third-party audit',
+        ],
+        sections: [
+          {
+            intro: 'SEAM\u2019s adopted definition of underrepresented groups (drawn from UN Guiding Principles):',
+            items: [
+              'Race',
+              'Sex',
+              'Gender, including gender identity and sexual orientation',
+              'Migrant workers',
+              'Persons with disabilities',
+              'Indigenous peoples',
+              'Ethnic minoritized groups',
+              'Religious minoritized groups',
+              'Age (50 and above, per ILO)',
+            ],
+          },
+          {
+            intro: 'The same three categories of equal work apply as in SJa2.4:',
+            items: [
+              'Like work \u2014 same or broadly similar tasks, knowledge, and skills',
+              'Work rated as equivalent \u2014 rated under a valid job evaluation scheme as equal in demand',
+              'Work of equal value \u2014 not similar, not formally rated, but equal in terms of effort, skill, and decision-making',
+            ],
+          },
+        ],
+      },
+      indicators: {
+        scenarios: [
+          { label: 'Performance', text: 'The diversity wage gap percentage after remediation (P2). Context 1: total number of employees from underrepresented groups (EUG) who had wages remediated. Context 2: percentage of the original wage gap that was remediated.' },
+          { label: 'Calculation', text: 'Combined (weighted) means: subtract the EUG combined mean from the non-EUG combined mean, divide by the non-EUG mean, multiply by 100.' },
+        ],
+        scoring: 'Reqs. 1 and 2 must be satisfied to be eligible.\nOutcome threshold: post-remediation gap \u2264 3% \u2014 the floor for \u201cact to avoid harm.\u201d\n5.1\u201310% gap \u2192 2 pts \u00b7 3.1\u20135% \u2192 4 pts \u00b7 0.1\u20133% \u2192 6 pts \u00b7 0% gap \u2192 8 pts\n+2 pts \u2014 Req. 3 satisfied (recurring monitoring program in place)',
+      },
+      documentation: [
+        'Resources used (financial, human, material)',
+        'Third-party diversity wage gap audit report stating the gap as a percentage (must not disclose employee data \u2014 only the method, calculation, and result)',
+        'Verification of commitment to recurring audits at intervals no longer than once per year',
+      ],
+      note: 'Pay differences are presumed to be linked to underrepresented status unless the employer identifies a \u201cmaterial factor\u201d that\u2019s genuine, causal, significant, particular to the case, and not tainted by direct or indirect discrimination.',
+    },
   },
   {
     code: 'HRa2.1',
-    category: 'Living Wage',
+    concept: 'Human Rights',
+    objective: 'Ethical Suppliers Procurement',
     title: 'Owner Living Wage',
-    description: 'Ensure every employee assigned to the project is paid at or above the living wage for their region, verified against a documented benchmark.',
+    description: 'Every Owner employee assigned to the project earns at least a living wage for their region \u2014 one that covers basic needs and leaves room for some disposable income. Either 100% compliance or the requirement isn\u2019t met.',
+    modal: {
+      type: 'Driver',
+      appliesTo: ['B+I:D', 'B+I:O', 'O+M:D', 'O+M:O'],
+      outcomes: 'A clean wage floor under every Owner employee on the project. The Activity is a binary outcome \u2014 pass requires every employee earning at or above the regional living wage. Anything less doesn\u2019t satisfy the requirement. The intent is a wage that covers basic needs (food, water, housing, healthcare, education, transport) and leaves room for unexpected events \u2014 not just survival, but stability.',
+      whatItTakes: {
+        intro: 'Core requirements:',
+        items: [
+          'Every employee assigned to the project paid at or above the living wage for their region',
+          'Living wage threshold determined by the Global Living Wage Coalition (GLWC) as the preferred source, using the Anker methodology',
+          'Other credible third-party sources (Living Wage Foundation UK, MIT Living Wage Calculator, Living Wage for US) where GLWC data isn\u2019t available',
+          'Manual calculation using GLWC methodology only as a last resort, after exhaustive search',
+          'Family wage is international best practice \u2014 single-individual living wage figures should be flagged',
+        ],
+        sections: [
+          {
+            intro: 'If calculating manually, the wage must cover:',
+            items: [
+              'Nutritious diet meeting WHO recommendations, consistent with local food preferences',
+              'Potable water for consumption and hygiene',
+              'Regionally appropriate clothing',
+              'Transportation',
+              'Education for workers\u2019 children',
+              'Decent housing per UN-HABITAT standards',
+              'Healthcare',
+              'A provision for unexpected events',
+              'Any other regionally relevant basic needs',
+            ],
+          },
+          {
+            intro: 'Wage measurement rules:',
+            items: [
+              'Calculation must specify the area it applies to, the time period, and (if not from the reporting period) why the figure is still appropriate',
+              'Must exclude overtime pay \u2014 a living wage must be earnable in standard working hours',
+              'Must exclude productivity bonuses and allowances, unless guaranteed',
+              'Wage measurement uses net (take-home) pay, not gross. Benefits that help meet basic needs (e.g., health insurance) count as supplements to net pay',
+            ],
+          },
+        ],
+      },
+      indicators: {
+        scenarios: [
+          { label: 'Performance', text: '% of Owner employees on the project earning at or above a living wage. Formula: P = (employees earning \u2265 living wage \u00f7 total employees on project) \u00d7 100.' },
+          { label: 'Context', text: 'Context 1: total number of Owner employees working on the project. Context 2: the gap between actual wages and the living wage, reported in aggregate (satisfies UNRISD Tier 2.B.II.B.4 \u2014 Living wage gap).' },
+        ],
+        scoring: 'Pass/fail. Requirement satisfied if P = 100%.',
+      },
+      documentation: [
+        'Resources used (financial, human, material)',
+        'Third-party living wage audit report confirming compliance without disclosing employee data \u2014 must detail data collection methods and calculate any living wage gaps',
+        'Methodology for determining and categorizing the number of project workers',
+        'Methodology for identifying sites that need unique living cost assessments',
+        'Data sources used for living wage thresholds, with reasoning for the final choice',
+        'Analysis if the living wage or cost data is outdated, addressing relevancy',
+        'If applicable \u2014 documentation of the approach for incorporating any region-specific basic needs into the assessment, including the parameters for deciding what qualifies',
+      ],
+    },
   },
   {
     code: 'HRa2.3',
-    category: 'Living Wage',
+    concept: 'Human Rights',
+    objective: 'Ethical Suppliers Procurement',
     title: 'Supplier Living Wage',
-    description: 'Extend the living wage requirement to all Tier 1 suppliers through contract terms, with compliance monitored throughout the project.',
+    description: 'Push the living wage floor down the supply chain. The Owner\u2019s contract terms require it, qualification screens for it, and ongoing monitoring verifies it. Same wage methodology as HRa2.1 \u2014 but applied to Tier 1 (and rewarded for reaching Tiers 2 and 3).',
+    modal: {
+      type: 'Driver',
+      appliesTo: ['B+I:D', 'B+I:O', 'O+M:D', 'O+M:O'],
+      outcomes: 'A wage floor that reaches beyond the Owner\u2019s own employees to every Supplier worker on the project. The Activity uses contract terms, pre-selection assessment, and recurring monitoring to make the living wage a procurement-level standard \u2014 and rewards Owners who push compliance further into the supply chain. Unlike HRa2.1 (the Owner side, which is binary pass/fail), this scales 1\u20135 points by % of Tier 1 workers earning a living wage, with bonus points available for Tier 2 and Tier 3.',
+      whatItTakes: {
+        intro: 'Core requirements:',
+        items: [
+          'Contractual requirement \u2014 a living wage clause embedded in the Owner\u2019s contract terms with all Suppliers and vendors',
+          'Pre-selection assessment \u2014 evaluate each Supplier\u2019s ability to comply with the living wage requirement during qualification and proposal stages, before they\u2019re brought on',
+          'Ongoing monitoring \u2014 Supplier self-assessments, verified through third-party evaluations during the period of review',
+        ],
+        sections: [
+          {
+            intro: 'Same living wage methodology as HRa2.1:',
+            items: [
+              'Global Living Wage Coalition (GLWC) is the preferred source, using the Anker methodology',
+              'Other credible third-party sources where GLWC isn\u2019t available (Living Wage Foundation UK, MIT Living Wage Calculator, Living Wage for US)',
+              'Manual calculation as a last resort, after exhaustive search',
+              'Family wage is international best practice',
+              'Manual calculation must cover food, water, clothing, transport, education, decent housing (UN-HABITAT), healthcare, unexpected-event reserve, and any region-specific basic needs',
+              'Calculation must specify area, time period, and rationale if outside the reporting period',
+              'Excludes overtime pay, and productivity bonuses/allowances unless guaranteed',
+              'Wage measured as net (take-home) pay, with benefits supporting basic needs counted as supplements',
+            ],
+          },
+        ],
+      },
+      indicators: {
+        scenarios: [
+          { label: 'Performance', text: '% of Tier 1 Supplier workers earning at or above a living wage. Formula: P = (sum of workers earning \u2265 living wage across all Suppliers \u00f7 total Supplier workers on project) \u00d7 100.' },
+          { label: 'Context', text: 'Context 1: total number of Supplier workers on the project. Context 2: the gap between actual wages and the living wage, reported in aggregate (satisfies UNRISD SDPI Tier 2.B.II.B.4 \u2014 Living wage gap).' },
+        ],
+        scoring: 'Outcome threshold: the do-no-harm bar requires all workers to earn a living wage.\n20% Tier 1 workers earning a living wage \u2192 1 pt \u00b7 40% \u2192 2 pts \u00b7 60% \u2192 3 pts \u00b7 80% \u2192 4 pts \u00b7 100% \u2192 5 pts\n+2 pts \u2014 60% of Tier 2 workers earning a living wage\n+3 pts \u2014 60% of Tier 3 workers earning a living wage',
+      },
+      documentation: [
+        'Resources used (financial, human, material)',
+        'Third-party living wage audit report confirming compliance without disclosing employee data \u2014 must detail data collection methods and calculate any living wage gaps',
+        'Methodology for determining and categorizing the number of project workers',
+        'Methodology for identifying sites that need unique living cost assessments',
+        'Data sources used for living wage thresholds, with reasoning for the final choice',
+        'Analysis if the living wage or cost data is outdated, addressing relevancy',
+        'If applicable \u2014 documentation of the approach for incorporating any region-specific basic needs into the assessment, including the parameters for deciding what qualifies',
+      ],
+    },
   },
 ]
 
@@ -89,6 +484,7 @@ const steps = [
     number: '01',
     title: 'Select an activity',
     description: 'Select from the available SEAM Approved Marks based on the work your organization is already doing or plans to implement.',
+    cta: { label: 'Tell us what you\u2019re working on', href: '#interest-form' },
   },
   {
     number: '02',
@@ -196,8 +592,14 @@ const jsonLd = [
           </p>
           <div class="hero-cta mt-10 flex flex-wrap gap-4">
             <a
-              href="#marks"
+              href="#interest-form"
               class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+            >
+              Get started
+            </a>
+            <a
+              href="#marks"
+              class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300"
             >
               Explore available marks
             </a>
@@ -274,27 +676,180 @@ const jsonLd = [
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {approvedMarks.map((mark) => (
-          <div
-            class="reveal-child rounded-2xl bg-white p-8 lg:p-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+        {approvedMarks.map((mark, i) => (
+          <button
+            type="button"
+            data-mark-index={i}
+            class="approved-card reveal-child rounded-2xl bg-white p-8 lg:p-10 text-left transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-seam-300 border border-transparent cursor-pointer group"
           >
-            <div class="flex items-center gap-3 mb-4">
-              <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-mono font-medium text-seam-700">
-                {mark.code}
-              </span>
-              <span class="text-[12px] font-medium uppercase tracking-[0.1em] text-warm-400">
-                {mark.category}
-              </span>
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              {mark.code.includes('+') ? (
+                mark.code.split('+').map((c: string) => (
+                  <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-mono font-medium text-seam-700">
+                    {c.trim()}
+                  </span>
+                ))
+              ) : (
+                <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-mono font-medium text-seam-700">
+                  {mark.code}
+                </span>
+              )}
             </div>
-            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">
+            <p class="text-[11px] font-medium uppercase tracking-[0.12em] text-warm-400 mb-2">
+              {mark.objective}
+            </p>
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-700 transition-colors">
               {mark.title}
             </h3>
             <p class="text-[15px] leading-relaxed text-warm-600">
               {mark.description}
             </p>
-          </div>
+            <span class="mt-4 inline-flex items-center text-[13px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+              View details &rarr;
+            </span>
+          </button>
         ))}
       </div>
+
+      <!-- Modals -->
+      {approvedMarks.map((mark, i) => (
+        <div
+          data-modal-index={i}
+          class="approved-modal fixed inset-0 z-50 hidden items-start justify-center overflow-y-auto bg-warm-900/60 backdrop-blur-sm p-4 sm:p-8"
+        >
+          <div class="approved-modal-card relative w-full max-w-3xl rounded-2xl bg-white shadow-2xl my-8 sm:my-16">
+            <!-- Header -->
+            <div class="sticky top-0 z-10 bg-white rounded-t-2xl border-b border-warm-100 px-8 py-6 flex items-start justify-between gap-4">
+              <div>
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                  {mark.code.includes('+') ? (
+                    mark.code.split('+').map((c: string) => (
+                      <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-mono font-medium text-seam-700">
+                        {c.trim()}
+                      </span>
+                    ))
+                  ) : (
+                    <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-mono font-medium text-seam-700">
+                      {mark.code}
+                    </span>
+                  )}
+                  <span class="text-[13px] font-medium text-warm-900">{mark.title}</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-warm-500">
+                  <span>Concept: <strong class="text-warm-700">{mark.concept}</strong></span>
+                  <span class="text-warm-300">&middot;</span>
+                  <span>Objective: <strong class="text-warm-700">{mark.objective}</strong></span>
+                  <span class="text-warm-300">&middot;</span>
+                  <span>Type: <strong class="text-warm-700">{mark.modal.type}</strong></span>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  {mark.modal.appliesTo.map((tag: string) => (
+                    <span class="rounded-full bg-warm-100 px-2.5 py-0.5 text-[11px] font-medium text-warm-600">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <button
+                type="button"
+                class="modal-close shrink-0 rounded-full p-2 text-warm-400 hover:text-warm-600 hover:bg-warm-100 transition-colors"
+                aria-label="Close"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Body -->
+            <div class="px-8 py-8 space-y-8">
+              <!-- Outcomes -->
+              <section>
+                <h4 class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-3">Outcomes</h4>
+                <p class="text-[15px] leading-relaxed text-warm-600">{mark.modal.outcomes}</p>
+              </section>
+
+              <!-- What it takes -->
+              <section>
+                <h4 class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-3">What it takes</h4>
+                <p class="text-[15px] font-medium text-warm-800 mb-3">{mark.modal.whatItTakes.intro}</p>
+                <ul class="space-y-2.5">
+                  {mark.modal.whatItTakes.items.map((item: string) => (
+                    <li class="flex items-start gap-2.5 text-[14px] leading-relaxed text-warm-600">
+                      <svg class="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                {mark.modal.whatItTakes.sections && (mark.modal.whatItTakes as any).sections.map((sec: { intro: string; items: string[] }) => (
+                  <div class="mt-6">
+                    <p class="text-[15px] font-medium text-warm-800 mb-3">{sec.intro}</p>
+                    <ul class="space-y-2.5">
+                      {sec.items.map((item: string) => (
+                        <li class="flex items-start gap-2.5 text-[14px] leading-relaxed text-warm-600">
+                          <svg class="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                          </svg>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </section>
+
+              <!-- Indicators -->
+              <section>
+                <h4 class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-3">Indicators</h4>
+                <div class="space-y-3 mb-3">
+                  {mark.modal.indicators.scenarios.map((s: { label: string; text: string }) => (
+                    <div class="rounded-xl bg-warm-50 border border-warm-100 px-5 py-4">
+                      <p class="text-[13px] font-medium text-warm-900 mb-1">{s.label}</p>
+                      <p class="text-[14px] leading-relaxed text-warm-600">{s.text}</p>
+                    </div>
+                  ))}
+                </div>
+                {mark.modal.indicators.scoring.split('\n').map((line: string) => (
+                  <p class="text-[13px] text-warm-500 italic">{line}</p>
+                ))}
+              </section>
+
+              <!-- Documentation required -->
+              <section>
+                <h4 class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-3">Documentation required</h4>
+                <ul class="space-y-2">
+                  {mark.modal.documentation.map((item: string) => (
+                    <li class="flex items-start gap-2.5 text-[14px] leading-relaxed text-warm-600">
+                      <svg class="shrink-0 w-3.5 h-3.5 mt-1 text-warm-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              {mark.modal.note && (
+                <div class="rounded-xl bg-amber-100 border border-amber-700/20 px-5 py-4">
+                  <p class="text-[13px] leading-relaxed text-amber-800"><strong>Note:</strong> {mark.modal.note}</p>
+                </div>
+              )}
+            </div>
+
+            <!-- Footer -->
+            <div class="px-8 py-6 border-t border-warm-100 flex flex-wrap gap-3">
+              <a href="#interest-form" class="inline-flex items-center rounded-full bg-warm-900 px-6 py-3 text-[14px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">
+                Get started with this activity
+              </a>
+              <button type="button" class="modal-close inline-flex items-center rounded-full border border-warm-300 px-6 py-3 text-[14px] font-medium text-warm-700 hover:border-warm-400 transition-colors duration-300">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -339,6 +894,17 @@ const jsonLd = [
               <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">
                 {step.description}
               </p>
+              {(step as any).cta && (
+                <a
+                  href={(step as any).cta.href}
+                  class="inline-flex items-center mt-4 text-[14px] font-medium text-seam-600 hover:text-seam-700 transition-colors"
+                >
+                  {(step as any).cta.label}
+                  <svg class="ml-1.5 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </a>
+              )}
             </div>
           </div>
         ))}
@@ -427,7 +993,7 @@ const jsonLd = [
             </li>
           </ul>
           <a
-            href="/get-started"
+            href="#interest-form"
             class="inline-flex items-center justify-center w-full rounded-full border-2 border-warm-900 px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-900 hover:text-white transition-colors duration-300"
           >
             Get started
@@ -473,7 +1039,7 @@ const jsonLd = [
             </li>
           </ul>
           <a
-            href="/get-started"
+            href="#interest-form"
             class="inline-flex items-center justify-center w-full rounded-full bg-seam-600 px-8 py-4 text-[16px] font-medium text-white hover:bg-seam-700 transition-colors duration-300"
           >
             Get started with a bundle
@@ -556,31 +1122,231 @@ const jsonLd = [
     </div>
   </section>
 
+  <!-- ─── Interest Form ─── -->
+  <section id="interest-form" class="py-24 lg:py-32 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+        <!-- Left: copy -->
+        <div class="reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
+            Get started
+          </p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
+            Start with one activity.{' '}
+            <em class="italic font-normal text-seam-300">Build from there.</em>
+          </h2>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-lg">
+            Tell us about your project and the activities you're interested in verifying. We'll help you understand what documentation you need and walk you through the process.
+          </p>
+          <div class="mt-8 space-y-4">
+            <div class="flex items-start gap-3">
+              <svg class="shrink-0 w-5 h-5 text-seam-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              <p class="text-[15px] text-warm-300">No commitment required — just a conversation</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="shrink-0 w-5 h-5 text-seam-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              <p class="text-[15px] text-warm-300">We'll respond within 2 business days</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="shrink-0 w-5 h-5 text-seam-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              <p class="text-[15px] text-warm-300">Every Approved Mark counts toward full certification</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div>
+          <form id="approved-interest-form" class="rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] p-8 lg:p-10 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="ap-firstname" class="block text-[13px] font-medium text-warm-300 mb-2">First Name *</label>
+                <input type="text" id="ap-firstname" name="firstname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="ap-lastname" class="block text-[13px] font-medium text-warm-300 mb-2">Last Name *</label>
+                <input type="text" id="ap-lastname" name="lastname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="ap-email" class="block text-[13px] font-medium text-warm-300 mb-2">Work Email *</label>
+              <input type="email" id="ap-email" name="email" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="ap-company" class="block text-[13px] font-medium text-warm-300 mb-2">Company Name *</label>
+                <input type="text" id="ap-company" name="company" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="ap-jobtitle" class="block text-[13px] font-medium text-warm-300 mb-2">Job Title *</label>
+                <input type="text" id="ap-jobtitle" name="jobtitle" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="ap-activities" class="block text-[13px] font-medium text-warm-300 mb-2">Which activities are you interested in? *</label>
+              <textarea id="ap-activities" name="seam_activities_certified_list" rows="3" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+              Submit interest
+            </button>
+            <p id="ap-form-status" class="text-[13px] text-center text-warm-400 hidden"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── CTA ─── -->
-  <section class="py-24 lg:py-32 bg-warm-900">
+  <section class="py-24 lg:py-32 bg-warm-50">
     <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
-      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
-        Start with one activity.{' '}
-        <em class="italic font-normal text-seam-600">Build from there.</em>
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 max-w-3xl mx-auto">
+        Questions?{' '}
+        <em class="italic font-normal text-seam-600">We're here to help.</em>
       </h2>
-      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
-        Verify the social equity work your building already does and get recognition for your efforts.
+      <p class="mt-6 text-[17px] text-warm-600 max-w-xl mx-auto">
+        Not sure where to start? Explore full certification or reach out directly.
       </p>
       <div class="mt-12 flex flex-wrap justify-center gap-4">
         <a
-          href="/get-started"
-          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
-        >
-          Get SEAM Approved
-        </a>
-        <a
           href="/certification"
-          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+          class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300"
         >
           Explore full certification
+        </a>
+        <a
+          href="#interest-form"
+          class="inline-flex items-center rounded-full border border-warm-300 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-400 transition-colors duration-300"
+        >
+          Back to form
         </a>
       </div>
     </div>
   </section>
+
+  <script>
+    function initApprovedForm() {
+      const form = document.getElementById('approved-interest-form') as HTMLFormElement | null
+      if (!form) return
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+        const statusEl = document.getElementById('ap-form-status')!
+        const original = btn.textContent
+
+        btn.disabled = true
+        btn.textContent = 'Submitting...'
+        statusEl.classList.add('hidden')
+
+        const data = new FormData(form)
+        const fields = [
+          { objectTypeId: '0-1', name: 'firstname', value: data.get('firstname') },
+          { objectTypeId: '0-1', name: 'lastname', value: data.get('lastname') },
+          { objectTypeId: '0-1', name: 'email', value: data.get('email') },
+          { objectTypeId: '0-1', name: 'company', value: data.get('company') },
+          { objectTypeId: '0-1', name: 'jobtitle', value: data.get('jobtitle') },
+          { objectTypeId: '0-1', name: 'seam_activities_certified_list', value: data.get('seam_activities_certified_list') },
+        ]
+
+        try {
+          const res = await fetch(
+            'https://api.hsforms.com/submissions/v3/integration/submit/46821728/bc0c72ba-7cb7-49c1-8113-7e179a941086',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                fields,
+                context: {
+                  pageUri: window.location.href,
+                  pageName: 'SEAM Approved',
+                },
+              }),
+            }
+          )
+
+          if (res.ok) {
+            form.reset()
+            statusEl.textContent = "Thank you! We'll be in touch within 2 business days."
+            statusEl.classList.remove('hidden', 'text-red-400')
+            statusEl.classList.add('text-seam-300')
+          } else {
+            throw new Error('Submission failed')
+          }
+        } catch (_err) {
+          statusEl.textContent = 'Something went wrong. Please email admin@seamcertification.org directly.'
+          statusEl.classList.remove('hidden', 'text-seam-300')
+          statusEl.classList.add('text-red-400')
+        } finally {
+          btn.disabled = false
+          btn.textContent = original
+        }
+      })
+    }
+
+    function initApprovedModals() {
+      const cards = document.querySelectorAll('.approved-card')
+      const modals = document.querySelectorAll('.approved-modal')
+
+      function openModal(index: number) {
+        const modal = document.querySelector(`[data-modal-index="${index}"]`) as HTMLElement
+        if (!modal) return
+        modal.classList.remove('hidden')
+        modal.classList.add('flex')
+        document.body.style.overflow = 'hidden'
+      }
+
+      function closeAll() {
+        modals.forEach((m) => {
+          m.classList.add('hidden')
+          m.classList.remove('flex')
+        })
+        document.body.style.overflow = ''
+      }
+
+      cards.forEach((card) => {
+        card.addEventListener('click', () => {
+          const index = (card as HTMLElement).dataset.markIndex
+          if (index !== undefined) openModal(parseInt(index, 10))
+        })
+      })
+
+      // Close buttons
+      document.querySelectorAll('.modal-close').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation()
+          closeAll()
+        })
+      })
+
+      // Click backdrop to close
+      modals.forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeAll()
+        })
+      })
+
+      // Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAll()
+      })
+    }
+
+    function initAll() {
+      initApprovedModals()
+      initApprovedForm()
+    }
+
+    document.addEventListener('astro:page-load', initAll)
+    if (document.readyState !== 'loading') {
+      initAll()
+    } else {
+      document.addEventListener('DOMContentLoaded', initAll)
+    }
+  </script>
 
 </SiteLayout>

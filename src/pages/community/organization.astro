@@ -71,14 +71,18 @@ const tiers = [
 ]
 
 const memberLogos = [
-  { src: '/logos/members/jamestown.png', alt: 'Jamestown', height: 'h-16' },
-  { src: '/logos/members/hitt.png', alt: 'HITT', height: 'h-20' },
-  { src: '/logos/members/jll.png', alt: 'JLL', height: 'h-24' },
-  { src: '/logos/members/interface.png', alt: 'Interface', height: 'h-20' },
-  { src: '/logos/members/leapley.png', alt: 'Leapley Construction', height: 'h-24' },
+  { src: '/logos/members/jamestown.png', alt: 'Jamestown', height: 'h-16', slug: 'jamestown' },
+  { src: '/logos/members/hitt.png', alt: 'HITT', height: 'h-20', slug: 'hitt-contracting' },
+  { src: '/logos/members/jll.png', alt: 'JLL', height: 'h-24', slug: 'jll' },
+  { src: '/logos/members/interface.png', alt: 'Interface', height: 'h-20', slug: 'interface' },
+  { src: '/logos/members/leapley.png', alt: 'Leapley Construction', height: 'h-24', slug: 'leapley-construction' },
+  { src: '/logos/thm-advisors.svg', alt: 'THM Advisors', height: 'h-16', slug: 'thm-advisors' },
+  { src: '/logos/brightworks.svg', alt: 'Brightworks Sustainability', height: 'h-16', slug: 'brightworks-sustainability' },
 ]
 
-const memberNames = ['THM Advisors', 'Val Interiors', 'Brightworks']
+const memberNames = [
+  { name: 'Val Interiors', slug: 'val-interiors' },
+]
 
 const faqs = [
   { q: 'How does team seat allocation work?', a: 'Each organization tier includes a set number of seats. Every seat holder gets full individual-level access — templates, courses, ROSSI, and network. Seat assignments can be changed quarterly through your admin dashboard.' },
@@ -224,14 +228,18 @@ const jsonLd = [
       </div>
       <div class="reveal-fade-up flex flex-wrap items-center justify-center lg:justify-between gap-x-12 gap-y-10 mb-16">
         {memberLogos.map((logo) => (
-          <img src={logo.src} alt={logo.alt} class={`${logo.height} w-auto object-contain`} />
+          <a href={`/directory/org/${logo.slug}`} class="transition-opacity duration-300 hover:opacity-70">
+            <img src={logo.src} alt={logo.alt} class={`${logo.height} w-auto object-contain`} />
+          </a>
         ))}
       </div>
-      <div class="reveal-fade-up flex flex-wrap items-center justify-center lg:justify-around gap-x-12 gap-y-6">
-        {memberNames.map((name) => (
-          <span class="font-display text-[clamp(1.75rem,3vw,2.75rem)] tracking-[-0.02em] text-warm-900">{name}</span>
-        ))}
-      </div>
+      {memberNames.length > 0 && (
+        <div class="reveal-fade-up flex flex-wrap items-center justify-center lg:justify-around gap-x-12 gap-y-6">
+          {memberNames.map((m) => (
+            <a href={`/directory/org/${m.slug}`} class="font-display text-[clamp(1.75rem,3vw,2.75rem)] tracking-[-0.02em] text-warm-900 hover:text-gold-600 transition-colors duration-300">{m.name}</a>
+          ))}
+        </div>
+      )}
     </div>
   </section>
 

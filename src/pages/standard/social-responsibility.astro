@@ -5,31 +5,43 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
 const focusAreas = [
   {
+    concept: 'Transformational Governance',
     title: 'Education + Awareness',
     description:
       'Build working knowledge of social responsibility principles across your project team and communicate your commitments publicly through transparent reporting.',
   },
   {
+    concept: 'Transformational Governance',
     title: 'Voluntary Initiatives',
     description:
       'Align your project with recognized external frameworks that address social responsibility in commercial real estate.',
   },
   {
+    concept: 'Transformational Governance',
     title: 'Responsible Policies',
     description:
       'Establish site-specific governance policies that set clear expectations for how your organization and project teams operate.',
   },
   {
+    concept: 'Transformational Governance',
+    title: 'Transparent Communication',
+    description:
+      'Report honestly and publicly on your social responsibility commitments and performance, at both the project and property level. Transparency is how accountability becomes visible to the people your project affects.',
+  },
+  {
+    concept: 'Transformational Governance',
     title: 'Impacted Party Materiality',
     description:
       "Identify and prioritize the issues that matter most to the people your project affects, directing your efforts where they'll have the greatest relevance.",
   },
   {
+    concept: 'Community Involvement + Development',
     title: 'Community Development',
     description:
       'Design and execute community programs that address real, community-identified goals through direct engagement that goes beyond financial support.',
   },
   {
+    concept: 'Social Investment',
     title: 'Community Resilience',
     description:
       'Make financial investments that build long-term community capacity rather than creating ongoing dependency.',
@@ -136,16 +148,19 @@ const focusAreas = [
           Focus areas
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Six ways to take{' '}
-          <em class="italic font-normal text-seam-600">responsible action</em>.
+          Seven ways to take{' '}
+          <em class="italic font-normal text-seam-600">responsible action.</em>
         </h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-warm-600">
+          Social Responsibility in SEAM is achieved across 3 concepts, spanning 7 actionable objectives.
+        </p>
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {focusAreas.map((area, i) => (
           <div class="reveal-child rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-            <span class="text-[14px] font-medium text-seam-500 mb-4 block">
-              {String(i + 1).padStart(2, '0')}
+            <span class="text-[12px] font-normal uppercase tracking-[0.1em] text-[#6B8F9C] mb-4 block">
+              {area.concept}
             </span>
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
               {area.title}

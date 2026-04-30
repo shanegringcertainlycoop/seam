@@ -5,16 +5,19 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
 const focusAreas = [
   {
+    concept: 'Impact Assessment',
     title: 'Contextual Analysis',
     description:
       "Understand your project's social impact before you build by identifying who it affects, mapping your value chain, and establishing a social baseline.",
   },
   {
+    concept: 'Impact Assessment',
     title: 'Impacted Party Engagement',
     description:
       'Build processes to collect, analyze, and respond to feedback from the people most affected by your project throughout development.',
   },
   {
+    concept: 'Impact Assessment',
     title: 'Monitoring + Evaluation',
     description:
       "Track whether your project's social impact is moving in the right direction using established indicators and regular assessment cycles.",
@@ -125,13 +128,16 @@ const focusAreas = [
           Three ways to{' '}
           <em class="italic font-normal text-seam-300">demonstrate impact.</em>
         </h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-warm-600">
+          Social Impact in SEAM is built around the Impact Assessment concept, spanning 3 actionable objectives.
+        </p>
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {focusAreas.map((area, i) => (
           <div class="reveal-child rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-            <span class="text-[14px] font-medium text-seam-500 mb-4 block">
-              {String(i + 1).padStart(2, '0')}
+            <span class="text-[12px] font-normal uppercase tracking-[0.1em] text-[#6B8F9C] mb-4 block">
+              {area.concept}
             </span>
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
               {area.title}

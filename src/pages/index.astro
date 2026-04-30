@@ -12,50 +12,60 @@ const hotspots = [
   {
     id: 1,
     x: 48,
-    y: 45,
-    title: 'Tenants + occupants inside the building',
+    y: 50,
+    title: 'Occupants',
+    image: '/images/home/occupants.png',
+    intro: 'The people who live, work, and gather here every day.',
     body:
-      'The people who live, work, and gather here every day. Indoor environment, access, affordability, and belonging shape their daily experience — and their long-term health.',
+      'Indoor environment, access, affordability, and belonging shape their daily experience — and their long-term health.',
   },
   {
     id: 2,
-    x: 62,
-    y: 64,
-    title: 'Facilities + management professionals who run it',
+    x: 57,
+    y: 60,
+    title: 'Operators',
+    image: '/images/home/operators.png',
+    intro: 'The people who run the building.',
     body:
-      'The teams keeping the building alive. Fair wages, training pathways, and safe working conditions determine whether operations sustain people or wear them down.',
+      'Facility teams, property managers, custodial staff, security. They keep the space functioning, often invisibly. How they are trained, paid, and treated is part of the building\u2019s performance — even when their work is the kind nobody is supposed to notice.',
   },
   {
     id: 3,
-    x: 82,
-    y: 54,
-    title: 'Workers + contractors who built it',
+    x: 38,
+    y: 36,
+    title: 'Builders',
+    image: '/images/home/builders.png',
+    intro: 'The people who built it.',
     body:
-      'The trades who put the building up. Prevailing wage, apprenticeship access, and site safety decide whether construction builds careers or just structures.',
+      'Construction is one of the most dangerous industries in the world. Safety practices, fair wages, and labor conditions on the jobsite are not separate from the finished building — they are its first chapter, written into the structure long before anyone moves in.',
   },
   {
     id: 4,
-    x: 78,
-    y: 80,
-    title: 'Residents + community who neighbor it',
+    x: 72,
+    y: 52,
+    title: 'Neighbors',
+    image: '/images/home/neighbors.png',
+    intro: 'The people who live alongside it.',
     body:
-      "The blocks, schools, and small businesses shaped by the building's presence. Displacement, traffic, jobs, and public space all ripple outward from every project.",
+      'A building changes the block. It shapes traffic, shadows, rents, and who feels welcome on the sidewalk. The community surrounding a project is an impacted party whether or not they were ever consulted — and SEAM treats them like one.',
   },
   {
     id: 5,
-    x: 18,
-    y: 50,
-    title: 'Vendors + manufacturers who supply it',
+    x: 78,
+    y: 58,
+    title: 'Suppliers',
+    intro: 'The people who source and ship what goes into it.',
     body:
-      'Every product specified carries a supply chain. Local sourcing, minority- and women-owned businesses, and ethical manufacturing turn procurement into equity.',
+      'Vendors, manufacturers, fabricators, drivers. A modern building is assembled from thousands of decisions made in places the owner will never visit. Each one carries a labor record. Each one is part of the project\u2019s footprint.',
   },
   {
     id: 6,
-    x: 88,
-    y: 12,
-    title: 'Laborers who source, collect, and refine it',
+    x: 75,
+    y: 18,
+    title: 'Origin',
+    intro: 'The people at the very beginning of the chain.',
     body:
-      'Materials start in mines, forests, mills, and factories often far from sight. Fair labor and human rights at the raw-material level are where real accountability begins.',
+      'Materials start in mines, forests, mills, and factories — often far from sight, often beyond easy oversight. Fair labor and human rights at the raw-material level are where real accountability begins. If a building\u2019s social claim doesn\u2019t reach here, it doesn\u2019t reach.',
   },
 ]
 
@@ -232,29 +242,31 @@ const jsonLd = [
   </section>
 
   <!-- ─── Section 2a: Ecosystem Visualization ─── -->
-  <section class="bg-warm-50 py-20 lg:py-28">
+  <section class="bg-white py-20 lg:py-28">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-fade-up max-w-2xl mx-auto text-center mb-10 lg:mb-14">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">
           Who your building touches
         </p>
         <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.2] tracking-[-0.02em] text-warm-900">
-          Every building reaches{' '}
-          <em class="italic font-normal text-seam-600">six groups of people.</em>
+          A building is bigger than{' '}
+          <em class="italic font-normal text-seam-600">its walls.</em>
         </h2>
-        <p class="mt-4 text-[15px] text-warm-600">
-          Hover or tap a dot to see who.
+        <p class="mt-4 text-[17px] leading-relaxed text-warm-600 max-w-xl mx-auto">
+          Six groups of people are touched by every project. SEAM is the only standard that accounts for all of them.
         </p>
       </div>
+    </div>
 
+    <div class="mx-auto max-w-[1400px]">
       <div
         id="ecosystem-container"
-        class="relative mx-auto w-full max-w-[1100px] aspect-[7/5] overflow-hidden rounded-xl"
+        class="relative w-full aspect-[2/1]"
       >
         <img
-          src="/images/ecosystem-building.png"
-          alt="Isometric illustration of a building and its surrounding ecosystem"
-          class="absolute inset-0 h-full w-full object-cover object-top select-none pointer-events-none"
+          src="/images/home/6-dimensions.png"
+          alt="Isometric illustration of a building at the center of six concentric rings representing the people it touches — tenants, facilities staff, construction workers, community residents, supply chain vendors, and raw material laborers"
+          class="absolute inset-0 h-full w-full object-contain select-none pointer-events-none"
           draggable="false"
         />
 
@@ -266,31 +278,55 @@ const jsonLd = [
               data-hotspot-id={spot.id}
               aria-label={spot.title}
               aria-expanded="false"
-              class="hotspot absolute -translate-x-1/2 -translate-y-1/2 group flex items-center justify-center outline-none"
+              class="hotspot absolute -translate-x-1/2 -translate-y-1/2 group flex items-center justify-center outline-none z-10"
               style={`left: ${spot.x}%; top: ${spot.y}%;`}
             >
               {/* Halo — subtle, grows gently on active */}
               <span
-                class="hotspot-halo absolute rounded-full bg-seam-600/15 transition-transform duration-[400ms] ease-out h-8 w-8 md:h-11 md:w-11"
+                class="hotspot-halo absolute rounded-full bg-gold-500/20 transition-transform duration-[400ms] ease-out h-8 w-8 md:h-11 md:w-11"
               ></span>
               {/* Inner dot — subtle scale + ring change */}
               <span
-                class="hotspot-dot relative block rounded-full bg-seam-600 ring-white shadow-[0_2px_8px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-[250ms] ease-out h-3 w-3 md:h-4 md:w-4 ring-2 scale-100"
+                class="hotspot-dot relative block rounded-full bg-gold-500 ring-white shadow-[0_2px_8px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-[250ms] ease-out h-3 w-3 md:h-4 md:w-4 ring-2 scale-100"
               ></span>
               {/* Tooltip (desktop) — always mounted, fades in/out */}
               <div
                 role="tooltip"
                 aria-hidden="true"
                 data-hotspot-tooltip={spot.id}
-                class="hidden md:block pointer-events-none absolute left-1/2 top-full mt-4 w-[300px] rounded-2xl bg-white p-5 text-left shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-warm-100 z-10 transition-opacity duration-200 ease-out opacity-0"
+                class={`hidden md:block pointer-events-none absolute left-1/2 top-full mt-4 rounded-2xl bg-white text-left shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-warm-100 z-20 transition-opacity duration-200 ease-out opacity-0 ${spot.image ? 'w-[520px]' : 'w-[380px] p-6'}`}
                 style={`transform: translateX(${translateX});`}
               >
-                <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
-                  {spot.title}
-                </p>
-                <p class="text-[14px] leading-relaxed text-warm-600">
-                  {spot.body}
-                </p>
+                {spot.image ? (
+                  <div class="flex p-4 gap-4">
+                    <img src={spot.image} alt="" class="w-[200px] h-auto rounded-xl object-cover flex-shrink-0" />
+                    <div class="flex flex-col justify-center">
+                      <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
+                        {spot.title}
+                      </p>
+                      <p class="text-[14px] leading-relaxed font-medium text-warm-800 mb-1">
+                        {spot.intro}
+                      </p>
+                      <p class="text-[14px] leading-relaxed text-warm-500">
+                        {spot.body}
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div class="p-6">
+                      <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
+                        {spot.title}
+                      </p>
+                      <p class="text-[14px] leading-relaxed font-medium text-warm-800 mb-1">
+                        {spot.intro}
+                      </p>
+                      <p class="text-[14px] leading-relaxed text-warm-500">
+                        {spot.body}
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             </button>
           )
@@ -298,7 +334,7 @@ const jsonLd = [
       </div>
 
       <!-- Mobile info panel — shows the active hotspot below the image -->
-      <div class="md:hidden mt-6 min-h-[160px]">
+      <div class="md:hidden mt-6 px-6 min-h-[160px]">
         <div id="ecosystem-mobile-empty" class="text-center text-[14px] text-warm-400 pt-6">
           Tap any dot above to learn more.
         </div>
@@ -307,13 +343,19 @@ const jsonLd = [
             data-hotspot-panel={spot.id}
             class="hotspot-mobile-panel hidden rounded-2xl bg-white p-5 border border-warm-100 shadow-[0_8px_24px_rgba(0,0,0,0.06)]"
           >
+            {spot.image && (
+              <img src={spot.image} alt="" class="w-full rounded-xl mb-4" />
+            )}
             <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-2">
               Tap a dot
             </p>
             <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
               {spot.title}
             </p>
-            <p class="text-[14px] leading-relaxed text-warm-600">
+            <p class="text-[14px] leading-relaxed font-medium text-warm-800 mb-1">
+              {spot.intro}
+            </p>
+            <p class="text-[14px] leading-relaxed text-warm-500">
               {spot.body}
             </p>
           </div>
@@ -667,6 +709,7 @@ const jsonLd = [
           const id = btn.dataset.hotspotId ?? ''
           const isActive = active === id
           btn.setAttribute('aria-expanded', String(isActive))
+          btn.style.zIndex = isActive ? '30' : '10'
 
           const halo = btn.querySelector<HTMLElement>('.hotspot-halo')
           const dot = btn.querySelector<HTMLElement>('.hotspot-dot')
