@@ -424,7 +424,7 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 
-  <!-- ─── Pricing ─── -->
+  <!-- ─── Pricing Calculator ─── -->
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
@@ -432,116 +432,315 @@ const jsonLd = breadcrumbSchema([
           Investment
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Certification pricing for
-          <em class="italic font-normal text-seam-600">every project size</em>
+          Estimate your <em class="italic font-normal text-seam-600">certification investment</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
-          Pricing is based on project size and rating system. Registration locks in your fee schedule for 24 months. Recertification is required every 3 years.
+          Use the calculator below to estimate fees based on your project type, size, and any applicable discounts. Registration locks in your fee schedule for 24 months.
         </p>
       </div>
 
-      <div class="reveal-stagger space-y-12">
-        <!-- Buildings + Interiors -->
-        <div class="reveal-child">
-          <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-2">Buildings + Interiors</h3>
-          <p class="text-[15px] text-warm-600 mb-6">New construction and major renovations. The most comprehensive path to SEAM Certification.</p>
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-[600px]">
-              <thead>
-                <tr class="border-b border-warm-200">
-                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Project Size</th>
-                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Registration</th>
-                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Verification</th>
-                  <th class="text-left py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Recertification</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="border-b border-warm-100">
-                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Small</span><span class="block text-[13px] text-warm-600 mt-0.5">Under 50,000 sq ft</span></td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$3,500</td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$12,500</td>
-                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$7,500</td>
-                </tr>
-                <tr class="border-b border-warm-100">
-                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Medium</span><span class="block text-[13px] text-warm-600 mt-0.5">50,000 – 250,000 sq ft</span></td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$5,000</td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$22,500</td>
-                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$13,500</td>
-                </tr>
-                <tr class="border-b border-warm-100">
-                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Large</span><span class="block text-[13px] text-warm-600 mt-0.5">Over 250,000 sq ft</span></td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$7,500</td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$35,000</td>
-                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$21,000</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <!-- Calculator — two-column layout -->
+      <div id="cert-calc-2" class="rounded-3xl border border-warm-200 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+          <!-- Left: Controls -->
+          <div class="p-8 lg:p-10 space-y-8">
+            <!-- Project Type -->
+            <div>
+              <label class="block text-[13px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">Rating System</label>
+              <div class="flex flex-col sm:flex-row gap-3">
+                <button data-type="bi" class="c2-type-btn flex-1 rounded-xl border-2 border-seam-500 bg-seam-50 px-4 py-3 text-left transition-all duration-200">
+                  <span class="block text-[15px] font-medium text-warm-900">Buildings + Interiors</span>
+                  <span class="block text-[12px] text-warm-500 mt-0.5">New construction &amp; renovations</span>
+                </button>
+                <button data-type="om" class="c2-type-btn flex-1 rounded-xl border-2 border-warm-200 bg-white px-4 py-3 text-left transition-all duration-200 hover:border-warm-300">
+                  <span class="block text-[15px] font-medium text-warm-900">Operations + Maintenance</span>
+                  <span class="block text-[12px] text-warm-500 mt-0.5">Existing buildings &amp; operations</span>
+                </button>
+              </div>
+            </div>
 
-        <!-- Operations + Maintenance -->
-        <div class="reveal-child">
-          <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-2">Operations + Maintenance</h3>
-          <p class="text-[15px] text-warm-600 mb-6">Existing buildings seeking certification through operational practices and ongoing programs.</p>
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-[600px]">
-              <thead>
-                <tr class="border-b border-warm-200">
-                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Project Size</th>
-                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Registration</th>
-                  <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Verification</th>
-                  <th class="text-left py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Recertification</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="border-b border-warm-100">
-                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Small</span><span class="block text-[13px] text-warm-600 mt-0.5">Under 50,000 sq ft</span></td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$2,500</td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$9,500</td>
-                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$5,700</td>
-                </tr>
-                <tr class="border-b border-warm-100">
-                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Medium</span><span class="block text-[13px] text-warm-600 mt-0.5">50,000 – 250,000 sq ft</span></td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$3,500</td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$17,500</td>
-                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$10,500</td>
-                </tr>
-                <tr class="border-b border-warm-100">
-                  <td class="py-5 pr-6"><span class="block text-[16px] font-medium text-warm-900">Large</span><span class="block text-[13px] text-warm-600 mt-0.5">Over 250,000 sq ft</span></td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$5,000</td>
-                  <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">$27,500</td>
-                  <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">$16,500</td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- Project Size -->
+            <div>
+              <label for="c2-size-input" class="block text-[13px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">Project Size</label>
+              <div class="relative">
+                <input
+                  type="text"
+                  id="c2-size-input"
+                  value="100,000"
+                  inputmode="numeric"
+                  class="w-full rounded-xl border-2 border-warm-200 bg-white px-5 py-3.5 font-display text-[20px] tracking-[-0.02em] text-warm-900 focus:outline-none focus:border-seam-500 transition-colors"
+                />
+                <span class="absolute right-5 top-1/2 -translate-y-1/2 text-[13px] text-warm-400">sq ft</span>
+              </div>
+              <div class="mt-3">
+                <input
+                  type="range"
+                  id="c2-size-slider"
+                  min="0"
+                  max="100"
+                  value="14"
+                  class="w-full h-2 bg-warm-200 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-seam-600 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:bg-seam-600 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
+                />
+                <div class="flex justify-between mt-1 text-[11px] text-warm-400">
+                  <span>1K</span>
+                  <span>100K</span>
+                  <span>1M</span>
+                  <span>10M</span>
+                  <span>20M</span>
+                </div>
+              </div>
+              <div class="mt-3 flex flex-wrap gap-1.5">
+                <button data-sqft="25000" class="c2-size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">25K</button>
+                <button data-sqft="50000" class="c2-size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">50K</button>
+                <button data-sqft="100000" class="c2-size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">100K</button>
+                <button data-sqft="250000" class="c2-size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">250K</button>
+                <button data-sqft="500000" class="c2-size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">500K</button>
+                <button data-sqft="1000000" class="c2-size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">1M</button>
+                <button data-sqft="5000000" class="c2-size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">5M</button>
+              </div>
+            </div>
+
+            <!-- Discounts -->
+            <div>
+              <label class="block text-[13px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">Discounts</label>
+              <div class="space-y-3">
+                <div class="rounded-xl border border-warm-200 px-4 py-3.5 transition-all duration-200 has-[select:not([value=''])]:border-seam-500 has-[select:not([value=''])]:bg-seam-50">
+                  <span class="block text-[13px] font-medium text-warm-900 mb-2">Community Membership</span>
+                  <select id="c2-discount-member" class="w-full rounded-lg border border-warm-200 bg-white px-3 py-2 text-[13px] text-warm-700 focus:outline-none focus:border-seam-500 transition-colors cursor-pointer">
+                    <option value="">No membership</option>
+                    <option value="75">Standing — $75 off</option>
+                    <option value="150">Ladder — $150 off</option>
+                    <option value="225">Arc / Silver Founding — $225 off</option>
+                    <option value="450">Gold Founding — $450 off</option>
+                    <option value="750">Platinum Founding — $750 off</option>
+                  </select>
+                </div>
+                <div class="rounded-xl border border-warm-200 px-4 py-3.5 transition-all duration-200 has-[select:not([value=''])]:border-seam-500 has-[select:not([value=''])]:bg-seam-50">
+                  <span class="block text-[13px] font-medium text-warm-900 mb-2">
+                    Qualifying Project — $500 off
+                    <span class="relative inline-block ml-1 group/tip3">
+                      <svg class="inline w-3.5 h-3.5 text-warm-400 group-hover/tip3:text-warm-600 transition-colors cursor-help" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827m0 3h.01M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
+                      </svg>
+                      <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 rounded-lg bg-warm-900 px-4 py-3 text-[12px] leading-relaxed text-warm-200 opacity-0 group-hover/tip3:opacity-100 transition-opacity duration-200 shadow-lg z-10">
+                        Includes projects in Emerging Market economies as classified by the World Bank. This covers upper-middle-income countries with developing financial markets and infrastructure. <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups" target="_blank" rel="noopener noreferrer" class="underline text-seam-300 hover:text-seam-200 pointer-events-auto">See eligible countries &rarr;</a>
+                        <span class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-warm-900"></span>
+                      </span>
+                    </span>
+                  </span>
+                  <select id="c2-discount-project" class="w-full rounded-lg border border-warm-200 bg-white px-3 py-2 text-[13px] text-warm-700 focus:outline-none focus:border-seam-500 transition-colors cursor-pointer">
+                    <option value="">Not applicable</option>
+                    <option value="500">Government / Municipal</option>
+                    <option value="500">Social</option>
+                    <option value="500">Non-profit or Charity</option>
+                    <option value="500">Low Income / Affordable Housing</option>
+                    <option value="500">Senior / Assisted Living</option>
+                    <option value="500">Healthcare</option>
+                    <option value="500">Emerging Market</option>
+                    <option value="500">Small Business</option>
+                  </select>
+                </div>
+                <label class="flex items-center gap-3 rounded-xl border border-warm-200 px-4 py-3.5 cursor-pointer transition-all duration-200 hover:border-warm-300 has-[input:checked]:border-seam-500 has-[input:checked]:bg-seam-50">
+                  <input type="checkbox" id="c2-discount-developing" class="w-4 h-4 rounded border-warm-300 text-seam-600 focus:ring-seam-500" />
+                  <div>
+                    <span class="text-[13px] font-medium text-warm-900">
+                      Developing Country — $1,000 off
+                      <span class="relative inline-block ml-1 group/tip4">
+                        <svg class="inline w-3.5 h-3.5 text-warm-400 group-hover/tip4:text-warm-600 transition-colors cursor-help" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827m0 3h.01M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
+                        </svg>
+                        <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 rounded-lg bg-warm-900 px-4 py-3 text-[12px] leading-relaxed text-warm-200 opacity-0 group-hover/tip4:opacity-100 transition-opacity duration-200 shadow-lg z-10">
+                          Based on the World Bank country classification by income level. Low-income and lower-middle-income economies qualify. <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups" target="_blank" rel="noopener noreferrer" class="underline text-seam-300 hover:text-seam-200 pointer-events-auto">See eligible countries &rarr;</a>
+                          <span class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-warm-900"></span>
+                        </span>
+                      </span>
+                    </span>
+                    <span class="block text-[11px] text-warm-500">World Bank classification</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Results -->
+          <div class="bg-warm-900 p-8 lg:p-10 flex flex-col">
+            <div class="flex items-baseline justify-between mb-6">
+              <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400">Your Estimate</p>
+              <p id="c2-per-sf-rate" class="text-[12px] text-warm-500">$0.044/sq ft</p>
+            </div>
+
+            <!-- Registration -->
+            <div class="mb-6 pb-6 border-b border-warm-700/50">
+              <p class="text-[12px] text-warm-400 mb-1">Registration Fee</p>
+              <div class="flex items-baseline justify-between">
+                <p class="text-[12px] text-warm-500">One-time — locks fees for 24 mo</p>
+                <p class="font-display text-[24px] tracking-[-0.03em] text-white">$2,000</p>
+              </div>
+            </div>
+
+            <!-- Verification by cert level -->
+            <p class="text-[12px] text-warm-400 mb-3">Verification by Certification Level</p>
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
+                <img src="/logos/cert-bronze.png" alt="Bronze" class="w-10 h-10 object-contain mb-2" />
+                <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-amber-700 mb-1">Bronze</p>
+                <p id="c2-price-bronze" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$5,625</p>
+              </div>
+              <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
+                <img src="/logos/cert-silver.png" alt="Silver" class="w-10 h-10 object-contain mb-2" />
+                <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-warm-300 mb-1">Silver</p>
+                <p id="c2-price-silver" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$6,875</p>
+              </div>
+              <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
+                <img src="/logos/cert-gold.png" alt="Gold" class="w-10 h-10 object-contain mb-2" />
+                <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-gold-400 mb-1">Gold</p>
+                <p id="c2-price-gold" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$8,125</p>
+              </div>
+              <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
+                <img src="/logos/cert-platinum.png" alt="Platinum" class="w-10 h-10 object-contain mb-2" />
+                <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-seam-300 mb-1">Platinum</p>
+                <p id="c2-price-platinum" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$9,375</p>
+              </div>
+            </div>
+
+            <!-- Total -->
+            <div class="mt-auto pt-6 border-t border-warm-700/50">
+              <p class="text-[12px] text-warm-400 mb-2">Total First-Year Investment</p>
+              <p id="c2-price-total" class="font-display text-[clamp(1.8rem,3vw,2.5rem)] tracking-[-0.03em] text-gold-300">$7,625 – $11,375</p>
+              <p id="c2-price-savings" class="text-[13px] text-seam-300 mt-1 hidden"><span id="c2-savings-amount"></span> off verification with applied discounts</p>
+
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a href="/get-started" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-[14px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+                  Register a project
+                </a>
+                <a href="/pricing" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-6 py-3 text-[14px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
+                  View all pricing
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Community discount note -->
-      <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8">
+      <div class="mt-8 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8">
         <p class="text-[15px] leading-relaxed text-seam-700">
-          <strong class="font-semibold">Community member discount:</strong> Organizations with an active Ladder or Arc membership receive 10 – 20% off verification fees. Volume discounts available for portfolios of 5+ projects.{' '}
+          <strong class="font-semibold">These are estimates.</strong> Final pricing is confirmed at registration based on your specific project scope. Discounts are applied during registration review and may be combined.{' '}
           <a href="/community/organization" class="underline hover:text-seam-900 transition-colors">Learn about organization membership &rarr;</a>
         </p>
       </div>
-
-      <!-- CTA buttons -->
-      <div class="mt-10 flex flex-wrap gap-4">
-        <a
-          href="https://seam.outgrow.us/SEAMcert-project-costs"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300"
-        >
-          Estimate your project cost &rarr;
-        </a>
-        <a href="/pricing" class="inline-flex items-center rounded-full border border-warm-200 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-300 transition-colors duration-300">
-          View all pricing
-        </a>
-      </div>
     </div>
   </section>
+
+  <script>
+    function initCertCalc2() {
+      const slider = document.getElementById('c2-size-slider') as HTMLInputElement
+      const sizeInput = document.getElementById('c2-size-input') as HTMLInputElement
+      const typeButtons = document.querySelectorAll('.c2-type-btn')
+      const presetButtons = document.querySelectorAll('.c2-size-preset')
+      const discountMember = document.getElementById('c2-discount-member') as HTMLSelectElement
+      const discountProject = document.getElementById('c2-discount-project') as HTMLSelectElement
+      const discountDeveloping = document.getElementById('c2-discount-developing') as HTMLInputElement
+      const perSfRate = document.getElementById('c2-per-sf-rate')!
+      const priceBronze = document.getElementById('c2-price-bronze')!
+      const priceSilver = document.getElementById('c2-price-silver')!
+      const priceGold = document.getElementById('c2-price-gold')!
+      const pricePlatinum = document.getElementById('c2-price-platinum')!
+      const priceTotal = document.getElementById('c2-price-total')!
+      const priceSavings = document.getElementById('c2-price-savings')!
+      const savingsAmount = document.getElementById('c2-savings-amount')!
+
+      if (!slider || !sizeInput) return
+
+      const REGISTRATION = 2000
+      const rateTiers = [
+        { min: 1, max: 99999, rate: 0.047 },
+        { min: 100000, max: 249999, rate: 0.044 },
+        { min: 250000, max: 499999, rate: 0.041 },
+        { min: 500000, max: 749999, rate: 0.039 },
+        { min: 750000, max: 999999, rate: 0.036 },
+        { min: 1000000, max: 1249999, rate: 0.033 },
+        { min: 1250000, max: 1499999, rate: 0.030 },
+        { min: 1500000, max: 1749999, rate: 0.027 },
+        { min: 1750000, max: 1999999, rate: 0.025 },
+        { min: 2000000, max: 2499999, rate: 0.022 },
+        { min: 2500000, max: 2999999, rate: 0.019 },
+        { min: 3000000, max: 5000000, rate: 0.016 },
+        { min: 5000001, max: 9999999, rate: 0.013 },
+        { min: 10000000, max: 20000000, rate: 0.011 },
+      ]
+      const certMinimums = { bronze: 5625, silver: 6875, gold: 8125, platinum: 9375 }
+      let currentSqft = 100000
+      const LOG_MIN = Math.log(1000)
+      const LOG_MAX = Math.log(20000000)
+
+      function sliderToSqft(val: number): number {
+        return Math.round(Math.exp(LOG_MIN + (val / 100) * (LOG_MAX - LOG_MIN)) / 1000) * 1000
+      }
+      function sqftToSlider(sqft: number): number {
+        return Math.round(((Math.log(Math.max(1000, Math.min(20000000, sqft))) - LOG_MIN) / (LOG_MAX - LOG_MIN)) * 100)
+      }
+      function getRate(sqft: number): number {
+        for (const tier of rateTiers) { if (sqft >= tier.min && sqft <= tier.max) return tier.rate }
+        return rateTiers[rateTiers.length - 1].rate
+      }
+      function calcVerification(sqft: number, level: keyof typeof certMinimums): number {
+        return Math.max(sqft * getRate(sqft), certMinimums[level])
+      }
+      function fmt(n: number): string { return '$' + Math.round(n).toLocaleString('en-US') }
+      function getTotalDiscount(): number {
+        let total = 0
+        const mv = parseInt(discountMember.value, 10); if (!isNaN(mv)) total += mv
+        const pv = parseInt(discountProject.value, 10); if (!isNaN(pv)) total += pv
+        if (discountDeveloping.checked) total += 1000
+        return total
+      }
+
+      function update() {
+        const sqft = currentSqft
+        const rate = getRate(sqft)
+        const disc = getTotalDiscount()
+        perSfRate.textContent = `$${rate.toFixed(3)}/sq ft`
+        const levels: (keyof typeof certMinimums)[] = ['bronze', 'silver', 'gold', 'platinum']
+        const els = [priceBronze, priceSilver, priceGold, pricePlatinum]
+        const vals: number[] = []
+        levels.forEach((l, i) => { const f = Math.max(0, Math.round(calcVerification(sqft, l) - disc)); vals.push(f); els[i].textContent = fmt(f) })
+        priceTotal.textContent = `${fmt(REGISTRATION + vals[0])} – ${fmt(REGISTRATION + vals[3])}`
+        if (disc > 0) { priceSavings.classList.remove('hidden'); savingsAmount.textContent = fmt(disc) }
+        else { priceSavings.classList.add('hidden') }
+      }
+
+      function setSqft(val: number) {
+        currentSqft = Math.max(1000, Math.min(20000000, val))
+        sizeInput.value = currentSqft.toLocaleString('en-US')
+        slider.value = String(sqftToSlider(currentSqft))
+        update()
+      }
+
+      slider.addEventListener('input', () => { currentSqft = sliderToSqft(parseInt(slider.value, 10)); sizeInput.value = currentSqft.toLocaleString('en-US'); update() })
+      sizeInput.addEventListener('input', () => { const v = parseInt(sizeInput.value.replace(/[^0-9]/g, ''), 10); if (!isNaN(v) && v > 0) { currentSqft = v; slider.value = String(sqftToSlider(v)); update() } })
+      sizeInput.addEventListener('blur', () => { sizeInput.value = currentSqft.toLocaleString('en-US') })
+      presetButtons.forEach((btn) => { btn.addEventListener('click', () => { setSqft(parseInt((btn as HTMLElement).dataset.sqft!, 10)) }) })
+      typeButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const type = (btn as HTMLElement).dataset.type!
+          typeButtons.forEach((b) => {
+            if ((b as HTMLElement).dataset.type === type) { b.classList.remove('border-warm-200', 'bg-white'); b.classList.add('border-seam-500', 'bg-seam-50') }
+            else { b.classList.remove('border-seam-500', 'bg-seam-50'); b.classList.add('border-warm-200', 'bg-white') }
+          })
+          update()
+        })
+      })
+      discountMember.addEventListener('change', update)
+      discountProject.addEventListener('change', update)
+      discountDeveloping.addEventListener('change', update)
+      slider.value = String(sqftToSlider(currentSqft))
+      update()
+    }
+
+    document.addEventListener('astro:page-load', initCertCalc2)
+    if (document.readyState !== 'loading') { initCertCalc2() }
+    else { document.addEventListener('DOMContentLoaded', initCertCalc2) }
+  </script>
 
   <!-- ─── Get Started Form ─── -->
   <section id="get-started" class="py-24 lg:py-32 bg-warm-900">

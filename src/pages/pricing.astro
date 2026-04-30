@@ -15,124 +15,72 @@ const tabs: { key: TabKey; label: string }[] = [
   { key: 'membership', label: 'Membership' },
 ]
 
-/* ─── Certification data ─── */
-const certificationTracks = [
-  {
-    name: 'Buildings + Interiors',
-    description: 'New construction and major renovations. The most comprehensive path to SEAM Certification.',
-    tiers: [
-      { size: 'Small', sqft: 'Under 50,000 sq ft', registration: '$3,500', verification: '$12,500', recertification: '$7,500' },
-      { size: 'Medium', sqft: '50,000 – 250,000 sq ft', registration: '$5,000', verification: '$22,500', recertification: '$13,500' },
-      { size: 'Large', sqft: 'Over 250,000 sq ft', registration: '$7,500', verification: '$35,000', recertification: '$21,000' },
-    ],
-  },
-  {
-    name: 'Operations + Maintenance',
-    description: 'Existing buildings seeking certification through operational practices and ongoing programs.',
-    tiers: [
-      { size: 'Small', sqft: 'Under 50,000 sq ft', registration: '$2,500', verification: '$9,500', recertification: '$5,700' },
-      { size: 'Medium', sqft: '50,000 – 250,000 sq ft', registration: '$3,500', verification: '$17,500', recertification: '$10,500' },
-      { size: 'Large', sqft: 'Over 250,000 sq ft', registration: '$5,000', verification: '$27,500', recertification: '$16,500' },
-    ],
-  },
-]
+/* ─── Certification data (used by client-side calculator) ─── */
 
 /* ─── SEAM Approved data ─── */
 const approvedTiers = [
   {
     name: 'Single Activity',
-    price: '$1,200',
+    price: '$750',
     period: '/activity',
     description: 'Verify one activity against the SEAM Standard. Ideal for testing a single practice before committing to full certification.',
     features: [
-      'Third-party verification of one activity',
-      'Digital SEAM Approved badge',
-      'Listing in the Approved registry',
-      'Valid for 3 years',
-      'Pathway credit toward full certification',
+      'One SEAM Approved Mark',
+      'Third-party verification',
+      'Directory listing & credential',
+      'Counts toward full certification',
     ],
     cta: 'Get started',
     highlighted: false,
   },
   {
-    name: 'Bundle of 5',
-    price: '$4,500',
+    name: 'Bundle',
+    price: '$2,000',
     period: '/bundle',
-    description: 'Verify five activities at a discount. The most popular option for organizations building toward certification.',
+    description: 'Verify 3–5 thematic activities at a significant discount. The most popular option for organizations building toward certification.',
     features: [
-      'Everything in Single Activity',
-      '25% savings vs. individual pricing',
-      'Flexible: use across multiple projects',
-      'Priority reviewer scheduling',
-      'Progress dashboard toward full cert',
+      '3–5 related Approved Marks',
+      'Grouped by theme for deeper impact',
+      'Up to 60% savings vs. individual',
+      'Accelerated path to certification',
     ],
     cta: 'Start a bundle',
     highlighted: true,
-  },
-  {
-    name: 'Portfolio',
-    price: '$8,500',
-    period: '/year',
-    description: 'Unlimited activity verifications for organizations scaling social equity across a portfolio.',
-    features: [
-      'Unlimited activity verifications',
-      'Dedicated account manager',
-      'Portfolio-level reporting and benchmarking',
-      'Custom verification cadence',
-      'Bulk pathway credits toward certification',
-      'Quarterly strategy reviews',
-    ],
-    cta: 'Talk to our team',
-    highlighted: false,
   },
 ]
 
 /* ─── AP Credential data ─── */
 const credentialTiers = [
   {
-    name: 'Exam Only',
-    price: '$350',
+    name: 'AP Credential Bundle',
+    price: '$389',
     period: '',
-    description: 'For experienced professionals who are ready to sit for the SEAM AP exam without additional preparation.',
+    strikethrough: '$587',
+    description: 'Everything you need to earn your SEAM AP. The recommended path for most professionals.',
     features: [
-      'SEAM AP examination access',
-      'Digital credential upon passing',
-      'Listing in the AP directory',
-      'Valid for 3 years',
-      '2 exam attempts included',
+      'Foundations course ($129 value)',
+      'Proctored online examination',
+      'Digital credential & seal',
+      'SEAM directory listing',
+      'Changemaker membership — 1 year ($99 value)',
     ],
-    cta: 'Register for exam',
-    highlighted: false,
-  },
-  {
-    name: 'Exam + Prep Course',
-    price: '$595',
-    period: '',
-    description: 'The recommended path. Combines the Foundations: Social Equity in the Built Environment course with your exam registration at a bundled rate.',
-    features: [
-      'Everything in Exam Only',
-      'Foundations: Social Equity in the Built Environment course',
-      'Practice exams and flashcards',
-      'Study group access',
-      'Instructor office hours',
-      '15 CEU credits upon completion',
-    ],
-    cta: 'Start prep + exam',
+    cta: 'Get started',
     highlighted: true,
   },
   {
-    name: 'Renewal',
-    price: '$150',
-    period: '/3 years',
-    description: 'Keep your credential current. Renew every three years with continuing education credits.',
+    name: 'Training Only',
+    price: '$129',
+    period: '',
+    strikethrough: '',
+    description: 'Foundations: Social Equity in the Built Environment course. Build knowledge without committing to the exam.',
     features: [
-      '30 CEU credits required per cycle',
-      'CEU tracking dashboard',
-      'Continued AP directory listing',
-      'Access to renewal courses',
-      'Credential remains active during grace period',
+      '10 modules · 55 lessons',
+      '8+ hours of course material',
+      '9 knowledge checks',
+      '2-hour practice exam',
+      'Income-qualified rate available',
     ],
-    cta: 'Renew credential',
+    cta: 'Enroll in course',
     highlighted: false,
   },
 ]
@@ -140,13 +88,13 @@ const credentialTiers = [
 /* ─── Membership data ─── */
 const individualTiers = [
   {
-    name: 'Explorer',
+    name: 'Open',
     price: 'Free',
     period: '',
-    description: 'For professionals exploring SEAM and getting involved. No commitment required.',
+    description: 'For those exploring SEAM and seeking to get involved. No commitment required.',
     features: [
       'Download the full SEAM Standard',
-      'Browse the practitioner directory',
+      'Join critical conversations',
       'Attend public webcasts and events',
       'Monthly newsletter with field updates',
     ],
@@ -155,72 +103,57 @@ const individualTiers = [
     note: '',
   },
   {
-    name: 'Practitioner',
-    price: '$249',
+    name: 'Changemaker',
+    price: '$99',
     period: '/year',
-    description: 'For professionals pursuing or holding the AP credential. Full community access and tools.',
+    description: 'Includes tools, access, and discounts to support deeper SEAM engagement.',
     features: [
-      'Everything in Explorer',
+      'Everything in Open',
       'Activity documentation templates',
+      'SEAM AP exam fee covered',
       'Full course library with CEU credit',
       'Practitioner network and referrals',
       'Basic ROSSI Calculator access',
       'CEU tracking dashboard',
+      'Access to SEAM project referrals',
       'Discounted SEAM Approved verification',
-      '$50 off AP exam registration',
     ],
-    cta: 'Join as Practitioner',
+    cta: 'Join as Changemaker',
     highlighted: true,
     note: '',
-  },
-  {
-    name: 'Fellow',
-    price: '$99',
-    period: '/year',
-    description: 'Income-qualified rate for students, early-career professionals, and nonprofit staff.',
-    features: [
-      'Everything in Practitioner',
-      'Income-qualified pricing (self-reported)',
-      'Mentorship matching with senior APs',
-      'Priority access to fellowship programs',
-    ],
-    cta: 'Apply for Fellow',
-    highlighted: false,
-    note: 'Available to students, professionals with under 3 years of experience, and staff at nonprofits with budgets under $5M.',
   },
 ]
 
 const organizationTiers = [
   {
     name: 'Standing',
-    price: '$2,500',
+    price: '$1,600',
     period: '/year',
-    description: 'For organizations beginning their SEAM journey. Access to templates and basic portfolio tools.',
+    description: 'For organizations beginning their SEAM journey. Access to The Stitch and foundational benefits.',
     features: [
-      '5 team seats',
-      'Activity documentation templates',
-      'Basic ROSSI Calculator',
-      'Quarterly webinars and office hours',
-      'Standard member directory listing',
-      'Discounted SEAM Approved fees',
+      'Access to The Stitch members-only hub',
+      '5% discount on certifications and events',
+      'Eligibility to sponsor events',
+      'Recognition in the Member Directory',
+      'Recognition on the SEAM website (text listing)',
+      '3 included employee individual memberships',
     ],
-    cta: 'Get started',
+    cta: 'Talk to our team',
     highlighted: false,
   },
   {
     name: 'Ladder',
-    price: '$7,500',
+    price: '$6,000',
     period: '/year',
     description: 'For organizations actively pursuing certification or rolling out SEAM Approved across properties.',
     features: [
-      '15 team seats',
-      'Full ROSSI Calculator with portfolio modeling',
-      'Priority reviewer scheduling',
-      'Dedicated onboarding session',
-      'Full course library for all seats',
-      '10% off certification fees',
-      'Volume SEAM Approved pricing',
-      'Quarterly strategy check-ins',
+      'Access to The Stitch members-only hub',
+      '10% discount on certifications and events',
+      'Eligibility to sponsor events',
+      'Recognition on the SEAM website (logo)',
+      'Ability to submit a blog post on SEAM\u2019s website',
+      '10 included employee individual memberships',
+      '1 complimentary AP training and exam',
     ],
     cta: 'Start as Ladder',
     highlighted: true,
@@ -229,60 +162,114 @@ const organizationTiers = [
     name: 'Arc',
     price: '$18,000',
     period: '/year',
-    description: 'For institutions leading the movement. Maximum influence, unlimited scale.',
+    description: 'For institutions leading the movement. Maximum influence and recognition.',
     features: [
-      'Unlimited team seats',
-      'Portfolio ROSSI with benchmarking',
-      'Advisory council seat',
-      'Co-branded case studies',
-      'Custom training for your team',
-      '20% off certification fees',
-      'Priority access to pilot programs',
-      'Speaking opportunities at SEAM events',
-      'Executive briefings and board presentations',
+      'Access to The Stitch members-only hub',
+      '15% discount on certifications and events',
+      'Eligibility to sponsor events',
+      'Recognition on the SEAM website (logo, featured)',
+      'Submit featured articles & webinars',
+      'Use of the membership logo',
+      '25 included employee individual memberships',
+      '5 complimentary AP trainings and exams',
+      '1 included event sponsorship',
     ],
     cta: 'Talk to our team',
     highlighted: false,
   },
 ]
 
-/* ─── FAQ data ─── */
-const faqs = [
+/* ─── FAQ data (per tab) ─── */
+const certFaqs = [
   {
-    q: 'Can I start with SEAM Approved and upgrade to full Certification later?',
-    a: 'Yes. Every verified activity earns pathway credit toward full certification. Many organizations start by verifying 3 to 5 activities and then transition to a full certification track when they are ready.',
+    q: 'What is included in the registration fee?',
+    a: 'Registration gives you access to the online project portal, documentation templates, a preliminary review of your project scope, and locks in your fee schedule for 24 months. It is a separate fee from the verification review.',
   },
   {
-    q: 'Do Commons members get discounts on certification and verification fees?',
-    a: 'Yes. Individual Practitioner members receive 15% off SEAM Approved single-activity fees and $50 off the AP exam. Organization members at Ladder tier receive 10% off certification fees, and Arc members receive 20% off.',
+    q: 'How is the per-SF verification fee calculated?',
+    a: 'The rate is based on your project\'s gross square footage and uses a tiered structure: $0.035/SF for the first 250K SF, $0.025/SF for 250K\u2013500K, and $0.015/SF above 500K. A minimum fee applies based on the certification level you\u2019re pursuing.',
   },
   {
     q: 'How long does a certification remain valid?',
     a: 'SEAM Certification is valid for 3 years. After that, projects must recertify to maintain their certification level. Recertification fees are approximately 60% of the original verification fee.',
   },
   {
-    q: 'Is there volume pricing for portfolios with many buildings?',
+    q: 'Do organization members get discounts on certification fees?',
+    a: 'Yes. Standing members receive 5% off, Ladder members 10% off, and Arc members 15% off certification and event fees.',
+  },
+  {
+    q: 'Is there volume pricing for portfolios?',
     a: 'Yes. Organizations certifying 5 or more projects can access portfolio pricing through an Organization membership at the Ladder or Arc tier. Contact our team for a custom quote.',
-  },
-  {
-    q: 'What is included in the registration fee?',
-    a: 'Registration gives you access to the online project portal, documentation templates, a preliminary review of your project scope, and locks in your fee schedule for 24 months. It is a separate fee from the verification review.',
-  },
-  {
-    q: 'Can my AP exam fee be covered by my organization?',
-    a: 'Yes. Many organizations cover exam and membership fees for their team. Organization members at Ladder and Arc tiers include full course library access for all seats, and exam fees can be invoiced to the organization.',
-  },
-  {
-    q: 'What payment methods do you accept?',
-    a: 'We accept credit cards, ACH transfers, and wire transfers. Organization memberships and certification fees above $5,000 can be invoiced with Net 30 terms.',
-  },
-  {
-    q: 'Is there a refund policy?',
-    a: 'Registration fees are non-refundable once your project is entered into review. Membership fees can be refunded within 30 days of purchase. Exam fees can be transferred to a later date but are non-refundable.',
   },
 ]
 
-const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
+const approvedFaqs = [
+  {
+    q: 'How much does a single activity verification cost?',
+    a: 'A single SEAM Approved Mark costs $750. For organizations verifying 3\u20135 related activities, the Bundle option is $2,000 \u2014 up to 60% savings vs. individual pricing.',
+  },
+  {
+    q: 'Can I start with Approved and upgrade to full Certification later?',
+    a: 'Yes. Every verified activity earns pathway credit toward full certification. Many organizations start by verifying 3\u20135 activities and then transition to a full certification track when ready.',
+  },
+  {
+    q: 'Do community members get a discount?',
+    a: 'Yes. Changemaker individual members receive discounted verification fees. Organization members at Ladder and above receive volume pricing automatically.',
+  },
+  {
+    q: 'How long does the Approved credential last?',
+    a: 'SEAM Approved credentials are valid for 3 years. Renewal requires updated documentation demonstrating that the verified activity remains in practice.',
+  },
+]
+
+const credentialFaqs = [
+  {
+    q: 'What does the AP Credential Bundle include?',
+    a: 'The Bundle ($389) includes the Foundations: Social Equity in the Built Environment course ($129 value), the AP exam, your digital credential and seal, a directory listing, and 1 year of Changemaker membership ($99 value).',
+  },
+  {
+    q: 'Can my AP exam fee be covered by my organization?',
+    a: 'Yes. Organization members at Ladder and Arc tiers include complimentary AP trainings and exams, and exam fees can be invoiced to the organization.',
+  },
+  {
+    q: 'Is the exam fee covered for Changemaker members?',
+    a: 'Yes. The AP exam fee is included as part of your Changemaker membership ($99/yr). No additional exam cost.',
+  },
+  {
+    q: 'Can I take the training without the exam?',
+    a: 'Yes. The Training Only option is $129 and includes the full Foundations course \u2014 10 modules, 55 lessons, 8+ hours of content, and 9 knowledge checks.',
+  },
+  {
+    q: 'Is there a refund policy for the exam?',
+    a: 'Exam fees can be transferred to a later date but are non-refundable. Training access remains available after purchase.',
+  },
+]
+
+const membershipFaqs = [
+  {
+    q: 'What is the difference between Open and Changemaker?',
+    a: 'Open is free and gives you access to public resources. Changemaker ($99/yr) adds access to The Stitch community hub, course library, templates, AP exam coverage, CEU tracking, and project referral eligibility.',
+  },
+  {
+    q: 'What discounts do organization members receive?',
+    a: 'Standing members get 5% off certifications and events. Ladder gets 10% off plus 1 complimentary AP training. Arc gets 15% off plus 5 AP trainings and 1 event sponsorship.',
+  },
+  {
+    q: 'Can I upgrade or downgrade my membership?',
+    a: 'Yes. Individual memberships can be changed anytime. Organization membership changes take effect at the next billing cycle. Contact our team for mid-cycle adjustments.',
+  },
+  {
+    q: 'Is there special pricing for students or nonprofits?',
+    a: 'Yes. Special Access pricing is available for students, global members, nonprofit staff, and early-career professionals. Income-qualified, honor system.',
+  },
+  {
+    q: 'What payment methods do you accept?',
+    a: 'We accept credit cards, ACH transfers, and wire transfers. Organization memberships and fees above $5,000 can be invoiced with Net 30 terms.',
+  },
+]
+
+const allFaqs = [...certFaqs, ...approvedFaqs, ...credentialFaqs, ...membershipFaqs]
+const faqItems = allFaqs.map((f) => ({ question: f.q, answer: f.a }))
 
 const jsonLd = [
   faqSchema(faqItems),
@@ -354,66 +341,418 @@ const jsonLd = [
         <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
           <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Full Certification</p>
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            Bronze through Platinum <em class="italic font-normal text-seam-600">across three tracks</em>
+            Estimate your <em class="italic font-normal text-seam-600">certification investment</em>
           </h2>
           <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
-            Pricing is based on project size and rating system. Registration locks in your fee schedule for 24 months. Recertification is required every 3 years.
+            Use the calculator below to estimate fees based on your project type, size, and any applicable discounts. Registration locks in your fee schedule for 24 months.
           </p>
         </div>
 
-        <div class="reveal-stagger space-y-12">
-          {certificationTracks.map((track) => (
-            <div class="reveal-child">
-              <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-2">{track.name}</h3>
-              <p class="text-[15px] text-warm-600 mb-6">{track.description}</p>
+        <!-- Calculator — two-column layout -->
+        <div id="cert-calculator" class="rounded-3xl border border-warm-200 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-2">
+            <!-- Left: Controls -->
+            <div class="p-8 lg:p-10 space-y-8">
+              <!-- Project Type -->
+              <div>
+                <label class="block text-[13px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">Rating System</label>
+                <div class="flex flex-col sm:flex-row gap-3">
+                  <button data-type="bi" class="cert-type-btn flex-1 rounded-xl border-2 border-seam-500 bg-seam-50 px-4 py-3 text-left transition-all duration-200">
+                    <span class="block text-[15px] font-medium text-warm-900">Buildings + Interiors</span>
+                    <span class="block text-[12px] text-warm-500 mt-0.5">New construction &amp; renovations</span>
+                  </button>
+                  <button data-type="om" class="cert-type-btn flex-1 rounded-xl border-2 border-warm-200 bg-white px-4 py-3 text-left transition-all duration-200 hover:border-warm-300">
+                    <span class="block text-[15px] font-medium text-warm-900">Operations + Maintenance</span>
+                    <span class="block text-[12px] text-warm-500 mt-0.5">Existing buildings &amp; operations</span>
+                  </button>
+                </div>
+              </div>
 
-              <div class="overflow-x-auto">
-                <table class="w-full min-w-[600px]">
-                  <thead>
-                    <tr class="border-b border-warm-200">
-                      <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Project Size</th>
-                      <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Registration</th>
-                      <th class="text-left py-4 pr-6 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Verification</th>
-                      <th class="text-left py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600">Recertification</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {track.tiers.map((tier) => (
-                      <tr class="border-b border-warm-100">
-                        <td class="py-5 pr-6">
-                          <span class="block text-[16px] font-medium text-warm-900">{tier.size}</span>
-                          <span class="block text-[13px] text-warm-600 mt-0.5">{tier.sqft}</span>
-                        </td>
-                        <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">{tier.registration}</td>
-                        <td class="py-5 pr-6 font-display text-[22px] tracking-[-0.02em] text-warm-800">{tier.verification}</td>
-                        <td class="py-5 font-display text-[22px] tracking-[-0.02em] text-warm-800">{tier.recertification}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <!-- Project Size -->
+              <div>
+                <label for="size-input" class="block text-[13px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">Project Size</label>
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="size-input"
+                    value="100,000"
+                    inputmode="numeric"
+                    class="w-full rounded-xl border-2 border-warm-200 bg-white px-5 py-3.5 font-display text-[20px] tracking-[-0.02em] text-warm-900 focus:outline-none focus:border-seam-500 transition-colors"
+                  />
+                  <span class="absolute right-5 top-1/2 -translate-y-1/2 text-[13px] text-warm-400">sq ft</span>
+                </div>
+                <div class="mt-3">
+                  <input
+                    type="range"
+                    id="size-slider"
+                    min="0"
+                    max="100"
+                    value="14"
+                    class="w-full h-2 bg-warm-200 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-seam-600 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:bg-seam-600 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
+                  />
+                  <div class="flex justify-between mt-1 text-[11px] text-warm-400">
+                    <span>1K</span>
+                    <span>100K</span>
+                    <span>1M</span>
+                    <span>10M</span>
+                    <span>20M</span>
+                  </div>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                  <button data-sqft="25000" class="size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">25K</button>
+                  <button data-sqft="50000" class="size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">50K</button>
+                  <button data-sqft="100000" class="size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">100K</button>
+                  <button data-sqft="250000" class="size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">250K</button>
+                  <button data-sqft="500000" class="size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">500K</button>
+                  <button data-sqft="1000000" class="size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">1M</button>
+                  <button data-sqft="5000000" class="size-preset rounded-full border border-warm-200 px-2.5 py-1 text-[11px] font-medium text-warm-500 hover:border-warm-300 hover:text-warm-700 transition-colors">5M</button>
+                </div>
+              </div>
+
+              <!-- Discounts -->
+              <div>
+                <label class="block text-[13px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">Discounts</label>
+                <div class="space-y-3">
+                  <!-- Membership -->
+                  <div class="rounded-xl border border-warm-200 px-4 py-3.5 transition-all duration-200 has-[select:not([value=''])]:border-seam-500 has-[select:not([value=''])]:bg-seam-50">
+                    <span class="block text-[13px] font-medium text-warm-900 mb-2">Community Membership</span>
+                    <select id="discount-member" class="w-full rounded-lg border border-warm-200 bg-white px-3 py-2 text-[13px] text-warm-700 focus:outline-none focus:border-seam-500 transition-colors cursor-pointer">
+                      <option value="">No membership</option>
+                      <option value="75">Standing — $75 off</option>
+                      <option value="150">Ladder — $150 off</option>
+                      <option value="225">Arc / Silver Founding — $225 off</option>
+                      <option value="450">Gold Founding — $450 off</option>
+                      <option value="750">Platinum Founding — $750 off</option>
+                    </select>
+                  </div>
+
+                  <!-- Project Type -->
+                  <div class="rounded-xl border border-warm-200 px-4 py-3.5 transition-all duration-200 has-[select:not([value=''])]:border-seam-500 has-[select:not([value=''])]:bg-seam-50">
+                    <span class="block text-[13px] font-medium text-warm-900 mb-2">
+                      Qualifying Project — $500 off
+                      <span class="relative inline-block ml-1 group/tip2">
+                        <svg class="inline w-3.5 h-3.5 text-warm-400 group-hover/tip2:text-warm-600 transition-colors cursor-help" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827m0 3h.01M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
+                        </svg>
+                        <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 rounded-lg bg-warm-900 px-4 py-3 text-[12px] leading-relaxed text-warm-200 opacity-0 group-hover/tip2:opacity-100 transition-opacity duration-200 shadow-lg z-10">
+                          Includes projects in Emerging Market economies as classified by the World Bank. This covers upper-middle-income countries with developing financial markets and infrastructure. <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups" target="_blank" rel="noopener noreferrer" class="underline text-seam-300 hover:text-seam-200 pointer-events-auto">See eligible countries &rarr;</a>
+                          <span class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-warm-900"></span>
+                        </span>
+                      </span>
+                    </span>
+                    <select id="discount-project" class="w-full rounded-lg border border-warm-200 bg-white px-3 py-2 text-[13px] text-warm-700 focus:outline-none focus:border-seam-500 transition-colors cursor-pointer">
+                      <option value="">Not applicable</option>
+                      <option value="500">Government / Municipal</option>
+                      <option value="500">Social</option>
+                      <option value="500">Non-profit or Charity</option>
+                      <option value="500">Low Income / Affordable Housing</option>
+                      <option value="500">Senior / Assisted Living</option>
+                      <option value="500">Healthcare</option>
+                      <option value="500">Emerging Market</option>
+                      <option value="500">Small Business</option>
+                    </select>
+                  </div>
+
+                  <!-- Developing Country -->
+                  <label class="flex items-center gap-3 rounded-xl border border-warm-200 px-4 py-3.5 cursor-pointer transition-all duration-200 hover:border-warm-300 has-[input:checked]:border-seam-500 has-[input:checked]:bg-seam-50">
+                    <input type="checkbox" id="discount-developing" class="w-4 h-4 rounded border-warm-300 text-seam-600 focus:ring-seam-500" />
+                    <div>
+                      <span class="text-[13px] font-medium text-warm-900">
+                        Developing Country — $1,000 off
+                        <span class="relative inline-block ml-1 group/tip">
+                          <svg class="inline w-3.5 h-3.5 text-warm-400 group-hover/tip:text-warm-600 transition-colors cursor-help" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827m0 3h.01M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
+                          </svg>
+                          <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 rounded-lg bg-warm-900 px-4 py-3 text-[12px] leading-relaxed text-warm-200 opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200 shadow-lg z-10">
+                            Based on the World Bank country classification by income level. Low-income and lower-middle-income economies qualify. <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups" target="_blank" rel="noopener noreferrer" class="underline text-seam-300 hover:text-seam-200 pointer-events-auto">See eligible countries &rarr;</a>
+                            <span class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-warm-900"></span>
+                          </span>
+                        </span>
+                      </span>
+                      <span class="block text-[11px] text-warm-500">World Bank classification</span>
+                    </div>
+                  </label>
+                </div>
               </div>
             </div>
-          ))}
+
+            <!-- Right: Results -->
+            <div class="bg-warm-900 p-8 lg:p-10 flex flex-col">
+              <div class="flex items-baseline justify-between mb-6">
+                <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400">Your Estimate</p>
+                <p id="per-sf-rate" class="text-[12px] text-warm-500">$0.044/sq ft</p>
+              </div>
+
+              <!-- Registration -->
+              <div class="mb-6 pb-6 border-b border-warm-700/50">
+                <p class="text-[12px] text-warm-400 mb-1">Registration Fee</p>
+                <div class="flex items-baseline justify-between">
+                  <p class="text-[12px] text-warm-500">One-time — locks fees for 24 mo</p>
+                  <p class="font-display text-[24px] tracking-[-0.03em] text-white">$2,000</p>
+                </div>
+              </div>
+
+              <!-- Verification by cert level -->
+              <p class="text-[12px] text-warm-400 mb-3">Verification by Certification Level</p>
+              <div class="grid grid-cols-2 gap-3 mb-6">
+                <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
+                  <img src="/logos/cert-bronze.png" alt="Bronze" class="w-10 h-10 object-contain mb-2" />
+                  <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-amber-700 mb-1">Bronze</p>
+                  <p id="price-bronze" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$5,625</p>
+                </div>
+                <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
+                  <img src="/logos/cert-silver.png" alt="Silver" class="w-10 h-10 object-contain mb-2" />
+                  <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-warm-300 mb-1">Silver</p>
+                  <p id="price-silver" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$6,875</p>
+                </div>
+                <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
+                  <img src="/logos/cert-gold.png" alt="Gold" class="w-10 h-10 object-contain mb-2" />
+                  <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-gold-400 mb-1">Gold</p>
+                  <p id="price-gold" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$8,125</p>
+                </div>
+                <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
+                  <img src="/logos/cert-platinum.png" alt="Platinum" class="w-10 h-10 object-contain mb-2" />
+                  <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-seam-300 mb-1">Platinum</p>
+                  <p id="price-platinum" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$9,375</p>
+                </div>
+              </div>
+
+              <!-- Total -->
+              <div class="mt-auto pt-6 border-t border-warm-700/50">
+                <p class="text-[12px] text-warm-400 mb-2">Total First-Year Investment</p>
+                <p id="price-total" class="font-display text-[clamp(1.8rem,3vw,2.5rem)] tracking-[-0.03em] text-gold-300">$7,625 – $11,375</p>
+                <p id="price-savings" class="text-[13px] text-seam-300 mt-1 hidden"><span id="savings-amount"></span> off verification with applied discounts</p>
+
+                <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                  <a href="/get-started" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-[14px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+                    Register a project
+                  </a>
+                  <a href="/certification" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-6 py-3 text-[14px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
+                    Explore certification
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8">
+        <div class="mt-8 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8">
           <p class="text-[15px] leading-relaxed text-seam-700">
-            <strong class="font-semibold">Community member discount:</strong> Organizations with an active Ladder or Arc membership receive 10 – 20% off verification fees. Volume discounts available for portfolios of 5+ projects.{' '}
+            <strong class="font-semibold">These are estimates.</strong> Final pricing is confirmed at registration based on your specific project scope. Discounts are applied during registration review and may be combined.{' '}
             <a href="/community/organization" class="underline hover:text-seam-900 transition-colors">Learn about organization membership &rarr;</a>
           </p>
         </div>
 
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a href="/certification" class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">
-            Explore certification
-          </a>
-          <a href="/get-started" class="inline-flex items-center rounded-full border border-warm-200 px-8 py-4 text-[15px] font-medium text-warm-700 hover:border-warm-300 transition-colors duration-300">
-            Register a project
-          </a>
+        <div class="mt-20 max-w-3xl">
+          <h3 class="font-display text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-warm-900 mb-8">Certification pricing FAQ</h3>
+          {certFaqs.map((faq) => (
+            <details class="border-b border-warm-200 group">
+              <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[15px] lg:text-[16px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.q}</span>
+                <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-5">
+                <p class="text-[14px] leading-relaxed text-warm-600 pr-10">{faq.a}</p>
+              </div>
+            </details>
+          ))}
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    function initCertCalculator() {
+      const slider = document.getElementById('size-slider') as HTMLInputElement
+      const sizeInput = document.getElementById('size-input') as HTMLInputElement
+      const typeButtons = document.querySelectorAll('.cert-type-btn')
+      const presetButtons = document.querySelectorAll('.size-preset')
+      const discountMember = document.getElementById('discount-member') as HTMLSelectElement
+      const discountProject = document.getElementById('discount-project') as HTMLSelectElement
+      const discountDeveloping = document.getElementById('discount-developing') as HTMLInputElement
+      const perSfRate = document.getElementById('per-sf-rate')!
+      const priceBronze = document.getElementById('price-bronze')!
+      const priceSilver = document.getElementById('price-silver')!
+      const priceGold = document.getElementById('price-gold')!
+      const pricePlatinum = document.getElementById('price-platinum')!
+      const priceTotal = document.getElementById('price-total')!
+      const priceSavings = document.getElementById('price-savings')!
+      const savingsAmount = document.getElementById('savings-amount')!
+
+      if (!slider || !sizeInput) return
+
+      const REGISTRATION = 2000
+
+      // Per-SF rate tiers from the SEAM fee table
+      const rateTiers = [
+        { min: 1, max: 99999, rate: 0.047 },
+        { min: 100000, max: 249999, rate: 0.044 },
+        { min: 250000, max: 499999, rate: 0.041 },
+        { min: 500000, max: 749999, rate: 0.039 },
+        { min: 750000, max: 999999, rate: 0.036 },
+        { min: 1000000, max: 1249999, rate: 0.033 },
+        { min: 1250000, max: 1499999, rate: 0.030 },
+        { min: 1500000, max: 1749999, rate: 0.027 },
+        { min: 1750000, max: 1999999, rate: 0.025 },
+        { min: 2000000, max: 2499999, rate: 0.022 },
+        { min: 2500000, max: 2999999, rate: 0.019 },
+        { min: 3000000, max: 5000000, rate: 0.016 },
+        { min: 5000001, max: 9999999, rate: 0.013 },
+        { min: 10000000, max: 20000000, rate: 0.011 },
+      ]
+
+      // Cert-level minimum fees (floor regardless of sqft)
+      const certMinimums = {
+        bronze: 5625,
+        silver: 6875,
+        gold: 8125,
+        platinum: 9375,
+      }
+
+      let currentSqft = 100000
+
+      // Log scale slider: maps 0-100 → 1,000-20,000,000
+      const LOG_MIN = Math.log(1000)
+      const LOG_MAX = Math.log(20000000)
+
+      function sliderToSqft(val: number): number {
+        const logVal = LOG_MIN + (val / 100) * (LOG_MAX - LOG_MIN)
+        return Math.round(Math.exp(logVal) / 1000) * 1000
+      }
+
+      function sqftToSlider(sqft: number): number {
+        const clamped = Math.max(1000, Math.min(20000000, sqft))
+        return Math.round(((Math.log(clamped) - LOG_MIN) / (LOG_MAX - LOG_MIN)) * 100)
+      }
+
+      function getRate(sqft: number): number {
+        for (const tier of rateTiers) {
+          if (sqft >= tier.min && sqft <= tier.max) return tier.rate
+        }
+        return rateTiers[rateTiers.length - 1].rate
+      }
+
+      function calcVerification(sqft: number, level: keyof typeof certMinimums): number {
+        const raw = sqft * getRate(sqft)
+        return Math.max(raw, certMinimums[level])
+      }
+
+      function fmt(n: number): string {
+        return '$' + Math.round(n).toLocaleString('en-US')
+      }
+
+      function getTotalDiscount(): number {
+        let total = 0
+        const memberVal = parseInt(discountMember.value, 10)
+        if (!isNaN(memberVal)) total += memberVal
+        const projectVal = parseInt(discountProject.value, 10)
+        if (!isNaN(projectVal)) total += projectVal
+        if (discountDeveloping.checked) total += 1000
+        return total
+      }
+
+      function update() {
+        const sqft = currentSqft
+        const rate = getRate(sqft)
+        const discountDollars = getTotalDiscount()
+
+        perSfRate.textContent = `Rate: $${rate.toFixed(3)}/sq ft`
+
+        const levels: (keyof typeof certMinimums)[] = ['bronze', 'silver', 'gold', 'platinum']
+        const els = [priceBronze, priceSilver, priceGold, pricePlatinum]
+        const verifValues: number[] = []
+
+        levels.forEach((level, i) => {
+          const base = calcVerification(sqft, level)
+          const final = Math.max(0, Math.round(base - discountDollars))
+          verifValues.push(final)
+          els[i].textContent = fmt(final)
+        })
+
+        const totalLow = REGISTRATION + verifValues[0]
+        const totalHigh = REGISTRATION + verifValues[3]
+        priceTotal.textContent = `${fmt(totalLow)} – ${fmt(totalHigh)}`
+
+        if (discountDollars > 0) {
+          priceSavings.classList.remove('hidden')
+          savingsAmount.textContent = fmt(discountDollars)
+        } else {
+          priceSavings.classList.add('hidden')
+        }
+      }
+
+      function setSqft(val: number) {
+        currentSqft = Math.max(1000, Math.min(20000000, val))
+        sizeInput.value = currentSqft.toLocaleString('en-US')
+        slider.value = String(sqftToSlider(currentSqft))
+        update()
+      }
+
+      // Slider input
+      slider.addEventListener('input', () => {
+        currentSqft = sliderToSqft(parseInt(slider.value, 10))
+        sizeInput.value = currentSqft.toLocaleString('en-US')
+        update()
+      })
+
+      // Text input
+      sizeInput.addEventListener('input', () => {
+        const raw = sizeInput.value.replace(/[^0-9]/g, '')
+        const val = parseInt(raw, 10)
+        if (!isNaN(val) && val > 0) {
+          currentSqft = val
+          slider.value = String(sqftToSlider(val))
+          update()
+        }
+      })
+
+      sizeInput.addEventListener('blur', () => {
+        sizeInput.value = currentSqft.toLocaleString('en-US')
+      })
+
+      // Preset buttons
+      presetButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const sqft = parseInt((btn as HTMLElement).dataset.sqft!, 10)
+          setSqft(sqft)
+        })
+      })
+
+      // Type toggle (visual for now — same rates)
+      typeButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const type = (btn as HTMLElement).dataset.type!
+          typeButtons.forEach((b) => {
+            if ((b as HTMLElement).dataset.type === type) {
+              b.classList.remove('border-warm-200', 'bg-white')
+              b.classList.add('border-seam-500', 'bg-seam-50')
+            } else {
+              b.classList.remove('border-seam-500', 'bg-seam-50')
+              b.classList.add('border-warm-200', 'bg-white')
+            }
+          })
+          update()
+        })
+      })
+
+      discountMember.addEventListener('change', update)
+      discountProject.addEventListener('change', update)
+      discountDeveloping.addEventListener('change', update)
+
+      // Init
+      slider.value = String(sqftToSlider(currentSqft))
+      update()
+    }
+
+    document.addEventListener('astro:page-load', initCertCalculator)
+    if (document.readyState !== 'loading') {
+      initCertCalculator()
+    } else {
+      document.addEventListener('DOMContentLoaded', initCertCalculator)
+    }
+  </script>
 
   <!-- SEAM Approved Tab -->
   <div class={activeTab === 'approved' ? '' : 'hidden'}>
@@ -429,20 +768,25 @@ const jsonLd = [
           </p>
         </div>
 
-        <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
           {approvedTiers.map((tier) => (
-            <div class={`reveal-child rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-seam-800 text-white ring-2 ring-gold-400/60' : 'bg-white border border-warm-200/60'}`}>
-              <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
+            <div class={`reveal-child rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'border-2 border-seam-500 bg-white relative' : 'bg-white border border-warm-200/60'}`}>
+              {tier.highlighted && (
+                <span class="absolute -top-3.5 left-8 inline-block rounded-full bg-seam-600 px-4 py-1 text-[12px] font-medium text-white tracking-wide uppercase">
+                  Best value
+                </span>
+              )}
+              <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">{tier.name}</h3>
               <div class="mt-3 flex items-baseline gap-1">
-                <span class={`font-display text-[42px] tracking-[-0.04em] ${tier.highlighted ? 'text-gold-300' : 'text-warm-900'}`}>{tier.price}</span>
-                <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-600'}`}>{tier.period}</span>
+                <span class="font-display text-[42px] tracking-[-0.04em] text-warm-900">{tier.price}</span>
+                <span class="text-[16px] text-warm-600">{tier.period}</span>
               </div>
-              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-600'}`}>{tier.description}</p>
+              <p class="mt-4 text-[15px] leading-relaxed text-warm-600">{tier.description}</p>
 
               <ul class="mt-8 space-y-3 flex-1">
                 {tier.features.map((f) => (
-                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-600'}`}>
-                    <svg class={`shrink-0 w-4 h-4 mt-0.5 ${tier.highlighted ? 'text-gold-400' : 'text-seam-500'}`} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <li class="flex items-start gap-2.5 text-[14px] leading-snug text-warm-600">
+                    <svg class="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                     {f}
@@ -450,18 +794,35 @@ const jsonLd = [
                 ))}
               </ul>
 
-              <a href="/get-started" class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-seam-800 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
+              <a href="/get-started" class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-seam-600 text-white hover:bg-seam-700' : 'border-2 border-warm-900 text-warm-900 hover:bg-warm-900 hover:text-white'}`}>
                 {tier.cta}
               </a>
             </div>
           ))}
         </div>
 
-        <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8">
+        <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8 max-w-4xl">
           <p class="text-[15px] leading-relaxed text-seam-700">
-            <strong class="font-semibold">Community member discount:</strong> Practitioner-level individual members receive 15% off single activity fees. Organization members at Ladder tier and above receive volume pricing automatically.{' '}
+            <strong class="font-semibold">Community member discount:</strong> Changemaker members receive discounted SEAM Approved verification fees. Organization members at Ladder tier and above receive volume pricing automatically.{' '}
             <a href="/community" class="underline hover:text-seam-900 transition-colors">Join the Community &rarr;</a>
           </p>
+        </div>
+
+        <div class="mt-20 max-w-3xl">
+          <h3 class="font-display text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-warm-900 mb-8">SEAM Approved pricing FAQ</h3>
+          {approvedFaqs.map((faq) => (
+            <details class="border-b border-warm-200 group">
+              <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[15px] lg:text-[16px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.q}</span>
+                <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-5">
+                <p class="text-[14px] leading-relaxed text-warm-600 pr-10">{faq.a}</p>
+              </div>
+            </details>
+          ))}
         </div>
       </div>
     </div>
@@ -477,24 +838,29 @@ const jsonLd = [
             Invest in <em class="italic font-normal text-seam-600">your expertise</em>
           </h2>
           <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
-            The SEAM Accredited Professional credential signals mastery of the Standard and the ability to lead projects toward certification. Prepare, pass, and maintain.
+            The SEAM Accredited Professional credential signals mastery of the Standard and the ability to lead projects toward certification. No ongoing membership required.
           </p>
         </div>
 
-        <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
           {credentialTiers.map((tier) => (
-            <div class={`reveal-child rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-seam-800 text-white ring-2 ring-gold-400/60' : 'bg-white border border-warm-200/60'}`}>
-              <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
-              <div class="mt-3 flex items-baseline gap-1">
-                <span class={`font-display text-[42px] tracking-[-0.04em] ${tier.highlighted ? 'text-gold-300' : 'text-warm-900'}`}>{tier.price}</span>
-                {tier.period && <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-600'}`}>{tier.period}</span>}
+            <div class={`reveal-child rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'border-2 border-seam-500 bg-white relative' : 'bg-white border border-warm-200/60'}`}>
+              {tier.highlighted && (
+                <span class="absolute -top-3.5 left-8 inline-block rounded-full bg-seam-600 px-4 py-1 text-[12px] font-medium text-white tracking-wide uppercase">
+                  Best value
+                </span>
+              )}
+              <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">{tier.name}</h3>
+              <div class="mt-3 flex items-baseline gap-3">
+                <span class="font-display text-[42px] tracking-[-0.04em] text-warm-900">{tier.price}</span>
+                {tier.strikethrough && <span class="text-[20px] text-warm-400 line-through">{tier.strikethrough}</span>}
               </div>
-              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-600'}`}>{tier.description}</p>
+              <p class="mt-4 text-[15px] leading-relaxed text-warm-600">{tier.description}</p>
 
               <ul class="mt-8 space-y-3 flex-1">
                 {tier.features.map((f) => (
-                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-600'}`}>
-                    <svg class={`shrink-0 w-4 h-4 mt-0.5 ${tier.highlighted ? 'text-gold-400' : 'text-seam-500'}`} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <li class="flex items-start gap-2.5 text-[14px] leading-snug text-warm-600">
+                    <svg class="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                     {f}
@@ -502,18 +868,35 @@ const jsonLd = [
                 ))}
               </ul>
 
-              <a href="/get-started" class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-seam-800 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
+              <a href={tier.highlighted ? '/get-started' : '/resources/courses'} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-seam-600 text-white hover:bg-seam-700' : 'border border-warm-300 text-warm-900 hover:border-warm-400'}`}>
                 {tier.cta}
               </a>
             </div>
           ))}
         </div>
 
-        <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8">
+        <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8 max-w-4xl">
           <p class="text-[15px] leading-relaxed text-seam-700">
-            <strong class="font-semibold">Community member discount:</strong> Practitioner-level individual members save $50 on the exam and receive the prep course at no additional cost with their membership.{' '}
+            <strong class="font-semibold">Changemaker members:</strong> The AP exam fee is covered as part of your Changemaker membership ($99/yr). No additional exam cost.{' '}
             <a href="/community/individual" class="underline hover:text-seam-900 transition-colors">See membership benefits &rarr;</a>
           </p>
+        </div>
+
+        <div class="mt-20 max-w-3xl">
+          <h3 class="font-display text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-warm-900 mb-8">AP Credential pricing FAQ</h3>
+          {credentialFaqs.map((faq) => (
+            <details class="border-b border-warm-200 group">
+              <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[15px] lg:text-[16px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.q}</span>
+                <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-5">
+                <p class="text-[14px] leading-relaxed text-warm-600 pr-10">{faq.a}</p>
+              </div>
+            </details>
+          ))}
         </div>
       </div>
     </div>
@@ -534,20 +917,20 @@ const jsonLd = [
           </p>
         </div>
 
-        <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {individualTiers.map((tier) => (
-            <div class={`reveal-child rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-seam-800 text-white ring-2 ring-seam-400/40' : 'bg-white border border-warm-200/60'}`}>
+            <div class={`reveal-child rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-warm-900 text-white' : 'bg-white border border-warm-200/60'}`}>
               <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
               <div class="mt-3 flex items-baseline gap-1">
-                <span class={`font-display text-[42px] tracking-[-0.04em] ${tier.highlighted ? 'text-gold-300' : 'text-warm-900'}`}>{tier.price}</span>
+                <span class={`font-display text-[42px] tracking-[-0.04em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.price}</span>
                 {tier.period && <span class={`text-[16px] ${tier.highlighted ? 'text-warm-400' : 'text-warm-600'}`}>{tier.period}</span>}
               </div>
-              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-seam-200' : 'text-warm-600'}`}>{tier.description}</p>
+              <p class={`mt-4 text-[15px] leading-relaxed ${tier.highlighted ? 'text-warm-300' : 'text-warm-600'}`}>{tier.description}</p>
 
               <ul class="mt-8 space-y-3 flex-1">
                 {tier.features.map((f) => (
-                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-seam-100' : 'text-warm-600'}`}>
-                    <svg class={`shrink-0 w-4 h-4 mt-0.5 ${tier.highlighted ? 'text-gold-400' : 'text-seam-500'}`} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <li class={`flex items-start gap-2.5 text-[14px] leading-snug ${tier.highlighted ? 'text-warm-200' : 'text-warm-600'}`}>
+                    <svg class={`shrink-0 w-4 h-4 mt-0.5 ${tier.highlighted ? 'text-seam-400' : 'text-seam-500'}`} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                     {f}
@@ -555,15 +938,33 @@ const jsonLd = [
                 ))}
               </ul>
 
-              {tier.note && (
-                <p class={`mt-6 text-[13px] leading-relaxed italic ${tier.highlighted ? 'text-seam-300' : 'text-warm-600'}`}>{tier.note}</p>
-              )}
-
-              <a href="/get-started" class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-seam-800 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
+              <a href={tier.highlighted ? 'https://community.seamcertification.org/plans/1975151' : '/get-started'} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
                 {tier.cta}
               </a>
             </div>
           ))}
+
+          <!-- Info boxes -->
+          <div class="flex flex-col gap-6">
+            <a href="/ap-credential" class="group reveal-child rounded-2xl border border-warm-200/60 p-8 lg:p-10 flex flex-col flex-1 transition-all duration-300 hover:border-warm-300">
+              <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">Seeking the SEAM AP?</h3>
+              <p class="text-[15px] leading-relaxed text-warm-600 flex-1">
+                Changemaker membership is included for 1 year to support your professional journey.
+              </p>
+              <span class="mt-6 inline-flex items-center text-[15px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+                Learn more &rarr;
+              </span>
+            </a>
+            <a href="/get-started" class="group reveal-child rounded-2xl border border-warm-200/60 p-8 lg:p-10 flex flex-col flex-1 transition-all duration-300 hover:border-warm-300">
+              <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">Special Access</h3>
+              <p class="text-[15px] leading-relaxed text-warm-600 flex-1">
+                For students, global members, nonprofit staff, and early-career professionals. Income-qualified, honor system.
+              </p>
+              <span class="mt-6 inline-flex items-center text-[15px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+                Apply now &rarr;
+              </span>
+            </a>
+          </div>
         </div>
 
         <!-- Divider -->
@@ -607,43 +1008,26 @@ const jsonLd = [
             </div>
           ))}
         </div>
+
+        <div class="mt-20 max-w-3xl">
+          <h3 class="font-display text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-warm-900 mb-8">Membership pricing FAQ</h3>
+          {membershipFaqs.map((faq) => (
+            <details class="border-b border-warm-200 group">
+              <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[15px] lg:text-[16px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.q}</span>
+                <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-5">
+                <p class="text-[14px] leading-relaxed text-warm-600 pr-10">{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- FAQ (always visible) -->
-  <section class="py-24 lg:py-32 bg-[#f7f6f4]">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">FAQ</p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Common questions <em class="italic font-normal text-seam-600">answered</em>
-        </h2>
-      </div>
-
-      <div class="reveal-stagger max-w-3xl space-y-0">
-        {faqs.map((faq) => (
-          <details class="reveal-child border-b border-warm-200 group">
-            <summary class="w-full flex items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden group">
-              <span class="text-[16px] lg:text-[17px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.q}</span>
-              <svg
-                class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </summary>
-            <div class="pb-6">
-              <p class="text-[15px] leading-relaxed text-warm-600 pr-12">{faq.a}</p>
-            </div>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <!-- Bottom CTA -->
   <section class="py-24 lg:py-32">

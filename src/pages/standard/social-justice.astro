@@ -5,31 +5,37 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
 const focusAreas = [
   {
-    title: 'Procurement',
+    concept: 'Social Equity + Justice',
+    title: 'In Procurement',
     description:
       'Build inclusive practices into how you hire suppliers, award contracts, and structure leases to broaden economic opportunity.',
   },
   {
-    title: 'The Workplace',
+    concept: 'Social Equity + Justice',
+    title: 'In the Workplace',
     description:
       'Establish fair treatment, equal pay, and inclusive design standards for everyone who works in or on your project.',
   },
   {
-    title: 'The Community',
+    concept: 'Social Equity + Justice',
+    title: 'In the Community',
     description:
       "Understand and actively manage your project's relationship with the surrounding community, including avoiding involuntary displacement.",
   },
   {
-    title: 'Capital Access',
+    concept: 'Social Equity + Justice',
+    title: 'In Capital Access',
     description:
       'Structure equity capital and debt financing to include historically underrepresented groups in financial opportunities.',
   },
   {
+    concept: 'Social Justice Innovation',
     title: 'Social Justice Industry Innovation',
     description:
       'Advance new models, programs, and partnerships that push the commercial real estate industry toward more equitable outcomes.',
   },
   {
+    concept: 'Social Justice Innovation',
     title: 'Design for Embodied Justice',
     description:
       'Integrate equity into the physical design decisions, centering voices and needs that have historically been left out of the design process.',
@@ -137,13 +143,16 @@ const focusAreas = [
           Six ways to make{' '}
           <em class="italic font-normal text-seam-300">just improvements.</em>
         </h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-warm-600">
+          Social Justice in SEAM is achieved across 2 concepts, spanning 6 actionable objectives.
+        </p>
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {focusAreas.map((area, i) => (
           <div class="reveal-child rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-            <span class="text-[14px] font-medium text-seam-500 mb-4 block">
-              {String(i + 1).padStart(2, '0')}
+            <span class="text-[12px] font-normal uppercase tracking-[0.1em] text-[#6B8F9C] mb-4 block">
+              {area.concept}
             </span>
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
               {area.title}

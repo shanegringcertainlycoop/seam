@@ -5,27 +5,32 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
 const focusAreas = [
   {
+    concept: 'Human Rights',
     title: 'Ethical Materials Procurement',
     description:
       'Understand the human rights implications of the materials that go into your building through socially sustainable procurement, supply chain risk assessment, and corrective action when violations are identified.',
   },
   {
+    concept: 'Human Rights',
     title: 'Ethical Suppliers Procurement',
     description:
       'Extend human rights commitments to the people who work for the companies you hire, requiring contractors, suppliers, and tenants to provide living wages and decent working conditions.',
   },
   {
+    concept: 'Human Rights',
     title: 'Human Rights Reporting',
     description:
       "Communicate openly about your project's human rights impacts through public reporting and a formal grievance mechanism that gives workers and community members a direct, retaliation-free channel.",
   },
   {
+    concept: 'Human Rights',
     title: 'Human Rights Awareness',
     description:
       'Build internal capacity to identify and respond to human rights risks through procurement training and contributions to broader industry education across commercial real estate.',
   },
   {
-    title: 'Health + Safety',
+    concept: 'Health + Safety',
+    title: 'Health, Safety, + Wellness',
     description:
       'Protect the physical wellbeing of everyone your project touches: occupants, surrounding community, construction workers, and the structural safety of all spaces.',
   },
@@ -132,13 +137,16 @@ const focusAreas = [
           Five ways for{' '}
           <em class="italic font-normal text-seam-600">accountable improvement.</em>
         </h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-warm-600">
+          Social Accountability in SEAM is achieved across 2 concepts, spanning 5 actionable objectives.
+        </p>
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {focusAreas.map((area, i) => (
           <div class="reveal-child rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-            <span class="text-[14px] font-medium text-seam-500 mb-4 block">
-              {String(i + 1).padStart(2, '0')}
+            <span class="text-[12px] font-normal uppercase tracking-[0.1em] text-[#6B8F9C] mb-4 block">
+              {area.concept}
             </span>
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
               {area.title}
