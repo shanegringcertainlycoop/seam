@@ -33,7 +33,7 @@ export const team: TeamMember[] = [
     slug: 'shane-gring',
     name: 'Shane Gring',
     role: 'COO',
-    bio: '15+ years commercial real estate experience covering multi-family and large corporate headquarters. Alex is passionate about causes involving human rights and spends his volunteer efforts focused on immigration rights.',
+    bio: 'Shane builds certification ecosystems. Through his consultancy Certainly, he helps organizations turn proven expertise into professional credentials, standards, and systems of trust. His team has designed and supported certification programs across wellness, sustainability, and leadership development — including the WELL AP program at IWBI. At SEAM, he leads operations, program design, and the infrastructure that makes social equity certification scalable and credible.',
     image: '/images/team/shane-gring.jpg',
   },
 ]

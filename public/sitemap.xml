@@ -233,6 +233,28 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Directory: Leadership -->
+  <url>
+    <loc>https://seamcertification.org/directory/team/rainey-shane</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/team/alex-demestihas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/team/chris-pirschel</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/team/shane-gring</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Directory: SEAM APs -->
   <url>
     <loc>https://seamcertification.org/directory/ap/christian-mayer</loc>
