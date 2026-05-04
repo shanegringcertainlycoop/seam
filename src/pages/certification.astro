@@ -564,9 +564,20 @@ const jsonLd = breadcrumbSchema([
 
           <!-- Right: Results -->
           <div class="bg-warm-900 p-8 lg:p-10 flex flex-col">
-            <div class="flex items-baseline justify-between mb-6">
-              <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400">Your Estimate</p>
-              <p id="c2-per-sf-rate" class="text-[12px] text-warm-500">$0.044/sq ft</p>
+            <!-- Total (hero position) -->
+            <div class="mb-8 pb-8 border-b border-warm-700/50">
+              <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-3">Total First-Year Investment</p>
+              <p id="c2-price-total" class="font-display text-[clamp(2.2rem,4vw,3.25rem)] tracking-[-0.03em] leading-tight text-white">$7,625 – $11,375</p>
+              <p id="c2-per-sf-rate" class="text-[14px] text-warm-400 mt-2">$0.044/sq ft</p>
+              <p id="c2-price-savings" class="text-[14px] text-seam-300 mt-1 hidden"><span id="c2-savings-amount"></span> off verification with applied discounts</p>
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a href="/get-started" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-[14px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+                  Register a project
+                </a>
+                <a href="/pricing" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-6 py-3 text-[14px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
+                  View all pricing
+                </a>
+              </div>
             </div>
 
             <!-- Registration -->
@@ -580,7 +591,7 @@ const jsonLd = breadcrumbSchema([
 
             <!-- Verification by cert level -->
             <p class="text-[12px] text-warm-400 mb-3">Verification by Certification Level</p>
-            <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="grid grid-cols-2 gap-3">
               <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
                 <img src="/logos/cert-bronze.png" alt="Bronze" class="w-10 h-10 object-contain mb-2" />
                 <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-amber-700 mb-1">Bronze</p>
@@ -600,22 +611,6 @@ const jsonLd = breadcrumbSchema([
                 <img src="/logos/cert-platinum.png" alt="Platinum" class="w-10 h-10 object-contain mb-2" />
                 <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-seam-300 mb-1">Platinum</p>
                 <p id="c2-price-platinum" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$9,375</p>
-              </div>
-            </div>
-
-            <!-- Total -->
-            <div class="mt-auto pt-6 border-t border-warm-700/50">
-              <p class="text-[12px] text-warm-400 mb-2">Total First-Year Investment</p>
-              <p id="c2-price-total" class="font-display text-[clamp(1.8rem,3vw,2.5rem)] tracking-[-0.03em] text-gold-300">$7,625 – $11,375</p>
-              <p id="c2-price-savings" class="text-[13px] text-seam-300 mt-1 hidden"><span id="c2-savings-amount"></span> off verification with applied discounts</p>
-
-              <div class="mt-6 flex flex-col sm:flex-row gap-3">
-                <a href="/get-started" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-[14px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
-                  Register a project
-                </a>
-                <a href="/pricing" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-6 py-3 text-[14px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
-                  View all pricing
-                </a>
               </div>
             </div>
           </div>
