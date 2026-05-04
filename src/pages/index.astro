@@ -17,7 +17,7 @@ const hotspots = [
     image: '/images/home/occupants.png',
     intro: 'The people who live, work, and gather here every day.',
     body:
-      'Indoor environment, access, affordability, and belonging shape their daily experience — and their long-term health.',
+      'Indoor air, access, affordability, and belonging shape their experience and long-term health. Most standards start here. SEAM starts here too, then keeps going.',
   },
   {
     id: 2,
@@ -25,9 +25,9 @@ const hotspots = [
     y: 60,
     title: 'Operators',
     image: '/images/home/operators.png',
-    intro: 'The people who run the building.',
+    intro: 'The people who keep it running.',
     body:
-      'Facility teams, property managers, custodial staff, security. They keep the space functioning, often invisibly. How they are trained, paid, and treated is part of the building\u2019s performance — even when their work is the kind nobody is supposed to notice.',
+      'Facility teams, custodial staff, security. They maintain the space, often invisibly. How they\u2019re trained, paid, and treated is part of the building\u2019s performance.',
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const hotspots = [
     image: '/images/home/builders.png',
     intro: 'The people who built it.',
     body:
-      'Construction is one of the most dangerous industries in the world. Safety practices, fair wages, and labor conditions on the jobsite are not separate from the finished building — they are its first chapter, written into the structure long before anyone moves in.',
+      'Construction is one of the most dangerous industries in the world. Safety, fair wages, and labor conditions on the jobsite are the building\u2019s first chapter.',
   },
   {
     id: 4,
@@ -47,25 +47,27 @@ const hotspots = [
     image: '/images/home/neighbors.png',
     intro: 'The people who live alongside it.',
     body:
-      'A building changes the block. It shapes traffic, shadows, rents, and who feels welcome on the sidewalk. The community surrounding a project is an impacted party whether or not they were ever consulted — and SEAM treats them like one.',
+      'A building changes the block \u2014 traffic, shadows, rents, and who feels welcome. The surrounding community is an impacted party whether or not they were consulted.',
   },
   {
     id: 5,
     x: 78,
     y: 58,
     title: 'Suppliers',
+    image: '/images/home/suppliers.png',
     intro: 'The people who source and ship what goes into it.',
     body:
-      'Vendors, manufacturers, fabricators, drivers. A modern building is assembled from thousands of decisions made in places the owner will never visit. Each one carries a labor record. Each one is part of the project\u2019s footprint.',
+      'Manufacturers, fabricators, drivers. A building is assembled from thousands of decisions made in places the owner will never visit. Each carries a labor record.',
   },
   {
     id: 6,
-    x: 75,
-    y: 18,
-    title: 'Origin',
+    x: 22,
+    y: 22,
+    title: 'Laborers',
+    image: '/images/home/laborers.png',
     intro: 'The people at the very beginning of the chain.',
     body:
-      'Materials start in mines, forests, mills, and factories — often far from sight, often beyond easy oversight. Fair labor and human rights at the raw-material level are where real accountability begins. If a building\u2019s social claim doesn\u2019t reach here, it doesn\u2019t reach.',
+      'Mines, forests, mills, factories \u2014 often far from sight, beyond easy oversight. Fair labor at the raw-material level is where real accountability begins.',
   },
 ]
 
@@ -295,39 +297,23 @@ const jsonLd = [
                 role="tooltip"
                 aria-hidden="true"
                 data-hotspot-tooltip={spot.id}
-                class={`hidden md:block pointer-events-none absolute left-1/2 top-full mt-4 rounded-2xl bg-white text-left shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-warm-100 z-20 transition-opacity duration-200 ease-out opacity-0 ${spot.image ? 'w-[520px]' : 'w-[380px] p-6'}`}
+                class="hidden md:block pointer-events-none absolute left-1/2 top-full mt-4 w-[480px] rounded-2xl bg-white text-left shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-warm-100 z-20 transition-opacity duration-200 ease-out opacity-0"
                 style={`transform: translateX(${translateX});`}
               >
-                {spot.image ? (
-                  <div class="flex p-4 gap-4">
-                    <img src={spot.image} alt="" class="w-[200px] h-auto rounded-xl object-cover flex-shrink-0" />
-                    <div class="flex flex-col justify-center">
-                      <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
-                        {spot.title}
-                      </p>
-                      <p class="text-[14px] leading-relaxed font-medium text-warm-800 mb-1">
-                        {spot.intro}
-                      </p>
-                      <p class="text-[14px] leading-relaxed text-warm-500">
-                        {spot.body}
-                      </p>
-                    </div>
+                <div class="flex p-4 gap-4">
+                  <img src={spot.image} alt="" class="w-[180px] h-[210px] rounded-xl object-cover flex-shrink-0" />
+                  <div class="flex flex-col justify-center">
+                    <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
+                      {spot.title}
+                    </p>
+                    <p class="text-[14px] leading-relaxed font-medium text-warm-800 mb-1">
+                      {spot.intro}
+                    </p>
+                    <p class="text-[14px] leading-relaxed text-warm-500">
+                      {spot.body}
+                    </p>
                   </div>
-                ) : (
-                  <>
-                    <div class="p-6">
-                      <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
-                        {spot.title}
-                      </p>
-                      <p class="text-[14px] leading-relaxed font-medium text-warm-800 mb-1">
-                        {spot.intro}
-                      </p>
-                      <p class="text-[14px] leading-relaxed text-warm-500">
-                        {spot.body}
-                      </p>
-                    </div>
-                  </>
-                )}
+                </div>
               </div>
             </button>
           )
