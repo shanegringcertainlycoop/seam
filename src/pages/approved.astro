@@ -571,9 +571,17 @@ const jsonLd = [
 >
 
   <!-- ─── Hero ─── -->
-  <section class="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+  <section class="relative min-h-[80vh] flex items-center overflow-hidden">
+    <!-- Background image -->
+    <div class="absolute inset-0">
+      <img
+        src="/images/approved-hero.jpg"
+        alt="Architectural detail — design with intention"
+        class="w-full h-full object-cover object-center"
+      />
+    </div>
     <!-- Gradient overlay -->
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/50 to-warm-900/40"></div>
 
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -940,6 +948,16 @@ const jsonLd = [
     </div>
   </section>
 
+  <!-- ─── Full-width Image Break ─── -->
+  <section class="relative h-[50vh] lg:h-[60vh] overflow-hidden">
+    <img
+      src="/images/approved-break.jpg"
+      alt="Behind the scenes — the people and processes behind social equity certification"
+      class="w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0 bg-warm-900/20"></div>
+  </section>
+
   <!-- ─── Pricing ─── -->
   <section id="pricing" class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -1113,8 +1131,8 @@ const jsonLd = [
 
         <div class="hidden lg:block sticky top-32">
           <img
-            src="/images/faq-approved.jpg"
-            alt="Design materials and finishes selected for an equity-focused project"
+            src="/images/approved-faq.jpg"
+            alt="Worker on a job site — the human side of the built environment"
             class="w-full aspect-[3/4] object-cover rounded-2xl"
           />
         </div>

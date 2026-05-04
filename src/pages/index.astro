@@ -183,15 +183,19 @@ const jsonLd = [
 >
   <!-- ─── Section 1: Hero ─── -->
   <section class="relative min-h-[90vh] flex items-end overflow-hidden">
-    <!-- Background image -->
-    <div class="absolute inset-0">
-      <img
-        data-parallax="0.25"
-        src="/hero.png"
-        alt="The Jack building in Seattle's Pioneer Square — the world's first SEAM Certified commercial real estate location"
+    <!-- Background video -->
+    <div class="absolute inset-0 bg-warm-900">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
         class="hero-image h-full w-full object-cover object-center scale-105"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/10"></div>
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/90 via-warm-900/55 to-warm-900/30"></div>
     </div>
 
     <div class="hero-enter relative mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-28 w-full">
