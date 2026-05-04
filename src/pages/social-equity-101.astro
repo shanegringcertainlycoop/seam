@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
-import { breadcrumbSchema, faqSchema } from '../lib/seo-helpers'
+import { SITE_URL, breadcrumbSchema, faqSchema } from '../lib/seo-helpers'
 
 const faqs = [
   {
@@ -11,7 +11,17 @@ const faqs = [
   {
     question: 'Who is affected by a building\'s social impact?',
     answer:
-      'Every building touches at least six groups of people: occupants who use the space daily, operators who maintain and service it, builders who construct it, neighbors who live and work around it, suppliers who manufacture its materials, and the origin communities where raw materials are extracted. Most building standards only address one or two of these groups.',
+      'Every building touches at least six groups of people: occupants who use the space daily, operators who maintain and service it, builders who construct it, neighbors who live and work around it, suppliers who manufacture its materials, and the laborers in extraction communities where raw materials originate. Most building standards only address one or two of these groups.',
+  },
+  {
+    question: 'What is SEAM certification?',
+    answer:
+      'SEAM is the first certification system built to measure social equity in the built environment. It evaluates buildings across four interdependent pillars — Social Impact, Social Responsibility, Social Justice, and Social Accountability — through scored activities and third-party verification, resulting in a rating from Bronze through Platinum.',
+  },
+  {
+    question: 'How is SEAM different from LEED and WELL?',
+    answer:
+      'LEED measures environmental performance. WELL measures occupant health and wellness. SEAM measures social equity — the fairness of a building\'s relationship with all the people it touches, including workers, neighbors, supply chains, and extraction communities. SEAM is complementary to both systems and designed to work alongside them.',
   },
   {
     question: 'How is social equity different from ESG?',
@@ -24,14 +34,19 @@ const faqs = [
       'Yes, though it requires different metrics than environmental performance. SEAM measures scored activities like living wage commitments, benefits coverage rates, supplier audit completion, community impact assessments, and grievance resolution timelines. These are verified through documentation review, worker surveys, and third-party audits — similar to how LEED verifies energy performance.',
   },
   {
-    question: 'What is a social equity certification?',
+    question: 'What are the four pillars of social equity in the SEAM Standard?',
     answer:
-      'A social equity certification verifies that a building meets defined standards for fair treatment of all people it impacts. SEAM certification evaluates four pillars — Social Impact, Social Responsibility, Social Justice, and Social Accountability — through scored activities and third-party verification, resulting in a rating from Bronze through Platinum.',
+      'The SEAM Standard organizes social equity into four measurable pillars: Social Impact (understanding who your project affects), Social Responsibility (governance, community engagement, and reinvestment), Social Justice (equity across procurement, the workplace, and capital access), and Social Accountability (human rights, ethical sourcing, and worker well-being). All four pillars are interdependent — a building must demonstrate performance across each one.',
   },
   {
     question: 'Does social equity certification add cost?',
     answer:
       'Buildings already carry social costs — they are just externalized onto workers, neighbors, and supply chain communities. SEAM certification internalizes some of these costs while generating measurable returns: certified buildings see 51% less tenant turnover, 4–8% rent premiums, and reduced litigation exposure. The certification fee itself is comparable to LEED or WELL.',
+  },
+  {
+    question: 'What is the ROI of social equity in real estate?',
+    answer:
+      'Certified green and socially responsible buildings consistently command 4–8% rent premiums, demonstrate lower vacancy rates, and see 51% less tenant turnover. Corporate tenants increasingly require social impact data for ESG reporting, making social equity credentials a competitive advantage in leasing. The ROSSI Calculator from SEAM quantifies these returns at the project and portfolio level.',
   },
 ]
 
@@ -41,13 +56,32 @@ const jsonLd = [
     { name: 'Social Equity 101', path: '/social-equity-101' },
   ]),
   faqSchema(faqs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Social Equity 101 — What Buildings Owe the People They Touch',
+    description: 'A comprehensive guide to social equity in the built environment: what it means, who it affects, how it is measured, and why it matters for buildings and real estate.',
+    author: { '@type': 'Organization', name: 'SEAM, Inc.', url: SITE_URL },
+    publisher: { '@type': 'Organization', name: 'SEAM', url: SITE_URL, logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.svg` } },
+    datePublished: '2025-03-01',
+    dateModified: '2026-05-04',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/social-equity-101` },
+    url: `${SITE_URL}/social-equity-101`,
+    about: [
+      { '@type': 'Thing', name: 'Social equity in the built environment' },
+      { '@type': 'Thing', name: 'Building certification' },
+      { '@type': 'Thing', name: 'ESG real estate' },
+    ],
+  },
 ] as unknown as Record<string, unknown>
 ---
 
 <SiteLayout
   title="Social Equity 101 — What Buildings Owe the People They Touch"
-  description="Every building touches six groups of people. Learn what social equity in the built environment means, why it matters, and how it's measured."
+  description="Social equity in the built environment means distributing a building's benefits and burdens fairly among everyone it touches — occupants, operators, builders, neighbors, suppliers, and laborers. Learn what it means, who it affects, and how SEAM measures it."
   path="/social-equity-101"
+  type="article"
+  article={{ author: 'SEAM, Inc.', publishedTime: '2025-03-01', section: 'Education' }}
   jsonLd={jsonLd}
 >
 
@@ -77,7 +111,7 @@ const jsonLd = [
           What does a building owe the people it touches?
         </h1>
 
-        <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+        <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300" data-speakable>
           It's a strange question. We don't usually think of buildings as owing anyone anything.
           But every building is a web of relationships — with the people who work inside it,
           maintain it, build it, live near it, supply it, and extract its raw materials.
@@ -92,7 +126,7 @@ const jsonLd = [
        ═══════════════════════════════════════════════════════════════════ -->
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-fade-up grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div class="reveal-fade-up max-w-3xl mx-auto">
         <!-- Prose -->
         <div>
           <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
@@ -101,7 +135,7 @@ const jsonLd = [
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-8">
             Every building is a set of decisions about people
           </h2>
-          <div class="space-y-5 text-[17px] leading-relaxed text-warm-600">
+          <div class="space-y-5 text-[17px] leading-relaxed text-warm-600" data-speakable>
             <p>
               Who gets paid a living wage to clean the floors? Who breathes the dust during
               construction? Whose neighborhood absorbs the traffic and noise? Which communities
@@ -118,15 +152,6 @@ const jsonLd = [
               <a href="/resources/standard" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM was built to measure</a>.
             </p>
           </div>
-        </div>
-
-        <!-- 6-Dimensions illustration -->
-        <div class="flex items-center justify-center">
-          <img
-            src="/images/home/6-dimensions.png"
-            alt="Six dimensions of social equity in buildings: Occupants, Operators, Builders, Neighbors, Suppliers, and Origin"
-            class="w-full max-w-[520px] h-auto"
-          />
         </div>
       </div>
     </div>
@@ -170,7 +195,7 @@ const jsonLd = [
             Every building creates micro-environments. The question is whether access to the best
             conditions is distributed equitably — or just allocated by seniority and title.
           </p>
-          <ul class="space-y-4">
+          <ul class="space-y-4" data-speakable>
             <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
               Ventilation distribution in typical office HVAC systems is uneven — perimeter zones near exterior walls receive meaningfully more outdoor air than interior zones, where partitions impair airflow.<sup class="text-seam-600"><a href="#sources">1</a></sup>
             </li>
@@ -202,7 +227,7 @@ const jsonLd = [
             The people who make a building function every day — custodians, security guards,
             maintenance crews — are often the least visible and worst compensated.
           </p>
-          <ul class="space-y-4">
+          <ul class="space-y-4" data-speakable>
             <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
               The median janitor in a U.S. office building earns <strong>$17.27/hour</strong>. National average Class A office rent exceeds <strong>$39/SF</strong> — meaning a single square foot of leased space costs more per year than two hours of the cleaner's labor.<sup class="text-seam-600"><a href="#sources">6, 7</a></sup>
             </li>
@@ -248,7 +273,7 @@ const jsonLd = [
             Construction is one of the most dangerous industries in the world. The people who
             physically create our buildings bear risks that rarely appear in project budgets.
           </p>
-          <ul class="space-y-4">
+          <ul class="space-y-4" data-speakable>
             <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
               Construction workers face a fatal injury rate of <strong>9.2 per 100,000</strong> — nearly three times the all-industry average of 3.3 per 100,000.<sup class="text-seam-600"><a href="#sources">11</a></sup>
             </li>
@@ -291,7 +316,7 @@ const jsonLd = [
             A building doesn't stop at its property line. Its impacts ripple outward through
             traffic, noise, shadow, displacement, and economic change.
           </p>
-          <ul class="space-y-4">
+          <ul class="space-y-4" data-speakable>
             <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
               Heavy construction equipment generates <strong>80–101 dB at 50 feet</strong>. Even at 1,500 feet, noise from pile driving can exceed the EPA's residential outdoor guideline of <strong>55 dB</strong>.<sup class="text-seam-600"><a href="#sources">15, 16</a></sup>
             </li>
@@ -322,17 +347,11 @@ const jsonLd = [
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         <div class="reveal-slide-left">
-          <div class="flex items-center justify-center bg-warm-100 rounded-2xl min-h-[360px] lg:min-h-[440px]">
-            <div class="text-center px-8">
-              <div class="w-20 h-20 rounded-full bg-seam-600 flex items-center justify-center mx-auto mb-4">
-                <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                </svg>
-              </div>
-              <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-400">Illustration coming soon</p>
-              <p class="text-[15px] text-warm-400 mt-1">Suppliers</p>
-            </div>
-          </div>
+          <img
+            src="/images/home/suppliers.png"
+            alt="Suppliers — the people who source and ship what goes into a building"
+            class="w-full rounded-2xl"
+          />
         </div>
         <div class="reveal-slide-right">
           <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">05 — Suppliers</p>
@@ -343,7 +362,7 @@ const jsonLd = [
             Every carpet tile, light fixture, and steel beam has a manufacturing story. Most of
             those stories are invisible to the people who specify, install, and use them.
           </p>
-          <ul class="space-y-4">
+          <ul class="space-y-4" data-speakable>
             <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
               The majority of commercial furniture supply chains <strong>lack independent third-party labor audits</strong>, with certification programs like BIFMA LEVEL covering only a fraction of the market.<sup class="text-seam-600"><a href="#sources">20</a></sup>
             </li>
@@ -362,12 +381,12 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ─── 3f. Origin (styled placeholder) ─── -->
+  <!-- ─── 3f. Laborers ─── -->
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         <div class="order-2 lg:order-1 reveal-slide-left">
-          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">06 — Origin</p>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-4">06 — Laborers</p>
           <h3 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-3">
             Who extracts the raw materials?
           </h3>
@@ -375,7 +394,7 @@ const jsonLd = [
             At the far end of every supply chain are extraction communities — the places where
             sand, copper, steel, and rare earth minerals begin their journey into buildings.
           </p>
-          <ul class="space-y-4">
+          <ul class="space-y-4" data-speakable>
             <li class="text-[16px] leading-relaxed text-warm-700 pl-5 border-l-2 border-seam-500">
               Workers exposed to respirable crystalline silica at the current OSHA permissible limit for a 45-year career face a lifetime silicosis risk of roughly <strong>1 in 20</strong>.<sup class="text-seam-600"><a href="#sources">24</a></sup>
             </li>
@@ -391,17 +410,11 @@ const jsonLd = [
           </ul>
         </div>
         <div class="order-1 lg:order-2 reveal-slide-right">
-          <div class="flex items-center justify-center bg-warm-100 rounded-2xl min-h-[360px] lg:min-h-[440px]">
-            <div class="text-center px-8">
-              <div class="w-20 h-20 rounded-full bg-seam-600 flex items-center justify-center mx-auto mb-4">
-                <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-                </svg>
-              </div>
-              <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-400">Illustration coming soon</p>
-              <p class="text-[15px] text-warm-400 mt-1">Origin</p>
-            </div>
-          </div>
+          <img
+            src="/images/home/laborers.png"
+            alt="Laborers — the people at the very beginning of the supply chain"
+            class="w-full rounded-2xl"
+          />
         </div>
       </div>
     </div>
@@ -422,7 +435,7 @@ const jsonLd = [
           </p>
         </div>
 
-        <div class="reveal-stagger space-y-10">
+        <div class="reveal-stagger space-y-10" data-speakable>
           <!-- Objection 1 -->
           <div class="reveal-child pl-6 border-l-[3px] border-seam-500">
             <p class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-white mb-3">"This sounds expensive."</p>
@@ -486,7 +499,7 @@ const jsonLd = [
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-4">
           Four pillars of social equity
         </h2>
-        <p class="text-[17px] leading-relaxed text-warm-600 max-w-xl mx-auto">
+        <p class="text-[17px] leading-relaxed text-warm-600 max-w-xl mx-auto" data-speakable>
           SEAM organizes social equity into four measurable domains, each with scored activities
           and verification requirements.
         </p>

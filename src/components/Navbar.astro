@@ -253,12 +253,6 @@ function logoClass(_logo: string) {
                           >
                             Learn more
                           </a>
-                          <a
-                            href="/community/individual"
-                            class="inline-flex items-center rounded-full border border-white/30 px-4 py-2 text-[13px] font-medium text-white hover:border-white/60 hover:bg-white/5 transition-colors"
-                          >
-                            Access with free Open Membership
-                          </a>
                         </div>
                       </div>
                       {/* Standard book cover */}
@@ -288,14 +282,8 @@ function logoClass(_logo: string) {
                         </div>
                         <div class="mt-5 flex flex-wrap items-center gap-2">
                           <a
-                            href="/get-started"
-                            class="inline-flex items-center rounded-full bg-white px-4 py-2 text-[13px] font-medium text-warm-900 hover:bg-warm-100 transition-colors"
-                          >
-                            Start a project
-                          </a>
-                          <a
                             href={group.featured.href}
-                            class="inline-flex items-center rounded-full border border-white/30 px-4 py-2 text-[13px] font-medium text-white hover:border-white/60 hover:bg-white/5 transition-colors"
+                            class="inline-flex items-center rounded-full bg-white px-4 py-2 text-[13px] font-medium text-warm-900 hover:bg-warm-100 transition-colors"
                           >
                             Learn more
                           </a>
@@ -562,13 +550,14 @@ function logoClass(_logo: string) {
 
     if (!nav) return
 
+    const alwaysSolid = !!document.querySelector('[data-solid-nav]')
     let scrolled = false
     let mobileOpen = false
     let activeDropdown: string | null = null
     let closeTimeout: ReturnType<typeof setTimeout> | null = null
 
     function updateNavStyle() {
-      const solid = scrolled || mobileOpen || activeDropdown !== null
+      const solid = alwaysSolid || scrolled || mobileOpen || activeDropdown !== null
       if (solid) {
         nav!.classList.remove('bg-warm-900/10', 'backdrop-blur-[2px]')
         nav!.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm')

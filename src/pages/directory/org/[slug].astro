@@ -27,6 +27,7 @@ const jsonLd = breadcrumbSchema([
   description={description}
   path={`/directory/org/${org.slug}`}
   jsonLd={jsonLd}
+  solidNav
 >
   <article class="pt-28 sm:pt-30 lg:pt-32 pb-20 lg:pb-28">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -123,7 +124,7 @@ const jsonLd = breadcrumbSchema([
                       <img
                         src={ap.photo}
                         alt={ap.name}
-                        class="w-full h-full object-cover"
+                        class="w-full h-full object-cover object-top"
                         onerror="this.style.display='none'"
                       />
                     </div>

@@ -21,6 +21,21 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://seamcertification.org/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/pathways</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/social-equity-101</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <!-- Solutions -->
   <url>
@@ -39,36 +54,24 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Community -->
+  <!-- Rating systems -->
   <url>
-    <loc>https://seamcertification.org/community</loc>
+    <loc>https://seamcertification.org/rating-system</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/rating-system/buildings-interiors</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/rating-system/operations-maintenance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Resources -->
-  <url>
-    <loc>https://seamcertification.org/resources/standard</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/resources/rossi</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/resources/blog</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/resources/courses</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Standard pillar pages -->
+  <!-- Standard pillars -->
   <url>
     <loc>https://seamcertification.org/standard/social-impact</loc>
     <changefreq>monthly</changefreq>
@@ -87,6 +90,55 @@
   <url>
     <loc>https://seamcertification.org/standard/social-accountability</loc>
     <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Community -->
+  <url>
+    <loc>https://seamcertification.org/community</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/community/individual</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/community/organization</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Resources -->
+  <url>
+    <loc>https://seamcertification.org/resources/standard</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/rossi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/roi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/courses</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/integrations</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/resources/blog</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
@@ -172,5 +224,242 @@
     <loc>https://seamcertification.org/for/people</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Directory -->
+  <url>
+    <loc>https://seamcertification.org/directory</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Directory: Leadership -->
+  <url>
+    <loc>https://seamcertification.org/directory/team/rainey-shane</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/team/alex-demestihas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/team/chris-pirschel</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/team/shane-gring</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Directory: SEAM APs -->
+  <url>
+    <loc>https://seamcertification.org/directory/ap/christian-mayer</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/alexandra-bull</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/jennifer-beyer</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/monica-wentz</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/valerie-oliver</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/jennifer-webb</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/patricia-raicht</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/anna-fredlander</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/karin-miller</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/lonna-babu</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/melina-gorrebeeck</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/lina-daniel</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/max-kriegsfeld</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/edward-wan</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/eva-lo</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/hetvi-vora</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/ap/jayne-lee</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Directory: Member organizations -->
+  <url>
+    <loc>https://seamcertification.org/directory/org/jll</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/org/jamestown</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/org/hitt-contracting</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/org/interface</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/org/leapley-construction</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/org/thm-advisors</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/org/val-interiors</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/org/brightworks-sustainability</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Directory: Certified projects -->
+  <url>
+    <loc>https://seamcertification.org/directory/project/the-jack</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/project/interface-hq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/project/magnolia-commons</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/project/meridian-tower</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/project/houston-methodist-pavilion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/project/vista-del-sol</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/project/prairie-wind-estates</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Directory: Approved activities -->
+  <url>
+    <loc>https://seamcertification.org/directory/activity/local-procurement-tracking</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/activity/multilingual-resident-communications</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/activity/community-advisory-board</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/activity/living-wage-verification</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/activity/accessibility-audit-beyond-ada</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/activity/workforce-development-center</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/activity/cultural-programming-series</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/directory/activity/health-equity-monitoring</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

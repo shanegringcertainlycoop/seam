@@ -1,0 +1,125 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../../../lib/seo-helpers'
+import { team } from '../../../data/team'
+import { seamAPs } from '../../../data/directory'
+
+export function getStaticPaths() {
+  return team.map((member) => ({ params: { slug: member.slug } }))
+}
+
+const { slug } = Astro.params
+const member = team.find((m) => m.slug === slug)
+if (!member) return Astro.redirect('/directory', 404)
+
+const description = `${member.name} is ${member.role} at SEAM, advancing social equity certification in the built environment.`
+
+const jsonLd = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Directory', path: '/directory' },
+  { name: member.name, path: `/directory/team/${member.slug}` },
+])
+---
+<SiteLayout
+  title={`${member.name} — ${member.role}, SEAM`}
+  description={description}
+  path={`/directory/team/${member.slug}`}
+  jsonLd={jsonLd}
+  solidNav
+>
+  <article class="pt-28 sm:pt-30 lg:pt-32 pb-20 lg:pb-28">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      {/* Back link */}
+      <a
+        href="/directory"
+        class="inline-flex items-center gap-2 text-[14px] text-warm-600 hover:text-warm-700 transition-colors mb-10"
+      >
+        &larr; All Professionals
+      </a>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-12 lg:gap-16 items-start">
+        {/* Sidebar */}
+        <div class="reveal-fade-up lg:sticky lg:top-32">
+          <div class="w-32 h-32 rounded-full bg-warm-100 overflow-hidden mb-6">
+            <img
+              src={member.image}
+              alt={member.name}
+              class="w-full h-full object-cover object-top"
+              onerror="this.style.display='none'"
+            />
+          </div>
+
+          <h1 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-2">
+            {member.name}
+          </h1>
+
+          <p class="text-[16px] text-warm-700 font-medium mb-4">
+            {member.role}
+          </p>
+
+          <div class="space-y-3 text-[15px] text-warm-600">
+            <p>
+              <span class="inline-block rounded-full bg-gold-400/10 px-3 py-1 text-[13px] font-medium text-gold-600">
+                Leadership
+              </span>
+            </p>
+          </div>
+
+          {member.linkedIn && (
+            <div class="mt-6">
+              <a
+                href={member.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[14px] font-medium text-gold-600 hover:text-gold-700 transition-colors"
+              >
+                LinkedIn &rarr;
+              </a>
+            </div>
+          )}
+        </div>
+
+        {/* Main Content */}
+        <div class="reveal-fade-up">
+          <section class="mb-12">
+            <h2 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-6">
+              About
+            </h2>
+            <p class="text-[17px] leading-[1.8] text-warm-600">{member.bio}</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  {/* CTA */}
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-6">
+        Meet the full team
+      </h2>
+      <p class="text-[17px] leading-relaxed text-warm-600 max-w-2xl mx-auto mb-10">
+        Learn more about the people building the social equity standard for the built environment.
+      </p>
+      <a
+        href="/about"
+        class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors"
+      >
+        About SEAM
+        <svg
+          class="ml-2 w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+          />
+        </svg>
+      </a>
+    </div>
+  </section>
+</SiteLayout>
