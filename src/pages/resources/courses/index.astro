@@ -1,18 +1,21 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro'
-import { breadcrumbSchema } from '../../lib/seo-helpers'
+import SiteLayout from '../../../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../../../lib/seo-helpers'
 
 const courses = [
   {
     title: 'CRE Familiarization Course',
     format: 'Self-paced',
     description: 'An introduction to commercial real estate (CRE) fundamentals designed for professionals seeking to understand the industry and prepare for the Foundations: Social Equity in the Built Environment course, with no prior CRE background required.',
+    href: '',
   },
   {
     title: 'Foundations: Social Equity in the Built Environment',
     format: 'Self-paced',
     price: '$129',
     description: 'This training is designed to provide the knowledge and tools you need to apply social equity principles to real-world projects. It\u2019s self-paced, allowing you to learn on your schedule.',
+    href: '/resources/courses/foundations',
+    image: '/images/hero-foundations.jpg',
   },
 ]
 
@@ -114,26 +117,41 @@ const jsonLd = breadcrumbSchema([
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-8">
-        {courses.map((course) => (
-          <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-medium text-seam-700">
-                {course.format}
-              </span>
-              {course.price && (
-                <span class="inline-flex items-center rounded-full bg-gold-50 border border-gold-200 px-3 py-1 text-[12px] font-medium text-gold-700">
-                  {course.price}
-                </span>
+        {courses.map((course) => {
+          const Tag = course.href ? 'a' : 'div'
+          return (
+            <Tag href={course.href || undefined} class={`reveal-child rounded-2xl border border-warm-100 overflow-hidden transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] ${course.href ? 'group block' : ''}`}>
+              {course.image && (
+                <div class="aspect-[16/9] overflow-hidden">
+                  <img src={course.image} alt={course.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
               )}
-            </div>
-            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
-              {course.title}
-            </h3>
-            <p class="text-[15px] leading-relaxed text-warm-600">
-              {course.description}
-            </p>
-          </div>
-        ))}
+              <div class="p-8 lg:p-10">
+                <div class="flex items-center gap-3 mb-5">
+                  <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-medium text-seam-700">
+                    {course.format}
+                  </span>
+                  {course.price && (
+                    <span class="inline-flex items-center rounded-full bg-gold-50 border border-gold-200 px-3 py-1 text-[12px] font-medium text-gold-700">
+                      {course.price}
+                    </span>
+                  )}
+                </div>
+                <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
+                  {course.title}
+                </h3>
+                <p class="text-[15px] leading-relaxed text-warm-600">
+                  {course.description}
+                </p>
+                {course.href && (
+                  <span class="inline-flex items-center mt-6 text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
+                    View course outline &rarr;
+                  </span>
+                )}
+              </div>
+            </Tag>
+          )
+        })}
       </div>
     </div>
   </section>
