@@ -27,17 +27,17 @@ const ratingSystems = [
 ]
 
 const pillarCards = [
-  { title: 'Social Impact', href: '/standard/social-impact', description: 'Identify and engage who your project affects and measure whether your efforts are working.' },
-  { title: 'Social Responsibility', href: '/standard/social-responsibility', description: 'Build equity into how your organization operates through governance, community engagement, and investments.' },
-  { title: 'Social Justice', href: '/standard/social-justice', description: 'Advance equity across procurement, the workplace, the community, and in access to capital.' },
-  { title: 'Social Accountability', href: '/standard/social-accountability', description: 'Uphold human rights across the supply chain, support safe working conditions, and protect the health of those your project touches.' },
+  { title: 'Social Impact', href: '/standard/social-impact', description: 'Identify and engage who your project affects and measure whether your efforts are working.', icon: '/icons/pillar-social-impact.png' },
+  { title: 'Social Responsibility', href: '/standard/social-responsibility', description: 'Build equity into how your organization operates through governance, community engagement, and investments.', icon: '/icons/pillar-social-responsibility.png' },
+  { title: 'Social Justice', href: '/standard/social-justice', description: 'Advance equity across procurement, the workplace, the community, and in access to capital.', icon: '/icons/pillar-social-justice.png' },
+  { title: 'Social Accountability', href: '/standard/social-accountability', description: 'Uphold human rights across the supply chain, support safe working conditions, and protect the health of those your project touches.', icon: '/icons/pillar-social-accountability.png' },
 ]
 
 const certLevels = [
-  { level: 'Bronze', description: 'Foundational commitment. Baseline requirements met across all pillars.' },
-  { level: 'Silver', description: 'Meaningful progress with documented outcomes beyond baseline.' },
-  { level: 'Gold', description: 'Leadership in equitable practice with innovative approaches.' },
-  { level: 'Platinum', description: 'Industry benchmark. Transformative outcomes across every category.' },
+  { level: 'Bronze', description: 'Foundational commitment. Baseline requirements met across all pillars.', mark: '/logos/cert-bronze.png' },
+  { level: 'Silver', description: 'Meaningful progress with documented outcomes beyond baseline.', mark: '/logos/cert-silver.png' },
+  { level: 'Gold', description: 'Leadership in equitable practice with innovative approaches.', mark: '/logos/cert-gold.png' },
+  { level: 'Platinum', description: 'Industry benchmark. Transformative outcomes across every category.', mark: '/logos/cert-platinum.png' },
 ]
 ---
 
@@ -179,7 +179,7 @@ const certLevels = [
   <!-- Pillars Connection -->
   <section class="py-24 lg:py-32 bg-warm-900">
     <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-4xl mx-auto text-center">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
           Shared foundation
         </p>
@@ -187,25 +187,26 @@ const certLevels = [
           Every rating system is built on{' '}
           <em class="italic font-normal text-seam-300">four pillars</em>
         </h2>
-        <p class="mt-6 text-[17px] text-warm-400 max-w-2xl mx-auto leading-relaxed">
-          Regardless of which rating system you pursue, certification requires demonstrated progress across all four pillars. Each certification level reflects progress across all four pillars. The path to Platinum is built on consistent, documented commitment at every level of the Standard.
+        <p class="mt-6 text-[17px] text-warm-400 max-w-xl leading-relaxed">
+          Regardless of which rating system you pursue, certification requires demonstrated progress across all four pillars. The path to Platinum is built on consistent, documented commitment at every level of the Standard.
         </p>
+      </div>
 
-        <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {pillarCards.map((pillar) => (
-            <a
-              href={pillar.href}
-              class="rounded-2xl border border-warm-700 p-8 text-left hover:border-warm-500 transition-colors duration-300"
-            >
-              <h3 class="font-display text-[18px] lg:text-[20px] tracking-[-0.02em] text-white mb-2">
-                {pillar.title}
-              </h3>
-              <p class="text-[14px] leading-relaxed text-warm-400">
-                {pillar.description}
-              </p>
-            </a>
-          ))}
-        </div>
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
+        {pillarCards.map((pillar) => (
+          <a
+            href={pillar.href}
+            class="reveal-child relative rounded-2xl border border-warm-700 pt-14 pb-8 px-8 text-left hover:border-warm-500 transition-colors duration-300"
+          >
+            <img src={pillar.icon} alt="" class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]" />
+            <h3 class="font-display text-[18px] lg:text-[20px] tracking-[-0.02em] text-white mb-2">
+              {pillar.title}
+            </h3>
+            <p class="text-[14px] leading-relaxed text-warm-400">
+              {pillar.description}
+            </p>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -213,7 +214,7 @@ const certLevels = [
   <!-- Certification Levels -->
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-fade-up max-w-3xl mx-auto text-center">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
           Certification levels
         </p>
@@ -221,22 +222,23 @@ const certLevels = [
           Bronze through{' '}
           <em class="italic font-normal text-seam-600">Platinum</em>
         </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl mx-auto">
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
           Both rating systems use the same four-tier certification structure. Each level requires progressively deeper commitment across all four pillars.
         </p>
+      </div>
 
-        <div class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {certLevels.map((tier) => (
-            <div class="rounded-2xl border border-warm-100 p-8 text-left">
-              <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-2">
-                {tier.level}
-              </h3>
-              <p class="text-[14px] leading-relaxed text-warm-600">
-                {tier.description}
-              </p>
-            </div>
-          ))}
-        </div>
+      <div class="reveal-stagger grid grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
+        {certLevels.map((tier) => (
+          <div class="reveal-child relative rounded-2xl border border-warm-100 pt-14 pb-8 px-8 text-left">
+            <img src={tier.mark} alt={`${tier.level} certification`} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" />
+            <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-2">
+              {tier.level}
+            </h3>
+            <p class="text-[14px] leading-relaxed text-warm-600">
+              {tier.description}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   </section>

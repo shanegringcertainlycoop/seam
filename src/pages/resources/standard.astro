@@ -130,10 +130,10 @@ const levelBodyColors = ['text-warm-600', 'text-warm-600', 'text-seam-100/80', '
 const levelBorderColors = ['border-seam-600/20', 'border-seam-600/20', 'border-seam-400/20', 'border-seam-400/20']
 
 const ratings = [
-  { code: 'B+I:D', title: 'Buildings + Interiors: Developer', description: 'Ground-up construction and major renovations where the owner assumes developer responsibilities — project ownership, financing, construction supervision, and tenant leasing management.', href: '/rating-system/buildings-interiors' },
-  { code: 'B+I:O', title: 'Buildings + Interiors: Occupier', description: 'Construction or renovation projects where the owner occupies the space — fit-outs, interior buildouts, and workplace environments where the owner is the primary occupant.', href: '/rating-system/buildings-interiors' },
-  { code: 'O+M:D', title: 'Operations + Management: Developer', description: 'Existing assets being operated and managed by the developer — applying social equity standards to the ongoing performance and management of a building or portfolio.', href: '/rating-system/operations-maintenance' },
-  { code: 'O+M:O', title: 'Operations + Management: Occupier', description: 'Ongoing operations by an occupier — applying social equity practices to the management of an occupied space, including workplace practices, supply chain, and community relationships.', href: '/rating-system/operations-maintenance' },
+  { code: 'B+I:D', title: 'Buildings + Interiors: Developer', description: 'Ground-up construction and major renovations where the owner assumes developer responsibilities — project ownership, financing, construction supervision, and tenant leasing management.', href: '/rating-system/buildings-interiors', mark: '/logos/rating-bi.png' },
+  { code: 'B+I:O', title: 'Buildings + Interiors: Occupier', description: 'Construction or renovation projects where the owner occupies the space — fit-outs, interior buildouts, and workplace environments where the owner is the primary occupant.', href: '/rating-system/buildings-interiors', mark: '/logos/rating-bi.png' },
+  { code: 'O+M:D', title: 'Operations + Management: Developer', description: 'Existing assets being operated and managed by the developer — applying social equity standards to the ongoing performance and management of a building or portfolio.', href: '/rating-system/operations-maintenance', mark: '/logos/rating-om.png' },
+  { code: 'O+M:O', title: 'Operations + Management: Occupier', description: 'Ongoing operations by an occupier — applying social equity practices to the management of an occupied space, including workplace practices, supply chain, and community relationships.', href: '/rating-system/operations-maintenance', mark: '/logos/rating-om.png' },
 ]
 
 const principles = [
@@ -182,34 +182,95 @@ const audiences = [
 >
 
   <!-- Hero -->
-  <section class="relative z-20 min-h-[80vh] flex items-center bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
-    <img
-      src="/icons/standard-hero-building.png"
-      alt=""
-      class="absolute right-[-5%] bottom-0 translate-y-[15%] w-[clamp(560px,75vw,1100px)] pointer-events-none select-none z-30"
-    />
+  <section id="download" class="relative z-20 min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0">
+      <img src="/images/hero-standard.jpg" alt="" class="h-full w-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/90 via-warm-900/60 to-warm-900/40"></div>
+    </div>
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
-      <div class="hero-enter max-w-3xl">
-        <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
-          The SEAM Standard&trade;
-        </span>
-        <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white max-w-2xl">
-          The framework for belonging{' '}
-          <em class="font-display italic font-normal text-seam-300">
-            in the built environment
-          </em>
-        </h1>
-        <p class="hero-subtitle mt-8 max-w-lg text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-          The first social equity certification purpose-built for commercial real estate. A rigorous, human-centered standard that embeds belonging into every stage of how buildings are conceived, built, and managed.
-        </p>
-        <div class="hero-cta mt-10 flex flex-wrap gap-4">
-          <a href="/get-started" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
-            Explore the Standard
-          </a>
-          <a href="#levels" class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300">
-            View certification levels
-          </a>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+        <div class="hero-enter">
+          <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+            The SEAM Standard&trade;
+          </span>
+          <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white max-w-2xl">
+            The framework for belonging{' '}
+            <em class="font-display italic font-normal text-seam-300">
+              in the built environment
+            </em>
+          </h1>
+          <p class="hero-subtitle mt-8 max-w-lg text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+            The first social equity certification purpose-built for commercial real estate. A rigorous, human-centered standard that embeds belonging into every stage of how buildings are conceived, built, and managed.
+          </p>
+          <ul class="mt-8 space-y-3">
+            <li class="flex items-center gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Free for non-commercial use
+            </li>
+            <li class="flex items-center gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              4 pillars, 8 concepts, 21 objectives, 50+ activities
+            </li>
+            <li class="flex items-center gap-3 text-[15px] text-warm-300">
+              <svg class="shrink-0 w-5 h-5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              Delivered straight to your inbox
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-cta">
+          <form id="standard-form" class="rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] p-8 lg:p-10 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="std-firstname" class="block text-[13px] font-medium text-warm-300 mb-2">First Name *</label>
+                <input type="text" id="std-firstname" name="firstname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="std-lastname" class="block text-[13px] font-medium text-warm-300 mb-2">Last Name *</label>
+                <input type="text" id="std-lastname" name="lastname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="std-email" class="block text-[13px] font-medium text-warm-300 mb-2">Email *</label>
+              <input type="email" id="std-email" name="email" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="std-company" class="block text-[13px] font-medium text-warm-300 mb-2">Company Name *</label>
+                <input type="text" id="std-company" name="company" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+              <div>
+                <label for="std-jobtitle" class="block text-[13px] font-medium text-warm-300 mb-2">Job Title *</label>
+                <input type="text" id="std-jobtitle" name="jobtitle" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label for="std-job_function" class="block text-[13px] font-medium text-warm-300 mb-2">Primary Job Function</label>
+              <select id="std-job_function" name="primary_job_function" class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
+                <option value="" class="bg-warm-900">Select...</option>
+                <option value="Architecture + engineering" class="bg-warm-900">Architecture + engineering</option>
+                <option value="Developer" class="bg-warm-900">Developer</option>
+                <option value="Owner occupier" class="bg-warm-900">Owner occupier</option>
+                <option value="Property management" class="bg-warm-900">Property management</option>
+                <option value="Investor or debt institution" class="bg-warm-900">Investor or debt institution</option>
+                <option value="Certifications Professional/Consultant" class="bg-warm-900">Certifications Professional/Consultant</option>
+                <option value="NGO/Charity" class="bg-warm-900">NGO/Charity</option>
+                <option value="CSR/DEI/ESG professional" class="bg-warm-900">CSR/DEI/ESG professional</option>
+                <option value="General contractor or subcontractor" class="bg-warm-900">General contractor or subcontractor</option>
+                <option value="Other" class="bg-warm-900">Other</option>
+              </select>
+            </div>
+            <div class="flex items-start gap-3 pt-2">
+              <input type="checkbox" id="std-content-policy" name="content_use_policy" required class="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/[0.08] text-seam-500 focus:ring-seam-400/50 focus:ring-offset-0" />
+              <label for="std-content-policy" class="text-[13px] leading-snug text-warm-400">
+                I have read and agree to the <a href="mailto:admin@seamcertification.org" class="text-seam-300 underline underline-offset-2 hover:text-seam-200 transition-colors">Content Use Policy</a>. The SEAM Standard is made available for free for non-commercial use. Commercial use requires consent. *
+              </label>
+            </div>
+            <button type="submit" class="w-full rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+              Download the Standard
+            </button>
+            <p id="standard-form-status" class="text-[13px] text-center text-warm-400 hidden"></p>
+          </form>
         </div>
       </div>
     </div>
@@ -461,10 +522,10 @@ const audiences = [
         </p>
       </div>
 
-      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
         {levels.map((level, i) => (
-          <div class={`reveal-child relative rounded-2xl ${levelIntensities[i]} p-8 lg:p-10 overflow-hidden`}>
-            <img src={level.logo} alt={`${level.name} certification`} class="absolute -top-4 -right-4 w-28 h-28 object-contain opacity-60 drop-shadow-lg" />
+          <div class={`reveal-child relative rounded-2xl ${levelIntensities[i]} pt-14 pb-8 px-8 lg:pt-14 lg:pb-10 lg:px-10`}>
+            <img src={level.logo} alt={`${level.name} certification`} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" />
             <h3 class={`relative font-display text-[28px] tracking-[-0.02em] ${levelTextColors[i]}`}>{level.name}</h3>
             <p class={`mt-1 text-[14px] font-medium ${levelSubColors[i]}`}>{level.tagline}</p>
             <p class={`mt-4 text-[15px] leading-relaxed ${levelBodyColors[i]}`}>{level.description}</p>
@@ -490,9 +551,10 @@ const audiences = [
         </p>
       </div>
 
-      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6 pt-12">
         {ratings.map((r) => (
-          <a href={r.href} class="reveal-child group rounded-2xl bg-white p-8 lg:p-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <a href={r.href} class="reveal-child group relative rounded-2xl bg-white pt-14 pb-8 px-8 lg:pt-14 lg:pb-10 lg:px-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <img src={r.mark} alt={r.code} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" />
             <span class="inline-block rounded-lg bg-seam-50 px-3 py-1.5 text-[13px] font-mono font-medium text-gold-600 mb-4">{r.code}</span>
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-600 transition-colors">{r.title}</h3>
             <p class="text-[15px] leading-relaxed text-warm-600">{r.description}</p>
@@ -554,94 +616,6 @@ const audiences = [
     </div>
   </section>
 
-  <!-- ─── Download the Standard Form ─── -->
-  <section id="download" class="py-24 lg:py-32 bg-warm-900">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-        <div class="reveal-slide-left">
-          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
-            Download
-          </p>
-          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
-            Access the
-            <em class="italic font-normal text-seam-300">SEAM Standard</em>
-          </h2>
-          <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-lg">
-            The SEAM Standard is available for free for non-commercial use. Tell us a bit about yourself and we'll send the download to your inbox.
-          </p>
-          <ul class="mt-8 space-y-4">
-            <li class="flex items-start gap-3 text-[15px] text-warm-300">
-              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
-              Free for non-commercial use
-            </li>
-            <li class="flex items-start gap-3 text-[15px] text-warm-300">
-              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
-              Delivered straight to your inbox
-            </li>
-            <li class="flex items-start gap-3 text-[15px] text-warm-300">
-              <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
-              4 pillars, 8 concepts, 21 objectives, 50+ activities
-            </li>
-          </ul>
-        </div>
-
-        <div class="reveal-fade-up">
-          <form id="standard-form" class="rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] p-8 lg:p-10 space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label for="std-firstname" class="block text-[13px] font-medium text-warm-300 mb-2">First Name *</label>
-                <input type="text" id="std-firstname" name="firstname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
-              </div>
-              <div>
-                <label for="std-lastname" class="block text-[13px] font-medium text-warm-300 mb-2">Last Name *</label>
-                <input type="text" id="std-lastname" name="lastname" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
-              </div>
-            </div>
-            <div>
-              <label for="std-email" class="block text-[13px] font-medium text-warm-300 mb-2">Email *</label>
-              <input type="email" id="std-email" name="email" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label for="std-company" class="block text-[13px] font-medium text-warm-300 mb-2">Company Name *</label>
-                <input type="text" id="std-company" name="company" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
-              </div>
-              <div>
-                <label for="std-jobtitle" class="block text-[13px] font-medium text-warm-300 mb-2">Job Title *</label>
-                <input type="text" id="std-jobtitle" name="jobtitle" required class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white placeholder-white/30 focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors" />
-              </div>
-            </div>
-            <div>
-              <label for="std-job_function" class="block text-[13px] font-medium text-warm-300 mb-2">Primary Job Function</label>
-              <select id="std-job_function" name="primary_job_function" class="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] px-4 py-3 text-[15px] text-white focus:outline-none focus:border-seam-400/50 focus:bg-white/[0.1] transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.4)%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m2%204%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat">
-                <option value="" class="bg-warm-900">Select...</option>
-                <option value="Architecture + engineering" class="bg-warm-900">Architecture + engineering</option>
-                <option value="Developer" class="bg-warm-900">Developer</option>
-                <option value="Owner occupier" class="bg-warm-900">Owner occupier</option>
-                <option value="Property management" class="bg-warm-900">Property management</option>
-                <option value="Investor or debt institution" class="bg-warm-900">Investor or debt institution</option>
-                <option value="Certifications Professional/Consultant" class="bg-warm-900">Certifications Professional/Consultant</option>
-                <option value="NGO/Charity" class="bg-warm-900">NGO/Charity</option>
-                <option value="CSR/DEI/ESG professional" class="bg-warm-900">CSR/DEI/ESG professional</option>
-                <option value="General contractor or subcontractor" class="bg-warm-900">General contractor or subcontractor</option>
-                <option value="Other" class="bg-warm-900">Other</option>
-              </select>
-            </div>
-            <div class="flex items-start gap-3 pt-2">
-              <input type="checkbox" id="std-content-policy" name="content_use_policy" required class="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/[0.08] text-seam-500 focus:ring-seam-400/50 focus:ring-offset-0" />
-              <label for="std-content-policy" class="text-[13px] leading-snug text-warm-400">
-                I have read and agree to the <a href="mailto:admin@seamcertification.org" class="text-seam-300 underline underline-offset-2 hover:text-seam-200 transition-colors">Content Use Policy</a>. The SEAM Standard is made available for free for non-commercial use. Commercial use requires consent. *
-              </label>
-            </div>
-            <button type="submit" class="w-full rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
-              Download the Standard
-            </button>
-            <p id="standard-form-status" class="text-[13px] text-center text-warm-400 hidden"></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- CTA -->
   <section class="py-24 lg:py-32 bg-warm-50">
@@ -653,9 +627,7 @@ const audiences = [
         Start where you are. The SEAM Standard is designed to meet organizations at their stage of readiness — whether that is exploring what equity means for your portfolio or pursuing full certification today.
       </p>
       <div class="mt-12 flex flex-wrap justify-center gap-4">
-        <a href="/certification" class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">Start certification</a>
-        <a href="#download" class="inline-flex items-center rounded-full border border-warm-300 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-500 transition-colors duration-300">Download the Standard</a>
-        <a href="/ap-credential" class="inline-flex items-center rounded-full border border-warm-300 px-8 py-4 text-[16px] font-medium text-warm-700 hover:border-warm-500 transition-colors duration-300">Find a SEAM AP</a>
+        <a href="#download" class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">Download the Standard</a>
       </div>
     </div>
   </section>

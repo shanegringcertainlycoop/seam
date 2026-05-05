@@ -32,7 +32,6 @@ const solutions: NavGroup = {
   },
   quickLinks: [
     { label: 'Pricing', href: '/pricing' },
-    { label: 'ROI of Social Equity', href: '/resources/roi' },
     { label: 'Community', href: '/community' },
     { label: 'Sponsorship', href: '/sponsorship' },
     { label: 'Talk to an Advisor', href: '/get-started' },
@@ -79,7 +78,7 @@ const theStandard: NavGroup = {
   label: 'The Standard',
   links: [],
   featured: {
-    label: 'The Standard',
+    label: 'SEAM Standard v.1',
     href: '/resources/standard',
     description: 'The playbook for social equity in buildings. Free to download.',
   },
@@ -88,11 +87,6 @@ const theStandard: NavGroup = {
       heading: 'Rating Systems',
       href: '/rating-system',
       links: [
-        {
-          label: 'All Rating Systems',
-          href: '/rating-system',
-          description: 'Find the right track for how you build or operate.',
-        },
         {
           label: 'Buildings + Interiors',
           href: '/rating-system/buildings-interiors',
@@ -137,6 +131,9 @@ const theStandard: NavGroup = {
       ],
     },
   ],
+  quickLinks: [
+    { label: 'All Rating Systems', href: '/rating-system' },
+  ],
 }
 
 const resources: NavGroup = {
@@ -150,7 +147,7 @@ const resources: NavGroup = {
         { label: 'ROI of Social Equity', href: '/resources/roi', description: 'The financial case, backed by research.' },
         { label: 'Courses & Webinars', href: '/resources/courses', description: 'Self-paced learning and live sessions.' },
         { label: 'Blog & Insights', href: '/resources/blog', description: 'Stories from the field.' },
-        { label: 'Integrations', href: '/resources/integrations', description: 'LEED, WELL, Fitwel, and the UN SDGs.' },
+        // { label: 'Integrations', href: '/resources/integrations', description: 'LEED, WELL, Fitwel, and the UN SDGs.' },
         { label: 'FAQ', href: '/faq', description: 'Common questions, answered.' },
       ],
     },
@@ -252,6 +249,12 @@ function logoClass(_logo: string) {
                             class="inline-flex items-center rounded-full bg-white px-4 py-2 text-[13px] font-medium text-warm-900 hover:bg-warm-100 transition-colors"
                           >
                             Learn more
+                          </a>
+                          <a
+                            href="/resources/standard#download"
+                            class="inline-flex items-center rounded-full border border-white/30 px-4 py-2 text-[13px] font-medium text-white hover:border-white/60 hover:bg-white/[0.06] transition-colors"
+                          >
+                            Download
                           </a>
                         </div>
                       </div>

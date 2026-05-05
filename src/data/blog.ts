@@ -155,6 +155,63 @@ SEAM's inaugural certification covers Seattle's The Jack, an office and retail d
 The organization also offers <a href="/ap-credential">professional accreditation</a>, with 16 individuals in the beta program at launch.`,
   },
   {
+    slug: 'seam-expands-executive-leadership-team',
+    title: 'SEAM expands executive leadership team to accelerate growth and operational scale',
+    excerpt:
+      'SEAM, Inc. appoints a Chief Operating Officer and Chief Marketing Officer, signaling the organization\'s next phase of operational maturity as it scales certification and the AP credential worldwide.',
+    category: 'News',
+    author: { name: 'SEAM, Inc.', role: '' },
+    date: '2026-03-03',
+    readTime: '3 min read',
+    body: `SEAM, Inc. is expanding its executive leadership team with the appointment of a Chief Operating Officer and Chief Marketing Officer, signaling the organization's next phase of operational maturity and growth.
+
+Co-founder and CEO Rainey Shane will continue leading the vision and evolution of the Social Equity Assessment Method (SEAM) Standard and <a href="/certification">Certification</a>, while newly appointed COO Shane Gring and CMO Christopher Pirschel join to strengthen internal systems and accelerate the adoption of SEAM Certification and the <a href="/ap-credential">SEAM Accredited Professional (AP)</a> credential worldwide.
+
+"We are entering a defining stage in SEAM's evolution," Rainey Shane said. "Our mission remains constant — advancing equity in the built environment. What's changing is our scale."
+
+## Operational leadership to scale delivery
+
+Shane Gring brings more than 15 years of experience advancing mission-driven enterprises in the green building and social impact sectors. He founded BOULD, a national green-job training social enterprise that expanded to 12 locations across 10 states and supported LEED certification for more than 60 affordable housing projects. He also co-led the development of a social equity framework at the U.S. Green Building Council, impacting over 8.5 million square feet of under-resourced real estate.
+
+"My role is to improve the systems, partnerships, and execution mechanisms to support that framework at scale," Gring stated.
+
+## Expanding visibility and market adoption
+
+Christopher Pirschel brings more than a decade of experience in brand development, communications, and growth across the certification and membership industries, including roles working with the International WELL Building Institute and the Oncology Nursing Society.
+
+"Social sustainability is more than a certification conversation. It's a business conversation that resonates with leaders," Pirschel explained.
+
+With this expanded leadership team, SEAM is positioned to grow its standard, support practitioners and SEAM APs, and become a durable, globally recognized framework for social sustainability in the built environment.`,
+  },
+  {
+    slug: 'the-jack-achieves-first-seam-certification',
+    title: 'The Jack achieves world\'s first SEAM Certification',
+    excerpt:
+      'Urban Visions\' The Jack in Seattle\'s Pioneer Square earns Bronze O+M: Developer certification — the first building in the world to achieve SEAM Certification, with input from more than 1,000 community members.',
+    category: 'News',
+    author: { name: 'SEAM, Inc.', role: '' },
+    date: '2025-01-27',
+    readTime: '3 min read',
+    image: { src: '/images/blog/the-jack-pioneer-square.jpg', alt: 'The Jack office building in Seattle — the world\'s first SEAM Certified location' },
+    body: `The Jack, developed by Urban Visions, has achieved a Bronze level <a href="/certification">SEAM Certification</a> under the Operations + Maintenance: Developer rating system — making it the first building in the world to earn this designation.
+
+Located in Seattle's historic Pioneer Square, The Jack is a 175,000 SF mixed-use building that has set a precedent for what social equity certification looks like in practice.
+
+## A collaborative process
+
+As SEAM's first trailblazer, Urban Visions navigated uncharted territory. The team collaborated with SEAM to refine 143 certification processes, enhance 262 elements in <a href="/resources/standard">the SEAM Standard</a>, and calibrate 46 scorecard activities — creating a framework that is now more actionable for future adopters.
+
+With input from 1,043 community members — representing a 99% confidence level with a 3% margin of error — The Jack is closely aligned with the needs and aspirations of its neighborhood. This level of community engagement goes well beyond what is typical in commercial real estate development.
+
+## What this means for the industry
+
+The Jack's certification demonstrates that social equity in commercial real estate can be measured, verified, and recognized through a rigorous third-party process. It validates the approach that SEAM has been developing since 2018: a framework rooted in social science, aligned with international standards, and designed to create accountability for the relationship between buildings and the people they affect.
+
+For developers and owners considering <a href="/certification">SEAM Certification</a>, The Jack provides a real-world proof point. The process is rigorous but achievable, and the community engagement it requires produces insights that strengthen both the project and its relationship to the surrounding neighborhood.
+
+Professionals interested in leading certification projects can explore the <a href="/ap-credential">SEAM AP credential</a>.`,
+  },
+  {
     slug: 'pursuing-leed-head-start-seam-certification',
     title: 'Pursuing LEED? That gives you a head start in SEAM Certification',
     excerpt:
