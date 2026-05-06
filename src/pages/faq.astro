@@ -17,11 +17,11 @@ const sections = [
     id: 'certification',
     label: 'Certification',
     faqs: [
-      { q: 'How long does certification take?', a: 'Timelines vary based on project type and stage. A typical certification takes 6–12 months from registration to award. SEAM Approved applications are generally faster.', source: '/get-started', sourceLabel: 'Get Started' },
+      { q: 'How long does certification take?', a: 'Timelines vary based on project type and stage. A typical certification takes 6–12 months from registration to award.', source: '/get-started', sourceLabel: 'Get Started' },
       { q: 'How long does a certification remain valid?', a: 'Certification validity depends on the rating system. Buildings + Interiors certifications do not expire — they require annual data submissions for select activities to maintain active status. Operations + Maintenance certifications are valid for three years. Recertification must be filed by the third anniversary, and fees are approximately 60% of the original verification fee.', source: '/pricing', sourceLabel: 'Pricing' },
       { q: 'Do I need a SEAM AP?', a: 'A SEAM Accredited Professional is required for Silver, Gold, and Platinum certification. Bronze can be pursued without an AP, though working with one can strengthen your documentation. If you need an AP, we can help you find one.', source: '/get-started', sourceLabel: 'Get Started' },
       { q: 'What happens after I submit a get-started form?', a: 'Our team reviews your submission and responds within two business days. We\u2019ll schedule an introductory call to discuss your goals, confirm the right path, and connect you with a SEAM AP if appropriate.', source: '/get-started', sourceLabel: 'Get Started' },
-      { q: 'Is there a cost to get started?', a: 'Submitting the get-started form is free and carries no commitment. Certification and SEAM Approved fees depend on project size and type \u2014 <a href="/pricing" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">view pricing</a> for details.', source: '/get-started', sourceLabel: 'Get Started' },
+      { q: 'Is there a cost to get started?', a: 'Submitting the get-started form is free and carries no commitment. Certification fees depend on project size and type \u2014 <a href="/pricing" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">view pricing</a> for details.', source: '/get-started', sourceLabel: 'Get Started' },
       { q: 'What is included in the registration fee?', a: 'Registration enrolls your project in the SEAM Certification system and provides access to certification coaching, documentation templates and guidance materials, your project portal, and a unique SEAM project identification number. It is a separate fee from the certification review fee.', source: '/pricing', sourceLabel: 'Pricing' },
       { q: 'What is the verification methodology?', a: 'SEAM certification uses independent third-party review including documentation assessment, site verification, and community engagement surveys. Reviewers are credentialed and follow standardized protocols. All certifications require recertification every three years.', source: '/for/capital-providers', sourceLabel: 'Capital Providers' },
       { q: 'How is documentation managed during design and construction?', a: 'The Standard provides activity-level templates for every activity. Documentation is built into normal project workflows \u2014 not bolted on at the end. Members get full access to the template library.', source: '/for/building-professionals', sourceLabel: 'Building Professionals' },
@@ -29,19 +29,12 @@ const sections = [
       { q: 'What if our building is older and not ADA-perfect?', a: 'The Standard evaluates progress, not perfection. Accessibility and inclusion are addressed within the Social Justice pillar \u2014 specifically through Equity + Inclusion in the Workplace and Design for Embodied Justice \u2014 covering universal design improvements, digital access, multilingual wayfinding, and cultural responsiveness, not just physical code compliance.', source: '/for/operators', sourceLabel: 'Operators' },
     ],
   },
-  {
-    id: 'approved',
-    label: 'SEAM Approved',
-    faqs: [
-      { q: 'What is SEAM Approved?', a: 'SEAM Approved is a standalone activity-level verification program. Organizations can verify individual social equity practices without committing to full certification. It serves as both a standalone credential and a natural on-ramp to full SEAM certification.', source: '/', sourceLabel: 'Home' },
-      { q: 'How is SEAM Approved different from full certification?', a: 'Full certification evaluates your entire building across all four pillars. SEAM Approved verifies a single activity at a time. Both are third-party verified and publicly listed, but Approved is faster, more focused, and lower commitment.', source: '/approved', sourceLabel: 'SEAM Approved' },
-      { q: 'Does SEAM Approved count toward full certification?', a: 'Yes. Every verified activity earns credit toward its pillar. If you later pursue full certification, your SEAM Approved activities carry forward \u2014 reducing the scope and timeline of the certification process.', source: '/approved', sourceLabel: 'SEAM Approved' },
-      { q: 'Can I start with SEAM Approved and upgrade to full Certification later?', a: 'Yes. Every verified activity earns pathway credit toward full certification. Many organizations start by verifying 3 to 5 activities and then transition to a full certification track when they are ready.', source: '/pricing', sourceLabel: 'Pricing' },
-      { q: 'How long does verification take?', a: 'Most activity verifications are completed within six to eight weeks from documentation submission. Timeline depends on the complexity of the activity and the completeness of your initial submission.', source: '/approved', sourceLabel: 'SEAM Approved' },
-      { q: 'Do we need a SEAM AP for activity verification?', a: 'No. A <a href="/ap-credential" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM AP</a> is not required for SEAM Approved submissions. However, working with an AP can strengthen your documentation and increase the likelihood of first-submission approval.', source: '/approved', sourceLabel: 'SEAM Approved' },
-      { q: 'How long does the Approved credential last?', a: 'SEAM Approved credentials are valid for three years. Renewal requires updated documentation demonstrating that the verified activity remains in practice.', source: '/approved', sourceLabel: 'SEAM Approved' },
-    ],
-  },
+  // HIDDEN: Approved program temporarily hidden
+  // {
+  //   id: 'approved',
+  //   label: 'SEAM Approved',
+  //   faqs: [...],
+  // },
   {
     id: 'ap',
     label: 'SEAM AP Credential',
@@ -60,21 +53,21 @@ const sections = [
     id: 'membership',
     label: 'Membership',
     faqs: [
-      { q: 'What is the difference between Individual and Organization membership?', a: 'Individual membership is for practitioners, consultants, and professionals. Organization membership provides team seats, portfolio tools, and institutional benefits for companies, nonprofits, and institutions working with the Standard.', source: '/community', sourceLabel: 'Community' },
-      { q: 'Can I try the community before committing?', a: 'Yes. The Open tier is free and gives you access to the Standard, the directory, and public webcasts. Upgrade to Changemaker or an organization tier when you are ready for full access.', source: '/community', sourceLabel: 'Community' },
-      { q: 'Can I upgrade or downgrade at any time?', a: 'Yes. Upgrade from Open to Changemaker or Special Access at any time \u2014 your billing starts immediately. Downgrade at the end of your annual billing cycle.', source: '/community/individual', sourceLabel: 'Individual Membership' },
-      { q: 'Do Changemaker benefits carry over if I let my membership lapse?', a: 'Course completions and CEU records are permanent. Template access, ROSSI, and network features require an active membership. Re-join anytime to restore access.', source: '/community/individual', sourceLabel: 'Individual Membership' },
-      { q: 'Can my employer reimburse individual membership?', a: 'Yes. We provide invoices and receipts suitable for professional development reimbursement. Many employers cover Changemaker membership as a continuing education benefit.', source: '/community/individual', sourceLabel: 'Individual Membership' },
-      { q: 'How does team seat allocation work?', a: 'Each organization membership tier (Standing, Ladder, and Arc) includes a set number of seats. Every seat holder gets full individual-level access \u2014 templates, courses, ROSSI, and network. Contact our team to adjust seat assignments as needed.', source: '/community/organization', sourceLabel: 'Organization Membership' },
-      { q: 'Can we add seats or properties mid-cycle?', a: 'We can help you add or remove seats on a case-by-case basis if necessary. Contact our team to discuss your needs.', source: '/community/organization', sourceLabel: 'Organization Membership' },
-      { q: 'Can I earn CEUs through the community?', a: 'Yes. Courses, webcasts, and peer learning sessions carry CEU credit toward SEAM AP renewal. Your CEU progress is tracked automatically in your member dashboard.', source: '/community', sourceLabel: 'Community' },
+      { q: 'What is the difference between Individual and Organization membership?', a: 'Individual membership is for practitioners, consultants, and professionals. Organization membership provides team seats, portfolio tools, and institutional benefits for companies, nonprofits, and institutions working with the Standard.', source: '/membership', sourceLabel: 'Community' },
+      { q: 'Can I try the community before committing?', a: 'Yes. The Open tier is free and gives you access to the Standard, the directory, and public webcasts. Upgrade to Changemaker or an organization tier when you are ready for full access.', source: '/membership', sourceLabel: 'Community' },
+      { q: 'Can I upgrade or downgrade at any time?', a: 'Yes. Upgrade from Open to Changemaker or Special Access at any time \u2014 your billing starts immediately. Downgrade at the end of your annual billing cycle.', source: '/membership/individual', sourceLabel: 'Individual Membership' },
+      { q: 'Do Changemaker benefits carry over if I let my membership lapse?', a: 'Course completions and CEU records are permanent. Template access, ROSSI, and network features require an active membership. Re-join anytime to restore access.', source: '/membership/individual', sourceLabel: 'Individual Membership' },
+      { q: 'Can my employer reimburse individual membership?', a: 'Yes. We provide invoices and receipts suitable for professional development reimbursement. Many employers cover Changemaker membership as a continuing education benefit.', source: '/membership/individual', sourceLabel: 'Individual Membership' },
+      { q: 'How does team seat allocation work?', a: 'Each organization membership tier (Standing, Ladder, and Arc) includes a set number of seats. Every seat holder gets full individual-level access \u2014 templates, courses, ROSSI, and network. Contact our team to adjust seat assignments as needed.', source: '/membership/organization', sourceLabel: 'Organization Membership' },
+      { q: 'Can we add seats or properties mid-cycle?', a: 'We can help you add or remove seats on a case-by-case basis if necessary. Contact our team to discuss your needs.', source: '/membership/organization', sourceLabel: 'Organization Membership' },
+      { q: 'Can I earn CEUs through the community?', a: 'Yes. Courses, webcasts, and peer learning sessions carry CEU credit toward SEAM AP renewal.', source: '/membership', sourceLabel: 'Community' },
     ],
   },
   {
     id: 'pricing',
     label: 'Pricing & Payment',
     faqs: [
-      { q: 'Do members get discounts on certification?', a: 'Yes. Changemaker and organization members receive discounted SEAM Approved verification fees and full certification pricing. Ladder and Arc organization tiers include volume pricing for portfolio rollouts.', source: '/community', sourceLabel: 'Community' },
+      { q: 'Do members get discounts on certification?', a: 'Yes. Changemaker and organization members receive discounted certification pricing. Ladder and Arc organization tiers include volume pricing for portfolio rollouts.', source: '/membership', sourceLabel: 'Community' },
       { q: 'Is there volume pricing for portfolios with many buildings?', a: 'Yes. Organizations certifying 5 or more projects can access portfolio pricing through an Organization membership at the Ladder or Arc tier. Contact our team for a custom quote.', source: '/pricing', sourceLabel: 'Pricing' },
       { q: 'Can my AP exam fee be covered by my organization?', a: 'Yes. Many organizations cover exam and membership fees for their team. Organization members at Ladder and Arc tiers include full course library access for all seats, and exam fees can be invoiced to the organization.', source: '/pricing', sourceLabel: 'Pricing' },
       { q: 'What payment methods do you accept?', a: 'We accept credit cards, ACH transfers, and wire transfers. Organization memberships and certification fees above $5,000 can be invoiced with Net 30 terms.', source: '/pricing', sourceLabel: 'Pricing' },
@@ -98,9 +91,9 @@ const sections = [
     label: 'By Role',
     faqs: [
       { q: 'How does SEAM certification affect property value?', a: 'ROSSI modeling projects that certified buildings can expect reduced vacancy, higher tenant satisfaction, and stronger renewal rates. The ROSSI Calculator models project-level financial impact including GRESB alignment and tenant retention value.', source: '/for/developers-owners', sourceLabel: 'Developers & Owners' },
-      { q: 'Do we need ownership approval to pursue SEAM?', a: 'SEAM Approved can often be pursued at the property management level for existing programs. Full certification typically requires ownership involvement, but starting with Approved gives you verified results to bring to that conversation.', source: '/for/operators', sourceLabel: 'Operators' },
-      { q: 'How much time does certification add to our workload?', a: 'SEAM Approved verifies practices you\u2019re already running. The documentation effort is modest \u2014 most teams complete a submission in a few hours. Full certification is more involved but spreads across 12 to 18 months.', source: '/for/operators', sourceLabel: 'Operators' },
-      { q: 'Can we verify practices across multiple properties?', a: 'Yes. Community membership includes portfolio tools for rolling out SEAM Approved across multiple properties. Volume pricing is available for organizations verifying the same activity across a portfolio.', source: '/for/operators', sourceLabel: 'Operators' },
+      { q: 'Do we need ownership approval to pursue SEAM?', a: 'Full certification typically requires ownership involvement. Community membership gives your team the tools and data to make the case.', source: '/for/operators', sourceLabel: 'Operators' },
+      { q: 'How much time does certification add to our workload?', a: 'The documentation effort is modest. Full certification spreads across 12 to 18 months and integrates into existing workflows.', source: '/for/operators', sourceLabel: 'Operators' },
+      { q: 'Can we verify practices across multiple properties?', a: 'Yes. Community membership includes portfolio tools for managing certification across multiple properties. Volume pricing is available for organizations certifying multiple buildings.', source: '/for/operators', sourceLabel: 'Operators' },
       { q: 'How does SEAM align with GRESB?', a: 'SEAM certification data maps directly to GRESB social indicators. Certified projects generate standardized performance data that feeds into GRESB submissions. The ROSSI Calculator produces GRESB-aligned scoring at both project and portfolio levels.', source: '/for/capital-providers', sourceLabel: 'Capital Providers' },
       { q: 'Can SEAM data be used for SFDR reporting?', a: 'SEAM\u2019s four pillars align with SFDR principal adverse impact indicators related to social and governance factors. The Standard\u2019s community engagement, employment, and accessibility metrics provide evidence for Article 8 and Article 9 fund disclosures.', source: '/for/capital-providers', sourceLabel: 'Capital Providers' },
       { q: 'What does SEAM certification mean for me as a tenant?', a: 'It means your building has been independently verified against standards for health and safety, accessibility, community investment, and fair labor practices. Certification is earned through measurable performance, not self-reporting.', source: '/for/people', sourceLabel: 'People & Communities' },
@@ -122,7 +115,7 @@ const jsonLd = [
 
 <SiteLayout
   title="Frequently Asked Questions — SEAM Certification"
-  description="Answers to common questions about SEAM Certification, SEAM Approved, the AP credential, membership, pricing, and the ROSSI Calculator."
+  description="Answers to common questions about SEAM Certification, the AP credential, membership, pricing, and the ROSSI Calculator."
   path="/faq"
   jsonLd={jsonLd}
 >
@@ -222,7 +215,7 @@ const jsonLd = [
           Get started
         </a>
         <a
-          href="/community"
+          href="/membership"
           class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
         >
           Join the community

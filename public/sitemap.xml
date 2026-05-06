@@ -12,6 +12,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://seamcertification.org/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://seamcertification.org/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://seamcertification.org/get-started</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -43,11 +53,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- HIDDEN: Approved program temporarily hidden
   <url>
     <loc>https://seamcertification.org/approved</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  -->
   <url>
     <loc>https://seamcertification.org/ap-credential</loc>
     <changefreq>monthly</changefreq>
@@ -93,19 +105,19 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Community -->
+  <!-- Membership -->
   <url>
-    <loc>https://seamcertification.org/community</loc>
+    <loc>https://seamcertification.org/membership</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://seamcertification.org/community/individual</loc>
+    <loc>https://seamcertification.org/membership/individual</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://seamcertification.org/community/organization</loc>
+    <loc>https://seamcertification.org/membership/organization</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -421,45 +433,5 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- Directory: Approved activities -->
-  <url>
-    <loc>https://seamcertification.org/directory/activity/local-procurement-tracking</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/directory/activity/multilingual-resident-communications</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/directory/activity/community-advisory-board</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/directory/activity/living-wage-verification</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/directory/activity/accessibility-audit-beyond-ada</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/directory/activity/workforce-development-center</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/directory/activity/cultural-programming-series</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://seamcertification.org/directory/activity/health-equity-monitoring</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+  <!-- HIDDEN: Approved activities temporarily hidden -->
 </urlset>

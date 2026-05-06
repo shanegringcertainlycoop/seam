@@ -34,24 +34,25 @@ const products = [
   {
     label: 'AP Credential',
     title: 'Become a SEAM AP',
-    description: 'The professional qualification for practitioners leading certification projects. Add the credential to your team and signal expertise to every client.',
+    description: 'The credential that tells clients you know this work. Add a SEAM AP to your team to lead certification projects with confidence, stand out in competitive pursuits, and open doors to a growing network of referrals.',
     href: '/ap-credential',
     fit: 'Best for project leads, sustainability directors, and anyone shaping how social equity shows up in design and construction.',
     logo: '/logos/ap-seal.png',
+    sale: 'Bundle $389 (reg. $519) — code SITELAUNCH25 · ends May 31',
   },
   {
     label: 'Certification',
-    title: 'Pursue full certification',
-    description: 'Bronze through Platinum across Buildings + Interiors and Operations + Maintenance. The defining credential for socially equitable buildings.',
+    title: 'Certify what your building delivers',
+    description: 'Turn your project into proof. A third-party-verified mark that strengthens client pitches, satisfies investor ESG requirements, and creates a competitive advantage your competitors can\u2019t replicate with marketing alone.',
     href: '/certification',
-    fit: 'Best for projects where the client has committed to social equity as a design driver from day one.',
+    fit: 'Best for projects where the owner wants verifiable social outcomes — not just a sustainability narrative.',
     logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
   },
   {
-    label: 'Community',
+    label: 'Membership',
     title: 'Join the practitioner network',
-    description: 'Templates for every activity, courses with CEU credit, peer learning, and a directory of vetted practitioners. Free Open tier or full Changemaker access.',
-    href: '/community/individual',
+    description: 'Shorten the learning curve with a growing library of helpful templates, courses, peer learning sessions, and a directory of vetted practitioners. Start free with the Open tier or unlock full access as a Changemaker.',
+    href: '/membership/individual',
     fit: 'Best for practitioners who want to shorten the learning curve and build a practice around the Standard.',
     logos: ['/logos/member-individual.png', '/logos/member-changemaker.png', '/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
   },
@@ -79,7 +80,7 @@ const faqs = [
   },
   {
     q: 'Can our firm earn credit on projects we do not design from scratch?',
-    a: 'Yes. SEAM Approved verifies individual activities — fair labor, local hiring, community engagement, equitable procurement — without requiring full project certification. It is a path to credentialing your practices on any project.',
+    a: 'Yes. The Operations + Maintenance track evaluates ongoing practices for existing buildings. The Buildings + Interiors track covers new construction and renovations. Both tracks allow you to credential your work across project types.',
   },
   {
     q: 'How do we bill for SEAM scope?',
@@ -110,7 +111,7 @@ const jsonLd = [
   <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
     <div class="absolute inset-0">
       <img
-        src="/images/buildings-interiors/hero-studio.jpg"
+        src="/images/hero-building-professionals.jpg"
         alt="Architects and designers shaping equitable spaces"
         class="h-full w-full object-cover object-center"
       />
@@ -255,9 +256,15 @@ const jsonLd = [
             <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
               {p.title}
             </h3>
-            <p class="text-[16px] leading-relaxed text-warm-600 mb-6">
+            <p class="text-[16px] leading-relaxed text-warm-600 mb-4">
               {p.description}
             </p>
+            {p.sale && (
+              <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-3 py-1.5 mb-4">
+                <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                <span class="text-[12px] font-semibold text-amber-800">{p.sale}</span>
+              </div>
+            )}
             <p class="text-[14px] leading-relaxed text-warm-600 italic border-t border-warm-100 pt-5">
               {p.fit}
             </p>
@@ -377,7 +384,7 @@ const jsonLd = [
           Earn the AP Credential
         </a>
         <a
-          href="/community/individual"
+          href="/membership/individual"
           class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
         >
           Join the Community

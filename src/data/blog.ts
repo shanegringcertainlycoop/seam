@@ -441,7 +441,7 @@ Several tools and frameworks are emerging to help practitioners address embodied
 
 ## What practitioners can do
 
-Start by asking your suppliers direct questions about labor practices. Specify materials from manufacturers who can demonstrate chain-of-custody documentation. And consider <a href="/certification">SEAM Certification</a> or <a href="/approved">SEAM Approved</a> as frameworks for making these practices systematic rather than ad hoc.
+Start by asking your suppliers direct questions about labor practices. Specify materials from manufacturers who can demonstrate chain-of-custody documentation. And consider <a href="/certification">SEAM Certification</a> as a framework for making these practices systematic rather than ad hoc.
 
 The industry did not solve embodied carbon overnight. Embodied suffering will take the same sustained commitment. But the tools are emerging, and the obligation is clear.`,
   },

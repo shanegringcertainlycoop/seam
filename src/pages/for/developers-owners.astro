@@ -27,23 +27,24 @@ const products = [
   {
     label: 'Certification',
     title: 'Full building certification',
-    description: 'Bronze through Platinum across Buildings + Interiors or Operations + Maintenance tracks.',
+    description: 'Give your asset a competitive edge investors and tenants can verify. Certification signals measurable social performance that strengthens NOI, attracts mission-aligned capital, and de-risks ESG commitments.',
     href: '/certification',
     fit: 'Best for new developments and major renovations where social equity is part of the business plan from day one.',
     logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
   },
-  {
-    label: 'SEAM Approved',
-    title: 'Activity-level verification',
-    description: 'Verify individual social equity practices without committing to full certification. A standalone credential or a pathway into it.',
-    href: '/approved',
-    fit: 'Best for existing assets where you want to credential specific programs — local hiring, community advisory boards, procurement policies.',
-    logo: '/logos/approved-wordmark.png',
-  },
+  // HIDDEN: Approved program temporarily hidden
+  // {
+  //   label: 'SEAM Approved',
+  //   title: 'Activity-level verification',
+  //   description: 'Verify individual social equity practices without committing to full certification.',
+  //   href: '/approved',
+  //   fit: 'Best for existing assets.',
+  //   logo: '/logos/approved-wordmark.png',
+  // },
   {
     label: 'ROSSI Calculator',
     title: 'Financial modeling',
-    description: 'Translate social equity outcomes into financial language. Model project-level and portfolio-level impact, GRESB alignment, and insurance risk reduction.',
+    description: 'Translate social equity outcomes into the financial language your board and investors speak. Model project-level and portfolio-level impact with GRESB-aligned scoring and insurance risk quantification.',
     href: '/resources/rossi',
     fit: 'Best for capital conversations — investor decks, insurance negotiations, and ESG reporting.',
   },
@@ -73,10 +74,11 @@ const faqs = [
     q: 'How do investors view SEAM certification?',
     a: 'SEAM provides GRESB-aligned social performance data that institutional investors increasingly require. The ROSSI Calculator translates social outcomes into financial language for investor decks, ESG reports, and insurance negotiations.',
   },
-  {
-    q: 'Can we start with SEAM Approved before full certification?',
-    a: 'Yes. Many developers start by verifying individual practices through SEAM Approved, then pursue full certification as the portfolio matures. Every approved activity counts toward certification credit.',
-  },
+  // HIDDEN: Approved program temporarily hidden
+  // {
+  //   q: 'Can we start with SEAM Approved before full certification?',
+  //   a: '...',
+  // },
 ]
 
 const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))

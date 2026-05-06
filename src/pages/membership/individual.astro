@@ -7,9 +7,9 @@ const individualMembers = seamAPs.filter((ap) => ap.membershipTier === 'Open' ||
 
 const included = [
   { title: 'Access to The Stitch', description: 'Our member community platform, with pre-built documentation templates for every activity in the Standard. Start from proven formats instead of blank pages.' },
-  { title: 'Discounts on Certifications and Events', description: 'Member pricing on SEAM Approved verification, full certification fees, the AP exam, and in-person events throughout the year.' },
+  { title: 'Discounts on Certifications and Events', description: 'Member pricing on full certification fees, the AP exam, and in-person events throughout the year.' },
   { title: 'Recognition in the SEAM Directory', description: 'A public profile in the SEAM practitioner directory. Connect with APs, project teams, and peers. Receive inbound referrals from organizations seeking expertise.' },
-  { title: 'Resources & Expert Insights', description: 'Self-paced courses covering the Standard, pillar deep-dives, certification process, and the ROSSI framework. Automatic CEU credit tracking for AP renewal.' },
+  { title: 'Resources & Expert Insights', description: 'Self-paced courses covering the Standard, pillar deep-dives, certification process, and the ROSSI framework.' },
   { title: 'Content Sharing in the SEAM Network', description: 'Publish case studies, project write-ups, and research to a network of practitioners. Model the financial impact of social equity outcomes with ROSSI.' },
   { title: 'A Community Built for Impact', description: 'Participate in advisory sessions, pilot new activities, and help shape future versions of the SEAM Standard. Your voice moves the field forward.' },
 ]
@@ -20,7 +20,7 @@ const tiers = [
     price: 'Free',
     period: '',
     description: 'For those exploring SEAM and seeking to get involved. No commitment required.',
-    features: ['Join critical conversations', 'Attend public webcasts and events', 'Monthly newsletter with field updates'],
+    features: ['Join critical conversations', 'Attend public webcasts and events', 'Monthly newsletter with field updates', 'LEED Crosswalk access'],
     cta: 'Get started free',
     href: '/get-started',
     highlighted: false,
@@ -31,7 +31,7 @@ const tiers = [
     price: '$99',
     period: '/year',
     description: 'For those who want more than basic access. Tangible benefits and opportunities to participate more meaningfully in SEAM\u2019s ongoing work.',
-    features: ['Access to The Stitch: SEAM online community + resources', 'Recognition in the SEAM Member Directory', 'Eligible to join Technical Advisory Groups shaping industry standards', '5% discount on SEAM events', '5% discount on SEAM certifications, endorsements, and marks'],
+    features: ['Access to The Stitch: SEAM online community + resources', 'Recognition in the SEAM Member Directory', 'Eligible to join Technical Advisory Groups shaping industry standards', '5% discount on SEAM events', '5% discount on SEAM certifications, endorsements, and marks', 'LEED Crosswalk access'],
     cta: 'Join as a Changemaker',
     href: 'https://community.seamcertification.org/plans/1975151',
     highlighted: true,
@@ -40,8 +40,8 @@ const tiers = [
 ]
 
 const personas = [
-  { title: 'Consultants building a SEAM practice', description: 'Templates, ROSSI access, and the practitioner network give you the tools to serve clients pursuing certification or SEAM Approved.' },
-  { title: 'APs maintaining their credential', description: 'CEU-eligible courses, webcasts, and peer sessions keep you current. Automatic tracking means no spreadsheets at renewal time.' },
+  { title: 'Consultants building a SEAM practice', description: 'Templates, ROSSI access, and the practitioner network give you the tools to serve clients pursuing certification.' },
+  { title: 'APs maintaining their credential', description: 'CEU-eligible courses, webcasts, and peer sessions keep you current.' },
   { title: 'Professionals preparing for the AP exam', description: 'Course library covers all four pillars and the certification process. Practitioner tier includes access to project referrals.' },
   { title: 'Advocates entering the built environment', description: 'The Standard, courses, and mentorship matching give you a structured pathway from advocacy into implementation work.' },
 ]
@@ -60,8 +60,8 @@ const jsonLd = [
   faqSchema(faqItems),
   breadcrumbSchema([
     { name: 'Home', path: '/' },
-    { name: 'Community', path: '/community' },
-    { name: 'Individual Membership', path: '/community/individual' },
+    { name: 'Community', path: '/membership' },
+    { name: 'Individual Membership', path: '/membership/individual' },
   ]),
 ]
 ---
@@ -69,7 +69,7 @@ const jsonLd = [
 <SiteLayout
   title="Individual Membership"
   description="Individual community membership for SEAM practitioners. Open (free) and Changemaker ($99/yr) tiers with templates, courses, ROSSI access, practitioner network, and discounted certification fees. Special Access available for students and global members."
-  path="/community/individual"
+  path="/membership/individual"
   jsonLd={jsonLd}
 >
 
@@ -171,27 +171,16 @@ const jsonLd = [
           </div>
         ))}
 
-        <!-- Right column: SEAM AP + Special Access info boxes -->
-        <div class="flex flex-col gap-6">
-          <a href="/ap-credential" class="group rounded-2xl border border-warm-200 p-8 lg:p-10 flex flex-col flex-1 transition-all duration-300 hover:border-warm-300">
-            <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">Seeking the SEAM AP?</h3>
-            <p class="text-[15px] leading-relaxed text-warm-600 flex-1">
-              Changemaker membership is included for 1 year to support your professional journey.
-            </p>
-            <span class="mt-6 inline-flex items-center text-[15px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
-              Learn more &rarr;
-            </span>
-          </a>
-          <a href="/get-started" class="group rounded-2xl border border-warm-200 p-8 lg:p-10 flex flex-col flex-1 transition-all duration-300 hover:border-warm-300">
-            <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">Special Access</h3>
-            <p class="text-[15px] leading-relaxed text-warm-600 flex-1">
-              For students, global members, nonprofit staff, and early-career professionals. Income-qualified, honor system.
-            </p>
-            <span class="mt-6 inline-flex items-center text-[15px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
-              Apply now &rarr;
-            </span>
-          </a>
-        </div>
+        <!-- Right column: Educational Access info box -->
+        <a href="/get-started" class="group rounded-2xl border border-warm-200 p-8 lg:p-10 flex flex-col transition-all duration-300 hover:border-warm-300">
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">Educational Access</h3>
+          <p class="text-[15px] leading-relaxed text-warm-600 flex-1">
+            For students, global members, nonprofit staff, and early-career professionals. Income-qualified, honor system.
+          </p>
+          <span class="mt-6 inline-flex items-center text-[15px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+            Apply for a discounted Changemaker rate &rarr;
+          </span>
+        </a>
       </div>
     </div>
   </section>
