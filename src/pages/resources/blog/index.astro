@@ -91,12 +91,12 @@ const jsonLd = [
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-8 gap-y-10 lg:gap-y-14">
           {filtered.map((post) => (
             <a href={`/resources/blog/${post.slug}`} class="group block">
-              <div class="rounded-2xl bg-warm-50 mb-5 min-h-[200px] flex items-end transition-all duration-300 group-hover:bg-warm-100/80 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden relative">
+              <div class="rounded-2xl bg-warm-50 mb-5 aspect-video flex items-end transition-all duration-300 group-hover:bg-warm-100/80 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden relative">
                 {post.image ? (
                   <img
                     src={post.image.src}
                     alt={post.image.alt}
-                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    class="absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
                 ) : null}

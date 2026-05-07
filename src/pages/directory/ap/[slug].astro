@@ -16,7 +16,10 @@ function formatDate(dateStr: string) {
   })
 }
 
-const description = `${ap.name} is a ${ap.credentials} at ${ap.organization}, specializing in ${ap.specialties.slice(0, 3).join(', ')}.`
+const isMember = ap.credentials === 'Member'
+const description = isMember
+  ? `${ap.name}${ap.organization ? ` at ${ap.organization}` : ''} is a SEAM community member.`
+  : `${ap.name} is a ${ap.credentials} at ${ap.organization}, specializing in ${ap.specialties.slice(0, 3).join(', ')}.`
 
 const jsonLd = breadcrumbSchema([
   { name: 'Home', path: '/' },
@@ -25,7 +28,7 @@ const jsonLd = breadcrumbSchema([
 ])
 ---
 <SiteLayout
-  title={`${ap.name} — SEAM AP`}
+  title={`${ap.name} — ${isMember ? 'Community Member' : 'SEAM AP'}`}
   description={description}
   path={`/directory/ap/${ap.slug}`}
   jsonLd={jsonLd}
@@ -38,7 +41,7 @@ const jsonLd = breadcrumbSchema([
         href="/directory?tab=aps"
         class="inline-flex items-center gap-2 text-[14px] text-warm-600 hover:text-warm-700 transition-colors mb-10"
       >
-        &larr; All SEAM APs
+        &larr; All Professionals
       </a>
 
       <div class="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-12 lg:gap-16 items-start">
@@ -57,27 +60,35 @@ const jsonLd = breadcrumbSchema([
             {ap.name}
           </h1>
 
-          <p class="text-[16px] text-warm-600 mb-1">{ap.title}</p>
-          <p class="text-[16px] text-warm-700 font-medium mb-4">
-            {ap.organization}
-          </p>
+          {ap.title && <p class="text-[16px] text-warm-600 mb-1">{ap.title}</p>}
+          {ap.organization && (
+            <p class="text-[16px] text-warm-700 font-medium mb-4">
+              {ap.organization}
+            </p>
+          )}
 
           <div class="space-y-3 text-[15px] text-warm-600">
-            <p>
-              {ap.location.city}, {ap.location.state}
-            </p>
+            {(ap.location.city || ap.location.state) && (
+              <p>
+                {[ap.location.city, ap.location.state].filter(Boolean).join(', ')}
+              </p>
+            )}
             <p>
               <span
                 class={`inline-block rounded-full px-3 py-1 text-[13px] font-medium ${
                   ap.credentials === 'SEAM AP+'
                     ? 'bg-gold-400/10 text-gold-600'
-                    : 'bg-seam-50 text-seam-700'
+                    : ap.credentials === 'Member'
+                      ? 'bg-warm-100 text-warm-600'
+                      : 'bg-seam-50 text-seam-700'
                 }`}
               >
-                {ap.credentials}
+                {ap.credentials === 'Member' ? 'Community Member' : ap.credentials}
               </span>
             </p>
-            <p>Credentialed {formatDate(ap.dateCredentialed)}</p>
+            {ap.dateCredentialed && (
+              <p>Credentialed {formatDate(ap.dateCredentialed)}</p>
+            )}
           </div>
 
           {(ap.linkedIn || ap.website) && (
@@ -108,27 +119,31 @@ const jsonLd = breadcrumbSchema([
 
         {/* Main Content */}
         <div class="reveal-fade-up">
-          <section class="mb-12">
-            <h2 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-6">
-              About
-            </h2>
-            <div class="space-y-4 text-[17px] leading-[1.8] text-warm-600">
-              {ap.bio.split('\n\n').map((p) => <p>{p}</p>)}
-            </div>
-          </section>
+          {ap.bio && (
+            <section class="mb-12">
+              <h2 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-6">
+                About
+              </h2>
+              <div class="space-y-4 text-[17px] leading-[1.8] text-warm-600">
+                {ap.bio.split('\n\n').map((p) => <p>{p}</p>)}
+              </div>
+            </section>
+          )}
 
-          <section class="mb-12">
-            <h2 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-6">
-              Specialties
-            </h2>
-            <div class="flex flex-wrap gap-2">
-              {ap.specialties.map((s) => (
-                <span class="rounded-full bg-warm-50 border border-warm-100 px-4 py-2 text-[14px] text-warm-600">
-                  {s}
-                </span>
-              ))}
-            </div>
-          </section>
+          {ap.specialties.length > 0 && (
+            <section class="mb-12">
+              <h2 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-6">
+                Specialties
+              </h2>
+              <div class="flex flex-wrap gap-2">
+                {ap.specialties.map((s) => (
+                  <span class="rounded-full bg-warm-50 border border-warm-100 px-4 py-2 text-[14px] text-warm-600">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
 
           {relatedProjects.length > 0 && (
             <section>
@@ -172,17 +187,18 @@ const jsonLd = breadcrumbSchema([
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
       <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-6">
-        Become a SEAM AP
+        {isMember ? 'Join the SEAM community' : 'Become a SEAM AP'}
       </h2>
       <p class="text-[17px] leading-relaxed text-warm-600 max-w-2xl mx-auto mb-10">
-        Join the growing network of practitioners leading social equity
-        certification in the built environment.
+        {isMember
+          ? 'Connect with professionals advancing social equity in the built environment.'
+          : 'Join the growing network of practitioners leading social equity certification in the built environment.'}
       </p>
       <a
-        href="/ap-credential"
+        href={isMember ? '/community' : '/ap-credential'}
         class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors"
       >
-        Learn about the AP Credential
+        {isMember ? 'Explore the community' : 'Learn about the AP Credential'}
         <svg
           class="ml-2 w-4 h-4"
           fill="none"

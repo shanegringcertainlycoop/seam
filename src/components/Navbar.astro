@@ -1,4 +1,6 @@
 ---
+import { seamAPs, certifiedProjects, memberOrgs } from '../data/directory'
+
 interface NavLink {
   label: string
   href: string
@@ -159,7 +161,6 @@ const resources: NavGroup = {
         { label: 'ROSSI Calculator', href: '/resources/rossi', description: 'Quantify your social equity ROI.' },
         { label: 'LEED Crosswalk', href: '/resources/leed-crosswalk', description: 'Map SEAM activities to LEED credits.' },
         { label: 'Pathways', href: '/pathways', description: 'Eight ways to engage — find your entry point.' },
-        { label: 'Directory', href: '/directory', description: 'Projects, professionals, and organizations.' },
         { label: 'About SEAM', href: '/about', description: 'Our mission and team.' },
         { label: 'Shop', href: 'https://seamstore.org/', description: 'Gear and merch.', external: true },
       ],
@@ -179,7 +180,22 @@ const audiences: NavGroup = {
   ],
 }
 
-const dropdowns = [solutions, theStandard, audiences, resources]
+// Directory images for nav
+const apPhotos = seamAPs.filter((a) => a.photo).map((a) => a.photo)
+const projectImage = certifiedProjects.find((p) => p.image)?.image || ''
+const brandLogos = ['/logos/jll.png', '/logos/cbre.svg']
+
+const directory: NavGroup = {
+  label: 'Directory',
+  links: [],
+  quickLinks: [
+    { label: 'All Professionals', href: '/directory?tab=professionals' },
+    { label: 'All Projects', href: '/directory?tab=projects' },
+    { label: 'All Organizations', href: '/directory?tab=organizations' },
+  ],
+}
+
+const dropdowns = [solutions, theStandard, audiences, directory, resources]
 
 function logoClass(_logo: string) {
   return 'w-11 h-11'
@@ -196,7 +212,9 @@ function logoClass(_logo: string) {
       <a href="/" class="flex items-center">
         <img
           id="nav-logo"
-          src="/logos/seam-wordmark.png"
+          src="/logos/seam-wordmark-white.png"
+          data-src-light="/logos/seam-wordmark.png"
+          data-src-dark="/logos/seam-wordmark-white.png"
           alt="SEAM"
           class="h-8 w-auto transition-all duration-300"
         />
@@ -229,7 +247,59 @@ function logoClass(_logo: string) {
               class={`absolute top-full pt-4 hidden ${group.label === 'Resources' ? 'right-0' : 'left-1/2 -translate-x-1/2'}`}
               data-dropdown-panel={idx}
             >
-              {group.sections?.length ? (
+              {group.label === 'Directory' ? (
+                <div class="rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] w-[680px] overflow-hidden">
+                  {/* Visual hero */}
+                  <div class="relative bg-gradient-to-br from-warm-900 via-warm-900 to-seam-900 px-8 py-7 overflow-hidden">
+                    <div class="flex items-center justify-between gap-6">
+                      <div>
+                        <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold-400 mb-3">Directory</p>
+                        <p class="font-display text-[22px] leading-[1.1] tracking-[-0.02em] text-white">The SEAM ecosystem</p>
+                        <p class="mt-2 text-[13px] leading-relaxed text-warm-300 max-w-[280px]">
+                          Professionals, certified projects, and organizations advancing social equity.
+                        </p>
+                        <a href="/directory" class="inline-flex items-center mt-4 rounded-full bg-white px-4 py-2 text-[13px] font-medium text-warm-900 hover:bg-warm-100 transition-colors">
+                          Browse the directory
+                        </a>
+                      </div>
+                      <div class="flex flex-col items-end gap-3 shrink-0">
+                        <div class="flex -space-x-3">
+                          {apPhotos.slice(0, 5).map((src) => (
+                            <div class="w-10 h-10 rounded-full bg-warm-700 border-2 border-warm-900 overflow-hidden">
+                              <img src={src} alt="" class="w-full h-full object-cover object-top" />
+                            </div>
+                          ))}
+                          <div class="w-10 h-10 rounded-full bg-warm-700/60 border-2 border-warm-900 flex items-center justify-center text-[11px] font-medium text-white">
+                            +{apPhotos.length - 5}
+                          </div>
+                        </div>
+                        {projectImage && (
+                          <div class="w-28 h-16 rounded-lg overflow-hidden bg-warm-700">
+                            <img src={projectImage} alt="" class="w-full h-full object-cover opacity-90" />
+                          </div>
+                        )}
+                        <div class="flex items-center gap-4 opacity-60">
+                          {brandLogos.map((src) => (
+                            <img src={src} alt="" class={`w-auto object-contain brightness-0 invert ${src.includes('jll') ? 'h-9' : 'h-4'}`} />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Category links */}
+                  <div class="grid grid-cols-3 divide-x divide-warm-100">
+                    <a href="/directory?tab=professionals" class="group/item p-5 hover:bg-warm-50 transition-colors">
+                      <p class="text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600 transition-colors">Find SEAM professionals</p>
+                    </a>
+                    <a href="/directory?tab=projects" class="group/item p-5 hover:bg-warm-50 transition-colors">
+                      <p class="text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600 transition-colors">Find SEAM projects</p>
+                    </a>
+                    <a href="/directory?tab=organizations" class="group/item p-5 hover:bg-warm-50 transition-colors">
+                      <p class="text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600 transition-colors">Find SEAM organizations</p>
+                    </a>
+                  </div>
+                </div>
+              ) : group.sections?.length ? (
                 <div class={`rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] ${group.label === 'The Standard' ? 'w-[820px]' : group.label === 'Take Action' ? 'w-[880px]' : 'w-[760px]'} overflow-hidden`}>
                   {/* Standard featured hero at top */}
                   {group.label === 'The Standard' && group.featured && (
@@ -481,7 +551,13 @@ function logoClass(_logo: string) {
             </svg>
           </button>
           <div class="pb-4 pl-2 space-y-1 hidden" data-mobile-content={idx}>
-            {group.sections?.length ? (
+            {group.label === 'Directory' ? (
+              <>
+                <a href="/directory?tab=professionals" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">Professionals</a>
+                <a href="/directory?tab=projects" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">Projects</a>
+                <a href="/directory?tab=organizations" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">Organizations</a>
+              </>
+            ) : group.sections?.length ? (
               group.sections.map((section) => (
                 <div>
                   {section.href ? (
@@ -572,11 +648,9 @@ function logoClass(_logo: string) {
         nav!.classList.add('bg-warm-900/10', 'backdrop-blur-[2px]')
       }
 
-      // Logo brightness
-      if (solid) {
-        logo?.classList.add('brightness-0')
-      } else {
-        logo?.classList.remove('brightness-0')
+      // Logo swap
+      if (logo) {
+        logo.setAttribute('src', solid ? logo.dataset.srcLight! : logo.dataset.srcDark!)
       }
 
       // CTA button style
