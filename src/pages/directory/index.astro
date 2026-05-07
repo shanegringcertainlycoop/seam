@@ -28,7 +28,7 @@ seamAPs.forEach((ap) => ap.specialties.forEach((s) => specialtySet.add(s)))
 const uniqueSpecialties = Array.from(specialtySet).sort()
 
 // Role filters for Professionals tab
-const roleFilters = ['All', 'Leadership', 'TAG', ...uniqueSpecialties]
+const roleFilters = ['All', 'SEAM AP', 'Leadership', 'TAG', ...uniqueSpecialties]
 
 const levelColors: Record<string, string> = {
   Bronze: 'bg-amber-100 text-amber-800',
@@ -157,7 +157,7 @@ const inactivePillClass =
         {activeTab === 'professionals' &&
           roleFilters.map((s, i) => (
             <>
-              {i === 3 && <span class="w-px h-8 bg-warm-200 self-center mx-1"></span>}
+              {i === 4 && <span class="w-px h-8 bg-warm-200 self-center mx-1"></span>}
               <button
                 type="button"
                 data-directory-filter
@@ -254,7 +254,7 @@ const inactivePillClass =
             {/* SEAM APs */}
             {seamAPs.map((ap) => {
               const roleTags = ap.roles || []
-              const allTags = [...roleTags, ...ap.specialties]
+              const allTags = ['SEAM AP', ...roleTags, ...ap.specialties]
               const searchText = [
                 ap.name,
                 ap.organization,

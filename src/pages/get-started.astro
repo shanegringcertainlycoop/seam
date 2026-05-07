@@ -71,7 +71,7 @@ const jsonLd = breadcrumbSchema([
             <img
               src={rainey.image}
               alt={rainey.name}
-              class="w-48 h-48 lg:w-56 lg:h-56 rounded-full object-cover shadow-[0_16px_48px_rgba(0,0,0,0.12)]"
+              class="w-48 h-48 lg:w-56 lg:h-56 rounded-full object-cover object-top shadow-[0_16px_48px_rgba(0,0,0,0.12)]"
             />
             <h2 class="mt-8 font-display text-[28px] lg:text-[32px] tracking-[-0.02em] text-warm-900">
               {rainey.name}
@@ -79,9 +79,9 @@ const jsonLd = breadcrumbSchema([
             <p class="mt-1 text-[16px] font-medium text-seam-600">
               {rainey.role}
             </p>
-            <p class="mt-5 text-[16px] leading-relaxed text-warm-600 max-w-md">
-              {rainey.bio}
-            </p>
+            <div class="mt-5 space-y-4 text-[16px] leading-relaxed text-warm-600 max-w-md">
+              {rainey.bio.split('\n\n').map((p) => <p>{p}</p>)}
+            </div>
             {rainey.linkedIn && (
               <a
                 href={rainey.linkedIn}

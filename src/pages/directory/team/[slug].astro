@@ -85,7 +85,9 @@ const jsonLd = breadcrumbSchema([
             <h2 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-6">
               About
             </h2>
-            <p class="text-[17px] leading-[1.8] text-warm-600">{member.bio}</p>
+            <div class="space-y-4 text-[17px] leading-[1.8] text-warm-600">
+              {member.bio.split('\n\n').map((p) => <p>{p}</p>)}
+            </div>
           </section>
         </div>
       </div>
