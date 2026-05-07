@@ -6,7 +6,7 @@ const reasons = [
   { title: 'Access to The Stitch', description: 'Give your entire team — property managers, sustainability leads, community liaisons, executives — access to the same templates, courses, and tools in our members-only community platform.' },
   { title: 'Foundations Course and Exam Credits', description: 'Ladder and Arc tiers include complimentary Foundations: Social Equity in the Built Environment course and exam credits for team members. Build in-house expertise without per-seat costs.' },
   { title: 'Recognition on the SEAM Site & Directory', description: 'Showcase your commitment with a listing in the Member Directory and recognition on the SEAM website — text listing, logo, or featured placement depending on tier.' },
-  { title: 'Discounts for Certifications & Events', description: 'Tiered discounts on SEAM Approved verification, full certification fees, and events throughout the year. Scale your investment alongside your portfolio.' },
+  { title: 'Discounts for Certifications & Events', description: 'Tiered discounts on full certification fees and events throughout the year. Scale your investment alongside your portfolio.' },
   { title: 'Thought Leadership Opportunities', description: 'Submit blog posts, featured articles, and webinars. Arc members help shape future versions of the Standard and the direction of the movement.' },
   { title: 'Support the Movement, Build Your Reputation', description: 'Event sponsorships, use of membership logos, and co-branded content opportunities. Public leadership in the movement for social equity in the built environment.' },
 ]
@@ -19,13 +19,15 @@ const tiers = [
     description: 'For organizations beginning their SEAM journey. Access to The Stitch and foundational benefits.',
     features: [
       'Access to The Stitch members-only hub',
+      'Complimentary 30-minute ROSSI support session',
       '5% discount on certifications and events',
       'Eligibility to sponsor events',
       'Recognition in the Member Directory',
       'Recognition on the SEAM website (text listing)',
       '3 included employee individual memberships',
     ],
-    cta: 'Talk to our team',
+    cta: 'Join as Standing',
+    href: 'https://community.seamcertification.org/plans/1488420?bundle_token=f5deaef1971a09a0a0bd10fbc3264c4c&utm_source=manual',
     highlighted: false,
     badge: '/logos/member-standing.png',
   },
@@ -33,9 +35,10 @@ const tiers = [
     name: 'Ladder',
     price: '$6,000',
     period: '/year',
-    description: 'For organizations actively pursuing certification or rolling out SEAM Approved across properties.',
+    description: 'For organizations actively pursuing certification across properties.',
     features: [
       'Access to The Stitch members-only hub',
+      'Complimentary 30-minute ROSSI support session',
       '10% discount on certifications and events',
       'Eligibility to sponsor events',
       'Recognition in the Member Directory',
@@ -44,7 +47,8 @@ const tiers = [
       '10 included employee individual memberships',
       '1 complimentary AP training and exam',
     ],
-    cta: 'Talk to our team',
+    cta: 'Join as Ladder',
+    href: 'https://community.seamcertification.org/plans/1485313?bundle_token=776d7950c59d7388be61f93c06e3d02f&utm_source=manual',
     highlighted: true,
     badge: '/logos/member-ladder.png',
   },
@@ -55,6 +59,7 @@ const tiers = [
     description: 'For institutions leading the movement. Maximum influence and recognition.',
     features: [
       'Access to The Stitch members-only hub',
+      'Complimentary 30-minute ROSSI support session',
       '15% discount on certifications and events',
       'Eligibility to sponsor events',
       'Recognition on the SEAM website (logo, featured)',
@@ -65,6 +70,7 @@ const tiers = [
       '1 included event sponsorship',
     ],
     cta: 'Talk to our team',
+    href: '/get-started',
     highlighted: false,
     badge: '/logos/member-arc.png',
   },
@@ -88,8 +94,8 @@ const faqs = [
   { q: 'How does team seat allocation work?', a: 'Each organization membership tier (Standing, Ladder, and Arc) includes a set number of seats. Every seat holder gets full individual-level access — templates, courses, ROSSI, and network. Contact our team to adjust seat assignments as needed.' },
   { q: 'Can we add seats or properties mid-cycle?', a: 'We can help you add or remove seats on a case-by-case basis if necessary. Contact our team to discuss your needs.' },
   { q: 'Is organization pricing public?', a: 'Pricing is based on portfolio size, property count, and scope. Contact our team for a quote tailored to your organization. All tiers are billed annually.' },
-  { q: 'What does dedicated onboarding include?', a: 'A SEAM team member reviews your existing social equity programs, maps them to Standard activities, identifies quick wins for SEAM Approved, and builds a certification roadmap. Ladder tier includes one session; Arc includes ongoing strategy check-ins.' },
-  { q: 'Can our team members also hold individual memberships?', a: 'Organization seats provide full individual-level access. Separate individual memberships are not needed. Team members who are SEAM APs can track CEUs through their organization seat.' },
+  { q: 'What does dedicated onboarding include?', a: 'A SEAM team member reviews your existing social equity programs, maps them to Standard activities, identifies quick wins, and builds a certification roadmap. Ladder tier includes one session; Arc includes ongoing strategy check-ins.' },
+  { q: 'Can our team members also hold individual memberships?', a: 'Organization seats provide full individual-level access. Separate individual memberships are not needed. Team members who are SEAM APs receive full individual-level benefits through their organization seat.' },
   { q: 'What is the advisory council?', a: 'Arc members sit on the advisory council that informs Standard development. The council meets quarterly, reviews proposed changes, pilots new activities, and provides strategic input on the direction of the SEAM ecosystem.' },
 ]
 
@@ -99,8 +105,8 @@ const jsonLd = [
   faqSchema(faqItems),
   breadcrumbSchema([
     { name: 'Home', path: '/' },
-    { name: 'Community', path: '/community' },
-    { name: 'Organization Membership', path: '/community/organization' },
+    { name: 'Community', path: '/membership' },
+    { name: 'Organization Membership', path: '/membership/organization' },
   ]),
 ]
 ---
@@ -108,7 +114,7 @@ const jsonLd = [
 <SiteLayout
   title="Organization Membership"
   description="Organization community membership for teams and institutions. Standing ($1,600/yr), Ladder ($6,000/yr), and Arc ($18,000/yr) tiers with team seats, AP training credits, discounted certifications, and recognition on the SEAM site and directory."
-  path="/community/organization"
+  path="/membership/organization"
   jsonLd={jsonLd}
 >
 
@@ -205,6 +211,9 @@ const jsonLd = [
               ))}
             </ul>
 
+            <a href={tier.href} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
+              {tier.cta}
+            </a>
           </div>
         ))}
       </div>
@@ -249,7 +258,7 @@ const jsonLd = [
       <div class="max-w-4xl mx-auto text-center">
         <svg class="mx-auto mb-8 w-12 h-12 text-warm-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" /></svg>
         <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
-          Ladder membership let us roll out SEAM Approved across our portfolio in one quarter. Access to The Stitch mapped our existing programs to the Standard, and the AP training gave our team the credential to lead the work in-house. We stopped reinventing the wheel.
+          Ladder membership let us roll out SEAM certification across our portfolio in one quarter. Access to The Stitch mapped our existing programs to the Standard, and the AP training gave our team the credential to lead the work in-house. We stopped reinventing the wheel.
         </blockquote>
         <div class="mt-10">
           <p class="text-[16px] font-medium text-white">Tebogo &ldquo;Tebby&rdquo; Modisagape</p>

@@ -11,20 +11,22 @@ const topics = [
     description: 'Full building certification across four rating systems and four achievement levels.',
     href: '/certification',
   },
-  {
-    title: 'SEAM Approved',
-    description: 'Verify a single activity — a product, service, or program — without full certification.',
-    href: '/approved',
-  },
+  // HIDDEN: Approved program temporarily hidden
+  // {
+  //   title: 'SEAM Approved',
+  //   description: 'Verify a single activity — a product, service, or program — without full certification.',
+  //   href: '/approved',
+  // },
   {
     title: 'AP Credential',
     description: 'Become a SEAM Accredited Professional and guide projects through the Standard.',
     href: '/ap-credential',
+    sale: 'Bundle $389 (reg. $519) — code SITELAUNCH25 · ends May 31',
   },
   {
     title: 'Community Membership',
     description: 'Join the network of organizations and professionals advancing social equity.',
-    href: '/community',
+    href: '/membership',
   },
 ]
 
@@ -36,7 +38,7 @@ const jsonLd = breadcrumbSchema([
 
 <SiteLayout
   title="Talk to an Advisor — SEAM"
-  description="Book a call with Rainey Shane to explore SEAM Certification, Approved activities, the AP credential, or membership."
+  description="Book a call with Rainey Shane to explore SEAM Certification, the AP credential, or membership."
   path="/get-started"
   jsonLd={[jsonLd]}
 >
@@ -138,9 +140,15 @@ const jsonLd = breadcrumbSchema([
             <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
               {topic.title}
             </h3>
-            <p class="text-[15px] leading-relaxed text-warm-600 mb-8 flex-1">
+            <p class="text-[15px] leading-relaxed text-warm-600 mb-4 flex-1">
               {topic.description}
             </p>
+            {topic.sale && (
+              <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-2.5 py-1 mb-4">
+                <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                <span class="text-[11px] font-semibold text-amber-800">{topic.sale}</span>
+              </div>
+            )}
             <a
               href={topic.href}
               class="inline-flex items-center text-[14px] font-medium text-seam-600 hover:text-seam-700 transition-colors self-start"

@@ -32,23 +32,25 @@ const solutions: NavGroup = {
   },
   quickLinks: [
     { label: 'Pricing', href: '/pricing' },
-    { label: 'Community', href: '/community' },
+    { label: 'Membership Overview', href: '/membership' },
     { label: 'Sponsorship', href: '/sponsorship' },
+    { label: 'Contact', href: '/contact' },
     { label: 'Talk to an Advisor', href: '/get-started' },
   ],
   sections: [
     {
       heading: 'For Organizations',
       links: [
-        {
-          label: 'SEAM Approved',
-          href: '/approved',
-          description: 'Start with one verified activity. No full certification required.',
-          logo: '/logos/approved-wordmark.png',
-        },
+        // HIDDEN: Approved program temporarily hidden
+        // {
+        //   label: 'SEAM Approved',
+        //   href: '/approved',
+        //   description: 'Start with one verified activity. No full certification required.',
+        //   logo: '/logos/approved-wordmark.png',
+        // },
         {
           label: 'Organization Membership',
-          href: '/community/organization',
+          href: '/membership/organization',
           description: 'Give your team the tools, network, and recognition to lead.',
           logos: ['/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
         },
@@ -65,7 +67,7 @@ const solutions: NavGroup = {
         },
         {
           label: 'Individual Membership',
-          href: '/community/individual',
+          href: '/membership/individual',
           description: 'Your career in social equity starts here. Free and paid tiers.',
           logos: ['/logos/member-individual.png', '/logos/member-changemaker.png'],
         },
@@ -155,6 +157,7 @@ const resources: NavGroup = {
       heading: 'Tools & More',
       links: [
         { label: 'ROSSI Calculator', href: '/resources/rossi', description: 'Quantify your social equity ROI.' },
+        { label: 'LEED Crosswalk', href: '/resources/leed-crosswalk', description: 'Map SEAM activities to LEED credits.' },
         { label: 'Pathways', href: '/pathways', description: 'Eight ways to engage — find your entry point.' },
         { label: 'Directory', href: '/directory', description: 'Projects, professionals, and organizations.' },
         { label: 'About SEAM', href: '/about', description: 'Our mission and team.' },
@@ -223,7 +226,7 @@ function logoClass(_logo: string) {
 
             <!-- Dropdown panel -->
             <div
-              class="absolute top-full left-1/2 -translate-x-1/2 pt-4 hidden"
+              class={`absolute top-full pt-4 hidden ${group.label === 'Resources' ? 'right-0' : 'left-1/2 -translate-x-1/2'}`}
               data-dropdown-panel={idx}
             >
               {group.sections?.length ? (

@@ -83,15 +83,16 @@ const products = [
     audience: 'For developers, owners, and capital providers',
     logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
   },
-  {
-    label: 'SEAM Approved',
-    title: 'Activity-level verification',
-    description:
-      'Not ready for full certification? Start with one verified activity and build from there.',
-    href: '/approved',
-    audience: 'For operators, managers, and anchor institutions',
-    logo: '/logos/approved-wordmark.png',
-  },
+  // HIDDEN: Approved program temporarily hidden
+  // {
+  //   label: 'SEAM Approved',
+  //   title: 'Activity-level verification',
+  //   description:
+  //     'Not ready for full certification? Start with one verified activity and build from there.',
+  //   href: '/approved',
+  //   audience: 'For operators, managers, and anchor institutions',
+  //   logo: '/logos/approved-wordmark.png',
+  // },
   {
     label: 'SEAM AP Credential',
     title: 'Professional accreditation',
@@ -100,13 +101,14 @@ const products = [
     href: '/ap-credential',
     audience: 'For consultants and sustainability professionals',
     logo: '/logos/ap-seal.png',
+    sale: '$389 (reg. $519) — code SITELAUNCH25 · ends May 31',
   },
   {
     label: 'COMMUNITY',
     title: 'SEAM Membership',
     description:
       'Connect with practitioners doing this work across the industry. Events, peer groups, and tools — at every career stage.',
-    href: '/community',
+    href: '/membership',
     audience: 'For all professional audiences',
     logos: ['/logos/member-individual.png', '/logos/member-changemaker.png', '/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
   },
@@ -128,7 +130,7 @@ const resources = [
     title: 'Open Membership',
     description: 'Free to join. Show up, learn, and find your people in social equity.',
     cta: 'Enroll for free',
-    href: '/community',
+    href: '/membership',
   },
   {
     title: 'The SEAM Standard',
@@ -162,11 +164,12 @@ const jsonLd = [
       answer:
         'SEAM is complementary to LEED, WELL, and Fitwel. While those systems focus on environmental performance and physical wellness, SEAM measures social equity — the relationship between a building and the people it touches. SEAM requires community voice in evaluation and interdependent scoring across all four pillars. Certification validity varies by rating system: Buildings + Interiors projects have no expiration and require annual data submissions for select activities, while Operations + Maintenance certifications are valid for three years and require recertification.',
     },
-    {
-      question: 'What is SEAM Approved?',
-      answer:
-        'SEAM Approved is a standalone activity-level verification program. Organizations can verify individual social equity practices without committing to full certification. It serves as both a standalone credential and a natural on-ramp to full SEAM certification.',
-    },
+    // HIDDEN: Approved program temporarily hidden
+    // {
+    //   question: 'What is SEAM Approved?',
+    //   answer:
+    //     'SEAM Approved is a standalone activity-level verification program. Organizations can verify individual social equity practices without committing to full certification. It serves as both a standalone credential and a natural on-ramp to full SEAM certification.',
+    // },
     {
       question: 'What is the ROSSI Calculator?',
       answer:
@@ -259,7 +262,7 @@ const jsonLd = [
           <em class="italic font-normal text-seam-600">its walls.</em>
         </h2>
         <p class="mt-4 text-[17px] leading-relaxed text-warm-600 max-w-xl mx-auto">
-          Six groups of people are touched by every project. SEAM is the only standard that accounts for all of them.
+          Every project impacts people. SEAM is the only standard that accounts for all of them.
         </p>
       </div>
     </div>
@@ -447,9 +450,15 @@ const jsonLd = [
             <h3 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4">
               {product.title}
             </h3>
-            <p class="text-[16px] leading-relaxed text-warm-600 mb-6">
+            <p class="text-[16px] leading-relaxed text-warm-600 mb-4">
               {product.description}
             </p>
+            {product.sale && (
+              <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-3 py-1.5 mb-4">
+                <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                <span class="text-[12px] font-semibold text-amber-800">{product.sale}</span>
+              </div>
+            )}
             <div class="flex items-center justify-between">
               <span class="text-[14px] text-warm-400">{product.audience}</span>
               <span class="text-warm-400 group-hover:text-warm-900 group-hover:translate-x-1 transition-all duration-300">

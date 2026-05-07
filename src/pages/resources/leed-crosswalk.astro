@@ -1,0 +1,167 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../../lib/seo-helpers'
+
+const jsonLd = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Resources', path: '/resources/rossi' },
+  { name: 'LEED Crosswalk', path: '/resources/leed-crosswalk' },
+])
+---
+
+<SiteLayout
+  title="SEAM + LEED Crosswalk"
+  description="Download the SEAM–LEED Crosswalk document. See exactly how SEAM Standard activities map to LEED credits across categories."
+  path="/resources/leed-crosswalk"
+  jsonLd={[jsonLd]}
+>
+
+  <!-- Hero -->
+  <section class="py-24 lg:py-32 bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl">
+        <span class="hero-enter inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+          Free Resource
+        </span>
+        <h1 class="hero-enter font-display text-[clamp(2.5rem,5vw,4rem)] leading-[1.08] tracking-[-0.03em] text-white" style="animation-delay:.05s">
+          SEAM + LEED{' '}<em class="italic font-normal text-seam-300">Crosswalk</em>
+        </h1>
+        <p class="hero-enter mt-6 text-[18px] leading-relaxed text-warm-300 max-w-2xl" style="animation-delay:.1s">
+          See exactly how SEAM Standard activities map to LEED credits. Use the crosswalk to pursue both certifications efficiently — identifying overlaps, filling gaps, and maximizing the value of every project effort.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form + Info -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-16 lg:gap-24 items-start">
+
+        <!-- Left: Info -->
+        <div class="reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">What's inside</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-8">
+            A complete mapping between{' '}<em class="italic font-normal text-seam-600">SEAM and LEED</em>
+          </h2>
+          <div class="space-y-6 text-[16px] leading-relaxed text-warm-600">
+            <p>
+              The SEAM–LEED Crosswalk is an 11-page reference that maps SEAM Standard activities directly to LEED credit categories. It shows you where the two systems overlap and where each one stands alone.
+            </p>
+            <p>
+              Use it to plan a dual-certification strategy, identify credits you're already earning through SEAM work, or help clients understand the relationship between social equity performance and green building credentials.
+            </p>
+          </div>
+
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="rounded-2xl border border-warm-100 p-6">
+              <p class="font-display text-[28px] tracking-[-0.02em] text-gold-600">11</p>
+              <p class="text-[14px] text-warm-600 mt-1">Pages of detailed mapping</p>
+            </div>
+            <div class="rounded-2xl border border-warm-100 p-6">
+              <p class="font-display text-[28px] tracking-[-0.02em] text-gold-600">4</p>
+              <p class="text-[14px] text-warm-600 mt-1">SEAM pillars covered</p>
+            </div>
+            <div class="rounded-2xl border border-warm-100 p-6">
+              <p class="font-display text-[28px] tracking-[-0.02em] text-gold-600">LEED v4.1</p>
+              <p class="text-[14px] text-warm-600 mt-1">Current version aligned</p>
+            </div>
+            <div class="rounded-2xl border border-warm-100 p-6">
+              <p class="font-display text-[28px] tracking-[-0.02em] text-gold-600">Free</p>
+              <p class="text-[14px] text-warm-600 mt-1">No cost, no commitment</p>
+            </div>
+          </div>
+
+          <div class="mt-12">
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Who it's for</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3 text-[16px] text-warm-600">
+                <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                Sustainability consultants managing multi-certification projects
+              </li>
+              <li class="flex items-start gap-3 text-[16px] text-warm-600">
+                <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                Building teams already pursuing LEED who want to add social equity
+              </li>
+              <li class="flex items-start gap-3 text-[16px] text-warm-600">
+                <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                Developers and owners evaluating SEAM alongside existing green certifications
+              </li>
+              <li class="flex items-start gap-3 text-[16px] text-warm-600">
+                <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                SEAM APs advising clients on certification strategy
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal-fade-up lg:sticky lg:top-32">
+          <div class="rounded-2xl border border-warm-100 bg-warm-50 p-8 lg:p-10">
+            <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 mb-2">Download the Crosswalk</h3>
+            <p class="text-[15px] text-warm-600 mb-8">Fill out the form below and we'll send it to your inbox and start your download.</p>
+
+            <div id="hs-crosswalk-form"></div>
+
+            <!-- Success state -->
+            <div id="crosswalk-success" class="hidden text-center py-6">
+              <svg class="mx-auto mb-4 w-12 h-12 text-seam-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-2">Your download is starting</p>
+              <p class="text-[15px] text-warm-600 mb-6">We've also sent a copy to your email for easy reference.</p>
+              <a
+                href="/downloads/seam-leed-crosswalk.pdf"
+                download
+                class="inline-flex items-center gap-2 rounded-full border border-warm-200 px-6 py-3 text-[14px] font-medium text-warm-700 hover:bg-warm-100 transition-colors duration-300"
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                Download again
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>
+
+<script is:inline src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script is:inline>
+  function initCrosswalkForm() {
+    const target = document.getElementById('hs-crosswalk-form')
+    if (!target || target.dataset.loaded) return
+    target.dataset.loaded = 'true'
+
+    window.hbspt?.forms?.create({
+      portalId: '46821728',
+      formId: '7ce9cfec-fcc5-4ec2-ae6f-c17237a68d78',
+      target: '#hs-crosswalk-form',
+      onFormSubmitted: function () {
+        const success = document.getElementById('crosswalk-success')
+        if (success) {
+          target.classList.add('hidden')
+          success.classList.remove('hidden')
+        }
+        // Trigger download
+        const link = document.createElement('a')
+        link.href = '/downloads/seam-leed-crosswalk.pdf'
+        link.download = 'SEAM-LEED-Crosswalk.pdf'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      },
+    })
+  }
+
+  document.addEventListener('astro:page-load', initCrosswalkForm)
+  if (document.readyState !== 'loading') {
+    initCrosswalkForm()
+  } else {
+    document.addEventListener('DOMContentLoaded', initCrosswalkForm)
+  }
+</script>

@@ -1,0 +1,211 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../lib/seo-helpers'
+
+const jsonLd = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Privacy Policy', path: '/privacy' },
+]) as unknown as Record<string, unknown>
+---
+
+<SiteLayout
+  title="Privacy Policy — SEAM"
+  description="How SEAM, Inc. collects, uses, and protects your personal information across our website, SEAM Online, and SEAM Academy."
+  path="/privacy"
+  jsonLd={jsonLd}
+  solidNav={true}
+>
+
+  <section class="pt-40 pb-20 lg:pt-48 lg:pb-24">
+    <div class="mx-auto max-w-3xl px-6 lg:px-10">
+      <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Legal</p>
+      <h1 class="font-display text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] tracking-[-0.04em] text-warm-900 mb-6">
+        Privacy Policy
+      </h1>
+      <p class="text-[15px] text-warm-400">Last updated May 2026</p>
+    </div>
+  </section>
+
+  <section class="pb-24 lg:pb-32">
+    <div class="mx-auto max-w-3xl px-6 lg:px-10 text-[16px] leading-relaxed text-warm-600" id="privacy-prose">
+
+      <p>At SEAM, we respect your privacy and are committed to protecting your personal information in line with Data Protection Law. We constantly review how we use your information to aid us in our mission to help entities embed social equity into their commercial real estate.</p>
+
+      <p>This Privacy Policy for SEAM, Inc. ("Company," "we," "us," or "our") covers what, how, and why we might collect, use, disclose, transfer, and store ("process") your information, when you use our services ("Services"), such as when you:</p>
+
+      <ul>
+        <li>Visit our website at <a href="https://seamcertification.org">seamcertification.org</a> or any website that links to this Privacy Policy</li>
+        <li>Use the SEAM online application (SEAM Online)</li>
+        <li>Use the SEAM training platform (SEAM Academy)</li>
+        <li>Engage with us in other ways, including sales, marketing, consultancy, or events</li>
+      </ul>
+
+      <p>If you have any questions or want to check, change, or update your details at any time, please contact us:</p>
+
+      <div class="rounded-xl bg-warm-50 border border-warm-100 p-6 not-prose text-[15px] text-warm-600 leading-relaxed space-y-2 my-8">
+        <p><strong class="text-warm-900">Email:</strong> <a href="mailto:admin@seamcertification.org" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">admin@seamcertification.org</a></p>
+        <p><strong class="text-warm-900">Mail:</strong> SEAM, Inc. · 3343 Peachtree Rd NE, Suite 145-360, Atlanta, GA 30326</p>
+        <p><strong class="text-warm-900">Phone:</strong> <a href="tel:+14043835532" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">+1 404 383 5532</a></p>
+      </div>
+
+      <!-- ─── Who we are ─── -->
+      <h2>Who we are</h2>
+      <p>SEAM, Inc. is a US 501(c)(3) nonprofit created with the vision to help businesses make a positive social impact on the world through their commercial real estate. SEAM is an impact-driven, membership-based nonprofit. Our EIN number: 84-5054317.</p>
+
+      <!-- ─── What information do we collect? ─── -->
+      <h2>What information do we collect?</h2>
+
+      <h3>Information we obtain about you directly</h3>
+      <p>We collect information about you that you voluntarily provide to us when you register and participate in activities using our Services, when you contact us or express an interest in obtaining information about us or our Services, or otherwise engage with us. The information we collect depends on the specific Services you use, your choices, and the products and features you use. This may include:</p>
+      <ul>
+        <li>Names</li>
+        <li>Email addresses</li>
+        <li>Job titles</li>
+        <li>Contact data and contact preferences</li>
+        <li>Phone numbers</li>
+        <li>Mailing and billing addresses</li>
+        <li>Authentication data</li>
+      </ul>
+      <p>We do not process sensitive information. All personal information you provide to us must be true, complete, and accurate. You must notify us if your personal information changes.</p>
+
+      <h3>Information collected about you automatically</h3>
+      <p>When you visit, navigate, or use the Services, we automatically collect certain information about you. This may include your IP address, the device, OS, and browser you are using, your activity in the Services (including timestamps, page views, and specific actions), referring URLs, location, and other usage information. We also collect some data via cookies or similar technologies. This information is primarily required to monitor the operation, performance, and security of the Services.</p>
+
+      <h3>Information about you obtained from third parties</h3>
+      <p>We may also collect information about you from service providers, search engines, public databases, joint marketing partners, social media (e.g., LinkedIn), and other third parties. This may include mailing addresses, job titles, email addresses, phone numbers, user behavior or intent data, IP addresses, and social media profiles for the purposes of targeted advertising, event promotion, or other marketing activities.</p>
+
+      <!-- ─── How do we use your information? ─── -->
+      <h2>How do we use your information?</h2>
+      <p>We may use the personal information we collect to:</p>
+      <ul>
+        <li>Provide you with the information, service, or product you have requested, and personalize your experience</li>
+        <li>Manage and process orders, quotes, and invoices</li>
+        <li>Enable account creation and authentication</li>
+        <li>Respond to user inquiries and deliver support</li>
+        <li>Send administrative information or request feedback about the Services</li>
+        <li>Send you marketing and promotional material in accordance with your preferences</li>
+        <li>Monitor the security and integrity of our Services</li>
+        <li>Understand and improve usage of our Services</li>
+        <li>Comply with the law or to save or protect an individual's vital interest</li>
+      </ul>
+
+      <!-- ─── Legal basis ─── -->
+      <h2>Legal basis</h2>
+      <p>Your information is only used if we have legal grounds to do so. This might be because:</p>
+      <ul>
+        <li>You have provided consent</li>
+        <li>It is necessary to deal with your request or inquiry</li>
+        <li>It is necessary for the performance of a contract or pre-contractual steps at your request</li>
+        <li>The information is being processed for a legitimate business interest that does not outweigh your rights and freedoms</li>
+        <li>We have a legal or regulatory obligation to do so</li>
+      </ul>
+      <p>We are generally the "Data Controller" as defined by relevant data protection laws. However, we also process information on behalf of our customers as a "Data Processor" according to their instructions. In these cases, our customer is acting as the Data Controller and is responsible for any personal information entered into the Services according to the Data Processing Addendum and our Terms and Conditions.</p>
+
+      <!-- ─── Who we share your personal information with ─── -->
+      <h2>Who we share your personal information with</h2>
+      <p>We do not sell, trade, or rent your personal information to anyone.</p>
+      <p>In delivering the Services, we may engage third-party contractors, service providers, consultants, or agents and may share your information to perform that work. In these cases, contracts are in place to help safeguard your information. They will only use information as instructed by us and will not share it with other organizations. Types of third parties include:</p>
+      <ul>
+        <li>Cloud service and data storage providers</li>
+        <li>Analytics tools</li>
+        <li>Customer support tools</li>
+        <li>Learning management systems</li>
+        <li>Event management tools</li>
+        <li>Finance and accounting tools</li>
+        <li>Sales and marketing tools</li>
+        <li>Communication and collaboration tools</li>
+        <li>Identity and authentication services</li>
+        <li>Certification and credential management providers</li>
+      </ul>
+      <p>Your information may also be shared as part of a business transfer in connection with any financing, merger, sale, or acquisition of all or a portion of our business.</p>
+      <p>Within the Services, when you post content or interact with other users, your personal information may be visible to them — for example, your profile and activity.</p>
+      <p>Where we use the Google Maps Platform APIs, we may share certain information through those APIs. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</p>
+
+      <!-- ─── Where we store your information ─── -->
+      <h2>Where we store your information</h2>
+      <p>Your personal information is primarily stored on servers in the US. If data needs to be transferred outside the US or to areas with less strict data protection laws, we take legally required steps to ensure adequate safeguards are in place.</p>
+
+      <!-- ─── How long we keep your personal information ─── -->
+      <h2>How long we keep your personal information</h2>
+      <p>We keep your information for as long as necessary to perform the purposes outlined in this privacy notice, except where a longer retention period is required by law (e.g., tax, accounting, or other legal requirements).</p>
+      <p>When we no longer have a legitimate business need to process your information, we will delete, anonymize, or securely store it and isolate it from further processing until deletion is possible. User account personal information will not be stored for longer than twelve months past the start of the idle period of the account.</p>
+
+      <!-- ─── How do we protect your information? ─── -->
+      <h2>How do we protect your information?</h2>
+      <p>We implement appropriate and reasonable technical, physical, and organizational measures to safeguard the confidentiality, availability, and integrity of personal data we process. These include:</p>
+      <ul>
+        <li>SSL/TLS and data-in-transit encryption</li>
+        <li>Device encryption and asset protection</li>
+        <li>Role and profile-based access management</li>
+        <li>Multi-factor authentication where possible</li>
+        <li>Regular vulnerability and penetration testing</li>
+        <li>Secure development standards</li>
+        <li>Supply chain management</li>
+      </ul>
+
+      <!-- ─── What are your rights? ─── -->
+      <h2>What are your rights?</h2>
+      <p>Depending on your location, you may have rights under applicable data protection laws, including the right to:</p>
+      <ul>
+        <li>Request access to and obtain a copy of your personal information</li>
+        <li>Request rectification or erasure of your personal information</li>
+        <li>Request restriction of processing</li>
+        <li>Request a portable copy of your personal information</li>
+      </ul>
+      <p>To make such a request, please use the contact details provided above. We will consider and act upon requests in accordance with applicable data protection laws. We may ask you to verify your identity before processing a request.</p>
+      <p>If processing is based on your consent, you have the right to withdraw it at any time. You can unsubscribe from marketing communications by clicking the unsubscribe link in emails or contacting us directly. We may still contact you where consent is not the legal basis — for example, messages related to account administration or contract performance.</p>
+
+      <!-- ─── Cookies ─── -->
+      <h2>Cookies</h2>
+      <p>This site uses cookies (small files downloaded to your device) to improve your experience. We use cookies for the various purposes detailed in this section.</p>
+      <p>You can prevent cookies by adjusting your browser settings (see your browser's Help section). Disabling cookies will affect the functionality of this and many other websites. It is recommended that you leave cookies enabled if you are not sure whether you need them.</p>
+
+      <!-- ─── Changes ─── -->
+      <h2>Changes to this Privacy Policy</h2>
+      <p>If we decide to change our Privacy Policy, we will post those changes on this page and all other pages where the Privacy Policy is posted.</p>
+
+    </div>
+  </section>
+
+</SiteLayout>
+
+<style is:global>
+  #privacy-prose h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -0.02em;
+    color: var(--color-warm-900);
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+  #privacy-prose h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    color: var(--color-warm-900);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  #privacy-prose p {
+    margin-bottom: 1.25rem;
+  }
+  #privacy-prose ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  #privacy-prose ul li::marker {
+    color: var(--color-warm-300);
+  }
+  #privacy-prose a {
+    text-decoration: underline;
+    text-decoration-color: var(--color-warm-300);
+    transition: text-decoration-color 0.2s;
+  }
+  #privacy-prose a:hover {
+    text-decoration-color: var(--color-warm-600);
+  }
+</style>

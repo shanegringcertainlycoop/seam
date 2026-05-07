@@ -1,0 +1,222 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../lib/seo-helpers'
+
+const jsonLd = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Contact', path: '/contact' },
+])
+---
+
+<SiteLayout
+  title="Contact Us — SEAM"
+  description="Have a question about SEAM Certification, membership, or the AP credential? Fill out our contact form and we'll get back to you."
+  path="/contact"
+  jsonLd={[jsonLd]}
+>
+
+  <!-- ─── Hero ─── -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl">
+        <p class="hero-enter text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
+          Contact us
+        </p>
+        <h1 class="hero-enter font-display text-[clamp(2.5rem,5vw,4rem)] leading-[1.08] tracking-[-0.03em] text-white" style="animation-delay:.05s">
+          We're here to <em class="italic font-normal text-seam-300">help</em>
+        </h1>
+        <p class="hero-enter mt-6 text-[18px] leading-relaxed text-warm-400 max-w-2xl" style="animation-delay:.1s">
+          Whether you have a question about certification, membership, the AP credential, or just want to learn more — reach out and we'll point you in the right direction.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Form + Sidebar ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-16 lg:gap-24 items-start">
+
+        <!-- Left: Form -->
+        <div class="reveal-fade-up">
+          <form
+            id="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            class="space-y-8"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="first-name" class="block text-[14px] font-medium text-warm-700 mb-2">First name <span class="text-red-500">*</span></label>
+                <input
+                  type="text"
+                  id="first-name"
+                  name="first-name"
+                  required
+                  class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-[16px] text-warm-900 placeholder:text-warm-400 focus:border-seam-500 focus:ring-2 focus:ring-seam-500/20 focus:outline-none transition-colors"
+                  placeholder="Jane"
+                />
+              </div>
+              <div>
+                <label for="last-name" class="block text-[14px] font-medium text-warm-700 mb-2">Last name <span class="text-red-500">*</span></label>
+                <input
+                  type="text"
+                  id="last-name"
+                  name="last-name"
+                  required
+                  class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-[16px] text-warm-900 placeholder:text-warm-400 focus:border-seam-500 focus:ring-2 focus:ring-seam-500/20 focus:outline-none transition-colors"
+                  placeholder="Doe"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="block text-[14px] font-medium text-warm-700 mb-2">Email <span class="text-red-500">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-[16px] text-warm-900 placeholder:text-warm-400 focus:border-seam-500 focus:ring-2 focus:ring-seam-500/20 focus:outline-none transition-colors"
+                placeholder="jane@example.com"
+              />
+            </div>
+
+            <div>
+              <label for="organization" class="block text-[14px] font-medium text-warm-700 mb-2">Organization <span class="text-warm-400 font-normal">(optional)</span></label>
+              <input
+                type="text"
+                id="organization"
+                name="organization"
+                class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-[16px] text-warm-900 placeholder:text-warm-400 focus:border-seam-500 focus:ring-2 focus:ring-seam-500/20 focus:outline-none transition-colors"
+                placeholder="Your company or organization"
+              />
+            </div>
+
+            <div>
+              <label for="topic" class="block text-[14px] font-medium text-warm-700 mb-2">What can we help with? <span class="text-red-500">*</span></label>
+              <select
+                id="topic"
+                name="topic"
+                required
+                class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-[16px] text-warm-900 focus:border-seam-500 focus:ring-2 focus:ring-seam-500/20 focus:outline-none transition-colors appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%236b7280%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M5.22%208.22a.75.75%200%200%201%201.06%200L10%2011.94l3.72-3.72a.75.75%200%201%201%201.06%201.06l-4.25%204.25a.75.75%200%200%201-1.06%200L5.22%209.28a.75.75%200%200%201%200-1.06z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px] bg-[right_12px_center] bg-no-repeat pr-10"
+              >
+                <option value="" disabled selected>Select a topic</option>
+                <option value="certification">Building Certification</option>
+                <option value="ap-credential">AP Credential</option>
+                <option value="membership">Membership (Individual or Organization)</option>
+                <option value="partnership">Partnership or Sponsorship</option>
+                <option value="media">Media or Press Inquiry</option>
+                <option value="general">General Question</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-[14px] font-medium text-warm-700 mb-2">Message <span class="text-red-500">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-[16px] text-warm-900 placeholder:text-warm-400 focus:border-seam-500 focus:ring-2 focus:ring-seam-500/20 focus:outline-none transition-colors resize-y"
+                placeholder="Tell us a bit about what you need help with..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300"
+            >
+              Send message
+            </button>
+
+            <!-- Success state -->
+            <div id="form-success" class="hidden rounded-2xl bg-seam-50 border border-seam-200 p-6 text-center">
+              <svg class="mx-auto mb-3 w-10 h-10 text-seam-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-1">Message sent</p>
+              <p class="text-[15px] text-warm-600">We'll get back to you within one business day.</p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right: Sidebar -->
+        <div class="reveal-slide-left space-y-8">
+          <div class="rounded-2xl border border-warm-100 bg-warm-50 p-8">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-4">Prefer to talk?</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600 mb-6">
+              Book a free call with our team. No pressure, no pitch — just a conversation about how SEAM can help.
+            </p>
+            <a
+              href="/get-started"
+              class="inline-flex items-center rounded-full border border-warm-200 px-6 py-3 text-[14px] font-medium text-warm-700 hover:bg-white hover:border-warm-300 transition-colors duration-300"
+            >
+              Talk to an advisor &rarr;
+            </a>
+          </div>
+
+          <div class="rounded-2xl border border-warm-100 bg-warm-50 p-8">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-4">Email us directly</h3>
+            <a
+              href="mailto:info@seamstandard.org"
+              class="text-[15px] font-medium text-seam-600 hover:text-seam-700 transition-colors underline decoration-seam-300 hover:decoration-seam-600"
+            >
+              info@seamstandard.org
+            </a>
+          </div>
+
+          <div class="rounded-2xl border border-warm-100 bg-warm-50 p-8">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-4">Quick links</h3>
+            <ul class="space-y-3">
+              <li><a href="/certification" class="text-[15px] text-warm-600 hover:text-seam-600 transition-colors">Building Certification &rarr;</a></li>
+              <li><a href="/ap-credential" class="text-[15px] text-warm-600 hover:text-seam-600 transition-colors">AP Credential &rarr;</a></li>
+              <li><a href="/membership" class="text-[15px] text-warm-600 hover:text-seam-600 transition-colors">Community Membership &rarr;</a></li>
+              <li><a href="/resources/standard" class="text-[15px] text-warm-600 hover:text-seam-600 transition-colors">Read the Standard &rarr;</a></li>
+              <li><a href="/faq" class="text-[15px] text-warm-600 hover:text-seam-600 transition-colors">FAQ &rarr;</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null
+  const success = document.getElementById('form-success')
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    const data = new FormData(form)
+    const payload = Object.fromEntries(data.entries())
+
+    // Send to Netlify Forms (add netlify attribute) or mailto fallback
+    try {
+      const res = await fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(payload as Record<string, string>).toString(),
+      })
+
+      if (res.ok) {
+        form.classList.add('hidden')
+        success?.classList.remove('hidden')
+      } else {
+        // Fallback: open mailto
+        const subject = encodeURIComponent(`SEAM Contact: ${payload.topic}`)
+        const body = encodeURIComponent(`Name: ${payload['first-name']} ${payload['last-name']}\nEmail: ${payload.email}\nOrganization: ${payload.organization || 'N/A'}\nTopic: ${payload.topic}\n\n${payload.message}`)
+        window.location.href = `mailto:info@seamstandard.org?subject=${subject}&body=${body}`
+      }
+    } catch {
+      const subject = encodeURIComponent(`SEAM Contact: ${payload.topic}`)
+      const body = encodeURIComponent(`Name: ${payload['first-name']} ${payload['last-name']}\nEmail: ${payload.email}\nOrganization: ${payload.organization || 'N/A'}\nTopic: ${payload.topic}\n\n${payload.message}`)
+      window.location.href = `mailto:info@seamstandard.org?subject=${subject}&body=${body}`
+    }
+  })
+</script>

@@ -27,23 +27,24 @@ const products = [
   {
     label: 'AP Credential',
     title: 'Your professional qualification',
-    description: 'The SEAM AP demonstrates mastery of the Standard. Clients and employers recognize it as evidence of deep social equity expertise in the built environment.',
+    description: 'The credential that opens doors. Earn the SEAM AP to demonstrate mastery of the Standard, win client confidence, and join a growing network of practitioners shaping the social pillar of the built environment.',
     href: '/ap-credential',
     fit: 'Best for consultants, DEI practitioners, and sustainability professionals building a practice.',
     logo: '/logos/ap-seal.png',
+    sale: 'Bundle $389 (reg. $519) — code SITELAUNCH25 · ends May 31',
   },
   {
-    label: 'Community',
+    label: 'Membership',
     title: 'Your practitioner network',
-    description: 'Membership community with templates, peer connection, course access, ROSSI tools, and co-practice opportunities with other APs and certified project teams.',
-    href: '/community',
+    description: 'Stay sharp and stay connected. Membership gives you a growing library of helpful templates, peer learning, course access, ROSSI tools, and co-practice opportunities with other APs and certified project teams.',
+    href: '/membership',
     fit: 'Best for ongoing support, learning, and professional development after earning the AP.',
     logos: ['/logos/member-individual.png', '/logos/member-changemaker.png', '/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
   },
   {
     label: 'Courses',
     title: 'Your knowledge foundation',
-    description: 'Self-paced and instructor-led courses covering the Standard, the four pillars, the certification process, and the ROSSI financial framework.',
+    description: 'Build fluency at your own pace. Self-paced and instructor-led courses cover the Standard, the four pillars, the certification process, and the ROSSI financial framework — everything you need to speak the language confidently.',
     href: '/resources/courses',
     fit: 'Best for professionals new to the built environment or preparing for the AP exam.',
   },
@@ -124,7 +125,7 @@ const jsonLd = [
           <a href="/ap-credential" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
             Earn the AP credential
           </a>
-          <a href="/community" class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300">
+          <a href="/membership" class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300">
             Join the community
           </a>
         </div>
@@ -185,7 +186,13 @@ const jsonLd = [
             )}
             <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-2 block">{p.label}</span>
             <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">{p.title}</h3>
-            <p class="text-[16px] leading-relaxed text-warm-600 mb-6">{p.description}</p>
+            <p class="text-[16px] leading-relaxed text-warm-600 mb-4">{p.description}</p>
+            {p.sale && (
+              <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-3 py-1.5 mb-4">
+                <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                <span class="text-[12px] font-semibold text-amber-800">{p.sale}</span>
+              </div>
+            )}
             <p class="text-[14px] leading-relaxed text-warm-600 italic border-t border-warm-100 pt-5">{p.fit}</p>
             <span class="inline-block mt-4 text-[14px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">Learn more &rarr;</span>
           </a>
@@ -268,7 +275,7 @@ const jsonLd = [
       <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">Earn the AP, join the practitioner network, and start leading certification work in the built environment.</p>
       <div class="mt-12 flex flex-wrap justify-center gap-4">
         <a href="/ap-credential" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Earn the AP credential</a>
-        <a href="/community" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Join the community</a>
+        <a href="/membership" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Join the community</a>
       </div>
     </div>
   </section>

@@ -23,7 +23,7 @@ const steps = [
     subtitle: 'Join the conversation at no cost.',
     audience: 'Individuals',
     body: 'Open Members get access to the SEAM community, newsletters, and event invitations. It\u2019s the simplest way to stay connected and informed.',
-    href: '/community/individual',
+    href: '/membership/individual',
     cta: 'Join free',
     logo: '/logos/member-individual.png',
   },
@@ -34,45 +34,47 @@ const steps = [
     subtitle: 'Go deeper with full member benefits.',
     audience: 'Individuals',
     body: 'Changemakers receive voting rights, continuing education credits, early access to programs, and a seat at the table shaping the future of social equity in the built environment.',
-    href: '/community/individual',
+    href: '/membership/individual',
     cta: 'Become a Changemaker',
     logo: '/logos/member-changemaker.png',
   },
   {
     number: '04',
     title: 'Earn the SEAM AP',
-    price: 'From $587',
+    price: 'From $389',
     subtitle: 'The professional credential for equity leaders.',
     audience: 'Professionals',
     body: 'The SEAM Accredited Professional credential signals deep expertise in social equity standards. Prep, sit for the exam, and join a growing network of credentialed practitioners.',
     href: '/ap-credential',
     cta: 'Learn about the AP',
     logo: '/logos/ap-seal.png',
+    sale: 'Bundle $389 (reg. $519) — code SITELAUNCH25 · ends May 31',
   },
+  // HIDDEN: Approved program temporarily hidden
+  // {
+  //   number: '05',
+  //   title: 'Get SEAM Approved',
+  //   price: 'From $750',
+  //   subtitle: 'Validate a product, program, or initiative.',
+  //   audience: 'Organizations',
+  //   body: 'SEAM Approved is a lightweight mark for products, services, and programs that meet specific social equity criteria — without pursuing full building certification.',
+  //   href: '/approved',
+  //   cta: 'Explore approval',
+  //   logo: '/logos/approved-wordmark.png',
+  // },
   {
     number: '05',
-    title: 'Get SEAM Approved',
-    price: 'From $750',
-    subtitle: 'Validate a product, program, or initiative.',
-    audience: 'Organizations',
-    body: 'SEAM Approved is a lightweight mark for products, services, and programs that meet specific social equity criteria — without pursuing full building certification.',
-    href: '/approved',
-    cta: 'Explore approval',
-    logo: '/logos/approved-wordmark.png',
-  },
-  {
-    number: '06',
     title: 'Join as an Organization',
     price: 'From $1,600/yr',
     subtitle: 'Align your company with the mission.',
     audience: 'Organizations',
     body: 'Organizational membership gives your team access to toolkits, benchmarking data, co-marketing opportunities, and a voice in Standard development.',
-    href: '/community/organization',
+    href: '/membership/organization',
     cta: 'View membership tiers',
     logos: ['/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
   },
   {
-    number: '07',
+    number: '06',
     title: 'Certify a Building',
     price: 'From $16K',
     subtitle: 'The gold standard in social equity certification.',
@@ -83,13 +85,13 @@ const steps = [
     logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
   },
   {
-    number: '08',
+    number: '07',
     title: 'Lead at Scale',
     price: '$18K/yr+',
     subtitle: 'Enterprise partnerships for systemic change.',
     audience: 'Enterprise',
     body: 'Founding Members and strategic partners shape the SEAM Standard\u2122 itself, sponsor research, and lead the movement. This is how institutions drive equity at portfolio scale.',
-    href: '/community/organization',
+    href: '/membership/organization',
     cta: 'Talk to our team',
   },
 ]
@@ -125,7 +127,7 @@ const jsonLd = [
 
 <SiteLayout
   title="Your Path into SEAM — From Free to Full Certification"
-  description="Explore eight ways to engage with SEAM — from reading the free Standard to full building certification. Find your starting point in the social equity ecosystem."
+  description="Explore seven ways to engage with SEAM — from reading the free Standard to full building certification. Find your starting point in the social equity ecosystem."
   path="/pathways"
   jsonLd={jsonLd}
 >
@@ -138,7 +140,7 @@ const jsonLd = [
           Your path into SEAM
         </span>
         <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4rem)] leading-[1.08] tracking-[-0.03em] text-white">
-          Eight ways in. <em class="font-display italic font-normal text-seam-300">One mission.</em>
+          Seven ways in. <em class="font-display italic font-normal text-seam-300">One mission.</em>
         </h1>
         <p class="hero-subtitle mt-6 max-w-2xl mx-auto text-[clamp(1.05rem,1.4vw,1.15rem)] leading-relaxed text-warm-300">
           Whether you&rsquo;re an individual exploring social equity for the first time or an enterprise ready to certify at scale, there&rsquo;s a path designed for you.
@@ -228,7 +230,13 @@ const jsonLd = [
                 </div>
                 <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-2">{step.title}</h3>
                 <p class="text-[15px] font-medium text-warm-500 mb-4">{step.subtitle}</p>
-                <p class="text-[16px] leading-relaxed text-warm-600 mb-8 max-w-2xl">{step.body}</p>
+                <p class="text-[16px] leading-relaxed text-warm-600 mb-4 max-w-2xl">{step.body}</p>
+                {step.sale && (
+                  <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-3 py-1.5 mb-6">
+                    <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                    <span class="text-[12px] font-semibold text-amber-800">{step.sale}</span>
+                  </div>
+                )}
                 <a
                   href={step.href}
                   class="inline-flex items-center rounded-full border border-warm-200 px-6 py-3 text-[14px] font-medium text-warm-700 hover:bg-warm-50 hover:border-warm-300 transition-colors duration-300"
