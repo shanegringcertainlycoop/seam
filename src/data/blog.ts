@@ -31,7 +31,7 @@ export const posts: BlogPost[] = [
     date: '2025-03-25',
     readTime: '2 min read',
     featured: true,
-    image: { src: '/images/blog/the-jack-pioneer-square.jpg', alt: 'The Jack office building in Seattle, the world\'s first SEAM Certified location' },
+    image: { src: '/images/blog/the-jack-pioneer-square.png', alt: 'The Jack office building in Seattle, the world\'s first SEAM Certified location' },
     body: `When Urban Visions set out to certify The Jack in Seattle's Pioneer Square, there was no SEAM playbook. They helped us write one, and the lessons from that process are worth sharing with every developer who is serious about the people their buildings affect.
 
 The Jack is a mixed-use building in one of Seattle's most storied neighborhoods. For Urban Visions, <a href="/certification">SEAM Certification</a> wasn't about collecting a credential. It was about doing the work, genuinely, and being willing to let that work be measured.
@@ -73,7 +73,7 @@ The result is a project that aims to perform better for the business and help cr
     author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
     date: '2024-12-17',
     readTime: '5 min read',
-    image: { src: '/images/blog/seam-ap-credential-launch.jpg', alt: 'SEAM Accredited Professional credential seal' },
+    image: { src: '/images/blog/seam-ap-credential-launch.png', alt: 'SEAM Accredited Professional credential seal' },
     body: `SEAM, Inc. has unveiled the <a href="/ap-credential">SEAM Accredited Professionals (AP)</a> program — a certification initiative that enables professionals worldwide to guide developers, property owners, and occupiers through SEAM's comprehensive <a href="/certification">certification framework</a>, promoting dignity, community well-being, and economic opportunity in real estate projects.
 
 ## Why the AP credential matters
@@ -192,7 +192,7 @@ With this expanded leadership team, SEAM is positioned to grow its standard, sup
     author: { name: 'SEAM, Inc.', role: '' },
     date: '2025-01-27',
     readTime: '3 min read',
-    image: { src: '/images/blog/the-jack-pioneer-square.jpg', alt: 'The Jack office building in Seattle — the world\'s first SEAM Certified location' },
+    image: { src: '/images/blog/the-jack-pioneer-square.png', alt: 'The Jack office building in Seattle — the world\'s first SEAM Certified location' },
     body: `The Jack, developed by Urban Visions, has achieved a Bronze level <a href="/certification">SEAM Certification</a> under the Operations + Maintenance: Developer rating system — making it the first building in the world to earn this designation.
 
 Located in Seattle's historic Pioneer Square, The Jack is a 175,000 SF mixed-use building that has set a precedent for what social equity certification looks like in practice.
