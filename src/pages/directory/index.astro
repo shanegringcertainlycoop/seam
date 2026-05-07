@@ -19,10 +19,17 @@ function shuffle<T>(arr: T[]): T[] {
   return a
 }
 
-const shuffledAPs = shuffle(seamAPs)
 const shuffledOrgs = shuffle(memberOrgs)
 const shuffledProjects = shuffle(certifiedProjects)
-const shuffledTeam = shuffle(team)
+
+type ProfessionalItem =
+  | { kind: 'team'; data: (typeof team)[number] }
+  | { kind: 'ap'; data: (typeof seamAPs)[number] }
+
+const allProfessionals: ProfessionalItem[] = shuffle([
+  ...team.map((m) => ({ kind: 'team' as const, data: m })),
+  ...seamAPs.map((a) => ({ kind: 'ap' as const, data: a })),
+])
 
 type Tab = 'professionals' | 'organizations' | 'projects'
 
@@ -226,115 +233,115 @@ const inactivePillClass =
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         data-directory-grid
       >
-        {/* ── Professionals tab: Leadership + APs unified ── */}
+        {/* ── Professionals tab: all people shuffled together ── */}
         {activeTab === 'professionals' && (
           <>
-            {/* Leadership team members */}
-            {shuffledTeam.map((member) => {
-              const searchText = [member.name, member.role, member.bio, 'Leadership'].join(' ').toLowerCase()
-              const tags = 'Leadership'
-              return (
-                <a
-                  href={`/directory/team/${member.slug}`}
-                  data-directory-item
-                  data-search-text={searchText}
-                  data-tags={tags}
-                  class="group block rounded-2xl border border-warm-100 p-6 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-                >
-                  <div class="flex items-start gap-4 mb-4">
-                    <div class="w-14 h-14 rounded-full bg-warm-100 shrink-0 overflow-hidden">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        class="w-full h-full object-cover object-top"
-                        onerror="this.style.display='none'"
-                      />
-                    </div>
-                    <div class="min-w-0">
-                      <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 truncate">
-                        {member.name}
-                      </h3>
-                      <p class="text-[14px] text-warm-600 truncate">{member.role}</p>
-                    </div>
-                  </div>
-                  <p class="text-[14px] leading-relaxed text-warm-600 mb-4 line-clamp-3">
-                    {member.bio}
-                  </p>
-                  <span class="inline-block rounded-full bg-gold-400/10 px-3 py-1 text-[12px] font-medium text-gold-600">
-                    Leadership
-                  </span>
-                </a>
-              )
-            })}
-
-            {/* SEAM APs */}
-            {shuffledAPs.map((ap) => {
-              const roleTags = ap.roles || []
-              const allTags = [ap.credentials, ...roleTags, ...ap.specialties]
-              const searchText = [
-                ap.name,
-                ap.organization,
-                ap.location.city,
-                ap.location.state,
-                ...allTags,
-              ]
-                .join(' ')
-                .toLowerCase()
-              const tags = allTags.join('|')
-              return (
-                <a
-                  href={`/directory/ap/${ap.slug}`}
-                  data-directory-item
-                  data-search-text={searchText}
-                  data-tags={tags}
-                  class="group block rounded-2xl border border-warm-100 p-6 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-                >
-                  <div class="flex items-start gap-4 mb-4">
-                    <div class="w-14 h-14 rounded-full bg-warm-100 shrink-0 overflow-hidden">
-                      <img
-                        src={ap.photo}
-                        alt={ap.name}
-                        class="w-full h-full object-cover object-top"
-                        onerror="this.style.display='none'"
-                      />
-                    </div>
-                    <div class="min-w-0">
-                      <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 truncate">
-                        {ap.name}
-                      </h3>
-                      <p class="text-[14px] text-warm-600 truncate">{ap.organization}</p>
-                    </div>
-                  </div>
-                  <p class="text-[14px] text-warm-600 mb-4">
-                    {[ap.location.city, ap.location.state].filter(Boolean).join(', ')}
-                  </p>
-                  <div class="flex flex-wrap gap-1.5 mb-4">
-                    {roleTags.map((r) => (
-                      <span class={`rounded-full px-3 py-1 text-[12px] font-medium ${
-                        r === 'Leadership' ? 'bg-gold-400/10 text-gold-600' : 'bg-warm-900/10 text-warm-700'
-                      }`}>
-                        {r}
-                      </span>
-                    ))}
-                    {ap.specialties.slice(0, 3).map((s) => (
-                      <span class="rounded-full bg-warm-50 px-3 py-1 text-[12px] text-warm-600">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                  <span
-                    class={`inline-block rounded-full px-3 py-1 text-[12px] font-medium ${
-                      ap.credentials === 'SEAM AP+'
-                        ? 'bg-gold-400/10 text-gold-600'
-                        : ap.credentials === 'Member'
-                          ? 'bg-warm-100 text-warm-600'
-                          : 'bg-seam-50 text-seam-700'
-                    }`}
+            {allProfessionals.map((item) => {
+              if (item.kind === 'team') {
+                const member = item.data
+                const searchText = [member.name, member.role, member.bio, 'Leadership'].join(' ').toLowerCase()
+                const tags = 'Leadership'
+                return (
+                  <a
+                    href={`/directory/team/${member.slug}`}
+                    data-directory-item
+                    data-search-text={searchText}
+                    data-tags={tags}
+                    class="group block rounded-2xl border border-warm-100 p-6 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
                   >
-                    {ap.credentials}
-                  </span>
-                </a>
-              )
+                    <div class="flex items-start gap-4 mb-4">
+                      <div class="w-14 h-14 rounded-full bg-warm-100 shrink-0 overflow-hidden">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          class="w-full h-full object-cover object-top"
+                          onerror="this.style.display='none'"
+                        />
+                      </div>
+                      <div class="min-w-0">
+                        <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 truncate">
+                          {member.name}
+                        </h3>
+                        <p class="text-[14px] text-warm-600 truncate">{member.role}</p>
+                      </div>
+                    </div>
+                    <p class="text-[14px] leading-relaxed text-warm-600 mb-4 line-clamp-3">
+                      {member.bio}
+                    </p>
+                    <span class="inline-block rounded-full bg-gold-400/10 px-3 py-1 text-[12px] font-medium text-gold-600">
+                      Leadership
+                    </span>
+                  </a>
+                )
+              } else {
+                const ap = item.data
+                const roleTags = ap.roles || []
+                const allTags = [ap.credentials, ...roleTags, ...ap.specialties]
+                const searchText = [
+                  ap.name,
+                  ap.organization,
+                  ap.location.city,
+                  ap.location.state,
+                  ...allTags,
+                ]
+                  .join(' ')
+                  .toLowerCase()
+                const tags = allTags.join('|')
+                return (
+                  <a
+                    href={`/directory/ap/${ap.slug}`}
+                    data-directory-item
+                    data-search-text={searchText}
+                    data-tags={tags}
+                    class="group block rounded-2xl border border-warm-100 p-6 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+                  >
+                    <div class="flex items-start gap-4 mb-4">
+                      <div class="w-14 h-14 rounded-full bg-warm-100 shrink-0 overflow-hidden">
+                        <img
+                          src={ap.photo}
+                          alt={ap.name}
+                          class="w-full h-full object-cover object-top"
+                          onerror="this.style.display='none'"
+                        />
+                      </div>
+                      <div class="min-w-0">
+                        <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 truncate">
+                          {ap.name}
+                        </h3>
+                        <p class="text-[14px] text-warm-600 truncate">{ap.organization}</p>
+                      </div>
+                    </div>
+                    <p class="text-[14px] text-warm-600 mb-4">
+                      {[ap.location.city, ap.location.state].filter(Boolean).join(', ')}
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                      {roleTags.map((r) => (
+                        <span class={`rounded-full px-3 py-1 text-[12px] font-medium ${
+                          r === 'Leadership' ? 'bg-gold-400/10 text-gold-600' : 'bg-warm-900/10 text-warm-700'
+                        }`}>
+                          {r}
+                        </span>
+                      ))}
+                      {ap.specialties.slice(0, 3).map((s) => (
+                        <span class="rounded-full bg-warm-50 px-3 py-1 text-[12px] text-warm-600">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                    <span
+                      class={`inline-block rounded-full px-3 py-1 text-[12px] font-medium ${
+                        ap.credentials === 'SEAM AP+'
+                          ? 'bg-gold-400/10 text-gold-600'
+                          : ap.credentials === 'Member'
+                            ? 'bg-warm-100 text-warm-600'
+                            : 'bg-seam-50 text-seam-700'
+                      }`}
+                    >
+                      {ap.credentials}
+                    </span>
+                  </a>
+                )
+              }
             })}
           </>
         )}

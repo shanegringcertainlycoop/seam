@@ -35,8 +35,7 @@ const solutions: NavGroup = {
   quickLinks: [
     { label: 'Pricing', href: '/pricing' },
     { label: 'Membership Overview', href: '/membership' },
-    { label: 'Sponsorship', href: '/sponsorship' },
-    { label: 'Contact', href: '/contact' },
+{ label: 'Contact', href: '/contact' },
     { label: 'Talk to an Advisor', href: '/get-started' },
   ],
   sections: [
@@ -138,6 +137,13 @@ const theStandard: NavGroup = {
   quickLinks: [
     { label: 'All Rating Systems', href: '/rating-system' },
   ],
+}
+
+const latestArticle = {
+  title: 'What Is AP Certification? And Why Does Social Equity in Real Estate Need One?',
+  href: '/resources/blog/seam-ap-credential-built-for-social-equity',
+  image: '/images/blog/seam-ap-credential.png',
+  category: 'The Standard',
 }
 
 const resources: NavGroup = {
@@ -430,6 +436,19 @@ function logoClass(_logo: string) {
                       </div>
                     ))}
                   </div>
+                  {/* Resources latest article */}
+                  {group.label === 'Resources' && (
+                    <a href={latestArticle.href} class="group/article flex items-center gap-4 border-t border-warm-100 px-6 py-4">
+                      <div class="w-[100px] h-[64px] shrink-0 rounded-lg overflow-hidden">
+                        <img src={latestArticle.image} alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover/article:scale-105" />
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <span class="text-[11px] font-medium uppercase tracking-[0.15em] text-gold-600">Latest article</span>
+                        <p class="text-[13px] font-medium leading-snug text-warm-900 group-hover/article:text-gold-600 transition-colors line-clamp-2 mt-1">{latestArticle.title}</p>
+                      </div>
+                      <span class="shrink-0 text-[12px] font-medium text-seam-600">Read &rarr;</span>
+                    </a>
+                  )}
                   {/* Solutions bottom quick-links bar */}
                   {group.quickLinks && (
                     <div class="flex items-center gap-4 px-6 py-3 bg-warm-50 border-t border-warm-100 rounded-b-2xl">

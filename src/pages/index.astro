@@ -115,10 +115,18 @@ const products = [
 ]
 
 /* ─── Section 5: Proof / Certified Projects ─── */
+const certBadge: Record<string, string> = {
+  Bronze: '/logos/cert-bronze.png',
+  Silver: '/logos/cert-silver.png',
+  Gold: '/logos/cert-gold.png',
+  Platinum: '/logos/cert-platinum.png',
+}
+
 const projects = certifiedProjects.slice(0, 2).map((p) => ({
   name: p.name,
   location: `${p.location.city}, ${p.location.state}`,
-  level: `${p.certificationLevel} Certified`,
+  level: p.certificationLevel,
+  badge: certBadge[p.certificationLevel] || '',
   description: p.description,
   image: p.image,
   href: `/directory/project/${p.slug}`,
@@ -497,10 +505,14 @@ const jsonLd = [
               loading="lazy"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-warm-900/90 via-warm-900/40 to-transparent"></div>
+            {project.badge && (
+              <img
+                src={project.badge}
+                alt={`${project.level} Certified`}
+                class="absolute top-5 right-5 w-16 h-16 lg:w-20 lg:h-20 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
+              />
+            )}
             <div class="relative">
-              <span class="inline-block rounded-full bg-seam-600 px-4 py-1.5 text-[12px] font-medium text-white mb-4">
-                {project.level}
-              </span>
               <h3 class="font-display text-[28px] lg:text-[32px] tracking-[-0.02em] text-white mb-2">
                 {project.name}
               </h3>
