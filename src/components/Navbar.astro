@@ -212,7 +212,9 @@ function logoClass(_logo: string) {
       <a href="/" class="flex items-center">
         <img
           id="nav-logo"
-          src="/logos/seam-wordmark.png"
+          src="/logos/seam-wordmark-white.png"
+          data-src-light="/logos/seam-wordmark.png"
+          data-src-dark="/logos/seam-wordmark-white.png"
           alt="SEAM"
           class="h-8 w-auto transition-all duration-300"
         />
@@ -646,11 +648,9 @@ function logoClass(_logo: string) {
         nav!.classList.add('bg-warm-900/10', 'backdrop-blur-[2px]')
       }
 
-      // Logo brightness
-      if (solid) {
-        logo?.classList.add('brightness-0')
-      } else {
-        logo?.classList.remove('brightness-0')
+      // Logo swap
+      if (logo) {
+        logo.setAttribute('src', solid ? logo.dataset.srcLight! : logo.dataset.srcDark!)
       }
 
       // CTA button style
