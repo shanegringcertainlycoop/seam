@@ -130,8 +130,8 @@ const jsonLd = breadcrumbSchema([
 
 </SiteLayout>
 
-<script src="//js.hsforms.net/forms/embed/v2.js"></script>
-<script>
+<script is:inline src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script is:inline>
   function initCrosswalkForm() {
     const target = document.getElementById('hs-crosswalk-form')
     if (!target || target.dataset.loaded) return
