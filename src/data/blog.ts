@@ -103,7 +103,7 @@ Professionals interested in the credential can learn more about eligibility, pre
     author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
     date: '2022-11-15',
     readTime: '4 min read',
-    image: { src: '/images/blog/cre-industry-first.jpg', alt: 'SEAM Inc. logo — the first social impact certification for commercial real estate' },
+    image: { src: '/images/blog/cre-industry-first.png', alt: 'CRE industry leaders announce the first social impact certification for commercial real estate' },
     body: `SEAM, Inc., a nonprofit led by commercial real estate veterans Rainey Shane and Alex Demestihas, has unveiled <a href="/certification">SEAM Certification</a> — the first social impact certification program designed specifically for commercial real estate.
 
 ## Addressing a critical gap
@@ -131,7 +131,7 @@ Seattle-based Urban Visions registered the first SEAM Certification pilot projec
     author: { name: 'Bianca Barragán', role: 'Bisnow' },
     date: '2022-11-16',
     readTime: '4 min read',
-    image: { src: '/images/blog/bisnow-launch.jpg', alt: 'Commercial real estate cityscape — Bisnow coverage of SEAM certification launch' },
+    image: { src: '/images/blog/bisnow-launch.png', alt: 'Bisnow coverage of social impact certification launch for commercial real estate' },
     body: `<em>Originally published in <a href="https://www.bisnow.com/national/news/commercial-real-estate/seam-social-equity-certification-116429" rel="noopener noreferrer" target="_blank">Bisnow</a>.</em>
 
 A new nonprofit called SEAM Inc. (social equity assessment method) has launched a <a href="/certification">certification program</a> to standardize social impact measurement in commercial real estate development.
@@ -163,6 +163,7 @@ The organization also offers <a href="/ap-credential">professional accreditation
     author: { name: 'SEAM, Inc.', role: '' },
     date: '2026-03-03',
     readTime: '3 min read',
+    image: { src: '/images/blog/seam-leadership-team.png', alt: 'SEAM executive leadership team expansion announcement' },
     body: `SEAM, Inc. is expanding its executive leadership team with the appointment of a Chief Operating Officer and Chief Marketing Officer, signaling the organization's next phase of operational maturity and growth.
 
 Co-founder and CEO Rainey Shane will continue leading the vision and evolution of the Social Equity Assessment Method (SEAM) Standard and <a href="/certification">Certification</a>, while newly appointed COO Shane Gring and CMO Christopher Pirschel join to strengthen internal systems and accelerate the adoption of SEAM Certification and the <a href="/ap-credential">SEAM Accredited Professional (AP)</a> credential worldwide.
@@ -192,7 +193,7 @@ With this expanded leadership team, SEAM is positioned to grow its standard, sup
     author: { name: 'SEAM, Inc.', role: '' },
     date: '2025-01-27',
     readTime: '3 min read',
-    image: { src: '/images/blog/the-jack-pioneer-square.png', alt: 'The Jack office building in Seattle — the world\'s first SEAM Certified location' },
+    image: { src: '/images/blog/the-jack-first-certification.png', alt: 'The Jack in Seattle achieves the world\'s first SEAM Certification' },
     body: `The Jack, developed by Urban Visions, has achieved a Bronze level <a href="/certification">SEAM Certification</a> under the Operations + Maintenance: Developer rating system — making it the first building in the world to earn this designation.
 
 Located in Seattle's historic Pioneer Square, The Jack is a 175,000 SF mixed-use building that has set a precedent for what social equity certification looks like in practice.
@@ -220,6 +221,7 @@ Professionals interested in leading certification projects can explore the <a hr
     author: { name: 'SEAM, Inc.', role: '' },
     date: '2025-04-22',
     readTime: '4 min read',
+    image: { src: '/images/blog/leed-head-start.png', alt: 'LEED certification gives you a head start toward SEAM Certification' },
     body: `If you're working on a LEED project, there's a good chance some of the work you're already doing moves you meaningfully closer to <a href="/certification">SEAM Certification</a>. SEAM has developed a crosswalk that maps three LEED Social Equity Pilot Credits to specific SEAM activities, identifying exactly where your LEED efforts translate into a head start within SEAM Certification.
 
 This isn't about making the two certifications interchangeable. They're not. SEAM goes deeper on social equity than any environmental or wellness certifications are designed to. But for project teams already committed to LEED, the crosswalk reduces redundancy and makes it easier to understand where you're already building toward both.
@@ -261,6 +263,7 @@ If you're already pursuing or hold a LEED certification and want to understand w
     author: { name: 'SEAM, Inc.', role: '' },
     date: '2025-04-13',
     readTime: '3 min read',
+    image: { src: '/images/blog/community-engagement.png', alt: 'Community engagement in commercial real estate usually starts in the wrong place' },
     body: `Here's how community engagement typically unfolds in commercial real estate: developers prepare materials, schedule public meetings, and invite residents to learn about their project. Renderings are displayed. Q&A sessions occur. Community members react to what they've been shown.
 
 However, this approach conflates education with genuine engagement. The underlying logic seems sound — informed feedback requires informed residents — yet it rests on a flawed assumption: that feedback quality depends on how much residents understand the project, rather than how well developers understand the community.
@@ -294,7 +297,7 @@ SEAM's Impacted Party Engagement framework operationalizes this logic by structu
     author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
     date: '2025-04-06',
     readTime: '3 min read',
-    image: { src: '/images/blog/why-i-created-seam.jpg', alt: 'Rainey Shane, co-founder of SEAM' },
+    image: { src: '/images/blog/why-i-left-jll.png', alt: 'Rainey Shane on why she left JLL to work on SEAM full time' },
     body: `I used to fly into countries I'd never been to, meet children I'd never forget, and come home to manage real estate projects I couldn't look at the same way twice.
 
 For years I lived in that dissonance. On one side, volunteer work with nonprofits in developing countries — rescue missions for child trafficking and forced labor. On the other, a career in commercial real estate at JLL, managing projects whose supply chains I knew, in some cases, were connected to the very conditions I was fighting against on weekends.
@@ -328,6 +331,7 @@ The industry is just beginning to understand that the "S" in ESG requires the sa
     author: { name: 'SEAM, Inc.', role: '' },
     date: '2025-03-30',
     readTime: '5 min read',
+    image: { src: '/images/blog/measuring-s-in-esg.png', alt: 'Why measuring the S in ESG is still so hard' },
     body: `There is a thermometer on the wall of nearly every commercial building in America. It tells you exactly what the temperature is, to the degree. You can argue about whether 68 is the right number, but you cannot argue about what the number is. The measurement is clean, reliable, and replicable.
 
 Now try measuring whether the people in that building feel like they belong there.
@@ -381,7 +385,7 @@ The S in ESG is hard because it should be. We're trying to measure what happens 
     author: { name: 'Melissa Daniel', role: 'Architecture is Political Podcast' },
     date: '2023-09-12',
     readTime: '4 min read',
-    image: { src: '/images/blog/architecture-is-political.jpg', alt: 'Rainey Shane on the Architecture is Political podcast' },
+    image: { src: '/images/blog/architecture-is-political.png', alt: 'Rainey Shane on the Architecture is Political podcast' },
     body: `<em>Originally featured on the <a href="https://www.archispolly.online/episodes/seam" rel="noopener noreferrer" target="_blank">Architecture is Political podcast</a>, hosted by Melissa Daniel.</em>
 
 Rainey Shane, co-founder of SEAM, joined the Architecture is Political podcast for an extended conversation on what it means to measure social equity in commercial real estate — and why the industry needs a dedicated framework to do it.
@@ -413,7 +417,7 @@ Professionals interested in leading certification work can explore the <a href="
     author: { name: 'Rainey Shane', role: 'Co-Founder, SEAM' },
     date: '2023-10-24',
     readTime: '7 min read',
-    image: { src: '/images/blog/embodied-suffering.jpg', alt: 'The Jack building in Seattle — the first SEAM-certified project' },
+    image: { src: '/images/blog/embodied-suffering.png', alt: 'Embodied suffering in building materials — the human cost behind construction' },
     body: `The term "embodied suffering" describes the human cost hidden inside building materials — forced labor in quarries, child labor in mines, unsafe conditions in factories, and trafficking across supply chains that deliver products to construction sites worldwide.
 
 The scale is staggering. Between June 2022 and December 2023, more than 2,500 shipments valued at $2.2 billion — including PVCs, solar panels, and other building materials — were denied entry to the United States due to forced labor concerns.

@@ -60,61 +60,56 @@ const jsonLd = breadcrumbSchema([
     </div>
   </section>
 
-  <!-- ─── Rainey Showcase + Calendar ─── -->
-  <section id="calendar" class="py-24 lg:py-32">
+  <!-- ─── Rainey + Calendar ─── -->
+  <section id="calendar" class="py-24 lg:py-32 bg-[#F6F8FA]">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-16 items-start">
 
-        <!-- Left: Rainey's profile -->
-        <div class="reveal-slide-left">
+        <!-- Left: Your advisor -->
+        <div class="reveal-slide-left lg:sticky lg:top-32">
           <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+            <p class="text-[12px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-5">
+              Your advisor
+            </p>
             <img
               src={rainey.image}
               alt={rainey.name}
-              class="w-48 h-48 lg:w-56 lg:h-56 rounded-full object-cover object-top shadow-[0_16px_48px_rgba(0,0,0,0.12)]"
+              class="w-36 h-36 rounded-full object-cover object-top shadow-[0_12px_32px_rgba(0,0,0,0.1)]"
             />
-            <h2 class="mt-8 font-display text-[28px] lg:text-[32px] tracking-[-0.02em] text-warm-900">
+            <h2 class="mt-6 font-display text-[24px] tracking-[-0.02em] text-warm-900">
               {rainey.name}
             </h2>
-            <p class="mt-1 text-[16px] font-medium text-seam-600">
+            <p class="mt-1 text-[15px] font-medium text-seam-600">
               {rainey.role}
             </p>
-            <div class="mt-5 space-y-4 text-[16px] leading-relaxed text-warm-600 max-w-md">
-              {rainey.bio.split('\n\n').map((p) => <p>{p}</p>)}
-            </div>
+            <p class="mt-4 text-[14px] leading-relaxed text-warm-600">
+              Rainey co-founded SEAM and has spent 15+ years in commercial real estate. She'll walk you through certification, the AP credential, or membership — wherever you're starting.
+            </p>
             {rainey.linkedIn && (
               <a
                 href={rainey.linkedIn}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-warm-500 hover:text-seam-600 transition-colors"
+                class="mt-5 inline-flex items-center gap-2 text-[13px] font-medium text-warm-500 hover:text-seam-600 transition-colors"
               >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 Connect on LinkedIn
               </a>
             )}
           </div>
         </div>
 
-        <!-- Right: HubSpot meetings embed -->
+        <!-- Right: Calendar embed (takes most of the space) -->
         <div class="reveal-fade-up">
-          <div class="rounded-2xl border border-warm-100 bg-warm-50 p-8 lg:p-10 min-h-[500px] flex flex-col items-center justify-center">
-            <!-- Replace this placeholder with your HubSpot meetings embed -->
-            <!-- Example: <iframe src="https://meetings.hubspot.com/rainey-shane" width="100%" height="600" frameborder="0"></iframe> -->
-            <div class="text-center">
-              <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-seam-100">
-                <svg class="h-8 w-8 text-seam-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-                </svg>
-              </div>
-              <p class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-2">
-                Book a time with Rainey
-              </p>
-              <p class="text-[15px] text-warm-500 max-w-sm">
-                Calendar embed loading&hellip; If it doesn't appear, <a href="mailto:rainey@seamstandard.org" class="underline decoration-seam-300 hover:decoration-seam-600 transition-colors">email Rainey directly</a>.
-              </p>
-            </div>
-          </div>
+          <iframe
+            src="https://meetings.hubspot.com/rainey1?uuid=4fcf6e9b-979e-4117-80af-c2a476f28a7d"
+            width="100%"
+            height="1100"
+            frameborder="0"
+            scrolling="auto"
+            title="Book a time with Rainey Shane"
+            loading="lazy"
+          ></iframe>
         </div>
 
       </div>
