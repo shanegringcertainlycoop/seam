@@ -20,7 +20,309 @@ export const categories = [
   'The Standard',
 ] as const
 
-export const posts: BlogPost[] = [
+const _posts: BlogPost[] = [
+  {
+    slug: 'seam-ap-credential-built-for-social-equity',
+    title: 'What Is AP Certification? And Why Does Social Equity in Real Estate Need One?',
+    excerpt:
+      'LEED, WELL, and GRESB pushed the industry toward better environmental performance and healthier spaces. The SEAM AP credential is purpose-built for what those programs were never designed to address: social equity.',
+    category: 'The Standard',
+    author: { name: 'SEAM, Inc.', role: '' },
+    date: '2025-02-07',
+    readTime: '5 min read',
+    image: { src: '/images/blog/seam-ap-credential.png', alt: 'SEAM Accredited Professional credential logo' },
+    body: `If you've spent time in the built environment, you've probably come across AP certifications (more commonly known as credentials) before. LEED AP, WELL AP, GRESB AP. These credentials have helped push the industry toward better environmental performance and healthier spaces, and that progress is worth celebrating. But here's what those programs were never designed to address: the social impact that real estate has on the people and communities surrounding it.
+
+That's where SEAM comes in. The <a href="/ap-credential">SEAM Accredited Professional credential</a> is an AP certification purpose-built for social equity, giving real estate professionals the knowledge, framework, and credibility to make a genuine difference in the communities their projects touch.
+
+## A Standard the industry has been missing
+
+SEAM, Inc. is a nonprofit organization created to help businesses make a positive social impact through commercial real estate assets. We built the Social Equity Assessment Method (SEAM) Standard as a framework to help building developers, owners, occupants, and operators advance equity, inclusion, human rights, social justice, and accountability. We can make these advancements in the places that serve as the backdrop to our lives: office buildings, government facilities, community centers, schools, universities, banks, and so on.
+
+For us, every building type is primed to improve social equity for the people it impacts.
+
+Social equity has always deserved a seat at the table alongside sustainability and wellness. The SEAM AP credential finally gives professionals the tools to bring it there. Whether you're a developer, an architect, a property manager, or a community advocate, this credential equips you to lead projects with both confidence and conscience.
+
+## How the SEAM AP certification works
+
+The process is straightforward, self-paced, and designed for working professionals. It begins inside The Stitch, SEAM's online community, where you'll find the SEAM AP Training Program waiting for you.
+
+The training is a video-based course, grounded in real-world scenarios that follow an actual project from start to finish. You won't find abstract theory here. You'll see exactly how SEAM principles get applied on the ground, step by step, so that when you walk into your next project, you know what to do.
+
+Once you've completed the training and feel ready, you'll register for the SEAM AP Exam directly inside The Stitch. The exam is a 90-minute, remotely proctored, online assessment that you can launch at a time that works for you. It covers the <a href="/resources/standard">SEAM Standard</a> through multiple-choice and true/false questions, testing not just your recall but your ability to apply what you've learned.
+
+Pass the exam, and you'll receive your SEAM AP certificate and digital badge, credentials you can share on LinkedIn, include in proposals, and use to signal to clients and collaborators that equity is something you take seriously.
+
+## What you're ready to do once you're credentialed
+
+Earning your SEAM AP opens real doors. You'll be qualified to guide projects that are pursuing <a href="/certification">SEAM Certification</a>, consult on equity-focused initiatives, and lead workshops and presentations that move the conversation forward in your organization and your community.
+
+You'll also become a more active member of The Stitch, connecting with other SEAM APs, contributing to shared resources, and staying engaged with the people who are shaping equity standards in the built environment.
+
+Staying current is part of the commitment. SEAM APs complete 30 continuing education hours every two years, keeping their knowledge sharp and their practice aligned with best practices as the field grows.
+
+## The credential that completes the picture
+
+The real estate industry has done a lot of good work building credentials around environmental performance, energy efficiency, and occupant wellness. Those things matter. And so do the people outside the building, the neighbors, the longtime residents, the small business owners, the communities that absorb the ripple effects of every development decision.
+
+The SEAM AP certification is for the professionals who understand that. It's for the ones who want their work to mean something beyond the project itself, and who are ready to show up with the knowledge and credentials to back that up.
+
+You belong in this work. <a href="/ap-credential">Learn more about the SEAM AP credential</a> and take your first step today.`,
+  },
+  {
+    slug: 'cre-industry-leaders-announce-worlds-first-social-impact-certification',
+    title: 'CRE Industry Leaders Announce World\u2019s First Social Impact Certification for Commercial Real Estate',
+    excerpt:
+      'SEAM Certification\u2122, a first-of-its-kind measure of corporate real estate social sustainability, will provide guidance, resources, and certification for achieving positive social impact in the built environment.',
+    category: 'News',
+    author: { name: 'SEAM, Inc.', role: '' },
+    date: '2022-11-15',
+    readTime: '5 min read',
+    body: `ATLANTA, Nov. 15, 2022 \u2014 SEAM, Inc., a 501(c)(3) nonprofit organization led by commercial real estate industry leaders Rainey Shane and Alex Demestihas, has announced the world's first social impact certification, accreditation, and membership program. <a href="/certification">SEAM Certification\u2122</a> will provide a roadmap for developers, property owners, and occupiers to maximize opportunities for positive social impact through the built environment.
+
+"SEAM addresses a critical gap in understanding and metrics surrounding the social impact of commercial real estate," said SEAM, Inc. co-founder Rainey Shane, a 15-year veteran of the commercial real estate and nonprofit industries. "With SEAM Certification, organizations can differentiate themselves and their developments by meeting rigorous international standards for positive social impact in their communities and beyond."
+
+"Most importantly, SEAM offers a direct path to a more just and prosperous real estate industry over time" added Demestihas, co-founder of SEAM, Inc., also a 15-year veteran of the commercial real estate industry specializing in large corporate headquarters.
+
+As a complement to green building certification programs like LEED, SEAM, Inc. sets the bar for social equity in commercial real estate through project certification, professional accreditation, and <a href="/membership">membership</a> in a community of like-minded professionals.
+
+## A framework aligned with international standards
+
+The <a href="/resources/standard">SEAM Standard\u2122</a> focuses on a series of key objectives that support the UN Sustainable Development Goals. Following internationally recognized standards and reporting frameworks, SEAM, Inc.'s reporting framework can plug directly into an organization's ESG, DEI and CSR strategies, providing a more accurate and compelling picture of the impact of their development across the entire supply chain.
+
+"At Interface, we continue to take bold steps to drive sustainability standards in the built space, prompting those around us to rethink their own business practices with all aspects of sustainability at the forefront," said Christine Needles, Executive Director of DEI at Interface. "As both a founding sponsor and pilot project partner, the SEAM Certification provides us the opportunity to further inform our own social impact framework, as well as that of our customers. This is a powerful tool for increasing understanding, and we look forward to the continued collaboration with SEAM."
+
+## The first SEAM Certified building
+
+Founded in 2018, SEAM, Inc. has spent the last two years piloting SEAM Certification on projects in the U.S., Canada, and Australia. Seattle-based Urban Visions was the first organization to register a SEAM Certification pilot project with their development, The Jack.
+
+"A certification that solely focuses on social equity within the built environment is long overdue, and we are excited to support SEAM efforts on our projects and their continued success," said Todd Lee, Executive Vice President at Urban Visions. "Urban Visions is honored to be completing the very first SEAM Certified building in the United States. The Jack, a 175,000 SF, 8-level building in historic Pioneer Square District in Seattle, will open mid-2023 and will have a SEAM Operations and Maintenance Certification. As a SEAM pilot partner, we have enjoyed the collaboration and constant learning from Rainey Shane and her team."
+
+Ahead of a formal launch of all programs in early 2023, SEAM, Inc. is accepting early adopter pilot project enrollments for SEAM Certification and upcoming <a href="/ap-credential">SEAM Accredited Professional</a> education programs. Individuals and organizations can currently become members or Founding Sponsors as part of the group of initiators supporting the organization's launch. Current Founding Sponsors include JLL, Interface, HITT Contracting, Jamestown, L.P., and Leapley Construction.`,
+  },
+  {
+    slug: 'connect-cre-seattle-building-first-seam-certification',
+    title: 'Seattle Building Registers First-Ever SEAM Certification',
+    excerpt:
+      'Urban Visions, a Seattle-based real estate developer, has become the first organization to register a SEAM certification pilot project with The Jack, a new 8-story building in the historic Pioneer Square District of Seattle.',
+    category: 'In the Press',
+    author: { name: 'Mark Nieto', role: 'Connect CRE' },
+    date: '2022-11-15',
+    readTime: '1 min read',
+    body: `Urban Visions, a Seattle-based real estate developer, has become the first organization to register a SEAM certification pilot project with The Jack, a new 8-story building in the historic Pioneer Square District of Seattle.
+
+<a href="https://www.connectcre.com/stories/seattle-building-registers-first-ever-seam-certification/" target="_blank" rel="noopener noreferrer">Read the full article on Connect CRE &rarr;</a>`,
+  },
+  {
+    slug: 'globest-seam-certification-social-impact-built-environment',
+    title: 'New SEAM Certification Addresses Social Impact in Built Environment',
+    excerpt:
+      'A new measure of corporate real estate social sustainability was announced this week in SEAM Certification. It provides guidance, resources, and certification for achieving positive social impact in the built environment.',
+    category: 'In the Press',
+    author: { name: 'Paul Bergeron', role: 'Globe St.' },
+    date: '2022-11-16',
+    readTime: '1 min read',
+    body: `A new measure of corporate real estate social sustainability was announced this week in SEAM Certification.
+
+It provides guidance, resources, and <a href="/certification">certification</a> for achieving positive social impact in the built environment.
+
+<a href="https://www.globest.com/2022/11/16/new-seam-certification-addresses-social-impact-in-built-environment/" target="_blank" rel="noopener noreferrer">Read the full article on Globe St. &rarr;</a>`,
+  },
+  {
+    slug: 'bisnow-social-impact-certification-launches-cre',
+    title: 'Social Impact Certification Launches For CRE Development, Joining LEED And WELL',
+    excerpt:
+      'A nonprofit launched by two commercial real estate veterans aims to offer some standardization to CRE\u2019s social impacts, offering a certification and accreditation for companies based on their social impact efforts.',
+    category: 'In the Press',
+    author: { name: 'Bianca Barrag\u00e1n', role: 'Bisnow' },
+    date: '2022-11-16',
+    readTime: '1 min read',
+    body: `A nonprofit launched by two commercial real estate veterans aims to offer some standardization to CRE's social impacts, offering a certification and accreditation for companies based on their social impact efforts.
+
+<a href="https://www.bisnow.com/national/news/commercial-real-estate/seam-social-equity-certification-116429" target="_blank" rel="noopener noreferrer">Read the full article on Bisnow &rarr;</a>`,
+  },
+  {
+    slug: 'djc-pioneer-square-first-seam-certified-project',
+    title: 'Pioneer Square office building will be first SEAM certified project in U.S.',
+    excerpt:
+      'Urban Visions, a Seattle-based real estate developer, has become the first organization to register a SEAM certification pilot project with The Jack, a new 8-story building in the historic Pioneer Square District of Seattle.',
+    category: 'In the Press',
+    author: { name: 'Emma Hinchliffe', role: 'Daily Journal of Commerce' },
+    date: '2022-11-21',
+    readTime: '1 min read',
+    body: `Urban Visions, a Seattle-based real estate developer, has become the first organization to register a SEAM certification pilot project with The Jack, a new 8-story building in the historic Pioneer Square District of Seattle.
+
+<a href="https://www.djc.com/news/ae/12152803.html" target="_blank" rel="noopener noreferrer">Read the full article on Daily Journal of Commerce &rarr;</a>`,
+  },
+  {
+    slug: 'facility-executive-worlds-first-social-impact-certification',
+    title: 'CRE Industry Launches World\u2019s First Social Impact Certification',
+    excerpt:
+      'SEAM Certification, a measure of corporate real estate social sustainability, will provide guidance, resources, and certification for achieving positive social impact in the built environment.',
+    category: 'In the Press',
+    author: { name: 'Derek Wells', role: 'Facility Executive' },
+    date: '2022-11-22',
+    readTime: '1 min read',
+    body: `SEAM Certification, a measure of corporate real estate social sustainability, will provide guidance, resources, and <a href="/certification">certification</a> for achieving positive social impact in the built environment.
+
+<a href="https://facilityexecutive.com/cre-industry-launches-worlds-first-social-impact-certification/" target="_blank" rel="noopener noreferrer">Read the full article on Facility Executive &rarr;</a>`,
+  },
+  {
+    slug: 'puget-sound-bj-seattle-office-building-global-first-dei',
+    title: 'New Seattle office building scores a global first on the DEI front',
+    excerpt:
+      'The under-construction Jack office building on Seattle\u2019s waterfront is the world\u2019s first to seek a new certification aimed at maximizing positive social impacts.',
+    category: 'In the Press',
+    author: { name: 'Marc Stiles', role: 'Puget Sound Business Journal' },
+    date: '2022-11-22',
+    readTime: '1 min read',
+    body: `The under-construction Jack office building on Seattle's waterfront is the world's first to seek a new certification aimed at maximizing positive social impacts.
+
+<a href="https://www.bizjournals.com/seattle/news/2022/11/22/new-seattle-building-global-scores-global-first.html" target="_blank" rel="noopener noreferrer">Read the full article on Puget Sound Business Journal &rarr;</a>`,
+  },
+  {
+    slug: 'chain-store-age-shopping-centers-social-impact-certifications',
+    title: 'Shopping centers soon to seek social impact certifications',
+    excerpt:
+      'Retail real estate developers already seek certifications for sustainability in their ESG goals. Now they\u2019ll be doing the same to assess the \u201cS\u201d in their ESG policies.',
+    category: 'In the Press',
+    author: { name: 'Al Urbanski', role: 'Chain Store Age' },
+    date: '2023-02-21',
+    readTime: '1 min read',
+    body: `Retail real estate developers already seek certifications for adhering to benchmark standards for sustainability set down in their environmental, social, and governance goals. Now they'll be doing the same to assess the "S" in their ESG policies.
+
+<a href="https://chainstoreage.com/shopping-centers-soon-seek-social-impact-certifications" target="_blank" rel="noopener noreferrer">Read the full article on Chain Store Age &rarr;</a>`,
+  },
+  {
+    slug: 'metropolis-can-we-actually-measure-social-equity',
+    title: 'Can We Actually Measure for Social Equity?',
+    excerpt:
+      'The level of interest that manufacturers, design firms, and builders are showing in labels that broadcast how they uphold social equity is remarkable. Metropolis Magazine examines whether this new class of virtue-driven certifications is a good sign.',
+    category: 'In the Press',
+    author: { name: 'Melissa Daniel', role: 'Metropolis Magazine' },
+    date: '2023-06-09',
+    readTime: '1 min read',
+    body: `The level of interest that manufacturers, design firms, and builders are showing in labels that broadcast how they uphold social equity and earn points for it is remarkable. In fact, credit for internal strides, chiefly in the form of a label on packages and marketing materials, represents a new class of virtue-driven certifications. Is this a good sign?
+
+<a href="https://metropolismag.com/viewpoints/can-we-actually-measure-for-social-equity/" target="_blank" rel="noopener noreferrer">Read the full article on Metropolis Magazine &rarr;</a>`,
+  },
+  {
+    slug: 'bbc-spaces-that-shape-us-repurposing-buildings',
+    title: 'Repurposing buildings to make them more environmentally and socially conscious',
+    excerpt:
+      'Expectations of what an office should be are changing. Discover how office spaces are being retrofitted to be more environmentally responsible and designed to care for worker\u2019s wellness.',
+    category: 'In the Press',
+    author: { name: 'BBC StoryWorks', role: 'The Spaces that Shape Us' },
+    date: '2023-09-12',
+    readTime: '1 min read',
+    body: `Expectations of what an office should be are changing. Discover how these office spaces are being retrofitted to be more environmentally responsible and designed to care for worker's wellness.
+
+<a href="https://www.bbc.com/storyworks/the-spaces-that-shape-us/jll" target="_blank" rel="noopener noreferrer">Watch on BBC.com &rarr;</a>`,
+  },
+  {
+    slug: 'architecture-is-political-podcast-social-equity-seam',
+    title: 'Social Equity in Commercial Real Estate: A Deep Dive into SEAM',
+    excerpt:
+      'Rainey Shane joins the Architecture is Political Podcast to discuss SEAM, the third-party standard for real estate projects that certifies an organization\u2019s actions toward social sustainability against internationally accepted criteria.',
+    category: 'In the Press',
+    author: { name: 'Melissa Daniel', role: 'Architecture is Political Podcast' },
+    date: '2023-10-09',
+    readTime: '1 min read',
+    body: `Rainey Shane is a co-founder of SEAM\u2122, a 501c3 nonprofit organization that created the <a href="/resources/standard">SEAM Standard\u2122</a> and administers a social equity certification for commercial real estate projects. SEAM\u2122 is a third-party standard for real estate projects that certifies an organization's actions toward social sustainability as measured against internationally accepted criteria. It is a vehicle for organizations to leverage commercial real estate and use it to make authentic, measurable gains in social responsibility beyond health and wellness to encompass matters like justice and equity.
+
+<a href="https://open.spotify.com/episode/5EdT5u3D9IKnS0PLiWxRBf" target="_blank" rel="noopener noreferrer">Listen on Spotify &rarr;</a>`,
+  },
+  {
+    slug: 'streamly-why-i-created-seam-social-equity-assessment-tool',
+    title: 'Why I Created SEAM: The Social Equity Assessment Tool',
+    excerpt:
+      'Rainey Shane\u2019s background in law enforcement and experience leading rescue missions from forced labour led her on a mission for better equity and social justice in the real estate industry and beyond.',
+    category: 'In the Press',
+    author: { name: 'Sarah Austin', role: 'Streamly' },
+    date: '2023-10-24',
+    readTime: '1 min read',
+    body: `Sometimes it takes just one person to spark a movement for change. Rainey Shane's background in law enforcement and experience leading rescue missions from forced labour led her on a mission for better equity and social justice in the real estate industry and beyond.
+
+We spoke to Shane about SEAM, the social impact measurement tool she co-created. In this in-depth interview she explains how the Social Equity Assessment Method works, why it is so important at this moment in time and what still needs to be done to make it the powerful force for good she envisages.
+
+<a href="https://streamly.video/video/why-i-created-seam-a-social-equity-assessment-tool" target="_blank" rel="noopener noreferrer">Watch the video on Streamly &rarr;</a>`,
+  },
+  {
+    slug: 'urban-land-embodied-suffering-building-materials-supply-chain',
+    title: 'Tools to Eliminate Embodied Suffering from the Building Materials Supply Chain',
+    excerpt:
+      'The construction industry is ranked second as a problematic industry in terms of its risk of relying on forced labor. Urban Land examines the tools emerging to address embodied suffering in building materials.',
+    category: 'In the Press',
+    author: { name: 'Michele Lerner', role: 'Urban Land Magazine' },
+    date: '2024-04-03',
+    readTime: '1 min read',
+    body: `The natural reaction to hearing that a product or material has been made with the assistance of modern slavery is to flinch in horror and perhaps disbelief. Unfortunately, the construction industry is ranked second — just behind domestic service — as a problematic industry in terms of its risk of relying on forced labor.
+
+<a href="https://urbanland.uli.org/issues-trends/tools-to-eliminate-embodied-suffering-from-the-building-materials-supply-chain" target="_blank" rel="noopener noreferrer">Read the full article on Urban Land &rarr;</a>`,
+  },
+  {
+    slug: 'green-healthy-places-podcast-social-equity-commercial-real-estate',
+    title: 'Social Equity in Commercial Real Estate with Rainey Shane of SEAM',
+    excerpt:
+      'Rainey Shane joins the Green Healthy Places Podcast to discuss social equity in the built environment, the sustainability standard landscape, human-centered design, and the role of social equity in the real estate supply chain.',
+    category: 'In the Press',
+    author: { name: 'Matt Morley', role: 'Green Healthy Places Podcast' },
+    date: '2024-11-19',
+    readTime: '1 min read',
+    body: `In this episode of the Green Healthy Places Podcast, host Matt Morley is in Atlanta, Georgia talking to Rainey Shane, Co-Founder and CEO of SEAM, the Social Equity Assessment Method for commercial real estate.
+
+<a href="/about">SEAM</a> aims to promote social equity in the planning, design, construction and operation of built environments.
+
+Rainey previously ran a nonprofit focused on forced labour and spent over six years developing this new standard intended to help guide developers in creating more equitable buildings.
+
+We discuss social equity and Diversity, Equity & Inclusion (DEI), the sustainability standard landscape, the key challenges Rainey faced pulling this new standard together from scratch, human-centered design practices and the role of social equity in the real estate supply chain, amongst other things.
+
+Click to listen on Apple Podcasts, Spotify, or Zencastr.`,
+  },
+  {
+    slug: 'inaugural-crosswalks-technical-advisory-group',
+    title: 'Meet the trailblazers supporting the movement to embed social equity in the built environment',
+    excerpt:
+      'SEAM announces the formation of our inaugural Crosswalks Technical Advisory Group, a cohort of volunteers shaping standards and developing crosswalks between SEAM and other building certification systems.',
+    category: 'News',
+    author: { name: 'Rainey Shane', role: 'CEO, SEAM' },
+    date: '2024-07-02',
+    readTime: '1 min read',
+    body: `With the ongoing development of SEAM, we are excited to announce the formation of our inaugural Crosswalks Technical Advisory Group (TAG). This unique opportunity allows dedicated volunteers to play a crucial role in shaping our standards and advancing our mission to embed social equity in the built environment.
+
+We are excited to welcome our 2024 cohort, who will collaborate with SEAM staff to develop crosswalks between SEAM and other prominent building certification standards. Their work will significantly streamline the certification process for projects aiming to meet multiple sustainability objectives by facilitating recognition and integration of SEAM's social equity criteria within other certification systems.
+
+Our committee represents a broad spectrum of industries and professional backgrounds, ensuring continuous innovation and comprehensive knowledge as we move forward. These new voices are critical to the success of SEAM. They expand our network within the industry, and we are proud to highlight a diverse group for this first cohort of committee volunteers. If you are interested in joining a SEAM TAG, please <a href="/contact">reach out</a>.
+
+This inaugural group will collaborate to push SEAM standards into new spaces and ensure that our framework for equitable built environments remains highly relevant, accessible, and innovative.`,
+  },
+  {
+    slug: 'unlocking-roi-rossi-calculator-social-equity-investments',
+    title: 'Unlocking ROI: The ROSSI\u2122 Calculator \u2014 Your Key to Justifying Social Equity Investments',
+    excerpt:
+      'Project owners want to know their return on investment in social equity. The ROSSI\u2122 Calculator bridges the gap between social sustainability strategies and financial performance in less than 20 questions.',
+    category: 'The Standard',
+    author: { name: 'Rainey Shane', role: 'CEO, SEAM' },
+    date: '2024-07-18',
+    readTime: '2 min read',
+    body: `One thing we often hear as we talk to project owners interested in embedding social equity into their projects is the challenge of justifying the cost of the investment. This is not unlike the challenges faced with getting greenlit for environmental sustainability projects.
+
+SEAM has attempted to address this issue through evidence and research. We share statistics and data from an overwhelming number of research studies and reports about the benefits of social sustainability for companies. I have PowerPoint deck after deck showing the latest percentages of customers who won't purchase from, employees who won't work for, or profit margin growth for companies that perform well on social factors.
+
+But we were still coming up short. While this is compelling information, it is intangible and disconnected from the financial value it contributes to the bottom line. It doesn't answer the base-level question they have, which is, "What is my return on investment?" So we went back to the drawing board.
+
+The research shows that social sustainability drives business and societal success, but quantifying the financial impact of efforts in these areas is necessary. We want to make <a href="/certification">SEAM Certification</a> the easy choice, so we needed a way to connect social sustainability strategies with financial performance, ensuring that efforts to promote social equity and social sustainability also lead to measurable financial benefits.
+
+## Bridging the gap
+
+So, we developed the ROSSI\u2122 Calculator to bridge the gap and make that connection. We started by researching tools already in use. We based our foundational model on the NYU Stern Center for Sustainable Business ROSI\u2122 Methodology. Corporate leaders and investors use this Return on Sustainability Investment methodology to bridge the gap between sustainability strategies and financial performance. While our calculator focuses only on social factors, the NYU Stern ROSI Methodology is a much more detailed dive into all the ESG factors of a sustainability program. I urge you to visit that site to learn more.
+
+We then explored the latest research to ensure we had the most up-to-date statistics. During the calculator's development, we examined hundreds of studies, whitepapers, and reports on the direct relationship between social sustainability and financial performance. All quoted research is from 2019 to 2024. We selected the most relevant and applicable statistics as the calculator's foundation.
+
+We ended up with a simple model that allows you to calculate your return on social sustainability (SEAM) investment in less than 20 questions. The <a href="/resources/rossi">ROSSI Calculator</a> is designed to be user-friendly and straightforward, hoping to be the missing link to providing a solid business case for current and future social sustainability initiatives.
+
+For more information about the methodology, formulas, and research behind the calculator, please visit the <a href="/resources/rossi">ROSSI Calculator page</a>. We value your feedback on the tool and have provided a feedback form at the bottom of that webpage. Your insights are important to us and will help us continue to improve the ROSSI Calculator. We can't wait to see what you think!`,
+  },
   {
     slug: 'what-the-jack-teaches-us-about-human-centric-real-estate',
     title: "What 'The Jack' teaches us about human-centric real estate",
@@ -450,3 +752,7 @@ Start by asking your suppliers direct questions about labor practices. Specify m
 The industry did not solve embodied carbon overnight. Embodied suffering will take the same sustained commitment. But the tools are emerging, and the obligation is clear.`,
   },
 ]
+
+export const posts: BlogPost[] = _posts.sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+)

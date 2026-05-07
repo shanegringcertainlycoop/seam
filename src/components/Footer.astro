@@ -52,12 +52,9 @@ const footerSections = [
   {
     title: 'Directory',
     links: [
-      { label: 'SEAM APs', href: '/directory?tab=aps' },
-      { label: 'Certified Projects', href: '/directory?tab=projects' },
-      // { label: 'Approved Activities', href: '/directory?tab=activities' }, // HIDDEN: Approved program temporarily hidden
-      { label: 'About SEAM', href: '/about' },
-      { label: 'Contact', href: '/contact' },
-      { label: 'Talk to an Advisor', href: '/get-started' },
+      { label: 'Professionals', href: '/directory?tab=professionals' },
+      { label: 'Projects', href: '/directory?tab=projects' },
+      { label: 'Organizations', href: '/directory?tab=organizations' },
     ],
   },
 ]
@@ -136,6 +133,15 @@ const year = new Date().getFullYear()
         &copy; {year} SEAM, Inc. All rights reserved.
       </p>
       <div class="flex gap-8">
+        <a href="/about" class="text-[14px] text-warm-400 hover:text-warm-300 transition-colors">
+          About
+        </a>
+        <a href="/contact" class="text-[14px] text-warm-400 hover:text-warm-300 transition-colors">
+          Contact
+        </a>
+        <a href="/get-started" class="text-[14px] text-warm-400 hover:text-warm-300 transition-colors">
+          Talk to an Advisor
+        </a>
         <a href="/privacy" class="text-[14px] text-warm-400 hover:text-warm-300 transition-colors">
           Privacy
         </a>

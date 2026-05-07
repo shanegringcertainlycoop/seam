@@ -69,8 +69,8 @@ const tiers = [
       '5 complimentary AP trainings and exams',
       '1 included event sponsorship',
     ],
-    cta: 'Talk to our team',
-    href: '/get-started',
+    cta: 'Join Arc',
+    href: 'https://community.seamcertification.org/plans/1924871?bundle_token=430cce94d3dfb70d37c817c17ceff386&utm_source=manual',
     highlighted: false,
     badge: '/logos/member-arc.png',
   },
@@ -211,7 +211,7 @@ const jsonLd = [
               ))}
             </ul>
 
-            <a href={tier.href} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
+            <a href={tier.href} target={tier.href.startsWith('http') ? '_blank' : undefined} rel={tier.href.startsWith('http') ? 'noopener noreferrer' : undefined} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
               {tier.cta}
             </a>
           </div>
