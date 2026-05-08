@@ -23,7 +23,7 @@ export interface CertifiedProject {
   name: string
   image: string
   location: { city: string; state: string }
-  certificationLevel: 'Activity Endorsement' | 'Pre-certification' | 'Bronze' | 'Silver' | 'Gold' | 'Platinum'
+  certificationLevel: 'Registered' | 'Activity Endorsement' | 'Pre-certification' | 'Bronze' | 'Silver' | 'Gold' | 'Platinum'
   ratingSystem:
     | 'Buildings + Interiors'
     | 'Operations + Maintenance'
@@ -748,7 +748,7 @@ export const certifiedProjects: CertifiedProject[] = [
     name: 'Bertschi School — Schoolhouse',
     image: '/images/directory/project-bertschi-school.webp',
     location: { city: 'Seattle', state: 'WA' },
-    certificationLevel: 'Pre-certification',
+    certificationLevel: 'Registered',
     ratingSystem: 'Buildings + Interiors',
     description:
       'Bertschi School is pursuing SEAM Silver certification for its new 49,384 SF Schoolhouse — aiming to be the first school to achieve the credential. The project integrates social equity considerations across planning, design, construction, and operations, with attention to ethically sourced materials, construction labor practices, impacted party assessment, and human rights protections. Students have been integral to the planning process from the very beginning.',

@@ -116,6 +116,7 @@ const products = [
 
 /* ─── Section 5: Proof / Certified Projects ─── */
 const certBadge: Record<string, string> = {
+  Registered: '/logos/cert-registered.png',
   Bronze: '/logos/cert-bronze.png',
   Silver: '/logos/cert-silver.png',
   Gold: '/logos/cert-gold.png',
@@ -312,7 +313,7 @@ const jsonLd = [
                 role="tooltip"
                 aria-hidden="true"
                 data-hotspot-tooltip={spot.id}
-                class="hidden md:block pointer-events-none absolute left-1/2 top-full mt-4 w-[480px] rounded-2xl bg-white text-left shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-warm-100 z-20 transition-opacity duration-200 ease-out opacity-0"
+                class="hidden md:block pointer-events-none absolute left-1/2 top-full mt-4 w-[480px] max-w-[90vw] rounded-2xl bg-white text-left shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-warm-100 z-20 transition-opacity duration-200 ease-out opacity-0"
                 style={`transform: translateX(${translateX});`}
               >
                 <div class="flex p-4 gap-4">
@@ -552,7 +553,7 @@ const jsonLd = [
         </p>
       </div>
 
-      <div class="reveal-stagger grid grid-cols-7 lg:grid-cols-11 gap-3 lg:gap-4 max-w-5xl mx-auto justify-items-center">
+      <div class="reveal-stagger grid grid-cols-4 sm:grid-cols-7 lg:grid-cols-11 gap-3 lg:gap-4 max-w-5xl mx-auto justify-items-center">
         {[
           { src: '/images/team/rainey-shane.png', name: 'Rainey Shane', role: 'Co-Founder' },
           { src: '/images/team/alex-demestihas.png', name: 'Alex Demestihas', role: 'Co-Founder' },

@@ -21,6 +21,7 @@ const relatedProjects = certifiedProjects
   .slice(0, 3)
 
 const levelColors: Record<string, string> = {
+  Registered: 'bg-seam-50 text-seam-700',
   'Activity Endorsement': 'bg-emerald-50 text-emerald-700',
   'Pre-certification': 'bg-blue-50 text-blue-700',
   Bronze: 'bg-amber-100 text-amber-800',
@@ -99,7 +100,7 @@ const jsonLd = breadcrumbSchema([
         if (project.size) facts.push({ label: 'Size', value: project.size })
         if (project.completionDate) facts.push({ label: 'Completed', value: formatCompletionDate(project.completionDate) })
         return (
-          <div class={`grid grid-cols-2 md:grid-cols-${facts.length} gap-6 mb-16 pb-16 border-b border-warm-100`}>
+          <div class={`grid grid-cols-2 ${facts.length <= 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-6 mb-16 pb-16 border-b border-warm-100`}>
             {facts.map((f) => (
               <div>
                 <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-2">

@@ -167,7 +167,7 @@ const jsonLd = [
       </div>
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {reasons.map((r) => (
-          <div class="reveal-child rounded-2xl border border-warm-100 p-8 lg:p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <div class="reveal-child rounded-2xl border border-warm-100 p-6 sm:p-8 lg:p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{r.title}</h3>
             <p class="text-[15px] leading-relaxed text-warm-600">{r.description}</p>
           </div>
@@ -191,7 +191,7 @@ const jsonLd = [
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-12">
         {tiers.map((tier) => (
-          <div class={`relative rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-warm-900 text-white' : 'bg-white border border-warm-100'}`}>
+          <div class={`relative rounded-2xl p-6 sm:p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-warm-900 text-white' : 'bg-white border border-warm-100'}`}>
             <img src={tier.badge} alt="" class="absolute -top-12 right-10 w-24 h-24 object-contain drop-shadow-lg" />
             <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
             <div class="mt-5 flex items-baseline gap-1">
@@ -334,7 +334,7 @@ const jsonLd = [
         </div>
 
         <div class="reveal-fade-up">
-          <form id="org-membership-form" class="rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] p-8 lg:p-10 space-y-5">
+          <form id="org-membership-form" class="rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] p-6 sm:p-8 lg:p-10 space-y-5">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label for="org-firstname" class="block text-[13px] font-medium text-warm-300 mb-2">First Name *</label>
