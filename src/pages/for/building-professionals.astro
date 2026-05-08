@@ -114,6 +114,8 @@ const jsonLd = [
         src="/images/hero-building-professionals.jpg"
         alt="Architects and designers shaping equitable spaces"
         class="h-full w-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
     </div>
@@ -242,11 +244,11 @@ const jsonLd = [
                 {p.logos ? (
                   <div class="flex items-end -space-x-2 sm:-space-x-4">
                     {p.logos.map((src) => (
-                      <img src={src} alt="" class="w-7 h-7 sm:w-14 sm:h-14 object-contain drop-shadow-sm" />
+                      <img src={src} alt="" class="w-7 h-7 sm:w-14 sm:h-14 object-contain drop-shadow-sm" loading="lazy" decoding="async" />
                     ))}
                   </div>
                 ) : (
-                  <img src={p.logo} alt="" class="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-sm" />
+                  <img src={p.logo} alt="" class="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-sm" loading="lazy" decoding="async" />
                 )}
               </div>
             )}

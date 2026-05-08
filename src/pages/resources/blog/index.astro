@@ -45,6 +45,8 @@ const jsonLd = [
         src="/images/hero-blog.jpg"
         alt="Insights from social equity practitioners"
         class="h-full w-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
     </div>
@@ -98,6 +100,7 @@ const jsonLd = [
                     alt={post.image.alt}
                     class="absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
+                    decoding="async"
                   />
                 ) : null}
                 <span class={`relative z-10 text-[12px] font-medium uppercase tracking-[0.1em] m-4 px-3 py-1.5 rounded-full ${post.image ? 'bg-white/90 text-gold-600' : 'text-gold-600 p-8 lg:p-10'}`}>
@@ -140,12 +143,14 @@ const jsonLd = [
         New articles, certified project announcements, and Standard updates
         delivered to your inbox. No noise.
       </p>
-      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault()">
+      <form id="blog-newsletter" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
         <label for="newsletter-email" class="sr-only">Email address</label>
         <input
           id="newsletter-email"
           type="email"
+          name="email"
           placeholder="you@company.com"
+          required
           autocomplete="email"
           class="flex-1 rounded-full border border-warm-200 bg-white px-6 py-3.5 text-[15px] text-warm-900 placeholder:text-warm-400 outline-none focus:border-warm-400 transition-colors"
         />
@@ -156,6 +161,56 @@ const jsonLd = [
           Subscribe
         </button>
       </form>
+      <p id="blog-newsletter-status" class="mt-4 text-[15px] hidden"></p>
     </div>
   </section>
+
+  <script>
+    const form = document.getElementById('blog-newsletter') as HTMLFormElement | null
+    const statusEl = document.getElementById('blog-newsletter-status') as HTMLElement | null
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      if (!statusEl) return
+
+      const data = new FormData(form)
+      const email = data.get('email') as string
+      if (!email) return
+
+      const fields = [
+        { objectTypeId: '0-1', name: 'email', value: email },
+      ]
+
+      try {
+        // TODO: Replace with actual HubSpot newsletter form GUID
+        const res = await fetch(
+          'https://api.hsforms.com/submissions/v3/integration/submit/46821728/NEWSLETTER_FORM_GUID',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields,
+              context: {
+                pageUri: window.location.href,
+                pageName: 'Blog Newsletter',
+              },
+            }),
+          }
+        )
+
+        if (res.ok) {
+          form.reset()
+          statusEl.textContent = "You're subscribed! Watch your inbox."
+          statusEl.classList.remove('hidden', 'text-red-400')
+          statusEl.classList.add('text-seam-600')
+        } else {
+          throw new Error('Submission failed')
+        }
+      } catch {
+        statusEl.textContent = 'Something went wrong. Please try again.'
+        statusEl.classList.remove('hidden', 'text-seam-600')
+        statusEl.classList.add('text-red-400')
+      }
+    })
+  </script>
 </SiteLayout>

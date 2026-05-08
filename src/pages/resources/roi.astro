@@ -142,7 +142,7 @@ const jsonLd = [
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
         {headlineStats.map((s) => (
           <div class="text-center lg:text-left">
-            <img src={s.logo} alt="" class="h-5 object-contain opacity-40 grayscale mb-3 mx-auto lg:mx-0" />
+            <img src={s.logo} alt="" class="h-5 object-contain opacity-40 grayscale mb-3 mx-auto lg:mx-0" loading="lazy" decoding="async" />
             <span class="block font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.04em] text-seam-700">{s.value}</span>
             <p class="mt-2 text-[15px] leading-snug text-warm-700">{s.label}</p>
             <a href={s.href} target={s.href.startsWith('/') ? undefined : '_blank'} rel={s.href.startsWith('/') ? undefined : 'noopener noreferrer'} class="inline-flex items-center gap-1 mt-2 text-[12px] text-seam-600 hover:text-seam-700 uppercase tracking-[0.08em] transition-colors">

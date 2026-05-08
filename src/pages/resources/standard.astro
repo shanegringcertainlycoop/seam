@@ -184,7 +184,7 @@ const audiences = [
   <!-- Hero -->
   <section id="download" class="relative z-20 min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
     <div class="absolute inset-0">
-      <img src="/images/hero-standard.jpg" alt="" class="h-full w-full object-cover object-center" />
+      <img src="/images/hero-standard.jpg" alt="" class="h-full w-full object-cover object-center" fetchpriority="high" decoding="async" />
       <div class="absolute inset-0 bg-gradient-to-t from-warm-900/90 via-warm-900/60 to-warm-900/40"></div>
     </div>
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
@@ -361,7 +361,7 @@ const audiences = [
       <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
         {pillars.map((p) => (
           <a href={p.href} class="reveal-child group relative rounded-2xl border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] overflow-hidden">
-            <img src={p.icon} alt="" class="absolute -top-4 -right-4 w-48 h-48 object-contain opacity-90 pointer-events-none" />
+            <img src={p.icon} alt="" class="absolute -top-4 -right-4 w-48 h-48 object-contain opacity-90 pointer-events-none" loading="lazy" decoding="async" />
             <span class="relative text-[14px] font-medium text-seam-500 mb-4 block">Pillar {p.number}</span>
             <h3 class="relative font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4 group-hover:text-gold-600 transition-colors">{p.title}</h3>
             <p class="text-[16px] leading-relaxed text-warm-600 mb-6">{p.description}</p>
@@ -525,7 +525,7 @@ const audiences = [
       <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
         {levels.map((level, i) => (
           <div class={`reveal-child relative rounded-2xl ${levelIntensities[i]} pt-14 pb-8 px-8 lg:pt-14 lg:pb-10 lg:px-10`}>
-            <img src={level.logo} alt={`${level.name} certification`} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" />
+            <img src={level.logo} alt={`${level.name} certification`} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" loading="lazy" decoding="async" />
             <h3 class={`relative font-display text-[28px] tracking-[-0.02em] ${levelTextColors[i]}`}>{level.name}</h3>
             <p class={`mt-1 text-[14px] font-medium ${levelSubColors[i]}`}>{level.tagline}</p>
             <p class={`mt-4 text-[15px] leading-relaxed ${levelBodyColors[i]}`}>{level.description}</p>
@@ -554,7 +554,7 @@ const audiences = [
       <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6 pt-12">
         {ratings.map((r) => (
           <a href={r.href} class="reveal-child group relative rounded-2xl bg-white pt-14 pb-8 px-8 lg:pt-14 lg:pb-10 lg:px-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-            <img src={r.mark} alt={r.code} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" />
+            <img src={r.mark} alt={r.code} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" loading="lazy" decoding="async" />
             <span class="inline-block rounded-lg bg-seam-50 px-3 py-1.5 text-[13px] font-mono font-medium text-gold-600 mb-4">{r.code}</span>
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-600 transition-colors">{r.title}</h3>
             <p class="text-[15px] leading-relaxed text-warm-600">{r.description}</p>

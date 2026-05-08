@@ -4,6 +4,8 @@ import { breadcrumbSchema } from '../../../lib/seo-helpers'
 import { team } from '../../../data/team'
 import { seamAPs } from '../../../data/directory'
 
+export const prerender = true
+
 export function getStaticPaths() {
   return team.map((member) => ({ params: { slug: member.slug } }))
 }
@@ -45,6 +47,8 @@ const jsonLd = breadcrumbSchema([
               src={member.image}
               alt={member.name}
               class="w-full h-full object-cover object-top"
+              fetchpriority="high"
+              decoding="async"
               onerror="this.style.display='none'"
             />
           </div>

@@ -116,6 +116,7 @@ const products = [
 
 /* ─── Section 5: Proof / Certified Projects ─── */
 const certBadge: Record<string, string> = {
+  Registered: '/logos/cert-registered.png',
   Bronze: '/logos/cert-bronze.png',
   Silver: '/logos/cert-silver.png',
   Gold: '/logos/cert-gold.png',
@@ -252,7 +253,7 @@ const jsonLd = [
           </em>{' '}
           with people as a focus, communities thrive and investments outperform.
           <br /><br />
-          <img src="/logos/seam-wordmark.png" alt="SEAM" class="inline-block h-[1.1em] w-auto align-baseline -mb-[0.05em]" /> is the world's first standard built to advance social equity in commercial real estate.
+          <img src="/logos/seam-wordmark.png" alt="SEAM" class="inline-block h-[1.1em] w-auto align-baseline -mb-[0.05em]" fetchpriority="high" decoding="async" /> is the world's first standard built to advance social equity in commercial real estate.
         </p>
       </div>
     </div>
@@ -286,6 +287,8 @@ const jsonLd = [
           alt="Isometric illustration of a building at the center of six concentric rings representing the people it touches — tenants, facilities staff, construction workers, community residents, supply chain vendors, and raw material laborers"
           class="absolute inset-0 h-full w-full object-contain select-none pointer-events-none"
           draggable="false"
+          loading="lazy"
+          decoding="async"
         />
 
         {hotspots.map((spot) => {
@@ -312,11 +315,11 @@ const jsonLd = [
                 role="tooltip"
                 aria-hidden="true"
                 data-hotspot-tooltip={spot.id}
-                class="hidden md:block pointer-events-none absolute left-1/2 top-full mt-4 w-[480px] rounded-2xl bg-white text-left shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-warm-100 z-20 transition-opacity duration-200 ease-out opacity-0"
+                class="hidden md:block pointer-events-none absolute left-1/2 top-full mt-4 w-[480px] max-w-[90vw] rounded-2xl bg-white text-left shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-warm-100 z-20 transition-opacity duration-200 ease-out opacity-0"
                 style={`transform: translateX(${translateX});`}
               >
                 <div class="flex p-4 gap-4">
-                  <img src={spot.image} alt="" class="w-[180px] h-[210px] rounded-xl object-cover flex-shrink-0" />
+                  <img src={spot.image} alt="" class="w-[180px] h-[210px] rounded-xl object-cover flex-shrink-0" loading="lazy" decoding="async" />
                   <div class="flex flex-col justify-center">
                     <p class="font-display text-[18px] leading-snug tracking-[-0.01em] text-warm-900 mb-2">
                       {spot.title}
@@ -358,7 +361,7 @@ const jsonLd = [
         {hotspots.map((spot, i) => (
           <div class="snap-center shrink-0 w-[85vw] max-w-[340px] rounded-2xl bg-warm-50 border border-warm-100 overflow-hidden">
             {spot.image ? (
-              <img src={spot.image} alt="" class="w-full aspect-[3/2] object-cover" />
+              <img src={spot.image} alt="" class="w-full aspect-[3/2] object-cover" loading="lazy" decoding="async" />
             ) : (
               <div class="w-full aspect-[3/2] bg-warm-100 flex items-center justify-center">
                 <span class="text-[40px] font-display text-warm-300">{i + 1}</span>
@@ -441,6 +444,8 @@ const jsonLd = [
                       src={logo}
                       alt=""
                       class="w-9 h-9 sm:w-24 sm:h-24 object-contain drop-shadow-md"
+                      loading="lazy"
+                      decoding="async"
                     />
                   ))}
                 </div>
@@ -449,6 +454,8 @@ const jsonLd = [
                   src={product.logo}
                   alt=""
                   class="w-16 h-16 sm:w-24 sm:h-24 object-contain drop-shadow-md"
+                  loading="lazy"
+                  decoding="async"
                 />
               )}
             </div>
@@ -503,6 +510,7 @@ const jsonLd = [
               alt={project.name}
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
+              decoding="async"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-warm-900/90 via-warm-900/40 to-transparent"></div>
             {project.badge && (
@@ -510,6 +518,8 @@ const jsonLd = [
                 src={project.badge}
                 alt={`${project.level} Certified`}
                 class="absolute top-5 right-5 w-16 h-16 lg:w-20 lg:h-20 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
+                loading="lazy"
+                decoding="async"
               />
             )}
             <div class="relative">
@@ -552,7 +562,7 @@ const jsonLd = [
         </p>
       </div>
 
-      <div class="reveal-stagger grid grid-cols-7 lg:grid-cols-11 gap-3 lg:gap-4 max-w-5xl mx-auto justify-items-center">
+      <div class="reveal-stagger grid grid-cols-4 sm:grid-cols-7 lg:grid-cols-11 gap-3 lg:gap-4 max-w-5xl mx-auto justify-items-center">
         {[
           { src: '/images/team/rainey-shane.png', name: 'Rainey Shane', role: 'Co-Founder' },
           { src: '/images/team/alex-demestihas.png', name: 'Alex Demestihas', role: 'Co-Founder' },
@@ -583,6 +593,7 @@ const jsonLd = [
                 alt={person.name}
                 class="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -605,6 +616,7 @@ const jsonLd = [
               alt={org.name}
               class="h-7 lg:h-9 object-contain opacity-40 grayscale"
               loading="lazy"
+              decoding="async"
             />
           </div>
         ))}
@@ -683,6 +695,8 @@ const jsonLd = [
                   src={post.image.src}
                   alt={post.image.alt}
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             )}

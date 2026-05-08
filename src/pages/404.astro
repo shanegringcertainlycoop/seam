@@ -1,0 +1,30 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+---
+<SiteLayout title="Page Not Found — SEAM" description="The page you're looking for doesn't exist." solidNav>
+  <section class="min-h-[80vh] flex items-center justify-center px-6">
+    <div class="text-center max-w-lg">
+      <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-600 mb-6">404</p>
+      <h1 class="font-display text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-4">
+        Page not found
+      </h1>
+      <p class="text-[17px] leading-relaxed text-warm-600 mb-10">
+        The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/"
+          class="inline-flex items-center rounded-full bg-warm-900 px-8 py-3.5 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors"
+        >
+          Back to home
+        </a>
+        <a
+          href="/get-started"
+          class="inline-flex items-center rounded-full border border-warm-200 px-8 py-3.5 text-[15px] font-medium text-warm-900 hover:bg-warm-50 transition-colors"
+        >
+          Get started
+        </a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

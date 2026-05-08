@@ -58,6 +58,8 @@ const certLevels = [
       src="/images/hero-rating-systems.jpg"
       alt=""
       class="absolute inset-0 h-full w-full object-cover"
+      fetchpriority="high"
+      decoding="async"
     />
     <div class="absolute inset-0 bg-gradient-to-br from-warm-900/85 via-warm-900/60 to-seam-900/70"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
@@ -100,8 +102,8 @@ const certLevels = [
       </div>
     </div>
     <div class="hidden lg:flex absolute bottom-8 right-12 items-end gap-4 z-10">
-      <img src="/images/badge-bi.png" alt="Buildings + Interiors" class="w-44 h-auto object-contain drop-shadow-2xl rounded-sm" />
-      <img src="/images/badge-om.png" alt="Operations + Maintenance" class="w-44 h-auto object-contain drop-shadow-2xl rounded-sm" />
+      <img src="/images/badge-bi.png" alt="Buildings + Interiors" class="w-44 h-auto object-contain drop-shadow-2xl rounded-sm" loading="lazy" decoding="async" />
+      <img src="/images/badge-om.png" alt="Operations + Maintenance" class="w-44 h-auto object-contain drop-shadow-2xl rounded-sm" loading="lazy" decoding="async" />
     </div>
   </section>
 
@@ -149,6 +151,8 @@ const certLevels = [
               src={system.badge}
               alt=""
               class="absolute -top-10 right-10 w-28 h-auto object-contain drop-shadow-lg rounded-sm"
+              loading="lazy"
+              decoding="async"
             />
             <span class="text-[13px] font-medium text-seam-600 mb-4 block tracking-tight">
               {system.number}
@@ -198,7 +202,7 @@ const certLevels = [
             href={pillar.href}
             class="reveal-child relative rounded-2xl border border-warm-700 pt-14 pb-8 px-8 text-left hover:border-warm-500 transition-colors duration-300"
           >
-            <img src={pillar.icon} alt="" class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]" />
+            <img src={pillar.icon} alt="" class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]" loading="lazy" decoding="async" />
             <h3 class="font-display text-[18px] lg:text-[20px] tracking-[-0.02em] text-white mb-2">
               {pillar.title}
             </h3>
@@ -230,7 +234,7 @@ const certLevels = [
       <div class="reveal-stagger grid grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
         {certLevels.map((tier) => (
           <div class="reveal-child relative rounded-2xl border border-warm-100 pt-14 pb-8 px-8 text-left">
-            <img src={tier.mark} alt={`${tier.level} certification`} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" />
+            <img src={tier.mark} alt={`${tier.level} certification`} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" loading="lazy" decoding="async" />
             <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-2">
               {tier.level}
             </h3>

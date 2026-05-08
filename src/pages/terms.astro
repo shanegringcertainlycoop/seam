@@ -1,0 +1,161 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../lib/seo-helpers'
+
+const jsonLd = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Terms of Use', path: '/terms' },
+]) as unknown as Record<string, unknown>
+---
+
+<SiteLayout
+  title="Terms of Use — SEAM"
+  description="Terms of Use governing access to and use of the SEAM website, including disclaimers, limitations of liability, and governing law."
+  path="/terms"
+  jsonLd={jsonLd}
+  solidNav={true}
+>
+
+  <section class="pt-40 pb-20 lg:pt-48 lg:pb-24">
+    <div class="mx-auto max-w-3xl px-6 lg:px-10">
+      <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Legal</p>
+      <h1 class="font-display text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] tracking-[-0.04em] text-warm-900 mb-6">
+        Terms of Use
+      </h1>
+      <p class="text-[15px] text-warm-400">Effective Date: May 7, 2026 &middot; Last Updated: May 7, 2026</p>
+    </div>
+  </section>
+
+  <section class="pb-24 lg:pb-32">
+    <div class="mx-auto max-w-3xl px-6 lg:px-10 text-[16px] leading-relaxed text-warm-600" id="terms-prose">
+
+      <p>These Terms of Use (the "Terms") govern your access to and use of the website located at <a href="https://seamcertification.org">seamcertification.org</a> and any related subdomains, pages, or content (collectively, the "Site") operated by SEAM ("SEAM," "we," "us," or "our"). By accessing, browsing, or otherwise using the Site, you ("you" or "User") agree to be bound by these Terms and our <a href="/privacy">Privacy Policy</a>, which is incorporated herein by reference. If you do not agree to these Terms, you must not access or use the Site.</p>
+
+      <p class="rounded-xl bg-warm-50 border border-warm-100 p-6 not-prose text-[15px] text-warm-700 leading-relaxed my-8">
+        <strong class="text-warm-900">PLEASE READ THESE TERMS CAREFULLY.</strong> They contain important provisions regarding disclaimers of warranties, limitations of liability, and governing law that affect your legal rights.
+      </p>
+
+      <h2>1. Eligibility</h2>
+      <p>The Site is intended for users who are at least eighteen (18) years of age. By using the Site, you represent and warrant that you are at least 18 years old and have the legal capacity to enter into a binding agreement with SEAM. If you are accessing or using the Site on behalf of an organization, you represent and warrant that you have the authority to bind that organization to these Terms.</p>
+
+      <h2>2. Description of the Site</h2>
+      <p>The Site is provided for informational purposes related to SEAM and its programs, services, certifications, and related initiatives. The Site may also include forms or other features that allow Users to submit inquiries, contact requests, or other communications to SEAM. SEAM reserves the right to modify, suspend, or discontinue any aspect of the Site at any time, with or without notice, and shall not be liable to you or any third party for any such modification, suspension, or discontinuance.</p>
+
+      <h2>3. Permitted Use and Restrictions</h2>
+      <p>Subject to your compliance with these Terms, SEAM grants you a limited, non-exclusive, non-transferable, revocable license to access and use the Site for your personal, non-commercial informational purposes. You agree that you will not, and will not permit any third party to:</p>
+      <ul>
+        <li>use the Site for any unlawful purpose or in violation of any applicable local, state, federal, or international law or regulation;</li>
+        <li>copy, reproduce, distribute, publish, transmit, modify, adapt, translate, create derivative works from, sell, lease, or otherwise exploit any portion of the Site or its content, except as expressly permitted herein;</li>
+        <li>reverse engineer, decompile, disassemble, or otherwise attempt to derive the source code, underlying ideas, or algorithms of the Site;</li>
+        <li>use any robot, spider, scraper, data mining tool, or similar automated means to access, monitor, or copy any portion of the Site or its content without SEAM's prior written consent;</li>
+        <li>interfere with, disrupt, or attempt to gain unauthorized access to the Site, any servers or networks connected to the Site, or any security measures employed in connection with the Site;</li>
+        <li>use the Site to transmit any virus, worm, malware, or other malicious code, or to engage in any activity that could damage, disable, overburden, or impair the Site;</li>
+        <li>submit false, misleading, or fraudulent information through any form or contact mechanism on the Site;</li>
+        <li>use the Site to harass, abuse, threaten, defame, or otherwise infringe the rights of any third party; or</li>
+        <li>remove, obscure, or alter any copyright, trademark, or other proprietary notices contained on the Site.</li>
+      </ul>
+
+      <h2>4. Intellectual Property Rights</h2>
+      <p>All content on the Site, including but not limited to text, graphics, logos, icons, images, audio and video clips, data compilations, software, and the selection, coordination, and arrangement thereof (collectively, the "Content"), is the property of SEAM, its licensors, or other content providers and is protected by United States and international copyright, trademark, and other intellectual property laws. The "SEAM" name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of SEAM or its affiliates. You may not use such marks without the prior written permission of SEAM. Nothing in these Terms shall be construed as granting you any license or right to use any Content or trademark displayed on the Site, except as expressly authorized herein.</p>
+
+      <h2>5. User Submissions</h2>
+      <p>Any information, data, text, or other materials you submit to SEAM through the Site, including through contact forms, inquiry forms, email links, or other communication features (collectively, "Submissions"), shall be treated in accordance with our <a href="/privacy">Privacy Policy</a>. By making a Submission, you represent and warrant that: (i) the Submission is accurate and not misleading; (ii) you have the right to provide the Submission to SEAM; and (iii) the Submission does not violate these Terms or any applicable law.</p>
+      <p>You grant SEAM a non-exclusive, royalty-free, worldwide, perpetual, irrevocable, sublicensable, and transferable license to use, reproduce, modify, and otherwise exploit any non-personal portion of your Submission for the purposes of operating, improving, and promoting the Site and SEAM's programs and services. Personal information contained in Submissions will be handled in accordance with our Privacy Policy. SEAM is under no obligation to maintain any Submission in confidence, to pay compensation for any Submission, or to respond to any Submission.</p>
+
+      <h2>6. Privacy</h2>
+      <p>Your use of the Site is also governed by our <a href="/privacy">Privacy Policy</a>, which describes how we collect, use, and disclose information about you. By using the Site, you consent to the collection and use of your information as set forth in the Privacy Policy.</p>
+
+      <h2>7. Third-Party Links and Resources</h2>
+      <p>The Site may contain links to third-party websites, resources, or services that are not owned or controlled by SEAM. SEAM does not endorse, monitor, or assume any responsibility for the content, privacy practices, or accuracy of any third-party websites or resources. Your access to and use of any third-party websites or resources is at your sole risk and is subject to the terms and policies of those third parties. SEAM shall not be liable for any damages or losses arising from your use of any third-party websites or resources.</p>
+
+      <h2>8. Disclaimers of Warranties</h2>
+      <p class="uppercase text-[14px] text-warm-700">THE SITE AND ALL CONTENT, MATERIALS, AND SERVICES MADE AVAILABLE THROUGH THE SITE ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, SEAM AND ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, LICENSORS, AND SERVICE PROVIDERS (COLLECTIVELY, THE "SEAM PARTIES") DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, AND ANY WARRANTIES ARISING OUT OF COURSE OF DEALING OR USAGE OF TRADE.</p>
+      <p class="uppercase text-[14px] text-warm-700">THE SEAM PARTIES MAKE NO WARRANTY THAT (A) THE SITE WILL MEET YOUR REQUIREMENTS; (B) THE SITE WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE; (C) THE INFORMATION OBTAINED THROUGH THE SITE WILL BE ACCURATE, COMPLETE, OR RELIABLE; OR (D) ANY DEFECTS OR ERRORS IN THE SITE WILL BE CORRECTED. ANY MATERIAL DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE SITE IS ACCESSED AT YOUR OWN DISCRETION AND RISK.</p>
+      <p class="uppercase text-[14px] text-warm-700">THE INFORMATION PROVIDED ON THE SITE IS FOR GENERAL INFORMATIONAL PURPOSES ONLY AND DOES NOT CONSTITUTE LEGAL, FINANCIAL, PROFESSIONAL, OR OTHER ADVICE. YOU SHOULD CONSULT A QUALIFIED PROFESSIONAL BEFORE TAKING ANY ACTION BASED ON INFORMATION OBTAINED FROM THE SITE.</p>
+
+      <h2>9. Limitation of Liability</h2>
+      <p class="uppercase text-[14px] text-warm-700">TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE SEAM PARTIES BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, REVENUE, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR RELATING TO YOUR ACCESS TO OR USE OF, OR INABILITY TO ACCESS OR USE, THE SITE, REGARDLESS OF THE LEGAL THEORY (CONTRACT, TORT, STRICT LIABILITY, OR OTHERWISE) AND EVEN IF SEAM HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+      <p class="uppercase text-[14px] text-warm-700">TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, THE TOTAL AGGREGATE LIABILITY OF THE SEAM PARTIES TO YOU FOR ALL CLAIMS ARISING OUT OF OR RELATING TO THESE TERMS OR YOUR USE OF THE SITE SHALL NOT EXCEED ONE HUNDRED U.S. DOLLARS (US $100.00). THE LIMITATIONS IN THIS SECTION APPLY EVEN IF ANY LIMITED REMEDY FAILS OF ITS ESSENTIAL PURPOSE. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF CERTAIN DAMAGES, SO SOME OF THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU.</p>
+
+      <h2>10. Indemnification</h2>
+      <p>You agree to indemnify, defend, and hold harmless the SEAM Parties from and against any and all claims, demands, actions, liabilities, losses, damages, judgments, settlements, costs, and expenses (including reasonable attorneys' fees) arising out of or relating to: (a) your access to or use of the Site; (b) your violation of these Terms; (c) your violation of any applicable law or the rights of any third party; or (d) any Submission you make through the Site. SEAM reserves the right, at its own expense, to assume the exclusive defense and control of any matter otherwise subject to indemnification by you, in which event you will cooperate with SEAM in asserting any available defenses.</p>
+
+      <h2>11. Termination</h2>
+      <p>SEAM reserves the right, in its sole discretion and without notice or liability, to suspend or terminate your access to all or any portion of the Site at any time and for any reason, including without limitation for any breach or suspected breach of these Terms. Upon termination, your right to access and use the Site will immediately cease. All provisions of these Terms which by their nature should survive termination shall survive, including without limitation ownership provisions, warranty disclaimers, indemnity, and limitations of liability.</p>
+
+      <h2>12. Governing Law and Venue</h2>
+      <p>These Terms and any dispute or claim arising out of or relating to these Terms or your use of the Site shall be governed by and construed in accordance with the laws of the State of Georgia, United States of America, without regard to its conflict of laws principles. You agree that any legal action or proceeding arising out of or relating to these Terms shall be brought exclusively in the state or federal courts located in Fulton County, Georgia, and you hereby irrevocably submit to the personal jurisdiction of such courts and waive any objection to venue therein.</p>
+
+      <h2>13. Informal Dispute Resolution</h2>
+      <p>Before filing a claim against SEAM, you agree to attempt to resolve the dispute informally by sending a written notice describing the dispute to SEAM at the contact address set forth below. SEAM will attempt to resolve the dispute by contacting you. If a dispute is not resolved within sixty (60) days after submission of such notice, you or SEAM may bring a formal proceeding subject to the terms of this Agreement.</p>
+
+      <h2>14. Modifications to These Terms</h2>
+      <p>SEAM reserves the right, in its sole discretion, to modify or replace these Terms at any time. If a revision is material, SEAM will make reasonable efforts to provide notice of such changes by updating the "Last Updated" date at the top of these Terms or by other reasonable means. Your continued use of the Site after the effective date of any such modifications constitutes your acceptance of the revised Terms. If you do not agree to the revised Terms, you must stop using the Site.</p>
+
+      <h2>15. Severability</h2>
+      <p>If any provision of these Terms is held by a court of competent jurisdiction to be invalid, illegal, or unenforceable, such provision shall be modified to the minimum extent necessary to render it enforceable, or, if modification is not possible, severed from these Terms, and the remaining provisions shall continue in full force and effect.</p>
+
+      <h2>16. No Waiver</h2>
+      <p>No waiver by SEAM of any term or condition set forth in these Terms shall be deemed a further or continuing waiver of such term or condition or a waiver of any other term or condition, and any failure of SEAM to assert a right or provision under these Terms shall not constitute a waiver of such right or provision.</p>
+
+      <h2>17. Assignment</h2>
+      <p>You may not assign or transfer these Terms or any rights or obligations hereunder, in whole or in part, without SEAM's prior written consent. Any attempted assignment in violation of this section shall be null and void. SEAM may freely assign or transfer these Terms without restriction.</p>
+
+      <h2>18. Entire Agreement</h2>
+      <p>These Terms, together with the <a href="/privacy">Privacy Policy</a> and any other legal notices published by SEAM on the Site, constitute the entire agreement between you and SEAM concerning the Site and supersede all prior or contemporaneous communications, whether electronic, oral, or written, between you and SEAM with respect to the Site.</p>
+
+      <h2>19. Contact Information</h2>
+      <p>If you have any questions about these Terms, please contact us at:</p>
+
+      <div class="rounded-xl bg-warm-50 border border-warm-100 p-6 not-prose text-[15px] text-warm-600 leading-relaxed space-y-2 my-8">
+        <p><strong class="text-warm-900">SEAM</strong></p>
+        <p>Attn: Legal / Terms of Use</p>
+        <p>3343 Peachtree Rd NE, Suite 145-360, Atlanta, GA 30326</p>
+        <p><strong class="text-warm-900">Email:</strong> <a href="mailto:admin@seamcertification.org" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">admin@seamcertification.org</a></p>
+      </div>
+
+    </div>
+  </section>
+
+</SiteLayout>
+
+<style is:global>
+  #terms-prose h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -0.02em;
+    color: var(--color-warm-900);
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+  #terms-prose h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    color: var(--color-warm-900);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  #terms-prose p {
+    margin-bottom: 1.25rem;
+  }
+  #terms-prose ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  #terms-prose ul li::marker {
+    color: var(--color-warm-300);
+  }
+  #terms-prose a {
+    text-decoration: underline;
+    text-decoration-color: var(--color-warm-300);
+    transition: text-decoration-color 0.2s;
+  }
+  #terms-prose a:hover {
+    text-decoration-color: var(--color-warm-600);
+  }
+</style>
