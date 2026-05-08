@@ -65,7 +65,7 @@ const year = new Date().getFullYear()
   <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-28">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
       <div class="lg:col-span-3">
-        <img src="/logos/seam-wordmark-white.png" alt="SEAM" class="h-8 w-auto" />
+        <img src="/logos/seam-wordmark-white.png" alt="SEAM" decoding="async" class="h-8 w-auto" />
         <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-sm">
           Real estate has a human impact. SEAM exists to make that impact positive, for everyone connected to it.
         </p>
@@ -90,6 +90,7 @@ const year = new Date().getFullYear()
             </button>
           </div>
         </form>
+        <p id="footer-newsletter-status" class="mt-3 text-[14px] hidden"></p>
 
         <!-- LinkedIn -->
         <a
@@ -152,3 +153,52 @@ const year = new Date().getFullYear()
     </div>
   </div>
 </footer>
+
+<script>
+  const form = document.getElementById('footer-newsletter') as HTMLFormElement | null
+  const statusEl = document.getElementById('footer-newsletter-status') as HTMLElement | null
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    if (!statusEl) return
+
+    const data = new FormData(form)
+    const email = data.get('email') as string
+    if (!email) return
+
+    const fields = [
+      { objectTypeId: '0-1', name: 'email', value: email },
+    ]
+
+    try {
+      // TODO: Replace with actual HubSpot newsletter form GUID
+      const res = await fetch(
+        'https://api.hsforms.com/submissions/v3/integration/submit/46821728/NEWSLETTER_FORM_GUID',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields,
+            context: {
+              pageUri: window.location.href,
+              pageName: 'Footer Newsletter',
+            },
+          }),
+        }
+      )
+
+      if (res.ok) {
+        form.reset()
+        statusEl.textContent = "You're subscribed! Watch your inbox."
+        statusEl.classList.remove('hidden', 'text-red-400')
+        statusEl.classList.add('text-seam-300')
+      } else {
+        throw new Error('Submission failed')
+      }
+    } catch {
+      statusEl.textContent = 'Something went wrong. Please try again.'
+      statusEl.classList.remove('hidden', 'text-seam-300')
+      statusEl.classList.add('text-red-400')
+    }
+  })
+</script>

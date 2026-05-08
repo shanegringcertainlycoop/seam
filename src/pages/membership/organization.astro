@@ -125,6 +125,8 @@ const jsonLd = [
         src="/images/hero-organization.jpg"
         alt="Organization membership for teams and institutions"
         class="h-full w-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
     </div>
@@ -150,9 +152,9 @@ const jsonLd = [
       </div>
     </div>
     <div class="hidden lg:flex absolute -bottom-24 right-12 items-end gap-0 z-10">
-      <img src="/logos/member-standing.png" alt="Standing membership" class="w-56 h-56 object-contain drop-shadow-2xl -mr-10" />
-      <img src="/logos/member-ladder.png" alt="Ladder membership" class="w-56 h-56 object-contain drop-shadow-2xl -mr-10" />
-      <img src="/logos/member-arc.png" alt="Arc membership" class="w-56 h-56 object-contain drop-shadow-2xl" />
+      <img src="/logos/member-standing.png" alt="Standing membership" class="w-56 h-56 object-contain drop-shadow-2xl -mr-10" loading="lazy" decoding="async" />
+      <img src="/logos/member-ladder.png" alt="Ladder membership" class="w-56 h-56 object-contain drop-shadow-2xl -mr-10" loading="lazy" decoding="async" />
+      <img src="/logos/member-arc.png" alt="Arc membership" class="w-56 h-56 object-contain drop-shadow-2xl" loading="lazy" decoding="async" />
     </div>
   </section>
 
@@ -192,7 +194,7 @@ const jsonLd = [
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-12">
         {tiers.map((tier) => (
           <div class={`relative rounded-2xl p-6 sm:p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'bg-warm-900 text-white' : 'bg-white border border-warm-100'}`}>
-            <img src={tier.badge} alt="" class="absolute -top-12 right-10 w-24 h-24 object-contain drop-shadow-lg" />
+            <img src={tier.badge} alt="" class="absolute -top-12 right-10 w-24 h-24 object-contain drop-shadow-lg" loading="lazy" decoding="async" />
             <h3 class={`font-display text-[28px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.name}</h3>
             <div class="mt-5 flex items-baseline gap-1">
               <span class={`font-display text-[40px] tracking-[-0.02em] ${tier.highlighted ? 'text-white' : 'text-warm-900'}`}>{tier.price}</span>
@@ -238,7 +240,7 @@ const jsonLd = [
       <div class="reveal-fade-up flex flex-wrap items-center justify-center lg:justify-between gap-x-12 gap-y-10 mb-16">
         {memberLogos.map((logo) => (
           <a href={`/directory/org/${logo.slug}`} class="transition-opacity duration-300 hover:opacity-70">
-            <img src={logo.src} alt={logo.alt} class={`${logo.height} w-auto object-contain`} />
+            <img src={logo.src} alt={logo.alt} class={`${logo.height} w-auto object-contain`} loading="lazy" decoding="async" />
           </a>
         ))}
       </div>
@@ -295,7 +297,7 @@ const jsonLd = [
         </div>
         <div class="reveal-scale hidden lg:block">
           <div class="aspect-[603/699] overflow-hidden rounded-2xl">
-            <img src="/images/organization-faq.jpg" alt="SEAM organization member at work" class="w-full h-full object-cover" />
+            <img src="/images/organization-faq.jpg" alt="SEAM organization member at work" class="w-full h-full object-cover" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>

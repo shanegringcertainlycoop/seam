@@ -132,6 +132,8 @@ const levels = [
         src="/images/buildings-interiors/hero-studio.jpg"
         alt=""
         class="absolute inset-0 h-full w-full object-cover"
+        fetchpriority="high"
+        decoding="async"
       />
       <div class="absolute inset-0 bg-gradient-to-br from-warm-900/85 via-warm-900/60 to-seam-900/70"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
@@ -142,6 +144,8 @@ const levels = [
       src="/logos/rating-bi.png"
       alt="SEAM Buildings + Interiors"
       class="hidden lg:block absolute right-[5%] xl:right-[8%] bottom-0 translate-y-1/2 w-[240px] xl:w-[280px] pointer-events-none select-none z-10"
+      loading="lazy"
+      decoding="async"
     />
 
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
@@ -320,6 +324,8 @@ const levels = [
                   src={a.image}
                   alt=""
                   class="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             )}
@@ -367,6 +373,8 @@ const levels = [
                 src={level.image}
                 alt={`SEAM ${level.title} certification badge`}
                 class="h-28 w-28 object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)]"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="lg:col-span-6">

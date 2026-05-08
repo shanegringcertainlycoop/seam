@@ -208,11 +208,11 @@ const jsonLd = [
                     {step.logos ? (
                       <div class="flex items-end -space-x-1 sm:-space-x-4">
                         {step.logos.map((logo: string) => (
-                          <img src={logo} alt="" class="w-8 h-8 sm:w-16 sm:h-16 object-contain drop-shadow-md" />
+                          <img src={logo} alt="" class="w-8 h-8 sm:w-16 sm:h-16 object-contain drop-shadow-md" loading="lazy" decoding="async" />
                         ))}
                       </div>
                     ) : (
-                      <img src={step.logo} alt="" class="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-md" />
+                      <img src={step.logo} alt="" class="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-md" loading="lazy" decoding="async" />
                     )}
                   </div>
                 )}

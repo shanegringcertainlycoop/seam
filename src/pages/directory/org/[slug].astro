@@ -48,6 +48,8 @@ const jsonLd = breadcrumbSchema([
                 src={org.logo}
                 alt={org.name}
                 class="w-full h-full object-contain p-4"
+                fetchpriority="high"
+                decoding="async"
               />
             ) : (
               <span class="font-display text-[32px] text-warm-300">
@@ -125,6 +127,8 @@ const jsonLd = breadcrumbSchema([
                         src={ap.photo}
                         alt={ap.name}
                         class="w-full h-full object-cover object-top"
+                        loading="lazy"
+                        decoding="async"
                         onerror="this.style.display='none'"
                       />
                     </div>

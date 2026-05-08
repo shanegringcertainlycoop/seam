@@ -134,6 +134,8 @@ const jsonLd = [
             src={post.image.src}
             alt={post.image.alt}
             class="w-full h-auto object-cover max-h-[480px]"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
       </div>

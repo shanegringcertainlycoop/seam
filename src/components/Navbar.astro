@@ -222,6 +222,7 @@ function logoClass(_logo: string) {
           data-src-light="/logos/seam-wordmark.png"
           data-src-dark="/logos/seam-wordmark-white.png"
           alt="SEAM"
+          decoding="async"
           class="h-8 w-auto transition-all duration-300"
         />
       </a>
@@ -272,7 +273,7 @@ function logoClass(_logo: string) {
                         <div class="flex -space-x-3">
                           {apPhotos.slice(0, 5).map((src) => (
                             <div class="w-10 h-10 rounded-full bg-warm-700 border-2 border-warm-900 overflow-hidden">
-                              <img src={src} alt="" class="w-full h-full object-cover object-top" />
+                              <img src={src} alt="SEAM professional" decoding="async" class="w-full h-full object-cover object-top" />
                             </div>
                           ))}
                           <div class="w-10 h-10 rounded-full bg-warm-700/60 border-2 border-warm-900 flex items-center justify-center text-[11px] font-medium text-white">
@@ -281,12 +282,12 @@ function logoClass(_logo: string) {
                         </div>
                         {projectImage && (
                           <div class="w-28 h-16 rounded-lg overflow-hidden bg-warm-700">
-                            <img src={projectImage} alt="" class="w-full h-full object-cover opacity-90" />
+                            <img src={projectImage} alt="Certified project" decoding="async" class="w-full h-full object-cover opacity-90" />
                           </div>
                         )}
                         <div class="flex items-center gap-4 opacity-60">
                           {brandLogos.map((src) => (
-                            <img src={src} alt="" class={`w-auto object-contain brightness-0 invert ${src.includes('jll') ? 'h-9' : 'h-4'}`} />
+                            <img src={src} alt={src.includes('jll') ? 'JLL' : 'CBRE'} decoding="async" class={`w-auto object-contain brightness-0 invert ${src.includes('jll') ? 'h-9' : 'h-4'}`} />
                           ))}
                         </div>
                       </div>
@@ -342,6 +343,7 @@ function logoClass(_logo: string) {
                         <img
                           src="/images/seam-standard-book.png"
                           alt="The SEAM Standard book cover"
+                          decoding="async"
                           class="absolute right-2 top-1/2 -translate-y-[45%] h-[280px] w-auto drop-shadow-[0_16px_32px_rgba(0,0,0,0.4)] rotate-[12deg]"
                         />
                       </div>
@@ -377,7 +379,8 @@ function logoClass(_logo: string) {
                           {['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'].map((src, i) => (
                             <img
                               src={src}
-                              alt=""
+                              alt="SEAM certification level"
+                              decoding="async"
                               class="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
                               style={`position: relative; z-index: ${i + 1}; width: ${100 + i * 16}px; height: ${100 + i * 16}px;`}
                             />
@@ -392,7 +395,7 @@ function logoClass(_logo: string) {
                       <a href={latestArticle.href} class="group/article bg-warm-50 p-6 flex flex-col">
                         <p class="px-0 pb-3 text-[11px] font-medium uppercase tracking-[0.15em] text-gold-600">Latest article</p>
                         <div class="rounded-lg overflow-hidden mb-4">
-                          <img src={latestArticle.image} alt="" class="w-full aspect-[16/10] object-cover transition-transform duration-500 group-hover/article:scale-105" />
+                          <img src={latestArticle.image} alt={latestArticle.title} decoding="async" class="w-full aspect-[16/10] object-cover transition-transform duration-500 group-hover/article:scale-105" />
                         </div>
                         <p class="text-[14px] font-medium leading-snug text-warm-900 group-hover/article:text-gold-600 transition-colors line-clamp-3">{latestArticle.title}</p>
                         <span class="inline-flex items-center mt-auto pt-3 text-[12px] font-medium text-seam-600">Read article &rarr;</span>
@@ -422,7 +425,8 @@ function logoClass(_logo: string) {
                                 {link.logos.map((src) => (
                                   <img
                                     src={src}
-                                    alt=""
+                                    alt={link.label}
+                                    decoding="async"
                                     class="w-10 h-10 object-contain drop-shadow-sm"
                                   />
                                 ))}
@@ -430,7 +434,8 @@ function logoClass(_logo: string) {
                             ) : link.logo ? (
                               <img
                                 src={link.logo}
-                                alt=""
+                                alt={link.label}
+                                decoding="async"
                                 class={`object-contain shrink-0 ${logoClass(link.logo)}`}
                               />
                             ) : null}
@@ -480,7 +485,8 @@ function logoClass(_logo: string) {
                           {link.logo && (
                             <img
                               src={link.logo}
-                              alt=""
+                              alt={link.label}
+                              decoding="async"
                               class="w-10 h-10 object-contain shrink-0"
                             />
                           )}

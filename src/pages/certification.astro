@@ -131,6 +131,8 @@ const jsonLd = breadcrumbSchema([
         src="/hero.png"
         alt="The Jack building in Seattle's Pioneer Square — the world's first SEAM Certified location"
         class="h-full w-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/10"></div>
     </div>
@@ -174,6 +176,8 @@ const jsonLd = breadcrumbSchema([
                 src="/images/directory/the-jack.avif"
                 alt="The Jack — world's first SEAM Certified building"
                 class="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="p-5">
@@ -186,6 +190,8 @@ const jsonLd = breadcrumbSchema([
                   src="/logos/cert-bronze.png"
                   alt="SEAM Bronze Certified"
                   class="w-10 h-10 object-contain shrink-0 drop-shadow-md"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <p class="mt-3 text-[12px] leading-relaxed text-white/35">
@@ -241,6 +247,8 @@ const jsonLd = breadcrumbSchema([
                 src={pillar.icon}
                 alt=""
                 class="hidden lg:block h-[128px] w-auto object-contain pointer-events-none"
+                loading="lazy"
+                decoding="async"
               />
               <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900">
                 <a href={pillar.href} class="hover:text-seam-600 transition-colors">{pillar.title}</a>
@@ -329,7 +337,7 @@ const jsonLd = breadcrumbSchema([
       <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
         {levels.map((level, i) => (
           <div class={`reveal-child relative rounded-2xl ${levelIntensities[i]} pt-14 pb-8 px-8 lg:pt-14 lg:pb-10 lg:px-10`}>
-            <img src={level.logo} alt={`${level.name} certification`} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" />
+            <img src={level.logo} alt={`${level.name} certification`} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" loading="lazy" decoding="async" />
             <h3 class={`relative font-display text-[28px] tracking-[-0.02em] ${levelTextColors[i]}`}>{level.name}</h3>
             <p class={`mt-1 text-[14px] font-medium ${levelSubColors[i]}`}>{level.tagline}</p>
             <p class={`mt-4 text-[15px] leading-relaxed ${levelBodyColors[i]}`}>{level.description}</p>
@@ -388,7 +396,7 @@ const jsonLd = breadcrumbSchema([
             href={t.href}
             class="reveal-child group rounded-2xl border border-warm-100 p-10 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
           >
-            <img src={t.logo} alt="" class="w-14 h-14 object-contain mb-6" />
+            <img src={t.logo} alt="" class="w-14 h-14 object-contain mb-6" loading="lazy" decoding="async" />
             <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors mb-4">
               {t.title}
             </h3>
@@ -593,22 +601,22 @@ const jsonLd = breadcrumbSchema([
             <p class="text-[12px] text-warm-400 mb-3">Verification by Certification Level</p>
             <div class="grid grid-cols-2 gap-3">
               <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
-                <img src="/logos/cert-bronze.png" alt="Bronze" class="w-10 h-10 object-contain mb-2" />
+                <img src="/logos/cert-bronze.png" alt="Bronze" class="w-10 h-10 object-contain mb-2" loading="lazy" decoding="async" />
                 <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-amber-700 mb-1">Bronze</p>
                 <p id="c2-price-bronze" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$5,625</p>
               </div>
               <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
-                <img src="/logos/cert-silver.png" alt="Silver" class="w-10 h-10 object-contain mb-2" />
+                <img src="/logos/cert-silver.png" alt="Silver" class="w-10 h-10 object-contain mb-2" loading="lazy" decoding="async" />
                 <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-warm-300 mb-1">Silver</p>
                 <p id="c2-price-silver" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$6,875</p>
               </div>
               <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
-                <img src="/logos/cert-gold.png" alt="Gold" class="w-10 h-10 object-contain mb-2" />
+                <img src="/logos/cert-gold.png" alt="Gold" class="w-10 h-10 object-contain mb-2" loading="lazy" decoding="async" />
                 <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-gold-400 mb-1">Gold</p>
                 <p id="c2-price-gold" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$8,125</p>
               </div>
               <div class="rounded-xl bg-warm-800/50 border border-warm-700/30 p-4 flex flex-col items-center text-center">
-                <img src="/logos/cert-platinum.png" alt="Platinum" class="w-10 h-10 object-contain mb-2" />
+                <img src="/logos/cert-platinum.png" alt="Platinum" class="w-10 h-10 object-contain mb-2" loading="lazy" decoding="async" />
                 <p class="text-[11px] font-medium uppercase tracking-[0.1em] text-seam-300 mb-1">Platinum</p>
                 <p id="c2-price-platinum" class="font-display text-[20px] lg:text-[22px] tracking-[-0.03em] text-white">$9,375</p>
               </div>

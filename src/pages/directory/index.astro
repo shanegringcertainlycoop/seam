@@ -255,6 +255,8 @@ const inactivePillClass =
                           src={member.image}
                           alt={member.name}
                           class="w-full h-full object-cover object-top"
+                          loading="lazy"
+                          decoding="async"
                           onerror="this.style.display='none'"
                         />
                       </div>
@@ -301,6 +303,8 @@ const inactivePillClass =
                           src={ap.photo}
                           alt={ap.name}
                           class="w-full h-full object-cover object-top"
+                          loading="lazy"
+                          decoding="async"
                           onerror="this.style.display='none'"
                         />
                       </div>
@@ -366,6 +370,8 @@ const inactivePillClass =
                         src={org.logo}
                         alt={org.name}
                         class="w-full h-full object-contain p-2"
+                        loading="lazy"
+                        decoding="async"
                       />
                     ) : (
                       <span class="font-display text-[16px] text-warm-400">
@@ -429,6 +435,8 @@ const inactivePillClass =
                       src={p.image}
                       alt={p.name}
                       class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
                     />
                   ) : (
                     <div class="w-full h-full bg-gradient-to-br from-warm-50 via-warm-100 to-seam-50 flex items-center justify-center">

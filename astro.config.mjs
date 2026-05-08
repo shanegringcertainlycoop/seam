@@ -3,6 +3,7 @@ import netlify from '@astrojs/netlify'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+  site: 'https://seamcertification.org',
   output: 'server',
   adapter: netlify(),
   vite: {
