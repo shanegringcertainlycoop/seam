@@ -123,12 +123,15 @@ const certBadge: Record<string, string> = {
   Platinum: '/logos/cert-platinum.png',
 }
 
-const projects = certifiedProjects.slice(0, 2).map((p) => ({
+const featuredSlugs = ['the-jack', 'bertschi-school']
+const projects = featuredSlugs.map((slug) => certifiedProjects.find((p) => p.slug === slug)!).map((p) => ({
   name: p.name,
   location: `${p.location.city}, ${p.location.state}`,
   level: p.certificationLevel,
   badge: certBadge[p.certificationLevel] || '',
-  description: p.description,
+  description: p.slug === 'bertschi-school'
+    ? 'Bertschi School is pursuing SEAM Silver for its new 49,384 SF Schoolhouse — aiming to be the first school to achieve the credential. Students have been integral to the planning process from the very beginning.'
+    : p.description,
   image: p.image,
   href: `/directory/project/${p.slug}`,
 }))
@@ -140,6 +143,7 @@ const resources = [
     description: 'Free to join. Show up, learn, and find your people in social equity.',
     cta: 'Enroll for free',
     href: '/membership',
+    logo: '/logos/member-individual.png',
   },
   {
     title: 'The SEAM Standard',
@@ -152,6 +156,7 @@ const resources = [
     description: 'Put a dollar figure on doing the right thing. The business case, quantified.',
     cta: 'Try ROSSI',
     href: '/resources/rossi',
+    logo: '/logos/rossi-calculator.png',
   },
   {
     title: 'Blog & Insights',
@@ -253,7 +258,7 @@ const jsonLd = [
           </em>{' '}
           with people as a focus, communities thrive and investments outperform.
           <br /><br />
-          <img src="/logos/seam-wordmark.png" alt="SEAM" class="inline-block h-[1.1em] w-auto align-baseline -mb-[0.05em]" fetchpriority="high" decoding="async" /> is the world's first standard built to advance social equity in commercial real estate.
+          <img src="/logos/seam-wordmark.svg" alt="SEAM" class="inline-block h-[1.1em] w-auto align-baseline -mb-[0.05em]" fetchpriority="high" decoding="async" /> is the world's first standard built to advance social equity in commercial real estate.
         </p>
       </div>
     </div>
@@ -503,26 +508,28 @@ const jsonLd = [
         {projects.map((project) => (
           <a
             href={project.href}
-            class="reveal-child group relative rounded-2xl bg-warm-900 p-10 lg:p-12 min-h-[360px] flex flex-col justify-end overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
+            class="reveal-child group relative rounded-2xl min-h-[360px] flex flex-col justify-end overflow-visible transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
           >
-            <img
-              src={project.image}
-              alt={project.name}
-              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-warm-900/90 via-warm-900/40 to-transparent"></div>
+            <div class="absolute inset-0 rounded-2xl overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.name}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-warm-900 via-warm-900/60 to-warm-900/10"></div>
+            </div>
             {project.badge && (
               <img
                 src={project.badge}
                 alt={`${project.level} Certified`}
-                class="absolute top-5 right-5 w-16 h-16 lg:w-20 lg:h-20 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
+                class="absolute -top-5 sm:-top-8 right-4 sm:right-8 w-16 h-16 lg:w-20 lg:h-20 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)] pointer-events-none z-10"
                 loading="lazy"
                 decoding="async"
               />
             )}
-            <div class="relative">
+            <div class="relative p-10 lg:p-12">
               <h3 class="font-display text-[28px] lg:text-[32px] tracking-[-0.02em] text-white mb-2">
                 {project.name}
               </h3>
@@ -537,10 +544,10 @@ const jsonLd = [
 
       <div class="mt-10 text-center">
         <a
-          href="/about/projects"
+          href="/directory?tab=projects"
           class="text-[15px] font-medium text-warm-900 underline underline-offset-4 decoration-warm-300 hover:decoration-warm-900 transition-colors duration-300"
         >
-          View all certified projects
+          View all projects &rarr;
         </a>
       </div>
     </div>
@@ -551,7 +558,7 @@ const jsonLd = [
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
-          The people behind the Standard
+          The SEAM Community
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Practitioners, leaders, and{' '}
@@ -562,36 +569,51 @@ const jsonLd = [
         </p>
       </div>
 
-      <div class="reveal-stagger grid grid-cols-4 sm:grid-cols-7 lg:grid-cols-11 gap-3 lg:gap-4 max-w-5xl mx-auto justify-items-center">
+      <div class="reveal-stagger grid grid-cols-6 sm:grid-cols-9 lg:grid-cols-12 gap-3 lg:gap-4 max-w-5xl mx-auto justify-items-center">
         {[
-          { src: '/images/team/rainey-shane.png', name: 'Rainey Shane', role: 'Co-Founder' },
-          { src: '/images/team/alex-demestihas.png', name: 'Alex Demestihas', role: 'Co-Founder' },
-          { src: '/images/ap-alexandra-bull.jpg', name: 'Alexandra Bull', role: 'SEAM AP' },
-          { src: '/images/ap-christian-mayer.jpg', name: 'Christian Mayer', role: 'SEAM AP' },
-          { src: '/images/ap-melina-gorrebeeck.jpg', name: 'Melina Gorrebeeck', role: 'SEAM AP' },
-          { src: '/images/directory/ap-jennifer-beyer.jpg', name: 'Jennifer Beyer', role: 'SEAM AP' },
-          { src: '/images/directory/ap-patricia-raicht.jpg', name: 'Patricia Raicht', role: 'SEAM AP' },
-          { src: '/images/directory/ap-lonna-babu.jpg', name: 'Lonna Babu', role: 'SEAM AP' },
-          { src: '/images/directory/ap-karin-miller.jpg', name: 'Karin Miller', role: 'SEAM AP' },
-          { src: '/images/directory/ap-lina-daniel.jpg', name: 'Lina Daniel', role: 'SEAM AP' },
-          { src: '/images/directory/ap-max-kriegsfeld.jpg', name: 'Max Kriegsfeld', role: 'SEAM AP' },
-          { src: '/images/directory/ap-jayne-lee.jpg', name: 'Jayne Lee', role: 'SEAM AP' },
-          { src: '/images/directory/ap-hetvi-vora.jpg', name: 'Hetvi Vora', role: 'SEAM AP' },
-          { src: '/images/directory/ap-anna-fredlander.jpg', name: 'Anna Fredlander', role: 'SEAM AP' },
-          { src: '/images/directory/ap-monica-wentz.jpg', name: 'Monica Wentz', role: 'SEAM AP' },
-          { src: '/images/directory/ap-valerie-oliver.jpg', name: 'Valerie Oliver', role: 'SEAM AP' },
-          { src: '/images/directory/ap-jennifer-webb.jpg', name: 'Jennifer Webb', role: 'SEAM AP' },
-          { src: '/images/directory/ap-edward-wan.jpg', name: 'Edward Wan', role: 'SEAM AP' },
-          { src: '/images/directory/ap-eva-lo.png', name: 'Eva Lo', role: 'SEAM AP' },
-          { src: '/images/team/chris-pirschel.jpg', name: 'Chris Pirschel', role: 'CMO' },
-          { src: '/images/team/shane-gring.jpg', name: 'Shane Gring', role: 'COO' },
-        ].map((person, i) => (
+          { src: '/images/team/rainey-shane.png', name: 'Rainey Shane' },
+          { src: '/images/team/alex-demestihas.png', name: 'Alex Demestihas' },
+          { src: '/images/team/chris-pirschel.jpg', name: 'Chris Pirschel' },
+          { src: '/images/team/shane-gring.jpg', name: 'Shane Gring' },
+          { src: '/images/ap-alexandra-bull.jpg', name: 'Alexandra Bull' },
+          { src: '/images/ap-christian-mayer.jpg', name: 'Christian Mayer' },
+          { src: '/images/ap-melina-gorrebeeck.jpg', name: 'Melina Gorrebeeck' },
+          { src: '/images/directory/ap-jennifer-beyer.jpg', name: 'Jennifer Beyer' },
+          { src: '/images/directory/ap-patricia-raicht.jpg', name: 'Patricia Raicht' },
+          { src: '/images/directory/ap-lonna-babu.jpg', name: 'Lonna Babu' },
+          { src: '/images/directory/ap-karin-miller.jpg', name: 'Karin Miller' },
+          { src: '/images/directory/ap-lina-daniel.jpg', name: 'Lina Daniel' },
+          { src: '/images/directory/ap-max-kriegsfeld.jpg', name: 'Max Kriegsfeld' },
+          { src: '/images/directory/ap-jayne-lee.jpg', name: 'Jayne Lee' },
+          { src: '/images/directory/ap-hetvi-vora.jpg', name: 'Hetvi Vora' },
+          { src: '/images/directory/ap-anna-fredlander.jpg', name: 'Anna Fredlander' },
+          { src: '/images/directory/ap-monica-wentz.jpg', name: 'Monica Wentz' },
+          { src: '/images/directory/ap-valerie-oliver.jpg', name: 'Valerie Oliver' },
+          { src: '/images/directory/ap-jennifer-webb.jpg', name: 'Jennifer Webb' },
+          { src: '/images/directory/ap-edward-wan.jpg', name: 'Edward Wan' },
+          { src: '/images/directory/ap-eva-lo.png', name: 'Eva Lo' },
+          { src: '/images/directory/ap-curtis-stewart.jpg', name: 'Curtis Stewart' },
+          { src: '/images/directory/ap-tim-wedemeyer.jpg', name: 'Tim Wedemeyer' },
+          { src: '/images/directory/ap-nancy-larson.jpg', name: 'Nancy Larson' },
+          { src: '/images/directory/ap-gerlinda-grimes.jpg', name: 'Gerlinda Grimes' },
+          { src: '/images/directory/ap-wendy-cooper.jpg', name: 'Wendy Cooper' },
+          { src: '/images/directory/ap-rebecca-ballard.jpg', name: 'Rebecca Ballard' },
+          { src: '/images/directory/ap-gia-tejeda.jpg', name: 'Gia Tejeda' },
+          { src: '/images/directory/ap-tebogo-modisagape.jpg', name: 'Tebogo Modisagape' },
+          { src: '/images/directory/ap-jaida-holbrook.jpg', name: 'Jaida Holbrook' },
+          { src: '/images/directory/ap-becca-timms.jpg', name: 'Becca Timms' },
+          { src: '/images/directory/ap-stephen-rich.jpg', name: 'Stephen Rich' },
+          { src: '/images/directory/ap-susan-glass.jpg', name: 'Susan Glass' },
+          { src: '/images/directory/ap-yun-loy-yap.jpg', name: 'Yun Loy Yap' },
+          { src: '/images/directory/ap-phuong-tran.jpg', name: 'Phuong Tran' },
+          { src: '/images/directory/ap-taidgh-mcclory.jpg', name: 'Taidgh McClory' },
+        ].map((person) => (
           <div class="reveal-child">
-            <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden ring-2 ring-white shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
+            <div class="w-14 h-14 lg:w-[4.5rem] lg:h-[4.5rem] rounded-full overflow-hidden ring-2 ring-white shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
               <img
                 src={person.src}
                 alt={person.name}
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover object-top"
                 loading="lazy"
                 decoding="async"
               />
@@ -600,15 +622,16 @@ const jsonLd = [
         ))}
       </div>
 
-      <div class="reveal-stagger mt-12 flex flex-wrap justify-center items-center gap-8 lg:gap-12 max-w-4xl mx-auto">
+      <div class="reveal-stagger mt-12 flex flex-wrap justify-center items-center gap-8 lg:gap-12 max-w-5xl mx-auto">
         {[
           { src: '/logos/jll.png', name: 'JLL' },
           { src: '/logos/interface.png', name: 'Interface' },
           { src: '/logos/hitt.png', name: 'HITT Contracting' },
           { src: '/logos/jamestown.png', name: 'Jamestown' },
           { src: '/logos/leapley.png', name: 'Leapley Construction' },
-          { src: '/logos/thm-advisors.svg', name: 'THM Advisors' },
+          { src: '/logos/thm-advisors.png', name: 'THM Advisors' },
           { src: '/logos/brightworks.svg', name: 'Brightworks Sustainability' },
+          { src: '/logos/members/val-interiors.png', name: 'Val Interiors' },
         ].sort(() => Math.random() - 0.5).map((org) => (
           <div class="reveal-child">
             <img
@@ -653,8 +676,11 @@ const jsonLd = [
         {resources.map((resource) => (
           <a
             href={resource.href}
-            class="reveal-child group rounded-2xl bg-warm-50 p-8 lg:p-10 transition-all duration-300 hover:bg-warm-100/80"
+            class={`reveal-child group relative rounded-2xl bg-warm-50 p-8 lg:p-10 transition-all duration-300 hover:bg-warm-100/80 ${resource.logo ? 'overflow-visible' : ''}`}
           >
+            {resource.logo && (
+              <img src={resource.logo} alt="" class="absolute -top-5 sm:-top-8 right-4 sm:right-6 w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-md pointer-events-none" loading="lazy" decoding="async" />
+            )}
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
               {resource.title}
             </h3>

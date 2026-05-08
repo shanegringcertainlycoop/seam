@@ -1,7 +1,7 @@
 export const SITE_URL =
   import.meta.env.SITE_URL || import.meta.env.URL || 'https://seamcertification.org'
 export const SITE_NAME = 'SEAM'
-export const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`
+export const DEFAULT_IMAGE = `${SITE_URL}/images/seam-social-card.jpg`
 export const DEFAULT_DESCRIPTION =
   'SEAM is the first certification system that measures social equity in buildings. Bronze through Platinum certification across four pillars.'
 

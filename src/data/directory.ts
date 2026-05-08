@@ -671,7 +671,7 @@ export const memberOrgs: MemberOrg[] = [
   {
     slug: 'thm-advisors',
     name: 'THM Advisors',
-    logo: '/logos/thm-advisors.svg',
+    logo: '/logos/thm-advisors.png',
     tier: 'Member',
     description: 'A certified Minority-Owned Business Enterprise that helps commercial real estate developers embed racial equity strategies into their operating models. THM designs career, community, contract, and capital strategies that promote equity and inclusion — including the DEI framework for Harvard\'s Enterprise Research Campus.',
     location: { city: 'Boston', state: 'MA' },
@@ -681,7 +681,7 @@ export const memberOrgs: MemberOrg[] = [
   {
     slug: 'val-interiors',
     name: 'Val Interiors',
-    logo: undefined,
+    logo: '/logos/members/val-interiors.png',
     tier: 'Member',
     description: 'A commercial interiors firm contributing to social equity in the built environment through SEAM membership and sustainable interior construction practices.',
     location: { city: '', state: '' },

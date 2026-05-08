@@ -30,7 +30,6 @@ const pillars = [
     stats: [
       { figure: '8.6%', context: 'For every one-point increase in tenant satisfaction (on a 1–5 scale), lease renewal likelihood improves by 8.6%. Social equity programs — community events, inclusive amenities, responsive management — move that score.', source: 'MIT Center for Real Estate', href: 'https://mitcre.mit.edu/' },
       { figure: '54%', context: 'More than 54% of market-rate apartment renters renewed their leases in late 2024 — a 120 basis-point increase year-over-year. The buildings winning renewals are the ones investing in resident experience.', source: 'RealPage Market Analytics', href: 'https://heyrenew.com/blog/resident-retention-is-climbing' },
-      { figure: '12%', context: 'SEAM-certified assets in portfolio modeling show an average 12% tenant retention lift, translating directly to reduced vacancy costs and more predictable cash flows.', source: 'ROSSI Portfolio Modeling', href: '/resources/rossi' },
     ],
     takeaway: 'Every percentage point of retention you gain by investing in community is a percentage point of vacancy you never have to fill.',
   },
@@ -77,7 +76,7 @@ const faqs = [
   { q: 'How do certified buildings financially outperform?', a: 'Certified buildings command 4–8% rent premiums (CBRE, 2024), up to 25.3% sales premiums for Class A assets, and dramatically lower vacancy rates. When you add tenant retention lifts of 8–12% and insurance risk reductions of up to 23%, the financial case compounds across every line item.' },
   { q: 'Is this just greenwashing with a social label?', a: 'SEAM certification requires third-party verification across 21 objectives spanning four pillars. Every claim is measured, documented, and independently reviewed. The ROSSI Calculator uses peer-reviewed research from 2019–2024 extending the NYU Stern ROSI methodology. This is audited performance, not marketing language.' },
   { q: 'What if our market does not demand social certification yet?', a: 'In 2015, green certification was optional. Today, 70% of corporate occupiers include sustainability in site selection. Social certification is on the same trajectory — early movers gain premium positioning, late movers pay to catch up. GRESB now benchmarks $7 trillion in assets, and social indicators are expanding every year.' },
-  { q: 'How do I make this case to my investment committee?', a: 'The ROSSI Calculator translates social equity outcomes into the four financial dimensions investment committees understand: tenant retention value, insurance risk reduction, operating cost impact, and ESG scoring improvement. It generates presentation-ready outputs in less than 20 questions.' },
+  { q: 'How do I make this case to my investment committee?', a: 'The ROSSI Calculator translates social equity performance into financial terms. Fewer than 20 questions, project-specific numbers, the directional business case you need to bring the conversation forward.' },
   { q: 'Can social equity coexist with cost discipline?', a: 'Social equity programs are not necessarily expensive — many involve operational changes, not capital expenditure. Local procurement, inclusive hiring, community programming, and accessible design are efficiency strategies that also happen to drive equity. ROSSI models the cost-benefit so you can invest where the returns are highest.' },
 ]
 
@@ -100,8 +99,17 @@ const jsonLd = [
 >
 
   <!-- ─── Hero ─── -->
-  <section class="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+  <section class="relative min-h-[80vh] flex items-center overflow-hidden bg-warm-900">
+    <div class="absolute inset-0">
+      <img
+        src="/images/hero-roi.jpg"
+        alt="Urban commute reflecting the human side of real estate"
+        class="h-full w-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-warm-900/60"></div>
+    </div>
 
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
       <div class="hero-enter max-w-4xl">
@@ -303,10 +311,10 @@ const jsonLd = [
           <div>
             <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-400 mb-6">ROSSI Calculator</p>
             <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-white">
-              Stop arguing.{' '}<em class="italic font-normal text-seam-300">Start modeling.</em>
+              The business case,{' '}<em class="italic font-normal text-seam-300">in numbers</em>
             </h2>
             <p class="mt-6 text-[17px] leading-relaxed text-warm-300 max-w-lg">
-              The ROSSI Calculator translates these research findings into project-specific financial projections. Model tenant retention, insurance risk reduction, operating costs, and ESG scoring in less than 20 questions.
+              Translate social equity performance into financial terms decision-makers can act on. Fewer than 20 questions, project-specific projections, the kind of evidence that moves internal conversations forward.
             </p>
             <div class="mt-10 flex flex-wrap gap-4">
               <a
@@ -358,24 +366,6 @@ const jsonLd = [
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Testimonial ─── -->
-  <section class="py-24 lg:py-32 bg-warm-50">
-    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <svg class="mx-auto mb-8 w-12 h-12 text-warm-300" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
-        </svg>
-        <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-warm-900">
-          ROSSI gave us a way to present social equity to our investment committee in the only language they respond to — returns. The portfolio model showed a twelve percent retention lift and a twenty-three percent risk reduction across certified assets.
-        </blockquote>
-        <div class="mt-10">
-          <p class="text-[16px] font-medium text-warm-900">Sarah Kowalski</p>
-          <p class="text-[14px] text-warm-500 mt-1">Head of ESG &middot; Northbridge Capital Advisors</p>
         </div>
       </div>
     </div>

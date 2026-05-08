@@ -143,23 +143,43 @@ const jsonLd = [
         New articles, certified project announcements, and Standard updates
         delivered to your inbox. No noise.
       </p>
-      <form id="blog-newsletter" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-        <label for="newsletter-email" class="sr-only">Email address</label>
-        <input
-          id="newsletter-email"
-          type="email"
-          name="email"
-          placeholder="you@company.com"
-          required
-          autocomplete="email"
-          class="flex-1 rounded-full border border-warm-200 bg-white px-6 py-3.5 text-[15px] text-warm-900 placeholder:text-warm-400 outline-none focus:border-warm-400 transition-colors"
-        />
-        <button
-          type="submit"
-          class="rounded-full bg-warm-900 px-8 py-3.5 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors"
-        >
-          Subscribe
-        </button>
+      <form id="blog-newsletter" class="max-w-md mx-auto">
+        <div class="flex gap-3 mb-3">
+          <input
+            type="text"
+            name="firstname"
+            placeholder="First name"
+            required
+            aria-label="First name"
+            class="flex-1 rounded-full border border-warm-200 bg-white px-6 py-3.5 text-[15px] text-warm-900 placeholder:text-warm-400 outline-none focus:border-warm-400 transition-colors"
+          />
+          <input
+            type="text"
+            name="lastname"
+            placeholder="Last name"
+            required
+            aria-label="Last name"
+            class="flex-1 rounded-full border border-warm-200 bg-white px-6 py-3.5 text-[15px] text-warm-900 placeholder:text-warm-400 outline-none focus:border-warm-400 transition-colors"
+          />
+        </div>
+        <div class="flex gap-3">
+          <label for="newsletter-email" class="sr-only">Email address</label>
+          <input
+            id="newsletter-email"
+            type="email"
+            name="email"
+            placeholder="you@company.com"
+            required
+            autocomplete="email"
+            class="flex-1 rounded-full border border-warm-200 bg-white px-6 py-3.5 text-[15px] text-warm-900 placeholder:text-warm-400 outline-none focus:border-warm-400 transition-colors"
+          />
+          <button
+            type="submit"
+            class="rounded-full bg-warm-900 px-8 py-3.5 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors"
+          >
+            Subscribe
+          </button>
+        </div>
       </form>
       <p id="blog-newsletter-status" class="mt-4 text-[15px] hidden"></p>
     </div>
@@ -175,16 +195,19 @@ const jsonLd = [
 
       const data = new FormData(form)
       const email = data.get('email') as string
-      if (!email) return
+      const firstname = data.get('firstname') as string
+      const lastname = data.get('lastname') as string
+      if (!email || !firstname || !lastname) return
 
       const fields = [
         { objectTypeId: '0-1', name: 'email', value: email },
+        { objectTypeId: '0-1', name: 'firstname', value: firstname },
+        { objectTypeId: '0-1', name: 'lastname', value: lastname },
       ]
 
       try {
-        // TODO: Replace with actual HubSpot newsletter form GUID
         const res = await fetch(
-          'https://api.hsforms.com/submissions/v3/integration/submit/46821728/NEWSLETTER_FORM_GUID',
+          'https://api.hsforms.com/submissions/v3/integration/submit/46821728/8c2eb226-ccce-4390-a915-9c592518279f',
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

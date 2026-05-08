@@ -36,18 +36,18 @@ const dimensions = [
 ]
 
 const users = [
-  { title: 'Developers and owners', description: 'Model the business case for SEAM certification before committing. Show investors and boards that social equity investment has measurable financial returns.' },
-  { title: 'Capital providers', description: 'Evaluate social performance in financial terms for acquisition diligence, fund mandates, and portfolio reporting. GRESB-aligned scoring at project and portfolio level.' },
-  { title: 'Property managers', description: 'Quantify the retention and operating cost impact of existing equity programs. Build the case for expanding social equity initiatives to ownership.' },
+  { title: 'Developers and owners', description: 'Model the business case for SEAM Certification before committing. Walk into investor and board conversations with a directional picture of what social equity investment returns, in numbers.' },
+  { title: 'Capital providers', description: 'Translate social performance into financial terms for diligence and internal reporting. ROSSI helps acquisition teams and ESG officers move from \u201Cthis is the right thing\u201D to \u201Cthis is what the numbers look like.\u201D' },
+  { title: 'Property managers', description: 'Build the internal case for expanding social equity work. ROSSI gives operations teams a directional model of what social performance contributes financially, the kind of evidence ownership conversations need.' },
   { title: 'Consultants and APs', description: 'Include ROSSI modeling in client proposals and certification scoping. Financial projections strengthen the business case for SEAM engagement.' },
 ]
 
 const faqs = [
-  { q: 'Is ROSSI free to use?', a: 'Yes — the ROSSI Calculator is free for everyone. Organization members (Standing, Ladder, and Arc) also receive a complimentary 30-minute support session to get help filling it out and interpreting results.' },
-  { q: 'How long does it take to complete?', a: 'The core calculator takes less than 20 questions. Project-level modeling can be completed in a single session. Portfolio-level analysis may take longer depending on the number of properties.' },
+  { q: 'Is ROSSI free to use?', a: 'Basic ROSSI access is available to everyone while all organization member tiers (Standing, Ladder, and Arc) receive coaching and analysis of their report.' },
+  { q: 'How long does it take to complete?', a: 'Yes. The core calculator takes fewer than 20 questions, and most users complete a project model in a single session.' },
   { q: 'What data do I need to get started?', a: 'Basic property information: building size, occupancy type, tenant count, and current social equity programs. The calculator guides you through each input — no financial modeling expertise required.' },
-  { q: 'How does ROSSI relate to GRESB?', a: 'ROSSI outputs are designed to align with GRESB social indicators, producing data that supports your annual submission process.' },
-  { q: 'Can I use ROSSI results in investor presentations?', a: 'Yes. ROSSI generates a presentation-ready report covering six dimensions — increased profit, loyalty, new customers, reduced turnover, productivity, and decreased cost of capital — with dollar values for each, plus a total gain and overall ROSSI percentage. Many users include the report in investor decks, board presentations, and acquisition proposals.' },
+  { q: 'How does ROSSI relate to GRESB?', a: 'ROSSI translates social equity performance into financial terms. It isn\u2019t currently mapped to GRESB social indicators, but the underlying SEAM Certification is recognized by GRESB as a green building certification, which means a SEAM Certified project can contribute toward the green building certification point in your GRESB assessment.' },
+  { q: 'Can I use ROSSI results in investor presentations?', a: 'Yes. ROSSI generates a report covering a number of dimensions. It\u2019s built to support investor decks, board presentations, and acquisition proposals.' },
   { q: 'Is the methodology peer-reviewed?', a: 'ROSSI is built on peer-reviewed research from 2019 to 2024 and extends the NYU Stern ROSI methodology. The SEAM advisory council reviews and updates the underlying research base annually.' },
 ]
 
@@ -77,10 +77,13 @@ const jsonLd = [
           <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
             Financial Modeling Tool
           </span>
-          <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
-            ROSSI&trade;{' '}
-            <em class="font-display italic font-normal text-seam-300">Calculator</em>
-          </h1>
+          <div class="flex items-center gap-5 mb-2">
+            <img src="/logos/rossi-calculator.png" alt="ROSSI Calculator" class="h-16 lg:h-20 w-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]" fetchpriority="high" decoding="async" />
+            <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+              ROSSI&trade;{' '}
+              <em class="font-display italic font-normal text-seam-300">Calculator</em>
+            </h1>
+          </div>
           <p class="hero-subtitle mt-4 text-[clamp(1rem,1.3vw,1.15rem)] leading-relaxed text-warm-400">
             Return on Social Sustainability Investment
           </p>
@@ -102,7 +105,7 @@ const jsonLd = [
             <!-- Report header -->
             <div class="px-7 pt-6 pb-5 border-b border-warm-100">
               <div class="flex items-center gap-3 mb-4">
-                <img src="/logos/seam-wordmark.png" alt="SEAM" class="h-5 w-auto" loading="lazy" decoding="async" />
+                <img src="/logos/seam-wordmark.svg" alt="SEAM" class="h-5 w-auto" loading="lazy" decoding="async" />
               </div>
               <p class="text-[11px] font-semibold uppercase tracking-[0.15em] text-warm-500 text-center">
                 Return on Social Sustainability Investment
@@ -284,7 +287,7 @@ const jsonLd = [
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Who uses ROSSI</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          The financial case for{' '}<em class="italic font-normal text-seam-600">every stakeholder</em>
+          The financial case for{' '}<em class="italic font-normal text-seam-600">everyone</em>
         </h2>
       </div>
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -299,24 +302,6 @@ const jsonLd = [
         <a href="https://seam.outgrow.us/ROSSI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">
           See your numbers
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonial -->
-  <section class="py-24 lg:py-32 bg-warm-900">
-    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <svg class="mx-auto mb-8 w-12 h-12 text-warm-400" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
-        </svg>
-        <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
-          ROSSI gave us a way to present social equity to our investment committee in the only language they respond to — returns. The model projected an $84,000 annual return across six dimensions with a 431% ROSSI. That one report unlocked the conversation we had been trying to start for two years.
-        </blockquote>
-        <div class="mt-10">
-          <p class="text-[16px] font-medium text-white">Sarah Kowalski</p>
-          <p class="text-[14px] text-warm-400 mt-1">Head of ESG &middot; Northbridge Capital Advisors</p>
-        </div>
       </div>
     </div>
   </section>

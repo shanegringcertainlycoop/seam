@@ -9,6 +9,7 @@ if (!org) return Astro.redirect('/directory?tab=organizations', 404)
 
 // Find APs who work at this organization
 const orgAPs = seamAPs.filter((ap) => {
+  if (!ap.organization) return false
   const apOrg = ap.organization.toLowerCase()
   const orgName = org.name.toLowerCase()
   return apOrg === orgName || apOrg.includes(orgName) || orgName.includes(apOrg)
@@ -114,7 +115,7 @@ const jsonLd = breadcrumbSchema([
           {orgAPs.length > 0 && (
             <section>
               <h2 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-6">
-                SEAM APs at {org.name}
+                SEAM APs and Members at {org.name}
               </h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {orgAPs.map((ap) => (
