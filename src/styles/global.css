@@ -44,7 +44,12 @@
   --color-sage: #DFECE2;
 }
 
-/* ─── Left-aligned heading line break before italic em ─── */
+/* ─── Heading typography: balance lines + block-break before italic em ─── */
+
+h1,
+h2 {
+  text-wrap: balance;
+}
 
 h1 > em,
 h2 > em {

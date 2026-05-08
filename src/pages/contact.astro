@@ -41,12 +41,8 @@ const jsonLd = breadcrumbSchema([
         <div class="reveal-fade-up">
           <form
             id="contact-form"
-            name="contact"
-            method="POST"
-            data-netlify="true"
             class="space-y-8"
           >
-            <input type="hidden" name="form-name" value="contact" />
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label for="first-name" class="block text-[14px] font-medium text-warm-700 mb-2">First name <span class="text-red-500">*</span></label>
@@ -137,8 +133,8 @@ const jsonLd = breadcrumbSchema([
               <svg class="mx-auto mb-3 w-10 h-10 text-seam-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
-              <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-1">Message sent</p>
-              <p class="text-[15px] text-warm-600">We'll get back to you within one business day.</p>
+              <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-1">Thanks for submitting your question</p>
+              <p class="text-[15px] text-warm-600">Someone will contact you within 2 business days.</p>
             </div>
           </form>
         </div>
@@ -161,10 +157,10 @@ const jsonLd = breadcrumbSchema([
           <div class="rounded-2xl border border-warm-100 bg-warm-50 p-8">
             <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-4">Email us directly</h3>
             <a
-              href="mailto:info@seamstandard.org"
+              href="mailto:rainey@seamcertification.org"
               class="text-[15px] font-medium text-seam-600 hover:text-seam-700 transition-colors underline decoration-seam-300 hover:decoration-seam-600"
             >
-              info@seamstandard.org
+              rainey@seamcertification.org
             </a>
           </div>
 
@@ -187,36 +183,62 @@ const jsonLd = breadcrumbSchema([
 </SiteLayout>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement | null
-  const success = document.getElementById('form-success')
+  function initContactForm() {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null
+    const success = document.getElementById('form-success')
+    if (!form) return
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault()
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+      const original = btn.textContent
+      btn.disabled = true
+      btn.textContent = 'Sending...'
 
-    const data = new FormData(form)
-    const payload = Object.fromEntries(data.entries())
+      const data = new FormData(form)
+      const fields = [
+        { objectTypeId: '0-1', name: 'firstname', value: data.get('first-name') },
+        { objectTypeId: '0-1', name: 'lastname', value: data.get('last-name') },
+        { objectTypeId: '0-1', name: 'email', value: data.get('email') },
+        { objectTypeId: '0-1', name: 'company', value: data.get('organization') || '' },
+        { objectTypeId: '0-1', name: 'question_topic', value: data.get('topic') },
+        { objectTypeId: '0-1', name: 'message', value: data.get('message') },
+      ]
 
-    // Send to Netlify Forms (add netlify attribute) or mailto fallback
-    try {
-      const res = await fetch('/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(payload as Record<string, string>).toString(),
-      })
+      try {
+        const res = await fetch(
+          'https://api.hsforms.com/submissions/v3/integration/submit/46821728/1fa3badb-26c0-427f-af1a-35a10eb42d3f',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields,
+              context: { pageUri: window.location.href, pageName: 'Contact' },
+            }),
+          }
+        )
 
-      if (res.ok) {
-        form.classList.add('hidden')
-        success?.classList.remove('hidden')
-      } else {
-        // Fallback: open mailto
-        const subject = encodeURIComponent(`SEAM Contact: ${payload.topic}`)
-        const body = encodeURIComponent(`Name: ${payload['first-name']} ${payload['last-name']}\nEmail: ${payload.email}\nOrganization: ${payload.organization || 'N/A'}\nTopic: ${payload.topic}\n\n${payload.message}`)
-        window.location.href = `mailto:info@seamstandard.org?subject=${subject}&body=${body}`
+        if (res.ok) {
+          form.classList.add('hidden')
+          success?.classList.remove('hidden')
+        } else {
+          throw new Error('Submission failed')
+        }
+      } catch {
+        const subject = encodeURIComponent(`SEAM Contact: ${data.get('topic')}`)
+        const body = encodeURIComponent(`Name: ${data.get('first-name')} ${data.get('last-name')}\nEmail: ${data.get('email')}\nOrganization: ${data.get('organization') || 'N/A'}\nTopic: ${data.get('topic')}\n\n${data.get('message')}`)
+        window.location.href = `mailto:rainey@seamcertification.org?subject=${subject}&body=${body}`
+      } finally {
+        btn.disabled = false
+        btn.textContent = original
       }
-    } catch {
-      const subject = encodeURIComponent(`SEAM Contact: ${payload.topic}`)
-      const body = encodeURIComponent(`Name: ${payload['first-name']} ${payload['last-name']}\nEmail: ${payload.email}\nOrganization: ${payload.organization || 'N/A'}\nTopic: ${payload.topic}\n\n${payload.message}`)
-      window.location.href = `mailto:info@seamstandard.org?subject=${subject}&body=${body}`
-    }
-  })
+    })
+  }
+
+  document.addEventListener('astro:page-load', initContactForm)
+  if (document.readyState !== 'loading') {
+    initContactForm()
+  } else {
+    document.addEventListener('DOMContentLoaded', initContactForm)
+  }
 </script>

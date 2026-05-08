@@ -263,7 +263,7 @@ const audiences = [
             <div class="flex items-start gap-3 pt-2">
               <input type="checkbox" id="std-content-policy" name="content_use_policy" required class="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/[0.08] text-seam-500 focus:ring-seam-400/50 focus:ring-offset-0" />
               <label for="std-content-policy" class="text-[13px] leading-snug text-warm-400">
-                I have read and agree to the <a href="mailto:admin@seamcertification.org" class="text-seam-300 underline underline-offset-2 hover:text-seam-200 transition-colors">Content Use Policy</a>. The SEAM Standard is made available for free for non-commercial use. Commercial use requires consent. *
+                I have read and agree to the <a href="mailto:rainey@seamcertification.org" class="text-seam-300 underline underline-offset-2 hover:text-seam-200 transition-colors">Content Use Policy</a>. The SEAM Standard is made available for free for non-commercial use. Commercial use requires consent. *
               </label>
             </div>
             <button type="submit" class="w-full rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
@@ -819,14 +819,14 @@ const audiences = [
 
         if (res.ok) {
           form.reset()
-          statusEl.textContent = "Thank you for your interest! Check your email for your SEAM Standard download."
+          statusEl.innerHTML = 'Thank you! <a href="https://hs-46821728.f.hubspotstarter.net/hubfs/46821728/SEAM%20Standard%20with%20Guidance%20v1.1.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-white transition-colors">Download the SEAM Standard (PDF)</a>'
           statusEl.classList.remove('hidden', 'text-red-400')
           statusEl.classList.add('text-seam-300')
         } else {
           throw new Error('Submission failed')
         }
       } catch (_err) {
-        statusEl.textContent = 'Something went wrong. Please try again or email admin@seamcertification.org.'
+        statusEl.textContent = 'Something went wrong. Please try again or email rainey@seamcertification.org.'
         statusEl.classList.remove('hidden', 'text-seam-300')
         statusEl.classList.add('text-red-400')
       } finally {

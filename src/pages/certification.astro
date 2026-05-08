@@ -222,8 +222,8 @@ const jsonLd = breadcrumbSchema([
           The framework
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Four{' '}
-          <em class="italic font-normal text-seam-600">pillars of the SEAM Standard</em>
+          Four pillars, one{' '}
+          <em class="italic font-normal text-seam-600">interconnected standard</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
           Much like your building, social equity is an ecosystem of interdependent efforts. With progress in each SEAM pillar, you move closer to certification.
@@ -233,7 +233,7 @@ const jsonLd = breadcrumbSchema([
       <div class="reveal-stagger">
         {pillars.map((pillar, i) => (
           <div
-            class={`reveal-child relative grid grid-cols-1 lg:grid-cols-[80px_auto_1fr] gap-6 lg:gap-12 items-center py-10 lg:py-12 ${
+            class={`reveal-child relative grid grid-cols-1 lg:grid-cols-[80px_320px_1fr] gap-6 lg:gap-12 items-center py-10 lg:py-12 ${
               i < pillars.length - 1 ? 'border-b border-warm-200' : ''
             }`}
           >
@@ -303,8 +303,7 @@ const jsonLd = breadcrumbSchema([
               <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">
                 {step.title}
               </h3>
-              <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">
-                {step.description}
+              <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl" set:html={step.description}>
               </p>
               {i === 0 && (
                 <a
@@ -385,8 +384,8 @@ const jsonLd = breadcrumbSchema([
           Two rating systems
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Choose the rating system that fits{' '}
-          <em class="italic font-normal text-seam-600">your project</em>
+          Choose the rating system that{' '}
+          <em class="italic font-normal text-seam-600">fits your project</em>
         </h2>
       </div>
 
@@ -516,11 +515,10 @@ const jsonLd = breadcrumbSchema([
                   <span class="block text-[13px] font-medium text-warm-900 mb-2">Community Membership</span>
                   <select id="c2-discount-member" class="w-full rounded-lg border border-warm-200 bg-white px-3 py-2 text-[13px] text-warm-700 focus:outline-none focus:border-seam-500 transition-colors cursor-pointer">
                     <option value="">No membership</option>
-                    <option value="75">Standing — $75 off</option>
-                    <option value="150">Ladder — $150 off</option>
-                    <option value="225">Arc / Silver Founding — $225 off</option>
-                    <option value="450">Gold Founding — $450 off</option>
-                    <option value="750">Platinum Founding — $750 off</option>
+                    <option value="5">Changemaker — 5% off</option>
+                    <option value="5">Standing — 5% off</option>
+                    <option value="10">Ladder — 10% off</option>
+                    <option value="15">Arc — 15% off</option>
                   </select>
                 </div>
                 <div class="rounded-xl border border-warm-200 px-4 py-3.5 transition-all duration-200 has-[select:not([value=''])]:border-seam-500 has-[select:not([value=''])]:bg-seam-50">
@@ -690,9 +688,12 @@ const jsonLd = breadcrumbSchema([
         return Math.max(sqft * getRate(sqft), certMinimums[level])
       }
       function fmt(n: number): string { return '$' + Math.round(n).toLocaleString('en-US') }
-      function getTotalDiscount(): number {
+      function getMemberPct(): number {
+        const v = parseInt(discountMember.value, 10)
+        return isNaN(v) ? 0 : v / 100
+      }
+      function getFlatDiscount(): number {
         let total = 0
-        const mv = parseInt(discountMember.value, 10); if (!isNaN(mv)) total += mv
         const pv = parseInt(discountProject.value, 10); if (!isNaN(pv)) total += pv
         if (discountDeveloping.checked) total += 1000
         return total
@@ -701,14 +702,22 @@ const jsonLd = breadcrumbSchema([
       function update() {
         const sqft = currentSqft
         const rate = getRate(sqft)
-        const disc = getTotalDiscount()
+        const memberPct = getMemberPct()
+        const flatDisc = getFlatDiscount()
         perSfRate.textContent = `$${rate.toFixed(3)}/sq ft`
         const levels: (keyof typeof certMinimums)[] = ['bronze', 'silver', 'gold', 'platinum']
         const els = [priceBronze, priceSilver, priceGold, pricePlatinum]
         const vals: number[] = []
-        levels.forEach((l, i) => { const f = Math.max(0, Math.round(calcVerification(sqft, l) - disc)); vals.push(f); els[i].textContent = fmt(f) })
+        levels.forEach((l, i) => {
+          const base = calcVerification(sqft, l)
+          const afterPct = base * (1 - memberPct)
+          const f = Math.max(0, Math.round(afterPct - flatDisc))
+          vals.push(f)
+          els[i].textContent = fmt(f)
+        })
         priceTotal.textContent = `${fmt(REGISTRATION + vals[0])} – ${fmt(REGISTRATION + vals[3])}`
-        if (disc > 0) { priceSavings.classList.remove('hidden'); savingsAmount.textContent = fmt(disc) }
+        const totalSavings = Math.round(calcVerification(sqft, 'bronze') - vals[0])
+        if (totalSavings > 0) { priceSavings.classList.remove('hidden'); savingsAmount.textContent = fmt(totalSavings) }
         else { priceSavings.classList.add('hidden') }
       }
 

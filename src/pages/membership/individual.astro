@@ -3,13 +3,13 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
 import { seamAPs } from '../../data/directory'
 
-const individualMembers = seamAPs.filter((ap) => ap.membershipTier === 'Open' || ap.membershipTier === 'Changemaker')
+const individualMembers = seamAPs.filter((ap) => (ap.membershipTier === 'Open' || ap.membershipTier === 'Changemaker') && ap.photo)
 
 const included = [
   { title: 'Access to The Stitch', description: 'Our member community platform, with pre-built documentation templates for every activity in the Standard. Start from proven formats instead of blank pages.' },
   { title: 'Discounts on Certifications and Events', description: 'Member pricing on full certification fees, the AP exam, and in-person events throughout the year.' },
   { title: 'Recognition in the SEAM Directory', description: 'A public profile in the SEAM practitioner directory. Connect with APs, project teams, and peers. Receive inbound referrals from organizations seeking expertise.' },
-  { title: 'Resources & Expert Insights', description: 'Self-paced courses covering the Standard, pillar deep-dives, certification process, and the ROSSI framework.' },
+  { title: 'Resources & Expert Insights', description: 'Self-paced courses covering the Standard, equity in commercial real estate, and access to the SEAM community.' },
   { title: 'Content Sharing in the SEAM Network', description: 'Publish case studies, project write-ups, and research to a network of practitioners. Model the financial impact of social equity outcomes with ROSSI.' },
   { title: 'A Community Built for Impact', description: 'Participate in advisory sessions, pilot new activities, and help shape future versions of the SEAM Standard. Your voice moves the field forward.' },
 ]
@@ -22,7 +22,7 @@ const tiers = [
     description: 'For those exploring SEAM and seeking to get involved. No commitment required.',
     features: ['Join critical conversations', 'Attend public webcasts and events', 'Monthly newsletter with field updates', 'LEED Crosswalk access'],
     cta: 'Get started free',
-    href: '/get-started',
+    href: 'https://community.seamcertification.org/plans/1975148',
     highlighted: false,
     badge: '/logos/member-individual.png',
   },
@@ -40,10 +40,10 @@ const tiers = [
 ]
 
 const personas = [
-  { title: 'Consultants building a SEAM practice', description: 'Templates, ROSSI access, and the practitioner network give you the tools to serve clients pursuing certification.' },
+  { title: 'Consultants building a SEAM practice', description: 'SEAM Templates and the practitioner network give you the tools to serve clients pursuing certification.' },
   { title: 'APs maintaining their credential', description: 'CEU-eligible courses, webcasts, and peer sessions keep you current.' },
-  { title: 'Professionals preparing for the AP exam', description: 'Course library covers all four pillars and the certification process. Practitioner tier includes access to project referrals.' },
-  { title: 'Advocates entering the built environment', description: 'The Standard, courses, and mentorship matching give you a structured pathway from advocacy into implementation work.' },
+  { title: 'Professionals preparing for the AP exam', description: 'Study for the AP exam with courses covering all four pillars and the certification process.' },
+  { title: 'Advocates entering the built environment', description: 'The Standard, introductory courses, and access to a broad network of social equity experts.' },
 ]
 
 const faqs = [
@@ -97,7 +97,7 @@ const jsonLd = [
           The built environment can shape who thrives and who doesn't. Membership connects you to the people advancing social equity and the tools to move you forward, wherever you are in the work.
         </p>
         <div class="hero-cta mt-10 flex flex-wrap gap-4">
-          <a href="https://community.seamcertification.org/plans/1975151" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+          <a href="https://community.seamcertification.org/plans/1975148" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
             Join for free
           </a>
           <a href="#pricing" class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300">
@@ -167,14 +167,14 @@ const jsonLd = [
               ))}
             </ul>
 
-            <a href={tier.href} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
+            <a href={tier.href} target={tier.href.startsWith('http') ? '_blank' : undefined} rel={tier.href.startsWith('http') ? 'noopener noreferrer' : undefined} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
               {tier.cta}
             </a>
           </div>
         ))}
 
         <!-- Right column: Educational Access info box -->
-        <a href="/get-started" class="group rounded-2xl border border-warm-200 p-6 sm:p-8 lg:p-10 flex flex-col transition-all duration-300 hover:border-warm-300">
+        <a href="https://community.seamcertification.org/plans/1975151" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-warm-200 p-6 sm:p-8 lg:p-10 flex flex-col transition-all duration-300 hover:border-warm-300">
           <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">Educational Access</h3>
           <p class="text-[15px] leading-relaxed text-warm-600 flex-1">
             For students, global members, nonprofit staff, and early-career professionals. Income-qualified, honor system.
@@ -260,22 +260,6 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- Testimonial -->
-  <section class="py-24 lg:py-32 bg-warm-900">
-    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <svg class="mx-auto mb-8 w-12 h-12 text-warm-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" /></svg>
-        <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
-          I joined as a Changemaker, earned the AP three months later, and had my first client referral from the network within the same quarter. The Changemaker tier paid for itself before the year was up.
-        </blockquote>
-        <div class="mt-10">
-          <p class="text-[16px] font-medium text-white">Tanya Brooks</p>
-          <p class="text-[14px] text-warm-400 mt-1">SEAM AP &middot; Changemaker Member</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -318,7 +302,7 @@ const jsonLd = [
       </h2>
       <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">Open costs nothing. Changemaker pays for itself with one client referral.</p>
       <div class="mt-12 flex flex-wrap justify-center gap-4">
-        <a href="/get-started" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Join the community</a>
+        <a href="https://community.seamcertification.org/plans/1975151" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Join the community</a>
         <a href="/ap-credential" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Earn the AP credential</a>
       </div>
     </div>

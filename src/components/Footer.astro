@@ -65,32 +65,10 @@ const year = new Date().getFullYear()
   <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-28">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
       <div class="lg:col-span-3">
-        <img src="/logos/seam-wordmark-white.png" alt="SEAM" decoding="async" class="h-8 w-auto" />
+        <img src="/logos/seam-wordmark-white.svg" alt="SEAM" decoding="async" class="h-8 w-auto" />
         <p class="mt-6 text-[17px] leading-relaxed text-warm-400 max-w-sm">
-          Real estate has a human impact. SEAM exists to make that impact positive, for everyone connected to it.
+          Real estate has a human impact. SEAM exists to make that impact positive, for the people connected to it.
         </p>
-
-        <!-- Newsletter -->
-        <div class="mt-8 pt-8 border-t border-warm-700/50"></div>
-        <form id="footer-newsletter">
-          <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-3">Stay in the loop</p>
-          <div class="flex gap-2">
-            <input
-              type="email"
-              name="email"
-              placeholder="Your email"
-              required
-              class="flex-1 min-w-0 rounded-full bg-warm-800 border border-warm-700 px-4 py-2.5 text-[14px] text-white placeholder-warm-500 focus:outline-none focus:border-seam-500 transition-colors"
-            />
-            <button
-              type="submit"
-              class="shrink-0 rounded-full bg-white px-5 py-2.5 text-[14px] font-medium text-warm-900 hover:bg-warm-100 transition-colors"
-            >
-              Subscribe
-            </button>
-          </div>
-        </form>
-        <p id="footer-newsletter-status" class="mt-3 text-[14px] hidden"></p>
 
         <!-- LinkedIn -->
         <a
@@ -104,12 +82,29 @@ const year = new Date().getFullYear()
           </svg>
           Follow on LinkedIn
         </a>
+
+        <!-- Candid Transparency Seal -->
+        <a
+          aria-label="SEAM, Inc. on Candid"
+          href="https://app.candid.org/profile/13959346/seam-inc-84-5054317/?pkId=1838cc46-09c0-4b8b-9468-c52a38c6177b"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block mt-6"
+        >
+          <img
+            alt="Candid Transparency Seal"
+            src="https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/13959346/svg"
+            class="h-16 w-auto"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
       </div>
 
       <div class="lg:col-span-9 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 lg:gap-10">
         {footerSections.map((section) => (
           <div>
-            <h3 class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-400 mb-6">
+            <h3 class="text-[13px] font-semibold uppercase tracking-[0.1em] text-seam-400 mb-6">
               {section.title}
             </h3>
             <ul class="space-y-4">
@@ -129,7 +124,19 @@ const year = new Date().getFullYear()
       </div>
     </div>
 
-    <div class="mt-20 pt-10 border-t border-warm-700/50 flex flex-col md:flex-row justify-between items-center gap-4">
+    <!-- Newsletter — full width -->
+    <div class="mt-16 pt-10 border-t border-warm-700/50">
+      <form id="footer-newsletter" class="flex flex-col sm:flex-row items-center gap-3">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-400 shrink-0 sm:mr-2">Stay in the loop</p>
+        <input type="text" name="firstname" placeholder="First name" required aria-label="First name" class="w-full sm:w-auto sm:flex-1 min-w-0 rounded-full bg-warm-800 border border-warm-700 px-5 py-2.5 text-[14px] text-white placeholder-warm-500 focus:outline-none focus:border-seam-500 transition-colors" />
+        <input type="text" name="lastname" placeholder="Last name" required aria-label="Last name" class="w-full sm:w-auto sm:flex-1 min-w-0 rounded-full bg-warm-800 border border-warm-700 px-5 py-2.5 text-[14px] text-white placeholder-warm-500 focus:outline-none focus:border-seam-500 transition-colors" />
+        <input type="email" name="email" placeholder="Your email" required aria-label="Email address" class="w-full sm:w-auto sm:flex-1 min-w-0 rounded-full bg-warm-800 border border-warm-700 px-5 py-2.5 text-[14px] text-white placeholder-warm-500 focus:outline-none focus:border-seam-500 transition-colors" />
+        <button type="submit" class="shrink-0 rounded-full bg-white px-6 py-2.5 text-[14px] font-medium text-warm-900 hover:bg-warm-100 transition-colors">Subscribe</button>
+      </form>
+      <p id="footer-newsletter-status" class="mt-3 text-[14px] text-center hidden"></p>
+    </div>
+
+    <div class="mt-10 pt-10 border-t border-warm-700/50 flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-[14px] text-warm-400">
         &copy; {year} SEAM, Inc. All rights reserved.
       </p>
@@ -164,16 +171,19 @@ const year = new Date().getFullYear()
 
     const data = new FormData(form)
     const email = data.get('email') as string
-    if (!email) return
+    const firstname = data.get('firstname') as string
+    const lastname = data.get('lastname') as string
+    if (!email || !firstname || !lastname) return
 
     const fields = [
       { objectTypeId: '0-1', name: 'email', value: email },
+      { objectTypeId: '0-1', name: 'firstname', value: firstname },
+      { objectTypeId: '0-1', name: 'lastname', value: lastname },
     ]
 
     try {
-      // TODO: Replace with actual HubSpot newsletter form GUID
       const res = await fetch(
-        'https://api.hsforms.com/submissions/v3/integration/submit/46821728/NEWSLETTER_FORM_GUID',
+        'https://api.hsforms.com/submissions/v3/integration/submit/46821728/8c2eb226-ccce-4390-a915-9c592518279f',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

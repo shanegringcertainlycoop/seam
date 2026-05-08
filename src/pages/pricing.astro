@@ -98,6 +98,7 @@ const individualTiers = [
       'Join critical conversations',
       'Attend public webcasts and events',
       'Monthly newsletter with field updates',
+      'LEED Crosswalk access',
     ],
     cta: 'Get started free',
     highlighted: false,
@@ -114,8 +115,9 @@ const individualTiers = [
       'Eligible to join Technical Advisory Groups shaping industry standards',
       '5% discount on SEAM events',
       '5% discount on SEAM certifications, endorsements, and marks',
+      'LEED Crosswalk access',
     ],
-    cta: 'Join as Changemaker',
+    cta: 'Join as a Changemaker',
     highlighted: true,
     note: '',
   },
@@ -129,6 +131,7 @@ const organizationTiers = [
     description: 'For organizations beginning their SEAM journey. Access to The Stitch and foundational benefits.',
     features: [
       'Access to The Stitch members-only hub',
+      'Complimentary 30-minute ROSSI support session',
       '5% discount on certifications and events',
       'Eligibility to sponsor events',
       'Recognition in the Member Directory',
@@ -146,8 +149,10 @@ const organizationTiers = [
     description: 'For organizations actively pursuing certification across properties.',
     features: [
       'Access to The Stitch members-only hub',
+      'Complimentary 30-minute ROSSI support session',
       '10% discount on certifications and events',
       'Eligibility to sponsor events',
+      'Recognition in the Member Directory',
       'Recognition on the SEAM website (logo)',
       'Ability to submit a blog post on SEAM\u2019s website',
       '10 included employee individual memberships',
@@ -164,6 +169,7 @@ const organizationTiers = [
     description: 'For institutions leading the movement. Maximum influence and recognition.',
     features: [
       'Access to The Stitch members-only hub',
+      'Complimentary 30-minute ROSSI support session',
       '15% discount on certifications and events',
       'Eligibility to sponsor events',
       'Recognition on the SEAM website (logo, featured)',
@@ -173,8 +179,8 @@ const organizationTiers = [
       '5 complimentary AP trainings and exams',
       '1 included event sponsorship',
     ],
-    cta: 'Talk to our team',
-    href: '/get-started',
+    cta: 'Join Arc',
+    href: 'https://community.seamcertification.org/plans/1924871?bundle_token=430cce94d3dfb70d37c817c17ceff386&utm_source=manual',
     highlighted: false,
   },
 ]
@@ -422,11 +428,10 @@ const jsonLd = [
                     <span class="block text-[13px] font-medium text-warm-900 mb-2">Community Membership</span>
                     <select id="discount-member" class="w-full rounded-lg border border-warm-200 bg-white px-3 py-2 text-[13px] text-warm-700 focus:outline-none focus:border-seam-500 transition-colors cursor-pointer">
                       <option value="">No membership</option>
-                      <option value="75">Standing — $75 off</option>
-                      <option value="150">Ladder — $150 off</option>
-                      <option value="225">Arc / Silver Founding — $225 off</option>
-                      <option value="450">Gold Founding — $450 off</option>
-                      <option value="750">Platinum Founding — $750 off</option>
+                      <option value="5">Changemaker — 5% off</option>
+                      <option value="5">Standing — 5% off</option>
+                      <option value="10">Ladder — 10% off</option>
+                      <option value="15">Arc — 15% off</option>
                     </select>
                   </div>
 
@@ -642,12 +647,15 @@ const jsonLd = [
         return '$' + Math.round(n).toLocaleString('en-US')
       }
 
-      function getTotalDiscount(): number {
+      function getMemberPct(): number {
+        const v = parseInt(discountMember.value, 10)
+        return isNaN(v) ? 0 : v / 100
+      }
+
+      function getFlatDiscount(): number {
         let total = 0
-        const memberVal = parseInt(discountMember.value, 10)
-        if (!isNaN(memberVal)) total += memberVal
-        const projectVal = parseInt(discountProject.value, 10)
-        if (!isNaN(projectVal)) total += projectVal
+        const pv = parseInt(discountProject.value, 10)
+        if (!isNaN(pv)) total += pv
         if (discountDeveloping.checked) total += 1000
         return total
       }
@@ -655,7 +663,8 @@ const jsonLd = [
       function update() {
         const sqft = currentSqft
         const rate = getRate(sqft)
-        const discountDollars = getTotalDiscount()
+        const memberPct = getMemberPct()
+        const flatDisc = getFlatDiscount()
 
         perSfRate.textContent = `Rate: $${rate.toFixed(3)}/sq ft`
 
@@ -665,7 +674,8 @@ const jsonLd = [
 
         levels.forEach((level, i) => {
           const base = calcVerification(sqft, level)
-          const final = Math.max(0, Math.round(base - discountDollars))
+          const afterPct = base * (1 - memberPct)
+          const final = Math.max(0, Math.round(afterPct - flatDisc))
           verifValues.push(final)
           els[i].textContent = fmt(final)
         })
@@ -674,9 +684,11 @@ const jsonLd = [
         const totalHigh = REGISTRATION + verifValues[3]
         priceTotal.textContent = `${fmt(totalLow)} – ${fmt(totalHigh)}`
 
-        if (discountDollars > 0) {
+        const baseBronze = calcVerification(sqft, 'bronze')
+        const totalSaved = Math.round(baseBronze * memberPct) + flatDisc
+        if (totalSaved > 0) {
           priceSavings.classList.remove('hidden')
-          savingsAmount.textContent = fmt(discountDollars)
+          savingsAmount.textContent = fmt(totalSaved)
         } else {
           priceSavings.classList.add('hidden')
         }
@@ -803,19 +815,13 @@ const jsonLd = [
                 ))}
               </ul>
 
-              <a href={tier.highlighted ? 'https://community.seamcertification.org/plans/1539142?bundle_token=a4239c7d9757838e8b3d7153035846d4&utm_source=manual' : '/resources/courses'} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-seam-600 text-white hover:bg-seam-700' : 'border border-warm-300 text-warm-900 hover:border-warm-400'}`}>
+              <a href={tier.highlighted ? 'https://community.seamcertification.org/plans/1539142?bundle_token=a4239c7d9757838e8b3d7153035846d4&utm_source=manual' : '/resources/courses'} target={tier.highlighted ? '_blank' : undefined} rel={tier.highlighted ? 'noopener noreferrer' : undefined} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-seam-600 text-white hover:bg-seam-700' : 'border border-warm-300 text-warm-900 hover:border-warm-400'}`}>
                 {tier.cta}
               </a>
             </div>
           ))}
         </div>
 
-        <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8 max-w-4xl">
-          <p class="text-[15px] leading-relaxed text-seam-700">
-            <strong class="font-semibold">Changemaker members:</strong> The AP exam fee is covered as part of your Changemaker membership ($99/yr). No additional exam cost.{' '}
-            <a href="/membership/individual" class="underline hover:text-seam-900 transition-colors">See membership benefits &rarr;</a>
-          </p>
-        </div>
 
         <div class="mt-20 max-w-3xl">
           <h3 class="font-display text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-warm-900 mb-8">AP Credential pricing FAQ</h3>
@@ -873,37 +879,22 @@ const jsonLd = [
                 ))}
               </ul>
 
-              <a href={tier.highlighted ? 'https://community.seamcertification.org/plans/1975151' : '/get-started'} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
+              <a href={tier.highlighted ? 'https://community.seamcertification.org/plans/1975151' : 'https://community.seamcertification.org/plans/1975148'} target="_blank" rel="noopener noreferrer" class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-warm-900 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
                 {tier.cta}
               </a>
             </div>
           ))}
 
-          <!-- Info boxes -->
-          <div class="flex flex-col gap-6">
-            <a href="/ap-credential" class="group reveal-child rounded-2xl border border-warm-200/60 p-8 lg:p-10 flex flex-col flex-1 transition-all duration-300 hover:border-warm-300">
-              <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">Seeking the SEAM AP?</h3>
-              <p class="text-[15px] leading-relaxed text-warm-600 flex-1">
-                AP Credential Bundle — $389 (reg. $519) with code SITELAUNCH25. Includes course, exam, credential & directory listing.
-              </p>
-              <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-2.5 py-1 mt-3">
-                <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                <span class="text-[12px] font-semibold text-amber-800">Ends May 31</span>
-              </div>
-              <span class="mt-4 inline-flex items-center text-[15px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
-                Learn more &rarr;
-              </span>
-            </a>
-            <a href="/get-started" class="group reveal-child rounded-2xl border border-warm-200/60 p-8 lg:p-10 flex flex-col flex-1 transition-all duration-300 hover:border-warm-300">
-              <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">Special Access</h3>
-              <p class="text-[15px] leading-relaxed text-warm-600 flex-1">
-                For students, global members, nonprofit staff, and early-career professionals. Income-qualified, honor system.
-              </p>
-              <span class="mt-6 inline-flex items-center text-[15px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
-                Apply now &rarr;
-              </span>
-            </a>
-          </div>
+          <!-- Info box -->
+          <a href="https://community.seamcertification.org/plans/1975151" target="_blank" rel="noopener noreferrer" class="group reveal-child rounded-2xl border border-warm-200/60 p-8 lg:p-10 flex flex-col transition-all duration-300 hover:border-warm-300">
+            <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">Special Access</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600 flex-1">
+              For students, global members, nonprofit staff, and early-career professionals. Income-qualified, honor system.
+            </p>
+            <span class="mt-6 inline-flex items-center text-[15px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+              Apply now &rarr;
+            </span>
+          </a>
         </div>
 
         <!-- Divider -->
@@ -941,7 +932,7 @@ const jsonLd = [
                 ))}
               </ul>
 
-              <a href={tier.href} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-seam-800 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
+              <a href={tier.href} target={tier.href.startsWith('http') ? '_blank' : undefined} rel={tier.href.startsWith('http') ? 'noopener noreferrer' : undefined} class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-white text-seam-800 hover:bg-warm-100' : 'bg-warm-900 text-white hover:bg-warm-800'}`}>
                 {tier.cta}
               </a>
             </div>
@@ -983,7 +974,7 @@ const jsonLd = [
             href="/get-started"
             class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-seam-800 hover:bg-warm-100 transition-colors duration-300"
           >
-            Get started
+            Talk to an advisor
           </a>
           <a
             href="/membership"

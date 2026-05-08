@@ -33,6 +33,7 @@ export const GET: APIRoute = () => {
     { path: '/certification', priority: 0.9, changefreq: 'monthly' },
     { path: '/ap-credential', priority: 0.9, changefreq: 'monthly' },
     // Rating systems
+    { path: '/rating-system', priority: 0.7, changefreq: 'monthly' },
     { path: '/rating-system/buildings-interiors', priority: 0.7, changefreq: 'monthly' },
     { path: '/rating-system/operations-maintenance', priority: 0.7, changefreq: 'monthly' },
     // Standard pillars

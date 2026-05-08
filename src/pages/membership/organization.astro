@@ -77,18 +77,17 @@ const tiers = [
 ]
 
 const memberLogos = [
+  { src: '/logos/members/val-interiors.png', alt: 'Val Interiors', height: 'h-16', slug: 'val-interiors' },
   { src: '/logos/members/jamestown.png', alt: 'Jamestown', height: 'h-16', slug: 'jamestown' },
   { src: '/logos/members/hitt.png', alt: 'HITT', height: 'h-20', slug: 'hitt-contracting' },
   { src: '/logos/members/jll.png', alt: 'JLL', height: 'h-24', slug: 'jll' },
   { src: '/logos/members/interface.png', alt: 'Interface', height: 'h-20', slug: 'interface' },
   { src: '/logos/members/leapley.png', alt: 'Leapley Construction', height: 'h-24', slug: 'leapley-construction' },
-  { src: '/logos/thm-advisors.svg', alt: 'THM Advisors', height: 'h-16', slug: 'thm-advisors' },
+  { src: '/logos/thm-advisors.png', alt: 'THM Advisors', height: 'h-16', slug: 'thm-advisors' },
   { src: '/logos/brightworks.svg', alt: 'Brightworks Sustainability', height: 'h-16', slug: 'brightworks-sustainability' },
 ]
 
-const memberNames = [
-  { name: 'Val Interiors', slug: 'val-interiors' },
-]
+const memberNames: { name: string; slug: string }[] = []
 
 const faqs = [
   { q: 'How does team seat allocation work?', a: 'Each organization membership tier (Standing, Ladder, and Arc) includes a set number of seats. Every seat holder gets full individual-level access — templates, courses, ROSSI, and network. Contact our team to adjust seat assignments as needed.' },
@@ -260,11 +259,11 @@ const jsonLd = [
       <div class="max-w-4xl mx-auto text-center">
         <svg class="mx-auto mb-8 w-12 h-12 text-warm-400" fill="currentColor" viewBox="0 0 24 24"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" /></svg>
         <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
-          Ladder membership let us roll out SEAM certification across our portfolio in one quarter. Access to The Stitch mapped our existing programs to the Standard, and the AP training gave our team the credential to lead the work in-house. We stopped reinventing the wheel.
+          I have a deep respect for the integrity of your work and the way you continue to advance the SEAM enterprise, especially in today&rsquo;s environment. Your clarity on measurement and the pathway for SEAM APs was both grounding and galvanizing.
         </blockquote>
         <div class="mt-10">
-          <p class="text-[16px] font-medium text-white">Tebogo &ldquo;Tebby&rdquo; Modisagape</p>
-          <p class="text-[14px] text-warm-400 mt-1">President of Val Interiors &middot; Ladder Member</p>
+          <p class="text-[16px] font-medium text-white">Taidgh H. McClory</p>
+          <p class="text-[14px] text-warm-400 mt-1">THM Advisors</p>
         </div>
       </div>
     </div>
@@ -458,7 +457,7 @@ const jsonLd = [
             throw new Error('Submission failed')
           }
         } catch (_err) {
-          statusEl.textContent = 'Something went wrong. Please email admin@seamcertification.org directly.'
+          statusEl.textContent = 'Something went wrong. Please email rainey@seamcertification.org directly.'
           statusEl.classList.remove('hidden', 'text-seam-300')
           statusEl.classList.add('text-red-400')
         } finally {

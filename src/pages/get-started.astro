@@ -10,6 +10,7 @@ const topics = [
     title: 'Certification',
     description: 'Full building certification across four rating systems and four achievement levels.',
     href: '/certification',
+    logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
   },
   // HIDDEN: Approved program temporarily hidden
   // {
@@ -22,11 +23,19 @@ const topics = [
     description: 'Become a SEAM Accredited Professional and guide projects through the Standard.',
     href: '/ap-credential',
     sale: 'Bundle $389 (reg. $519) — code SITELAUNCH25 · ends May 31',
+    logo: '/logos/ap-seal.png',
   },
   {
     title: 'Community Membership',
     description: 'Join the network of organizations and professionals advancing social equity.',
     href: '/membership',
+    logos: ['/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
+  },
+  {
+    title: 'ROSSI Calculator',
+    description: 'Model the financial return on your social equity investments with GRESB-aligned scoring.',
+    href: '/resources/rossi',
+    logo: '/logos/rossi-calculator.png',
   },
 ]
 
@@ -133,7 +142,16 @@ const jsonLd = breadcrumbSchema([
 
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {topics.map((topic) => (
-          <div class="reveal-child rounded-2xl border border-warm-100 bg-white p-8 flex flex-col">
+          <div class={`reveal-child relative rounded-2xl border border-warm-100 bg-white p-8 flex flex-col ${(topic.logo || topic.logos) ? 'overflow-visible' : ''}`}>
+            {topic.logos ? (
+              <div class="absolute -top-5 right-3 sm:-top-8 sm:right-6 flex items-end -space-x-2 sm:-space-x-4 pointer-events-none">
+                {topic.logos.map((src) => (
+                  <img src={src} alt="" class="w-7 h-7 sm:w-12 sm:h-12 object-contain drop-shadow-md" loading="lazy" decoding="async" />
+                ))}
+              </div>
+            ) : topic.logo ? (
+              <img src={topic.logo} alt="" class="absolute -top-5 sm:-top-8 right-3 sm:right-6 w-10 h-10 sm:w-14 sm:h-14 object-contain drop-shadow-md pointer-events-none" loading="lazy" decoding="async" />
+            ) : null}
             <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
               {topic.title}
             </h3>

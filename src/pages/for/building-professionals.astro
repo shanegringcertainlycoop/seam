@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro'
+import BusinessCaseBanner from '../../components/BusinessCaseBanner.astro'
 import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
 
 /* --- Data --- */
@@ -58,13 +59,6 @@ const products = [
   },
 ]
 
-const outcomes = [
-  { metric: 'Win more pursuits', detail: 'Differentiate proposals with verifiable social outcomes. Move beyond marketing language into measurable, third-party-backed claims.' },
-  { metric: 'Defensible specifications', detail: 'Use the Standard to anchor specs in human rights, fair labor, and supply chain ethics. Defend decisions with documented criteria.' },
-  { metric: 'Career advancement', detail: 'The AP credential is portable expertise. It travels with practitioners across firms, project types, and markets.' },
-  { metric: 'Stronger client relationships', detail: 'Help clients show their boards, investors, and tenants what the building actually delivers — not just what it was designed to deliver.' },
-]
-
 const faqs = [
   {
     q: 'How does SEAM fit alongside LEED, WELL, and Fitwel?',
@@ -117,6 +111,7 @@ const jsonLd = [
         fetchpriority="high"
         decoding="async"
       />
+      <div class="absolute inset-0 bg-gradient-to-br from-warm-900/85 via-warm-900/60 to-seam-900/70"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
     </div>
 
@@ -161,7 +156,7 @@ const jsonLd = [
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Every discipline that shapes a building{' '}
-          <em class="italic font-normal text-seam-600">shapes its impact</em>
+          <em class="italic font-normal text-seam-600">shapes its impact on people</em>
         </h2>
       </div>
 
@@ -279,53 +274,8 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ─── Outcomes ─── -->
-  <section class="py-24 lg:py-32 bg-warm-50">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
-          The practice case
-        </p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          A credential that{' '}
-          <em class="italic font-normal text-seam-600">earns its keep</em>
-        </h2>
-      </div>
-
-      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {outcomes.map((o) => (
-          <div class="reveal-child rounded-2xl bg-white border border-warm-100 p-8 lg:p-10">
-            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
-              {o.metric}
-            </h3>
-            <p class="text-[15px] leading-relaxed text-warm-600">
-              {o.detail}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Testimonial ─── -->
-  <section class="py-24 lg:py-32 bg-warm-900">
-    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <svg class="mx-auto mb-8 w-12 h-12 text-warm-400" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
-        </svg>
-        <blockquote class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] tracking-[-0.02em] text-white">
-          We used to say our work was equitable. Now we can prove it. Two SEAM APs on the team and the AP credential on every pitch deck — it has changed how clients hear us.
-        </blockquote>
-        <div class="mt-10">
-          <p class="text-[16px] font-medium text-white">Priya Anand</p>
-          <p class="text-[14px] text-warm-400 mt-1">
-            Principal &middot; Field Studio Architecture
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ─── The Business Case ─── -->
+  <BusinessCaseBanner tag="The demand is rising" title="Social equity drives financial performance." summary="A decade of research from McKinsey, Gallup, CBRE, and GRESB confirms it — equitable organizations and certified buildings outperform their peers across every metric that matters." />
 
   <!-- ─── FAQ ─── -->
   <section class="py-24 lg:py-32 bg-warm-50">

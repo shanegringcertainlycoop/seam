@@ -164,9 +164,9 @@ const resources: NavGroup = {
     {
       heading: 'Tools & More',
       links: [
-        { label: 'ROSSI Calculator', href: '/resources/rossi', description: 'Quantify your social equity ROI.' },
+        { label: 'ROSSI Calculator', href: '/resources/rossi', description: 'Quantify your social equity ROI.', logo: '/logos/rossi-calculator.png' },
         { label: 'LEED Crosswalk', href: '/resources/leed-crosswalk', description: 'Map SEAM activities to LEED credits.' },
-        { label: 'Pathways', href: '/pathways', description: 'Eight ways to engage — find your entry point.' },
+        { label: 'Pathways', href: '/pathways', description: 'Seven ways to engage — find your entry point.' },
         { label: 'About SEAM', href: '/about', description: 'Our mission and team.' },
         { label: 'Shop', href: 'https://seamstore.org/', description: 'Gear and merch.', external: true },
       ],
@@ -188,8 +188,8 @@ const audiences: NavGroup = {
 
 // Directory images for nav
 const apPhotos = seamAPs.filter((a) => a.photo).map((a) => a.photo)
-const projectImage = certifiedProjects.find((p) => p.image)?.image || ''
-const brandLogos = ['/logos/jll.png', '/logos/cbre.svg']
+const projectImages = certifiedProjects.filter((p) => p.image).map((p) => ({ image: p.image, name: p.name }))
+const orgLogos = memberOrgs.filter((o) => o.logo).map((o) => ({ src: o.logo, name: o.name }))
 
 const directory: NavGroup = {
   label: 'Directory',
@@ -218,9 +218,9 @@ function logoClass(_logo: string) {
       <a href="/" class="flex items-center">
         <img
           id="nav-logo"
-          src="/logos/seam-wordmark-white.png"
-          data-src-light="/logos/seam-wordmark.png"
-          data-src-dark="/logos/seam-wordmark-white.png"
+          src="/logos/seam-wordmark-white.svg"
+          data-src-light="/logos/seam-wordmark.svg"
+          data-src-dark="/logos/seam-wordmark-white.svg"
           alt="SEAM"
           decoding="async"
           class="h-8 w-auto transition-all duration-300"
@@ -270,24 +270,28 @@ function logoClass(_logo: string) {
                         </a>
                       </div>
                       <div class="flex flex-col items-end gap-3 shrink-0">
-                        <div class="flex -space-x-3">
-                          {apPhotos.slice(0, 5).map((src) => (
-                            <div class="w-10 h-10 rounded-full bg-warm-700 border-2 border-warm-900 overflow-hidden">
-                              <img src={src} alt="SEAM professional" decoding="async" class="w-full h-full object-cover object-top" />
+                        <div class="flex -space-x-2.5">
+                          {apPhotos.slice(0, 8).map((src) => (
+                            <div class="w-9 h-9 rounded-full bg-warm-700 border-2 border-warm-900 overflow-hidden">
+                              <img src={src} alt="" decoding="async" class="w-full h-full object-cover object-top" />
                             </div>
                           ))}
-                          <div class="w-10 h-10 rounded-full bg-warm-700/60 border-2 border-warm-900 flex items-center justify-center text-[11px] font-medium text-white">
-                            +{apPhotos.length - 5}
-                          </div>
+                          {apPhotos.length > 8 && (
+                            <div class="w-9 h-9 rounded-full bg-warm-700/60 border-2 border-warm-900 flex items-center justify-center text-[10px] font-medium text-white">
+                              +{apPhotos.length - 8}
+                            </div>
+                          )}
                         </div>
-                        {projectImage && (
-                          <div class="w-28 h-16 rounded-lg overflow-hidden bg-warm-700">
-                            <img src={projectImage} alt="Certified project" decoding="async" class="w-full h-full object-cover opacity-90" />
-                          </div>
-                        )}
-                        <div class="flex items-center gap-4 opacity-60">
-                          {brandLogos.map((src) => (
-                            <img src={src} alt={src.includes('jll') ? 'JLL' : 'CBRE'} decoding="async" class={`w-auto object-contain brightness-0 invert ${src.includes('jll') ? 'h-9' : 'h-4'}`} />
+                        <div class="flex gap-2">
+                          {projectImages.slice(0, 3).map((p) => (
+                            <div class="w-[72px] h-12 rounded-lg overflow-hidden bg-warm-700">
+                              <img src={p.image} alt={p.name} decoding="async" class="w-full h-full object-cover opacity-90" />
+                            </div>
+                          ))}
+                        </div>
+                        <div class="flex items-center gap-3">
+                          {orgLogos.slice(0, 6).map((o) => (
+                            <img src={o.src} alt={o.name} decoding="async" class="h-5 w-auto object-contain grayscale invert mix-blend-screen opacity-60" />
                           ))}
                         </div>
                       </div>
@@ -454,13 +458,13 @@ function logoClass(_logo: string) {
                   </div>
                   {/* Solutions bottom quick-links bar */}
                   {group.quickLinks && (
-                    <div class="flex items-center gap-4 px-6 py-3 bg-warm-50 border-t border-warm-100 rounded-b-2xl">
+                    <div class="flex items-center gap-4 px-6 py-3 bg-warm-900 rounded-b-2xl">
                       {group.quickLinks.map((ql, i) => (
                         <>
-                          {i > 0 && <span class="text-warm-300">·</span>}
+                          {i > 0 && <span class="text-warm-600">·</span>}
                           <a
                             href={ql.href}
-                            class="text-[13px] font-medium text-warm-500 hover:text-warm-900 transition-colors"
+                            class="text-[13px] font-medium text-warm-400 hover:text-white transition-colors"
                           >
                             {ql.label}
                           </a>
