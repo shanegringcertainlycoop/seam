@@ -109,6 +109,7 @@ Ahead of a formal launch of all programs in early 2023, SEAM, Inc. is accepting 
     author: { name: 'Mark Nieto', role: 'Connect CRE' },
     date: '2022-11-15',
     readTime: '1 min read',
+    image: { src: '/images/blog/seattle-first-ever.png', alt: 'Aerial view of Seattle with The Jack building registering first SEAM certification' },
     body: `Urban Visions, a Seattle-based real estate developer, has become the first organization to register a <a href="/certification">SEAM certification</a> pilot project with <a href="/resources/blog/what-the-jack-teaches-us-about-human-centric-real-estate">The Jack</a>, a new 8-story building in the historic Pioneer Square District of Seattle.
 
 <a href="https://www.connectcre.com/stories/seattle-building-registers-first-ever-seam-certification/" target="_blank" rel="noopener noreferrer">Read the full article on Connect CRE &rarr;</a>`,
@@ -122,6 +123,7 @@ Ahead of a formal launch of all programs in early 2023, SEAM, Inc. is accepting 
     author: { name: 'Paul Bergeron', role: 'Globe St.' },
     date: '2022-11-16',
     readTime: '1 min read',
+    image: { src: '/images/blog/new-seam-certification.png', alt: 'New SEAM Certification addresses social impact in the built environment' },
     body: `A new measure of corporate real estate social sustainability was announced this week in SEAM Certification.
 
 It provides guidance, resources, and <a href="/certification">certification</a> for achieving positive social impact in the built environment.
@@ -150,6 +152,7 @@ It provides guidance, resources, and <a href="/certification">certification</a> 
     author: { name: 'Emma Hinchliffe', role: 'Daily Journal of Commerce' },
     date: '2022-11-21',
     readTime: '1 min read',
+    image: { src: '/images/blog/pioneer-square-first.png', alt: 'Pioneer Square office building — first SEAM certified project in the U.S.' },
     body: `Urban Visions, a Seattle-based real estate developer, has become the first organization to register a <a href="/certification">SEAM certification</a> pilot project with <a href="/resources/blog/what-the-jack-teaches-us-about-human-centric-real-estate">The Jack</a>, a new 8-story building in the historic Pioneer Square District of Seattle.
 
 <a href="https://www.djc.com/news/ae/12152803.html" target="_blank" rel="noopener noreferrer">Read the full article on Daily Journal of Commerce &rarr;</a>`,
@@ -163,6 +166,7 @@ It provides guidance, resources, and <a href="/certification">certification</a> 
     author: { name: 'Derek Wells', role: 'Facility Executive' },
     date: '2022-11-22',
     readTime: '1 min read',
+    image: { src: '/images/blog/cre-industry-launches.png', alt: 'CRE industry launches world\'s first social impact certification' },
     body: `SEAM Certification, a measure of corporate real estate social sustainability, will provide guidance, resources, and <a href="/certification">certification</a> for achieving positive social impact in the built environment.
 
 <a href="https://facilityexecutive.com/cre-industry-launches-worlds-first-social-impact-certification/" target="_blank" rel="noopener noreferrer">Read the full article on Facility Executive &rarr;</a>`,
@@ -176,6 +180,7 @@ It provides guidance, resources, and <a href="/certification">certification</a> 
     author: { name: 'Marc Stiles', role: 'Puget Sound Business Journal' },
     date: '2022-11-22',
     readTime: '1 min read',
+    image: { src: '/images/blog/seattle-office-dei.png', alt: 'New Seattle office building scores a global first on DEI' },
     body: `The under-construction <a href="/resources/blog/what-the-jack-teaches-us-about-human-centric-real-estate">Jack office building</a> on Seattle's waterfront is the world's first to seek a new <a href="/certification">certification</a> aimed at maximizing positive social impacts.
 
 <a href="https://www.bizjournals.com/seattle/news/2022/11/22/new-seattle-building-global-scores-global-first.html" target="_blank" rel="noopener noreferrer">Read the full article on Puget Sound Business Journal &rarr;</a>`,
@@ -189,6 +194,7 @@ It provides guidance, resources, and <a href="/certification">certification</a> 
     author: { name: 'Al Urbanski', role: 'Chain Store Age' },
     date: '2023-02-21',
     readTime: '1 min read',
+    image: { src: '/images/blog/shopping-centers.png', alt: 'Shopping centers seeking social impact certifications' },
     body: `Retail real estate developers already seek certifications for adhering to benchmark standards for sustainability set down in their environmental, social, and governance goals. Now they'll be doing the same to assess the "S" in their ESG policies — and the <a href="/resources/standard">SEAM Standard</a> provides the framework to do it.
 
 <a href="https://chainstoreage.com/shopping-centers-soon-seek-social-impact-certifications" target="_blank" rel="noopener noreferrer">Read the full article on Chain Store Age &rarr;</a>`,
@@ -202,6 +208,7 @@ It provides guidance, resources, and <a href="/certification">certification</a> 
     author: { name: 'Melissa Daniel', role: 'Metropolis Magazine' },
     date: '2023-06-09',
     readTime: '1 min read',
+    image: { src: '/images/blog/measure-social-equity.png', alt: 'Can we actually measure for social equity in the built environment' },
     body: `The level of interest that manufacturers, design firms, and builders are showing in labels that broadcast how they uphold <a href="/social-equity-101">social equity</a> and earn points for it is remarkable. In fact, credit for internal strides, chiefly in the form of a label on packages and marketing materials, represents a new class of virtue-driven <a href="/certification">certifications</a>. Is this a good sign?
 
 <a href="https://metropolismag.com/viewpoints/can-we-actually-measure-for-social-equity/" target="_blank" rel="noopener noreferrer">Read the full article on Metropolis Magazine &rarr;</a>`,
@@ -215,6 +222,7 @@ It provides guidance, resources, and <a href="/certification">certification</a> 
     author: { name: 'BBC StoryWorks', role: 'The Spaces that Shape Us' },
     date: '2023-09-12',
     readTime: '1 min read',
+    image: { src: '/images/blog/repurposing-buildings.png', alt: 'Repurposing buildings for environmental and social impact' },
     body: `Expectations of what an office should be are changing. Discover how these office spaces are being retrofitted to be more environmentally responsible and designed to care for worker's wellness — core principles of <a href="/social-equity-101">social equity in the built environment</a>.
 
 <a href="https://www.bbc.com/storyworks/the-spaces-that-shape-us/jll" target="_blank" rel="noopener noreferrer">Watch on BBC.com &rarr;</a>`,
@@ -241,6 +249,7 @@ It provides guidance, resources, and <a href="/certification">certification</a> 
     author: { name: 'Sarah Austin', role: 'Streamly' },
     date: '2023-10-24',
     readTime: '1 min read',
+    image: { src: '/images/blog/why-i-created-seam.png', alt: 'Rainey Shane on why she created SEAM' },
     body: `Sometimes it takes just one person to spark a movement for change. Rainey Shane's background in law enforcement and experience leading rescue missions from forced labour led her on a mission for better equity and social justice in the real estate industry and beyond.
 
 We spoke to Shane about <a href="/about">SEAM</a>, the social impact measurement tool she co-created. In this in-depth interview she explains how the <a href="/resources/standard">Social Equity Assessment Method</a> works, why it is so important at this moment in time and what still needs to be done to make it the powerful force for good she envisages.
@@ -289,6 +298,7 @@ Click to listen on Apple Podcasts, Spotify, or Zencastr.`,
     author: { name: 'Rainey Shane', role: 'CEO, SEAM' },
     date: '2024-07-02',
     readTime: '1 min read',
+    image: { src: '/images/blog/meet-the-trailblazers.png', alt: 'Meet the trailblazers of the SEAM Crosswalks Technical Advisory Group' },
     body: `With the ongoing development of SEAM, we are excited to announce the formation of our inaugural Crosswalks Technical Advisory Group (TAG). This unique opportunity allows dedicated volunteers to play a crucial role in shaping our standards and advancing our mission to embed social equity in the built environment.
 
 We are excited to welcome our 2024 cohort, who will collaborate with SEAM staff to develop crosswalks between SEAM and other prominent building certification standards — starting with the <a href="/resources/leed-crosswalk">LEED Crosswalk</a>. Their work will significantly streamline the <a href="/certification">certification</a> process for projects aiming to meet multiple sustainability objectives by facilitating recognition and integration of SEAM's social equity criteria within other certification systems.
