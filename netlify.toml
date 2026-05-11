@@ -11,6 +11,72 @@
   status = 301
   force = true
 
+# Old Wix URL redirects
+[[redirects]]
+  from = "/accreditation"
+  to = "/ap-credential"
+  status = 301
+
+[[redirects]]
+  from = "/become-seam-ap"
+  to = "/ap-credential"
+  status = 301
+
+[[redirects]]
+  from = "/faqs"
+  to = "/faq"
+  status = 301
+
+[[redirects]]
+  from = "/general-4-1"
+  to = "/faq"
+  status = 301
+
+[[redirects]]
+  from = "/plans-pricing"
+  to = "/pricing"
+  status = 301
+
+[[redirects]]
+  from = "/official-seam-aps"
+  to = "/directory"
+  status = 301
+
+[[redirects]]
+  from = "/news-1/*"
+  to = "/resources/blog"
+  status = 301
+
+[[redirects]]
+  from = "/news-1"
+  to = "/resources/blog"
+  status = 301
+
+[[redirects]]
+  from = "/post/*"
+  to = "/resources/blog"
+  status = 301
+
+[[redirects]]
+  from = "/foundingsponsorships"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/seam-studio"
+  to = "/resources/courses"
+  status = 301
+
+[[redirects]]
+  from = "/cidie-certification"
+  to = "/certification"
+  status = 301
+
+[[redirects]]
+  from = "/bestspaces-certification"
+  to = "/certification"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
