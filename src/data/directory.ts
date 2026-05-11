@@ -727,7 +727,7 @@ export const certifiedProjects: CertifiedProject[] = [
     slug: 'interface-hq',
     name: 'Interface HQ',
     image: '/images/directory/project-interface-hq.jpg',
-    location: { city: 'Portland', state: 'OR' },
+    location: { city: 'Atlanta', state: 'GA' },
     certificationLevel: 'Pre-certification',
     ratingSystem: 'Operations + Maintenance',
     description:
@@ -735,12 +735,7 @@ export const certifiedProjects: CertifiedProject[] = [
     completionDate: '2025-08',
     size: '120,000 SF',
     owner: 'Interface, Inc.',
-    highlights: [
-      'Community voice process adapted for corporate headquarters context',
-      'Local procurement increased from 35% to 52% within certification period',
-      'Accessibility audit exceeded ADA by 40+ interventions',
-      'Clear Gold pathway identified for recertification cycle',
-    ],
+    highlights: [],
     apLead: undefined,
   },
   {

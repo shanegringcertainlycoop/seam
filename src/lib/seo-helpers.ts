@@ -3,7 +3,7 @@ export const SITE_URL =
 export const SITE_NAME = 'SEAM'
 export const DEFAULT_IMAGE = `${SITE_URL}/images/seam-social-card.jpg`
 export const DEFAULT_DESCRIPTION =
-  'SEAM is the first certification system that measures social equity in buildings. Bronze through Platinum certification across four pillars.'
+  'SEAM is the first certification system built to measure and advance social equity in the built environment — for developers, building professionals, and communities.'
 
 export function blogPostingSchema(post: {
   title: string
