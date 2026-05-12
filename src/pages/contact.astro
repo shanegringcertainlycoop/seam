@@ -157,10 +157,10 @@ const jsonLd = breadcrumbSchema([
           <div class="rounded-2xl border border-warm-100 bg-warm-50 p-8">
             <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-4">Email us directly</h3>
             <a
-              href="mailto:rainey@seamcertification.org"
+              href="mailto:info@seamcertification.org"
               class="text-[15px] font-medium text-seam-600 hover:text-seam-700 transition-colors underline decoration-seam-300 hover:decoration-seam-600"
             >
-              rainey@seamcertification.org
+              info@seamcertification.org
             </a>
           </div>
 
@@ -227,7 +227,7 @@ const jsonLd = breadcrumbSchema([
       } catch {
         const subject = encodeURIComponent(`SEAM Contact: ${data.get('topic')}`)
         const body = encodeURIComponent(`Name: ${data.get('first-name')} ${data.get('last-name')}\nEmail: ${data.get('email')}\nOrganization: ${data.get('organization') || 'N/A'}\nTopic: ${data.get('topic')}\n\n${data.get('message')}`)
-        window.location.href = `mailto:rainey@seamcertification.org?subject=${subject}&body=${body}`
+        window.location.href = `mailto:info@seamcertification.org?subject=${subject}&body=${body}`
       } finally {
         btn.disabled = false
         btn.textContent = original
