@@ -58,11 +58,20 @@ const url = `${SITE_URL}${path}`
     })(window,document,'script','dataLayer','GTM-PFFKXQPW');</script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {/* Preload hero image (LCP element) on homepage only */}
+    {path === '/' && (
+      <>
+        <link rel="preload" as="image" type="image/webp" href="/hero-mobile.webp" media="(max-width: 767px)" />
+        <link rel="preload" as="image" type="image/webp" href="/hero.webp" media="(min-width: 768px)" />
+      </>
+    )}
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />

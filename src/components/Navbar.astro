@@ -111,25 +111,25 @@ const theStandard: NavGroup = {
           label: 'Social Impact',
           href: '/standard/social-impact',
           description: 'Know who your project affects — and whether it is working.',
-          logo: '/icons/pillar-social-impact.png',
+          logo: '/icons/pillar-social-impact.webp',
         },
         {
           label: 'Social Responsibility',
           href: '/standard/social-responsibility',
           description: 'Walk the talk on governance, community, and investment.',
-          logo: '/icons/pillar-social-responsibility.png',
+          logo: '/icons/pillar-social-responsibility.webp',
         },
         {
           label: 'Social Justice',
           href: '/standard/social-justice',
           description: 'Equity across procurement, the workplace, and capital access.',
-          logo: '/icons/pillar-social-justice.png',
+          logo: '/icons/pillar-social-justice.webp',
         },
         {
           label: 'Social Accountability',
           href: '/standard/social-accountability',
           description: 'Human rights, ethical sourcing, and worker well-being.',
-          logo: '/icons/pillar-social-accountability.png',
+          logo: '/icons/pillar-social-accountability.webp',
         },
       ],
     },
@@ -345,8 +345,10 @@ function logoClass(_logo: string) {
                       {/* Standard book cover */}
                       <div class="absolute -right-8 -top-4 -bottom-4 w-[320px] overflow-hidden">
                         <img
-                          src="/images/seam-standard-book.png"
+                          src="/images/seam-standard-book.webp"
                           alt="The SEAM Standard book cover"
+                          width="280"
+                          height="303"
                           decoding="async"
                           class="absolute right-2 top-1/2 -translate-y-[45%] h-[280px] w-auto drop-shadow-[0_16px_32px_rgba(0,0,0,0.4)] rotate-[12deg]"
                         />
@@ -439,6 +441,8 @@ function logoClass(_logo: string) {
                               <img
                                 src={link.logo}
                                 alt={link.label}
+                                width="44"
+                                height="44"
                                 decoding="async"
                                 class={`object-contain shrink-0 ${logoClass(link.logo)}`}
                               />
