@@ -581,7 +581,7 @@ const jsonLd = [
       <div class="reveal-stagger grid grid-cols-6 sm:grid-cols-9 lg:grid-cols-12 gap-3 lg:gap-4 max-w-5xl mx-auto justify-items-center">
         {[
           { src: '/images/team/rainey-shane-new.webp', name: 'Rainey Shane' },
-          { src: '/images/team/alex-demestihas.webp', name: 'Alex Demestihas' },
+          { src: '/images/team/alex-demestihas.jpeg', name: 'Alex Demestihas' },
           { src: '/images/team/chris-pirschel.jpg', name: 'Chris Pirschel' },
           { src: '/images/team/shane-gring.jpg', name: 'Shane Gring' },
           { src: '/images/ap-alexandra-bull.jpg', name: 'Alexandra Bull' },
@@ -595,13 +595,13 @@ const jsonLd = [
           { src: '/images/directory/ap-max-kriegsfeld.jpg', name: 'Max Kriegsfeld' },
           { src: '/images/directory/ap-jayne-lee.jpg', name: 'Jayne Lee' },
           { src: '/images/directory/ap-hetvi-vora.jpg', name: 'Hetvi Vora' },
-          { src: '/images/directory/ap-anna-fredlander.jpg', name: 'Anna Fredlander' },
+          { src: '/images/directory/ap-anna-fredlander-new.jpg', name: 'Anna Fredlander' },
           { src: '/images/directory/ap-monica-wentz.jpg', name: 'Monica Wentz' },
           { src: '/images/directory/ap-valerie-oliver.jpg', name: 'Valerie Oliver' },
           { src: '/images/directory/ap-jennifer-webb.jpg', name: 'Jennifer Webb' },
           { src: '/images/directory/ap-edward-wan.jpg', name: 'Edward Wan' },
-          { src: '/images/directory/ap-eva-lo.png', name: 'Eva Lo' },
-          { src: '/images/directory/ap-curtis-stewart.jpg', name: 'Curtis Stewart' },
+          { src: '/images/directory/ap-eva-lo.webp', name: 'Eva Lo' },
+          { src: '/images/directory/ap-curtis-stewart-new.jpeg', name: 'Curtis Stewart' },
           { src: '/images/directory/ap-tim-wedemeyer.jpg', name: 'Tim Wedemeyer' },
           { src: '/images/directory/ap-nancy-larson.jpg', name: 'Nancy Larson' },
           { src: '/images/directory/ap-gerlinda-grimes.jpg', name: 'Gerlinda Grimes' },
@@ -616,7 +616,7 @@ const jsonLd = [
           { src: '/images/directory/ap-yun-loy-yap.jpg', name: 'Yun Loy Yap' },
           { src: '/images/directory/ap-phuong-tran.jpg', name: 'Phuong Tran' },
           { src: '/images/directory/ap-taidgh-mcclory.jpg', name: 'Taidgh McClory' },
-        ].map((person) => (
+        ].sort(() => Math.random() - 0.5).map((person) => (
           <div class="reveal-child">
             <div class="w-14 h-14 lg:w-[4.5rem] lg:h-[4.5rem] rounded-full overflow-hidden ring-2 ring-white shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
               <img
