@@ -29,7 +29,7 @@ export function blogPostingSchema(post: {
       url: SITE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/favicon.svg`,
+        url: `${SITE_URL}/logos/seam-wordmark.png`,
       },
     },
     datePublished: post.date,
@@ -66,7 +66,7 @@ export function organizationSchema() {
     name: 'SEAM, Inc.',
     alternateName: 'Social Equity Assessment Method',
     url: SITE_URL,
-    logo: `${SITE_URL}/favicon.svg`,
+    logo: `${SITE_URL}/logos/seam-wordmark.png`,
     image: DEFAULT_IMAGE,
     description: DEFAULT_DESCRIPTION,
     foundingDate: '2023',
