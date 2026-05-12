@@ -203,20 +203,26 @@ const jsonLd = [
   <section class="relative min-h-[90vh] flex items-end overflow-hidden">
     <!-- Background video with static fallback -->
     <div class="absolute inset-0 bg-warm-900">
-      <img
-        src="/hero.webp"
-        alt=""
-        class="absolute inset-0 h-full w-full object-cover object-center scale-105"
-        fetchpriority="high"
-        decoding="async"
-      />
+      <picture>
+        <source media="(max-width: 767px)" srcset="/hero-mobile.webp" />
+        <source media="(min-width: 768px)" srcset="/hero.webp" />
+        <img
+          src="/hero.webp"
+          alt=""
+          width="2400"
+          height="1600"
+          class="absolute inset-0 h-full w-full object-cover object-center scale-105"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
       <video
         autoplay
         muted
         loop
         playsinline
         preload="metadata"
-        class="hero-image absolute inset-0 h-full w-full object-cover object-center scale-105 opacity-0 transition-opacity duration-700"
+        class="hidden md:block hero-image absolute inset-0 h-full w-full object-cover object-center scale-105 opacity-0 transition-opacity duration-700"
         oncanplaythrough="this.classList.remove('opacity-0')"
       >
         <source src="/home-hero.mp4" type="video/mp4" />
@@ -622,6 +628,8 @@ const jsonLd = [
               <img
                 src={person.src}
                 alt={person.name}
+                width="72"
+                height="72"
                 class="w-full h-full object-cover object-top"
                 loading="lazy"
                 decoding="async"
@@ -646,7 +654,9 @@ const jsonLd = [
             <img
               src={org.src}
               alt={org.name}
-              class="h-7 lg:h-9 object-contain opacity-40 grayscale"
+              width="120"
+              height="36"
+              class="h-7 lg:h-9 w-auto object-contain opacity-40 grayscale"
               loading="lazy"
               decoding="async"
             />
