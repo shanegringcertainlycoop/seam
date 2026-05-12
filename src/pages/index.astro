@@ -14,7 +14,7 @@ const hotspots = [
     x: 48,
     y: 50,
     title: 'Occupants',
-    image: '/images/home/occupants.png',
+    image: '/images/home/occupants.webp',
     intro: 'The people who live, work, and gather here every day.',
     body:
       'Indoor air, access, affordability, and belonging shape their experience and long-term health. Most standards start here. SEAM starts here too, then keeps going.',
@@ -24,7 +24,7 @@ const hotspots = [
     x: 57,
     y: 60,
     title: 'Operators',
-    image: '/images/home/operators.png',
+    image: '/images/home/operators.webp',
     intro: 'The people who keep it running.',
     body:
       'Facility teams, custodial staff, security. They maintain the space, often invisibly. How they\u2019re trained, paid, and treated is part of the building\u2019s performance.',
@@ -34,7 +34,7 @@ const hotspots = [
     x: 38,
     y: 36,
     title: 'Builders',
-    image: '/images/home/builders.png',
+    image: '/images/home/builders.webp',
     intro: 'The people who built it.',
     body:
       'Construction is one of the most dangerous industries in the world. Safety, fair wages, and labor conditions on the jobsite are the building\u2019s first chapter.',
@@ -44,7 +44,7 @@ const hotspots = [
     x: 72,
     y: 52,
     title: 'Neighbors',
-    image: '/images/home/neighbors.png',
+    image: '/images/home/neighbors.webp',
     intro: 'The people who live alongside it.',
     body:
       'A building changes the block \u2014 traffic, shadows, rents, and who feels welcome. The surrounding community is an impacted party whether or not they were consulted.',
@@ -54,7 +54,7 @@ const hotspots = [
     x: 78,
     y: 58,
     title: 'Suppliers',
-    image: '/images/home/suppliers.png',
+    image: '/images/home/suppliers.webp',
     intro: 'The people who source and ship what goes into it.',
     body:
       'Manufacturers, fabricators, drivers. A building is assembled from thousands of decisions made in places the owner will never visit. Each carries a labor record.',
@@ -64,7 +64,7 @@ const hotspots = [
     x: 22,
     y: 22,
     title: 'Laborers',
-    image: '/images/home/laborers.png',
+    image: '/images/home/laborers.webp',
     intro: 'The people at the very beginning of the chain.',
     body:
       'Mines, forests, mills, factories \u2014 often far from sight, beyond easy oversight. Fair labor at the raw-material level is where real accountability begins.',
@@ -203,16 +203,18 @@ const jsonLd = [
     <!-- Background video with static fallback -->
     <div class="absolute inset-0 bg-warm-900">
       <img
-        src="/hero.png"
+        src="/hero.webp"
         alt=""
         class="absolute inset-0 h-full w-full object-cover object-center scale-105"
+        fetchpriority="high"
+        decoding="async"
       />
       <video
         autoplay
         muted
         loop
         playsinline
-        preload="auto"
+        preload="metadata"
         class="hero-image absolute inset-0 h-full w-full object-cover object-center scale-105 opacity-0 transition-opacity duration-700"
         oncanplaythrough="this.classList.remove('opacity-0')"
       >
@@ -264,7 +266,7 @@ const jsonLd = [
           </em>{' '}
           with people as a focus, communities thrive and investments outperform.
           <br /><br />
-          <img src="/logos/seam-wordmark.svg" alt="SEAM" class="inline-block h-[1.1em] w-auto align-baseline -mb-[0.05em]" fetchpriority="high" decoding="async" /> is the world's first standard built to advance social equity in commercial real estate.
+          <img src="/logos/seam-wordmark.svg" alt="SEAM" class="inline-block h-[1.1em] w-auto align-baseline -mb-[0.05em]" decoding="async" /> is the world's first standard built to advance social equity in commercial real estate.
         </p>
       </div>
     </div>
@@ -294,7 +296,7 @@ const jsonLd = [
         class="relative w-full aspect-[2/1]"
       >
         <img
-          src="/images/home/6-dimensions.png"
+          src="/images/home/6-dimensions.webp"
           alt="Isometric illustration of a building at the center of six concentric rings representing the people it touches — tenants, facilities staff, construction workers, community residents, supply chain vendors, and raw material laborers"
           class="absolute inset-0 h-full w-full object-contain select-none pointer-events-none"
           draggable="false"
