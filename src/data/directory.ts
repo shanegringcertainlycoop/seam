@@ -278,7 +278,7 @@ export const seamAPs: SeamAP[] = [
   {
     slug: 'eva-lo',
     name: 'Eva Lo',
-    photo: '/images/directory/ap-eva-lo.png',
+    photo: '/images/directory/ap-eva-lo.webp',
     title: 'Account Director, Work Dynamics',
     organization: 'JLL',
     location: { city: 'Hong Kong', state: '' },
@@ -333,7 +333,7 @@ export const seamAPs: SeamAP[] = [
   {
     slug: 'susan-kaplan',
     name: 'Susan Kaplan',
-    photo: '/images/directory/ap-susan-kaplan.png',
+    photo: '/images/directory/ap-susan-kaplan.webp',
     title: 'Associate Principal, Director of Materials Technology',
     organization: 'HLW',
     location: { city: 'New York', state: 'NY' },
