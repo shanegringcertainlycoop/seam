@@ -13,7 +13,7 @@ export const team: TeamMember[] = [
     name: 'Rainey Shane',
     role: 'CEO / Co-Founder / Board Chair',
     bio: 'Rainey Shane is Chief Executive Officer and Executive Director of SEAM, Inc., a nonprofit organization that specializes in embedding social equity in commercial real estate through the Social Equity Assessment Method (SEAM) Standard and certification framework. As co-founder, she played a central role in developing the standard itself — a framework that addresses the social impacts of commercial real estate projects, much like LEED addresses climate change, with the aim of minimizing negative impacts while maximizing opportunities for positive, sustainable outcomes that contribute to long-term systemic change in diversity, equity, inclusion, human rights, and prosperity.\n\nBefore launching SEAM as a standalone nonprofit, Rainey served as Director of Social Sustainability for North America at JLL, where she led the firm\'s social sustainability consulting services and aligned commercial real estate projects with clients\' social sustainability goals. Prior to that, she established and grew the Adaptive Reuse practice for JLL\'s Project and Development Services in the Southeast Central region — a foundation that continues to shape her approach to social impact work, given how closely the two disciplines connect.\n\nRainey brings 15+ years of commercial real estate experience, predominantly in adaptive reuse, to her leadership of SEAM. Her work has earned recognition through ULI Atlanta\'s Women\'s Leadership Initiative "The Leaders" cohort, an award based on career achievements, community outreach, and mentorship within the industry, and she was recently selected to the 2026 class of the Georgia Tech Alumni Association Board of Trustees.\n\nBeyond her professional work, Rainey is passionate about anti-trafficking and combatting modern slavery, and serves as a Rescue Team Operator on child trafficking and forced labor rescue missions — lived experience that gives her perspective on social equity an unusual depth and urgency.',
-    image: '/images/team/rainey-shane-new.png',
+    image: '/images/team/rainey-shane-new.webp',
   },
   {
     slug: 'alex-demestihas',
@@ -41,7 +41,7 @@ export const team: TeamMember[] = [
     name: 'Terena Campagna',
     role: 'Chief Experience Officer',
     bio: 'CXO at SEAM, leading the experience of accredited professionals worldwide. Co-led the development and launch of the SEAM AP credential and continues to coach the global AP community in applying the standard to strengthen community outcomes and long-term asset value.',
-    image: '/images/team/terena-campagna.png',
+    image: '/images/team/terena-campagna.webp',
   },
   {
     slug: 'melina-gorrebeeck',

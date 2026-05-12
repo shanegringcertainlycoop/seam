@@ -59,6 +59,35 @@ export function faqSchema(items: { question: string; answer: string }[]) {
   }
 }
 
+export function organizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'NonprofitOrganization',
+    name: 'SEAM, Inc.',
+    alternateName: 'Social Equity Assessment Method',
+    url: SITE_URL,
+    logo: `${SITE_URL}/favicon.svg`,
+    image: DEFAULT_IMAGE,
+    description: DEFAULT_DESCRIPTION,
+    foundingDate: '2023',
+    nonprofitStatus: '501(c)(3)',
+    sameAs: [
+      'https://www.linkedin.com/company/seam-standard/',
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Atlanta',
+      addressRegion: 'GA',
+      addressCountry: 'US',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'info@seamcertification.org',
+      contactType: 'customer service',
+    },
+  }
+}
+
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {
     '@context': 'https://schema.org',

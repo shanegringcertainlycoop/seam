@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
 import BusinessCaseBanner from '../components/BusinessCaseBanner.astro'
-import { faqSchema, breadcrumbSchema } from '../lib/seo-helpers'
+import { faqSchema, breadcrumbSchema, organizationSchema } from '../lib/seo-helpers'
 import { certifiedProjects } from '../data/directory'
 import { posts } from '../data/blog'
 
@@ -191,6 +191,7 @@ const jsonLd = [
     },
   ]),
   breadcrumbSchema([{ name: 'Home', path: '/' }]),
+  organizationSchema(),
 ]
 ---
 <SiteLayout
@@ -579,8 +580,8 @@ const jsonLd = [
 
       <div class="reveal-stagger grid grid-cols-6 sm:grid-cols-9 lg:grid-cols-12 gap-3 lg:gap-4 max-w-5xl mx-auto justify-items-center">
         {[
-          { src: '/images/team/rainey-shane.png', name: 'Rainey Shane' },
-          { src: '/images/team/alex-demestihas.png', name: 'Alex Demestihas' },
+          { src: '/images/team/rainey-shane-new.webp', name: 'Rainey Shane' },
+          { src: '/images/team/alex-demestihas.webp', name: 'Alex Demestihas' },
           { src: '/images/team/chris-pirschel.jpg', name: 'Chris Pirschel' },
           { src: '/images/team/shane-gring.jpg', name: 'Shane Gring' },
           { src: '/images/ap-alexandra-bull.jpg', name: 'Alexandra Bull' },
