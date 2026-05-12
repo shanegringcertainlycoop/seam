@@ -23,7 +23,7 @@ export interface CertifiedProject {
   name: string
   image: string
   location: { city: string; state: string }
-  certificationLevel: 'Registered' | 'Activity Endorsement' | 'Pre-certification' | 'Bronze' | 'Silver' | 'Gold' | 'Platinum'
+  certificationLevel: 'Pursuing' | 'Endorsement' | 'Pre-certification' | 'Bronze' | 'Silver' | 'Gold' | 'Platinum'
   ratingSystem:
     | 'Buildings + Interiors'
     | 'Operations + Maintenance'
@@ -178,7 +178,7 @@ export const seamAPs: SeamAP[] = [
   {
     slug: 'anna-fredlander',
     name: 'Anna Fredlander',
-    photo: '/images/directory/ap-anna-fredlander.jpg',
+    photo: '/images/directory/ap-anna-fredlander-new.jpg',
     title: 'Principal Social Value Consultant',
     organization: 'Hoare Lea',
     location: { city: 'Edinburgh', state: 'UK' },
@@ -224,9 +224,9 @@ export const seamAPs: SeamAP[] = [
     photo: '/images/ap-melina-gorrebeeck.jpg',
     title: 'SEAM Europe Regional Director',
     organization: 'LAMMP',
-    location: { city: 'Brussels', state: 'Belgium' },
+    location: { city: 'Antwerp', state: 'Belgium' },
     specialties: ['Community Development', 'Community Engagement', 'Economic Equity'],
-    bio: 'Melina brings twenty years of community organizing experience to the SEAM framework, translating grassroots knowledge into measurable outcomes that show up in project financing. Based in Brussels, she is helping expand SEAM\'s reach into international markets and demonstrating how the Standard applies across cultural and regulatory contexts.',
+    bio: 'Melina builds the science behind better places. As CEO of LAMMP, she helps HR professionals, architects, developers, investors, and governments design buildings and communities that go beyond functionality — working at the intersection of psychology, sociology, neuroscience, and the built environment to create spaces that genuinely enhance well-being, resilience, and social cohesion. Her mission is to redefine the value of real estate not just in financial terms, but through its measurable social impact. As Regional Director for SEAM Europe, she leads the expansion of SEAM Certification™ and the SEAM AP credential across the European market.',
     credentials: 'SEAM AP',
     roles: ['Leadership'],
     membershipTier: 'Changemaker',
@@ -318,7 +318,7 @@ export const seamAPs: SeamAP[] = [
   {
     slug: 'curtis-stewart',
     name: 'Curtis Stewart',
-    photo: '/images/directory/ap-curtis-stewart.jpg',
+    photo: '/images/directory/ap-curtis-stewart-new.jpeg',
     title: 'Advisory Sales Executive',
     organization: 'UL Solutions',
     location: { city: 'Chicago', state: 'IL' },
@@ -333,7 +333,7 @@ export const seamAPs: SeamAP[] = [
   {
     slug: 'susan-kaplan',
     name: 'Susan Kaplan',
-    photo: '',
+    photo: '/images/directory/ap-susan-kaplan.png',
     title: 'Associate Principal, Director of Materials Technology',
     organization: 'HLW',
     location: { city: 'New York', state: 'NY' },
@@ -348,7 +348,7 @@ export const seamAPs: SeamAP[] = [
   {
     slug: 'joel-todd',
     name: 'Joel Ann Todd',
-    photo: '',
+    photo: '/images/directory/ap-joel-todd.jpeg',
     title: 'Technical and Education Director',
     organization: 'Health Product Declaration Collaborative',
     location: { city: '', state: '' },
@@ -434,7 +434,7 @@ export const seamAPs: SeamAP[] = [
   {
     slug: 'atlas-turner',
     name: 'Atlas Turner',
-    photo: '',
+    photo: '/images/directory/ap-atlas-turner.jpeg',
     title: '',
     organization: "O'Brien 360",
     location: { city: 'Seattle', state: 'WA' },
@@ -574,7 +574,7 @@ export const seamAPs: SeamAP[] = [
   {
     slug: 'rachael-guerrero',
     name: 'Rachael Guerrero',
-    photo: '',
+    photo: '/images/directory/ap-rachael-guerrero.jpeg',
     title: 'Manager, Corporate Social Responsibility',
     organization: 'Swinerton',
     location: { city: 'Atlanta', state: 'GA' },
@@ -602,7 +602,7 @@ export const seamAPs: SeamAP[] = [
   {
     slug: 'lindsay-brown',
     name: 'Lindsay Brown',
-    photo: '',
+    photo: '/images/directory/ap-lindsay-brown.jpeg',
     title: 'Manager, Community Relations',
     organization: 'Swinerton',
     location: { city: '', state: '' },
@@ -743,7 +743,7 @@ export const certifiedProjects: CertifiedProject[] = [
     name: 'Bertschi School — Schoolhouse',
     image: '/images/directory/project-bertschi-school.webp',
     location: { city: 'Seattle', state: 'WA' },
-    certificationLevel: 'Registered',
+    certificationLevel: 'Pursuing',
     ratingSystem: 'Buildings + Interiors',
     description:
       'Bertschi School is pursuing SEAM Silver certification for its new 49,384 SF Schoolhouse — aiming to be the first school to achieve the credential. The project integrates social equity considerations across planning, design, construction, and operations, with attention to ethically sourced materials, construction labor practices, impacted party assessment, and human rights protections. Students have been integral to the planning process from the very beginning.',
@@ -764,7 +764,7 @@ export const certifiedProjects: CertifiedProject[] = [
   {
     slug: 'private-client-campus-a',
     name: 'Private Client — Two-Building Urban Office Campus',
-    image: '',
+    image: '/images/directory/placeholder-teal.svg',
     location: { city: '', state: 'Southeastern U.S.' },
     certificationLevel: 'Pre-certification',
     ratingSystem: 'Operations + Maintenance',
@@ -784,7 +784,7 @@ export const certifiedProjects: CertifiedProject[] = [
   {
     slug: 'private-client-campus-b',
     name: 'Private Client — Large Leased Workplace + R&D Hub',
-    image: '',
+    image: '/images/directory/placeholder-gold.svg',
     location: { city: '', state: 'Mid-Atlantic U.S.' },
     certificationLevel: 'Pre-certification',
     ratingSystem: 'Operations + Maintenance',
@@ -804,7 +804,7 @@ export const certifiedProjects: CertifiedProject[] = [
   {
     slug: 'private-client-campus-c',
     name: 'Private Client — Regional HQ Workplace',
-    image: '',
+    image: '/images/directory/placeholder-warm.svg',
     location: { city: '', state: 'Canada' },
     certificationLevel: 'Pre-certification',
     ratingSystem: 'Operations + Maintenance',
@@ -824,9 +824,9 @@ export const certifiedProjects: CertifiedProject[] = [
   {
     slug: 'private-client-modern-slavery-endorsement',
     name: 'Private Client — Modern Slavery Assessment Endorsement',
-    image: '',
+    image: '/images/directory/project-modern-slavery-endorsement.jpg',
     location: { city: '', state: '' },
-    certificationLevel: 'Activity Endorsement',
+    certificationLevel: 'Endorsement',
     ratingSystem: 'Modern Slavery Assessment Endorsement',
     description:
       'SEAM is piloting a confidential Modern Slavery Assessment for a real estate investment manager that reports to an Australian reporting entity under the Australian Modern Slavery Act 2018. The project applies relevant SEAM Standard Activities to evaluate how the investment manager identifies, documents, and addresses modern slavery risk across its fund structure, acquisition process, and future asset operations. This work provides practical reporting inputs for the Australian reporting entity while testing how SEAM can verify a focused subset of modern slavery-related requirements. The pilot is informing the creation of the SEAM Modern Slavery Assessment Endorsement, a limited-scope certification mark that recognizes completion of a defined subset of the full SEAM Certification framework.',
@@ -843,9 +843,9 @@ export const certifiedProjects: CertifiedProject[] = [
   {
     slug: 't2s-cares-liberia',
     name: 'T2S C.A.R.E.S. Liberia Mental Health Infrastructure Initiative, Phase 1',
-    image: '',
+    image: '/images/directory/project-t2s-cares-liberia.png',
     location: { city: '', state: 'Liberia' },
-    certificationLevel: 'Activity Endorsement',
+    certificationLevel: 'Endorsement',
     ratingSystem: 'Community Development Endorsement',
     description: 'SEAM is applying its built environment community development framework to the Liberia Mental Health Infrastructure Initiative led by T2S C.A.R.E.S., using the project as a pilot to inform the creation of SEAM\'s Community Development Endorsement. The work translates SEAM\'s Activity-based approach into practical guidance for identifying impacted parties, defining the social area of influence, documenting local needs and baseline conditions, supporting credible community input, and connecting that input to mental health infrastructure planning. The pilot also includes the volunteer component of the endorsement, examining how volunteer participation can be structured around a clear community-centered goal, aligned with local context, and documented for measurable contribution rather than treated as a one-time service activity.',
     completionDate: '',
@@ -978,7 +978,7 @@ export const apSpecialties = [
 
 export const certificationLevels = [
   'All',
-  'Activity Endorsement',
+  'Endorsement',
   'Pre-certification',
   'Bronze',
   'Silver',

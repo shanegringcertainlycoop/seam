@@ -26,9 +26,10 @@ type ProfessionalItem =
   | { kind: 'team'; data: (typeof team)[number] }
   | { kind: 'ap'; data: (typeof seamAPs)[number] }
 
+const teamSlugs = new Set(team.map((m) => m.slug))
 const allProfessionals: ProfessionalItem[] = shuffle([
   ...team.map((m) => ({ kind: 'team' as const, data: m })),
-  ...seamAPs.map((a) => ({ kind: 'ap' as const, data: a })),
+  ...seamAPs.filter((a) => !teamSlugs.has(a.slug)).map((a) => ({ kind: 'ap' as const, data: a })),
 ])
 
 type Tab = 'professionals' | 'organizations' | 'projects'
@@ -49,10 +50,10 @@ seamAPs.forEach((ap) => ap.specialties.forEach((s) => specialtySet.add(s)))
 const uniqueSpecialties = Array.from(specialtySet).sort()
 
 // Role filters for Professionals tab
-const roleFilters = ['All', 'SEAM AP', 'Member', 'Leadership', 'TAG', ...uniqueSpecialties]
+const roleFilters = ['All', 'SEAM AP', 'Member', 'Leadership', 'Board', 'TAG', ...uniqueSpecialties]
 
 const levelColors: Record<string, string> = {
-  'Activity Endorsement': 'bg-emerald-50 text-emerald-700',
+  'Endorsement': 'bg-emerald-50 text-emerald-700',
   'Pre-certification': 'bg-blue-50 text-blue-700',
   Bronze: 'bg-amber-100 text-amber-800',
   Silver: 'bg-gray-100 text-gray-700',
@@ -189,7 +190,7 @@ const inactivePillClass =
         {activeTab === 'professionals' &&
           roleFilters.map((s, i) => (
             <>
-              {i === 5 && <span class="w-px h-8 bg-warm-200 self-center mx-1"></span>}
+              {i === 6 && <span class="w-px h-8 bg-warm-200 self-center mx-1"></span>}
               <button
                 type="button"
                 data-directory-filter
@@ -248,8 +249,11 @@ const inactivePillClass =
             {allProfessionals.map((item) => {
               if (item.kind === 'team') {
                 const member = item.data
-                const searchText = [member.name, member.role, member.bio, 'Leadership'].join(' ').toLowerCase()
-                const tags = 'Leadership'
+                const isBoard = member.role.includes('Board') || member.role.includes('Co-Founder')
+                const tagList = ['Leadership', ...(isBoard ? ['Board'] : [])]
+                const searchText = [member.name, member.role, member.bio, ...tagList].join(' ').toLowerCase()
+                const tags = tagList.join('|')
+
                 return (
                   <a
                     href={`/directory/team/${member.slug}`}

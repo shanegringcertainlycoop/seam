@@ -2,6 +2,17 @@
 import SiteLayout from '../layouts/SiteLayout.astro'
 import { breadcrumbSchema, SITE_URL } from '../lib/seo-helpers'
 import { team } from '../data/team'
+import { seamAPs } from '../data/directory'
+
+const staff = team.filter((m) => !['Board Member'].includes(m.role))
+const board = team.filter((m) => m.role === 'Board Member' || m.role.includes('Board'))
+const tagMembers = seamAPs.filter((ap) => ap.roles?.includes('TAG'))
+
+function truncateBio(bio: string, maxLen = 180) {
+  const first = bio.split('\n\n')[0]
+  if (first.length <= maxLen) return first
+  return first.slice(0, maxLen).replace(/\s+\S*$/, '') + '...'
+}
 
 const values = [
   {
@@ -133,7 +144,7 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ─── Founders ─── -->
+  <!-- ─── Leadership ─── -->
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
@@ -147,9 +158,10 @@ const jsonLd = [
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {team.map((f) => (
-          <div
-            class="reveal-child rounded-2xl border border-warm-100 overflow-hidden transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+        {staff.map((f) => (
+          <a
+            href={`/directory/team/${f.slug}`}
+            class="reveal-child rounded-2xl border border-warm-100 overflow-hidden transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] block"
           >
             <div class="aspect-[4/3] bg-warm-100 overflow-hidden">
               <img
@@ -168,10 +180,109 @@ const jsonLd = [
                 {f.name}
               </h3>
               <p class="text-[15px] leading-relaxed text-warm-600">
-                {f.bio}
+                {truncateBio(f.bio)}
               </p>
             </div>
-          </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Board ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Board of Directors
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Governance &{' '}
+          <em class="italic font-normal text-seam-600">oversight</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {board.map((f) => (
+          <a
+            href={`/directory/team/${f.slug}`}
+            class="reveal-child rounded-2xl border border-warm-100 bg-white overflow-hidden transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] block"
+          >
+            <div class="aspect-[4/3] bg-warm-100 overflow-hidden">
+              <img
+                src={f.image}
+                alt={f.name}
+                class="w-full h-full object-cover object-top"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-8 lg:p-10">
+              <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-2">
+                {f.role}
+              </p>
+              <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
+                {f.name}
+              </h3>
+              <p class="text-[15px] leading-relaxed text-warm-600">
+                {truncateBio(f.bio)}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Technical Advisory Group ─── -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Technical Advisory Group
+        </p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Practitioners shaping{' '}
+          <em class="italic font-normal text-seam-600">the standard</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-2xl">
+          The TAG is a group of credentialed SEAM APs who advise on the development, interpretation, and evolution of the SEAM Standard.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {tagMembers.map((ap) => (
+          <a
+            href={`/directory/ap/${ap.slug}`}
+            class="reveal-child rounded-2xl border border-warm-100 overflow-hidden transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] block"
+          >
+            <div class="aspect-[4/3] bg-warm-100 overflow-hidden">
+              {ap.photo ? (
+                <img
+                  src={ap.photo}
+                  alt={ap.name}
+                  class="w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center bg-warm-200">
+                  <span class="text-warm-400 text-5xl font-display">{ap.name.split(' ').map(n => n[0]).join('')}</span>
+                </div>
+              )}
+            </div>
+            <div class="p-8 lg:p-10">
+              <p class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-2">
+                {ap.organization}
+              </p>
+              <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
+                {ap.name}
+              </h3>
+              <p class="text-[15px] leading-relaxed text-warm-600">
+                {ap.specialties.slice(0, 3).join(' · ')}
+              </p>
+            </div>
+          </a>
         ))}
       </div>
     </div>
