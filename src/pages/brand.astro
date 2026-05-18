@@ -1,0 +1,831 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { breadcrumbSchema } from '../lib/seo-helpers'
+
+const jsonLd = [
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Brand', path: '/brand' },
+  ]),
+]
+
+/* ─── Color tokens (mirrors src/styles/global.css @theme) ─── */
+const palettes = [
+  {
+    name: 'SEAM Teal',
+    slug: 'seam',
+    description: 'Primary brand color. Used for primary buttons, links, and the SEAM mark.',
+    steps: [
+      { step: 50,  hex: '#f0f5f7', text: 'dark' },
+      { step: 100, hex: '#d4e3e8', text: 'dark' },
+      { step: 200, hex: '#b0cdd5', text: 'dark' },
+      { step: 300, hex: '#8ab4c0', text: 'dark' },
+      { step: 400, hex: '#6B8F9C', text: 'dark' },
+      { step: 500, hex: '#4d7380', text: 'light' },
+      { step: 600, hex: '#3a5c67', text: 'light' },
+      { step: 700, hex: '#1e4550', text: 'light' },
+      { step: 800, hex: '#0d3a44', text: 'light' },
+      { step: 900, hex: '#00313C', text: 'light' },
+    ],
+  },
+  {
+    name: 'Gold',
+    slug: 'gold',
+    description: 'Accent for emphasis, awards, and certification tier highlights.',
+    steps: [
+      { step: 50,  hex: '#fdf6eb', text: 'dark' },
+      { step: 100, hex: '#f9e5c8', text: 'dark' },
+      { step: 200, hex: '#f2ce96', text: 'dark' },
+      { step: 300, hex: '#e8b05e', text: 'dark' },
+      { step: 400, hex: '#D78825', text: 'light' },
+      { step: 500, hex: '#bf7520', text: 'light' },
+      { step: 600, hex: '#a0611a', text: 'light' },
+      { step: 700, hex: '#7d4c15', text: 'light' },
+      { step: 800, hex: '#5c3810', text: 'light' },
+      { step: 900, hex: '#3d250b', text: 'light' },
+    ],
+  },
+  {
+    name: 'Warm Neutral',
+    slug: 'warm',
+    description: 'Text, surfaces, and ground. Body copy uses warm-700; headings use warm-900.',
+    steps: [
+      { step: 50,  hex: '#f7f7f6', text: 'dark' },
+      { step: 100, hex: '#eeeded', text: 'dark' },
+      { step: 200, hex: '#e2e1df', text: 'dark' },
+      { step: 300, hex: '#D9D9D6', text: 'dark' },
+      { step: 400, hex: '#b5b5b2', text: 'dark' },
+      { step: 500, hex: '#8e8e8b', text: 'light' },
+      { step: 600, hex: '#6b6b68', text: 'light' },
+      { step: 700, hex: '#4a4a48', text: 'light' },
+      { step: 800, hex: '#2d2d2b', text: 'light' },
+      { step: 900, hex: '#1a1a19', text: 'light' },
+    ],
+  },
+]
+
+const sage = { name: 'Sage', hex: '#DFECE2', description: 'Utility wash used behind highlights and quiet callouts.' }
+
+/* ─── Logo download groups ─── */
+const primaryLogos = [
+  {
+    title: 'SEAM Wordmark — Dark',
+    description: 'Primary logo for use on light backgrounds.',
+    preview: '/logos/seam-wordmark.svg',
+    bg: 'bg-warm-50',
+    downloads: [
+      { label: 'SVG', href: '/logos/seam-wordmark.svg' },
+      { label: 'PNG', href: '/logos/seam-wordmark.png' },
+    ],
+  },
+  {
+    title: 'SEAM Wordmark — Light',
+    description: 'Reverse logo for use on dark or photographic backgrounds.',
+    preview: '/logos/seam-wordmark-white.svg',
+    bg: 'bg-warm-900',
+    downloads: [
+      { label: 'SVG', href: '/logos/seam-wordmark-white.svg' },
+      { label: 'PNG', href: '/logos/seam-wordmark-white.png' },
+    ],
+  },
+]
+
+const certificationSeals = [
+  { title: 'Bronze', src: '/logos/cert-bronze.png' },
+  { title: 'Silver', src: '/logos/cert-silver.png' },
+  { title: 'Gold', src: '/logos/cert-gold.png' },
+  { title: 'Platinum', src: '/logos/cert-platinum.png' },
+  { title: 'Registered', src: '/logos/cert-registered.png' },
+]
+
+const credentialSeals = [
+  { title: 'AP Seal', src: '/logos/ap-seal.png' },
+]
+
+const ratingMarks = [
+  { title: 'Buildings and Interiors (BI)', src: '/logos/rating-bi.png' },
+  { title: 'Operations + Management (OM)', src: '/logos/rating-om.png' },
+]
+
+const memberSeals = [
+  { title: 'Standing', src: '/logos/member-standing.png' },
+  { title: 'Ladder', src: '/logos/member-ladder.png' },
+  { title: 'Arc', src: '/logos/member-arc.png' },
+  { title: 'Changemaker', src: '/logos/member-changemaker.png' },
+  { title: 'Individual', src: '/logos/member-individual.png' },
+  { title: 'Organization', src: '/logos/member-organization.png' },
+]
+---
+
+<SiteLayout
+  title="Brand Guide — Logos, Colors, Typography & Voice"
+  description="The SEAM brand system: downloadable logos, color palette, typography, and voice guidance for partners, press, and SEAM APs."
+  path="/brand"
+  jsonLd={jsonLd}
+  solidNav={true}
+>
+  <!-- ─── Hero ─── -->
+  <section class="relative bg-warm-900 border-b border-warm-800">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 pt-24 pb-16 lg:pt-32 lg:pb-20">
+      <p class="text-[12px] font-semibold uppercase tracking-[0.18em] text-seam-300">Brand Guide</p>
+      <h1
+        class="mt-5 font-display tracking-tight text-white max-w-5xl"
+        style="font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.95; letter-spacing: -0.035em;"
+      >
+        SEAM Brand <em class="font-display italic font-normal text-seam-300">Guide</em>
+      </h1>
+      <p class="mt-7 max-w-2xl text-lg leading-relaxed text-warm-200">
+        Logos, color, typography, and voice — the building blocks for representing SEAM in press, partner materials, and AP-led work.
+      </p>
+      <nav class="mt-10 flex flex-wrap gap-2 text-[14px]">
+        <a href="#logos" class="rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-warm-100 hover:bg-white/10 hover:text-white transition">Logos</a>
+        <a href="#colors" class="rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-warm-100 hover:bg-white/10 hover:text-white transition">Colors</a>
+        <a href="#typography" class="rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-warm-100 hover:bg-white/10 hover:text-white transition">Typography</a>
+        <a href="#voice" class="rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-warm-100 hover:bg-white/10 hover:text-white transition">Voice</a>
+        <a href="#language" class="rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-warm-100 hover:bg-white/10 hover:text-white transition">Language</a>
+        <a href="#avoid" class="rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-warm-100 hover:bg-white/10 hover:text-white transition">Avoid</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ─── Logos ─── -->
+  <section id="logos" class="border-b border-warm-200">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-24">
+      <header class="mb-12 max-w-2xl">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.14em] text-seam-700">01 — Logos</p>
+        <h2 class="mt-3 font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.02em] text-warm-900">
+          The SEAM wordmark
+        </h2>
+        <p class="mt-4 text-[16px] leading-[1.6] text-warm-700">
+          Use the dark wordmark on light backgrounds and the light wordmark on dark or photographic backgrounds. Maintain clear space equal to the height of the "S" on all sides. Don't recolor, stretch, or alter the mark.
+        </p>
+      </header>
+
+      <!-- Primary wordmark grid -->
+      <div class="grid gap-6 md:grid-cols-2">
+        {primaryLogos.map((logo) => (
+          <div class="rounded-2xl border border-warm-200 bg-white overflow-hidden">
+            <div class={`flex items-center justify-center ${logo.bg} px-10 py-16 min-h-[220px]`}>
+              <img src={logo.preview} alt={logo.title} class="max-h-16 w-auto" loading="lazy" />
+            </div>
+            <div class="px-6 py-5 border-t border-warm-200 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p class="text-[15px] font-semibold text-warm-900">{logo.title}</p>
+                <p class="text-[13px] text-warm-600 mt-0.5">{logo.description}</p>
+              </div>
+              <div class="flex gap-2">
+                {logo.downloads.map((d) => (
+                  <a
+                    href={d.href}
+                    download
+                    class="inline-flex items-center gap-1.5 rounded-full bg-seam-700 px-4 py-2 text-[13px] font-medium text-white hover:bg-seam-800 transition"
+                  >
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                    {d.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Certification seals -->
+      <div class="mt-16">
+        <h3 class="font-display text-[22px] tracking-[-0.01em] text-warm-900">Certification seals</h3>
+        <p class="mt-2 text-[14px] text-warm-600 max-w-2xl">Awarded marks for projects that complete the SEAM Standard. Use only with permission from SEAM.</p>
+        <div class="mt-6 grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+          {certificationSeals.map((seal) => (
+            <div class="rounded-xl border border-warm-200 bg-warm-50 px-4 py-6 flex flex-col items-center">
+              <img src={seal.src} alt={`${seal.title} certification seal`} class="h-20 w-auto" loading="lazy" />
+              <p class="mt-4 text-[13px] font-medium text-warm-900">{seal.title}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- AP credential -->
+      <div class="mt-14">
+        <h3 class="font-display text-[22px] tracking-[-0.01em] text-warm-900">AP credential</h3>
+        <p class="mt-2 text-[14px] text-warm-600 max-w-2xl">For practitioners who hold the SEAM AP credential. Use on email signatures, profiles, and credentials only.</p>
+        <div class="mt-6 grid gap-4 grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 max-w-3xl">
+          {credentialSeals.map((seal) => (
+            <div class="rounded-xl border border-warm-200 bg-warm-50 px-4 py-6 flex flex-col items-center">
+              <img src={seal.src} alt={seal.title} class="h-20 w-auto" loading="lazy" />
+              <p class="mt-4 text-[13px] font-medium text-warm-900">{seal.title}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Rating system marks -->
+      <div class="mt-14">
+        <h3 class="font-display text-[22px] tracking-[-0.01em] text-warm-900">Rating system marks</h3>
+        <p class="mt-2 text-[14px] text-warm-600 max-w-2xl">The two SEAM rating tracks.</p>
+        <div class="mt-6 grid gap-4 grid-cols-2 max-w-2xl">
+          {ratingMarks.map((mark) => (
+            <div class="rounded-xl border border-warm-200 bg-warm-50 px-4 py-6 flex flex-col items-center">
+              <img src={mark.src} alt={mark.title} class="h-20 w-auto" loading="lazy" />
+              <p class="mt-4 text-[13px] font-medium text-warm-900 text-center">{mark.title}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Member seals -->
+      <div class="mt-14">
+        <h3 class="font-display text-[22px] tracking-[-0.01em] text-warm-900">Membership seals</h3>
+        <p class="mt-2 text-[14px] text-warm-600 max-w-2xl">For active SEAM members in good standing.</p>
+        <div class="mt-6 grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+          {memberSeals.map((seal) => (
+            <div class="rounded-xl border border-warm-200 bg-warm-50 px-4 py-6 flex flex-col items-center">
+              <img src={seal.src} alt={`${seal.title} member seal`} class="h-16 w-auto" loading="lazy" />
+              <p class="mt-3 text-[12px] font-medium text-warm-900">{seal.title}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Usage -->
+      <div class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-xl border border-warm-200 p-5">
+          <p class="text-[13px] font-semibold uppercase tracking-[0.12em] text-seam-700">Do</p>
+          <ul class="mt-3 space-y-2 text-[14px] text-warm-700">
+            <li>— Maintain clear space around the mark.</li>
+            <li>— Use approved color variants only.</li>
+            <li>— Pair with high-contrast backgrounds.</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-warm-200 p-5">
+          <p class="text-[13px] font-semibold uppercase tracking-[0.12em] text-gold-600">Don't</p>
+          <ul class="mt-3 space-y-2 text-[14px] text-warm-700">
+            <li>— Recolor, outline, or apply effects to the mark.</li>
+            <li>— Stretch, skew, or rotate the logo.</li>
+            <li>— Place on busy backgrounds without contrast.</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-warm-200 p-5 bg-sage/40">
+          <p class="text-[13px] font-semibold uppercase tracking-[0.12em] text-warm-800">Need something else?</p>
+          <p class="mt-3 text-[14px] text-warm-700">
+            For partner co-branding, press materials, or custom formats, contact us at
+            <a href="mailto:info@seamcertification.org" class="underline decoration-warm-300 hover:decoration-seam-600 text-seam-700">info@seamcertification.org</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Colors ─── -->
+  <section id="colors" class="bg-warm-50 border-b border-warm-200">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-24">
+      <header class="mb-12 max-w-2xl">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.14em] text-seam-700">02 — Color</p>
+        <h2 class="mt-3 font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.02em] text-warm-900">
+          Palette
+        </h2>
+        <p class="mt-4 text-[16px] leading-[1.6] text-warm-700">
+          SEAM uses a deep teal as the primary brand color, a warm gold for accents and certification levels, and a warm neutral scale for type and surfaces. Click any swatch to copy its hex value.
+        </p>
+      </header>
+
+      <div class="space-y-10">
+        {palettes.map((palette) => (
+          <div>
+            <div class="mb-4 flex items-baseline justify-between gap-4 flex-wrap">
+              <div>
+                <h3 class="font-display text-[24px] tracking-[-0.01em] text-warm-900">{palette.name}</h3>
+                <p class="text-[14px] text-warm-600 mt-1 max-w-2xl">{palette.description}</p>
+              </div>
+              <code class="text-[12px] text-warm-500">--color-{palette.slug}-{'{50..900}'}</code>
+            </div>
+            <div class="grid grid-cols-5 lg:grid-cols-10 rounded-xl overflow-hidden border border-warm-200">
+              {palette.steps.map((s) => (
+                <button
+                  type="button"
+                  data-copy={s.hex}
+                  class="copy-swatch group relative h-20 flex flex-col justify-between px-2.5 py-2 text-left transition hover:scale-[1.02]"
+                  style={`background-color: ${s.hex};`}
+                  aria-label={`Copy ${s.hex}`}
+                >
+                  <span class={`text-[10px] font-semibold tracking-wide ${s.text === 'light' ? 'text-white/90' : 'text-warm-900/80'}`}>{s.step}</span>
+                  <span class={`text-[10px] font-mono ${s.text === 'light' ? 'text-white' : 'text-warm-900'}`}>{s.hex}</span>
+                  <span class={`copy-feedback absolute inset-0 flex items-center justify-center text-[10px] font-semibold uppercase tracking-[0.15em] opacity-0 transition-opacity ${s.text === 'light' ? 'text-white' : 'text-warm-900'}`}>Copied</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <div>
+          <div class="mb-4">
+            <h3 class="font-display text-[24px] tracking-[-0.01em] text-warm-900">{sage.name}</h3>
+            <p class="text-[14px] text-warm-600 mt-1 max-w-2xl">{sage.description}</p>
+          </div>
+          <button
+            type="button"
+            data-copy={sage.hex}
+            class="copy-swatch group relative w-full sm:w-48 h-20 rounded-xl flex flex-col justify-between px-3 py-2 text-left border border-warm-200 transition hover:scale-[1.02]"
+            style={`background-color: ${sage.hex};`}
+            aria-label={`Copy ${sage.hex}`}
+          >
+            <span class="text-[10px] font-semibold tracking-wide text-warm-900/80">Sage</span>
+            <span class="text-[10px] font-mono text-warm-900">{sage.hex}</span>
+            <span class="copy-feedback absolute inset-0 flex items-center justify-center text-[10px] font-semibold uppercase tracking-[0.15em] text-warm-900 opacity-0 transition-opacity">Copied</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Typography ─── -->
+  <section id="typography" class="border-b border-warm-200">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-24">
+      <header class="mb-12 max-w-2xl">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.14em] text-seam-700">03 — Typography</p>
+        <h2 class="mt-3 font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.02em] text-warm-900">
+          Two typefaces, working in pairs
+        </h2>
+        <p class="mt-4 text-[16px] leading-[1.6] text-warm-700">
+          SEAM pairs an editorial serif with a precise sans. Use Playfair Display for headlines, pull quotes, and italic emphasis. Use Inter for body copy, UI, and supporting text.
+        </p>
+      </header>
+
+      <div class="grid gap-6 lg:grid-cols-2">
+        <!-- Playfair Display -->
+        <div class="rounded-2xl border border-warm-200 bg-white p-8 lg:p-10">
+          <div class="flex items-baseline justify-between gap-4 mb-6">
+            <div>
+              <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-700">Display</p>
+              <h3 class="font-display text-[28px] tracking-[-0.01em] text-warm-900 mt-1">Playfair Display</h3>
+            </div>
+            <a href="https://fonts.google.com/specimen/Playfair+Display" target="_blank" rel="noopener noreferrer" class="text-[13px] text-seam-700 hover:text-seam-800 underline decoration-warm-300">Google Fonts &rarr;</a>
+          </div>
+          <p class="font-display text-[72px] leading-[0.95] tracking-[-0.03em] text-warm-900">Aa</p>
+          <div class="mt-8 space-y-4">
+            <p class="font-display text-[36px] leading-[1.1] tracking-[-0.02em] text-warm-900">Buildings touch <em class="italic font-normal text-seam-700">everyone</em>.</p>
+            <p class="font-display text-[20px] text-warm-700 italic">A serif that carries weight without volume.</p>
+          </div>
+          <dl class="mt-8 grid grid-cols-3 gap-4 border-t border-warm-200 pt-6 text-[13px]">
+            <div>
+              <dt class="text-warm-500">Weights</dt>
+              <dd class="text-warm-900 mt-1">400, 500, 600, 700</dd>
+            </div>
+            <div>
+              <dt class="text-warm-500">Styles</dt>
+              <dd class="text-warm-900 mt-1">Roman + Italic</dd>
+            </div>
+            <div>
+              <dt class="text-warm-500">Use for</dt>
+              <dd class="text-warm-900 mt-1">H1, H2, quotes</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Inter -->
+        <div class="rounded-2xl border border-warm-200 bg-white p-8 lg:p-10">
+          <div class="flex items-baseline justify-between gap-4 mb-6">
+            <div>
+              <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-700">Sans</p>
+              <h3 class="font-sans text-[28px] font-semibold tracking-[-0.01em] text-warm-900 mt-1">Inter</h3>
+            </div>
+            <a href="https://fonts.google.com/specimen/Inter" target="_blank" rel="noopener noreferrer" class="text-[13px] text-seam-700 hover:text-seam-800 underline decoration-warm-300">Google Fonts &rarr;</a>
+          </div>
+          <p class="font-sans text-[72px] font-semibold leading-[0.95] tracking-[-0.03em] text-warm-900">Aa</p>
+          <div class="mt-8 space-y-3">
+            <p class="font-sans text-[20px] leading-[1.5] text-warm-900">Clear, modern, accessible body copy.</p>
+            <p class="font-sans text-[15px] leading-[1.6] text-warm-700">Used across navigation, body content, and UI. Optimized for legibility at small sizes and across screen densities.</p>
+            <p class="font-sans text-[12px] uppercase tracking-[0.14em] text-warm-500">Eyebrows and meta labels</p>
+          </div>
+          <dl class="mt-8 grid grid-cols-3 gap-4 border-t border-warm-200 pt-6 text-[13px]">
+            <div>
+              <dt class="text-warm-500">Weights</dt>
+              <dd class="text-warm-900 mt-1">300, 400, 500, 600, 700</dd>
+            </div>
+            <div>
+              <dt class="text-warm-500">Letter-spacing</dt>
+              <dd class="text-warm-900 mt-1">-0.02em (display)</dd>
+            </div>
+            <div>
+              <dt class="text-warm-500">Use for</dt>
+              <dd class="text-warm-900 mt-1">Body, UI, eyebrows</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Scale -->
+      <div class="mt-12 rounded-2xl border border-warm-200 bg-warm-50 p-8 lg:p-10">
+        <h3 class="font-display text-[22px] tracking-[-0.01em] text-warm-900 mb-6">Type scale</h3>
+        <div class="divide-y divide-warm-200">
+          <div class="grid grid-cols-[120px_1fr_auto] items-baseline gap-4 py-4">
+            <p class="uppercase tracking-[0.12em] text-warm-500" style="font-size: 12px;">H1 / Display</p>
+            <p class="font-display tracking-tight text-warm-900" style="font-size: clamp(2.25rem, 4.5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em;">Headline one</p>
+            <code class="text-warm-500" style="font-size: 12px;">2.25–3.75rem</code>
+          </div>
+          <div class="grid grid-cols-[120px_1fr_auto] items-baseline gap-4 py-4">
+            <p class="uppercase tracking-[0.12em] text-warm-500" style="font-size: 12px;">H2</p>
+            <p class="font-display text-warm-900" style="font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em;">Section heading</p>
+            <code class="text-warm-500" style="font-size: 12px;">1.75–2.5rem</code>
+          </div>
+          <div class="grid grid-cols-[120px_1fr_auto] items-baseline gap-4 py-4">
+            <p class="uppercase tracking-[0.12em] text-warm-500" style="font-size: 12px;">H3</p>
+            <p class="font-display text-warm-900" style="font-size: 24px; letter-spacing: -0.01em;">Subsection title</p>
+            <code class="text-warm-500" style="font-size: 12px;">1.5rem</code>
+          </div>
+          <div class="grid grid-cols-[120px_1fr_auto] items-baseline gap-4 py-4">
+            <p class="uppercase tracking-[0.12em] text-warm-500" style="font-size: 12px;">Lead</p>
+            <p class="font-sans text-warm-700" style="font-size: 20px; line-height: 1.5;">Intro paragraph leading into a section.</p>
+            <code class="text-warm-500" style="font-size: 12px;">1.25rem</code>
+          </div>
+          <div class="grid grid-cols-[120px_1fr_auto] items-baseline gap-4 py-4">
+            <p class="uppercase tracking-[0.12em] text-warm-500" style="font-size: 12px;">Body</p>
+            <p class="font-sans text-warm-700" style="font-size: 16px; line-height: 1.6;">Default body copy used across paragraphs and supporting text.</p>
+            <code class="text-warm-500" style="font-size: 12px;">1rem</code>
+          </div>
+          <div class="grid grid-cols-[120px_1fr_auto] items-baseline gap-4 py-4">
+            <p class="uppercase tracking-[0.12em] text-warm-500" style="font-size: 12px;">Meta</p>
+            <p class="font-sans uppercase tracking-[0.14em] text-warm-500" style="font-size: 13px;">Eyebrow / Meta label</p>
+            <code class="text-warm-500" style="font-size: 12px;">0.8125rem</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Voice ─── -->
+  <section id="voice" class="bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-24">
+      <header class="mb-12 max-w-2xl">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.14em] text-seam-300">04 — Voice</p>
+        <h2 class="mt-3 font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.02em] text-white">
+          How SEAM <em class="italic font-normal text-seam-300">sounds</em>
+        </h2>
+        <p class="mt-4 text-[16px] leading-[1.6] text-warm-200">
+          Approachable enough that developers don't feel lectured at. Authoritative enough that investors trust what they're reading.
+        </p>
+      </header>
+
+      <!-- The formula -->
+      <div class="rounded-2xl border border-seam-500/30 bg-gradient-to-br from-seam-900 to-warm-900 p-8 lg:p-12 max-w-4xl">
+        <p class="text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-300">The formula</p>
+        <p class="mt-4 font-display text-[clamp(1.5rem,2.6vw,2rem)] leading-[1.25] tracking-[-0.01em] text-white">
+          SEAM's tone is a mix between <em class="text-seam-200">Mr. Rogers</em> and <em class="text-seam-200">Liam Neeson from <span class="not-italic">Taken</span></em>. Read that again — it's the most useful description we have.
+        </p>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          <div>
+            <p class="text-[14px] font-semibold text-gold-300">Mr. Rogers</p>
+            <p class="mt-2 text-[15px] leading-[1.6] text-warm-200">
+              Warm, patient, genuinely interested in the person in front of you. Never condescending, never rushed. You are speaking to someone you respect and want to help.
+            </p>
+          </div>
+          <div>
+            <p class="text-[14px] font-semibold text-gold-300">Liam Neeson in <span class="italic">Taken</span></p>
+            <p class="mt-2 text-[15px] leading-[1.6] text-warm-200">
+              When it gets down to business: calm, unhurried, completely sure of yourself. No hesitation, no hedging. You know exactly what you're talking about, and you have the credibility to back it up.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Three tonal values -->
+      <h3 class="mt-16 font-display text-[24px] tracking-[-0.01em] text-white">Three tonal values</h3>
+      <div class="mt-6 grid gap-4 lg:grid-cols-3">
+        <div class="rounded-2xl border border-white/15 bg-white/[0.04] p-6 lg:p-8">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-300">01</p>
+          <h4 class="mt-3 font-display text-[20px] text-white leading-[1.25]">Positive, optimistic, and encouraging</h4>
+          <p class="mt-3 text-[14px] leading-[1.6] text-warm-300">
+            Use hopeful, forward-looking language. Express what we can do and will do, not what's wrong with the status quo. Never use fear or shame as motivators — the mission is the inspiration, not the alarm.
+          </p>
+          <p class="mt-4 text-[12px] uppercase tracking-[0.12em] text-gold-300">Example</p>
+          <p class="mt-2 text-[14px] italic leading-[1.6] text-warm-200">
+            "Buildings that attract and retain top tenants aren't just well-located or beautifully designed. They demonstrate genuine commitment to the people and communities they serve."
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/15 bg-white/[0.04] p-6 lg:p-8">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-300">02</p>
+          <h4 class="mt-3 font-display text-[20px] text-white leading-[1.25]">Impactful, confident, and direct</h4>
+          <p class="mt-3 text-[14px] leading-[1.6] text-warm-300">
+            State the mission, show proof, move forward. Don't bury what you want to say in preamble or adjectives. Express the position, show the evidence, ask the question.
+          </p>
+          <p class="mt-4 text-[12px] uppercase tracking-[0.12em] text-gold-300">Example</p>
+          <p class="mt-2 text-[14px] italic leading-[1.6] text-warm-200">
+            "Diverse executive teams are 39% more likely to financially outperform their peers. High-engagement workplaces show 23% higher profitability. These aren't advocacy numbers — they're from the institutions investment committees already trust."
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/15 bg-white/[0.04] p-6 lg:p-8">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-300">03</p>
+          <h4 class="mt-3 font-display text-[20px] text-white leading-[1.25]">Compassionate, warm, and approachable</h4>
+          <p class="mt-3 text-[14px] leading-[1.6] text-warm-300">
+            Speak with the comfort of a known colleague. Convey that you hear the person you're talking to. Understand their position before sharing your solution. No stiff corporate voice. No whimsy or slang either.
+          </p>
+          <p class="mt-4 text-[12px] uppercase tracking-[0.12em] text-gold-300">Example</p>
+          <p class="mt-2 text-[14px] italic leading-[1.6] text-warm-200">
+            "One of the most common assumptions we hear about SEAM Certification is that it's something you pursue at the beginning of a project. That's only one way SEAM can be applied."
+          </p>
+        </div>
+      </div>
+
+      <!-- Audiences -->
+      <h3 class="mt-16 font-display text-[24px] tracking-[-0.01em] text-white">Audience-first writing</h3>
+      <p class="mt-2 text-[14px] text-warm-300 max-w-2xl">Every piece is written for one of four audiences. Lead with what that reader gains.</p>
+      <div class="mt-6 grid gap-3 sm:grid-cols-2">
+        <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+          <p class="text-[13px] font-semibold text-white">Developers & project owners <span class="text-seam-300 font-normal">— primary</span></p>
+          <p class="mt-2 text-[13px] leading-[1.55] text-warm-300">Pragmatic. Respond to evidence, risk framing, operational value. Disengage from advocacy language. Lead with what they gain.</p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+          <p class="text-[13px] font-semibold text-white">Capital providers & investors <span class="text-seam-300 font-normal">— primary</span></p>
+          <p class="mt-2 text-[13px] leading-[1.55] text-warm-300">Care about risk, compliance, reporting rigor, asset performance. Lead with reporting compliance and portfolio-level applicability.</p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+          <p class="text-[13px] font-semibold text-white">Sustainability professionals & AP prospects <span class="text-seam-300 font-normal">— primary</span></p>
+          <p class="mt-2 text-[13px] leading-[1.55] text-warm-300">LEED APs, WELL APs, consultants. Lead with practice differentiation, expanded scope, and the credential's market value.</p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+          <p class="text-[13px] font-semibold text-white">Property managers & operators <span class="text-warm-400 font-normal">— secondary</span></p>
+          <p class="mt-2 text-[13px] leading-[1.55] text-warm-300">Implement and maintain certification day to day. Lead with practical steps and O+M-specific activities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Language ─── -->
+  <section id="language" class="bg-warm-50 border-b border-warm-200">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-24">
+      <header class="mb-12 max-w-2xl">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.14em] text-seam-700">05 — Language & framing</p>
+        <h2 class="mt-3 font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.02em] text-warm-900">
+          The rules that shape <em class="italic font-normal text-seam-700">how we write</em>
+        </h2>
+        <p class="mt-4 text-[16px] leading-[1.6] text-warm-700">
+          These are non-negotiable patterns drawn from editorial review and Rainey's direct feedback. Apply them in every piece of SEAM content.
+        </p>
+      </header>
+
+      <div class="space-y-8">
+        <!-- Rule 1 -->
+        <article class="rounded-2xl border border-warm-200 bg-white p-6 lg:p-8">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-700">Rule 01</p>
+          <h3 class="mt-2 font-display text-[24px] tracking-[-0.01em] text-warm-900">Lead with human impact, not social equity</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-warm-700 max-w-3xl">
+            Social equity is what SEAM measures — but it's not always the best first word. Lead with human impact, human outcomes, people performance, and project outcomes. Use "social equity" when it's the accurate and necessary term (e.g., naming the SEAM Standard's four pillars).
+          </p>
+          <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-lg bg-sage/50 border border-sage p-4">
+              <p class="text-[11px] uppercase tracking-[0.12em] font-semibold text-seam-800">Preferred</p>
+              <p class="mt-2 text-[14px] text-warm-800">human impact · human outcomes · people performance · how buildings affect people · responsible development</p>
+            </div>
+            <div class="rounded-lg bg-warm-100 border border-warm-200 p-4">
+              <p class="text-[11px] uppercase tracking-[0.12em] font-semibold text-gold-700">Avoid as the lead</p>
+              <p class="mt-2 text-[14px] text-warm-800">"Social equity" as the entry concept in developer-facing copy.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Rule 2 -->
+        <article class="rounded-2xl border border-warm-200 bg-white p-6 lg:p-8">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-700">Rule 02</p>
+          <h3 class="mt-2 font-display text-[24px] tracking-[-0.01em] text-warm-900">Scope of impact is always broader than the building</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-warm-700 max-w-3xl">
+            A building's impact does not begin at the job site or end at the property line. This is SEAM's core differentiator from LEED, WELL, and frameworks focused on occupants alone. Always name the ripple: supply chain workers, neighboring communities, upstream and downstream impacts.
+          </p>
+          <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-lg border border-seam-200 bg-seam-50 p-4">
+              <p class="text-[11px] uppercase tracking-[0.12em] font-semibold text-seam-800">Right</p>
+              <p class="mt-2 text-[14px] text-warm-800 italic">"Buildings touch more people than most of us stop to count: the workers who built it, the community around it, the people in the supply chain."</p>
+            </div>
+            <div class="rounded-lg border border-gold-200 bg-gold-50 p-4">
+              <p class="text-[11px] uppercase tracking-[0.12em] font-semibold text-gold-700">Wrong</p>
+              <p class="mt-2 text-[14px] text-warm-800 italic">"Buildings affect the people who occupy them and the immediate community."</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Rule 3 -->
+        <article class="rounded-2xl border border-warm-200 bg-white p-6 lg:p-8">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-700">Rule 03</p>
+          <h3 class="mt-2 font-display text-[24px] tracking-[-0.01em] text-warm-900">SEAM Standard vs. SEAM Certification</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-warm-700 max-w-3xl">
+            These are not interchangeable.
+          </p>
+          <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-lg border border-warm-200 bg-warm-50 p-4">
+              <p class="text-[13px] font-semibold text-warm-900">SEAM Standard</p>
+              <p class="mt-2 text-[14px] text-warm-700">The foundational document. The framework. Use when referencing the document itself, the design, or specific credit categories and activities.</p>
+            </div>
+            <div class="rounded-lg border border-warm-200 bg-warm-50 p-4">
+              <p class="text-[13px] font-semibold text-warm-900">SEAM Certification</p>
+              <p class="mt-2 text-[14px] text-warm-700">How the Standard is applied in practice. Use when talking about what project owners do, what they achieve, and what the credential means.</p>
+            </div>
+          </div>
+          <p class="mt-4 text-[13px] italic text-warm-600">"The SEAM Standard draws a clear line between Outputs and Outcomes. SEAM Certification asks project teams to demonstrate both."</p>
+        </article>
+
+        <!-- Rule 4 -->
+        <article class="rounded-2xl border border-warm-200 bg-white p-6 lg:p-8">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-700">Rule 04</p>
+          <h3 class="mt-2 font-display text-[24px] tracking-[-0.01em] text-warm-900">Soften requirements for developer-facing copy</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-warm-700 max-w-3xl">
+            Use <strong>includes</strong> and <strong>recognizes</strong> rather than <strong>requires</strong> when describing what SEAM covers, to avoid deterring the primary audience. Reserve "requires" for technically accurate contexts (e.g., describing prerequisites to practitioners).
+          </p>
+          <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-lg border border-seam-200 bg-seam-50 p-4">
+              <p class="text-[11px] uppercase tracking-[0.12em] font-semibold text-seam-800">Right</p>
+              <p class="mt-2 text-[14px] text-warm-800 italic">"SEAM Certification <strong>includes</strong> a health and wellness activity that <strong>recognizes</strong> work you may already be doing."</p>
+            </div>
+            <div class="rounded-lg border border-gold-200 bg-gold-50 p-4">
+              <p class="text-[11px] uppercase tracking-[0.12em] font-semibold text-gold-700">Wrong</p>
+              <p class="mt-2 text-[14px] text-warm-800 italic">"SEAM <strong>requires</strong> a health and wellness certification as part of the certification process."</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Rule 5 -->
+        <article class="rounded-2xl border border-warm-200 bg-white p-6 lg:p-8">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-700">Rule 05</p>
+          <h3 class="mt-2 font-display text-[24px] tracking-[-0.01em] text-warm-900">Be honest about certainty</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-warm-700 max-w-3xl">
+            Use <strong>aims to</strong>, <strong>helps</strong>, and <strong>supports</strong> rather than <strong>closes</strong>, <strong>solves</strong>, and <strong>guarantees</strong>. SEAM is actively building its evidence base. Intellectual honesty builds trust with a skeptical professional audience.
+          </p>
+          <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-lg border border-seam-200 bg-seam-50 p-4">
+              <p class="text-[11px] uppercase tracking-[0.12em] font-semibold text-seam-800">Right</p>
+              <p class="mt-2 text-[14px] text-warm-800 italic">"SEAM Certification <strong>aims to close</strong> that gap."</p>
+            </div>
+            <div class="rounded-lg border border-gold-200 bg-gold-50 p-4">
+              <p class="text-[11px] uppercase tracking-[0.12em] font-semibold text-gold-700">Wrong</p>
+              <p class="mt-2 text-[14px] text-warm-800 italic">"SEAM Certification <strong>closes</strong> that gap."</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Rule 6 -->
+        <article class="rounded-2xl border border-warm-200 bg-white p-6 lg:p-8">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-seam-700">Rule 06</p>
+          <h3 class="mt-2 font-display text-[24px] tracking-[-0.01em] text-warm-900">Complementary framing toward other certifications</h3>
+          <p class="mt-3 text-[15px] leading-[1.6] text-warm-700 max-w-3xl">
+            Never undercut LEED, WELL, BREEAM, Fitwel, or any other certification. SEAM's position is <strong>"yes, and"</strong>. Environmental certifications address the building's impact on the planet. Health certifications address the people inside. SEAM addresses everyone the building touches. These are not competing claims — they complete each other.
+          </p>
+          <p class="mt-4 text-[14px] text-warm-700 max-w-3xl">
+            For crosswalks, use <strong>"head start"</strong> rather than <strong>"equivalency"</strong>. SEAM recognizes work done in other systems; it does not claim other systems' requirements fully satisfy SEAM's.
+          </p>
+        </article>
+      </div>
+
+      <!-- Editorial principles -->
+      <div class="mt-12 rounded-2xl bg-warm-900 p-8 lg:p-10 text-white">
+        <p class="text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-300">Editorial principles</p>
+        <h3 class="mt-3 font-display text-[24px] tracking-[-0.01em]">The quiet "why" behind every post</h3>
+        <p class="mt-4 text-[15px] leading-[1.6] text-warm-200 max-w-3xl">
+          SEAM's mission is ultimately about people who will never know SEAM exists. Factory workers. Children in brickfields. Supply chain workers in other countries. The developer, the investor, and the AP are the vehicle. The mission is the destination.
+        </p>
+        <p class="mt-4 text-[15px] leading-[1.6] text-warm-200 max-w-3xl">
+          Let the people at the far end of the supply chain be the quiet reason behind every post, even when the post is addressed to a developer. You don't need to name them explicitly — the framing does the work when it's right.
+        </p>
+        <div class="mt-6 rounded-xl border border-seam-500/30 bg-seam-900/40 p-5 max-w-3xl">
+          <p class="text-[13px] uppercase tracking-[0.12em] font-semibold text-gold-300">Rainey's framing</p>
+          <p class="mt-2 font-display text-[20px] leading-[1.35] text-white italic">"How many people could you help with your building?" — not "How many people could your building harm?"</p>
+          <p class="mt-2 text-[13px] text-warm-300">The former gets action. The latter gets defensiveness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Avoid (banned words + constructions) ─── -->
+  <section id="avoid" class="border-b border-warm-200">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-24">
+      <header class="mb-12 max-w-2xl">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.14em] text-seam-700">06 — Avoid</p>
+        <h2 class="mt-3 font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.02em] text-warm-900">
+          Banned words and <em class="italic font-normal text-seam-700">constructions</em>
+        </h2>
+        <p class="mt-4 text-[16px] leading-[1.6] text-warm-700">
+          Non-negotiable. Every piece of SEAM content should be checked against this list before publishing.
+        </p>
+      </header>
+
+      <!-- Banned words: two-column layout, paired rows -->
+      <h3 class="font-display text-[24px] tracking-[-0.01em] text-warm-900 mb-4">Banned words</h3>
+      <div class="rounded-2xl border border-warm-200 overflow-hidden grid" style="grid-template-columns: 1fr 2fr;">
+        <!-- Header row -->
+        <div class="bg-warm-900 text-white px-6 py-3 uppercase font-semibold" style="font-size: 12px; letter-spacing: 0.12em;">Banned</div>
+        <div class="bg-warm-800 text-white px-6 py-3 uppercase font-semibold border-l border-white/15" style="font-size: 12px; letter-spacing: 0.12em;">Use instead</div>
+
+        <!-- Row 1 -->
+        <div class="bg-warm-50 text-gold-700 font-mono px-6 py-4 border-t border-warm-200 flex items-center" style="font-size: 15px;">stakeholder</div>
+        <div class="bg-white text-warm-800 px-6 py-4 border-t border-l border-warm-200 flex items-center" style="font-size: 14px;">rights-holders, affected communities, residents, workers, project teams</div>
+
+        <!-- Row 2 -->
+        <div class="bg-warm-50 text-gold-700 font-mono px-6 py-4 border-t border-warm-200 flex items-center" style="font-size: 15px;">ensure / make sure</div>
+        <div class="bg-white text-warm-800 px-6 py-4 border-t border-l border-warm-200 flex items-center" style="font-size: 14px;">helps, supports, guides, aims to</div>
+
+        <!-- Row 3 -->
+        <div class="bg-warm-50 text-gold-700 font-mono px-6 py-4 border-t border-warm-200 flex items-center" style="font-size: 15px;">demands</div>
+        <div class="bg-white text-warm-800 px-6 py-4 border-t border-l border-warm-200 flex items-center" style="font-size: 14px;">asks, guides, supports</div>
+
+        <!-- Row 4 -->
+        <div class="bg-warm-50 text-gold-700 font-mono px-6 py-4 border-t border-warm-200 flex items-center" style="font-size: 15px;">genuinely / honestly</div>
+        <div class="bg-white text-warm-800 px-6 py-4 border-t border-l border-warm-200 flex items-center" style="font-size: 14px;">Remove entirely. Restructure the sentence.</div>
+
+        <!-- Row 5 -->
+        <div class="bg-warm-50 text-gold-700 font-mono px-6 py-4 border-t border-warm-200 flex items-center" style="font-size: 15px;">serve <span class="text-warm-500 ml-1.5 font-sans" style="font-size: 12px;">(developer-facing)</span></div>
+        <div class="bg-white text-warm-800 px-6 py-4 border-t border-l border-warm-200 flex items-center" style="font-size: 14px;">affects, touches, benefits — "serve" carries nonprofit connotations that undercut SEAM's business-case positioning.</div>
+      </div>
+
+      <!-- Banned constructions -->
+      <h3 class="mt-12 font-display text-[24px] tracking-[-0.01em] text-warm-900">Banned constructions</h3>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-2xl border border-warm-200 bg-white p-6">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-gold-700">Don't</p>
+          <h4 class="mt-2 font-display text-[18px] text-warm-900">"X isn't Y. It's Z."</h4>
+          <p class="mt-2 text-[14px] leading-[1.6] text-warm-700">
+            The most common AI writing pattern. It defines ideas by what they're not — a less confident move than stating what they are. Max once per piece, and only when the contrast genuinely earns it.
+          </p>
+          <div class="mt-4 space-y-2 text-[13px]">
+            <p class="text-warm-800"><span class="font-semibold text-gold-700">Wrong:</span> <em>"This isn't a policy preference. It's a principle drawn from the UN Guiding Principles."</em></p>
+            <p class="text-warm-800"><span class="font-semibold text-seam-700">Right:</span> <em>"This principle comes directly from the UN Guiding Principles on Business and Human Rights."</em></p>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-warm-200 bg-white p-6">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-gold-700">Don't</p>
+          <h4 class="mt-2 font-display text-[18px] text-warm-900">Passive voice</h4>
+          <p class="mt-2 text-[14px] leading-[1.6] text-warm-700">
+            Always write in the active voice. If you find yourself writing "is recognized," "was developed," or "are required," rewrite the sentence to name who is doing the action.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-warm-200 bg-white p-6">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-gold-700">Don't</p>
+          <h4 class="mt-2 font-display text-[18px] text-warm-900">Em dashes</h4>
+          <p class="mt-2 text-[14px] leading-[1.6] text-warm-700">
+            Never use em dashes ( — ) for parenthetical thoughts. Use commas or parentheses instead.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-warm-200 bg-white p-6">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-gold-700">Don't</p>
+          <h4 class="mt-2 font-display text-[18px] text-warm-900">Presume audience alignment</h4>
+          <p class="mt-2 text-[14px] leading-[1.6] text-warm-700">
+            Avoid "We all know…" or "We all support…" These assume alignment that may not exist. Use neutral framing that invites the audience into the idea.
+          </p>
+          <div class="mt-4 space-y-2 text-[13px]">
+            <p class="text-warm-800"><span class="font-semibold text-gold-700">Wrong:</span> <em>"We all support the UN's Sustainable Development Goals."</em></p>
+            <p class="text-warm-800"><span class="font-semibold text-seam-700">Right:</span> <em>"The UN's Sustainable Development Goals provide a useful global framework."</em></p>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-warm-200 bg-white p-6">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-gold-700">Don't</p>
+          <h4 class="mt-2 font-display text-[18px] text-warm-900">"That's not nothing"</h4>
+          <p class="mt-2 text-[14px] leading-[1.6] text-warm-700">
+            Use generous framing for partial progress. <em>"That's truly something"</em> celebrates progress; <em>"that's not nothing"</em> dismisses it.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-warm-200 bg-white p-6">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-gold-700">Don't</p>
+          <h4 class="mt-2 font-display text-[18px] text-warm-900">Unsourced claims</h4>
+          <p class="mt-2 text-[14px] leading-[1.6] text-warm-700">
+            Never make claims without evidence, research, or proof from SEAM projects. Trace every statistic to its original source.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Full Guide Download ─── -->
+  <section class="bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 py-16 lg:py-20">
+      <div class="rounded-2xl bg-warm-900 px-8 py-10 lg:px-12 lg:py-12 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+        <div class="max-w-2xl">
+          <p class="text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-300">Full reference</p>
+          <h2 class="mt-2 font-display text-[28px] lg:text-[32px] tracking-[-0.01em] text-white leading-[1.15]">SEAM Writing Guide</h2>
+          <p class="mt-3 text-[15px] leading-[1.6] text-warm-200">
+            The complete reference covering voice, audiences, language rules, banned words, and editorial principles. Or reach us at <a href="mailto:info@seamcertification.org" class="text-seam-200 underline decoration-white/30 hover:decoration-seam-200">info@seamcertification.org</a> with questions.
+          </p>
+        </div>
+        <a
+          href="/downloads/SEAM-Writing-Guide.docx"
+          download
+          class="inline-flex flex-none items-center gap-2 rounded-full bg-white px-5 py-3 text-[14px] font-semibold text-warm-900 hover:bg-seam-100 transition"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+          Download .docx
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.copy-swatch').forEach((el) => {
+      el.addEventListener('click', async () => {
+        const hex = el.getAttribute('data-copy')
+        if (!hex) return
+        try {
+          await navigator.clipboard.writeText(hex)
+          const feedback = el.querySelector('.copy-feedback') as HTMLElement | null
+          if (feedback) {
+            feedback.style.opacity = '1'
+            setTimeout(() => { feedback.style.opacity = '0' }, 900)
+          }
+        } catch {}
+      })
+    })
+  </script>
+</SiteLayout>
