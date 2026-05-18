@@ -22,6 +22,61 @@ export const categories = [
 
 const _posts: BlogPost[] = [
   {
+    slug: 'career-journey-what-to-do-after-earning-your-seam-ap',
+    title: 'Career Journey: What to Do After Earning Your SEAM AP',
+    excerpt:
+      'Accredible, the platform that powers our SEAM AP digital credential, just launched Career Journey, a free career guidance experience that activates directly from your credential. Here is how SEAM APs can use it to find matching roles, see salary data, and turn the credential into a clear next step.',
+    category: 'Practitioner Perspectives',
+    author: { name: 'SEAM, Inc.', role: '' },
+    date: '2026-05-18',
+    readTime: '4 min read',
+    image: {
+      src: '/images/blog/career-journey.webp',
+      alt: 'Career Journey interface inside an Accredible digital credential, showing recommended next steps including resume updates, an Advanced Leadership certification, and an Explore Senior Trainer openings card',
+    },
+    body: `You completed the Foundations course. You passed the exam. You earned the <a href="/ap-credential">SEAM AP credential</a>. Now what?
+
+For most professional credentials, the answer has been: figure it out yourself. List it on LinkedIn, add it to your resume, hope the right people notice. The credential opens the door. You walk through it alone.
+
+That just changed. <a href="https://www.accredible.com/blog/introducing-career-journey-what-comes-after-the-credential" target="_blank" rel="noopener noreferrer">Accredible</a>, the platform that powers your SEAM AP digital credential, has released a free new feature called Career Journey. It helps credential holders see where their credential can take them and how to use it in the market.
+
+## What Career Journey is
+
+Career Journey is a free career guidance experience that activates directly from your SEAM AP digital credential. There is no separate sign-up before you see value. Open your credential, and Career Journey opens with it.
+
+It uses what it already knows about your credential, plus what you tell it about your work history, goals, and location. From there, it surfaces relevant roles, salary ranges, hiring demand signals, and employer data. It also offers ready-to-use language for your resume, so you can describe what you know in the way hiring teams expect to read it.
+
+## How SEAM APs can use it
+
+There are four practical moves Career Journey makes possible for our APs.
+
+**1. Find roles you may not have searched for yourself.** The job titles connected to social equity in the built environment vary widely. Director of Social Sustainability. ESG Lead. Equitable Development Manager. Community Engagement Strategist. Some of these did not exist five years ago. Career Journey maps your credential against current openings, so you see roles you may not have thought to search for.
+
+**2. Get real salary data before the conversation starts.** Compensation transparency is uneven across the built environment. Career Journey surfaces ranges based on your credential, experience, and location, so you walk into compensation conversations with a benchmark instead of a guess.
+
+**3. Pull resume-ready language without writing it from scratch.** Writing about a credential is a small task that takes up a surprising amount of time. Career Journey gives you pre-drafted language you can paste directly into your resume, LinkedIn profile, or proposal, then tailor from there.
+
+**4. See a clear next step.** Each profile suggests a concrete next move, whether that is adding three SEAM activities to your resume, following a specific employer, or completing a related learning path. You leave the tool with something to do.
+
+## Why this matters for our community
+
+The SEAM AP credential gives practitioners a way to demonstrate fluency in social equity work in the built environment. The credential matters because of what it enables: real projects, real client engagements, real careers built around making buildings better for the people they touch.
+
+Career Journey helps close the distance between the credential and the work. It does not get you hired, and it will not write your application letters. What it does is take some of the guesswork out of the path between earning the credential and using it in your career.
+
+That is useful for newer practitioners moving into social equity work for the first time. It is also useful for experienced APs who want to see how their credential is being valued in the broader market and which employers are actively hiring against it.
+
+## Getting started
+
+If you already hold the SEAM AP credential, Career Journey is available now. Open your SEAM AP digital credential through Accredible to activate it. There is no additional cost.
+
+If you are considering earning the credential, this is part of what you get. The credential itself remains the core value: the framework knowledge, the practitioner network, the directory listing, and the professional recognition. Career Journey adds a layer on top, one that keeps the credential working for you after the exam.
+
+We are grateful to <a href="https://www.accredible.com/blog/introducing-career-journey-what-comes-after-the-credential" target="_blank" rel="noopener noreferrer">Accredible</a> for building this. Tools like Career Journey make the path more visible for every practitioner trying to build a career around social equity in the built environment.
+
+<a href="/ap-credential">Learn more about the SEAM AP credential</a>, or open your existing credential to try Career Journey today.`,
+  },
+  {
     slug: 'seam-ap-credential-built-for-social-equity',
     title: 'What Is AP Certification? And Why Does Social Equity in Real Estate Need One?',
     excerpt:
