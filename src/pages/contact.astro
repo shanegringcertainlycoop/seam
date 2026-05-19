@@ -221,6 +221,13 @@ const jsonLd = breadcrumbSchema([
         if (res.ok) {
           form.classList.add('hidden')
           success?.classList.remove('hidden')
+          // Fire dataLayer event for Google Ads conversion tracking via GTM
+          ;(window as any).dataLayer = (window as any).dataLayer || []
+          ;(window as any).dataLayer.push({
+            event: 'contact_form_submit',
+            form_topic: data.get('topic'),
+            form_location: 'contact',
+          })
         } else {
           throw new Error('Submission failed')
         }

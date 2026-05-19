@@ -150,6 +150,12 @@ const jsonLd = breadcrumbSchema([
           target.classList.add('hidden')
           success.classList.remove('hidden')
         }
+        // Fire dataLayer event for Google Ads conversion tracking via GTM
+        window.dataLayer = window.dataLayer || []
+        window.dataLayer.push({
+          event: 'leed_crosswalk_download',
+          form_location: 'leed-crosswalk',
+        })
         // Trigger download
         const link = document.createElement('a')
         link.href = '/downloads/seam-leed-crosswalk.pdf'
