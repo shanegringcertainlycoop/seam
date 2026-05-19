@@ -37,6 +37,12 @@
   to = "/pricing"
   status = 301
 
+# Marks rebrand (formerly SEAM Approved)
+[[redirects]]
+  from = "/approved"
+  to = "/marks"
+  status = 301
+
 [[redirects]]
   from = "/official-seam-aps"
   to = "/directory"

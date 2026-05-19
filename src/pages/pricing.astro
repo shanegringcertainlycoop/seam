@@ -3,30 +3,30 @@ import SiteLayout from '../layouts/SiteLayout.astro'
 import { breadcrumbSchema, faqSchema } from '../lib/seo-helpers'
 
 /* ─── Tab state from URL ─── */
-type TabKey = 'certification' | 'credential' | 'membership' // HIDDEN: 'approved' temporarily removed
-const validTabs: TabKey[] = ['certification', 'credential', 'membership']
+type TabKey = 'certification' | 'marks' | 'seals' | 'credential' | 'membership'
+const validTabs: TabKey[] = ['certification', 'marks', 'seals', 'credential', 'membership']
 const tabParam = Astro.url.searchParams.get('tab') as TabKey | null
 const activeTab: TabKey = tabParam && validTabs.includes(tabParam) ? tabParam : 'certification'
 
 const tabs: { key: TabKey; label: string }[] = [
   { key: 'certification', label: 'Certification' },
-  // { key: 'approved', label: 'SEAM Approved' }, // HIDDEN: Approved program temporarily hidden
+  { key: 'marks', label: 'SEAM Marks' },
+  { key: 'seals', label: 'SEAM Seals' },
   { key: 'credential', label: 'AP Credential' },
   { key: 'membership', label: 'Membership' },
 ]
 
 /* ─── Certification data (used by client-side calculator) ─── */
 
-/* ─── SEAM Approved data ─── */
-/* HIDDEN: Approved program temporarily hidden
-const approvedTiers = [
+/* ─── SEAM Marks data ─── */
+const marksTiers = [
   {
-    name: 'Single Activity',
+    name: 'Single Mark',
     price: '$750',
     period: '/activity',
     description: 'Verify one activity against the SEAM Standard. Ideal for testing a single practice before committing to full certification.',
     features: [
-      'One SEAM Approved Mark',
+      'One SEAM Mark',
       'Third-party verification',
       'Directory listing & credential',
       'Counts toward full certification',
@@ -35,12 +35,12 @@ const approvedTiers = [
     highlighted: false,
   },
   {
-    name: 'Bundle',
+    name: 'Bulk Marks',
     price: '$2,000',
     period: '/bundle',
-    description: 'Verify 3–5 thematic activities at a significant discount. The most popular option for organizations building toward certification.',
+    description: 'Verify 3–5 related activities at a significant discount. The most popular option for organizations building toward certification.',
     features: [
-      '3–5 related Approved Marks',
+      '3–5 related SEAM Marks',
       'Grouped by theme for deeper impact',
       'Up to 60% savings vs. individual',
       'Accelerated path to certification',
@@ -49,7 +49,24 @@ const approvedTiers = [
     highlighted: true,
   },
 ]
-*/
+
+/* ─── SEAM Seals data (placeholder — pricing TBD) ─── */
+const sealsTiers = [
+  {
+    name: 'SEAM Seal',
+    price: 'TBD',
+    period: '/theme',
+    description: 'A thematic credential awarded for completing a curated set of 18–25 related activities. Themes, activity sets, and pricing are in active development.',
+    features: [
+      '18–25 verified activities per theme',
+      'Third-party verification',
+      'Directory listing & credential',
+      'Counts toward full certification',
+    ],
+    cta: 'Talk to an advisor',
+    highlighted: false,
+  },
+]
 
 /* ─── AP Credential data ─── */
 const credentialTiers = [
@@ -209,26 +226,39 @@ const certFaqs = [
   },
 ]
 
-/* HIDDEN: Approved program temporarily hidden
-const approvedFaqs = [
+const marksFaqs = [
   {
     q: 'How much does a single activity verification cost?',
-    a: 'A single SEAM Approved Mark costs $750. For organizations verifying 3\u20135 related activities, the Bundle option is $2,000 \u2014 up to 60% savings vs. individual pricing.',
+    a: 'A Single Mark costs $750. For organizations verifying 3\u20135 related activities, Bulk Marks are $2,000 \u2014 up to 60% savings vs. individual pricing.',
   },
   {
-    q: 'Can I start with Approved and upgrade to full Certification later?',
-    a: 'Yes. Every verified activity earns pathway credit toward full certification. Many organizations start by verifying 3\u20135 activities and then transition to a full certification track when ready.',
+    q: 'Can I start with Marks and upgrade to full Certification later?',
+    a: 'Yes. Every verified activity earns pathway credit toward full certification. Many organizations start by earning 3\u20135 Marks and then transition to a full certification track when ready.',
   },
   {
     q: 'Do community members get a discount?',
     a: 'Yes. Changemaker individual members receive discounted verification fees. Organization members at Ladder and above receive volume pricing automatically.',
   },
   {
-    q: 'How long does the Approved credential last?',
-    a: 'SEAM Approved credentials are valid for 3 years. Renewal requires updated documentation demonstrating that the verified activity remains in practice.',
+    q: 'How long does a Mark last?',
+    a: 'SEAM Marks are valid for 3 years. Renewal requires updated documentation demonstrating that the verified activity remains in practice.',
   },
 ]
-*/
+
+const sealsFaqs = [
+  {
+    q: 'How much does a SEAM Seal cost?',
+    a: 'Pricing is in development. Seals are a new credential between single-activity Marks and full building Certification, awarded across 18\u201325 related activities. Final pricing will be published as each Seal launches.',
+  },
+  {
+    q: 'When will Seals be available?',
+    a: 'SEAM Seals are in active development. The first two themes — Ethical Procurement and Community Development — are being finalized. Talk to an advisor about early access or shaping the first Seals.',
+  },
+  {
+    q: 'How is a Seal different from Bulk Marks?',
+    a: 'Bulk Marks bundle 3\u20135 related activities at a discount. A Seal is broader \u2014 18 to 25 activities in a curated theme \u2014 and is a distinct, named credential representing sustained commitment in a focused area.',
+  },
+]
 
 const credentialFaqs = [
   {
@@ -276,7 +306,7 @@ const membershipFaqs = [
   },
 ]
 
-const allFaqs = [...certFaqs, ...credentialFaqs, ...membershipFaqs] // HIDDEN: approvedFaqs removed temporarily
+const allFaqs = [...certFaqs, ...marksFaqs, ...sealsFaqs, ...credentialFaqs, ...membershipFaqs]
 const faqItems = allFaqs.map((f) => ({ question: f.q, answer: f.a }))
 
 const jsonLd = [
@@ -765,7 +795,144 @@ const jsonLd = [
     }
   </script>
 
-  {/* HIDDEN: SEAM Approved Tab — entire section temporarily hidden. See approved.astro.hidden and commented data above. */}
+  <!-- SEAM Marks Tab -->
+  <div class={activeTab === 'marks' ? '' : 'hidden'}>
+    <div class="py-20 lg:py-28">
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">SEAM Marks</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            Verify activities <em class="italic font-normal text-seam-600">at any scale</em>
+          </h2>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
+            SEAM Marks let you verify individual practices against the Standard — standalone or as a stepping stone to full certification. Start small with a Single Mark, or save with Bulk Marks (3–5 related activities).
+          </p>
+        </div>
+
+        <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+          {marksTiers.map((tier) => (
+            <div class={`reveal-child rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'border-2 border-seam-500 bg-white relative' : 'bg-white border border-warm-200/60'}`}>
+              {tier.highlighted && (
+                <span class="absolute -top-3.5 left-8 inline-block rounded-full bg-seam-600 px-4 py-1 text-[12px] font-medium text-white tracking-wide uppercase">
+                  Best value
+                </span>
+              )}
+              <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">{tier.name}</h3>
+              <div class="mt-3 flex items-baseline gap-1">
+                <span class="font-display text-[42px] tracking-[-0.04em] text-warm-900">{tier.price}</span>
+                <span class="text-[16px] text-warm-600">{tier.period}</span>
+              </div>
+              <p class="mt-4 text-[15px] leading-relaxed text-warm-600">{tier.description}</p>
+
+              <ul class="mt-8 space-y-3 flex-1">
+                {tier.features.map((f) => (
+                  <li class="flex items-start gap-2.5 text-[14px] leading-snug text-warm-600">
+                    <svg class="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <a href="/get-started" class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-seam-600 text-white hover:bg-seam-700' : 'border-2 border-warm-900 text-warm-900 hover:bg-warm-900 hover:text-white'}`}>
+                {tier.cta}
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12 rounded-2xl bg-seam-50/60 border border-seam-100 p-6 lg:p-8 max-w-4xl">
+          <p class="text-[15px] leading-relaxed text-seam-700">
+            <strong class="font-semibold">Community member discount:</strong> Changemaker members receive discounted SEAM Mark verification fees. Organization members at Ladder tier and above receive volume pricing automatically.{' '}
+            <a href="/membership" class="underline hover:text-seam-900 transition-colors">Join the Community &rarr;</a>
+          </p>
+        </div>
+
+        <div class="mt-20 max-w-3xl">
+          <h3 class="font-display text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-warm-900 mb-8">SEAM Marks pricing FAQ</h3>
+          {marksFaqs.map((faq) => (
+            <details class="border-b border-warm-200 group">
+              <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[15px] lg:text-[16px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.q}</span>
+                <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-5">
+                <p class="text-[14px] leading-relaxed text-warm-600 pr-10">{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEAM Seals Tab -->
+  <div class={activeTab === 'seals' ? '' : 'hidden'}>
+    <div class="py-20 lg:py-28">
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+          <span class="inline-block rounded-full bg-seam-600/10 border border-seam-500/30 px-3 py-1 text-[12px] font-medium text-seam-700 mb-4">
+            Coming soon
+          </span>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">SEAM Seals</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            A thematic credential <em class="italic font-normal text-seam-600">between Marks and Certification</em>
+          </h2>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
+            SEAM Seals are awarded for completing a curated set of 18 to 25 related activities. Themes, activity sets, and pricing are in active development. Talk to an advisor about early access.
+          </p>
+        </div>
+
+        <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+          {sealsTiers.map((tier) => (
+            <div class="reveal-child rounded-2xl p-8 lg:p-10 flex flex-col bg-white border border-warm-200/60">
+              <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">{tier.name}</h3>
+              <div class="mt-3 flex items-baseline gap-1">
+                <span class="font-display text-[42px] tracking-[-0.04em] text-warm-900">{tier.price}</span>
+                <span class="text-[16px] text-warm-600">{tier.period}</span>
+              </div>
+              <p class="mt-4 text-[15px] leading-relaxed text-warm-600">{tier.description}</p>
+
+              <ul class="mt-8 space-y-3 flex-1">
+                {tier.features.map((f) => (
+                  <li class="flex items-start gap-2.5 text-[14px] leading-snug text-warm-600">
+                    <svg class="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <a href="/get-started" class="mt-8 inline-flex w-full items-center justify-center rounded-full border-2 border-warm-900 text-warm-900 hover:bg-warm-900 hover:text-white px-6 py-3.5 text-[15px] font-medium transition-colors duration-300">
+                {tier.cta}
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-20 max-w-3xl">
+          <h3 class="font-display text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-warm-900 mb-8">SEAM Seals pricing FAQ</h3>
+          {sealsFaqs.map((faq) => (
+            <details class="border-b border-warm-200 group">
+              <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[15px] lg:text-[16px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.q}</span>
+                <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-5">
+                <p class="text-[14px] leading-relaxed text-warm-600 pr-10">{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- AP Credential Tab -->
   <div class={activeTab === 'credential' ? '' : 'hidden'}>

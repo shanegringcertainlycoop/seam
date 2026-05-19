@@ -30,7 +30,7 @@ const jsonLd = breadcrumbSchema([
 ])
 ---
 <SiteLayout
-  title={`${activity.name} — SEAM Approved`}
+  title={`${activity.name} — SEAM Marks`}
   description={activity.description.slice(0, 160)}
   path={`/directory/activity/${activity.slug}`}
   jsonLd={jsonLd}
@@ -43,7 +43,7 @@ const jsonLd = breadcrumbSchema([
         href="/directory?tab=activities"
         class="inline-flex items-center gap-2 text-[14px] text-warm-600 hover:text-warm-700 transition-colors mb-10"
       >
-        &larr; All Approved Activities
+        &larr; All Verified Activities
       </a>
 
       {/* Badges */}
@@ -71,7 +71,7 @@ const jsonLd = breadcrumbSchema([
           {activity.location.city}, {activity.location.state}
         </span>
         <span class="w-1 h-1 rounded-full bg-warm-300"></span>
-        <span>Approved {formatDate(activity.dateApproved)}</span>
+        <span>Verified {formatDate(activity.dateApproved)}</span>
       </div>
 
       {/* Description */}
@@ -122,17 +122,17 @@ const jsonLd = breadcrumbSchema([
   <section class="py-24 lg:py-32">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
       <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-6">
-        Get your activity SEAM Approved
+        Earn a SEAM Mark for your activity
       </h2>
       <p class="text-[17px] leading-relaxed text-warm-600 max-w-2xl mx-auto mb-10">
         Standalone verification for specific social equity practices. An
         on-ramp to certification or a parallel track.
       </p>
       <a
-        href="/approved"
+        href="/marks"
         class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors"
       >
-        Learn about SEAM Approved
+        Learn about SEAM Marks
         <svg
           class="ml-2 w-4 h-4"
           fill="none"
