@@ -50,12 +50,28 @@ const url = `${SITE_URL}${path}`
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PFFKXQPW');</script>
+    <!-- Google Tag Manager (deferred until after LCP) -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      function loadGTM() {
+        if (window.__gtmLoaded) return;
+        window.__gtmLoaded = true;
+        var f = document.getElementsByTagName('script')[0];
+        var j = document.createElement('script');
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-PFFKXQPW';
+        f.parentNode.insertBefore(j, f);
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGTM, { timeout: 4000 });
+      } else {
+        setTimeout(loadGTM, 3500);
+      }
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (ev) {
+        window.addEventListener(ev, loadGTM, { once: true, passive: true });
+      });
+    </script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -173,7 +189,7 @@ const url = `${SITE_URL}${path}`
     <div class="min-h-screen bg-white font-sans text-warm-700 antialiased" data-solid-nav={solidNav ? 'true' : undefined}>
       <a href="#main-content" class="skip-to-content">Skip to main content</a>
       <!-- ─── Sitewide Promo Banner ─── -->
-      <div id="promo-banner" class="fixed top-0 left-0 right-0 z-[60] bg-seam-600 text-white text-center py-3 px-6">
+      <div id="promo-banner" class="fixed top-0 left-0 right-0 z-[60] bg-seam-600 text-white text-center py-3 px-6 min-h-[68px] md:min-h-[44px]">
         <p class="text-[14px] font-medium">
           AP Credential Bundle: <span class="line-through opacity-75">$519</span> <strong>$389</strong> — code <strong>SITELAUNCH25</strong>.
           <span class="inline-flex items-center gap-1 mx-1 rounded-full bg-white/20 px-2.5 py-0.5 text-[12px] font-semibold">

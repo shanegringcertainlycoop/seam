@@ -273,7 +273,7 @@ function logoClass(_logo: string) {
                         <div class="flex -space-x-2.5">
                           {apPhotos.slice(0, 8).map((src) => (
                             <div class="w-9 h-9 rounded-full bg-warm-700 border-2 border-warm-900 overflow-hidden">
-                              <img src={src} alt="" decoding="async" class="w-full h-full object-cover object-top" />
+                              <img src={src} alt="" loading="lazy" decoding="async" width="36" height="36" class="w-full h-full object-cover object-top" />
                             </div>
                           ))}
                           {apPhotos.length > 8 && (
@@ -285,13 +285,13 @@ function logoClass(_logo: string) {
                         <div class="flex gap-2">
                           {projectImages.slice(0, 3).map((p) => (
                             <div class="w-[72px] h-12 rounded-lg overflow-hidden bg-warm-700">
-                              <img src={p.image} alt={p.name} decoding="async" class="w-full h-full object-cover opacity-90" />
+                              <img src={p.image} alt={p.name} loading="lazy" decoding="async" width="72" height="48" class="w-full h-full object-cover opacity-90" />
                             </div>
                           ))}
                         </div>
                         <div class="flex items-center gap-3">
                           {orgLogos.slice(0, 6).map((o) => (
-                            <img src={o.src} alt={o.name} decoding="async" class="h-5 w-auto object-contain grayscale invert mix-blend-screen opacity-60" />
+                            <img src={o.src} alt={o.name} loading="lazy" decoding="async" class="h-5 w-auto object-contain grayscale invert mix-blend-screen opacity-60" />
                           ))}
                         </div>
                       </div>
@@ -349,6 +349,7 @@ function logoClass(_logo: string) {
                           alt="The SEAM Standard book cover"
                           width="280"
                           height="303"
+                          loading="lazy"
                           decoding="async"
                           class="absolute right-2 top-1/2 -translate-y-[45%] h-[280px] w-auto drop-shadow-[0_16px_32px_rgba(0,0,0,0.4)] rotate-[12deg]"
                         />
@@ -386,7 +387,10 @@ function logoClass(_logo: string) {
                             <img
                               src={src}
                               alt="SEAM certification level"
+                              loading="lazy"
                               decoding="async"
+                              width={100 + i * 16}
+                              height={100 + i * 16}
                               class="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
                               style={`position: relative; z-index: ${i + 1}; width: ${100 + i * 16}px; height: ${100 + i * 16}px;`}
                             />
@@ -401,7 +405,7 @@ function logoClass(_logo: string) {
                       <a href={latestArticle.href} class="group/article bg-warm-50 p-6 flex flex-col">
                         <p class="px-0 pb-3 text-[11px] font-medium uppercase tracking-[0.15em] text-gold-600">Latest article</p>
                         <div class="rounded-lg overflow-hidden mb-4">
-                          <img src={latestArticle.image} alt={latestArticle.title} decoding="async" class="w-full aspect-[16/10] object-cover transition-transform duration-500 group-hover/article:scale-105" />
+                          <img src={latestArticle.image} alt={latestArticle.title} loading="lazy" decoding="async" width="300" height="188" class="w-full aspect-[16/10] object-cover transition-transform duration-500 group-hover/article:scale-105" />
                         </div>
                         <p class="text-[14px] font-medium leading-snug text-warm-900 group-hover/article:text-gold-600 transition-colors line-clamp-3">{latestArticle.title}</p>
                         <span class="inline-flex items-center mt-auto pt-3 text-[12px] font-medium text-seam-600">Read article &rarr;</span>
@@ -432,7 +436,10 @@ function logoClass(_logo: string) {
                                   <img
                                     src={src}
                                     alt={link.label}
+                                    loading="lazy"
                                     decoding="async"
+                                    width="40"
+                                    height="40"
                                     class="w-10 h-10 object-contain drop-shadow-sm"
                                   />
                                 ))}
@@ -443,6 +450,7 @@ function logoClass(_logo: string) {
                                 alt={link.label}
                                 width="44"
                                 height="44"
+                                loading="lazy"
                                 decoding="async"
                                 class={`object-contain shrink-0 ${logoClass(link.logo)}`}
                               />
@@ -494,7 +502,10 @@ function logoClass(_logo: string) {
                             <img
                               src={link.logo}
                               alt={link.label}
+                              loading="lazy"
                               decoding="async"
+                              width="40"
+                              height="40"
                               class="w-10 h-10 object-contain shrink-0"
                             />
                           )}
