@@ -1,0 +1,355 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
+
+const isAndIsNot = [
+  {
+    is: 'A limited-scope SEAM credential covering modern slavery, forced labor, and supply-chain due diligence within a defined Assessment Scope.',
+    isNot: 'Full SEAM Certification — or a substitute for it.',
+  },
+  {
+    is: 'A proportionate due-diligence pathway that adapts to your role, supply chain, tenant relationships, and scope.',
+    isNot: 'A legal opinion or substitute for advice of legal counsel.',
+  },
+  {
+    is: 'A defensible public claim that you completed the applicable SEAM Activity subset for the reviewed scope.',
+    isNot: 'A guarantee that modern slavery, forced labor, child labor, trafficking, or human-rights harms are absent.',
+  },
+  {
+    is: 'A foundation pathway toward a broader SEAM Human Rights SEAL or full SEAM Certification.',
+    isNot: 'A replacement for statement approval, regulator filings, customs documentation, or import admissibility determinations.',
+  },
+]
+
+const audiences = [
+  { label: 'Reporting entities', description: 'Organizations with modern slavery, forced-labor, or supply-chain disclosure obligations.' },
+  { label: 'Vendors and suppliers', description: 'Tier 1 vendors and suppliers to commercial real estate value chains.' },
+  { label: 'Property owners and managers', description: 'Building owners and operators with tenant relationships or procurement responsibilities.' },
+  { label: 'Investment managers', description: 'Funds and asset managers reviewing portfolio-level due diligence.' },
+]
+
+const frameworks = [
+  'Australian Modern Slavery Act 2018',
+  'UK Modern Slavery Act 2015',
+  'Canada Fighting Against Forced Labour and Child Labour in Supply Chains Act',
+  'California Transparency in Supply Chains Act',
+  'German Supply Chain Due Diligence Act',
+  'French Duty of Vigilance Law',
+  'Norwegian Transparency Act',
+  'EU Forced Labour Regulation',
+  'US Tariff Act Section 307 / UFLPA',
+  'UNGPs · OECD · ILO forced-labor standards',
+]
+
+const pathwayGroups = [
+  { heading: 'Governance, scope, and value-chain mapping', body: 'Establish project understanding and governance. Map your value chain.' },
+  { heading: 'Risk identification', body: 'Identify likely social and human-rights impacts. Scope your area of influence. Assemble baseline data.' },
+  { heading: 'Policy and procurement controls', body: 'Ethical materials procurement governance. Ethical sourcing policy. Site-specific social responsibility policies.' },
+  { heading: 'Labor in your own operations', body: 'Living wage and decent work conditions for your organization’s workers.' },
+  { heading: 'Corrective action and remediation', body: 'Address identified impacts. Remediate procurement-related human-rights impacts.' },
+  { heading: 'Grievance, reporting, and transparency', body: 'Communicate externally about human-rights impacts. Operate a grievance mechanism for direct reporting.' },
+  { heading: 'Training and capability', body: 'Educate and train procurement employees on human-rights standards.' },
+  { heading: 'Monitoring and review', body: 'Ongoing social performance monitoring. Periodic evaluation and review.' },
+]
+
+const faqs = [
+  {
+    question: 'How is this different from full SEAM Certification?',
+    answer:
+      'Full SEAM Certification evaluates a whole building across all four pillars. The Ethical Procurement SEAL is a limited-scope credential focused on one theme — modern slavery, forced labor, and supply-chain due diligence — and only within a defined Assessment Scope. It does not certify the full owner, portfolio, fund, or asset.',
+  },
+  {
+    question: 'What is the "Assessment Scope"?',
+    answer:
+      'The Assessment Scope is the explicit boundary of the SEAL review and the public claim. It identifies the assessed party, their role, the frameworks covered, the supply-chain profile, tenant relationships, the reporting period, exclusions, and any owned or controlled entities included.',
+  },
+  {
+    question: 'What does proportionate due diligence mean here?',
+    answer:
+      'Required Activities apply to every assessed party. Scope-Triggered Activities apply only when the Assessment Scope includes the relevant condition — for example, Tier 1 Suppliers in scope, tenant labor practices in scope, or U.S. import responsibilities. This adapts the same Standard-based method to the assessed party’s actual profile.',
+  },
+  {
+    question: 'What is "Leading Practice" recognition?',
+    answer:
+      'Achievement is binary — you either earn the SEAL or you don’t. Above that, organizations meeting the Gold-equivalent or Platinum-equivalent thresholds across the applicable Activity subset may receive the distinction "SEAM Ethical Procurement SEAL — Leading Practice."',
+  },
+  {
+    question: 'Does this satisfy modern slavery reporting obligations?',
+    answer:
+      'No. The SEAL can support evidence organization for selected frameworks, but it does not complete legal reporting, regulator filings, customs responses, or import admissibility determinations. The assessed party and its counsel remain responsible for legal interpretation and filings.',
+  },
+  {
+    question: 'Does it count toward full Certification later?',
+    answer:
+      'Yes. Activities completed for this SEAL may carry forward toward a future SEAM Human Rights SEAL or full SEAM Certification when the assessed scope, entity, reporting period, evidence, and applicable rating system remain aligned with SEAM requirements.',
+  },
+]
+
+const jsonLd = [
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'SEAM Seals', path: '/seals' },
+    { name: 'Ethical Procurement', path: '/seals/ethical-procurement' },
+  ]),
+  faqSchema(faqs),
+] as unknown as Record<string, unknown>
+---
+
+<SiteLayout
+  title="Ethical Procurement SEAL — Supply-Chain Human Rights Due Diligence"
+  description="A limited-scope SEAM credential for modern slavery, forced labor, and supply-chain human-rights due diligence in commercial real estate operations and procurement."
+  path="/seals/ethical-procurement"
+  jsonLd={jsonLd}
+>
+
+  <!-- ─── Hero ─── -->
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-center">
+        <div class="hero-enter max-w-3xl">
+          <div class="flex items-center gap-3 mb-8">
+            <a href="/seals" class="text-[13px] font-medium text-warm-400 hover:text-warm-200 transition-colors">SEAM Seals</a>
+            <span class="text-warm-500">/</span>
+            <span class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-300">Ethical Procurement</span>
+          </div>
+          <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.25rem)] leading-[1.05] tracking-[-0.04em] text-white">
+            Prove your <em class="font-display italic font-normal text-seam-300">supply chain</em> meets human-rights expectations
+          </h1>
+          <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+            A limited-scope SEAM credential for modern slavery, forced labor, and supply-chain human-rights due diligence — in commercial real estate operations and procurement.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="/get-started" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+              Talk to an advisor
+            </a>
+            <a href="#pathway" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-8 py-4 text-[15px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
+              See the Activity pathway
+            </a>
+          </div>
+        </div>
+        <div class="hidden lg:flex justify-center shrink-0">
+          <img src="/logos/seal-ethical-procurement.svg" alt="Ethical Procurement Seal placeholder" width="220" height="257" class="w-[220px] h-auto drop-shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── What this SEAL recognizes ─── -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">What it recognizes</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          A <em class="italic font-normal text-seam-600">defined scope</em> of ethical procurement, independently reviewed
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+          The Ethical Procurement SEAL recognizes documented and implemented ethical procurement practices for modern slavery, forced labor, and supply-chain human-rights due diligence — within a defined Assessment Scope. The same Standard-based method applies whether the assessed party is a reporting entity, vendor, supplier, owner, manager, or investment manager. The Assessment Scope makes the boundary of the claim transparent to buyers, regulators, investors, and impacted parties.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="rounded-2xl bg-seam-50/40 border border-seam-100 p-8">
+          <p class="text-[12px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-4">What this SEAL is</p>
+          <ul class="space-y-4">
+            {isAndIsNot.map((row) => (
+              <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-700">
+                <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+                {row.is}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="rounded-2xl bg-warm-50 border border-warm-100 p-8">
+          <p class="text-[12px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">What this SEAL is not</p>
+          <ul class="space-y-4">
+            {isAndIsNot.map((row) => (
+              <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
+                <svg class="shrink-0 w-5 h-5 mt-0.5 text-warm-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                {row.isNot}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Who it's for ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Who it's for</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Built for commercial real estate <em class="italic font-normal text-seam-600">value chains</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {audiences.map((a) => (
+          <div class="rounded-2xl bg-white border border-warm-200/60 p-6">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">{a.label}</h3>
+            <p class="text-[14px] leading-relaxed text-warm-600">{a.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Frameworks supported ─── -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16">
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Framework alignment</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            Organize evidence for the <em class="italic font-normal text-seam-600">frameworks</em> you already report against
+          </h2>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+            The SEAL can support evidence organization for selected modern slavery, forced-labor, and supply-chain due-diligence frameworks identified in the Assessment Scope. It does not complete legal reporting obligations — your counsel does.
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-warm-50 border border-warm-200/60 p-8">
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {frameworks.map((f) => (
+              <li class="flex items-start gap-3 text-[14px] leading-snug text-warm-700">
+                <span class="shrink-0 w-1.5 h-1.5 mt-2 rounded-full bg-seam-500"></span>
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Activity pathway ─── -->
+  <section id="pathway" class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The Activity pathway</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Proportionate due diligence, <em class="italic font-normal text-seam-600">organized</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+          Required Activities apply to every assessed party. Additional Scope-Triggered Activities apply when the Assessment Scope includes the relevant supplier, tenant, impacted-party, import, or capacity-building condition.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {pathwayGroups.map((g) => (
+          <div class="rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-8">
+            <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 mb-3">{g.heading}</h3>
+            <p class="text-[14px] leading-relaxed text-warm-600">{g.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl">
+        Activity-level requirements, indicators, scoring, and documentation are governed by the SEAM Standard and applicable scorecard materials. <a href="/resources/standard" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Read the Standard</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Determination ─── -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl mb-12">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Determination</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Binary outcome <em class="italic font-normal text-seam-600">with a Leading Practice tier</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="rounded-2xl bg-seam-50/40 border border-seam-200/60 p-8">
+          <p class="text-[12px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-4">Achieve the SEAL</p>
+          <p class="text-[15px] leading-relaxed text-warm-700">
+            Complete all Required Activities, complete all applicable Scope-Triggered Activities, and meet the Bronze-equivalent minimum point threshold for the applicable SEAL subset.
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-gold-400/10 border border-gold-300/60 p-8">
+          <p class="text-[12px] font-medium uppercase tracking-[0.15em] text-gold-700 mb-4">Leading Practice</p>
+          <p class="text-[15px] leading-relaxed text-warm-700">
+            Achieve the Gold-equivalent or Platinum-equivalent threshold across the applicable subset to earn the distinction <strong class="font-semibold">SEAM Ethical Procurement SEAL — Leading Practice</strong>.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl">
+        The SEAL may not be awarded where credible evidence shows active, unremediated modern slavery, forced labor, child labor, trafficking, or refusal to provide required evidence within the Assessment Scope. Any such finding must be resolved or documented through an approved corrective action process.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Claim limits ─── -->
+  <section class="py-20 lg:py-28 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16">
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">Public claims</p>
+          <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
+            Tied to the reviewed <em class="italic font-normal text-seam-300">Assessment Scope</em>
+          </h2>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-2xl bg-white/[0.04] border border-white/10 p-6">
+            <p class="text-[13px] uppercase tracking-[0.12em] text-warm-400 mb-2">Example claim</p>
+            <p class="text-[16px] leading-relaxed text-white italic">
+              [Assessed Party] achieved the SEAM Ethical Procurement SEAL for [Assessment Scope] for the review period [Period].
+            </p>
+          </div>
+
+          <ul class="space-y-3">
+            {[
+              'Does not certify the full owner, portfolio, fund, or asset portfolio unless that sits within the Assessment Scope.',
+              'Does not function as a legal opinion or compliance guarantee.',
+              'Does not prove modern slavery, forced labor, or human-rights risks are absent.',
+              'Does not replace legal reporting, regulatory filings, customs responses, or counsel review.',
+            ].map((c) => (
+              <li class="flex items-start gap-3 text-[14px] leading-relaxed text-warm-300">
+                <span class="shrink-0 mt-2 w-1 h-1 rounded-full bg-warm-500"></span>
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-12">
+          Questions about the <em class="italic font-normal text-seam-600">Ethical Procurement SEAL</em>
+        </h2>
+
+        {faqs.map((faq) => (
+          <details class="border-b border-warm-200 group">
+            <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <span class="text-[16px] lg:text-[17px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.question}</span>
+              <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </summary>
+            <div class="pb-6">
+              <p class="text-[15px] leading-relaxed text-warm-600 pr-10">{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</SiteLayout>

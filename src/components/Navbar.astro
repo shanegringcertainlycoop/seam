@@ -16,51 +16,69 @@ interface NavSection {
   links: NavLink[]
 }
 
+interface ProgressionStep {
+  step: string
+  label: string
+  href: string
+  tagline: string
+  description: string
+  accent: 'soft' | 'core' | 'deep'
+}
+
 interface NavGroup {
   label: string
   links: NavLink[]
   featured?: { label: string; href: string; description: string }
+  progression?: ProgressionStep[]
   sections?: NavSection[]
   quickLinks?: { label: string; href: string }[]
 }
 
-const solutions: NavGroup = {
-  label: 'Take Action',
+const commitments: NavGroup = {
+  label: 'Commitments',
   links: [],
-  featured: {
-    label: 'Full building certification',
-    href: '/certification',
-    description: 'Prove your building makes life better for people — from the community around it to the workers who built it.',
-  },
+  progression: [
+    {
+      step: 'Step 1',
+      label: 'SEAM Marks',
+      href: '/marks',
+      tagline: '$750+ per activity',
+      description: 'Verify one activity (Single Mark) or a bundle of 3–5 (Bulk Marks). The entry point.',
+      accent: 'soft',
+    },
+    {
+      step: 'Step 2',
+      label: 'SEAM Seals',
+      href: '/seals',
+      tagline: '18–25 activities · coming soon',
+      description: 'A thematic credential demonstrating sustained commitment in a focused area.',
+      accent: 'core',
+    },
+    {
+      step: 'Step 3',
+      label: 'SEAM Certification',
+      href: '/certification',
+      tagline: 'Whole-building · all 4 pillars',
+      description: 'Full building certification — Bronze through Platinum. The complete credential.',
+      accent: 'deep',
+    },
+  ],
   quickLinks: [
+    { label: 'Compare commitments', href: '/commitments' },
     { label: 'Pricing', href: '/pricing' },
+    { label: 'Talk to an Advisor', href: '/get-started' },
+  ],
+}
+
+const network: NavGroup = {
+  label: 'Network',
+  links: [],
+  quickLinks: [
     { label: 'Membership Overview', href: '/membership' },
-{ label: 'Contact', href: '/contact' },
+    { label: 'Directory', href: '/directory' },
     { label: 'Talk to an Advisor', href: '/get-started' },
   ],
   sections: [
-    {
-      heading: 'For Organizations',
-      links: [
-        {
-          label: 'SEAM Marks',
-          href: '/marks',
-          description: 'Start with one verified activity. No full certification required.',
-          logo: '/logos/approved-wordmark.png',
-        },
-        {
-          label: 'SEAM Seals',
-          href: '/seals',
-          description: 'Coming soon — a thematic credential earned across 18–25 related activities.',
-        },
-        {
-          label: 'Organization Membership',
-          href: '/membership/organization',
-          description: 'Give your team the tools, network, and recognition to lead.',
-          logos: ['/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
-        },
-      ],
-    },
     {
       heading: 'For Professionals',
       links: [
@@ -75,6 +93,17 @@ const solutions: NavGroup = {
           href: '/membership/individual',
           description: 'Your career in social equity starts here. Free and paid tiers.',
           logos: ['/logos/member-individual.png', '/logos/member-changemaker.png'],
+        },
+      ],
+    },
+    {
+      heading: 'For Organizations',
+      links: [
+        {
+          label: 'Organization Membership',
+          href: '/membership/organization',
+          description: 'Give your team the tools, network, and recognition to lead.',
+          logos: ['/logos/member-standing.png', '/logos/member-ladder.png', '/logos/member-arc.png'],
         },
       ],
     },
@@ -105,6 +134,24 @@ const theStandard: NavGroup = {
           href: '/rating-system/operations-maintenance',
           description: 'Day-to-day building management and procurement.',
           logo: '/logos/rating-om.png',
+        },
+      ],
+    },
+    {
+      heading: 'Seals',
+      href: '/seals',
+      links: [
+        {
+          label: 'Ethical Procurement',
+          href: '/seals/ethical-procurement',
+          description: 'Modern slavery, forced labor, and supply-chain due diligence — within a defined scope.',
+          logo: '/logos/seal-ethical-procurement.svg',
+        },
+        {
+          label: 'Community Development',
+          href: '/seals/community-development',
+          description: 'A reviewed community initiative grounded in impacted-party input and materiality.',
+          logo: '/logos/seal-community-development.svg',
         },
       ],
     },
@@ -205,7 +252,7 @@ const directory: NavGroup = {
   ],
 }
 
-const dropdowns = [solutions, theStandard, audiences, directory, resources]
+const dropdowns = [commitments, network, theStandard, directory, resources]
 
 function logoClass(_logo: string) {
   return 'w-11 h-11'
@@ -314,8 +361,88 @@ function logoClass(_logo: string) {
                     </a>
                   </div>
                 </div>
+              ) : group.label === 'Commitments' && group.progression ? (
+                <div class="rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] w-[960px] overflow-hidden">
+                  {/* Progression hero */}
+                  <div class="relative bg-gradient-to-br from-warm-900 via-warm-900 to-seam-900 px-8 py-7">
+                    <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold-400 mb-2">Earn a credential</p>
+                    <p class="font-display text-[22px] leading-[1.15] tracking-[-0.02em] text-white mb-6">
+                      Choose your depth of commitment.
+                    </p>
+                    <div class="flex items-stretch gap-3">
+                      {group.progression.map((step, i) => (
+                        <>
+                          <a
+                            href={step.href}
+                            class={`group/step relative flex-1 rounded-xl p-5 transition-all duration-200 border ${
+                              step.accent === 'deep'
+                                ? 'bg-gold-400/10 border-gold-400/40 hover:bg-gold-400/15'
+                                : step.accent === 'core'
+                                ? 'bg-seam-500/15 border-seam-400/40 hover:bg-seam-500/20'
+                                : 'bg-white/[0.06] border-white/15 hover:bg-white/[0.1]'
+                            }`}
+                          >
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                              <p class={`text-[10px] font-medium uppercase tracking-[0.15em] ${
+                                step.accent === 'deep' ? 'text-gold-300' : step.accent === 'core' ? 'text-seam-300' : 'text-warm-400'
+                              }`}>{step.step}</p>
+                              {step.label === 'SEAM Marks' && (
+                                <img src="/logos/approved-wordmark.png" alt="" aria-hidden="true" loading="lazy" decoding="async" class="h-8 w-auto object-contain opacity-90" />
+                              )}
+                              {step.label === 'SEAM Seals' && (
+                                <div class="flex items-center -space-x-2">
+                                  <img src="/logos/seal-ethical-procurement.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" class="w-8 h-auto drop-shadow" />
+                                  <img src="/logos/seal-community-development.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" class="w-8 h-auto drop-shadow" />
+                                </div>
+                              )}
+                              {step.label === 'SEAM Certification' && (
+                                <div class="flex items-center -space-x-2">
+                                  <img src="/logos/cert-bronze.png" alt="" aria-hidden="true" loading="lazy" decoding="async" class="w-7 h-7 object-contain" />
+                                  <img src="/logos/cert-silver.png" alt="" aria-hidden="true" loading="lazy" decoding="async" class="w-7 h-7 object-contain" />
+                                  <img src="/logos/cert-gold.png" alt="" aria-hidden="true" loading="lazy" decoding="async" class="w-7 h-7 object-contain" />
+                                  <img src="/logos/cert-platinum.png" alt="" aria-hidden="true" loading="lazy" decoding="async" class="w-7 h-7 object-contain" />
+                                </div>
+                              )}
+                            </div>
+                            <p class="font-display text-[18px] leading-[1.15] tracking-[-0.02em] text-white mb-1">{step.label}</p>
+                            <p class={`text-[11px] mb-3 ${
+                              step.accent === 'deep' ? 'text-gold-200' : step.accent === 'core' ? 'text-seam-200' : 'text-warm-300'
+                            }`}>{step.tagline}</p>
+                            <p class="text-[12px] leading-snug text-warm-300">{step.description}</p>
+                            <span class="mt-3 inline-flex items-center text-[12px] font-medium text-white/80 group-hover/step:text-white transition-colors">
+                              Learn more &rarr;
+                            </span>
+                          </a>
+                          {i < group.progression!.length - 1 && (
+                            <div class="flex items-center text-warm-500 shrink-0" aria-hidden="true">
+                              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                              </svg>
+                            </div>
+                          )}
+                        </>
+                      ))}
+                    </div>
+                  </div>
+                  {/* Quicklinks bar */}
+                  {group.quickLinks && (
+                    <div class="flex items-center gap-4 px-6 py-3 bg-warm-900 border-t border-warm-800">
+                      {group.quickLinks.map((ql, i) => (
+                        <>
+                          {i > 0 && <span class="text-warm-600">·</span>}
+                          <a
+                            href={ql.href}
+                            class="text-[13px] font-medium text-warm-400 hover:text-white transition-colors"
+                          >
+                            {ql.label}
+                          </a>
+                        </>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ) : group.sections?.length ? (
-                <div class={`rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] ${group.label === 'The Standard' ? 'w-[820px]' : group.label === 'Take Action' ? 'w-[880px]' : group.label === 'Resources' ? 'w-[1060px]' : 'w-[760px]'} overflow-hidden`}>
+                <div class={`rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] ${group.label === 'The Standard' ? 'w-[1120px]' : group.label === 'Network' ? 'w-[760px]' : group.label === 'Resources' ? 'w-[1060px]' : 'w-[760px]'} overflow-hidden`}>
                   {/* Standard featured hero at top */}
                   {group.label === 'The Standard' && group.featured && (
                     <div class="relative grid grid-cols-[1fr_300px] items-stretch bg-gradient-to-br from-warm-900 via-warm-900 to-seam-900 px-8 py-7 border-b border-warm-100 overflow-hidden">
@@ -360,50 +487,7 @@ function logoClass(_logo: string) {
                       </div>
                     </div>
                   )}
-                  {/* Solutions featured hero at top */}
-                  {group.label === 'Take Action' && group.featured && (
-                    <div class="relative grid grid-cols-[1fr_240px] items-stretch bg-gradient-to-br from-warm-900 via-warm-900 to-seam-900 px-8 py-7 border-b border-warm-100 overflow-hidden">
-                      <div class="flex flex-col justify-between py-1">
-                        <div>
-                          <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold-400 mb-3">
-                            Flagship
-                          </p>
-                          <p class="font-display text-[28px] leading-[1.1] tracking-[-0.02em] text-white">
-                            {group.featured.label}
-                          </p>
-                          <p class="mt-3 text-[13px] leading-relaxed text-warm-300 max-w-[360px]">
-                            {group.featured.description}
-                          </p>
-                        </div>
-                        <div class="mt-5 flex flex-wrap items-center gap-2">
-                          <a
-                            href={group.featured.href}
-                            class="inline-flex items-center rounded-full bg-white px-4 py-2 text-[13px] font-medium text-warm-900 hover:bg-warm-100 transition-colors"
-                          >
-                            Learn more
-                          </a>
-                        </div>
-                      </div>
-                      {/* Overlapping cert badges */}
-                      <div class="flex items-center justify-end -mr-4">
-                        <div class="flex items-center -space-x-14">
-                          {['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'].map((src, i) => (
-                            <img
-                              src={src}
-                              alt="SEAM certification level"
-                              loading="lazy"
-                              decoding="async"
-                              width={100 + i * 16}
-                              height={100 + i * 16}
-                              class="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
-                              style={`position: relative; z-index: ${i + 1}; width: ${100 + i * 16}px; height: ${100 + i * 16}px;`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  <div class={`grid ${group.label === 'Resources' ? 'grid-cols-[300px_1fr_1fr]' : 'grid-cols-2'} divide-x divide-warm-100`}>
+                  <div class={`grid ${group.label === 'Resources' ? 'grid-cols-[300px_1fr_1fr]' : group.label === 'The Standard' ? 'grid-cols-3' : 'grid-cols-2'} divide-x divide-warm-100`}>
                     {/* Resources: latest article in first column */}
                     {group.label === 'Resources' && (
                       <a href={latestArticle.href} class="group/article bg-warm-50 p-6 flex flex-col">
@@ -602,6 +686,23 @@ function logoClass(_logo: string) {
                 <a href="/directory?tab=professionals" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">Professionals</a>
                 <a href="/directory?tab=projects" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">Projects</a>
                 <a href="/directory?tab=organizations" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">Organizations</a>
+              </>
+            ) : group.progression?.length ? (
+              <>
+                <p class="pt-2 pb-1 text-[12px] font-medium uppercase tracking-[0.12em] text-warm-400">Earn a credential</p>
+                {group.progression.map((step) => (
+                  <a href={step.href} class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">
+                    <span class="block">{step.label}</span>
+                    <span class="block text-[13px] text-warm-400">{step.tagline}</span>
+                  </a>
+                ))}
+                {group.quickLinks && (
+                  <div class="pt-2 mt-2 border-t border-warm-100">
+                    {group.quickLinks.map((ql) => (
+                      <a href={ql.href} class="block py-2 text-[14px] text-warm-500 hover:text-warm-900">{ql.label}</a>
+                    ))}
+                  </div>
+                )}
               </>
             ) : group.sections?.length ? (
               group.sections.map((section) => (
