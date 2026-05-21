@@ -2,61 +2,85 @@
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
 
-const isAndIsNot = [
-  {
-    is: 'A limited-scope SEAM credential for a defined community development initiative tied to a project or asset.',
-    isNot: 'Full SEAM Certification — or a substitute for it.',
-  },
-  {
-    is: 'A reviewed pathway connecting community context, impacted-party input, materiality, initiative design, and completed delivery.',
-    isNot: 'Certification of the owner, organization, portfolio, or all community-facing work.',
-  },
-  {
-    is: 'Independent review against the SEAM Standard for the included Activities.',
-    isNot: 'A donation program, publicity campaign, or stand-alone volunteer event detached from the SEAM pathway.',
-  },
-  {
-    is: 'A public claim limited to the reviewed initiative and Assessment Scope.',
-    isNot: 'A claim that all community members approve, or a guarantee of long-term outcomes unless measured and reviewed.',
-  },
-]
+/* Activities for this SEAL are sourced from the digital standard.
+ * Falls back to an empty list if the endpoint is unreachable at build time. */
+const STANDARD_URL = (import.meta.env.STANDARD_URL as string | undefined) ?? 'https://standard.seamcertification.org'
 
-const fiveQuestions = [
-  { q: 'Who may be affected?', a: 'The community or impacted-party group the initiative is intended to benefit or engage.' },
-  { q: 'What do they need and value?', a: 'Captured through structured engagement with impacted parties — not assumed.' },
-  { q: 'What issue is material?', a: 'Prioritized through the SEAM materiality Activity for your phase (construction or operations).' },
-  { q: 'What change is intended?', a: 'A defined initiative connecting resources, actions, outputs, outcomes, and intended impact.' },
-  { q: 'What pathway supports the claim?', a: 'A reviewed SEAM Activity pathway with completed volunteer delivery and independent review.' },
-]
+type StandardSealActivity = {
+  activityId: string
+  title: string
+  url: string
+  activityType: 'Driver' | 'Impact'
+  pillar: { slug: string; title: string }
+  concept: { slug: string; code: string; title: string }
+  objective: { slug: string; code: string; title: string }
+}
 
-const pathwaySteps = [
+let sealActivities: StandardSealActivity[] = []
+try {
+  const res = await fetch(`${STANDARD_URL}/api/seals.json`)
+  if (res.ok) {
+    const data = (await res.json()) as { seals?: Array<{ slug: string; activities: StandardSealActivity[] }> }
+    const match = data.seals?.find((s) => s.slug === 'community-development')
+    sealActivities = match?.activities ?? []
+  }
+} catch {
+  // Endpoint unreachable at build time. Fall back to empty list.
+}
+
+/* Pathway steps follow Section 7 of the Community Development SEAL Program
+ * Guidance v1.0. Activity roles come from Section 6 of the same doc. The
+ * groupings are seal-specific program design and aren't exposed by the
+ * standard's data — they belong on marketing. */
+const pathwaySteps: Array<{ heading: string; lead: string; activityIds: string[]; note?: string }> = [
   {
     heading: 'Build a credible foundation',
-    body: 'Establish community profile, identify impacted parties, plan engagement, and gather baseline data for the initiative issue.',
+    lead: 'Document local context, affected groups, engagement approach, and baseline conditions for the reviewed initiative.',
+    activityIds: ['IAa1.2', 'IAa1.5', 'IAa1.6', 'IAa1.7'],
   },
   {
     heading: 'Create transparent, reciprocal engagement',
-    body: 'Inform community members about the project and likely impacts. Collect feedback from impacted parties under the engagement plan.',
+    lead: 'Communicate relevant information about the project and likely impacts. Capture input from impacted parties under the engagement plan.',
+    activityIds: ['IAa2.1', 'IAa2.2'],
   },
   {
     heading: 'Turn input into a reasoned basis for action',
-    body: 'Use the SEAM materiality Activity (construction-phase or operating-asset) to prioritize the issue that should guide the initiative.',
+    lead: 'Use the SEAM materiality Activity that matches your context to prioritize the issue that should guide the initiative.',
+    activityIds: ['TGa5.1', 'TGa5.2'],
+    note: 'Only one materiality Activity applies per initiative: TGa5.1 for construction-phase work (Buildings + Interiors), TGa5.2 for operating-asset work (Operations + Maintenance).',
   },
   {
     heading: 'Design for relevance and sustained value',
-    body: 'Connect the selected issue to a defined initiative design grounded in impact, equity, ethics, participation, collaboration, and accountability.',
+    lead: 'Link the selected issue to a defined initiative design grounded in impact, equity, ethics, participation, collaboration, and accountability.',
+    activityIds: ['CIa1.1'],
   },
   {
     heading: 'Demonstrate completed action',
-    body: 'Deliver a volunteer event through the project or property team, in line with the reviewed initiative design.',
+    lead: 'Deliver the volunteer event through the project or property team, in line with the reviewed initiative design.',
+    activityIds: ['CIa1.2'],
   },
 ]
+
+const activityRoles: Record<string, string> = {
+  'IAa1.2': 'Establishes the demographic, social, economic, cultural, and historical context for the reviewed initiative.',
+  'IAa1.5': 'Defines the people connected to the initiative.',
+  'IAa1.6': 'Sets the engagement approach for identified impacted parties.',
+  'IAa1.7': 'Establishes starting conditions for the initiative issue.',
+  'IAa2.1': "Accessible communication about the project's relevant impacts.",
+  'IAa2.2': 'Captures input from impacted parties under the engagement approach.',
+  'TGa5.1': 'Connects a construction-phase initiative to a material issue.',
+  'TGa5.2': 'Connects an operating-asset initiative to a material issue.',
+  'CIa1.1': 'Connects the design to the community development objective.',
+  'CIa1.2': 'Confirms the initiative completed the volunteer action.',
+}
+
+const activityById = new Map(sealActivities.map((a) => [a.activityId, a]))
 
 const faqs = [
   {
     question: 'How is this different from full SEAM Certification?',
     answer:
-      'Full Certification evaluates a whole building across all four pillars. The Community Development SEAL is a limited-scope credential for one defined community development initiative tied to a project or asset. It does not certify the full project, owner, or community-development portfolio.',
+      'Full Certification evaluates a whole building across all four pillars. The Community Development SEAL is a limited-scope SEAL for one defined community development initiative tied to a project or asset. It does not certify the full project, owner, or community-development portfolio.',
   },
   {
     question: 'Can a project earn more than one Community Development SEAL?',
@@ -76,7 +100,7 @@ const faqs = [
   {
     question: 'What disqualifies an initiative from earning the SEAL?',
     answer:
-      'The SEAL is not awarded when the issue was selected before engagement, when the initiative cannot be tied to materiality, when the volunteer event is disconnected from the reviewed initiative design, when the reviewed pathway is incomplete, or when the claim exceeds the Assessment Scope.',
+      'The SEAL is not awarded when the issue was selected before engagement with impacted parties, when the initiative cannot be tied to a material issue identified through the SEAM pathway, when the volunteer event is disconnected from the reviewed initiative design, when the reviewed pathway is incomplete, or when the claim exceeds the reviewed Assessment Scope.',
   },
   {
     question: 'Does it count toward full Certification later?',
@@ -88,7 +112,7 @@ const faqs = [
 const jsonLd = [
   breadcrumbSchema([
     { name: 'Home', path: '/' },
-    { name: 'SEAM Seals', path: '/seals' },
+    { name: 'SEAM SEALs', path: '/seals' },
     { name: 'Community Development', path: '/seals/community-development' },
   ]),
   faqSchema(faqs),
@@ -97,20 +121,28 @@ const jsonLd = [
 
 <SiteLayout
   title="Community Development SEAL — Reviewed Community Initiative Credential"
-  description="A limited-scope SEAM credential recognizing a defined community development initiative reviewed against a SEAM Activity pathway grounded in impacted-party engagement and material issues."
+  description="A limited-scope SEAM recognition for a defined community development initiative reviewed against a SEAM Activity pathway grounded in impacted-party engagement and material issues."
   path="/seals/community-development"
   jsonLd={jsonLd}
 >
 
   <!-- ─── Hero ─── -->
-  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-warm-900">
+    <img
+      src="/images/seals/community-development-hero.jpg"
+      alt="Community members collaborating on a shared painting"
+      class="absolute inset-0 w-full h-full object-cover opacity-60"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-warm-900/85 via-warm-900/65 to-warm-900/35"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/70 via-transparent to-warm-900/20"></div>
 
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-center">
         <div class="hero-enter max-w-3xl">
           <div class="flex items-center gap-3 mb-8">
-            <a href="/seals" class="text-[13px] font-medium text-warm-400 hover:text-warm-200 transition-colors">SEAM Seals</a>
+            <a href="/seals" class="text-[13px] font-medium text-warm-400 hover:text-warm-200 transition-colors">SEAM SEALs</a>
             <span class="text-warm-500">/</span>
             <span class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-300">Community Development</span>
           </div>
@@ -118,7 +150,7 @@ const jsonLd = [
             Show that community work is <em class="font-display italic font-normal text-seam-300">grounded</em> — not performative
           </h1>
           <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            A limited-scope SEAM credential for a defined community development initiative — reviewed against a pathway grounded in impacted-party engagement, materiality, design, and completed delivery.
+            A limited-scope SEAM recognition for a defined community development initiative — reviewed against a pathway grounded in impacted-party engagement, materiality, design, and completed delivery.
           </p>
           <div class="mt-10 flex flex-col sm:flex-row gap-4">
             <a href="/get-started" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
@@ -130,171 +162,226 @@ const jsonLd = [
           </div>
         </div>
         <div class="hidden lg:flex justify-center shrink-0">
-          <img src="/logos/seal-community-development.svg" alt="Community Development Seal placeholder" width="220" height="257" class="w-[220px] h-auto drop-shadow-2xl" />
+          <img src="/logos/seal-community-development.svg" alt="Community Development SEAL placeholder" width="220" height="257" class="w-[220px] h-auto drop-shadow-2xl" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── Five public-facing questions ─── -->
+  <!-- ─── What this SEAL recognizes ─── -->
   <section class="py-24 lg:py-32 bg-white">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-3xl mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The qualifying questions</p>
+      <div class="max-w-3xl mb-12">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">What it recognizes</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          A qualifying initiative answers <em class="italic font-normal text-seam-600">five questions</em>
+          A defined initiative, traceable from context to <em class="italic font-normal text-seam-600">completed action</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
-          The SEAL recognizes initiatives that show a traceable pathway from community context and impacted-party input to a material issue, a designed initiative, and completed action. A qualifying initiative should be able to answer:
+          The Community Development SEAL recognizes a defined community development initiative grounded in impacted-party engagement, informed communication, materiality, initiative design, volunteer delivery, and independent review — within a defined Assessment Scope. The reviewed initiative must show a traceable pathway from community context and impacted-party input to a material issue, a designed initiative, and completed volunteer action. The SEAL applies across Buildings + Interiors (construction-phase) and Operations + Maintenance (operating-asset) contexts.
+        </p>
+        <p class="mt-5 text-[17px] leading-relaxed text-warm-600">
+          A qualifying initiative should be able to answer five public-facing questions: <strong class="font-medium text-warm-800">who may be affected</strong>, <strong class="font-medium text-warm-800">what they need and value</strong>, <strong class="font-medium text-warm-800">what issue is material</strong> enough to prioritize, <strong class="font-medium text-warm-800">what change</strong> the initiative intends to create, and <strong class="font-medium text-warm-800">what reviewed SEAM pathway</strong> supports the SEAL claim.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {fiveQuestions.map((q, i) => (
-          <div class="rounded-2xl border border-warm-200/60 bg-warm-50 p-6 lg:p-8">
-            <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-3">Question {i + 1}</p>
-            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">{q.q}</h3>
-            <p class="text-[14px] leading-relaxed text-warm-600">{q.a}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── What this SEAL is / is not ─── -->
-  <section class="py-24 lg:py-32 bg-warm-50">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-3xl mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">What it is — and isn't</p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Independently reviewed, <em class="italic font-normal text-seam-600">narrowly scoped</em>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div class="rounded-2xl bg-white border border-seam-100 p-8">
-          <p class="text-[12px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-4">What this SEAL is</p>
-          <ul class="space-y-4">
-            {isAndIsNot.map((row) => (
-              <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-700">
-                <svg class="shrink-0 w-5 h-5 mt-0.5 text-seam-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-                {row.is}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div class="rounded-2xl bg-white border border-warm-100 p-8">
-          <p class="text-[12px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">What this SEAL is not</p>
-          <ul class="space-y-4">
-            {isAndIsNot.map((row) => (
-              <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
-                <svg class="shrink-0 w-5 h-5 mt-0.5 text-warm-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-                {row.isNot}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Pathway ─── -->
-  <section id="pathway" class="py-24 lg:py-32 bg-white">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-2xl mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The pathway</p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          From context to <em class="italic font-normal text-seam-600">completed action</em>
-        </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
-          A defined SEAM Activity pathway moves an initiative from local context and impacted-party input to a material issue, a designed initiative, and a delivered volunteer event.
-        </p>
-      </div>
-
-      <div class="space-y-4">
-        {pathwaySteps.map((s, i) => (
-          <div class="grid grid-cols-[60px_1fr] gap-6 lg:gap-10 rounded-2xl border border-warm-200/60 bg-white p-6 lg:p-8">
-            <p class="font-display text-[36px] tracking-[-0.04em] text-seam-600">{String(i + 1).padStart(2, '0')}</p>
-            <div>
-              <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{s.heading}</h3>
-              <p class="text-[15px] leading-relaxed text-warm-600">{s.body}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl">
-        Activity-level requirements, indicators, scoring, and documentation are governed by the SEAM Standard and applicable scorecard materials. <a href="/resources/standard" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Read the Standard</a>.
+      <p class="text-[14px] leading-relaxed text-warm-500 max-w-3xl">
+        For the generic SEAL model — what every SEAL is and isn't, how the award works, and how claims are bounded — see <a href="/seals" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM SEALs overview</a>.
       </p>
     </div>
   </section>
 
-  <!-- ─── Determination ─── -->
-  <section class="py-24 lg:py-32 bg-warm-50">
+  <!-- ─── Activity pathway ─── -->
+  <section id="pathway" class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-3xl mb-12">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Determination</p>
+      <div class="max-w-2xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The Activity pathway</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Binary outcome <em class="italic font-normal text-seam-600">with a Leading Practice tier</em>
+          Five steps from context to <em class="italic font-normal text-seam-600">completed action</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+          A defined SEAM Activity pathway moves an initiative from local context and impacted-party input through materiality, design, and a delivered volunteer event. Each step uses Activities pulled directly from the SEAM Standard.
+        </p>
+      </div>
+
+      {sealActivities.length === 0 ? (
+        <p class="text-[15px] leading-relaxed text-warm-500">
+          Activity list is loading. <a href={`${STANDARD_URL}/seals/community-development`} target="_blank" rel="noopener" class="underline decoration-warm-300 hover:decoration-warm-600">Browse on the SEAM Standard &rarr;</a>
+        </p>
+      ) : (
+        <div class="space-y-12">
+          {pathwaySteps.map((step, i) => (
+            <div>
+              <div class="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-10 mb-6">
+                <p class="font-display text-[44px] tracking-[-0.04em] text-seam-600 leading-none">
+                  {String(i + 1).padStart(2, '0')}
+                </p>
+                <div>
+                  <h3 class="font-display text-[24px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">
+                    {step.heading}
+                  </h3>
+                  <p class="text-[15px] leading-relaxed text-warm-600 max-w-2xl">
+                    {step.lead}
+                  </p>
+                  {step.note && (
+                    <p class="mt-3 text-[13px] leading-relaxed text-warm-500 italic max-w-2xl">
+                      {step.note}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:ml-[156px]">
+                {step.activityIds.map((id) => {
+                  const a = activityById.get(id)
+                  if (!a) return null
+                  return (
+                    <a
+                      href={a.url}
+                      target="_blank"
+                      rel="noopener"
+                      class="block rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-7 transition-all duration-300 hover:border-seam-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] group"
+                    >
+                      <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[11px] font-mono font-medium text-seam-700">
+                          {a.activityId}
+                        </span>
+                        <span class="inline-flex items-center rounded-full bg-warm-100 px-2.5 py-0.5 text-[10px] font-medium text-warm-600">
+                          {a.activityType}
+                        </span>
+                      </div>
+                      <h4 class="font-display text-[16px] tracking-[-0.02em] text-warm-900 leading-snug mb-2 group-hover:text-seam-700 transition-colors">
+                        {a.title}
+                      </h4>
+                      {activityRoles[id] && (
+                        <p class="text-[13px] leading-relaxed text-warm-600 mb-3">
+                          {activityRoles[id]}
+                        </p>
+                      )}
+                      <span class="inline-flex items-center text-[12px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+                        View on the SEAM Standard &rarr;
+                      </span>
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <p class="mt-12 text-[14px] leading-relaxed text-warm-500 max-w-3xl">
+        Activity-level requirements, indicators, scoring, and documentation are governed by the SEAM Standard. <a href="/resources/standard" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Read the Standard</a>. Generic determination and public-claim limits for every SEAL are on the <a href="/seals" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEALs overview</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Pilot project showcase ─── -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Pilot in action</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          The first initiative <em class="italic font-normal text-seam-600">under review</em>
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="rounded-2xl bg-white border border-seam-200/60 p-8">
-          <p class="text-[12px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-4">Achieve the SEAL</p>
-          <p class="text-[15px] leading-relaxed text-warm-700">
-            Complete the SEAL Activity pathway and meet the Bronze-equivalent threshold through independent SEAM review.
-          </p>
+      <a
+        href="/directory/project/t2s-cares-liberia"
+        class="block group rounded-2xl overflow-hidden border border-warm-200/60 transition-all duration-300 hover:border-warm-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
+          <div class="relative bg-warm-900 min-h-[280px] lg:min-h-[420px] overflow-hidden">
+            <img
+              src="/images/directory/project-t2s-cares-liberia.png"
+              alt="T2S C.A.R.E.S. Liberia Mental Health Infrastructure Initiative"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="bg-white p-8 lg:p-12 flex flex-col">
+            <div class="flex flex-wrap items-center gap-2 mb-5">
+              <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-medium text-seam-700">
+                SEAL pilot
+              </span>
+              <span class="inline-flex items-center rounded-full bg-warm-100 px-2.5 py-0.5 text-[11px] font-medium text-warm-600">
+                Liberia
+              </span>
+            </div>
+            <h3 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 leading-tight mb-4 group-hover:text-seam-700 transition-colors">
+              T2S C.A.R.E.S. Liberia Mental Health Infrastructure Initiative, Phase 1
+            </h3>
+            <p class="text-[14px] font-medium uppercase tracking-[0.12em] text-warm-500 mb-5">
+              Owner: T2S C.A.R.E.S.
+            </p>
+            <p class="text-[15px] leading-relaxed text-warm-600 mb-6 flex-1">
+              SEAM is applying its built-environment community development framework to a mental health infrastructure initiative in Liberia — using the project as a pilot to inform the Community Development SEAL. The pilot translates SEAM's Activity-based approach into practical guidance for identifying impacted parties, defining the area of influence, documenting baseline conditions, and connecting community input to volunteer action.
+            </p>
+            <span class="inline-flex items-center text-[14px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+              View the project profile &rarr;
+            </span>
+          </div>
         </div>
+      </a>
+    </div>
+  </section>
 
-        <div class="rounded-2xl bg-gold-400/10 border border-gold-300/60 p-8">
-          <p class="text-[12px] font-medium uppercase tracking-[0.15em] text-gold-700 mb-4">Leading Practice</p>
-          <p class="text-[15px] leading-relaxed text-warm-700">
-            Reach the Gold- or Platinum-equivalent threshold for the distinction <strong class="font-semibold">SEAM Community Development SEAL — Leading Practice</strong>.
-          </p>
+  <!-- ─── Pricing ─── -->
+  <section id="pricing" class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="rounded-2xl bg-warm-50 border border-warm-200/60 p-10 lg:p-16">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
+          <div class="max-w-2xl">
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Pricing</p>
+            <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+              Priced to your <em class="italic font-normal text-seam-600">initiative</em>
+            </h2>
+            <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+              Every Community Development SEAL is quoted to the initiative it actually covers — population, partners, evidence depth, and review period. The first cohort is in active pilot, so rates are set by quote. Bring the work you have in mind; we'll come back with a number.
+            </p>
+            <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-[14px] text-warm-600">
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-2 w-1 h-1 rounded-full bg-seam-500"></span>
+                Quote built from your Assessment Scope
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-2 w-1 h-1 rounded-full bg-seam-500"></span>
+                Pilot-cohort terms during the first review window
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-2 w-1 h-1 rounded-full bg-seam-500"></span>
+                Activities count toward future Certification
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-2 w-1 h-1 rounded-full bg-seam-500"></span>
+                Member discount applies
+              </li>
+            </ul>
+          </div>
+          <div class="shrink-0">
+            <a
+              href="/get-started"
+              class="inline-flex items-center justify-center rounded-full bg-warm-900 px-8 py-4 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors duration-300"
+            >
+              Talk to an advisor &rarr;
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── Claim limits ─── -->
-  <section class="py-20 lg:py-28 bg-warm-900">
+  <!-- ─── Program statement ─── -->
+  <section class="py-24 lg:py-32 bg-seam-900">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16">
-        <div>
-          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">Public claims</p>
-          <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-white">
-            Tied to the <em class="italic font-normal text-seam-300">reviewed initiative</em>
-          </h2>
-        </div>
-
-        <div class="space-y-6">
-          <div class="rounded-2xl bg-white/[0.04] border border-white/10 p-6">
-            <p class="text-[13px] uppercase tracking-[0.12em] text-warm-400 mb-2">Example claim</p>
-            <p class="text-[16px] leading-relaxed text-white italic">
-              [Project or property] achieved the SEAM Community Development SEAL for [reviewed initiative] during [review period].
-            </p>
-          </div>
-
-          <ul class="space-y-3">
-            {[
-              'Does not certify the full project, asset, owner, or community development portfolio.',
-              'Does not prove that all community concerns have been resolved.',
-              'Does not guarantee long-term community outcomes unless measured and reviewed.',
-              'Does not replace permitting, legal compliance, community benefits agreements, or public approval processes.',
-            ].map((c) => (
-              <li class="flex items-start gap-3 text-[14px] leading-relaxed text-warm-300">
-                <span class="shrink-0 mt-2 w-1 h-1 rounded-full bg-warm-500"></span>
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div class="max-w-4xl">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-300 mb-8">What this SEAL stands for</p>
+        <p class="font-display text-[clamp(1.6rem,3vw,2.4rem)] leading-[1.25] tracking-[-0.02em] text-white">
+          A SEAM Community Development SEAL should signify <em class="italic font-normal text-seam-300">more than participation.</em>
+        </p>
+        <p class="mt-8 text-[17px] lg:text-[19px] leading-relaxed text-warm-300 max-w-3xl">
+          It should signify that a community development initiative was informed by context, shaped by impacted-party input, tied to a material issue, intentionally designed, delivered through volunteer action, and independently reviewed within a defined scope.
+        </p>
       </div>
     </div>
   </section>
@@ -302,25 +389,39 @@ const jsonLd = [
   <!-- ─── FAQ ─── -->
   <section class="py-24 lg:py-32 bg-white">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-3xl">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-12">
-          Questions about the <em class="italic font-normal text-seam-600">Community Development SEAL</em>
-        </h2>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-start">
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-12">
+            Questions about the <em class="italic font-normal text-seam-600">Community Development SEAL</em>
+          </h2>
 
-        {faqs.map((faq) => (
-          <details class="border-b border-warm-200 group">
-            <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-              <span class="text-[16px] lg:text-[17px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.question}</span>
-              <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </summary>
-            <div class="pb-6">
-              <p class="text-[15px] leading-relaxed text-warm-600 pr-10">{faq.answer}</p>
-            </div>
-          </details>
-        ))}
+          {faqs.map((faq) => (
+            <details class="border-b border-warm-200 group">
+              <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[16px] lg:text-[17px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.question}</span>
+                <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-6">
+                <p class="text-[15px] leading-relaxed text-warm-600 pr-10">{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <aside class="hidden lg:block lg:sticky lg:top-24">
+          <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-warm-100">
+            <img
+              src="/images/seals/community-development-faq.jpg"
+              alt="Mother helping a young child take steps"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </aside>
       </div>
     </div>
   </section>

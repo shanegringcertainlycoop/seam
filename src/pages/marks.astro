@@ -80,7 +80,7 @@ const steps = [
 const audiences = [
   {
     title: 'Property managers',
-    description: 'Turn the equity programs you already run into a verified credential. Strengthen lease renewals and demonstrate value to ownership without a full certification commitment.',
+    description: 'Turn the equity programs you already run into verified recognition. Strengthen lease renewals and demonstrate value to ownership without a full certification commitment.',
   },
   {
     title: 'Anchor institutions',
@@ -118,7 +118,7 @@ const faqs = [
     a: 'No. A <a href="/ap-credential" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM AP</a> is not required for SEAM Mark submissions. However, working with an AP can strengthen your documentation and increase the likelihood of first-submission approval.',
   },
   {
-    q: 'How long does the credential last?',
+    q: 'How long does a Mark last?',
     a: 'SEAM Marks are valid for three years. Renewal requires updated documentation demonstrating that the verified activity remains in practice.',
   },
 ]
@@ -258,7 +258,6 @@ const jsonLd = [
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {approvedMarks.length === 0 ? (
           <p class="col-span-full text-[15px] leading-relaxed text-warm-500">
             The list of available Marks is loading. <a href="https://standard.seamcertification.org/marks" target="_blank" rel="noopener" class="underline decoration-warm-300 hover:decoration-warm-600">Browse them on the SEAM Standard &rarr;</a>
@@ -268,7 +267,7 @@ const jsonLd = [
             href={mark.url}
             target="_blank"
             rel="noopener"
-            class="reveal-child rounded-2xl bg-white p-8 lg:p-10 text-left transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-seam-300 border border-transparent group"
+            class="reveal-child block rounded-2xl bg-white p-8 lg:p-10 text-left transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-seam-300 border border-transparent group"
           >
             <div class="flex flex-wrap items-center gap-2 mb-4">
               <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-mono font-medium text-seam-700">
@@ -442,7 +441,7 @@ const jsonLd = [
               <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
-              Directory listing &amp; credential
+              Directory listing &amp; recognition
             </li>
             <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
               <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -524,6 +523,59 @@ const jsonLd = [
             Director of Operations &middot; Meridian Property Group
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Where Marks fit ─── -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Where Marks fit</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          The first step toward <em class="italic font-normal text-seam-600">deeper recognition</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+          SEAM offers three depths of recognition. Choose the one that matches your scope today — and build toward the next one as your practice matures.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="rounded-2xl border-2 border-seam-500 bg-seam-50/40 p-8 lg:p-10 flex flex-col relative">
+          <span class="absolute -top-3.5 left-8 inline-block rounded-full bg-seam-600 px-4 py-1 text-[12px] font-medium text-white tracking-wide uppercase">
+            You are here
+          </span>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-4">Step 1</p>
+          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">SEAM Marks</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-warm-700 flex-1">
+            Verify one activity (Single Mark) or a small bundle of 3–5 related activities (Bulk Marks). Start where you already have momentum.
+          </p>
+          <span class="mt-6 inline-flex items-center text-[14px] font-medium text-seam-700">
+            You are here
+          </span>
+        </div>
+
+        <a href="/seals" class="group rounded-2xl border border-warm-200/60 bg-white p-8 lg:p-10 flex flex-col transition-all duration-300 hover:border-warm-300 hover:shadow-lg">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">Step 2</p>
+          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">SEAM SEALs</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-warm-600 flex-1">
+            A thematic recognition earned by completing 18 to 25 related activities. Prove sustained commitment in a focused area — without pursuing full Certification.
+          </p>
+          <span class="mt-6 inline-flex items-center text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
+            See SEALs &rarr;
+          </span>
+        </a>
+
+        <a href="/certification" class="group rounded-2xl border border-warm-200/60 bg-white p-8 lg:p-10 flex flex-col transition-all duration-300 hover:border-warm-300 hover:shadow-lg">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">Step 3</p>
+          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">SEAM Certification</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-warm-600 flex-1">
+            Full building certification across all four pillars, Bronze through Platinum. The complete whole-building recognition.
+          </p>
+          <span class="mt-6 inline-flex items-center text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
+            See Certification &rarr;
+          </span>
+        </a>
       </div>
     </div>
   </section>

@@ -8,6 +8,35 @@ interface NavLink {
   logo?: string
   logos?: string[]
   external?: boolean
+  children?: Array<{ label: string; href: string; external?: boolean; code?: string }>
+}
+
+/* Stroke-based pillar glyphs sourced from the digital standard's
+ * PillarGlyph component. Keyed by pillar slug. */
+const PILLAR_GLYPHS: Record<string, string> = {
+  'social-impact': '<path d="M3 18h18M5 18V9a7 7 0 0 1 14 0v9M9 18v-6M15 18v-6"/>',
+  'social-responsibility': '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  'social-justice': '<path d="M12 4v17M8 21h8M5 7h14M6 7l-3 5h6L6 7zM18 7l-3 5h6l-3-5z"/>',
+  'social-accountability': '<path d="M9 18h6M10 21h4M8.5 14a5 5 0 1 1 7 0c-.7.6-1.5 1.5-1.5 3v1h-4v-1c0-1.5-.8-2.4-1.5-3z"/>',
+}
+
+/* Concept badge background colors, matching the digital standard's
+ * ConceptBadge component. */
+const CONCEPT_COLORS: Record<string, string> = {
+  IA: 'bg-seam-700',
+  TG: 'bg-gold-500',
+  CI: 'bg-warm-700',
+  SI: 'bg-black',
+  SJ: 'bg-amber-600',
+  IN: 'bg-emerald-700',
+  HR: 'bg-rose-700',
+  HS: 'bg-sky-700',
+}
+
+function pillarSlug(href: string): string {
+  // e.g. '/standard/social-impact' → 'social-impact'
+  const parts = href.split('/').filter(Boolean)
+  return parts[parts.length - 1]
 }
 
 interface NavSection {
@@ -31,7 +60,7 @@ interface NavGroup {
   featured?: { label: string; href: string; description: string }
   progression?: ProgressionStep[]
   sections?: NavSection[]
-  quickLinks?: { label: string; href: string }[]
+  quickLinks?: Array<{ label: string; href: string; external?: boolean }>
 }
 
 const commitments: NavGroup = {
@@ -50,7 +79,7 @@ const commitments: NavGroup = {
       step: 'Step 2',
       label: 'SEAM Seals',
       href: '/seals',
-      tagline: '18–25 activities · coming soon',
+      tagline: '18–25 activities',
       description: 'A thematic credential demonstrating sustained commitment in a focused area.',
       accent: 'core',
     },
@@ -110,6 +139,8 @@ const network: NavGroup = {
   ],
 }
 
+const STANDARD_BASE = 'https://standard.seamcertification.org'
+
 const theStandard: NavGroup = {
   label: 'The Standard',
   links: [],
@@ -120,73 +151,52 @@ const theStandard: NavGroup = {
   },
   sections: [
     {
-      heading: 'Rating Systems',
-      href: '/rating-system',
-      links: [
-        {
-          label: 'Buildings + Interiors',
-          href: '/rating-system/buildings-interiors',
-          description: 'New construction, renovations, and fit-outs.',
-          logo: '/logos/rating-bi.png',
-        },
-        {
-          label: 'Operations + Maintenance',
-          href: '/rating-system/operations-maintenance',
-          description: 'Day-to-day building management and procurement.',
-          logo: '/logos/rating-om.png',
-        },
-      ],
-    },
-    {
-      heading: 'Seals',
-      href: '/seals',
-      links: [
-        {
-          label: 'Ethical Procurement',
-          href: '/seals/ethical-procurement',
-          description: 'Modern slavery, forced labor, and supply-chain due diligence — within a defined scope.',
-          logo: '/logos/seal-ethical-procurement.svg',
-        },
-        {
-          label: 'Community Development',
-          href: '/seals/community-development',
-          description: 'A reviewed community initiative grounded in impacted-party input and materiality.',
-          logo: '/logos/seal-community-development.svg',
-        },
-      ],
-    },
-    {
-      heading: 'Pillars',
+      heading: 'Pillars + Concepts',
       links: [
         {
           label: 'Social Impact',
           href: '/standard/social-impact',
           description: 'Know who your project affects — and whether it is working.',
-          logo: '/icons/pillar-social-impact.webp',
+          children: [
+            { label: 'Impact Assessment', href: `${STANDARD_BASE}/social-impact/impact-assessment`, external: true, code: 'IA' },
+          ],
         },
         {
           label: 'Social Responsibility',
           href: '/standard/social-responsibility',
           description: 'Walk the talk on governance, community, and investment.',
-          logo: '/icons/pillar-social-responsibility.webp',
+          children: [
+            { label: 'Transformational Governance', href: `${STANDARD_BASE}/social-responsibility/transformational-governance`, external: true, code: 'TG' },
+            { label: 'Community Involvement', href: `${STANDARD_BASE}/social-responsibility/community-involvement`, external: true, code: 'CI' },
+            { label: 'Social Investment', href: `${STANDARD_BASE}/social-responsibility/social-investment`, external: true, code: 'SI' },
+          ],
         },
         {
           label: 'Social Justice',
           href: '/standard/social-justice',
           description: 'Equity across procurement, the workplace, and capital access.',
-          logo: '/icons/pillar-social-justice.webp',
+          children: [
+            { label: 'Social Equity + Justice', href: `${STANDARD_BASE}/social-justice/social-equity-justice`, external: true, code: 'SJ' },
+            { label: 'Social Justice Innovation', href: `${STANDARD_BASE}/social-justice/social-justice-innovation`, external: true, code: 'IN' },
+          ],
         },
         {
           label: 'Social Accountability',
           href: '/standard/social-accountability',
           description: 'Human rights, ethical sourcing, and worker well-being.',
-          logo: '/icons/pillar-social-accountability.webp',
+          children: [
+            { label: 'Human Rights', href: `${STANDARD_BASE}/social-accountability/human-rights`, external: true, code: 'HR' },
+            { label: 'Health + Safety', href: `${STANDARD_BASE}/social-accountability/health-safety`, external: true, code: 'HS' },
+          ],
         },
       ],
     },
   ],
   quickLinks: [
-    { label: 'All Rating Systems', href: '/rating-system' },
+    { label: 'Browse the digital Standard', href: STANDARD_BASE, external: true },
+    { label: 'Glossary', href: `${STANDARD_BASE}/glossary`, external: true },
+    { label: 'Bibliography', href: `${STANDARD_BASE}/bibliography`, external: true },
+    { label: 'Appendices', href: `${STANDARD_BASE}/appendix`, external: true },
   ],
 }
 
@@ -442,7 +452,7 @@ function logoClass(_logo: string) {
                   )}
                 </div>
               ) : group.sections?.length ? (
-                <div class={`rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] ${group.label === 'The Standard' ? 'w-[1120px]' : group.label === 'Network' ? 'w-[760px]' : group.label === 'Resources' ? 'w-[1060px]' : 'w-[760px]'} overflow-hidden`}>
+                <div class={`rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] ${group.label === 'The Standard' ? 'w-[720px]' : group.label === 'Network' ? 'w-[760px]' : group.label === 'Resources' ? 'w-[1060px]' : 'w-[760px]'} overflow-hidden`}>
                   {/* Standard featured hero at top */}
                   {group.label === 'The Standard' && group.featured && (
                     <div class="relative grid grid-cols-[1fr_300px] items-stretch bg-gradient-to-br from-warm-900 via-warm-900 to-seam-900 px-8 py-7 border-b border-warm-100 overflow-hidden">
@@ -487,7 +497,53 @@ function logoClass(_logo: string) {
                       </div>
                     </div>
                   )}
-                  <div class={`grid ${group.label === 'Resources' ? 'grid-cols-[300px_1fr_1fr]' : group.label === 'The Standard' ? 'grid-cols-3' : 'grid-cols-2'} divide-x divide-warm-100`}>
+                  {group.label === 'The Standard' ? (
+                    <div class="grid grid-cols-2 gap-x-4 p-4">
+                      {group.sections[0].links.map((p) => (
+                        <div class="py-2">
+                          <a
+                            href={p.href}
+                            class="group/pillar flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 hover:bg-warm-50"
+                          >
+                            <span class="shrink-0 mt-0.5 text-seam-700 group-hover/pillar:text-gold-600 transition-colors">
+                              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={PILLAR_GLYPHS[pillarSlug(p.href)] ?? ''} />
+                            </span>
+                            <span>
+                              <span class="block text-[15px] font-medium text-warm-900 group-hover/pillar:text-gold-600 transition-colors">
+                                {p.label}
+                              </span>
+                              <span class="block mt-0.5 text-[12.5px] leading-snug text-warm-400">
+                                {p.description}
+                              </span>
+                            </span>
+                          </a>
+                          {(p.children ?? []).length > 0 && (
+                            <ul class="ml-[40px] mt-1 mb-1 space-y-0.5">
+                              {(p.children ?? []).map((c) => (
+                                <li>
+                                  <a
+                                    href={c.href}
+                                    {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                    class="group/concept flex items-center gap-2.5 rounded-lg px-3 py-1.5 transition-colors duration-150 hover:bg-warm-50"
+                                  >
+                                    {c.code && (
+                                      <span class={`inline-flex shrink-0 items-center justify-center rounded-full font-mono font-semibold uppercase text-white h-5 w-5 text-[9px] ${CONCEPT_COLORS[c.code] ?? 'bg-warm-500'}`}>
+                                        {c.code}
+                                      </span>
+                                    )}
+                                    <span class="flex-1 text-[13.5px] text-warm-700 group-hover/concept:text-warm-900 transition-colors">
+                                      {c.label}
+                                    </span>
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                  <div class={`grid ${group.label === 'Resources' ? 'grid-cols-[300px_1fr_1fr]' : 'grid-cols-2'} divide-x divide-warm-100`}>
                     {/* Resources: latest article in first column */}
                     {group.label === 'Resources' && (
                       <a href={latestArticle.href} class="group/article bg-warm-50 p-6 flex flex-col">
@@ -514,59 +570,88 @@ function logoClass(_logo: string) {
                           </p>
                         )}
                         {section.links.map((link) => (
-                          <a
-                            href={link.href}
-                            class="group/item flex items-center gap-4 rounded-xl px-3 py-3 transition-colors duration-150 hover:bg-warm-50"
-                          >
-                            {link.logos ? (
-                              <div class="flex items-center shrink-0 -space-x-3">
-                                {link.logos.map((src) => (
-                                  <img
-                                    src={src}
-                                    alt={link.label}
-                                    loading="lazy"
-                                    decoding="async"
-                                    width="40"
-                                    height="40"
-                                    class="w-10 h-10 object-contain drop-shadow-sm"
-                                  />
-                                ))}
+                          <div>
+                            <a
+                              href={link.href}
+                              class="group/item flex items-center gap-4 rounded-xl px-3 py-3 transition-colors duration-150 hover:bg-warm-50"
+                            >
+                              {link.logos ? (
+                                <div class="flex items-center shrink-0 -space-x-3">
+                                  {link.logos.map((src) => (
+                                    <img
+                                      src={src}
+                                      alt={link.label}
+                                      loading="lazy"
+                                      decoding="async"
+                                      width="40"
+                                      height="40"
+                                      class="w-10 h-10 object-contain drop-shadow-sm"
+                                    />
+                                  ))}
+                                </div>
+                              ) : link.logo ? (
+                                <img
+                                  src={link.logo}
+                                  alt={link.label}
+                                  width="44"
+                                  height="44"
+                                  loading="lazy"
+                                  decoding="async"
+                                  class={`object-contain shrink-0 ${logoClass(link.logo)}`}
+                                />
+                              ) : null}
+                              <div>
+                                <span class="block text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600">
+                                  {link.label}
+                                </span>
+                                <span class="block mt-0.5 text-[13px] leading-snug text-warm-400">
+                                  {link.description}
+                                </span>
                               </div>
-                            ) : link.logo ? (
-                              <img
-                                src={link.logo}
-                                alt={link.label}
-                                width="44"
-                                height="44"
-                                loading="lazy"
-                                decoding="async"
-                                class={`object-contain shrink-0 ${logoClass(link.logo)}`}
-                              />
-                            ) : null}
-                            <div>
-                              <span class="block text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600">
-                                {link.label}
-                              </span>
-                              <span class="block mt-0.5 text-[13px] leading-snug text-warm-400">
-                                {link.description}
-                              </span>
-                            </div>
-                          </a>
+                            </a>
+                            {link.children && link.children.length > 0 && (
+                              <ul class="ml-[64px] mt-0.5 mb-1 space-y-0.5">
+                                {link.children.map((child) => (
+                                  <li>
+                                    <a
+                                      href={child.href}
+                                      {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                      class="inline-flex items-center gap-1 rounded px-3 py-1 text-[12.5px] text-warm-500 hover:text-gold-600 transition-colors"
+                                    >
+                                      {child.label}
+                                      {child.external && (
+                                        <svg class="w-3 h-3 opacity-60" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                        </svg>
+                                      )}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
                         ))}
                       </div>
                     ))}
                   </div>
-                  {/* Solutions bottom quick-links bar */}
+                  )}
+                  {/* Bottom quick-links bar */}
                   {group.quickLinks && (
-                    <div class="flex items-center gap-4 px-6 py-3 bg-warm-900 rounded-b-2xl">
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 px-6 py-3 bg-warm-900 rounded-b-2xl">
                       {group.quickLinks.map((ql, i) => (
                         <>
-                          {i > 0 && <span class="text-warm-600">·</span>}
+                          {i > 0 && <span class="text-warm-600" aria-hidden="true">·</span>}
                           <a
                             href={ql.href}
-                            class="text-[13px] font-medium text-warm-400 hover:text-white transition-colors"
+                            {...(ql.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                            class="inline-flex items-center gap-1 text-[13px] font-medium text-warm-400 hover:text-white transition-colors"
                           >
                             {ql.label}
+                            {ql.external && (
+                              <svg class="w-3 h-3 opacity-70" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                              </svg>
+                            )}
                           </a>
                         </>
                       ))}
@@ -720,12 +805,34 @@ function logoClass(_logo: string) {
                     </p>
                   )}
                   {section.links.map((link) => (
-                    <a
-                      href={link.href}
-                      class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900"
-                    >
-                      {link.label}
-                    </a>
+                    <div>
+                      <a
+                        href={link.href}
+                        class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900"
+                      >
+                        {link.label}
+                      </a>
+                      {link.children && link.children.length > 0 && (
+                        <ul class="ml-4 -mt-1 mb-1 space-y-0.5 border-l border-warm-100 pl-3">
+                          {link.children.map((child) => (
+                            <li>
+                              <a
+                                href={child.href}
+                                {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                class="block py-1 text-[13.5px] text-warm-500 hover:text-warm-900"
+                              >
+                                {child.label}
+                                {child.external && (
+                                  <svg class="inline-block w-3 h-3 ml-1 opacity-60" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                  </svg>
+                                )}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
                   ))}
                 </div>
               ))

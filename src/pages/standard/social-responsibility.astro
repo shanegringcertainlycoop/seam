@@ -3,48 +3,57 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../lib/seo-helpers'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
+const STANDARD_URL = 'https://standard.seamcertification.org'
+
 const focusAreas = [
   {
     concept: 'Transformational Governance',
     title: 'Education + Awareness',
     description:
       'Build working knowledge of social responsibility principles across your project team and communicate your commitments publicly through transparent reporting.',
+    href: `${STANDARD_URL}/social-responsibility/transformational-governance/education-awareness`,
   },
   {
     concept: 'Transformational Governance',
     title: 'Voluntary Initiatives',
     description:
       'Align your project with recognized external frameworks that address social responsibility in commercial real estate.',
+    href: `${STANDARD_URL}/social-responsibility/transformational-governance/voluntary-initiatives`,
   },
   {
     concept: 'Transformational Governance',
     title: 'Responsible Policies',
     description:
       'Establish site-specific governance policies that set clear expectations for how your organization and project teams operate.',
+    href: `${STANDARD_URL}/social-responsibility/transformational-governance/responsible-policies`,
   },
   {
     concept: 'Transformational Governance',
     title: 'Transparent Communication',
     description:
       'Report honestly and publicly on your social responsibility commitments and performance, at both the project and property level. Transparency is how accountability becomes visible to the people your project affects.',
+    href: `${STANDARD_URL}/social-responsibility/transformational-governance/transparent-communication`,
   },
   {
     concept: 'Transformational Governance',
     title: 'Impacted Party Materiality',
     description:
       "Identify and prioritize the issues that matter most to the people your project affects, directing your efforts where they'll have the greatest relevance.",
+    href: `${STANDARD_URL}/social-responsibility/transformational-governance/impacted-party-materiality`,
   },
   {
     concept: 'Community Involvement + Development',
     title: 'Community Development',
     description:
       'Design and execute community programs that address real, community-identified goals through direct engagement that goes beyond financial support.',
+    href: `${STANDARD_URL}/social-responsibility/community-involvement/community-development`,
   },
   {
     concept: 'Social Investment',
     title: 'Community Resilience',
     description:
       'Make financial investments that build long-term community capacity rather than creating ongoing dependency.',
+    href: `${STANDARD_URL}/social-responsibility/social-investment/community-resilience`,
   },
 ]
 ---
@@ -161,18 +170,26 @@ const focusAreas = [
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {focusAreas.map((area, i) => (
-          <div class="reveal-child rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+        {focusAreas.map((area) => (
+          <a
+            href={area.href}
+            target="_blank"
+            rel="noopener"
+            class="reveal-child block rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-seam-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] group"
+          >
             <span class="text-[12px] font-normal uppercase tracking-[0.1em] text-[#6B8F9C] mb-4 block">
               {area.concept}
             </span>
-            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-700 transition-colors">
               {area.title}
             </h3>
             <p class="text-[15px] leading-relaxed text-warm-600">
               {area.description}
             </p>
-          </div>
+            <span class="mt-5 inline-flex items-center text-[13px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+              View on the SEAM Standard &rarr;
+            </span>
+          </a>
         ))}
       </div>
     </div>

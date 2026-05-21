@@ -23,12 +23,12 @@ export interface CertifiedProject {
   name: string
   image: string
   location: { city: string; state: string }
-  certificationLevel: 'Pursuing' | 'Endorsement' | 'Pre-certification' | 'Bronze' | 'Silver' | 'Gold' | 'Platinum'
+  certificationLevel: 'Pursuing' | 'SEAL' | 'Pre-certification' | 'Bronze' | 'Silver' | 'Gold' | 'Platinum'
   ratingSystem:
     | 'Buildings + Interiors'
     | 'Operations + Maintenance'
-    | 'Community Development Endorsement'
-    | 'Modern Slavery Assessment Endorsement'
+    | 'Community Development SEAL'
+    | 'Modern Slavery Assessment SEAL'
   description: string
   completionDate: string
   size: string
@@ -823,20 +823,20 @@ export const certifiedProjects: CertifiedProject[] = [
   },
   {
     slug: 'private-client-modern-slavery-endorsement',
-    name: 'Private Client — Modern Slavery Assessment Endorsement',
+    name: 'Private Client — Modern Slavery Assessment SEAL',
     image: '/images/directory/project-modern-slavery-endorsement.jpg',
     location: { city: '', state: '' },
-    certificationLevel: 'Endorsement',
-    ratingSystem: 'Modern Slavery Assessment Endorsement',
+    certificationLevel: 'SEAL',
+    ratingSystem: 'Modern Slavery Assessment SEAL',
     description:
-      'SEAM is piloting a confidential Modern Slavery Assessment for a real estate investment manager that reports to an Australian reporting entity under the Australian Modern Slavery Act 2018. The project applies relevant SEAM Standard Activities to evaluate how the investment manager identifies, documents, and addresses modern slavery risk across its fund structure, acquisition process, and future asset operations. This work provides practical reporting inputs for the Australian reporting entity while testing how SEAM can verify a focused subset of modern slavery-related requirements. The pilot is informing the creation of the SEAM Modern Slavery Assessment Endorsement, a limited-scope certification mark that recognizes completion of a defined subset of the full SEAM Certification framework.',
+      'SEAM is piloting a confidential Modern Slavery Assessment for a real estate investment manager that reports to an Australian reporting entity under the Australian Modern Slavery Act 2018. The project applies relevant SEAM Standard Activities to evaluate how the investment manager identifies, documents, and addresses modern slavery risk across its fund structure, acquisition process, and future asset operations. This work provides practical reporting inputs for the Australian reporting entity while testing how SEAM can verify a focused subset of modern slavery-related requirements. The pilot is informing the creation of the SEAM Modern Slavery Assessment SEAL, a limited-scope certification mark that recognizes completion of a defined subset of the full SEAM Certification framework.',
     completionDate: '',
     size: '',
     owner: 'Global Investment Manager',
     highlights: [
       'Pilot under the Australian Modern Slavery Act 2018',
       'Evaluates modern slavery risk across fund structure, acquisitions, and operations',
-      'Informing the SEAM Modern Slavery Assessment Endorsement',
+      'Informing the SEAM Modern Slavery Assessment SEAL',
     ],
     apLead: undefined,
   },
@@ -845,14 +845,14 @@ export const certifiedProjects: CertifiedProject[] = [
     name: 'T2S C.A.R.E.S. Liberia Mental Health Infrastructure Initiative, Phase 1',
     image: '/images/directory/project-t2s-cares-liberia.png',
     location: { city: '', state: 'Liberia' },
-    certificationLevel: 'Endorsement',
-    ratingSystem: 'Community Development Endorsement',
-    description: 'SEAM is applying its built environment community development framework to the Liberia Mental Health Infrastructure Initiative led by T2S C.A.R.E.S., using the project as a pilot to inform the creation of SEAM\'s Community Development Endorsement. The work translates SEAM\'s Activity-based approach into practical guidance for identifying impacted parties, defining the social area of influence, documenting local needs and baseline conditions, supporting credible community input, and connecting that input to mental health infrastructure planning. The pilot also includes the volunteer component of the endorsement, examining how volunteer participation can be structured around a clear community-centered goal, aligned with local context, and documented for measurable contribution rather than treated as a one-time service activity.',
+    certificationLevel: 'SEAL',
+    ratingSystem: 'Community Development SEAL',
+    description: 'SEAM is applying its built environment community development framework to the Liberia Mental Health Infrastructure Initiative led by T2S C.A.R.E.S., using the project as a pilot to inform the creation of SEAM\'s Community Development SEAL. The work translates SEAM\'s Activity-based approach into practical guidance for identifying impacted parties, defining the social area of influence, documenting local needs and baseline conditions, supporting credible community input, and connecting that input to mental health infrastructure planning. The pilot also includes the volunteer component of the SEAL, examining how volunteer participation can be structured around a clear community-centered goal, aligned with local context, and documented for measurable contribution rather than treated as a one-time service activity.',
     completionDate: '',
     size: '',
     owner: 'T2S C.A.R.E.S.',
     highlights: [
-      'Pilot informing the SEAM Community Development Endorsement',
+      'Pilot informing the SEAM Community Development SEAL',
       'Connects community engagement and volunteer action to mental health infrastructure planning',
       'Structured volunteer participation aligned with local context and measurable outcomes',
     ],
@@ -978,7 +978,7 @@ export const apSpecialties = [
 
 export const certificationLevels = [
   'All',
-  'Endorsement',
+  'SEAL',
   'Pre-certification',
   'Bronze',
   'Silver',
@@ -990,8 +990,8 @@ export const ratingSystems = [
   'All',
   'Buildings + Interiors',
   'Operations + Maintenance',
-  'Community Development Endorsement',
-  'Modern Slavery Assessment Endorsement',
+  'Community Development SEAL',
+  'Modern Slavery Assessment SEAL',
 ] as const
 
 export const activityCategories = [

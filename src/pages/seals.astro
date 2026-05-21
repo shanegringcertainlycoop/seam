@@ -2,82 +2,303 @@
 import SiteLayout from '../layouts/SiteLayout.astro'
 import { breadcrumbSchema, faqSchema } from '../lib/seo-helpers'
 
+const benefits = [
+  {
+    title: 'Proof, not promises',
+    body: 'Independent SEAM review against the same Standard that powers full Certification — applied to one defined theme.',
+  },
+  {
+    title: 'A faster, narrower path',
+    body: 'Earn credible recognition without certifying the whole building. Show focused commitment now.',
+  },
+  {
+    title: 'Recognized publicly',
+    body: 'A shareable claim, listed in the SEAM directory. Buyers, regulators, and investors can see the work.',
+  },
+  {
+    title: 'Counts toward Certification',
+    body: 'Every Activity you complete for a SEAL compounds into future SEAM Certification when scope aligns.',
+  },
+]
+
+const pilots = [
+  {
+    seal: 'Community Development SEAL',
+    href: '/directory/project/t2s-cares-liberia',
+    image: '/images/directory/project-t2s-cares-liberia.png',
+    name: 'T2S C.A.R.E.S. Liberia Mental Health Infrastructure Initiative',
+    location: 'Liberia',
+    owner: 'T2S C.A.R.E.S.',
+    blurb:
+      'SEAM is applying its built-environment community development framework to a mental health infrastructure initiative — using the project as a pilot to inform the Community Development SEAL.',
+  },
+  {
+    seal: 'Ethical Procurement SEAL',
+    href: '/directory/project/private-client-modern-slavery-endorsement',
+    image: '/images/directory/project-modern-slavery-endorsement.jpg',
+    name: 'Private Client — Modern Slavery Assessment',
+    location: 'Australian Modern Slavery Act 2018',
+    owner: 'Global Investment Manager',
+    blurb:
+      "A confidential Modern Slavery Assessment for a real estate investment manager — testing how SEAM can verify a focused subset of modern slavery requirements, and informing the Ethical Procurement SEAL.",
+  },
+]
+
+const howItWorks = [
+  {
+    n: '01',
+    title: 'Pick a theme',
+    body: 'Choose the SEAL that matches the work you\'re already doing — supply-chain due diligence, community development, and more on the way.',
+  },
+  {
+    n: '02',
+    title: 'Complete the Activities',
+    body: 'Each SEAL is a defined set of SEAM Standard activities, scoped to your context. Pull from work you\'re already doing where it counts.',
+  },
+  {
+    n: '03',
+    title: 'Get independently reviewed',
+    body: 'SEAM verifies your evidence against the Standard. Earn the SEAL — and where performance is exceptional, the Leading Practice distinction.',
+  },
+]
+
 const faqs = [
   {
-    question: 'What is a SEAM Seal?',
+    question: 'What is a SEAM SEAL?',
     answer:
-      'A SEAM Seal is a thematic credential awarded for completing a curated set of 18 to 25 related activities from the SEAM Standard. Seals sit between Marks (single or bundled activity verification) and full Certification (whole-building, all pillars). They give organizations a deeper, theme-focused credential without the full scope of certification.',
+      'A SEAM SEAL is a thematic recognition awarded for completing a curated set of 18 to 25 related activities from the SEAM Standard. SEALs sit between Marks (single or bundled activity verification) and full Certification (whole-building, all pillars). They give organizations a deeper, theme-focused recognition without the full scope of certification.',
   },
   {
-    question: 'How are Seals different from Marks?',
+    question: 'How are SEALs different from Marks?',
     answer:
-      'Marks verify one activity (Single Mark) or a small bundle of 3–5 related activities (Bulk Marks). A Seal is broader — a curated theme of 18 to 25 activities that demonstrate sustained performance across a defined area of social equity practice.',
+      'Marks verify one activity (Single Mark) or a small bundle of 3–5 related activities (Bulk Marks). A SEAL is broader — a curated theme of 18 to 25 activities that demonstrate sustained performance across a defined area of social equity practice.',
   },
   {
-    question: 'How are Seals different from Certification?',
+    question: 'How are SEALs different from Certification?',
     answer:
-      'Full SEAM Certification evaluates a building across all four pillars and the full activity set. A Seal is narrower and thematic — it lets an organization prove deep commitment in a specific area (for example, equitable hiring, community engagement, or supply chain accountability) without pursuing the full whole-building credential.',
+      'Full SEAM Certification evaluates a building across all four pillars and the full activity set. A SEAL is narrower and thematic — it lets an organization prove deep commitment in a specific area (for example, supply chain accountability or community development) without pursuing the full whole-building recognition.',
   },
   {
-    question: 'When will Seals be available?',
+    question: 'How is a SEAL awarded?',
     answer:
-      'SEAM Seals are in active development. The first two themes — Ethical Procurement and Community Development — are being finalized. If you want early access or want to help shape the first Seals, talk to an advisor.',
+      'Achievement is binary: you complete the applicable Activity subset for the reviewed scope, or you don\'t. Organizations meeting Gold- or Platinum-equivalent thresholds across the subset earn the additional distinction "[SEAL Name] — Leading Practice." A SEAL may not be awarded where credible evidence shows active, unremediated harms within the reviewed scope.',
+  },
+  {
+    question: 'What is the "Assessment Scope"?',
+    answer:
+      'Every SEAL claim is bounded by an Assessment Scope — the explicit definition of what was reviewed, by whom, for what period, and under which conditions. That makes the public claim transparent to buyers, regulators, investors, and impacted parties. The SEAL does not certify entities or scope outside what was reviewed.',
+  },
+  {
+    question: 'When will SEALs be available?',
+    answer:
+      'SEAM SEALs are in active development. The first two themes — Ethical Procurement and Community Development — are being finalized through pilot projects. If you want early access or want to help shape the first SEALs, talk to an advisor.',
   },
 ]
 
 const jsonLd = [
   breadcrumbSchema([
     { name: 'Home', path: '/' },
-    { name: 'SEAM Seals', path: '/seals' },
+    { name: 'SEAM SEALs', path: '/seals' },
   ]),
   faqSchema(faqs),
 ] as unknown as Record<string, unknown>
 ---
 
 <SiteLayout
-  title="SEAM Seals — Thematic Social Equity Credentials"
-  description="SEAM Seals are thematic credentials awarded for completing a curated set of 18 to 25 related activities. The step between single-activity Marks and full building Certification."
+  title="SEAM SEALs — Thematic Social Equity Recognitions"
+  description="A SEAM SEAL proves sustained commitment to one social-equity theme — independently reviewed, publicly listed, and built on the same Standard as full Certification."
   path="/seals"
   jsonLd={jsonLd}
 >
 
   <!-- ─── Hero ─── -->
-  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-warm-900">
+    <img
+      src="/images/seals/seals-overview-hero.jpg"
+      alt="People studying a community map together"
+      class="absolute inset-0 w-full h-full object-cover opacity-60"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-warm-900/85 via-warm-900/65 to-warm-900/35"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/70 via-transparent to-warm-900/20"></div>
 
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
       <div class="hero-enter max-w-4xl">
         <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
-          Coming soon
+          SEAM SEALs
         </span>
         <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.25rem)] leading-[1.05] tracking-[-0.04em] text-white">
-          SEAM Seals — <em class="font-display italic font-normal text-seam-300">thematic credentials</em> for focused commitment
+          Prove one thing <em class="font-display italic font-normal text-seam-300">deeply.</em>
         </h1>
         <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-          A Seal recognizes sustained performance across a curated theme of 18 to 25 activities — the step between single-activity Marks and full building Certification.
+          A SEAM SEAL is a thematic recognition — independently reviewed, publicly listed, and built on the same Standard that powers full Certification. Earn one for a focused area of social-equity work without certifying the whole building.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4">
           <a href="/get-started" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
             Talk to an advisor
           </a>
-          <a href="/resources/standard" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-8 py-4 text-[15px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
-            Read the Standard
+          <a href="#themes" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-8 py-4 text-[15px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
+            See the first SEALs
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── Where Seals fit ─── -->
+  <!-- ─── Why a SEAL ─── -->
   <section class="py-24 lg:py-32 bg-white">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="max-w-2xl mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Where Seals fit</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Why a SEAL</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Focused commitment, <em class="italic font-normal text-seam-600">verified</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map((b) => (
+          <div class="rounded-2xl bg-warm-50 border border-warm-200/60 p-6 lg:p-8">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">{b.title}</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── The first SEALs ─── -->
+  <section id="themes" class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The first SEALs</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Two themes <em class="italic font-normal text-seam-600">ready to earn</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+          Each SEAL is a curated group of SEAM Standard activities that represent deep, demonstrable commitment in a focused area. The first two are being shaped through live pilots with anchor organizations.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <a href="/seals/ethical-procurement" class="group relative rounded-2xl bg-white border border-warm-200/60 p-8 lg:p-10 pt-16 flex flex-col transition-all duration-300 hover:border-seam-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
+          <img src="/logos/seal-ethical-procurement.svg" alt="Ethical Procurement SEAL" width="120" height="139" loading="lazy" decoding="async" class="absolute -top-8 right-6 lg:right-8 w-24 lg:w-28 h-auto drop-shadow-md" />
+          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-700 transition-colors">Ethical Procurement</h3>
+          <p class="mt-4 text-[15px] leading-relaxed text-warm-600 flex-1">
+            Show your supply chain can stand up to modern-slavery and forced-labor scrutiny — without certifying the whole building. Aligns with the Australian and UK Modern Slavery Acts, UFLPA, EU Forced Labour Regulation, UNGPs, OECD, and ILO standards.
+          </p>
+          <span class="mt-6 inline-flex items-center text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
+            Explore the Ethical Procurement SEAL &rarr;
+          </span>
+        </a>
+
+        <a href="/seals/community-development" class="group relative rounded-2xl bg-white border border-warm-200/60 p-8 lg:p-10 pt-16 flex flex-col transition-all duration-300 hover:border-seam-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
+          <img src="/logos/seal-community-development.svg" alt="Community Development SEAL" width="120" height="139" loading="lazy" decoding="async" class="absolute -top-8 right-6 lg:right-8 w-24 lg:w-28 h-auto drop-shadow-md" />
+          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-700 transition-colors">Community Development</h3>
+          <p class="mt-4 text-[15px] leading-relaxed text-warm-600 flex-1">
+            Prove a community initiative is real work — designed with impacted parties, tied to a material issue, delivered, and independently reviewed. The SEAL that separates a serious initiative from a one-off volunteer event.
+          </p>
+          <span class="mt-6 inline-flex items-center text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
+            Explore the Community Development SEAL &rarr;
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Pilots in action ─── -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Pilots in action</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Real organizations, <em class="italic font-normal text-seam-600">real reviews</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+          Each first-cohort SEAL is being shaped against an active pilot project. These aren't hypothetical — they're the work that's defining what each SEAL stands for.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {pilots.map((p) => (
+          <a
+            href={p.href}
+            class="block group rounded-2xl overflow-hidden border border-warm-200/60 bg-white transition-all duration-300 hover:border-seam-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]"
+          >
+            <div class="relative bg-warm-900 aspect-[16/9] overflow-hidden">
+              <img
+                src={p.image}
+                alt={p.name}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-7 lg:p-8 flex flex-col">
+              <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-3">{p.seal} pilot</p>
+              <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 leading-tight mb-3 group-hover:text-seam-700 transition-colors">
+                {p.name}
+              </h3>
+              <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class="inline-flex items-center rounded-full bg-warm-100 px-2.5 py-0.5 text-[11px] font-medium text-warm-600">
+                  {p.owner}
+                </span>
+                <span class="inline-flex items-center rounded-full bg-warm-100 px-2.5 py-0.5 text-[11px] font-medium text-warm-600">
+                  {p.location}
+                </span>
+              </div>
+              <p class="text-[14px] leading-relaxed text-warm-600 mb-5 flex-1">
+                {p.blurb}
+              </p>
+              <span class="inline-flex items-center text-[13px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+                View the project profile &rarr;
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How it works ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">How it works</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Three steps to a <em class="italic font-normal text-seam-600">verified SEAL</em>
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        {howItWorks.map((step) => (
+          <div class="grid grid-cols-[60px_1fr] lg:grid-cols-[120px_1fr] gap-6 lg:gap-10 rounded-2xl border border-warm-200/60 bg-white p-6 lg:p-8">
+            <p class="font-display text-[36px] lg:text-[44px] tracking-[-0.04em] text-seam-600 leading-none">{step.n}</p>
+            <div>
+              <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">{step.title}</h3>
+              <p class="text-[15px] leading-relaxed text-warm-600 max-w-2xl">{step.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-8 text-[14px] leading-relaxed text-warm-500 max-w-3xl">
+        Every SEAL claim is bounded by a clearly defined Assessment Scope — what was reviewed, by whom, for what period. That keeps the public claim transparent to buyers, investors, and regulators.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Where SEALs fit ─── -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Where SEALs fit</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Between a Mark and a <em class="italic font-normal text-seam-600">full Certification</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
-          SEAM offers three depths of credential. Choose the one that matches your scope today — and build toward the next one as your practice matures.
+          SEAM offers three depths of recognition. Choose the one that matches your scope today — and build toward the next one as your practice matures.
         </p>
       </div>
 
@@ -95,15 +316,15 @@ const jsonLd = [
 
         <div class="rounded-2xl border-2 border-seam-500 bg-seam-50/40 p-8 lg:p-10 flex flex-col relative">
           <span class="absolute -top-3.5 left-8 inline-block rounded-full bg-seam-600 px-4 py-1 text-[12px] font-medium text-white tracking-wide uppercase">
-            New
+            You are here
           </span>
           <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-4">Step 2</p>
-          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">SEAM Seals</h3>
+          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">SEAM SEALs</h3>
           <p class="mt-3 text-[15px] leading-relaxed text-warm-700 flex-1">
-            A thematic credential earned by completing 18 to 25 related activities. Prove sustained commitment in a focused area — without pursuing full Certification.
+            A thematic recognition earned by completing 18 to 25 related activities. Prove sustained commitment in a focused area — without pursuing full Certification.
           </p>
           <span class="mt-6 inline-flex items-center text-[14px] font-medium text-seam-700">
-            Coming soon
+            See SEALs &rarr;
           </span>
         </div>
 
@@ -111,7 +332,7 @@ const jsonLd = [
           <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-4">Step 3</p>
           <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">SEAM Certification</h3>
           <p class="mt-3 text-[15px] leading-relaxed text-warm-600 flex-1">
-            Full building certification across all four pillars, Bronze through Platinum. The complete whole-building credential.
+            Full building certification across all four pillars, Bronze through Platinum. The complete whole-building recognition.
           </p>
           <span class="mt-6 inline-flex items-center text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
             See Certification &rarr;
@@ -121,86 +342,42 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ─── Launch themes ─── -->
+  <!-- ─── FAQ ─── -->
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-2xl mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The first Seals</p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Two themes <em class="italic font-normal text-seam-600">in development</em>
-        </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
-          Each Seal is a defined theme — a group of 18 to 25 related Standard activities chosen to represent deep, demonstrable commitment in a focused area of social equity practice. Two themes are in active development:
-        </p>
-      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-start">
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-12">
+            Questions about <em class="italic font-normal text-seam-600">SEALs</em>
+          </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-        <a href="/seals/ethical-procurement" class="group rounded-2xl bg-white border border-warm-200/60 p-8 lg:p-10 flex flex-col transition-all duration-300 hover:border-warm-300 hover:shadow-lg">
-          <div class="flex items-start justify-between gap-4 mb-6">
-            <span class="inline-flex w-fit items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-medium text-seam-700">
-              In development
-            </span>
-            <img src="/logos/seal-ethical-procurement.svg" alt="Ethical Procurement Seal placeholder" width="80" height="93" loading="lazy" decoding="async" class="w-20 h-auto shrink-0 -mt-2 -mr-2" />
+          {faqs.map((faq) => (
+            <details class="border-b border-warm-200 group">
+              <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[16px] lg:text-[17px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.question}</span>
+                <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-6">
+                <p class="text-[15px] leading-relaxed text-warm-600 pr-10">{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <aside class="hidden lg:block lg:sticky lg:top-24">
+          <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-warm-100">
+            <img
+              src="/images/seals/seals-overview-faq.jpg"
+              alt="Two people in colorful jackets standing together against a yellow wall"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
-          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-700 transition-colors">Ethical Procurement</h3>
-          <p class="mt-4 text-[15px] leading-relaxed text-warm-600 flex-1">
-            A limited-scope SEAM credential for modern slavery, forced labor, and supply-chain human-rights due diligence in commercial real estate operations and procurement. Supports framework reporting (Modern Slavery Acts, UFLPA, UNGPs, OECD, ILO) within a defined Assessment Scope.
-          </p>
-          <span class="mt-6 inline-flex items-center text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
-            Explore the Ethical Procurement SEAL &rarr;
-          </span>
-        </a>
-
-        <a href="/seals/community-development" class="group rounded-2xl bg-white border border-warm-200/60 p-8 lg:p-10 flex flex-col transition-all duration-300 hover:border-warm-300 hover:shadow-lg">
-          <div class="flex items-start justify-between gap-4 mb-6">
-            <span class="inline-flex w-fit items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-medium text-seam-700">
-              In development
-            </span>
-            <img src="/logos/seal-community-development.svg" alt="Community Development Seal placeholder" width="80" height="93" loading="lazy" decoding="async" class="w-20 h-auto shrink-0 -mt-2 -mr-2" />
-          </div>
-          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-700 transition-colors">Community Development</h3>
-          <p class="mt-4 text-[15px] leading-relaxed text-warm-600 flex-1">
-            A limited-scope SEAM credential for a defined community development initiative tied to a project or asset. Reviewed against a SEAM Activity pathway grounded in impacted-party engagement, materiality, initiative design, and completed volunteer delivery.
-          </p>
-          <span class="mt-6 inline-flex items-center text-[14px] font-medium text-seam-600 group-hover:text-seam-700 transition-colors">
-            Explore the Community Development SEAL &rarr;
-          </span>
-        </a>
-      </div>
-
-      <div class="rounded-2xl bg-white border border-warm-200/60 p-8 lg:p-10 max-w-3xl">
-        <p class="text-[15px] leading-relaxed text-warm-700">
-          <strong class="font-semibold text-warm-900">Want early access?</strong> We're working with anchor organizations to validate the first Seal themes. If you'd like to shape one — or be among the first to earn it — let us know.
-        </p>
-        <a href="/get-started" class="mt-6 inline-flex items-center justify-center rounded-full bg-warm-900 px-6 py-3 text-[14px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">
-          Talk to an advisor &rarr;
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── FAQ ─── -->
-  <section class="py-24 lg:py-32 bg-white">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="max-w-3xl">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-12">
-          Questions about <em class="italic font-normal text-seam-600">Seals</em>
-        </h2>
-
-        {faqs.map((faq) => (
-          <details class="border-b border-warm-200 group">
-            <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-              <span class="text-[16px] lg:text-[17px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.question}</span>
-              <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </summary>
-            <div class="pb-6">
-              <p class="text-[15px] leading-relaxed text-warm-600 pr-10">{faq.answer}</p>
-            </div>
-          </details>
-        ))}
+        </aside>
       </div>
     </div>
   </section>
