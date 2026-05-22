@@ -66,15 +66,15 @@ const faqs = [
   {
     question: 'What is a SEAM SEAL?',
     answer:
-      'A SEAM SEAL is a thematic recognition awarded for completing a curated set of 18 to 25 related activities from the SEAM Standard. SEALs sit between Marks (single or bundled activity verification) and full Certification (whole-building, all pillars). They give organizations a deeper, theme-focused recognition without the full scope of certification.',
+      'A SEAM SEAL is a thematic recognition awarded for completing a curated set of 18 to 25 related activities from the SEAM Standard. The SEAL sits between Marks (single or bundled activity verification) and full Certification (whole-building, all pillars). They give organizations a deeper, theme-focused recognition without the full scope of certification.',
   },
   {
-    question: 'How are SEALs different from Marks?',
+    question: 'How is the SEAL different from Marks?',
     answer:
       'Marks verify one activity (Single Mark) or a small bundle of 3–5 related activities (Bulk Marks). A SEAL is broader — a curated theme of 18 to 25 activities that demonstrate sustained performance across a defined area of social equity practice.',
   },
   {
-    question: 'How are SEALs different from Certification?',
+    question: 'How is the SEAL different from Certification?',
     answer:
       'Full SEAM Certification evaluates a building across all four pillars and the full activity set. A SEAL is narrower and thematic — it lets an organization prove deep commitment in a specific area (for example, supply chain accountability or community development) without pursuing the full whole-building recognition.',
   },
@@ -89,23 +89,23 @@ const faqs = [
       'Every SEAL claim is bounded by an Assessment Scope — the explicit definition of what was reviewed, by whom, for what period, and under which conditions. That makes the public claim transparent to buyers, regulators, investors, and impacted parties. The SEAL does not certify entities or scope outside what was reviewed.',
   },
   {
-    question: 'When will SEALs be available?',
+    question: 'When will SEAL be available?',
     answer:
-      'SEAM SEALs are in active development. The first two themes — Ethical Procurement and Community Development — are being finalized through pilot projects. If you want early access or want to help shape the first SEALs, talk to an advisor.',
+      'The SEAM SEAL program is in active development. The first two themes — Ethical Procurement and Community Development — are being finalized through pilot projects. If you want early access or want to help shape the first SEAL, talk to an advisor.',
   },
 ]
 
 const jsonLd = [
   breadcrumbSchema([
     { name: 'Home', path: '/' },
-    { name: 'SEAM SEALs', path: '/seals' },
+    { name: 'SEAM SEAL', path: '/seals' },
   ]),
   faqSchema(faqs),
 ] as unknown as Record<string, unknown>
 ---
 
 <SiteLayout
-  title="SEAM SEALs — Thematic Social Equity Recognitions"
+  title="SEAM SEAL — Thematic Social Equity Recognitions"
   description="A SEAM SEAL proves sustained commitment to one social-equity theme — independently reviewed, publicly listed, and built on the same Standard as full Certification."
   path="/seals"
   jsonLd={jsonLd}
@@ -126,7 +126,7 @@ const jsonLd = [
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
       <div class="hero-enter max-w-4xl">
         <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
-          SEAM SEALs
+          SEAM SEAL
         </span>
         <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.25rem)] leading-[1.05] tracking-[-0.04em] text-white">
           Prove one thing <em class="font-display italic font-normal text-seam-300">deeply.</em>
@@ -139,7 +139,7 @@ const jsonLd = [
             Talk to an advisor
           </a>
           <a href="#themes" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-8 py-4 text-[15px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
-            See the first SEALs
+            See the first SEAL
           </a>
         </div>
       </div>
@@ -167,11 +167,11 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ─── The first SEALs ─── -->
+  <!-- ─── The first SEAL ─── -->
   <section id="themes" class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="max-w-2xl mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The first SEALs</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The first SEAL</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Two themes <em class="italic font-normal text-seam-600">ready to earn</em>
         </h2>
@@ -289,11 +289,11 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- ─── Where SEALs fit ─── -->
+  <!-- ─── Where SEAL fits ─── -->
   <section class="py-24 lg:py-32 bg-white">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="max-w-2xl mb-16">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Where SEALs fit</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Where SEAL fits</p>
         <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Between a Mark and a <em class="italic font-normal text-seam-600">full Certification</em>
         </h2>
@@ -319,12 +319,12 @@ const jsonLd = [
             You are here
           </span>
           <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-4">Step 2</p>
-          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">SEAM SEALs</h3>
+          <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">SEAM SEAL</h3>
           <p class="mt-3 text-[15px] leading-relaxed text-warm-700 flex-1">
             A thematic recognition earned by completing 18 to 25 related activities. Prove sustained commitment in a focused area — without pursuing full Certification.
           </p>
           <span class="mt-6 inline-flex items-center text-[14px] font-medium text-seam-700">
-            See SEALs &rarr;
+            See SEAL &rarr;
           </span>
         </div>
 
@@ -349,7 +349,7 @@ const jsonLd = [
         <div>
           <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-12">
-            Questions about <em class="italic font-normal text-seam-600">SEALs</em>
+            Questions about <em class="italic font-normal text-seam-600">SEAL</em>
           </h2>
 
           {faqs.map((faq) => (
