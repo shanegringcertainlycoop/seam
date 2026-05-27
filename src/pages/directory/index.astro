@@ -8,7 +8,6 @@ import {
   certificationLevels,
   ratingSystems,
 } from '../../data/directory'
-import { team } from '../../data/team'
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr]
@@ -22,35 +21,45 @@ function shuffle<T>(arr: T[]): T[] {
 const shuffledOrgs = shuffle(memberOrgs)
 const shuffledProjects = shuffle(certifiedProjects)
 
-type ProfessionalItem =
-  | { kind: 'team'; data: (typeof team)[number] }
-  | { kind: 'ap'; data: (typeof seamAPs)[number] }
+type ProfessionalItem = { kind: 'ap'; data: (typeof seamAPs)[number] }
 
-const teamSlugs = new Set(team.map((m) => m.slug))
-const allProfessionals: ProfessionalItem[] = shuffle([
-  ...team.map((m) => ({ kind: 'team' as const, data: m })),
-  ...seamAPs.filter((a) => !teamSlugs.has(a.slug)).map((a) => ({ kind: 'ap' as const, data: a })),
-])
+// SEAM APs tab shows accredited professionals only. Team members live on /about.
+const allProfessionals: ProfessionalItem[] = shuffle(
+  seamAPs.map((a) => ({ kind: 'ap' as const, data: a })),
+)
 
-type Tab = 'professionals' | 'organizations' | 'projects'
+type Tab = 'professionals' | 'members' | 'projects'
 
 const tabs: { key: Tab; label: string }[] = [
-  { key: 'professionals', label: 'Professionals' },
-  { key: 'organizations', label: 'Organizations' },
-  { key: 'projects', label: 'Projects' },
+  { key: 'professionals', label: 'SEAM APs' },
+  { key: 'projects', label: 'SEAM Projects' },
+  { key: 'members', label: 'SEAM Members' },
 ]
 
-const tabParam = new URL(Astro.request.url).searchParams.get('tab')
+const url = new URL(Astro.request.url)
+const tabParamRaw = url.searchParams.get('tab')
+// Backward compat: old ?tab=organizations links land on Members tab with Organization toggle.
+const tabParam = tabParamRaw === 'organizations' ? 'members' : tabParamRaw
 const activeTab: Tab =
-  tabParam === 'organizations' || tabParam === 'projects' ? tabParam : 'professionals'
+  tabParam === 'members' || tabParam === 'projects' ? tabParam : 'professionals'
 
-// Compute unique specialties from data (sorted, with 'All' first)
-const specialtySet = new Set<string>()
-seamAPs.forEach((ap) => ap.specialties.forEach((s) => specialtySet.add(s)))
-const uniqueSpecialties = Array.from(specialtySet).sort()
+// Members tab sub-toggle: individual vs organization. Defaults to organization.
+type MemberType = 'individual' | 'organization'
+const typeParamRaw = url.searchParams.get('type')
+const memberType: MemberType =
+  typeParamRaw === 'individual' || typeParamRaw === 'organization'
+    ? typeParamRaw
+    : 'organization'
 
-// Role filters for Professionals tab
-const roleFilters = ['All', 'SEAM AP', 'Member', 'Leadership', 'Board', 'TAG', ...uniqueSpecialties]
+// Specialty filters for SEAM APs tab — sorted by frequency (most common first), 'All' prepended.
+const specialtyCounts = new Map<string, number>()
+seamAPs.forEach((ap) => ap.specialties.forEach((s) => specialtyCounts.set(s, (specialtyCounts.get(s) ?? 0) + 1)))
+const specialtyFilters = [
+  'All',
+  ...Array.from(specialtyCounts.entries())
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([s]) => s),
+]
 
 const levelColors: Record<string, string> = {
   'Endorsement': 'bg-emerald-50 text-emerald-700',
@@ -68,11 +77,11 @@ const ctaConfig: Record<Tab, { heading: string; body: string; label: string; hre
     label: 'Learn about the AP Credential',
     href: '/ap-credential',
   },
-  organizations: {
-    heading: 'Become a member organization',
-    body: 'Join the network of organizations advancing social equity in the built environment. Access courses, tools, and recognition for your team.',
+  members: {
+    heading: 'Become a SEAM member',
+    body: 'Join the network of individuals and organizations advancing social equity in the built environment.',
     label: 'Explore membership',
-    href: '/membership/organization',
+    href: '/membership',
   },
   projects: {
     heading: 'Certify your building',
@@ -87,8 +96,10 @@ const cta = ctaConfig[activeTab]
 const searchPlaceholder =
   activeTab === 'professionals'
     ? 'Search by name, organization, or specialty...'
-    : activeTab === 'organizations'
-      ? 'Search by organization name or tier...'
+    : activeTab === 'members'
+      ? memberType === 'organization'
+        ? 'Search by organization name or sector...'
+        : 'Search by name, organization, or location...'
       : 'Search by name, owner, or location...'
 
 const jsonLd = breadcrumbSchema([
@@ -188,21 +199,18 @@ const inactivePillClass =
       {/* Sub-filter pills */}
       <div class="flex flex-wrap gap-2 mb-8">
         {activeTab === 'professionals' &&
-          roleFilters.map((s, i) => (
-            <>
-              {i === 6 && <span class="w-px h-8 bg-warm-200 self-center mx-1"></span>}
-              <button
-                type="button"
-                data-directory-filter
-                data-filter-type="specialty"
-                data-filter-value={s}
-                class={`shrink-0 rounded-full px-4 py-2 text-[13px] font-medium transition-all duration-200 ${
-                  s === 'All' ? activePillClass : inactivePillClass
-                }`}
-              >
-                {s}
-              </button>
-            </>
+          specialtyFilters.map((s) => (
+            <button
+              type="button"
+              data-directory-filter
+              data-filter-type="specialty"
+              data-filter-value={s}
+              class={`shrink-0 rounded-full px-4 py-2 text-[13px] font-medium transition-all duration-200 ${
+                s === 'All' ? activePillClass : inactivePillClass
+              }`}
+            >
+              {s}
+            </button>
           ))}
 
         {activeTab === 'projects' && (
@@ -236,6 +244,33 @@ const inactivePillClass =
             ))}
           </>
         )}
+
+        {activeTab === 'members' && (
+          <>
+            <a
+              href="/directory?tab=members&type=individual"
+              class={`shrink-0 rounded-full px-4 py-2 text-[13px] font-medium transition-all duration-200 ${
+                memberType === 'individual' ? activePillClass : inactivePillClass
+              }`}
+            >
+              Individual
+              <span class={`ml-1.5 rounded-full px-1.5 py-0.5 text-[10px] ${
+                memberType === 'individual' ? 'bg-white/20' : 'bg-warm-200/60'
+              }`}>{seamAPs.length}</span>
+            </a>
+            <a
+              href="/directory?tab=members&type=organization"
+              class={`shrink-0 rounded-full px-4 py-2 text-[13px] font-medium transition-all duration-200 ${
+                memberType === 'organization' ? activePillClass : inactivePillClass
+              }`}
+            >
+              Organization
+              <span class={`ml-1.5 rounded-full px-1.5 py-0.5 text-[10px] ${
+                memberType === 'organization' ? 'bg-white/20' : 'bg-warm-200/60'
+              }`}>{memberOrgs.length}</span>
+            </a>
+          </>
+        )}
       </div>
 
       {/* Results Grid — all items rendered server-side, filtered client-side */}
@@ -243,128 +278,128 @@ const inactivePillClass =
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         data-directory-grid
       >
-        {/* ── Professionals tab: all people shuffled together ── */}
-        {activeTab === 'professionals' && (
-          <>
-            {allProfessionals.map((item) => {
-              if (item.kind === 'team') {
-                const member = item.data
-                const isBoard = member.role.includes('Board') || member.role.includes('Co-Founder')
-                const tagList = ['Leadership', ...(isBoard ? ['Board'] : [])]
-                const searchText = [member.name, member.role, member.bio, ...tagList].join(' ').toLowerCase()
-                const tags = tagList.join('|')
-
-                return (
-                  <a
-                    href={`/directory/team/${member.slug}`}
-                    data-directory-item
-                    data-search-text={searchText}
-                    data-tags={tags}
-                    class="group block rounded-2xl border border-warm-100 p-6 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-                  >
-                    <div class="flex items-start gap-4 mb-4">
-                      <div class="w-14 h-14 rounded-full bg-warm-100 shrink-0 overflow-hidden">
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          class="w-full h-full object-cover object-top"
-                          loading="lazy"
-                          decoding="async"
-                          onerror="this.style.display='none'"
-                        />
-                      </div>
-                      <div class="min-w-0">
-                        <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 truncate">
-                          {member.name}
-                        </h3>
-                        <p class="text-[14px] text-warm-600 truncate">{member.role}</p>
-                      </div>
-                    </div>
-                    <p class="text-[14px] leading-relaxed text-warm-600 mb-4 line-clamp-3">
-                      {member.bio}
-                    </p>
-                    <span class="inline-block rounded-full bg-gold-400/10 px-3 py-1 text-[12px] font-medium text-gold-600">
-                      Leadership
+        {/* ── SEAM APs tab ── */}
+        {activeTab === 'professionals' &&
+          allProfessionals.map((item) => {
+            const ap = item.data
+            const searchText = [
+              ap.name,
+              ap.organization,
+              ap.location.city,
+              ap.location.state,
+              ap.credentials,
+              ...ap.specialties,
+            ]
+              .join(' ')
+              .toLowerCase()
+            const tags = ap.specialties.join('|')
+            return (
+              <a
+                href={`/directory/ap/${ap.slug}`}
+                data-directory-item
+                data-search-text={searchText}
+                data-tags={tags}
+                class="group block rounded-2xl border border-warm-100 p-6 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+              >
+                <div class="flex items-start gap-4 mb-4">
+                  <div class="w-14 h-14 rounded-full bg-warm-100 shrink-0 overflow-hidden">
+                    <img
+                      src={ap.photo}
+                      alt={ap.name}
+                      class="w-full h-full object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                      onerror="this.style.display='none'"
+                    />
+                  </div>
+                  <div class="min-w-0">
+                    <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 truncate">
+                      {ap.name}
+                    </h3>
+                    <p class="text-[14px] text-warm-600 truncate">{ap.organization}</p>
+                  </div>
+                </div>
+                <p class="text-[14px] text-warm-600 mb-4">
+                  {[ap.location.city, ap.location.state].filter(Boolean).join(', ')}
+                </p>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  {ap.specialties.slice(0, 3).map((s) => (
+                    <span class="rounded-full bg-warm-50 px-3 py-1 text-[12px] text-warm-600">
+                      {s}
                     </span>
-                  </a>
-                )
-              } else {
-                const ap = item.data
-                const roleTags = ap.roles || []
-                const allTags = [ap.credentials, ...roleTags, ...ap.specialties]
-                const searchText = [
-                  ap.name,
-                  ap.organization,
-                  ap.location.city,
-                  ap.location.state,
-                  ...allTags,
-                ]
-                  .join(' ')
-                  .toLowerCase()
-                const tags = allTags.join('|')
-                return (
-                  <a
-                    href={`/directory/ap/${ap.slug}`}
-                    data-directory-item
-                    data-search-text={searchText}
-                    data-tags={tags}
-                    class="group block rounded-2xl border border-warm-100 p-6 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-                  >
-                    <div class="flex items-start gap-4 mb-4">
-                      <div class="w-14 h-14 rounded-full bg-warm-100 shrink-0 overflow-hidden">
-                        <img
-                          src={ap.photo}
-                          alt={ap.name}
-                          class="w-full h-full object-cover object-top"
-                          loading="lazy"
-                          decoding="async"
-                          onerror="this.style.display='none'"
-                        />
-                      </div>
-                      <div class="min-w-0">
-                        <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 truncate">
-                          {ap.name}
-                        </h3>
-                        <p class="text-[14px] text-warm-600 truncate">{ap.organization}</p>
-                      </div>
-                    </div>
-                    <p class="text-[14px] text-warm-600 mb-4">
-                      {[ap.location.city, ap.location.state].filter(Boolean).join(', ')}
-                    </p>
-                    <div class="flex flex-wrap gap-1.5 mb-4">
-                      {roleTags.map((r) => (
-                        <span class={`rounded-full px-3 py-1 text-[12px] font-medium ${
-                          r === 'Leadership' ? 'bg-gold-400/10 text-gold-600' : 'bg-warm-900/10 text-warm-700'
-                        }`}>
-                          {r}
-                        </span>
-                      ))}
-                      {ap.specialties.slice(0, 3).map((s) => (
-                        <span class="rounded-full bg-warm-50 px-3 py-1 text-[12px] text-warm-600">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                    <span
-                      class={`inline-block rounded-full px-3 py-1 text-[12px] font-medium ${
-                        ap.credentials === 'SEAM AP+'
-                          ? 'bg-gold-400/10 text-gold-600'
-                          : ap.credentials === 'Member'
-                            ? 'bg-warm-100 text-warm-600'
-                            : 'bg-seam-50 text-seam-700'
-                      }`}
-                    >
-                      {ap.credentials}
-                    </span>
-                  </a>
-                )
-              }
-            })}
-          </>
-        )}
+                  ))}
+                </div>
+                <span
+                  class={`inline-block rounded-full px-3 py-1 text-[12px] font-medium ${
+                    ap.credentials === 'SEAM AP+'
+                      ? 'bg-gold-400/10 text-gold-600'
+                      : 'bg-seam-50 text-seam-700'
+                  }`}
+                >
+                  {ap.credentials}
+                </span>
+              </a>
+            )
+          })}
 
-        {/* ── Organizations tab ── */}
-        {activeTab === 'organizations' &&
+        {/* ── Members tab: Individual (seamAPs) ── */}
+        {activeTab === 'members' && memberType === 'individual' &&
+          shuffle(seamAPs).map((ap) => {
+            const roleTags = ap.roles || []
+            const allTags = [ap.credentials, ...roleTags, ...ap.specialties]
+            const searchText = [ap.name, ap.organization, ap.location.city, ap.location.state, ...allTags].join(' ').toLowerCase()
+            const tags = allTags.join('|')
+            return (
+              <a
+                href={`/directory/ap/${ap.slug}`}
+                data-directory-item
+                data-search-text={searchText}
+                data-tags={tags}
+                class="group block rounded-2xl border border-warm-100 p-6 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+              >
+                <div class="flex items-start gap-4 mb-4">
+                  <div class="w-14 h-14 rounded-full bg-warm-100 shrink-0 overflow-hidden">
+                    <img
+                      src={ap.photo}
+                      alt={ap.name}
+                      class="w-full h-full object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                      onerror="this.style.display='none'"
+                    />
+                  </div>
+                  <div class="min-w-0">
+                    <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-gold-600 transition-colors duration-300 truncate">
+                      {ap.name}
+                    </h3>
+                    <p class="text-[14px] text-warm-600 truncate">{ap.organization}</p>
+                  </div>
+                </div>
+                <p class="text-[14px] text-warm-600 mb-4">
+                  {[ap.location.city, ap.location.state].filter(Boolean).join(', ')}
+                </p>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class={`rounded-full px-3 py-1 text-[12px] font-medium ${
+                    ap.credentials === 'SEAM AP+'
+                      ? 'bg-gold-400/10 text-gold-600'
+                      : ap.credentials === 'SEAM AP'
+                      ? 'bg-seam-50 text-seam-700'
+                      : 'bg-warm-100 text-warm-700'
+                  }`}>
+                    {ap.credentials}
+                  </span>
+                  {ap.membershipTier && (
+                    <span class="rounded-full bg-warm-50 px-3 py-1 text-[12px] text-warm-600">
+                      {ap.membershipTier}
+                    </span>
+                  )}
+                </div>
+              </a>
+            )
+          })}
+
+        {/* ── Members tab: Organization ── */}
+        {activeTab === 'members' && memberType === 'organization' &&
           shuffledOrgs.map((org) => {
             const searchText = [org.name, org.tier, org.description, ...org.sectors, org.location.city, org.location.state].join(' ').toLowerCase()
             const tags = [org.tier, ...org.sectors].join('|')

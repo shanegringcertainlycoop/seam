@@ -639,7 +639,7 @@ const jsonLd = [
         ))}
       </div>
 
-      <div class="reveal-stagger mt-12 flex flex-wrap justify-center items-center gap-8 lg:gap-12 max-w-5xl mx-auto">
+      <div class="reveal-stagger mt-12 grid grid-cols-3 sm:grid-cols-5 justify-items-center items-center gap-y-8 gap-x-6 lg:gap-x-12 max-w-5xl mx-auto">
         {[
           { src: '/logos/jll.png', name: 'JLL' },
           { src: '/logos/interface.png', name: 'Interface' },
@@ -649,6 +649,7 @@ const jsonLd = [
           { src: '/logos/thm-advisors.png', name: 'THM Advisors' },
           { src: '/logos/brightworks.svg', name: 'Brightworks Sustainability' },
           { src: '/logos/members/val-interiors.png', name: 'Val Interiors' },
+          { src: '/logos/north-ave.jpg', name: 'North Ave Partners' },
         ].sort(() => Math.random() - 0.5).map((org) => (
           <div class="reveal-child">
             <img

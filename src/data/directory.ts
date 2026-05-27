@@ -697,6 +697,16 @@ export const memberOrgs: MemberOrg[] = [
     website: 'https://brightworks.net',
     sectors: ['Sustainability Consulting', 'Green Building Certification', 'Healthy Buildings'],
   },
+  {
+    slug: 'north-ave-partners',
+    name: 'North Ave Partners',
+    logo: '/logos/north-ave.jpg',
+    tier: 'Member',
+    description: 'A commercial real estate project management and consultancy firm delivering complex projects for Inspire Brands, Red Bull, Mercedes-Benz, Norfolk Southern, Fiserv, and Habitat for Humanity. Co-founded by SEAM co-founder Alex Demestihas, the firm brings deep real estate execution expertise to advancing social equity in the built environment.',
+    location: { city: 'Atlanta', state: 'GA' },
+    website: 'https://north-ave.com/',
+    sectors: ['Project Management', 'Development Advisory', 'Move Management'],
+  },
 ]
 
 /* ─── Sample Data: Certified Projects ─── */

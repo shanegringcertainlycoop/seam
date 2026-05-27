@@ -167,7 +167,8 @@ const jsonLd = [
               <img
                 src={f.image}
                 alt={f.name}
-                class="w-full h-full object-cover object-top"
+                class="w-full h-full object-cover"
+                style={`object-position: ${f.imagePosition ?? 'top'}`}
                 loading="lazy"
                 decoding="async"
               />
@@ -212,7 +213,8 @@ const jsonLd = [
               <img
                 src={f.image}
                 alt={f.name}
-                class="w-full h-full object-cover object-top"
+                class="w-full h-full object-cover"
+                style={`object-position: ${f.imagePosition ?? 'top'}`}
                 loading="lazy"
                 decoding="async"
               />

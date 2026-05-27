@@ -143,6 +143,22 @@ function initDirectoryFilter() {
     })
   }
 
+  // URL → filter: ?role=<value> pre-selects the matching pill in the
+  // specialty filter group (used for SEAM AP, Member, Leadership, etc).
+  try {
+    const params = new URL(window.location.href).searchParams
+    const role = params.get('role')
+    if (role) {
+      const match = pills.find(
+        (p) => p.dataset.filterType === 'specialty' && p.dataset.filterValue === role,
+      )
+      if (match) {
+        state.filters.set('specialty', role)
+        setActivePill('specialty', role)
+      }
+    }
+  } catch {}
+
   // Initial pass to make sure visible counts and empty state are in sync.
   applyFilters()
 }
