@@ -2,6 +2,8 @@
 interface Props {
   tag?: string
   title?: string
+  /** Optional emphasized partial appended to the title in italic + seam blue. */
+  titleEmphasis?: string
   summary?: string
   dark?: boolean
 }
@@ -9,6 +11,7 @@ interface Props {
 const {
   tag = 'The business case',
   title = 'Social equity drives financial performance.',
+  titleEmphasis,
   summary = 'A decade of research from McKinsey, Gallup, CBRE, and GRESB confirms it — equitable organizations and certified buildings outperform their peers across every metric that matters.',
   dark = false,
 } = Astro.props
@@ -30,6 +33,14 @@ const stats = [
       </p>
       <h2 class={`font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] ${dark ? 'text-white' : 'text-warm-900'}`}>
         {title}
+        {titleEmphasis && (
+          <>
+            {' '}
+            <em class={`italic font-normal ${dark ? 'text-seam-300' : 'text-seam-600'}`}>
+              {titleEmphasis}
+            </em>
+          </>
+        )}
       </h2>
       <p class={`mt-6 text-[17px] leading-relaxed max-w-xl ${dark ? 'text-warm-400' : 'text-warm-600'}`}>
         {summary}

@@ -225,7 +225,7 @@ const resources: NavGroup = {
     {
       heading: 'Tools & More',
       links: [
-        { label: 'ROSSI Calculator', href: '/resources/rossi', description: 'Quantify your social equity ROI.', logo: '/logos/rossi-calculator.png' },
+        { label: 'ROSSI Calculator', href: '/resources/rossi', description: 'Quantify your social equity ROI.' },
         { label: 'LEED Crosswalk', href: '/resources/leed-crosswalk', description: 'Map SEAM activities to LEED credits.' },
         { label: 'Pathways', href: '/pathways', description: 'Seven ways to engage — find your entry point.' },
         { label: 'About SEAM', href: '/about', description: 'Our mission and team.' },
@@ -256,9 +256,9 @@ const directory: NavGroup = {
   label: 'Directory',
   links: [],
   quickLinks: [
-    { label: 'All Professionals', href: '/directory?tab=professionals' },
-    { label: 'All Projects', href: '/directory?tab=projects' },
-    { label: 'All Organizations', href: '/directory?tab=organizations' },
+    { label: 'SEAM APs', href: '/directory?tab=professionals' },
+    { label: 'Projects', href: '/directory?tab=projects' },
+    { label: 'Members', href: '/directory?tab=members' },
   ],
 }
 
@@ -361,13 +361,13 @@ function logoClass(_logo: string) {
                   {/* Category links */}
                   <div class="grid grid-cols-3 divide-x divide-warm-100">
                     <a href="/directory?tab=professionals" class="group/item p-5 hover:bg-warm-50 transition-colors">
-                      <p class="text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600 transition-colors">Find SEAM professionals</p>
+                      <p class="text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600 transition-colors">Find SEAM APs</p>
                     </a>
                     <a href="/directory?tab=projects" class="group/item p-5 hover:bg-warm-50 transition-colors">
                       <p class="text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600 transition-colors">Find SEAM projects</p>
                     </a>
-                    <a href="/directory?tab=organizations" class="group/item p-5 hover:bg-warm-50 transition-colors">
-                      <p class="text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600 transition-colors">Find SEAM organizations</p>
+                    <a href="/directory?tab=members" class="group/item p-5 hover:bg-warm-50 transition-colors">
+                      <p class="text-[15px] font-medium text-warm-900 group-hover/item:text-gold-600 transition-colors">Find SEAM members</p>
                     </a>
                   </div>
                 </div>
@@ -768,9 +768,9 @@ function logoClass(_logo: string) {
           <div class="pb-4 pl-2 space-y-1 hidden" data-mobile-content={idx}>
             {group.label === 'Directory' ? (
               <>
-                <a href="/directory?tab=professionals" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">Professionals</a>
+                <a href="/directory?tab=professionals" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">SEAM APs</a>
                 <a href="/directory?tab=projects" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">Projects</a>
-                <a href="/directory?tab=organizations" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">Organizations</a>
+                <a href="/directory?tab=members" class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">Members</a>
               </>
             ) : group.progression?.length ? (
               <>

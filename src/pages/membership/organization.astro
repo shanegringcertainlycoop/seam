@@ -77,14 +77,15 @@ const tiers = [
 ]
 
 const memberLogos = [
-  { src: '/logos/members/val-interiors.png', alt: 'Val Interiors', height: 'h-16', slug: 'val-interiors' },
+  { src: '/logos/members/jll.png', alt: 'JLL', height: 'h-24', slug: 'jll' },
   { src: '/logos/members/jamestown.png', alt: 'Jamestown', height: 'h-16', slug: 'jamestown' },
   { src: '/logos/members/hitt.png', alt: 'HITT', height: 'h-20', slug: 'hitt-contracting' },
-  { src: '/logos/members/jll.png', alt: 'JLL', height: 'h-24', slug: 'jll' },
   { src: '/logos/members/interface.png', alt: 'Interface', height: 'h-20', slug: 'interface' },
   { src: '/logos/members/leapley.png', alt: 'Leapley Construction', height: 'h-24', slug: 'leapley-construction' },
+  { src: '/logos/members/val-interiors.png', alt: 'Val Interiors', height: 'h-16', slug: 'val-interiors' },
   { src: '/logos/thm-advisors.png', alt: 'THM Advisors', height: 'h-16', slug: 'thm-advisors' },
   { src: '/logos/brightworks.svg', alt: 'Brightworks Sustainability', height: 'h-16', slug: 'brightworks-sustainability' },
+  { src: '/logos/north-ave.jpg', alt: 'North Ave Partners', height: 'h-16', slug: 'north-ave-partners' },
 ]
 
 const memberNames: { name: string; slug: string }[] = []
@@ -92,10 +93,10 @@ const memberNames: { name: string; slug: string }[] = []
 const faqs = [
   { q: 'How does team seat allocation work?', a: 'Each organization membership tier (Standing, Ladder, and Arc) includes a set number of seats. Every seat holder gets full individual-level access — templates, courses, ROSSI, and network. Contact our team to adjust seat assignments as needed.' },
   { q: 'Can we add seats or properties mid-cycle?', a: 'We can help you add or remove seats on a case-by-case basis if necessary. Contact our team to discuss your needs.' },
-  { q: 'Is organization pricing public?', a: 'Pricing is based on portfolio size, property count, and scope. Contact our team for a quote tailored to your organization. All tiers are billed annually.' },
+  { q: 'Is organization pricing public?', a: 'Yes. Organization membership is a flat annual rate by tier — Standing $1,600/yr, Ladder $6,000/yr, Arc $18,000/yr. See the pricing page for what each tier includes.' },
   { q: 'What does dedicated onboarding include?', a: 'A SEAM team member reviews your existing social equity programs, maps them to Standard activities, identifies quick wins, and builds a certification roadmap. Ladder tier includes one session; Arc includes ongoing strategy check-ins.' },
   { q: 'Can our team members also hold individual memberships?', a: 'Organization seats provide full individual-level access. Separate individual memberships are not needed. Team members who are SEAM APs receive full individual-level benefits through their organization seat.' },
-  { q: 'What is the advisory council?', a: 'Arc members sit on the advisory council that informs Standard development. The council meets quarterly, reviews proposed changes, pilots new activities, and provides strategic input on the direction of the SEAM ecosystem.' },
+  { q: 'What is the advisory council?', a: 'The Advisory Council shall be to advise and make non-binding recommendations to the Board of Directors and Internal Directors of the Organization with respect to matters within the areas of their experience and expertise. These recommendations will serve to help the Organization gain new insights and advice to solve business problems or explore new opportunities by stimulating robust, high-quality conversations. The role of the Advisory Board is not to make decisions, but rather to provide current knowledge, critical thinking, and analysis to increase the confidence of the decision-makers who represent the company.' },
 ]
 
 const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
@@ -186,7 +187,7 @@ const jsonLd = [
           Scale your commitment <em class="italic font-normal text-seam-600">with your portfolio</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
-          Organization pricing is based on portfolio size and scope. All tiers include annual billing with the option to add seats and properties mid-cycle.
+          Organization membership is a flat annual rate by tier. Each tier includes seats and benefits suited to your stage, with the option to add seats mid-cycle.
         </p>
       </div>
 
@@ -236,7 +237,7 @@ const jsonLd = [
           Organizations who <em class="italic font-normal text-seam-600">understand the future</em>
         </h2>
       </div>
-      <div class="reveal-fade-up flex flex-wrap items-center justify-center lg:justify-between gap-x-12 gap-y-10 mb-16">
+      <div class="reveal-fade-up grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 items-center justify-items-center gap-x-8 gap-y-10 mb-16">
         {memberLogos.map((logo) => (
           <a href={`/directory/org/${logo.slug}`} class="transition-opacity duration-300 hover:opacity-70">
             <img src={logo.src} alt={logo.alt} class={`${logo.height} w-auto object-contain`} loading="lazy" decoding="async" />
