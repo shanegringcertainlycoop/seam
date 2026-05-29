@@ -127,45 +127,52 @@ const jsonLd = [
 >
 
   <!-- ─── Hero ─── -->
-  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-warm-900">
-    <img
-      src="/images/seals/community-development-hero.jpg"
-      alt="Community members collaborating on a shared painting"
-      class="absolute inset-0 w-full h-full object-cover opacity-60"
-      fetchpriority="high"
-      decoding="async"
-    />
-    <div class="absolute inset-0 bg-gradient-to-r from-warm-900/85 via-warm-900/65 to-warm-900/35"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/70 via-transparent to-warm-900/20"></div>
+  <section class="relative min-h-[70vh] flex items-center bg-warm-900">
+    <div class="absolute inset-0 overflow-hidden">
+      <img
+        src="/images/seals/community-development-hero.jpg"
+        alt="Community members collaborating on a shared painting"
+        class="absolute inset-0 w-full h-full object-cover opacity-60"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-warm-900/85 via-warm-900/65 to-warm-900/35"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/70 via-transparent to-warm-900/20"></div>
+    </div>
 
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
-      <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-center">
-        <div class="hero-enter max-w-3xl">
-          <div class="flex items-center gap-3 mb-8">
-            <a href="/seals" class="text-[13px] font-medium text-warm-400 hover:text-warm-200 transition-colors">SEAM SEAL</a>
-            <span class="text-warm-500">/</span>
-            <span class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-300">Community Development</span>
-          </div>
-          <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.25rem)] leading-[1.05] tracking-[-0.04em] text-white">
-            Show that community work is <em class="font-display italic font-normal text-seam-300">grounded</em> — not performative
-          </h1>
-          <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-            A limited-scope SEAM recognition for a defined community development initiative — reviewed against a pathway grounded in impacted-party engagement, materiality, design, and completed delivery.
-          </p>
-          <div class="mt-10 flex flex-col sm:flex-row gap-4">
-            <a href="/get-started" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
-              Talk to an advisor
-            </a>
-            <a href="#pathway" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-8 py-4 text-[15px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
-              See the pathway
-            </a>
-          </div>
+      <div class="hero-enter max-w-3xl">
+        <div class="flex items-center gap-3 mb-8">
+          <a href="/seals" class="text-[13px] font-medium text-warm-400 hover:text-warm-200 transition-colors">SEAM SEAL</a>
+          <span class="text-warm-500">/</span>
+          <span class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-300">Community Development</span>
         </div>
-        <div class="hidden lg:flex justify-center shrink-0">
-          <img src="/logos/seal-community-development.svg" alt="Community Development SEAL placeholder" width="220" height="257" class="w-[220px] h-auto drop-shadow-2xl" />
+        <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.25rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          Show that community work is <em class="font-display italic font-normal text-seam-300">grounded</em> — not performative
+        </h1>
+        <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+          A limited-scope SEAM recognition for a defined community development initiative — reviewed against a pathway grounded in impacted-party engagement, materiality, design, and completed delivery.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          <a href="/get-started" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+            Talk to an advisor
+          </a>
+          <a href="#pathway" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-8 py-4 text-[15px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
+            See the pathway
+          </a>
         </div>
       </div>
     </div>
+
+    <!-- SEAL shield straddling the hero/white boundary -->
+    <img
+      src="/logos/seal-community-development.svg"
+      alt="Community Development SEAL"
+      width="220"
+      height="257"
+      class="hidden lg:block absolute right-10 xl:right-20 bottom-0 translate-y-1/2 w-[220px] xl:w-[260px] h-auto drop-shadow-2xl z-10 pointer-events-none"
+      decoding="async"
+    />
   </section>
 
   <!-- ─── What this SEAL recognizes ─── -->
@@ -201,6 +208,17 @@ const jsonLd = [
         <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
           A defined SEAM Activity pathway moves an initiative from local context and impacted-party input through materiality, design, and a delivered volunteer event. Each step uses Activities pulled directly from the SEAM Standard.
         </p>
+        <a
+          href={`${STANDARD_URL}/standard?filter=seal%3Acommunity-development`}
+          target="_blank"
+          rel="noopener"
+          class="mt-6 inline-flex items-center gap-2 rounded-full border border-warm-300 bg-white px-5 py-2.5 text-[14px] font-medium text-warm-900 hover:border-seam-400 hover:text-seam-700 transition-colors duration-200"
+        >
+          See all activities on the SEAM Standard
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17 17 7M9 7h8v8" />
+          </svg>
+        </a>
       </div>
 
       {sealActivities.length === 0 ? (

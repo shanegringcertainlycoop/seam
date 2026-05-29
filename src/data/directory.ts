@@ -28,7 +28,7 @@ export interface CertifiedProject {
     | 'Buildings + Interiors'
     | 'Operations + Maintenance'
     | 'Community Development SEAL'
-    | 'Modern Slavery Assessment SEAL'
+    | 'Ethical Procurement SEAL'
   description: string
   completionDate: string
   size: string
@@ -833,20 +833,20 @@ export const certifiedProjects: CertifiedProject[] = [
   },
   {
     slug: 'private-client-modern-slavery-endorsement',
-    name: 'Private Client — Modern Slavery Assessment SEAL',
+    name: 'Private Client — Ethical Procurement SEAL',
     image: '/images/directory/project-modern-slavery-endorsement.jpg',
     location: { city: '', state: '' },
     certificationLevel: 'SEAL',
-    ratingSystem: 'Modern Slavery Assessment SEAL',
+    ratingSystem: 'Ethical Procurement SEAL',
     description:
-      'SEAM is piloting a confidential Modern Slavery Assessment for a real estate investment manager that reports to an Australian reporting entity under the Australian Modern Slavery Act 2018. The project applies relevant SEAM Standard Activities to evaluate how the investment manager identifies, documents, and addresses modern slavery risk across its fund structure, acquisition process, and future asset operations. This work provides practical reporting inputs for the Australian reporting entity while testing how SEAM can verify a focused subset of modern slavery-related requirements. The pilot is informing the creation of the SEAM Modern Slavery Assessment SEAL, a limited-scope certification mark that recognizes completion of a defined subset of the full SEAM Certification framework.',
+      'SEAM is piloting a confidential Modern Slavery Assessment for a real estate investment manager that reports to an Australian reporting entity under the Australian Modern Slavery Act 2018. The project applies relevant SEAM Standard Activities to evaluate how the investment manager identifies, documents, and addresses modern slavery risk across its fund structure, acquisition process, and future asset operations. This work provides practical reporting inputs for the Australian reporting entity while testing how SEAM can verify a focused subset of modern slavery-related requirements. The pilot is informing the creation of the SEAM Ethical Procurement SEAL, a limited-scope certification mark that recognizes completion of a defined subset of the full SEAM Certification framework.',
     completionDate: '',
     size: '',
     owner: 'Global Investment Manager',
     highlights: [
       'Pilot under the Australian Modern Slavery Act 2018',
       'Evaluates modern slavery risk across fund structure, acquisitions, and operations',
-      'Informing the SEAM Modern Slavery Assessment SEAL',
+      'Informing the SEAM Ethical Procurement SEAL',
     ],
     apLead: undefined,
   },
@@ -1001,7 +1001,7 @@ export const ratingSystems = [
   'Buildings + Interiors',
   'Operations + Maintenance',
   'Community Development SEAL',
-  'Modern Slavery Assessment SEAL',
+  'Ethical Procurement SEAL',
 ] as const
 
 export const activityCategories = [

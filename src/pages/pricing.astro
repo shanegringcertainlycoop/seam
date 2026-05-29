@@ -11,7 +11,7 @@ const activeTab: TabKey = tabParam && validTabs.includes(tabParam) ? tabParam : 
 const tabs: { key: TabKey; label: string }[] = [
   { key: 'certification', label: 'Certification' },
   { key: 'marks', label: 'SEAM Marks' },
-  { key: 'seals', label: 'SEAM Seals' },
+  { key: 'seals', label: 'SEAM SEALs' },
   { key: 'credential', label: 'AP Credential' },
   { key: 'membership', label: 'Membership' },
 ]
@@ -50,15 +50,15 @@ const marksTiers = [
   },
 ]
 
-/* ─── SEAM Seals data (placeholder — pricing TBD) ─── */
+/* ─── SEAM SEALs data (placeholder — pricing TBD) ─── */
 const sealsTiers = [
   {
-    name: 'SEAM Seal',
+    name: 'SEAM SEAL',
     price: 'TBD',
     period: '/theme',
-    description: 'A thematic credential awarded for completing a curated set of 18–25 related activities. Themes, activity sets, and pricing are in active development.',
+    description: 'A themed verification awarded for completing a curated set of 11–25 related activities. Themes, activity sets, and pricing are in active development.',
     features: [
-      '18–25 verified activities per theme',
+      '11–25 verified activities per theme',
       'Third-party verification',
       'Directory listing & credential',
       'Counts toward full certification',
@@ -247,16 +247,16 @@ const marksFaqs = [
 
 const sealsFaqs = [
   {
-    q: 'How much does a SEAM Seal cost?',
-    a: 'Pricing is in development. Seals are a new credential between single-activity Marks and full building Certification, awarded across 18\u201325 related activities. Final pricing will be published as each Seal launches.',
+    q: 'How much does a SEAM SEAL cost?',
+    a: 'Pricing is in development. SEALs are a new credential between single-activity Marks and full building Certification, awarded across 18\u201325 related activities. Final pricing will be published as each SEAL launches.',
   },
   {
-    q: 'When will Seals be available?',
-    a: 'SEAM Seals are in active development. The first two themes — Ethical Procurement and Community Development — are being finalized. Talk to an advisor about early access or shaping the first Seals.',
+    q: 'When will SEALs be available?',
+    a: 'SEAM SEALs are in active development. The first two themes — Ethical Procurement and Community Development — are being finalized. Talk to an advisor about early access or shaping the first SEALs.',
   },
   {
-    q: 'How is a Seal different from Bulk Marks?',
-    a: 'Bulk Marks bundle 3\u20135 related activities at a discount. A Seal is broader \u2014 18 to 25 activities in a curated theme \u2014 and is a distinct, named credential representing sustained commitment in a focused area.',
+    q: 'How is a SEAL different from Bulk Marks?',
+    a: 'Bulk Marks bundle 3\u20135 related activities at a discount. A SEAL is broader \u2014 11 to 25 activities in a curated theme \u2014 and is a distinct, named credential representing sustained commitment in a focused area.',
   },
 ]
 
@@ -865,7 +865,7 @@ const jsonLd = [
     </div>
   </div>
 
-  <!-- SEAM Seals Tab -->
+  <!-- SEAM SEALs Tab -->
   <div class={activeTab === 'seals' ? '' : 'hidden'}>
     <div class="py-20 lg:py-28">
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -873,12 +873,12 @@ const jsonLd = [
           <span class="inline-block rounded-full bg-seam-600/10 border border-seam-500/30 px-3 py-1 text-[12px] font-medium text-seam-700 mb-4">
             Coming soon
           </span>
-          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">SEAM Seals</p>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">SEAM SEALs</p>
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            A thematic credential <em class="italic font-normal text-seam-600">between Marks and Certification</em>
+            A themed verification <em class="italic font-normal text-seam-600">between Marks and Certification</em>
           </h2>
           <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
-            SEAM Seals are awarded for completing a curated set of 18 to 25 related activities. Themes, activity sets, and pricing are in active development. Talk to an advisor about early access.
+            SEAM SEALs are awarded for completing a curated set of 11 to 25 related activities. Themes, activity sets, and pricing are in active development. Talk to an advisor about early access.
           </p>
         </div>
 
@@ -911,7 +911,7 @@ const jsonLd = [
         </div>
 
         <div class="mt-20 max-w-3xl">
-          <h3 class="font-display text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-warm-900 mb-8">SEAM Seals pricing FAQ</h3>
+          <h3 class="font-display text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-warm-900 mb-8">SEAM SEALs pricing FAQ</h3>
           {sealsFaqs.map((faq) => (
             <details class="border-b border-warm-200 group">
               <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">

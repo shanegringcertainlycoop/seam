@@ -63,37 +63,37 @@ interface NavGroup {
   quickLinks?: Array<{ label: string; href: string; external?: boolean }>
 }
 
-const commitments: NavGroup = {
-  label: 'Commitments',
+const takeAction: NavGroup = {
+  label: 'Take Action',
   links: [],
   progression: [
     {
       step: 'Step 1',
       label: 'SEAM Marks',
       href: '/marks',
-      tagline: '$750+ per activity',
+      tagline: 'Single activity verification',
       description: 'Verify one activity (Single Mark) or a bundle of 3–5 (Bulk Marks). The entry point.',
       accent: 'soft',
     },
     {
       step: 'Step 2',
-      label: 'SEAM Seals',
+      label: 'SEAM SEALs',
       href: '/seals',
-      tagline: '18–25 activities',
-      description: 'A thematic credential demonstrating sustained commitment in a focused area.',
+      tagline: 'Themed activity verification',
+      description: 'A verified set of 11–25 themed activities demonstrating commitment in a focused area.',
       accent: 'core',
     },
     {
       step: 'Step 3',
       label: 'SEAM Certification',
       href: '/certification',
-      tagline: 'Whole-building · all 4 pillars',
-      description: 'Full building certification — Bronze through Platinum. The complete credential.',
+      tagline: 'Whole-building verification',
+      description: 'Full building certification — Bronze through Platinum.',
       accent: 'deep',
     },
   ],
   quickLinks: [
-    { label: 'Compare commitments', href: '/commitments' },
+    { label: 'Compare actions', href: '/commitments' },
     { label: 'Pricing', href: '/pricing' },
     { label: 'Talk to an Advisor', href: '/get-started' },
   ],
@@ -262,7 +262,7 @@ const directory: NavGroup = {
   ],
 }
 
-const dropdowns = [commitments, network, theStandard, directory, resources]
+const dropdowns = [takeAction, network, theStandard, directory, resources]
 
 function logoClass(_logo: string) {
   return 'w-11 h-11'
@@ -371,11 +371,11 @@ function logoClass(_logo: string) {
                     </a>
                   </div>
                 </div>
-              ) : group.label === 'Commitments' && group.progression ? (
+              ) : group.label === 'Take Action' && group.progression ? (
                 <div class="rounded-2xl border border-warm-100 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.08)] w-[960px] overflow-hidden">
                   {/* Progression hero */}
                   <div class="relative bg-gradient-to-br from-warm-900 via-warm-900 to-seam-900 px-8 py-7">
-                    <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold-400 mb-2">Earn a credential</p>
+                    <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold-400 mb-2">Take Action</p>
                     <p class="font-display text-[22px] leading-[1.15] tracking-[-0.02em] text-white mb-6">
                       Choose your depth of commitment.
                     </p>
@@ -397,9 +397,9 @@ function logoClass(_logo: string) {
                                 step.accent === 'deep' ? 'text-gold-300' : step.accent === 'core' ? 'text-seam-300' : 'text-warm-400'
                               }`}>{step.step}</p>
                               {step.label === 'SEAM Marks' && (
-                                <img src="/logos/approved-wordmark.png" alt="" aria-hidden="true" loading="lazy" decoding="async" class="h-8 w-auto object-contain opacity-90" />
+                                <img src="/logos/mark-activity.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" class="h-8 w-auto object-contain opacity-90" />
                               )}
-                              {step.label === 'SEAM Seals' && (
+                              {step.label === 'SEAM SEALs' && (
                                 <div class="flex items-center -space-x-2">
                                   <img src="/logos/seal-ethical-procurement.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" class="w-8 h-auto drop-shadow" />
                                   <img src="/logos/seal-community-development.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" class="w-8 h-auto drop-shadow" />
@@ -774,7 +774,7 @@ function logoClass(_logo: string) {
               </>
             ) : group.progression?.length ? (
               <>
-                <p class="pt-2 pb-1 text-[12px] font-medium uppercase tracking-[0.12em] text-warm-400">Earn a credential</p>
+                <p class="pt-2 pb-1 text-[12px] font-medium uppercase tracking-[0.12em] text-warm-400">Take Action</p>
                 {group.progression.map((step) => (
                   <a href={step.href} class="block py-2.5 text-[16px] text-warm-600 hover:text-warm-900">
                     <span class="block">{step.label}</span>
