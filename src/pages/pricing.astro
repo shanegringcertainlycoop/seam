@@ -50,21 +50,35 @@ const marksTiers = [
   },
 ]
 
-/* ─── SEAM SEALs data (placeholder — pricing TBD) ─── */
+/* ─── SEAM SEALs data ─── */
 const sealsTiers = [
   {
-    name: 'SEAM SEAL',
-    price: 'TBD',
-    period: '/theme',
-    description: 'A themed verification awarded for completing a curated set of 11–25 related activities. Themes, activity sets, and pricing are in active development.',
+    name: 'Ethical Procurement SEAL',
+    price: '$2,500',
+    period: '/SEAL',
+    description: 'Show your supply chain can stand up to modern-slavery and human-rights scrutiny — aligned with the Australian and UK Modern Slavery Acts, UFLPA, the EU Forced Labour Regulation, UNGPs, OECD, and ILO standards.',
     features: [
-      '11–25 verified activities per theme',
-      'Third-party verification',
-      'Directory listing & credential',
+      '11–25 verified activities in the EP pathway',
+      'Independent review against the SEAL pathway',
+      'Public listing with Assessment Scope',
       'Counts toward full certification',
     ],
     cta: 'Talk to an advisor',
     highlighted: false,
+  },
+  {
+    name: 'Community Development SEAL',
+    price: '$1,250',
+    period: '/SEAL',
+    description: 'Prove a community initiative is real work — designed with impacted parties, tied to a material issue, delivered, and independently reviewed.',
+    features: [
+      '11–25 verified activities in the CD pathway',
+      'Independent review against the SEAL pathway',
+      'Public listing with Assessment Scope',
+      'Counts toward full certification',
+    ],
+    cta: 'Talk to an advisor',
+    highlighted: true,
   },
 ]
 
@@ -251,7 +265,7 @@ const sealsFaqs = [
   },
   {
     q: 'When will SEALs be available?',
-    a: 'SEAM SEALs are in active development. The first two themes — Ethical Procurement and Community Development — are being finalized. Talk to an advisor about early access or shaping the first SEALs.',
+    a: 'The first two SEALs — Ethical Procurement ($2,500) and Community Development ($1,250) — are available now in pilot. Each SEAL is a flat fee per Assessment Scope. Talk to an advisor about scoping yours.',
   },
   {
     q: 'How is a SEAL different from Bulk Marks?',
@@ -870,14 +884,14 @@ const jsonLd = [
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
           <span class="inline-block rounded-full bg-seam-600/10 border border-seam-500/30 px-3 py-1 text-[12px] font-medium text-seam-700 mb-4">
-            Coming soon
+            Pilot cohort open
           </span>
           <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">SEAM SEALs</p>
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-            A themed verification <em class="italic font-normal text-seam-600">between Marks and Certification</em>
+            A themed recognition <em class="italic font-normal text-seam-600">between Marks and Certification</em>
           </h2>
           <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
-            SEAM SEALs are awarded for completing a curated set of 11 to 25 related activities. Themes, activity sets, and pricing are in active development. Talk to an advisor about early access.
+            SEAM SEALs are awarded for completing a curated set of 11–25 related activities. The first two — Ethical Procurement and Community Development — are available now in pilot cohorts.
           </p>
         </div>
 
