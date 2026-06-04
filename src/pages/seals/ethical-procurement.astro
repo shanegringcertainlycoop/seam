@@ -9,6 +9,8 @@ const STANDARD_URL = (import.meta.env.STANDARD_URL as string | undefined) ?? 'ht
 type StandardSealActivity = {
   activityId: string
   title: string
+  marketingTitle?: string
+  displayTitle?: string
   url: string
   activityType: 'Driver' | 'Impact'
   pillar: { slug: string; title: string }
@@ -383,7 +385,7 @@ const jsonLd = [
                         </span>
                       </div>
                       <h4 class="font-display text-[16px] tracking-[-0.02em] text-warm-900 leading-snug mb-2 group-hover:text-seam-700 transition-colors">
-                        {a.title}
+                        {a.displayTitle ?? a.title}
                       </h4>
                       {activityRoles[id] && (
                         <p class="text-[13px] leading-relaxed text-warm-600 mb-3">
@@ -442,7 +444,7 @@ const jsonLd = [
                   </span>
                 </div>
                 <h4 class="font-display text-[16px] tracking-[-0.02em] text-warm-900 leading-snug mb-2 group-hover:text-seam-700 transition-colors">
-                  {a.title}
+                  {a.displayTitle ?? a.title}
                 </h4>
                 <p class="text-[13px] leading-relaxed text-warm-600 mb-3">
                   <strong class="font-semibold text-warm-700">When it applies:</strong> {st.trigger}
@@ -529,7 +531,7 @@ const jsonLd = [
           <img src="/logos/seal-ethical-procurement.svg" alt="" aria-hidden="true" class="absolute -top-10 right-6 lg:-top-12 lg:right-10 w-24 lg:w-28 h-auto drop-shadow-md" loading="lazy" decoding="async" />
           <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-4 pr-28 lg:pr-32">Ethical Procurement Seal</p>
           <div class="flex items-baseline gap-1 mb-2">
-            <span class="font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.03em] text-warm-900">$2,500</span>
+            <span class="font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.03em] text-warm-900">$5,000</span>
           </div>
           <p class="text-[15px] text-warm-500 mb-8">per Seal · per Assessment Scope</p>
           <ul class="space-y-4 mb-10">

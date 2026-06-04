@@ -2,8 +2,36 @@
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../lib/seo-helpers'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
+import ConceptBadge from '../../components/ConceptBadge.astro'
 
-const STANDARD_URL = 'https://standard.seamcertification.org'
+const STANDARD_URL = (import.meta.env.STANDARD_URL as string | undefined) ?? 'https://standard.seamcertification.org'
+
+type StandardActivity = {
+  activityId: string
+  displayTitle: string
+  title: string
+  marketingTitle?: string
+  url: string
+  activityType: 'Driver' | 'Impact'
+  concept: { slug: string; code: string; title: string }
+  objective: { slug: string; code: string; title: string }
+}
+
+let pillarActivities: StandardActivity[] = []
+try {
+  const res = await fetch(`${STANDARD_URL}/api/activities.json`)
+  if (res.ok) {
+    const data = (await res.json()) as { pillars?: Array<{ slug: string; activities: StandardActivity[] }> }
+    const match = data.pillars?.find((p) => p.slug === 'social-impact')
+    pillarActivities = match?.activities ?? []
+  }
+} catch {
+  // Endpoint unreachable at build time. Fall back to empty list.
+}
+
+const CONCEPT_CODES: Record<string, string> = {
+  'Impact Assessment': 'IA',
+}
 
 const focusAreas = [
   {
@@ -131,7 +159,7 @@ const focusAreas = [
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
         <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
-          Focus areas
+          Concepts and Objectives
         </p>
         <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
           Three ways to{' '}
@@ -150,9 +178,12 @@ const focusAreas = [
             rel="noopener"
             class="reveal-child block rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-seam-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] group"
           >
-            <span class="text-[12px] font-normal uppercase tracking-[0.1em] text-[#6B8F9C] mb-4 block">
-              {area.concept}
-            </span>
+            <div class="flex items-center gap-2 mb-4">
+              <ConceptBadge code={CONCEPT_CODES[area.concept] ?? ''} size="xs" />
+              <span class="text-[12px] font-normal uppercase tracking-[0.1em] text-[#6B8F9C]">
+                {area.concept}
+              </span>
+            </div>
             <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-700 transition-colors">
               {area.title}
             </h3>
@@ -167,6 +198,35 @@ const focusAreas = [
       </div>
     </div>
   </section>
+
+  <!-- Activities -->
+  {pillarActivities.length > 0 && (
+    <section class="py-24 lg:py-32 bg-white">
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div class="reveal-slide-left max-w-2xl mb-12 lg:mb-16">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+            Activities
+          </p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            Every activity in <em class="italic font-normal text-seam-600">Social Impact.</em>
+          </h2>
+          <p class="mt-4 text-[17px] leading-relaxed text-warm-600">
+            All {pillarActivities.length} activities that contribute to Social Impact across the concepts above.
+          </p>
+        </div>
+
+        <div class="reveal-stagger overflow-hidden rounded-2xl border border-warm-100 bg-white">
+          <ul class="divide-y divide-warm-100">
+            {pillarActivities.map((a) => (
+              <li>
+                <a href={a.url} target="_blank" rel="noopener" class="group flex items-baseline gap-3 px-5 py-3 hover:bg-warm-50 transition-colors"><ConceptBadge code={a.concept.code} size="xs" class="shrink-0 self-center" /><span class="font-mono text-[11px] text-warm-500 group-hover:text-seam-600 w-16 shrink-0">{a.activityId}</span><span class="flex-1 text-[15px] text-warm-800 group-hover:text-seam-700 transition-colors">{a.title}</span><span class="hidden sm:inline shrink-0 font-mono text-[11px] text-warm-500 w-14 text-right">{a.objective.code}</span><span class="shrink-0 text-[10px] uppercase tracking-wider text-warm-500 w-14 text-right">{a.activityType}</span></a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Why It Matters -->
   <section class="py-24 lg:py-32 bg-warm-900">

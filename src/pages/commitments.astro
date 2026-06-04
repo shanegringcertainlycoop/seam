@@ -8,7 +8,7 @@ const steps = [
     label: 'SEAM Marks',
     href: '/marks',
     tagline: 'Single activity verification',
-    scope: 'One activity (Single Mark) or 3–5 related activities (Bulk Marks)',
+    scope: 'One activity (Single Mark) or 3 related activities (Bulk Marks)',
     bestFor: 'Property managers, operators, and anchor institutions looking for quick, verifiable proof of existing equity work — without taking on a full certification.',
     timeline: '4–6 weeks per submission',
     starting: 'From $750',
@@ -17,14 +17,14 @@ const steps = [
   },
   {
     step: '02',
-    label: 'SEAM Seals',
+    label: 'SEAM Seal',
     href: '/seals',
     tagline: 'Themed activity verification',
     scope: '11–25 related activities organized around a defined theme and Assessment Scope',
     bestFor: 'Organizations ready to demonstrate sustained action in a focused area — supply chain due diligence, community development, etc. — without pursuing whole-building certification.',
     timeline: 'Reviewed per Assessment Scope',
-    starting: 'From $1,250',
-    examples: ['Ethical Procurement Seal ($2,500)', 'Community Development Seal ($1,250)'],
+    starting: 'From $2,500',
+    examples: ['Ethical Procurement Seal ($5,000)', 'Community Development Seal ($2,500)'],
     accent: 'core',
   },
   {
@@ -33,7 +33,7 @@ const steps = [
     href: '/certification',
     tagline: 'Whole-building verification',
     scope: 'Full project across Social Impact, Responsibility, Justice, and Accountability',
-    bestFor: 'Owners, developers, and operators ready to commit to comprehensive, third-party-verified social equity for a building. Bronze through Platinum.',
+    bestFor: 'Owners, developers, and operators ready to commit to comprehensive, third-party-verified social equity for a building. Recognized at four levels of achievement.',
     timeline: '6–12 months from registration to award',
     starting: 'From $7,625 first-year',
     examples: ['New construction or major renovation', 'Operations + Maintenance for existing buildings'],
@@ -44,7 +44,7 @@ const steps = [
 const comparisonRows = [
   {
     label: 'Scope',
-    marks: 'One or 3–5 activities',
+    marks: 'One or 3 activities',
     seals: '11–25 activities, themed',
     cert: 'Full building, all 4 pillars',
   },
@@ -75,7 +75,7 @@ const comparisonRows = [
   {
     label: 'Starting cost',
     marks: '$750 / activity',
-    seals: '$1,250 (CD) / $2,500 (EP)',
+    seals: '$2,500 (CD) / $5,000 (EP)',
     cert: 'From $7,625 first year',
   },
   {
@@ -93,7 +93,7 @@ const decisionPrompts = [
     href: '/marks',
   },
   {
-    if: 'You have 3–5 related practices to verify together',
+    if: 'You have 3 related practices to verify together',
     then: 'Choose Bulk Marks',
     href: '/marks',
   },
@@ -239,7 +239,7 @@ const jsonLd = [
                   <p class={`text-[11px] font-medium uppercase tracking-[0.15em] mb-2 ${
                     s.accent === 'deep' ? 'text-warm-400' : 'text-warm-500'
                   }`}>Examples</p>
-                  {s.label === 'SEAM Seals' ? (
+                  {s.label === 'SEAM Seal' ? (
                     <div class="grid grid-cols-2 gap-3 max-w-md">
                       <a href="/seals/ethical-procurement" class="group flex items-center gap-3 rounded-xl bg-white border border-warm-200 p-3 transition-all duration-200 hover:border-warm-300 hover:shadow-sm">
                         <img src="/logos/seal-ethical-procurement.svg" alt="Ethical Procurement Seal placeholder" width="48" height="56" loading="lazy" decoding="async" class="w-12 h-14 shrink-0" />
@@ -363,7 +363,7 @@ const jsonLd = [
               </th>
               <th class="px-6 py-5 text-[13px] font-medium text-warm-900 bg-seam-50/50">
                 <span class="block text-[11px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-1">Step 02</span>
-                SEAM Seals
+                SEAM Seal
               </th>
               <th class="px-6 py-5 text-[13px] font-medium text-warm-900">
                 <span class="block text-[11px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-1">Step 03</span>

@@ -71,24 +71,24 @@ const takeAction: NavGroup = {
       step: '',
       label: 'SEAM Marks',
       href: '/marks',
-      tagline: 'Verify one human-impact activity',
-      description: '',
+      tagline: 'Verify one practice',
+      description: 'The simplest way to show a single human-impact practice is independently verified.',
       accent: 'soft',
     },
     {
       step: '',
-      label: 'SEAM Seals',
+      label: 'SEAM Seal',
       href: '/seals',
-      tagline: 'A verified set of activities in one focus area',
-      description: '',
+      tagline: 'Lead a full focus area',
+      description: 'Bundle related verified practices into one recognizable badge of leadership.',
       accent: 'core',
     },
     {
       step: '',
       label: 'SEAM Certification',
       href: '/certification',
-      tagline: 'Whole-building verification',
-      description: 'Full building certification — Bronze through Platinum.',
+      tagline: 'Recognize the whole project',
+      description: "Project-wide recognition across all four pillars, awarded at four levels based on how far the project goes.",
       accent: 'deep',
     },
   ],
@@ -396,7 +396,7 @@ function logoClass(_logo: string) {
                               {step.label === 'SEAM Marks' && (
                                 <img src="/logos/mark-activity.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" class="h-8 w-auto object-contain opacity-90" />
                               )}
-                              {step.label === 'SEAM Seals' && (
+                              {step.label === 'SEAM Seal' && (
                                 <div class="flex items-center -space-x-2">
                                   <img src="/logos/seal-ethical-procurement.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" class="w-8 h-auto drop-shadow" />
                                   <img src="/logos/seal-community-development.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" class="w-8 h-auto drop-shadow" />

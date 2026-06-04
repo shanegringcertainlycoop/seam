@@ -1,0 +1,45 @@
+---
+/**
+ * Compact colored badge showing a concept code (IA, TG, CI, SI, SJ, IN, HR, HS).
+ * Mirrors the digital Standard's ConceptBadge component on the marketing
+ * site so the two surfaces feel consistent.
+ */
+interface Props {
+  code: string
+  size?: 'xs' | 'sm' | 'md'
+  class?: string
+}
+
+const { code, size = 'sm', class: className = '' } = Astro.props
+
+const CONCEPT_COLORS: Record<string, string> = {
+  IA: 'bg-seam-700',
+  TG: 'bg-gold-500',
+  CI: 'bg-warm-700',
+  SI: 'bg-black',
+  SJ: 'bg-amber-600',
+  IN: 'bg-emerald-700',
+  HR: 'bg-rose-700',
+  HS: 'bg-sky-700',
+}
+
+const prefix = code.slice(0, 2).toUpperCase()
+const bg = CONCEPT_COLORS[prefix] ?? 'bg-warm-700'
+
+const sizeClass = {
+  xs: 'h-5 w-5 text-[8px]',
+  sm: 'h-6 w-6 text-[9px]',
+  md: 'h-7 w-7 text-[10px]',
+}[size]
+---
+
+<span
+  class:list={[
+    'inline-flex items-center justify-center rounded-full font-mono font-semibold uppercase tracking-wider text-white',
+    bg,
+    sizeClass,
+    className,
+  ]}
+>
+  {code}
+</span>

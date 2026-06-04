@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../lib/seo-helpers'
+import ConceptBadge from '../../components/ConceptBadge.astro'
 
 const differentiators = [
   { number: '01', title: 'Contextual assessment', seam: 'Requires a Social Impact Assessment for every project — understanding the people, the place, and the issues material to this specific context before any other work begins.', others: 'Prescribe social goals without understanding of community context or what issues are actually material to the project.' },
@@ -168,6 +169,74 @@ const audiences = [
     href: '/for/impact-professionals',
   },
 ]
+
+const STANDARD_URL = (import.meta.env.STANDARD_URL as string | undefined) ?? 'https://standard.seamcertification.org'
+
+type StandardActivity = {
+  activityId: string
+  title: string
+  marketingTitle?: string
+  displayTitle: string
+  url: string
+  activityType: 'Driver' | 'Impact'
+  concept: { slug: string; code: string; title: string }
+  objective: { slug: string; code: string; title: string }
+}
+type StandardPillar = { slug: string; title: string; activityCount: number; activities: StandardActivity[] }
+
+let allPillars: StandardPillar[] = []
+try {
+  const res = await fetch(`${STANDARD_URL}/api/activities.json`)
+  if (res.ok) {
+    const data = (await res.json()) as { pillars?: StandardPillar[] }
+    allPillars = data.pillars ?? []
+  }
+} catch {
+  // Endpoint unreachable at build time. Fall back to empty lists.
+}
+
+type StandardConcept = { code: string; slug: string; title: string; pillarSlug: string; pillarTitle: string; activityCount: number }
+type StandardObjective = { code: string; slug: string; title: string; pillarSlug: string; conceptSlug: string; conceptCode: string; conceptTitle: string; activityCount: number }
+const conceptsBy = new Map<string, StandardConcept>()
+const objectivesBy = new Map<string, StandardObjective>()
+const allActivitiesFlat: StandardActivity[] = []
+for (const p of allPillars) {
+  for (const a of p.activities) {
+    allActivitiesFlat.push(a)
+    const conceptKey = a.concept.code
+    const conceptExisting = conceptsBy.get(conceptKey)
+    if (conceptExisting) {
+      conceptExisting.activityCount += 1
+    } else {
+      conceptsBy.set(conceptKey, {
+        code: a.concept.code,
+        slug: a.concept.slug,
+        title: a.concept.title,
+        pillarSlug: p.slug,
+        pillarTitle: p.title,
+        activityCount: 1,
+      })
+    }
+    const objectiveKey = a.objective.code
+    const objectiveExisting = objectivesBy.get(objectiveKey)
+    if (objectiveExisting) {
+      objectiveExisting.activityCount += 1
+    } else {
+      objectivesBy.set(objectiveKey, {
+        code: a.objective.code,
+        slug: a.objective.slug,
+        title: a.objective.title,
+        pillarSlug: p.slug,
+        conceptSlug: a.concept.slug,
+        conceptCode: a.concept.code,
+        conceptTitle: a.concept.title,
+        activityCount: 1,
+      })
+    }
+  }
+}
+const allConcepts = Array.from(conceptsBy.values())
+const allObjectives = Array.from(objectivesBy.values())
 ---
 
 <SiteLayout
@@ -382,6 +451,138 @@ const audiences = [
     </div>
   </section>
 
+  <!-- Concepts -->
+  {allConcepts.length > 0 && (
+    <section class="py-24 lg:py-32">
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div class="reveal-slide-left max-w-2xl mb-12 lg:mb-16">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Concepts</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            All {allConcepts.length} concepts <em class="italic font-normal text-seam-600">across the Standard</em>
+          </h2>
+          <p class="mt-4 text-[17px] leading-relaxed text-warm-600">
+            Each pillar is built from concepts. Together they organize the {allActivitiesFlat.length} activities you can pursue under the SEAM Standard.
+          </p>
+        </div>
+
+        <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {allConcepts.map((c) => (
+            <a
+              href={`${STANDARD_URL}/${c.pillarSlug}/${c.slug}`}
+              target="_blank"
+              rel="noopener"
+              class="group rounded-2xl border border-warm-100 bg-white p-6 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col"
+            >
+              <div class="flex items-center gap-2 mb-3">
+                <ConceptBadge code={c.code} size="sm" />
+                <span class="font-mono text-[11px] uppercase tracking-[0.1em] text-warm-500">{c.code}</span>
+              </div>
+              <h3 class="font-display text-[18px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-700 transition-colors mb-2">
+                {c.title}
+              </h3>
+              <p class="text-[12px] uppercase tracking-[0.1em] text-warm-500 mb-3">{c.pillarTitle}</p>
+              <p class="text-[13px] text-warm-500 mt-auto">
+                {c.activityCount} activit{c.activityCount === 1 ? 'y' : 'ies'}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Objectives -->
+  {allObjectives.length > 0 && (
+    <section class="py-24 lg:py-32 bg-warm-50">
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div class="reveal-slide-left max-w-2xl mb-12 lg:mb-16">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Objectives</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            All {allObjectives.length} objectives <em class="italic font-normal text-seam-600">in the Standard</em>
+          </h2>
+          <p class="mt-4 text-[17px] leading-relaxed text-warm-600">
+            Each concept is broken down into objectives — the operational outcomes a project demonstrates through its verified activities.
+          </p>
+        </div>
+
+        <div class="reveal-stagger overflow-hidden rounded-2xl border border-warm-100 bg-white">
+          <ul class="divide-y divide-warm-100">
+            {allObjectives.map((o) => (
+              <li>
+                <a
+                  href={`${STANDARD_URL}/${o.pillarSlug}/${o.conceptSlug}/${o.slug}`}
+                  target="_blank"
+                  rel="noopener"
+                  class="group flex items-baseline gap-3 px-5 py-3 hover:bg-warm-50 transition-colors"
+                >
+                  <ConceptBadge code={o.conceptCode} size="xs" class="shrink-0 self-center" />
+                  <span class="font-mono text-[11px] text-warm-500 group-hover:text-seam-600 w-16 shrink-0">
+                    {o.code}
+                  </span>
+                  <span class="flex-1 text-[15px] text-warm-800 group-hover:text-seam-700 transition-colors">
+                    {o.title}
+                  </span>
+                  <span class="hidden sm:inline shrink-0 text-[11px] uppercase tracking-[0.08em] text-warm-500 w-40 truncate text-right">
+                    {o.conceptTitle}
+                  </span>
+                  <span class="shrink-0 text-[10px] uppercase tracking-wider text-warm-500 w-20 text-right">
+                    {o.activityCount} activit{o.activityCount === 1 ? 'y' : 'ies'}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Activities -->
+  {allActivitiesFlat.length > 0 && (
+    <section class="py-24 lg:py-32">
+      <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+        <div class="reveal-slide-left max-w-2xl mb-12 lg:mb-16">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Activities</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            All {allActivitiesFlat.length} activities, <em class="italic font-normal text-seam-600">listed out</em>
+          </h2>
+          <p class="mt-4 text-[17px] leading-relaxed text-warm-600">
+            Every activity in the SEAM Standard. Each one can be earned and verified — through full Certification, a Seal, or a standalone Mark.
+          </p>
+        </div>
+
+        <div class="reveal-stagger overflow-hidden rounded-2xl border border-warm-100 bg-white">
+          <ul class="divide-y divide-warm-100">
+            {allActivitiesFlat.map((a) => (
+              <li>
+                <a
+                  href={a.url}
+                  target="_blank"
+                  rel="noopener"
+                  class="group flex items-baseline gap-3 px-5 py-3 hover:bg-warm-50 transition-colors"
+                >
+                  <ConceptBadge code={a.concept.code} size="xs" class="shrink-0 self-center" />
+                  <span class="font-mono text-[11px] text-warm-500 group-hover:text-seam-600 w-16 shrink-0">
+                    {a.activityId}
+                  </span>
+                  <span class="flex-1 text-[15px] text-warm-800 group-hover:text-seam-700 transition-colors">
+                    {a.title}
+                  </span>
+                  <span class="hidden sm:inline shrink-0 font-mono text-[11px] text-warm-500 w-14 text-right">
+                    {a.objective.code}
+                  </span>
+                  <span class="shrink-0 text-[10px] uppercase tracking-wider text-warm-500 w-14 text-right">
+                    {a.activityType}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- How It Works -->
   <section class="py-24 lg:py-32 bg-warm-50">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -505,62 +706,6 @@ const audiences = [
             </div>
           ))}
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certification Levels -->
-  <section id="levels" class="py-24 lg:py-32">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Certification levels</p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Recognition that reflects{' '}<em class="italic font-normal text-seam-600">real progress</em>
-        </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
-          Four levels of SEAM Certification align to the Impact Management Project&apos;s ABCs: avoiding harm, benefiting people, and contributing to solutions.
-        </p>
-      </div>
-
-      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-        {levels.map((level, i) => (
-          <div class={`reveal-child relative rounded-2xl ${levelIntensities[i]} pt-14 pb-8 px-8 lg:pt-14 lg:pb-10 lg:px-10`}>
-            <img src={level.logo} alt={`${level.name} certification`} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" loading="lazy" decoding="async" />
-            <h3 class={`relative font-display text-[28px] tracking-[-0.02em] ${levelTextColors[i]}`}>{level.name}</h3>
-            <p class={`mt-1 text-[14px] font-medium ${levelSubColors[i]}`}>{level.tagline}</p>
-            <p class={`mt-4 text-[15px] leading-relaxed ${levelBodyColors[i]}`}>{level.description}</p>
-            <p class={`mt-5 text-[12px] uppercase tracking-[0.1em] ${levelSubColors[i]} border-t ${levelBorderColors[i]} pt-4`}>
-              IMP: {level.imp}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Rating Systems -->
-  <section class="py-24 lg:py-32 bg-warm-50">
-    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
-      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Rating systems</p>
-        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
-          Tailored to{' '}<em class="italic font-normal text-seam-600">how you build</em>
-        </h2>
-        <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
-          Not every activity will apply to every project. SEAM's rating systems ensure that certification reflects your project type and role.
-        </p>
-      </div>
-
-      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6 pt-12">
-        {ratings.map((r) => (
-          <a href={r.href} class="reveal-child group relative rounded-2xl bg-white pt-14 pb-8 px-8 lg:pt-14 lg:pb-10 lg:px-10 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-            <img src={r.mark} alt={r.code} class="absolute -top-10 right-4 w-24 h-24 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]" loading="lazy" decoding="async" />
-            <span class="inline-block rounded-lg bg-seam-50 px-3 py-1.5 text-[13px] font-mono font-medium text-gold-600 mb-4">{r.code}</span>
-            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-600 transition-colors">{r.title}</h3>
-            <p class="text-[15px] leading-relaxed text-warm-600">{r.description}</p>
-            <span class="inline-block mt-4 text-[14px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">Explore rating system &rarr;</span>
-          </a>
-        ))}
       </div>
     </div>
   </section>
