@@ -83,6 +83,12 @@
   to = "/certification"
   status = 301
 
+# /commitments renamed → /compare
+[[redirects]]
+  from = "/commitments"
+  to = "/compare"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
