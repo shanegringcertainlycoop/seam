@@ -8,7 +8,7 @@ const steps = [
     label: 'SEAM Marks',
     href: '/marks',
     tagline: 'Single activity verification',
-    scope: 'One activity (Single Mark) or 3–5 related activities (Bulk Marks)',
+    scope: 'One activity (Single Mark) or 3 related activities (Bulk Marks)',
     bestFor: 'Property managers, operators, and anchor institutions looking for quick, verifiable proof of existing equity work — without taking on a full certification.',
     timeline: '4–6 weeks per submission',
     starting: 'From $750',
@@ -17,14 +17,14 @@ const steps = [
   },
   {
     step: '02',
-    label: 'SEAM SEALs',
+    label: 'SEAM Seal',
     href: '/seals',
     tagline: 'Themed activity verification',
     scope: '11–25 related activities organized around a defined theme and Assessment Scope',
     bestFor: 'Organizations ready to demonstrate sustained action in a focused area — supply chain due diligence, community development, etc. — without pursuing whole-building certification.',
     timeline: 'Reviewed per Assessment Scope',
-    starting: 'From $1,250',
-    examples: ['Ethical Procurement SEAL ($2,500)', 'Community Development SEAL ($1,250)'],
+    starting: 'From $2,500',
+    examples: ['Ethical Procurement Seal ($5,000)', 'Community Development Seal ($2,500)'],
     accent: 'core',
   },
   {
@@ -33,7 +33,7 @@ const steps = [
     href: '/certification',
     tagline: 'Whole-building verification',
     scope: 'Full project across Social Impact, Responsibility, Justice, and Accountability',
-    bestFor: 'Owners, developers, and operators ready to commit to comprehensive, third-party-verified social equity for a building. Bronze through Platinum.',
+    bestFor: 'Owners, developers, and operators ready to commit to comprehensive, third-party-verified social equity for a building. Recognized at four levels of achievement.',
     timeline: '6–12 months from registration to award',
     starting: 'From $7,625 first-year',
     examples: ['New construction or major renovation', 'Operations + Maintenance for existing buildings'],
@@ -44,7 +44,7 @@ const steps = [
 const comparisonRows = [
   {
     label: 'Scope',
-    marks: 'One or 3–5 activities',
+    marks: 'One or 3 activities',
     seals: '11–25 activities, themed',
     cert: 'Full building, all 4 pillars',
   },
@@ -57,7 +57,7 @@ const comparisonRows = [
   {
     label: 'Verification',
     marks: 'Third-party, per activity',
-    seals: 'Independent review against SEAL pathway',
+    seals: 'Independent review against Seal pathway',
     cert: 'Third-party, including site verification + community surveys',
   },
   {
@@ -75,7 +75,7 @@ const comparisonRows = [
   {
     label: 'Starting cost',
     marks: '$750 / activity',
-    seals: '$1,250 (CD) / $2,500 (EP)',
+    seals: '$2,500 (CD) / $5,000 (EP)',
     cert: 'From $7,625 first year',
   },
   {
@@ -93,13 +93,13 @@ const decisionPrompts = [
     href: '/marks',
   },
   {
-    if: 'You have 3–5 related practices to verify together',
+    if: 'You have 3 related practices to verify together',
     then: 'Choose Bulk Marks',
     href: '/marks',
   },
   {
     if: 'You want to prove sustained action in one theme (procurement, community impact, etc.)',
-    then: 'Pursue a SEAL',
+    then: 'Pursue a Seal',
     href: '/seals',
   },
   {
@@ -109,12 +109,12 @@ const decisionPrompts = [
   },
   {
     if: 'You are reviewing modern slavery / forced labor disclosures',
-    then: 'Look at the Ethical Procurement SEAL',
+    then: 'Look at the Ethical Procurement Seal',
     href: '/seals/ethical-procurement',
   },
   {
     if: 'You are running a defined community initiative tied to a project',
-    then: 'Look at the Community Development SEAL',
+    then: 'Look at the Community Development Seal',
     href: '/seals/community-development',
   },
 ]
@@ -123,22 +123,22 @@ const faqs = [
   {
     question: 'Do I have to start with Marks?',
     answer:
-      'No. Each one stands on its own. Many organizations start with Marks because they map to work already in place, but you can pursue a SEAL or full Certification directly when your scope and timeline fit.',
+      'No. Each one stands on its own. Many organizations start with Marks because they map to work already in place, but you can pursue a Seal or full Certification directly when your scope and timeline fit.',
   },
   {
-    question: 'If I earn Marks first, do they count toward a SEAL or Certification?',
+    question: 'If I earn Marks first, do they count toward a Seal or Certification?',
     answer:
-      'Yes. Every verified activity carries credit toward its pillar. Activities completed for a Mark or a SEAL carry forward toward future SEAM recognition when scope, entity, reporting period, evidence, and applicable rating system remain aligned with SEAM requirements.',
+      'Yes. Every verified activity carries credit toward its pillar. Activities completed for a Mark or a Seal carry forward toward future SEAM recognition when scope, entity, reporting period, evidence, and applicable rating system remain aligned with SEAM requirements.',
   },
   {
-    question: 'How do I decide between a SEAL and Certification?',
+    question: 'How do I decide between a Seal and Certification?',
     answer:
-      'A SEAL is themed verification — proof of sustained action in one focused area (11–25 activities). Certification is whole-building verification across all four pillars. If your scope is one theme, choose a SEAL. If your scope is a building, choose Certification.',
+      'A Seal is themed verification — proof of sustained action in one focused area (11–25 activities). Certification is whole-building verification across all four pillars. If your scope is one theme, choose a Seal. If your scope is a building, choose Certification.',
   },
   {
     question: 'Can I pursue more than one action in parallel?',
     answer:
-      'Yes. Many organizations layer them — earning Marks while preparing for a SEAL, or running a SEAL alongside a Certification effort on a separate project. Talk to an advisor about the best sequence for your portfolio.',
+      'Yes. Many organizations layer them — earning Marks while preparing for a Seal, or running a Seal alongside a Certification effort on a separate project. Talk to an advisor about the best sequence for your portfolio.',
   },
 ]
 
@@ -152,8 +152,8 @@ const jsonLd = [
 ---
 
 <SiteLayout
-  title="Take Action — Marks, SEALs, and Certification"
-  description="Three ways to take action: Marks for activity-level verification, SEALs for thematic depth, and Certification for whole-building. See how they connect and which one fits."
+  title="Take Action — Marks, Seals, and Certification"
+  description="Three ways to take action: Marks for activity-level verification, Seals for thematic depth, and Certification for whole-building. See how they connect and which one fits."
   path="/commitments"
   jsonLd={jsonLd}
 >
@@ -171,7 +171,7 @@ const jsonLd = [
           Choose your <em class="font-display italic font-normal text-seam-300">depth of action</em>
         </h1>
         <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-          Three ways to take action, one Standard. Earn a single Mark for a verified activity, a SEAL (Social Equity Activities Label) across 11–25 themed activities, or full Certification across the whole building. Each one stands alone — and each one carries forward into the next.
+          Three ways to take action, one Standard. Earn a single Mark for a verified activity, a Seal (Social Equity Activities Label) across 11–25 themed activities, or full Certification across the whole building. Each one stands alone — and each one carries forward into the next.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4">
           <a href="#progression" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
@@ -239,14 +239,14 @@ const jsonLd = [
                   <p class={`text-[11px] font-medium uppercase tracking-[0.15em] mb-2 ${
                     s.accent === 'deep' ? 'text-warm-400' : 'text-warm-500'
                   }`}>Examples</p>
-                  {s.label === 'SEAM SEALs' ? (
+                  {s.label === 'SEAM Seal' ? (
                     <div class="grid grid-cols-2 gap-3 max-w-md">
                       <a href="/seals/ethical-procurement" class="group flex items-center gap-3 rounded-xl bg-white border border-warm-200 p-3 transition-all duration-200 hover:border-warm-300 hover:shadow-sm">
-                        <img src="/logos/seal-ethical-procurement.svg" alt="Ethical Procurement SEAL placeholder" width="48" height="56" loading="lazy" decoding="async" class="w-12 h-14 shrink-0" />
+                        <img src="/logos/seal-ethical-procurement.svg" alt="Ethical Procurement Seal placeholder" width="48" height="56" loading="lazy" decoding="async" class="w-12 h-14 shrink-0" />
                         <span class="text-[13px] font-medium leading-snug text-warm-800 group-hover:text-seam-700 transition-colors">Ethical Procurement</span>
                       </a>
                       <a href="/seals/community-development" class="group flex items-center gap-3 rounded-xl bg-white border border-warm-200 p-3 transition-all duration-200 hover:border-warm-300 hover:shadow-sm">
-                        <img src="/logos/seal-community-development.svg" alt="Community Development SEAL placeholder" width="48" height="56" loading="lazy" decoding="async" class="w-12 h-14 shrink-0" />
+                        <img src="/logos/seal-community-development.svg" alt="Community Development Seal placeholder" width="48" height="56" loading="lazy" decoding="async" class="w-12 h-14 shrink-0" />
                         <span class="text-[13px] font-medium leading-snug text-warm-800 group-hover:text-seam-700 transition-colors">Community Development</span>
                       </a>
                     </div>
@@ -314,21 +314,21 @@ const jsonLd = [
             Work doesn't <em class="italic font-normal text-seam-600">restart</em>
           </h2>
           <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
-            Activities completed for a Mark or a SEAL carry forward toward future SEAM credentials when scope, entity, reporting period, evidence, and applicable rating system remain aligned with SEAM requirements.
+            Activities completed for a Mark or a Seal carry forward toward future SEAM credentials when scope, entity, reporting period, evidence, and applicable rating system remain aligned with SEAM requirements.
           </p>
         </div>
 
         <div class="space-y-4">
           <div class="rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-8">
-            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">Marks → SEALs</h3>
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">Marks → Seals</h3>
             <p class="text-[15px] leading-relaxed text-warm-600">
-              An activity verified as a Single or Bulk Mark counts toward the Activity pathway of a SEAL in the same theme. Start small, then group related Marks under a thematic SEAL.
+              An activity verified as a Single or Bulk Mark counts toward the Activity pathway of a Seal in the same theme. Start small, then group related Marks under a thematic Seal.
             </p>
           </div>
           <div class="rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-8">
-            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">SEALs → Certification</h3>
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">Seals → Certification</h3>
             <p class="text-[15px] leading-relaxed text-warm-600">
-              Activities completed for a SEAL carry forward toward full Certification — reducing the scope and timeline of the certification process.
+              Activities completed for a Seal carry forward toward full Certification — reducing the scope and timeline of the certification process.
             </p>
           </div>
           <div class="rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-8">
@@ -363,7 +363,7 @@ const jsonLd = [
               </th>
               <th class="px-6 py-5 text-[13px] font-medium text-warm-900 bg-seam-50/50">
                 <span class="block text-[11px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-1">Step 02</span>
-                SEAM SEALs
+                SEAM Seal
               </th>
               <th class="px-6 py-5 text-[13px] font-medium text-warm-900">
                 <span class="block text-[11px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-1">Step 03</span>

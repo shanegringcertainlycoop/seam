@@ -2,13 +2,15 @@
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
 
-/* Activities for this SEAL are sourced from the digital standard.
+/* Activities for this Seal are sourced from the digital standard.
  * Falls back to an empty list if the endpoint is unreachable at build time. */
 const STANDARD_URL = (import.meta.env.STANDARD_URL as string | undefined) ?? 'https://standard.seamcertification.org'
 
 type StandardSealActivity = {
   activityId: string
   title: string
+  marketingTitle?: string
+  displayTitle?: string
   url: string
   activityType: 'Driver' | 'Impact'
   pillar: { slug: string; title: string }
@@ -28,7 +30,7 @@ try {
   // Endpoint unreachable at build time. Fall back to empty list.
 }
 
-/* Pathway structure follows Sections 5 and 6 of the Ethical Procurement SEAL
+/* Pathway structure follows Sections 5 and 6 of the Ethical Procurement Seal
  * Program Guidance v1.0. Required Activities apply to every assessed party.
  * Scope-Triggered Activities apply only when the Assessment Scope includes
  * the relevant condition. The groupings are seal-specific program design and
@@ -144,12 +146,12 @@ const faqs = [
   {
     question: 'How is this different from full SEAM Certification?',
     answer:
-      'Full SEAM Certification evaluates a whole building across all four pillars. The Ethical Procurement SEAL is a limited-scope SEAL focused on one theme — modern slavery, forced labor, and supply-chain due diligence — and only within a defined Assessment Scope. It does not certify the full owner, portfolio, fund, or asset.',
+      'Full SEAM Certification evaluates a whole building across all four pillars. The Ethical Procurement Seal is a limited-scope Seal focused on one theme — modern slavery, forced labor, and supply-chain due diligence — and only within a defined Assessment Scope. It does not certify the full owner, portfolio, fund, or asset.',
   },
   {
     question: 'What is the "Assessment Scope"?',
     answer:
-      'The Assessment Scope is the explicit boundary of the SEAL review and the public claim. It identifies the assessed party, their role, the frameworks covered, the supply-chain profile, tenant relationships, the reporting period, exclusions, and any owned or controlled entities included.',
+      'The Assessment Scope is the explicit boundary of the Seal review and the public claim. It identifies the assessed party, their role, the frameworks covered, the supply-chain profile, tenant relationships, the reporting period, exclusions, and any owned or controlled entities included.',
   },
   {
     question: 'What does proportionate due diligence mean here?',
@@ -159,29 +161,29 @@ const faqs = [
   {
     question: 'What is "Leading Practice" recognition?',
     answer:
-      'Achievement is binary — you either earn the SEAL or you don’t. Above that, organizations meeting the Gold-equivalent or Platinum-equivalent thresholds across the applicable Activity subset may receive the distinction "SEAM Ethical Procurement SEAL — Leading Practice."',
+      'Achievement is binary — you either earn the Seal or you don’t. Above that, organizations meeting the Gold-equivalent or Platinum-equivalent thresholds across the applicable Activity subset may receive the distinction "SEAM Ethical Procurement Seal — Leading Practice."',
   },
   {
     question: 'Does this satisfy modern slavery reporting obligations?',
     answer:
-      'No. The SEAL can support evidence organization for selected frameworks, but it does not complete legal reporting, regulator filings, customs responses, or import admissibility determinations. The assessed party and its counsel remain responsible for legal interpretation and filings.',
+      'No. The Seal can support evidence organization for selected frameworks, but it does not complete legal reporting, regulator filings, customs responses, or import admissibility determinations. The assessed party and its counsel remain responsible for legal interpretation and filings.',
   },
   {
-    question: 'What disqualifies an assessed party from earning the SEAL?',
+    question: 'What disqualifies an assessed party from earning the Seal?',
     answer:
-      'The SEAL may not be awarded where credible evidence shows active, unremediated modern slavery, forced labor, child labor, trafficking, or refusal to provide required evidence within the Assessment Scope. Any such finding must be resolved, remediated, or documented through an approved corrective action process before the SEAL can be granted.',
+      'The Seal may not be awarded where credible evidence shows active, unremediated modern slavery, forced labor, child labor, trafficking, or refusal to provide required evidence within the Assessment Scope. Any such finding must be resolved, remediated, or documented through an approved corrective action process before the Seal can be granted.',
   },
   {
     question: 'Does it count toward full Certification later?',
     answer:
-      'Yes. Activities completed for this SEAL may carry forward toward a future SEAM Human Rights SEAL or full SEAM Certification when the assessed scope, entity, reporting period, evidence, and applicable rating system remain aligned with SEAM requirements.',
+      'Yes. Activities completed for this Seal may carry forward toward a future SEAM Human Rights Seal or full SEAM Certification when the assessed scope, entity, reporting period, evidence, and applicable rating system remain aligned with SEAM requirements.',
   },
 ]
 
 const jsonLd = [
   breadcrumbSchema([
     { name: 'Home', path: '/' },
-    { name: 'SEAM SEAL', path: '/seals' },
+    { name: 'SEAM Seal', path: '/seals' },
     { name: 'Ethical Procurement', path: '/seals/ethical-procurement' },
   ]),
   faqSchema(faqs),
@@ -189,7 +191,7 @@ const jsonLd = [
 ---
 
 <SiteLayout
-  title="Ethical Procurement SEAL — Supply-Chain Human Rights Due Diligence"
+  title="Ethical Procurement Seal — Supply-Chain Human Rights Due Diligence"
   description="A limited-scope SEAM recognition for modern slavery, forced labor, and supply-chain human-rights due diligence in commercial real estate operations and procurement."
   path="/seals/ethical-procurement"
   jsonLd={jsonLd}
@@ -212,7 +214,7 @@ const jsonLd = [
     <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
       <div class="hero-enter max-w-3xl">
         <div class="flex items-center gap-3 mb-8">
-          <a href="/seals" class="text-[13px] font-medium text-warm-400 hover:text-warm-200 transition-colors">SEAM SEAL</a>
+          <a href="/seals" class="text-[13px] font-medium text-warm-400 hover:text-warm-200 transition-colors">SEAM Seal</a>
           <span class="text-warm-500">/</span>
           <span class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-300">Ethical Procurement</span>
         </div>
@@ -233,10 +235,10 @@ const jsonLd = [
       </div>
     </div>
 
-    <!-- SEAL shield straddling the hero/white boundary -->
+    <!-- Seal shield straddling the hero/white boundary -->
     <img
       src="/logos/seal-ethical-procurement.svg"
-      alt="Ethical Procurement SEAL"
+      alt="Ethical Procurement Seal"
       width="220"
       height="257"
       class="hidden lg:block absolute right-10 xl:right-20 bottom-0 translate-y-1/2 w-[220px] xl:w-[260px] h-auto drop-shadow-2xl z-10 pointer-events-none"
@@ -244,7 +246,7 @@ const jsonLd = [
     />
   </section>
 
-  <!-- ─── What this SEAL recognizes ─── -->
+  <!-- ─── What this Seal recognizes ─── -->
   <section class="py-24 lg:py-32 bg-white">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="max-w-3xl mb-16">
@@ -253,12 +255,12 @@ const jsonLd = [
           A defined scope of ethical procurement, <em class="italic font-normal text-seam-600">independently reviewed</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
-          The Ethical Procurement SEAL recognizes documented and implemented ethical procurement practices for modern slavery, forced labor, and supply-chain human-rights due diligence — within a defined Assessment Scope. The same Standard-based method applies whether the assessed party is a reporting entity, vendor, supplier, owner, manager, or investment manager. The Assessment Scope makes the boundary of the claim transparent to buyers, regulators, investors, and impacted parties.
+          The Ethical Procurement Seal recognizes documented and implemented ethical procurement practices for modern slavery, forced labor, and supply-chain human-rights due diligence — within a defined Assessment Scope. The same Standard-based method applies whether the assessed party is a reporting entity, vendor, supplier, owner, manager, or investment manager. The Assessment Scope makes the boundary of the claim transparent to buyers, regulators, investors, and impacted parties.
         </p>
       </div>
 
       <p class="text-[14px] leading-relaxed text-warm-500 max-w-3xl">
-        For the generic SEAL model — what every SEAL is and isn't, how the award works, and how claims are bounded — see <a href="/seals" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM SEAL overview</a>.
+        For the generic Seal model — what every Seal is and isn't, how the award works, and how claims are bounded — see <a href="/seals" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM Seal overview</a>.
       </p>
     </div>
   </section>
@@ -294,7 +296,7 @@ const jsonLd = [
             Organize evidence for the <em class="italic font-normal text-seam-600">frameworks</em> you already report against
           </h2>
           <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
-            The SEAL can support evidence organization for selected modern slavery, forced-labor, and supply-chain due-diligence frameworks identified in the Assessment Scope. It does not complete legal reporting obligations — your counsel does.
+            The Seal can support evidence organization for selected modern slavery, forced-labor, and supply-chain due-diligence frameworks identified in the Assessment Scope. It does not complete legal reporting obligations — your counsel does.
           </p>
         </div>
 
@@ -321,7 +323,7 @@ const jsonLd = [
           Eight grouped steps, <em class="italic font-normal text-seam-600">apply to every assessed party</em>
         </h2>
         <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
-          These Required Activities apply to every Ethical Procurement SEAL review, regardless of profile. Activities are pulled directly from the SEAM Standard; pathway groupings follow the EP Program Guidance.
+          These Required Activities apply to every Ethical Procurement Seal review, regardless of profile. Activities are pulled directly from the SEAM Standard; pathway groupings follow the EP Program Guidance.
         </p>
         <a
           href={`${STANDARD_URL}/standard?filter=seal%3Aethical-procurement`}
@@ -383,7 +385,7 @@ const jsonLd = [
                         </span>
                       </div>
                       <h4 class="font-display text-[16px] tracking-[-0.02em] text-warm-900 leading-snug mb-2 group-hover:text-seam-700 transition-colors">
-                        {a.title}
+                        {a.displayTitle ?? a.title}
                       </h4>
                       {activityRoles[id] && (
                         <p class="text-[13px] leading-relaxed text-warm-600 mb-3">
@@ -403,7 +405,7 @@ const jsonLd = [
       )}
 
       <p class="mt-12 text-[14px] leading-relaxed text-warm-500 max-w-3xl">
-        Activity-level requirements, indicators, scoring, and documentation are governed by the SEAM Standard. <a href="/resources/standard" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Read the Standard</a>. Generic determination and public-claim limits for every SEAL are on the <a href="/seals" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAL overview</a>.
+        Activity-level requirements, indicators, scoring, and documentation are governed by the SEAM Standard. <a href="/resources/standard" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Read the Standard</a>. Generic determination and public-claim limits for every Seal are on the <a href="/seals" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Seal overview</a>.
       </p>
     </div>
   </section>
@@ -442,7 +444,7 @@ const jsonLd = [
                   </span>
                 </div>
                 <h4 class="font-display text-[16px] tracking-[-0.02em] text-warm-900 leading-snug mb-2 group-hover:text-seam-700 transition-colors">
-                  {a.title}
+                  {a.displayTitle ?? a.title}
                 </h4>
                 <p class="text-[13px] leading-relaxed text-warm-600 mb-3">
                   <strong class="font-semibold text-warm-700">When it applies:</strong> {st.trigger}
@@ -476,7 +478,7 @@ const jsonLd = [
           <div class="relative bg-warm-900 min-h-[280px] lg:min-h-[420px] overflow-hidden">
             <img
               src="/images/directory/project-modern-slavery-endorsement.jpg"
-              alt="Private Client — Ethical Procurement SEAL"
+              alt="Private Client — Ethical Procurement Seal"
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               loading="lazy"
               decoding="async"
@@ -485,20 +487,20 @@ const jsonLd = [
           <div class="bg-white p-8 lg:p-12 flex flex-col">
             <div class="flex flex-wrap items-center gap-2 mb-5">
               <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-medium text-seam-700">
-                SEAL pilot
+                Seal pilot
               </span>
               <span class="inline-flex items-center rounded-full bg-warm-100 px-2.5 py-0.5 text-[11px] font-medium text-warm-600">
                 Australian Modern Slavery Act 2018
               </span>
             </div>
             <h3 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 leading-tight mb-4 group-hover:text-seam-700 transition-colors">
-              Private Client — Ethical Procurement SEAL
+              Private Client — Ethical Procurement Seal
             </h3>
             <p class="text-[14px] font-medium uppercase tracking-[0.12em] text-warm-500 mb-5">
               Owner: Global Investment Manager
             </p>
             <p class="text-[15px] leading-relaxed text-warm-600 mb-6 flex-1">
-              SEAM is piloting a confidential Modern Slavery Assessment for a real estate investment manager that reports to an Australian reporting entity under the Australian Modern Slavery Act 2018. The pilot applies SEAM Standard Activities to evaluate how the manager identifies, documents, and addresses modern slavery risk across fund structure, acquisitions, and future asset operations — informing the SEAM Ethical Procurement SEAL.
+              SEAM is piloting a confidential Modern Slavery Assessment for a real estate investment manager that reports to an Australian reporting entity under the Australian Modern Slavery Act 2018. The pilot applies SEAM Standard Activities to evaluate how the manager identifies, documents, and addresses modern slavery risk across fund structure, acquisitions, and future asset operations — informing the SEAM Ethical Procurement Seal.
             </p>
             <span class="inline-flex items-center text-[14px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
               View the project profile &rarr;
@@ -527,11 +529,11 @@ const jsonLd = [
       <div class="reveal-stagger grid grid-cols-1 max-w-2xl">
         <div class="reveal-child relative rounded-2xl border border-warm-100 bg-white p-10 lg:p-12 transition-all duration-300">
           <img src="/logos/seal-ethical-procurement.svg" alt="" aria-hidden="true" class="absolute -top-10 right-6 lg:-top-12 lg:right-10 w-24 lg:w-28 h-auto drop-shadow-md" loading="lazy" decoding="async" />
-          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-4 pr-28 lg:pr-32">Ethical Procurement SEAL</p>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-4 pr-28 lg:pr-32">Ethical Procurement Seal</p>
           <div class="flex items-baseline gap-1 mb-2">
-            <span class="font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.03em] text-warm-900">$2,500</span>
+            <span class="font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.03em] text-warm-900">$5,000</span>
           </div>
-          <p class="text-[15px] text-warm-500 mb-8">per SEAL · per Assessment Scope</p>
+          <p class="text-[15px] text-warm-500 mb-8">per Seal · per Assessment Scope</p>
           <ul class="space-y-4 mb-10">
             <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
               <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -539,7 +541,7 @@ const jsonLd = [
             </li>
             <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
               <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-              Independent review against the SEAL pathway
+              Independent review against the Seal pathway
             </li>
             <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
               <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -569,9 +571,9 @@ const jsonLd = [
   <section class="py-24 lg:py-32 bg-seam-900">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
       <div class="max-w-4xl">
-        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-300 mb-8">What this SEAL stands for</p>
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-300 mb-8">What this Seal stands for</p>
         <p class="font-display text-[clamp(1.6rem,3vw,2.4rem)] leading-[1.25] tracking-[-0.02em] text-white">
-          A SEAM Ethical Procurement SEAL should signify <em class="italic font-normal text-seam-300">more than a supplier code or published statement.</em>
+          A SEAM Ethical Procurement Seal should signify <em class="italic font-normal text-seam-300">more than a supplier code or published statement.</em>
         </p>
         <p class="mt-8 text-[17px] lg:text-[19px] leading-relaxed text-warm-300 max-w-3xl">
           It should signify that ethical procurement practices for the reviewed scope were mapped, risk-assessed, controlled, remediated where needed, supported by reporting and grievance channels, reinforced through training, monitored, and independently reviewed through the SEAM pathway.
@@ -587,7 +589,7 @@ const jsonLd = [
         <div>
           <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
           <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-12">
-            Questions about the <em class="italic font-normal text-seam-600">Ethical Procurement SEAL</em>
+            Questions about the <em class="italic font-normal text-seam-600">Ethical Procurement Seal</em>
           </h2>
 
           {faqs.map((faq) => (

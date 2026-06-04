@@ -613,7 +613,7 @@ There was no systematic way to measure whether a building was having a positive 
 
 In 2018, a colleague and I began developing what became <a href="/resources/standard">the SEAM Standard</a>. Over six years, we grounded it in international frameworks including UN Human Rights principles and International Labour Organization guidelines. The standard underwent independent verification.
 
-We evaluated buildings across four interdependent pillars: <a href="/standard/social-impact">Social Impact</a>, <a href="/standard/social-responsibility">Social Responsibility</a>, <a href="/standard/social-justice">Social Justice</a>, and <a href="/standard/social-accountability">Social Accountability</a>. Each pillar contains specific activities with defined documentation requirements. Projects earn Bronze through Platinum based on performance across all four.
+We evaluated buildings across four interdependent pillars: <a href="/standard/social-impact">Social Impact</a>, <a href="/standard/social-responsibility">Social Responsibility</a>, <a href="/standard/social-justice">Social Justice</a>, and <a href="/standard/social-accountability">Social Accountability</a>. Each pillar contains specific activities with defined documentation requirements. Projects earn one of four levels of recognition based on performance across all four.
 
 ## Making the leap
 
