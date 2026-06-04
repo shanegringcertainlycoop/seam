@@ -3,24 +3,29 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../lib/seo-helpers'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
+const STANDARD_URL = 'https://standard.seamcertification.org'
+
 const focusAreas = [
   {
     concept: 'Impact Assessment',
     title: 'Contextual Analysis',
     description:
       "Understand your project's social impact before you build by identifying who it affects, mapping your value chain, and establishing a social baseline.",
+    href: `${STANDARD_URL}/social-impact/impact-assessment/contextual-analysis`,
   },
   {
     concept: 'Impact Assessment',
     title: 'Impacted Party Engagement',
     description:
       'Build processes to collect, analyze, and respond to feedback from the people most affected by your project throughout development.',
+    href: `${STANDARD_URL}/social-impact/impact-assessment/impacted-party-engagement`,
   },
   {
     concept: 'Impact Assessment',
     title: 'Monitoring + Evaluation',
     description:
       "Track whether your project's social impact is moving in the right direction using established indicators and regular assessment cycles.",
+    href: `${STANDARD_URL}/social-impact/impact-assessment/monitoring-evaluation`,
   },
 ]
 ---
@@ -138,18 +143,26 @@ const focusAreas = [
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {focusAreas.map((area, i) => (
-          <div class="reveal-child rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+        {focusAreas.map((area) => (
+          <a
+            href={area.href}
+            target="_blank"
+            rel="noopener"
+            class="reveal-child block rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-seam-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] group"
+          >
             <span class="text-[12px] font-normal uppercase tracking-[0.1em] text-[#6B8F9C] mb-4 block">
               {area.concept}
             </span>
-            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-700 transition-colors">
               {area.title}
             </h3>
             <p class="text-[15px] leading-relaxed text-warm-600">
               {area.description}
             </p>
-          </div>
+            <span class="mt-5 inline-flex items-center text-[13px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+              View on the SEAM Standard &rarr;
+            </span>
+          </a>
         ))}
       </div>
     </div>

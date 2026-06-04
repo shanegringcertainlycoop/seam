@@ -83,16 +83,24 @@ const products = [
     audience: 'For developers, owners, and capital providers',
     logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
   },
-  // HIDDEN: Approved program temporarily hidden
-  // {
-  //   label: 'SEAM Approved',
-  //   title: 'Activity-level verification',
-  //   description:
-  //     'Not ready for full certification? Start with one verified activity and build from there.',
-  //   href: '/approved',
-  //   audience: 'For operators, managers, and anchor institutions',
-  //   logo: '/logos/approved-wordmark.png',
-  // },
+  {
+    label: 'SEAM Marks',
+    title: 'Activity-level verification',
+    description:
+      'Not ready for full certification? Start with one verified activity (Single Mark) or a bundle of 3–5 (Bulk Marks) and build from there.',
+    href: '/marks',
+    audience: 'For operators, managers, and anchor institutions',
+    logo: '/logos/mark-activity.svg',
+  },
+  {
+    label: 'SEAM SEALs',
+    title: 'Thematic recognition',
+    description:
+      'A thematic recognition awarded for completing 11–25 related activities. Between Marks and full Certification.',
+    href: '/seals',
+    audience: 'For organizations ready to commit deeply in a focused area',
+    logos: ['/logos/seal-ethical-procurement.svg', '/logos/seal-community-development.svg'],
+  },
   {
     label: 'SEAM AP Credential',
     title: 'Professional accreditation',
@@ -177,12 +185,16 @@ const jsonLd = [
       answer:
         'SEAM is complementary to LEED, WELL, and Fitwel. While those systems focus on environmental performance and physical wellness, SEAM measures social equity — the relationship between a building and the people it touches. SEAM requires community voice in evaluation and interdependent scoring across all four pillars. Certification validity varies by rating system: Buildings + Interiors projects have no expiration and require annual data submissions for select activities, while Operations + Maintenance certifications are valid for three years and require recertification.',
     },
-    // HIDDEN: Approved program temporarily hidden
-    // {
-    //   question: 'What is SEAM Approved?',
-    //   answer:
-    //     'SEAM Approved is a standalone activity-level verification program. Organizations can verify individual social equity practices without committing to full certification. It serves as both a standalone credential and a natural on-ramp to full SEAM certification.',
-    // },
+    {
+      question: 'What is a SEAM Mark?',
+      answer:
+        'SEAM Marks are standalone, activity-level verifications. Organizations can verify individual social equity practices without committing to full certification — as a Single Mark or a bundle of 3–5 related activities (Bulk Marks). Marks serve as both a standalone credential and a natural on-ramp to full SEAM Certification.',
+    },
+    {
+      question: 'What is a SEAM SEAL?',
+      answer:
+        'A SEAM SEAL is a themed recognition awarded for completing a curated set of 11–25 related activities. SEALs sit between Marks (single or bundled activity verification) and full Certification (whole-building, all pillars). The first two SEALs are open now: Ethical Procurement ($2,500) and Community Development ($1,250).',
+    },
     {
       question: 'What is the ROSSI Calculator?',
       answer:
@@ -220,11 +232,11 @@ const jsonLd = [
         muted
         loop
         playsinline
-        preload="metadata"
+        preload="none"
         class="hidden md:block hero-image absolute inset-0 h-full w-full object-cover object-center scale-105 opacity-0 transition-opacity duration-700"
         oncanplaythrough="this.classList.remove('opacity-0')"
       >
-        <source src="/home-hero.mp4" type="video/mp4" />
+        <source src="/home-hero.mp4" type="video/mp4" media="(min-width: 768px)" />
       </video>
       <div class="absolute inset-0 bg-gradient-to-t from-warm-900/90 via-warm-900/55 to-warm-900/30"></div>
     </div>

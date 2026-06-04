@@ -49,12 +49,28 @@ const url = `${SITE_URL}${path}`
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PFFKXQPW');</script>
+    <!-- Google Tag Manager (deferred until after LCP) -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      function loadGTM() {
+        if (window.__gtmLoaded) return;
+        window.__gtmLoaded = true;
+        var f = document.getElementsByTagName('script')[0];
+        var j = document.createElement('script');
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-PFFKXQPW';
+        f.parentNode.insertBefore(j, f);
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGTM, { timeout: 4000 });
+      } else {
+        setTimeout(loadGTM, 3500);
+      }
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (ev) {
+        window.addEventListener(ev, loadGTM, { once: true, passive: true });
+      });
+    </script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -137,7 +153,8 @@ const url = `${SITE_URL}${path}`
       ],
       "offers": [
         { "@type": "Service", "name": "SEAM Certification", "description": "Full building certification from Bronze through Platinum across three tracks." },
-        /* HIDDEN: SEAM Approved service temporarily removed */
+        { "@type": "Service", "name": "SEAM Marks", "description": "Activity-level verification for organizations to validate individual social equity practices without pursuing full certification." },
+        { "@type": "Service", "name": "SEAM SEALs", "description": "Thematic recognition awarded for completing a curated set of 11–25 related activities — between Marks and full Certification." },
         { "@type": "Service", "name": "SEAM AP Credential", "description": "Professional accreditation for practitioners who lead SEAM certification engagements." }
       ]
     })} />

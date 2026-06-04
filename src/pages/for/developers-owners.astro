@@ -33,15 +33,22 @@ const products = [
     fit: 'Best for new developments and major renovations where social equity is part of the business plan from day one.',
     logos: ['/logos/cert-bronze.png', '/logos/cert-silver.png', '/logos/cert-gold.png', '/logos/cert-platinum.png'],
   },
-  // HIDDEN: Approved program temporarily hidden
-  // {
-  //   label: 'SEAM Approved',
-  //   title: 'Activity-level verification',
-  //   description: 'Verify individual social equity practices without committing to full certification.',
-  //   href: '/approved',
-  //   fit: 'Best for existing assets.',
-  //   logo: '/logos/approved-wordmark.png',
-  // },
+  {
+    label: 'SEAM Marks',
+    title: 'Activity-level verification',
+    description: 'Verify individual social equity practices without committing to full certification. Single Mark or Bulk Marks (3–5 related activities).',
+    href: '/marks',
+    fit: 'Best for existing assets.',
+    logo: '/logos/mark-activity.svg',
+  },
+  {
+    label: 'SEAM SEALs',
+    title: 'Thematic recognition',
+    description: 'A thematic recognition earned across 11–25 related activities. Between Marks and full Certification.',
+    href: '/seals',
+    fit: 'Best for organizations ready to commit deeply in a focused area.',
+    logos: ['/logos/seal-ethical-procurement.svg', '/logos/seal-community-development.svg'],
+  },
   {
     label: 'ROSSI Calculator',
     title: 'Financial modeling',
@@ -69,11 +76,10 @@ const faqs = [
     q: 'How do investors view SEAM certification?',
     a: 'SEAM provides GRESB-aligned social performance data that institutional investors increasingly require. The ROSSI Calculator translates social outcomes into financial language for investor decks, ESG reports, and insurance negotiations.',
   },
-  // HIDDEN: Approved program temporarily hidden
-  // {
-  //   q: 'Can we start with SEAM Approved before full certification?',
-  //   a: '...',
-  // },
+  {
+    q: 'Can we start with Marks before full certification?',
+    a: 'Yes. Many developers start by verifying individual practices through SEAM Marks, then pursue full certification as the portfolio matures. Every verified activity counts toward certification credit.',
+  },
 ]
 
 const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))

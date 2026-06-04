@@ -3,42 +3,50 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../lib/seo-helpers'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
+const STANDARD_URL = 'https://standard.seamcertification.org'
+
 const focusAreas = [
   {
     concept: 'Social Equity + Justice',
     title: 'In Procurement',
     description:
       'Build inclusive practices into how you hire suppliers, award contracts, and structure leases to broaden economic opportunity.',
+    href: `${STANDARD_URL}/social-justice/social-equity-justice/equity-inclusion-procurement`,
   },
   {
     concept: 'Social Equity + Justice',
     title: 'In the Workplace',
     description:
       'Establish fair treatment, equal pay, and inclusive design standards for everyone who works in or on your project.',
+    href: `${STANDARD_URL}/social-justice/social-equity-justice/equity-inclusion-workplace`,
   },
   {
     concept: 'Social Equity + Justice',
     title: 'In the Community',
     description:
       "Understand and actively manage your project's relationship with the surrounding community, including avoiding involuntary displacement.",
+    href: `${STANDARD_URL}/social-justice/social-equity-justice/equity-inclusion-community`,
   },
   {
     concept: 'Social Equity + Justice',
     title: 'In Capital Access',
     description:
       'Structure equity capital and debt financing to include historically underrepresented groups in financial opportunities.',
+    href: `${STANDARD_URL}/social-justice/social-equity-justice/equity-inclusion-capital`,
   },
   {
     concept: 'Social Justice Innovation',
     title: 'Social Justice Industry Innovation',
     description:
       'Advance new models, programs, and partnerships that push the commercial real estate industry toward more equitable outcomes.',
+    href: `${STANDARD_URL}/social-justice/social-justice-innovation/social-justice-industry-innovation`,
   },
   {
     concept: 'Social Justice Innovation',
     title: 'Design for Embodied Justice',
     description:
       'Integrate equity into the physical design decisions, centering voices and needs that have historically been left out of the design process.',
+    href: `${STANDARD_URL}/social-justice/social-justice-innovation/design-for-embodied-justice`,
   },
 ]
 ---
@@ -153,18 +161,26 @@ const focusAreas = [
       </div>
 
       <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {focusAreas.map((area, i) => (
-          <div class="reveal-child rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+        {focusAreas.map((area) => (
+          <a
+            href={area.href}
+            target="_blank"
+            rel="noopener"
+            class="reveal-child block rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-seam-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] group"
+          >
             <span class="text-[12px] font-normal uppercase tracking-[0.1em] text-[#6B8F9C] mb-4 block">
               {area.concept}
             </span>
-            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-700 transition-colors">
               {area.title}
             </h3>
             <p class="text-[15px] leading-relaxed text-warm-600">
               {area.description}
             </p>
-          </div>
+            <span class="mt-5 inline-flex items-center text-[13px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+              View on the SEAM Standard &rarr;
+            </span>
+          </a>
         ))}
       </div>
     </div>

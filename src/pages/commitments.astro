@@ -1,0 +1,458 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { breadcrumbSchema, faqSchema } from '../lib/seo-helpers'
+
+const steps = [
+  {
+    step: '01',
+    label: 'SEAM Marks',
+    href: '/marks',
+    tagline: 'Single activity verification',
+    scope: 'One activity (Single Mark) or 3–5 related activities (Bulk Marks)',
+    bestFor: 'Property managers, operators, and anchor institutions looking for quick, verifiable proof of existing equity work — without taking on a full certification.',
+    timeline: '4–6 weeks per submission',
+    starting: 'From $750',
+    examples: ['Living wage program', 'Community grievance mechanism', 'Local hiring practices', 'Ethical material sourcing'],
+    accent: 'soft',
+  },
+  {
+    step: '02',
+    label: 'SEAM SEALs',
+    href: '/seals',
+    tagline: 'Themed activity verification',
+    scope: '11–25 related activities organized around a defined theme and Assessment Scope',
+    bestFor: 'Organizations ready to demonstrate sustained action in a focused area — supply chain due diligence, community development, etc. — without pursuing whole-building certification.',
+    timeline: 'Reviewed per Assessment Scope',
+    starting: 'From $1,250',
+    examples: ['Ethical Procurement SEAL ($2,500)', 'Community Development SEAL ($1,250)'],
+    accent: 'core',
+  },
+  {
+    step: '03',
+    label: 'SEAM Certification',
+    href: '/certification',
+    tagline: 'Whole-building verification',
+    scope: 'Full project across Social Impact, Responsibility, Justice, and Accountability',
+    bestFor: 'Owners, developers, and operators ready to commit to comprehensive, third-party-verified social equity for a building. Bronze through Platinum.',
+    timeline: '6–12 months from registration to award',
+    starting: 'From $7,625 first-year',
+    examples: ['New construction or major renovation', 'Operations + Maintenance for existing buildings'],
+    accent: 'deep',
+  },
+]
+
+const comparisonRows = [
+  {
+    label: 'Scope',
+    marks: 'One or 3–5 activities',
+    seals: '11–25 activities, themed',
+    cert: 'Full building, all 4 pillars',
+  },
+  {
+    label: 'Best for',
+    marks: 'Quick proof of specific practices',
+    seals: 'Sustained action in a focused area',
+    cert: 'Comprehensive whole-building certification',
+  },
+  {
+    label: 'Verification',
+    marks: 'Third-party, per activity',
+    seals: 'Independent review against SEAL pathway',
+    cert: 'Third-party, including site verification + community surveys',
+  },
+  {
+    label: 'Outcome',
+    marks: 'Binary — each Mark earned or not',
+    seals: 'Binary + Leading Practice tier',
+    cert: 'Bronze / Silver / Gold / Platinum',
+  },
+  {
+    label: 'Timeline',
+    marks: '4–6 weeks',
+    seals: 'Per Assessment Scope',
+    cert: '6–12 months',
+  },
+  {
+    label: 'Starting cost',
+    marks: '$750 / activity',
+    seals: '$1,250 (CD) / $2,500 (EP)',
+    cert: 'From $7,625 first year',
+  },
+  {
+    label: 'Counts toward Certification',
+    marks: 'Yes — every Mark counts forward',
+    seals: 'Yes — Activities carry forward',
+    cert: '—',
+  },
+]
+
+const decisionPrompts = [
+  {
+    if: 'You want to verify one specific program already in place',
+    then: 'Start with a Single Mark',
+    href: '/marks',
+  },
+  {
+    if: 'You have 3–5 related practices to verify together',
+    then: 'Choose Bulk Marks',
+    href: '/marks',
+  },
+  {
+    if: 'You want to prove sustained action in one theme (procurement, community impact, etc.)',
+    then: 'Pursue a SEAL',
+    href: '/seals',
+  },
+  {
+    if: 'You want whole-building certification across all four pillars',
+    then: 'Pursue full Certification',
+    href: '/certification',
+  },
+  {
+    if: 'You are reviewing modern slavery / forced labor disclosures',
+    then: 'Look at the Ethical Procurement SEAL',
+    href: '/seals/ethical-procurement',
+  },
+  {
+    if: 'You are running a defined community initiative tied to a project',
+    then: 'Look at the Community Development SEAL',
+    href: '/seals/community-development',
+  },
+]
+
+const faqs = [
+  {
+    question: 'Do I have to start with Marks?',
+    answer:
+      'No. Each one stands on its own. Many organizations start with Marks because they map to work already in place, but you can pursue a SEAL or full Certification directly when your scope and timeline fit.',
+  },
+  {
+    question: 'If I earn Marks first, do they count toward a SEAL or Certification?',
+    answer:
+      'Yes. Every verified activity carries credit toward its pillar. Activities completed for a Mark or a SEAL carry forward toward future SEAM recognition when scope, entity, reporting period, evidence, and applicable rating system remain aligned with SEAM requirements.',
+  },
+  {
+    question: 'How do I decide between a SEAL and Certification?',
+    answer:
+      'A SEAL is themed verification — proof of sustained action in one focused area (11–25 activities). Certification is whole-building verification across all four pillars. If your scope is one theme, choose a SEAL. If your scope is a building, choose Certification.',
+  },
+  {
+    question: 'Can I pursue more than one action in parallel?',
+    answer:
+      'Yes. Many organizations layer them — earning Marks while preparing for a SEAL, or running a SEAL alongside a Certification effort on a separate project. Talk to an advisor about the best sequence for your portfolio.',
+  },
+]
+
+const jsonLd = [
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Take Action', path: '/commitments' },
+  ]),
+  faqSchema(faqs),
+] as unknown as Record<string, unknown>
+---
+
+<SiteLayout
+  title="Take Action — Marks, SEALs, and Certification"
+  description="Three ways to take action: Marks for activity-level verification, SEALs for thematic depth, and Certification for whole-building. See how they connect and which one fits."
+  path="/commitments"
+  jsonLd={jsonLd}
+>
+
+  <!-- ─── Hero ─── -->
+  <section class="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-28 w-full">
+      <div class="hero-enter max-w-4xl">
+        <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+          Take Action
+        </span>
+        <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.25rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          Choose your <em class="font-display italic font-normal text-seam-300">depth of action</em>
+        </h1>
+        <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+          Three ways to take action, one Standard. Earn a single Mark for a verified activity, a SEAL (Social Equity Activities Label) across 11–25 themed activities, or full Certification across the whole building. Each one stands alone — and each one carries forward into the next.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          <a href="#progression" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+            See the progression
+          </a>
+          <a href="/get-started" class="inline-flex items-center justify-center rounded-full border border-warm-600 px-8 py-4 text-[15px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">
+            Talk to an advisor
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── The progression ─── -->
+  <section id="progression" class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-16">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The progression</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          From one activity to a <em class="italic font-normal text-seam-600">whole building</em>
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+          The three actions grow in scope. Each one stands alone — and each one carries forward into the next.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {steps.map((s, i) => (
+          <div class={`relative rounded-2xl border p-8 lg:p-12 ${
+            s.accent === 'deep'
+              ? 'bg-warm-900 border-warm-800 text-white'
+              : s.accent === 'core'
+              ? 'bg-seam-50/40 border-seam-200'
+              : 'bg-white border-warm-200'
+          }`}>
+            <div class="grid grid-cols-1 lg:grid-cols-[180px_1fr_280px] gap-8 lg:gap-12 items-start">
+              <div>
+                <p class={`text-[11px] font-medium uppercase tracking-[0.18em] mb-3 ${
+                  s.accent === 'deep' ? 'text-gold-400' : 'text-gold-600'
+                }`}>Step {s.step}</p>
+                <h3 class={`font-display text-[clamp(1.75rem,2.5vw,2.25rem)] tracking-[-0.02em] mb-2 ${
+                  s.accent === 'deep' ? 'text-white' : 'text-warm-900'
+                }`}>{s.label}</h3>
+                <p class={`text-[14px] ${s.accent === 'deep' ? 'text-warm-400' : 'text-warm-500'}`}>{s.tagline}</p>
+              </div>
+
+              <div class="space-y-5">
+                <div>
+                  <p class={`text-[11px] font-medium uppercase tracking-[0.15em] mb-2 ${
+                    s.accent === 'deep' ? 'text-warm-400' : 'text-warm-500'
+                  }`}>Scope</p>
+                  <p class={`text-[15px] leading-relaxed ${
+                    s.accent === 'deep' ? 'text-warm-200' : 'text-warm-700'
+                  }`}>{s.scope}</p>
+                </div>
+                <div>
+                  <p class={`text-[11px] font-medium uppercase tracking-[0.15em] mb-2 ${
+                    s.accent === 'deep' ? 'text-warm-400' : 'text-warm-500'
+                  }`}>Best for</p>
+                  <p class={`text-[15px] leading-relaxed ${
+                    s.accent === 'deep' ? 'text-warm-200' : 'text-warm-700'
+                  }`}>{s.bestFor}</p>
+                </div>
+                <div>
+                  <p class={`text-[11px] font-medium uppercase tracking-[0.15em] mb-2 ${
+                    s.accent === 'deep' ? 'text-warm-400' : 'text-warm-500'
+                  }`}>Examples</p>
+                  {s.label === 'SEAM SEALs' ? (
+                    <div class="grid grid-cols-2 gap-3 max-w-md">
+                      <a href="/seals/ethical-procurement" class="group flex items-center gap-3 rounded-xl bg-white border border-warm-200 p-3 transition-all duration-200 hover:border-warm-300 hover:shadow-sm">
+                        <img src="/logos/seal-ethical-procurement.svg" alt="Ethical Procurement SEAL placeholder" width="48" height="56" loading="lazy" decoding="async" class="w-12 h-14 shrink-0" />
+                        <span class="text-[13px] font-medium leading-snug text-warm-800 group-hover:text-seam-700 transition-colors">Ethical Procurement</span>
+                      </a>
+                      <a href="/seals/community-development" class="group flex items-center gap-3 rounded-xl bg-white border border-warm-200 p-3 transition-all duration-200 hover:border-warm-300 hover:shadow-sm">
+                        <img src="/logos/seal-community-development.svg" alt="Community Development SEAL placeholder" width="48" height="56" loading="lazy" decoding="async" class="w-12 h-14 shrink-0" />
+                        <span class="text-[13px] font-medium leading-snug text-warm-800 group-hover:text-seam-700 transition-colors">Community Development</span>
+                      </a>
+                    </div>
+                  ) : (
+                    <ul class="flex flex-wrap gap-2">
+                      {s.examples.map((e) => (
+                        <li class={`inline-flex items-center rounded-full px-3 py-1 text-[12px] font-medium ${
+                          s.accent === 'deep'
+                            ? 'bg-white/[0.08] border border-white/15 text-warm-200'
+                            : 'bg-white border border-warm-200 text-warm-700'
+                        }`}>{e}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+
+              <div class={`rounded-xl p-6 ${
+                s.accent === 'deep' ? 'bg-white/[0.05] border border-white/10' : 'bg-white border border-warm-200/80'
+              }`}>
+                <div class="space-y-4 mb-6">
+                  <div>
+                    <p class={`text-[11px] font-medium uppercase tracking-[0.15em] mb-1 ${
+                      s.accent === 'deep' ? 'text-warm-400' : 'text-warm-500'
+                    }`}>Timeline</p>
+                    <p class={`text-[15px] font-medium ${s.accent === 'deep' ? 'text-white' : 'text-warm-900'}`}>{s.timeline}</p>
+                  </div>
+                  <div>
+                    <p class={`text-[11px] font-medium uppercase tracking-[0.15em] mb-1 ${
+                      s.accent === 'deep' ? 'text-warm-400' : 'text-warm-500'
+                    }`}>Starting cost</p>
+                    <p class={`text-[15px] font-medium ${s.accent === 'deep' ? 'text-white' : 'text-warm-900'}`}>{s.starting}</p>
+                  </div>
+                </div>
+                <a href={s.href} class={`inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-[14px] font-medium transition-colors duration-300 ${
+                  s.accent === 'deep'
+                    ? 'bg-white text-warm-900 hover:bg-warm-100'
+                    : 'bg-warm-900 text-white hover:bg-warm-800'
+                }`}>
+                  Learn about {s.label} &rarr;
+                </a>
+              </div>
+            </div>
+
+            {i < steps.length - 1 && (
+              <div class="absolute left-1/2 -bottom-7 -translate-x-1/2 z-10 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white border border-warm-200 shadow-sm" aria-hidden="true">
+                <svg class="w-5 h-5 text-warm-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+                </svg>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How they connect ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16">
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">How they connect</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            Work doesn't <em class="italic font-normal text-seam-600">restart</em>
+          </h2>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+            Activities completed for a Mark or a SEAL carry forward toward future SEAM credentials when scope, entity, reporting period, evidence, and applicable rating system remain aligned with SEAM requirements.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-8">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">Marks → SEALs</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">
+              An activity verified as a Single or Bulk Mark counts toward the Activity pathway of a SEAL in the same theme. Start small, then group related Marks under a thematic SEAL.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-8">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">SEALs → Certification</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">
+              Activities completed for a SEAL carry forward toward full Certification — reducing the scope and timeline of the certification process.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-8">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">Marks → Certification</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">
+              Every verified Mark earns credit toward its pillar in full Certification. There is no penalty for starting small.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Comparison matrix ─── -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-12">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Side by side</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          The three actions at <em class="italic font-normal text-seam-600">a glance</em>
+        </h2>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-warm-200">
+        <table class="w-full text-left min-w-[720px]">
+          <thead class="bg-warm-50 border-b border-warm-200">
+            <tr>
+              <th class="px-6 py-5 text-[11px] font-medium uppercase tracking-[0.15em] text-warm-500"></th>
+              <th class="px-6 py-5 text-[13px] font-medium text-warm-900">
+                <span class="block text-[11px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-1">Step 01</span>
+                SEAM Marks
+              </th>
+              <th class="px-6 py-5 text-[13px] font-medium text-warm-900 bg-seam-50/50">
+                <span class="block text-[11px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-1">Step 02</span>
+                SEAM SEALs
+              </th>
+              <th class="px-6 py-5 text-[13px] font-medium text-warm-900">
+                <span class="block text-[11px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-1">Step 03</span>
+                SEAM Certification
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-warm-100">
+            {comparisonRows.map((row) => (
+              <tr>
+                <td class="px-6 py-4 text-[12px] font-medium uppercase tracking-[0.12em] text-warm-500">{row.label}</td>
+                <td class="px-6 py-4 text-[14px] leading-snug text-warm-700">{row.marks}</td>
+                <td class="px-6 py-4 text-[14px] leading-snug text-warm-700 bg-seam-50/30">{row.seals}</td>
+                <td class="px-6 py-4 text-[14px] leading-snug text-warm-700">{row.cert}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-6 text-[13px] text-warm-500">
+        Full pricing details: <a href="/pricing" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">/pricing</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Which one fits ─── -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-12">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Which one fits?</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Six common <em class="italic font-normal text-seam-600">starting points</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {decisionPrompts.map((p) => (
+          <a href={p.href} class="group rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-8 transition-all duration-300 hover:border-warm-300 hover:shadow-lg">
+            <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-3">If</p>
+            <p class="text-[16px] leading-relaxed text-warm-700 mb-4">{p.if}</p>
+            <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-2">Then</p>
+            <p class="text-[16px] font-display tracking-[-0.01em] text-warm-900 group-hover:text-seam-700 transition-colors">
+              {p.then} &rarr;
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-12">
+          Choosing between <em class="italic font-normal text-seam-600">the three</em>
+        </h2>
+
+        {faqs.map((faq) => (
+          <details class="border-b border-warm-200 group">
+            <summary class="w-full flex items-center justify-between py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <span class="text-[16px] lg:text-[17px] font-medium text-warm-900 pr-6 group-hover:text-seam-600 transition-colors">{faq.question}</span>
+              <svg class="shrink-0 w-4 h-4 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </summary>
+            <div class="pb-6">
+              <p class="text-[15px] leading-relaxed text-warm-600 pr-10">{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="py-20 lg:py-28 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-white mb-6">
+        Not sure where to <em class="italic font-normal text-seam-300">start?</em>
+      </h2>
+      <p class="text-[17px] leading-relaxed text-warm-300 max-w-2xl mx-auto mb-10">
+        Talk to an advisor about the right credential — and the right sequence — for your portfolio.
+      </p>
+      <a href="/get-started" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+        Talk to an advisor &rarr;
+      </a>
+    </div>
+  </section>
+</SiteLayout>
