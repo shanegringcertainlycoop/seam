@@ -20,7 +20,7 @@ const steps = [
     label: 'SEAM Seal',
     href: '/seals',
     tagline: 'Themed activity verification',
-    scope: '11–25 related activities organized around a defined theme and Assessment Scope',
+    scope: '12–26 related activities organized around a defined theme and Assessment Scope',
     bestFor: 'Organizations ready to demonstrate sustained action in a focused area — supply chain due diligence, community development, etc. — without pursuing whole-building certification.',
     timeline: 'Reviewed per Assessment Scope',
     starting: 'From $2,500',
@@ -34,7 +34,7 @@ const steps = [
     tagline: 'Whole-building verification',
     scope: 'Full project across Social Impact, Responsibility, Justice, and Accountability',
     bestFor: 'Owners, developers, and operators ready to commit to comprehensive, third-party-verified social equity for a building. Recognized at four levels of achievement.',
-    timeline: '6–12 months from registration to award',
+    timeline: '12+ months from registration to award',
     starting: 'From $7,625 first-year',
     examples: ['New construction or major renovation', 'Operations + Maintenance for existing buildings'],
     accent: 'deep',
@@ -45,7 +45,7 @@ const comparisonRows = [
   {
     label: 'Scope',
     marks: 'One or 3 activities',
-    seals: '11–25 activities, themed',
+    seals: '12–26 activities, themed',
     cert: 'Full building, all 4 pillars',
   },
   {
@@ -70,7 +70,7 @@ const comparisonRows = [
     label: 'Timeline',
     marks: '4–6 weeks',
     seals: 'Per Assessment Scope',
-    cert: '6–12 months',
+    cert: '12+ months',
   },
   {
     label: 'Starting cost',
@@ -133,7 +133,7 @@ const faqs = [
   {
     question: 'How do I decide between a Seal and Certification?',
     answer:
-      'A Seal is themed verification — proof of sustained action in one focused area (11–25 activities). Certification is whole-building verification across all four pillars. If your scope is one theme, choose a Seal. If your scope is a building, choose Certification.',
+      'A Seal is themed verification — proof of sustained action in one focused area (12–26 activities). Certification is whole-building verification across all four pillars. If your scope is one theme, choose a Seal. If your scope is a building, choose Certification.',
   },
   {
     question: 'Can I pursue more than one action in parallel?',
@@ -145,7 +145,7 @@ const faqs = [
 const jsonLd = [
   breadcrumbSchema([
     { name: 'Home', path: '/' },
-    { name: 'Take Action', path: '/commitments' },
+    { name: 'Compare', path: '/compare' },
   ]),
   faqSchema(faqs),
 ] as unknown as Record<string, unknown>
@@ -154,7 +154,7 @@ const jsonLd = [
 <SiteLayout
   title="Take Action — Marks, Seals, and Certification"
   description="Three ways to take action: Marks for activity-level verification, Seals for thematic depth, and Certification for whole-building. See how they connect and which one fits."
-  path="/commitments"
+  path="/compare"
   jsonLd={jsonLd}
 >
 
@@ -171,7 +171,7 @@ const jsonLd = [
           Choose your <em class="font-display italic font-normal text-seam-300">depth of action</em>
         </h1>
         <p class="hero-subtitle mt-8 max-w-2xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
-          Three ways to take action, one Standard. Earn a single Mark for a verified activity, a Seal (Social Equity Activities Label) across 11–25 themed activities, or full Certification across the whole building. Each one stands alone — and each one carries forward into the next.
+          Three ways to take action, one Standard. Earn a single Mark for a verified activity, a Seal across 12–26 themed activities, or full Certification across the whole building. Each one stands alone — and each one carries forward into the next.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4">
           <a href="#progression" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">

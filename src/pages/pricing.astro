@@ -58,7 +58,7 @@ const sealsTiers = [
     period: '/Seal',
     description: 'Show your supply chain can stand up to modern-slavery and human-rights scrutiny — aligned with the Australian and UK Modern Slavery Acts, UFLPA, the EU Forced Labour Regulation, UNGPs, OECD, and ILO standards.',
     features: [
-      '11–25 verified activities in the EP pathway',
+      '26 verified activities in the EP pathway',
       'Independent review against the Seal pathway',
       'Public listing with Assessment Scope',
       'Counts toward full certification',
@@ -72,7 +72,7 @@ const sealsTiers = [
     period: '/Seal',
     description: 'Prove a community initiative is real work — designed with impacted parties, tied to a material issue, delivered, and independently reviewed.',
     features: [
-      '11–25 verified activities in the CD pathway',
+      '12 verified activities in the CD pathway',
       'Independent review against the Seal pathway',
       'Public listing with Assessment Scope',
       'Counts toward full certification',
@@ -246,7 +246,7 @@ const marksFaqs = [
   },
   {
     q: 'Can I start with Marks and upgrade to full Certification later?',
-    a: 'Yes. Every verified activity earns pathway credit toward full certification. Many organizations start by earning 3\u20135 Marks and then transition to a full certification track when ready.',
+    a: 'Yes. Every verified activity earns pathway credit toward full certification. Many organizations start with a Single Mark or Bulk Marks (3 related activities) and then transition to a full certification track when ready.',
   },
   {
     q: 'Do community members get a discount?',
@@ -261,15 +261,19 @@ const marksFaqs = [
 const sealsFaqs = [
   {
     q: 'How much does a SEAM Seal cost?',
-    a: 'Pricing is in development. Seals are a new credential between single-activity Marks and full building Certification, awarded across 18\u2013 related activities. Final pricing will be published as each Seal launches.',
+    a: 'Pricing is set per Seal pathway. The Ethical Procurement Seal is $5,000 for 26 verified activities. The Community Development Seal is $2,500 for 12 verified activities. Each is a flat fee per Assessment Scope.',
   },
   {
-    q: 'When will Seals be available?',
-    a: 'The first two Seals — Ethical Procurement ($5,000) and Community Development ($2,500) — are available now in pilot. Each Seal is a flat fee per Assessment Scope. Talk to an advisor about scoping yours.',
+    q: 'Which Seals are available now?',
+    a: 'Two Seals are open in pilot cohorts: the Ethical Procurement Seal (26 activities, $5,000) and the Community Development Seal (12 activities, $2,500). Additional Seal pathways are in development.',
   },
   {
     q: 'How is a Seal different from Bulk Marks?',
-    a: 'Bulk Marks bundle 3\u20135 related activities at a discount. A Seal is broader \u2014 11 to 25 activities in a curated theme \u2014 and is a distinct, named credential representing sustained commitment in a focused area.',
+    a: 'Bulk Marks bundle 3 related activities for $2,000 \u2014 a focused, lower-commitment way to verify practices you already have. A Seal is broader: 12 to 26 activities in a curated theme, a distinct named credential representing sustained commitment in a focused area.',
+  },
+  {
+    q: 'Does a Seal count toward full Certification?',
+    a: 'Yes. Activities verified for a Seal carry forward toward future SEAM recognition when scope, entity, reporting period, evidence, and applicable rating system remain aligned with SEAM requirements.',
   },
 ]
 
@@ -891,7 +895,7 @@ const jsonLd = [
             A themed recognition <em class="italic font-normal text-seam-600">between Marks and Certification</em>
           </h2>
           <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">
-            A SEAM Seal is awarded for completing a curated set of 11–25 related activities. The first two — Ethical Procurement and Community Development — are available now in pilot cohorts.
+            A SEAM Seal is awarded for completing a curated set of 12–26 related activities. The first two — Ethical Procurement (26 activities, $5,000) and Community Development (12 activities, $2,500) — are available now in pilot cohorts.
           </p>
         </div>
 
@@ -917,6 +921,50 @@ const jsonLd = [
               </ul>
 
               <a href="/get-started" class="mt-8 inline-flex w-full items-center justify-center rounded-full border-2 border-warm-900 text-warm-900 hover:bg-warm-900 hover:text-white px-6 py-3.5 text-[15px] font-medium transition-colors duration-300">
+                {tier.cta}
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <!-- Start smaller: Marks pricing -->
+        <div class="reveal-slide-left mt-24 max-w-4xl">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-4">Or start smaller</p>
+          <h3 class="font-display text-[clamp(1.5rem,3vw,2rem)] leading-[1.15] tracking-[-0.02em] text-warm-900">
+            Earn a SEAM Mark <em class="italic font-normal text-seam-600">for a single activity</em>
+          </h3>
+          <p class="mt-4 text-[15px] leading-relaxed text-warm-600 max-w-xl">
+            Verify one practice as a Single Mark, or bundle three related activities as Bulk Marks. Every Mark counts toward a Seal or full Certification.
+          </p>
+        </div>
+
+        <div class="reveal-stagger mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+          {marksTiers.map((tier) => (
+            <div class={`reveal-child rounded-2xl p-8 lg:p-10 flex flex-col ${tier.highlighted ? 'border-2 border-seam-500 bg-white relative' : 'bg-white border border-warm-200/60'}`}>
+              {tier.highlighted && (
+                <span class="absolute -top-3.5 left-8 inline-block rounded-full bg-seam-600 px-4 py-1 text-[12px] font-medium text-white tracking-wide uppercase">
+                  Best value
+                </span>
+              )}
+              <h3 class="font-display text-[28px] tracking-[-0.02em] text-warm-900">{tier.name}</h3>
+              <div class="mt-3 flex items-baseline gap-1">
+                <span class="font-display text-[42px] tracking-[-0.04em] text-warm-900">{tier.price}</span>
+                <span class="text-[16px] text-warm-600">{tier.period}</span>
+              </div>
+              <p class="mt-4 text-[15px] leading-relaxed text-warm-600">{tier.description}</p>
+
+              <ul class="mt-8 space-y-3 flex-1">
+                {tier.features.map((f) => (
+                  <li class="flex items-start gap-2.5 text-[14px] leading-snug text-warm-600">
+                    <svg class="shrink-0 w-4 h-4 mt-0.5 text-seam-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <a href="/get-started" class={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300 ${tier.highlighted ? 'bg-seam-600 text-white hover:bg-seam-700' : 'border-2 border-warm-900 text-warm-900 hover:bg-warm-900 hover:text-white'}`}>
                 {tier.cta}
               </a>
             </div>
