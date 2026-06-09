@@ -2,8 +2,9 @@
 import SiteLayout from '../layouts/SiteLayout.astro'
 import BusinessCaseBanner from '../components/BusinessCaseBanner.astro'
 import { faqSchema, breadcrumbSchema, organizationSchema } from '../lib/seo-helpers'
-import { certifiedProjects } from '../data/directory'
-import { posts } from '../data/blog'
+import { getCertifiedProjects, getPosts } from '../lib/sanity'
+
+const [certifiedProjects, posts] = await Promise.all([getCertifiedProjects(), getPosts()])
 
 const recentPosts = posts.filter((p) => p.image).slice(0, 3)
 

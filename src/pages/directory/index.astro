@@ -1,13 +1,14 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../lib/seo-helpers'
-import {
-  seamAPs,
-  certifiedProjects,
-  memberOrgs,
-  certificationLevels,
-  ratingSystems,
-} from '../../data/directory'
+import { certificationLevels, ratingSystems } from '../../data/directory'
+import { getSeamAPs, getCertifiedProjects, getMemberOrgs } from '../../lib/sanity'
+
+const [seamAPs, certifiedProjects, memberOrgs] = await Promise.all([
+  getSeamAPs(),
+  getCertifiedProjects(),
+  getMemberOrgs(),
+])
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr]

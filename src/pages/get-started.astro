@@ -1,8 +1,9 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../lib/seo-helpers'
-import { team } from '../data/team'
+import { getTeam } from '../lib/sanity'
 
+const team = await getTeam()
 const rainey = team.find((m) => m.slug === 'rainey-shane')!
 
 const topics = [

@@ -1,7 +1,9 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../../lib/seo-helpers'
-import { seamAPs, certifiedProjects } from '../../../data/directory'
+import { getSeamAPs, getCertifiedProjects } from '../../../lib/sanity'
+
+const [seamAPs, certifiedProjects] = await Promise.all([getSeamAPs(), getCertifiedProjects()])
 
 const { slug } = Astro.params
 const ap = seamAPs.find((a) => a.slug === slug)

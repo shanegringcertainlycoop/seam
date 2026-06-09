@@ -1,8 +1,9 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro'
 import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
-import { seamAPs } from '../../data/directory'
+import { getSeamAPs } from '../../lib/sanity'
 
+const seamAPs = await getSeamAPs()
 const individualMembers = seamAPs.filter((ap) => (ap.membershipTier === 'Open' || ap.membershipTier === 'Changemaker') && ap.photo)
 
 const included = [
