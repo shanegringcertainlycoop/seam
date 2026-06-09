@@ -839,13 +839,13 @@ export const certifiedProjects: CertifiedProject[] = [
     certificationLevel: 'Seal',
     ratingSystem: 'Ethical Procurement Seal',
     description:
-      'SEAM is piloting a confidential Modern Slavery Assessment for a real estate investment manager that reports to an Australian reporting entity under the Australian Modern Slavery Act 2018. The project applies relevant SEAM Standard Activities to evaluate how the investment manager identifies, documents, and addresses modern slavery risk across its fund structure, acquisition process, and future asset operations. This work provides practical reporting inputs for the Australian reporting entity while testing how SEAM can verify a focused subset of modern slavery-related requirements. The pilot is informing the creation of the SEAM Ethical Procurement Seal, a limited-scope certification mark that recognizes completion of a defined subset of the full SEAM Certification framework.',
+      'SEAM is piloting a confidential Modern Slavery Assessment for a leading U.S.-based real estate investment manager with an investor that is subject to the Australian Modern Slavery Act of 2018. The project applies relevant SEAM Standard Activities to evaluate how the investment manager identifies, documents, and addresses modern slavery risk within a defined investment vehicle, including its acquisition process and asset-level operations. This work provides practical reporting inputs for the Australian reporting entity while testing how SEAM can verify a focused subset of modern slavery-related requirements. The pilot is informing the creation of the SEAM Ethical Procurement Seal, a limited-scope certification mark that recognizes completion of a defined subset of the full SEAM Certification framework.',
     completionDate: '',
     size: '',
-    owner: 'Global Investment Manager',
+    owner: 'U.S.-Based Real Estate Investment Manager',
     highlights: [
       'Pilot under the Australian Modern Slavery Act 2018',
-      'Evaluates modern slavery risk across fund structure, acquisitions, and operations',
+      'Evaluates modern slavery risk within a defined investment vehicle, including acquisitions and asset-level operations',
       'Informing the SEAM Ethical Procurement Seal',
     ],
     apLead: undefined,
