@@ -1,15 +1,16 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../../lib/seo-helpers'
-import { team } from '../../../data/team'
-import { seamAPs } from '../../../data/directory'
+import { getTeam } from '../../../lib/sanity'
 
 export const prerender = true
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const team = await getTeam()
   return team.map((member) => ({ params: { slug: member.slug } }))
 }
 
+const team = await getTeam()
 const { slug } = Astro.params
 const member = team.find((m) => m.slug === slug)
 if (!member) return Astro.redirect('/directory', 404)

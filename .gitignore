@@ -27,3 +27,8 @@ dist-ssr
 
 # Local MCP config
 .mcp.json
+
+# Audit / QA artifacts (not part of the site)
+lighthouse-report.*
+lh-*.json
+public/screenshots/

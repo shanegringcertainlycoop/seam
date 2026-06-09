@@ -1,5 +1,11 @@
 ---
-import { seamAPs, certifiedProjects, memberOrgs } from '../data/directory'
+import { getSeamAPs, getCertifiedProjects, getMemberOrgs } from '../lib/sanity'
+
+const [seamAPs, certifiedProjects, memberOrgs] = await Promise.all([
+  getSeamAPs(),
+  getCertifiedProjects(),
+  getMemberOrgs(),
+])
 
 interface NavLink {
   label: string

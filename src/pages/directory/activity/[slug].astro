@@ -1,7 +1,9 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../../lib/seo-helpers'
-import { approvedActivities } from '../../../data/directory'
+import { getApprovedActivities } from '../../../lib/sanity'
+
+const approvedActivities = await getApprovedActivities()
 
 const { slug } = Astro.params
 const activity = approvedActivities.find((a) => a.slug === slug)

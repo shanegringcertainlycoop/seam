@@ -1,8 +1,9 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
 import { breadcrumbSchema, SITE_URL } from '../lib/seo-helpers'
-import { team } from '../data/team'
-import { seamAPs } from '../data/directory'
+import { getTeam, getSeamAPs } from '../lib/sanity'
+
+const [team, seamAPs] = await Promise.all([getTeam(), getSeamAPs()])
 
 const staff = team.filter((m) => !['Board Member'].includes(m.role))
 const board = team.filter((m) => m.role === 'Board Member' || m.role.includes('Board'))

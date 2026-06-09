@@ -1,73 +1,46 @@
-# React + TypeScript + Vite
+# SEAM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing site for SEAM certification — `seamcertification.org`.
 
-Currently, two official plugins are available:
+Sibling repos:
+- [`seam-standard`](../seam-standard) — the public SEAM Standard reference (`standard.seamcertification.org`)
+- [`studio-seam-standard`](../studio-seam-standard) — Sanity Studio (CMS) for the Standard
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
+- Astro 5
+- Tailwind CSS v4 (`@tailwindcss/vite`)
+- TypeScript
+- Netlify deploy (`@astrojs/netlify`)
 
-## React Compiler
+## Setup
+```bash
+npm install
+npm run dev        # http://localhost:4321
+```
+Local env values (if any) go in `.env.local`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Scripts
+```bash
+npm run dev       # local dev server
+npm run build     # production build → dist/
+npm run preview   # serve the production build locally
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Structure
 ```
+src/
+  pages/          # routed pages (.astro) — home, certification, pricing, marks, seals, for/*, standard/* …
+  components/     # shared UI components
+  layouts/        # page layouts
+  data/           # structured content / copy
+  lib/            # helpers
+  styles/         # global styles / Tailwind entry
+  assets/         # imported assets
+public/           # static assets served as-is
+```
+
+## Deploy
+Deployed via Netlify using the Astro Netlify adapter (see `astro.config.*`).
+
+## Notes
+- `figma-screenshots/` and `screenshots/` hold internal design/QA reference images; they are not part of the shipped site.

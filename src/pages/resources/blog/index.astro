@@ -1,7 +1,10 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../../lib/seo-helpers'
-import { posts, categories, type BlogPost } from '../../../data/blog'
+import { categories, type BlogPost } from '../../../data/blog'
+import { getPosts } from '../../../lib/sanity'
+
+const posts = await getPosts()
 
 function formatDate(dateStr: string) {
   return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {

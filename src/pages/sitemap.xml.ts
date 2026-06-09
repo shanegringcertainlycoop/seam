@@ -1,7 +1,11 @@
 import type { APIRoute } from 'astro'
-import { posts } from '../data/blog'
-import { seamAPs, certifiedProjects, memberOrgs } from '../data/directory'
-import { team } from '../data/team'
+import {
+  getPosts,
+  getSeamAPs,
+  getCertifiedProjects,
+  getMemberOrgs,
+  getTeam,
+} from '../lib/sanity'
 
 const SITE = 'https://seamcertification.org'
 
@@ -14,7 +18,15 @@ function entry(loc: string, opts?: { lastmod?: string; changefreq?: string; prio
   return xml
 }
 
-export const GET: APIRoute = () => {
+export const GET: APIRoute = async () => {
+  const [posts, seamAPs, certifiedProjects, memberOrgs, team] = await Promise.all([
+    getPosts(),
+    getSeamAPs(),
+    getCertifiedProjects(),
+    getMemberOrgs(),
+    getTeam(),
+  ])
+
   const urls: string[] = []
 
   // Core pages

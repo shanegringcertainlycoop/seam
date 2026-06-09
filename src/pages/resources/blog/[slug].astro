@@ -1,10 +1,10 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro'
 import { blogPostingSchema, breadcrumbSchema } from '../../../lib/seo-helpers'
-import { posts } from '../../../data/blog'
+import { getPosts } from '../../../lib/sanity'
 
 const { slug } = Astro.params
-const post = posts.find((p) => p.slug === slug)
+const post = (await getPosts()).find((p) => p.slug === slug)
 
 if (!post) {
   return Astro.redirect('/resources/blog', 404)
