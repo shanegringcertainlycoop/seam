@@ -1,0 +1,35 @@
+---
+import { accent } from './_accent'
+const { eyebrow, heading, intro, levels = [] } = Astro.props
+---
+<section class="py-24 lg:py-32">
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+    {(eyebrow || heading) && (
+      <div class="max-w-2xl mb-16 lg:mb-20">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />}
+        {intro && <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">{intro}</p>}
+      </div>
+    )}
+    <div>
+      {levels.map((level: any, i: number) => (
+        <div class={`grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-12 py-10 lg:py-12 ${i < levels.length - 1 ? 'border-b border-warm-200' : ''}`}>
+          <div class="lg:col-span-1">
+            <span class="font-display text-[clamp(1.5rem,2vw,2rem)] tracking-[-0.02em] text-seam-500">{level.number}</span>
+          </div>
+          <div class="lg:col-span-2">
+            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900">{level.title}</h3>
+          </div>
+          {level.image && (
+            <div class="lg:col-span-3 flex justify-center lg:justify-start">
+              <img src={level.image} alt={`SEAM ${level.title} certification badge`} class="w-20 h-20 lg:w-24 lg:h-24 object-contain" loading="lazy" decoding="async" />
+            </div>
+          )}
+          <div class={level.image ? 'lg:col-span-6' : 'lg:col-span-9'}>
+            <p class="text-[16px] leading-relaxed text-warm-600">{level.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

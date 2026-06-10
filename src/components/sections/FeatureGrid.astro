@@ -1,40 +1,42 @@
 ---
 import { accent } from './_accent'
-const { eyebrow, heading, intro, features = [] } = Astro.props
+const { eyebrow, heading, intro, tone = 'light', features = [] } = Astro.props
+const dark = tone === 'dark'
 const cols = features.length % 3 === 0 ? 'lg:grid-cols-3' : features.length % 2 === 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'
-const Tag = (f: any) => (f.href ? 'a' : 'div')
 ---
-<section class="py-24 lg:py-32">
+<section class={`py-24 lg:py-32 ${dark ? 'bg-warm-900' : ''}`}>
   <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
     {(eyebrow || heading) && (
       <div class="max-w-2xl mb-16 lg:mb-20">
         {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
-        {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />}
-        {intro && <p class="mt-6 text-[17px] leading-relaxed text-warm-600">{intro}</p>}
+        {heading && <h2 class={`font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] ${dark ? 'text-white' : 'text-warm-900'}`} set:html={accent(heading, dark ? 'seam-300' : 'seam-600')} />}
+        {intro && <p class={`mt-6 text-[17px] leading-relaxed ${dark ? 'text-warm-300' : 'text-warm-600'}`}>{intro}</p>}
       </div>
     )}
     <div class={`grid grid-cols-1 ${cols} gap-6 pt-10`}>
       {features.map((f: any) => {
         const El = f.href ? 'a' : 'div'
+        const cardCls = dark
+          ? 'group relative overflow-visible rounded-2xl bg-warm-800 border border-warm-700 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-600'
+          : 'group relative overflow-visible rounded-2xl bg-white border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]'
         return (
-          <El href={f.href} class="group relative overflow-visible rounded-2xl bg-white border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <El href={f.href} class={cardCls}>
             {(f.logos?.length || f.logo) && (
               <div class="absolute -top-5 right-3 sm:-top-8 sm:right-8">
                 {f.logos?.length ? (
                   <div class="flex items-end -space-x-2 sm:-space-x-4">
-                    {f.logos.map((src: string) => (
-                      <img src={src} alt="" class="w-7 h-7 sm:w-14 sm:h-14 object-contain drop-shadow-sm" loading="lazy" decoding="async" />
-                    ))}
+                    {f.logos.map((src: string) => (<img src={src} alt="" class="w-7 h-7 sm:w-14 sm:h-14 object-contain drop-shadow-sm" loading="lazy" decoding="async" />))}
                   </div>
                 ) : (
                   <img src={f.logo} alt="" class="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-sm" loading="lazy" decoding="async" />
                 )}
               </div>
             )}
+            {f.iconImage && <img src={f.iconImage} alt="" class="w-12 h-12 object-contain mb-5" loading="lazy" decoding="async" />}
             {f.icon && <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-2 block">{f.icon}</span>}
-            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">{f.title}</h3>
-            <p class="text-[16px] leading-relaxed text-warm-600">{f.body}</p>
-            {f.fit && <p class="text-[14px] leading-relaxed text-warm-600 italic border-t border-warm-100 pt-5 mt-6">{f.fit}</p>}
+            <h3 class={`font-display text-[22px] lg:text-[26px] tracking-[-0.02em] mb-4 ${dark ? 'text-white' : 'text-warm-900'}`}>{f.title}</h3>
+            <p class={`text-[16px] leading-relaxed ${dark ? 'text-warm-300' : 'text-warm-600'}`}>{f.body}</p>
+            {f.fit && <p class={`text-[14px] leading-relaxed italic border-t pt-5 mt-6 ${dark ? 'text-warm-400 border-warm-700' : 'text-warm-600 border-warm-100'}`}>{f.fit}</p>}
             {f.href && <span class="inline-block mt-4 text-[14px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">Learn more &rarr;</span>}
           </El>
         )
