@@ -1,0 +1,38 @@
+---
+import { accent } from './_accent'
+import ConceptBadge from '../ConceptBadge.astro'
+const { eyebrow, heading, intro } = Astro.props
+const STANDARD_URL =
+  process.env.STANDARD_URL ?? import.meta.env.STANDARD_URL ?? 'https://standard.seamcertification.org'
+type A = { activityId: string; title: string; displayTitle?: string; marketingTitle?: string; url: string; activityType: string; concept?: { code: string } }
+let activities: A[] = []
+try {
+  const res = await fetch(`${STANDARD_URL}/api/marks.json`)
+  if (res.ok) activities = ((await res.json()) as { activities?: A[] }).activities ?? []
+} catch {
+  /* live list unavailable — render nothing */
+}
+const introText = (intro ?? '').replace('{count}', String(activities.length))
+---
+{activities.length > 0 && (
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-12 lg:mb-16">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />}
+        {introText && <p class="mt-4 text-[17px] leading-relaxed text-warm-600">{introText}</p>}
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {activities.map((a) => (
+          <a href={a.url} target="_blank" rel="noopener" class="block rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-7 transition-all duration-300 hover:border-seam-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] group">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[11px] font-mono font-medium text-seam-700">{a.activityId}</span>
+              {a.concept?.code && <ConceptBadge code={a.concept.code} size="xs" />}
+            </div>
+            <h3 class="font-display text-[16px] tracking-[-0.02em] text-warm-900 leading-snug group-hover:text-seam-700 transition-colors">{a.marketingTitle ?? a.displayTitle ?? a.title}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
