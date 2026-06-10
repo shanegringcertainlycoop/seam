@@ -5,6 +5,8 @@ import RichText from './RichText.astro'
 import Faq from './Faq.astro'
 import Cta from './Cta.astro'
 import PainSolutionGrid from './PainSolutionGrid.astro'
+import Testimonial from './Testimonial.astro'
+import BusinessCaseBannerSection from './BusinessCaseBannerSection.astro'
 
 const COMPONENTS: Record<string, any> = {
   heroSection: Hero,
@@ -13,6 +15,8 @@ const COMPONENTS: Record<string, any> = {
   faqSection: Faq,
   ctaSection: Cta,
   painSolutionGrid: PainSolutionGrid,
+  testimonialSection: Testimonial,
+  businessCaseBanner: BusinessCaseBannerSection,
 }
 
 const { sections = [] } = Astro.props
