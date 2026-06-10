@@ -12,6 +12,7 @@ import FocusAreas from './FocusAreas.astro'
 import StandardActivities from './StandardActivities.astro'
 import ComparisonTable from './ComparisonTable.astro'
 import Embed from './Embed.astro'
+import TeamGrid from './TeamGrid.astro'
 
 const COMPONENTS: Record<string, any> = {
   heroSection: Hero,
@@ -27,6 +28,7 @@ const COMPONENTS: Record<string, any> = {
   standardActivitiesSection: StandardActivities,
   comparisonTableSection: ComparisonTable,
   embedSection: Embed,
+  teamSection: TeamGrid,
 }
 
 const { sections = [] } = Astro.props
