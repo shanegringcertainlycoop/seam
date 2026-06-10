@@ -68,8 +68,20 @@ const TEAM = `{
 }`
 
 // ── Getters (per-request fetch + shape mapping) ──────────────────────────────
+// Every getter is resilient: if Sanity is unreachable or the token is bad, it
+// logs and returns [] rather than throwing, so a CMS problem degrades to empty
+// sections instead of taking the whole marketing site down with a 500.
+async function safeFetch<T>(label: string, query: string): Promise<T[]> {
+  try {
+    return (await sanity.fetch<T[]>(query)) ?? []
+  } catch (e: any) {
+    console.error(`[sanity] ${label} failed: ${e?.message ?? e}`)
+    return []
+  }
+}
+
 export async function getPosts(): Promise<BlogPost[]> {
-  const rows = await sanity.fetch<any[]>(`*[_type=="blogPost"]|order(date desc)${POST}`)
+  const rows = await safeFetch<any>('getPosts', `*[_type=="blogPost"]|order(date desc)${POST}`)
   return rows.map((p) => ({
     ...p,
     image: p.image?.src ? p.image : undefined,
@@ -78,22 +90,22 @@ export async function getPosts(): Promise<BlogPost[]> {
 }
 
 export async function getSeamAPs(): Promise<SeamAP[]> {
-  return sanity.fetch(`*[_type=="seamAP"]|order(name asc)${AP}`)
+  return safeFetch<SeamAP>('getSeamAPs', `*[_type=="seamAP"]|order(name asc)${AP}`)
 }
 
 export async function getMemberOrgs(): Promise<MemberOrg[]> {
-  return sanity.fetch(`*[_type=="memberOrg"]|order(name asc)${ORG}`)
+  return safeFetch<MemberOrg>('getMemberOrgs', `*[_type=="memberOrg"]|order(name asc)${ORG}`)
 }
 
 export async function getCertifiedProjects(): Promise<CertifiedProject[]> {
-  return sanity.fetch(`*[_type=="certifiedProject"]|order(name asc)${PROJECT}`)
+  return safeFetch<CertifiedProject>('getCertifiedProjects', `*[_type=="certifiedProject"]|order(name asc)${PROJECT}`)
 }
 
 export async function getApprovedActivities(): Promise<ApprovedActivity[]> {
-  return sanity.fetch(`*[_type=="approvedActivity"]|order(name asc)${ACTIVITY}`)
+  return safeFetch<ApprovedActivity>('getApprovedActivities', `*[_type=="approvedActivity"]|order(name asc)${ACTIVITY}`)
 }
 
 export async function getTeam(): Promise<TeamMember[]> {
-  const rows = await sanity.fetch<any[]>(`*[_type=="teamMember"]|order(order asc)${TEAM}`)
+  const rows = await safeFetch<any>('getTeam', `*[_type=="teamMember"]|order(order asc)${TEAM}`)
   return rows.map((t) => ({ ...t, bio: ptToBody(t.bio) }))
 }
