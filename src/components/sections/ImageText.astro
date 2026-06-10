@@ -1,0 +1,38 @@
+---
+import { toHTML } from '@portabletext/to-html'
+import { accent } from './_accent'
+const { eyebrow, heading, body, image, imageSide = 'left', tone = 'light' } = Astro.props
+const html = body
+  ? toHTML(body, {
+      components: {
+        block: {
+          normal: ({ children }: any) => `<p class="text-[17px] leading-[1.8] text-warm-600 mb-5">${children}</p>`,
+          h3: ({ children }: any) => `<h3 class="font-display text-[24px] lg:text-[28px] tracking-[-0.02em] text-warm-900 mb-4">${children}</h3>`,
+          blockquote: ({ children }: any) => `<blockquote class="border-l-2 border-seam-300 pl-6 my-6 text-[19px] italic text-warm-700">${children}</blockquote>`,
+        },
+        marks: {
+          strong: ({ children }: any) => `<strong class="font-medium text-warm-900">${children}</strong>`,
+          link: ({ children, value }: any) => `<a href="${value?.href}" class="text-seam-600 underline hover:text-seam-700">${children}</a>`,
+        },
+        list: { bullet: ({ children }: any) => `<ul class="list-disc pl-6 mb-5 space-y-2 text-[17px] text-warm-600">${children}</ul>` },
+      },
+    })
+  : ''
+const imgFirst = imageSide === 'left'
+---
+<section class={`py-20 lg:py-28 ${tone === 'muted' ? 'bg-warm-50' : ''}`}>
+  <div class="mx-auto max-w-[1300px] px-6 lg:px-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      {image && (
+        <div class={imgFirst ? 'lg:order-1' : 'lg:order-2'}>
+          <img src={image} alt={heading ?? ''} class="w-full rounded-2xl object-cover" loading="lazy" decoding="async" />
+        </div>
+      )}
+      <div class={!image ? 'lg:col-span-2 max-w-3xl mx-auto' : imgFirst ? 'lg:order-2' : 'lg:order-1'}>
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-4">{eyebrow}</p>}
+        {heading && <h2 class="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.15] tracking-[-0.02em] text-warm-900 mb-5" set:html={accent(heading, 'seam-600')} />}
+        <div set:html={html} />
+      </div>
+    </div>
+  </div>
+</section>
