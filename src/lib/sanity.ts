@@ -118,7 +118,8 @@ const PAGE = `{
   title, "slug": slug.current, seo,
   sections[]{
     ...,
-    "image": image.asset->url
+    // hero uses a Sanity image asset; imageText/etc. use a string path — keep both
+    "image": select(defined(image.asset) => image.asset->url, image)
   }
 }`
 
