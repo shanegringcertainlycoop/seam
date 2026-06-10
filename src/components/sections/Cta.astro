@@ -1,0 +1,21 @@
+---
+import { accent } from './_accent'
+const { heading, body, ctas = [] } = Astro.props
+---
+<section class="py-24 lg:py-32 bg-warm-900">
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+    <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto" set:html={accent(heading, 'seam-300')} />
+    {body && <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">{body}</p>}
+    {ctas.length > 0 && (
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        {ctas.map((c: any, i: number) => (
+          c.style === 'primary' || (i === 0 && !c.style) ? (
+            <a href={c.href} class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">{c.label}</a>
+          ) : (
+            <a href={c.href} class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">{c.label}</a>
+          )
+        ))}
+      </div>
+    )}
+  </div>
+</section>

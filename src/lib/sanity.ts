@@ -109,3 +109,42 @@ export async function getTeam(): Promise<TeamMember[]> {
   const rows = await safeFetch<any>('getTeam', `*[_type=="teamMember"]|order(order asc)${TEAM}`)
   return rows.map((t) => ({ ...t, bio: ptToBody(t.bio) }))
 }
+
+// ── Page builder ─────────────────────────────────────────────────────────────
+// A page = an ordered list of section blocks. `...` spreads every section's
+// fields; image assets are resolved to URLs. Portable Text fields (richText
+// body, faq answers) come through raw and are rendered in the section component.
+const PAGE = `{
+  title, "slug": slug.current, seo,
+  sections[]{
+    ...,
+    "image": image.asset->url
+  }
+}`
+
+export type Page = {
+  title: string
+  slug: string
+  seo?: { title?: string; description?: string; ogImage?: any; noindex?: boolean }
+  sections?: any[]
+}
+
+export async function getPage(slug: string): Promise<Page | null> {
+  try {
+    return await sanity.fetch<Page | null>(
+      `*[_type=="page" && slug.current==$slug][0]${PAGE}`,
+      { slug },
+    )
+  } catch (e: any) {
+    console.error(`[sanity] getPage(${slug}) failed: ${e?.message ?? e}`)
+    return null
+  }
+}
+
+export async function getPageSlugs(): Promise<string[]> {
+  const rows = await safeFetch<{ slug: string }>(
+    'getPageSlugs',
+    `*[_type=="page" && defined(slug.current)]{ "slug": slug.current }`,
+  )
+  return rows.map((r) => r.slug)
+}

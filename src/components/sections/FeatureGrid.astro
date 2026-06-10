@@ -1,0 +1,26 @@
+---
+import { accent } from './_accent'
+const { eyebrow, heading, intro, features = [] } = Astro.props
+const cols = features.length % 3 === 0 ? 'lg:grid-cols-3' : features.length % 2 === 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'
+---
+<section class="py-24 lg:py-32">
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+    {(eyebrow || heading) && (
+      <div class="max-w-2xl mb-16 lg:mb-20">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />}
+        {intro && <p class="mt-6 text-[17px] leading-relaxed text-warm-600">{intro}</p>}
+      </div>
+    )}
+    <div class={`grid grid-cols-1 ${cols} gap-6 pt-2`}>
+      {features.map((f: any) => (
+        <div class="group relative rounded-2xl bg-white border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          {f.icon && <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-2 block">{f.icon}</span>}
+          <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">{f.title}</h3>
+          <p class="text-[16px] leading-relaxed text-warm-600">{f.body}</p>
+          {f.href && <a href={f.href} class="inline-block mt-4 text-[14px] font-medium text-gold-600 hover:text-gold-700 transition-colors">Learn more &rarr;</a>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

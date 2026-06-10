@@ -1,0 +1,35 @@
+---
+import { accent } from './_accent'
+const { eyebrow, heading, subheading, image, ctas = [] } = Astro.props
+---
+<section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+  {image && (
+    <div class="absolute inset-0">
+      <img src={image} alt="" class="h-full w-full object-cover object-center" fetchpriority="high" decoding="async" />
+      <div class="absolute inset-0 bg-gradient-to-br from-warm-900/85 via-warm-900/60 to-seam-900/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    </div>
+  )}
+  <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
+    <div class="max-w-4xl mx-auto text-center">
+      {eyebrow && (
+        <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">{eyebrow}</span>
+      )}
+      <h1 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white" set:html={accent(heading, 'seam-300')} />
+      {subheading && (
+        <p class="mt-8 max-w-xl mx-auto text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">{subheading}</p>
+      )}
+      {ctas.length > 0 && (
+        <div class="mt-10 flex flex-wrap gap-4 justify-center">
+          {ctas.map((c: any, i: number) => (
+            c.style === 'primary' || (i === 0 && !c.style) ? (
+              <a href={c.href} class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">{c.label}</a>
+            ) : (
+              <a href={c.href} class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300">{c.label}</a>
+            )
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

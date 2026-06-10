@@ -1,0 +1,21 @@
+---
+// Page-builder catch-all. Lowest routing priority in Astro, so every existing
+// .astro page takes precedence — this only renders slugs that have a `page`
+// document in Sanity and no dedicated file. SSR so the read token resolves at
+// request time (see lib/sanity.ts).
+import SiteLayout from '../layouts/SiteLayout.astro'
+import SectionRenderer from '../components/sections/SectionRenderer.astro'
+import { getPage } from '../lib/sanity'
+
+const slug = Astro.params.slug ?? ''
+const page = await getPage(slug)
+if (!page) return Astro.redirect('/404', 404)
+---
+<SiteLayout
+  title={page.seo?.title ?? page.title}
+  description={page.seo?.description}
+  path={`/${slug}`}
+  solidNav
+>
+  <SectionRenderer sections={page.sections} />
+</SiteLayout>

@@ -1,0 +1,39 @@
+---
+import { toHTML } from '@portabletext/to-html'
+import { accent } from './_accent'
+const { heading, items = [] } = Astro.props
+const answerHtml = (body: any) =>
+  body
+    ? toHTML(body, {
+        components: {
+          block: { normal: ({ children }: any) => `<p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl mb-3 last:mb-0">${children}</p>` },
+          marks: {
+            link: ({ children, value }: any) => `<a href="${value?.href}" class="text-seam-600 underline hover:text-seam-700"${value?.newTab ? ' target="_blank" rel="noopener noreferrer"' : ''}>${children}</a>`,
+            strong: ({ children }: any) => `<strong class="font-medium text-warm-900">${children}</strong>`,
+          },
+        },
+      })
+    : ''
+---
+<section class="py-24 lg:py-32 bg-warm-50">
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+    {heading && (
+      <div class="max-w-2xl mb-16 lg:mb-20">
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />
+      </div>
+    )}
+    <div class="max-w-3xl">
+      {items.map((faq: any) => (
+        <details class="border-b border-warm-200 group">
+          <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+            <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.question}</span>
+            <svg class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <div class="pb-6" set:html={answerHtml(faq.answer)} />
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

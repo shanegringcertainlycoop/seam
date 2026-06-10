@@ -1,0 +1,21 @@
+---
+import Hero from './Hero.astro'
+import FeatureGrid from './FeatureGrid.astro'
+import RichText from './RichText.astro'
+import Faq from './Faq.astro'
+import Cta from './Cta.astro'
+
+const COMPONENTS: Record<string, any> = {
+  heroSection: Hero,
+  featureGridSection: FeatureGrid,
+  richTextSection: RichText,
+  faqSection: Faq,
+  ctaSection: Cta,
+}
+
+const { sections = [] } = Astro.props
+---
+{sections.map((section: any) => {
+  const Component = COMPONENTS[section?._type]
+  return Component ? <Component {...section} /> : null
+})}
