@@ -1,0 +1,36 @@
+---
+import { accent } from './_accent'
+const { eyebrow, heading, columns = [], rows = [] } = Astro.props
+---
+<section class="py-24 lg:py-32 bg-white">
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+    {(eyebrow || heading) && (
+      <div class="max-w-2xl mb-12 lg:mb-16">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />}
+      </div>
+    )}
+    <div class="overflow-x-auto rounded-2xl border border-warm-100">
+      <table class="w-full border-collapse text-left">
+        <thead>
+          <tr class="bg-warm-50">
+            <th class="px-5 py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600"></th>
+            {columns.map((c: string) => (
+              <th class="px-5 py-4 font-display text-[16px] lg:text-[18px] tracking-[-0.01em] text-warm-900">{c}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r: any, i: number) => (
+            <tr class={i < rows.length - 1 ? 'border-b border-warm-100' : ''}>
+              <td class="px-5 py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-500 align-top">{r.label}</td>
+              {(r.cells ?? []).map((cell: string) => (
+                <td class="px-5 py-4 text-[15px] leading-relaxed text-warm-700 align-top">{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
