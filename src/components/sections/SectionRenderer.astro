@@ -13,6 +13,7 @@ import StandardActivities from './StandardActivities.astro'
 import ComparisonTable from './ComparisonTable.astro'
 import Embed from './Embed.astro'
 import TeamGrid from './TeamGrid.astro'
+import SealSteps from './SealSteps.astro'
 
 const COMPONENTS: Record<string, any> = {
   heroSection: Hero,
@@ -29,6 +30,7 @@ const COMPONENTS: Record<string, any> = {
   comparisonTableSection: ComparisonTable,
   embedSection: Embed,
   teamSection: TeamGrid,
+  sealStepsSection: SealSteps,
 }
 
 const { sections = [] } = Astro.props

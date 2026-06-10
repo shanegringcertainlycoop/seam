@@ -1,0 +1,56 @@
+---
+import { accent } from './_accent'
+const { eyebrow, heading, sealSlug, steps = [] } = Astro.props
+const STANDARD_URL =
+  process.env.STANDARD_URL ?? import.meta.env.STANDARD_URL ?? 'https://standard.seamcertification.org'
+type A = { activityId: string; title: string; displayTitle?: string; url: string; activityType: string }
+let byId = new Map<string, A>()
+try {
+  const res = await fetch(`${STANDARD_URL}/api/seals.json`)
+  if (res.ok) {
+    const data = (await res.json()) as { seals?: Array<{ slug: string; activities: A[] }> }
+    const acts = data.seals?.find((s) => s.slug === sealSlug)?.activities ?? []
+    byId = new Map(acts.map((a) => [a.activityId, a]))
+  }
+} catch {
+  /* live list unavailable — render the steps without activity cards */
+}
+---
+<section class="py-24 lg:py-32">
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+    {(eyebrow || heading) && (
+      <div class="max-w-2xl mb-16 lg:mb-20">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />}
+      </div>
+    )}
+    <div class="space-y-12">
+      {steps.map((step: any, i: number) => (
+        <div>
+          <div class="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-10 mb-6">
+            <p class="font-display text-[44px] tracking-[-0.04em] text-seam-600 leading-none">{String(i + 1).padStart(2, '0')}</p>
+            <div>
+              <h3 class="font-display text-[24px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">{step.heading}</h3>
+              {step.lead && <p class="text-[15px] leading-relaxed text-warm-600 max-w-2xl">{step.lead}</p>}
+              {step.note && <p class="mt-3 text-[13px] leading-relaxed text-warm-500 italic max-w-2xl">{step.note}</p>}
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:ml-[156px]">
+            {(step.activityIds ?? []).map((id: string) => {
+              const a = byId.get(id)
+              return (
+                <a href={a ? a.url : `${STANDARD_URL}/seals/${sealSlug}`} target="_blank" rel="noopener" class="block rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-7 transition-all duration-300 hover:border-seam-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] group">
+                  <div class="flex flex-wrap items-center gap-2 mb-3">
+                    <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[11px] font-mono font-medium text-seam-700">{id}</span>
+                    {a && <span class="inline-flex items-center rounded-full bg-warm-100 px-2.5 py-0.5 text-[10px] font-medium text-warm-600">{a.activityType}</span>}
+                  </div>
+                  <h4 class="font-display text-[16px] tracking-[-0.02em] text-warm-900 leading-snug group-hover:text-seam-700 transition-colors">{a ? (a.displayTitle ?? a.title) : id}</h4>
+                </a>
+              )
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
