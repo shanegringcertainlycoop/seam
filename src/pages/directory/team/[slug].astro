@@ -3,16 +3,10 @@ import SiteLayout from '../../../layouts/SiteLayout.astro'
 import { breadcrumbSchema } from '../../../lib/seo-helpers'
 import { getTeam } from '../../../lib/sanity'
 
-export const prerender = true
-
-export async function getStaticPaths() {
-  const team = await getTeam()
-  return team.map((member) => ({ params: { slug: member.slug } }))
-}
-
-const team = await getTeam()
+// SSR (not prerendered) so the Sanity fetch runs at request time, where the
+// Netlify function has the read token — matches every other directory page.
 const { slug } = Astro.params
-const member = team.find((m) => m.slug === slug)
+const member = (await getTeam()).find((m) => m.slug === slug)
 if (!member) return Astro.redirect('/directory', 404)
 
 const description = `${member.name} is ${member.role} at SEAM, advancing social equity certification in the built environment.`

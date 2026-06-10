@@ -21,12 +21,17 @@ import type { TeamMember } from '../data/team'
 // reads. It is server-only (never PUBLIC_), so it never reaches the browser —
 // all fetches here run during SSR / build. Set SANITY_READ_TOKEN in the env
 // (.env.local locally, Netlify env in production).
+// Read process.env FIRST so the Netlify function picks the token up at request
+// time. import.meta.env is resolved by Vite at build, so a value that only
+// exists in the runtime environment gets inlined as undefined otherwise.
 const token =
-  import.meta.env.SANITY_READ_TOKEN || process.env.SANITY_READ_TOKEN || undefined
+  process.env.SANITY_READ_TOKEN ?? import.meta.env.SANITY_READ_TOKEN ?? undefined
 
 export const sanity = createClient({
-  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID || '2gezu0mx',
-  dataset: import.meta.env.PUBLIC_SANITY_DATASET || 'production',
+  projectId:
+    process.env.SANITY_PROJECT_ID ?? import.meta.env.PUBLIC_SANITY_PROJECT_ID ?? '2gezu0mx',
+  dataset:
+    process.env.SANITY_DATASET ?? import.meta.env.PUBLIC_SANITY_DATASET ?? 'production',
   apiVersion: '2025-01-01',
   token,
   useCdn: false,
