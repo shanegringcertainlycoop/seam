@@ -1,0 +1,20 @@
+---
+import { accent } from './_accent'
+const { eyebrow, heading, intro, html, tone = 'light' } = Astro.props
+const bg = tone === 'dark' ? 'bg-warm-900' : tone === 'muted' ? 'bg-warm-50' : ''
+const dark = tone === 'dark'
+---
+<section class={`py-24 lg:py-32 ${bg}`}>
+  <div class="mx-auto max-w-[1100px] px-6 lg:px-10">
+    {(eyebrow || heading) && (
+      <div class="max-w-2xl mb-10 lg:mb-12">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class={`font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] ${dark ? 'text-white' : 'text-warm-900'}`} set:html={accent(heading, dark ? 'seam-300' : 'seam-600')} />}
+        {intro && <p class={`mt-4 text-[17px] leading-relaxed ${dark ? 'text-warm-300' : 'text-warm-600'}`}>{intro}</p>}
+      </div>
+    )}
+    {html && (
+      <div class="overflow-hidden rounded-2xl border border-warm-100 bg-white [&_iframe]:w-full [&_iframe]:min-h-[640px] [&_iframe]:border-0" set:html={html} />
+    )}
+  </div>
+</section>

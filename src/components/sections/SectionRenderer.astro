@@ -11,6 +11,7 @@ import CertLevels from './CertLevels.astro'
 import FocusAreas from './FocusAreas.astro'
 import StandardActivities from './StandardActivities.astro'
 import ComparisonTable from './ComparisonTable.astro'
+import Embed from './Embed.astro'
 
 const COMPONENTS: Record<string, any> = {
   heroSection: Hero,
@@ -25,6 +26,7 @@ const COMPONENTS: Record<string, any> = {
   focusAreasSection: FocusAreas,
   standardActivitiesSection: StandardActivities,
   comparisonTableSection: ComparisonTable,
+  embedSection: Embed,
 }
 
 const { sections = [] } = Astro.props
