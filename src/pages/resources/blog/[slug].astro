@@ -4,7 +4,8 @@ import { blogPostingSchema, breadcrumbSchema } from '../../../lib/seo-helpers'
 import { getPosts } from '../../../lib/sanity'
 
 const { slug } = Astro.params
-const post = (await getPosts()).find((p) => p.slug === slug)
+const posts = await getPosts()
+const post = posts.find((p) => p.slug === slug)
 
 if (!post) {
   return Astro.redirect('/resources/blog', 404)
@@ -79,7 +80,7 @@ const jsonLd = [
   title={post.title}
   description={post.excerpt}
   path={`/resources/blog/${post.slug}`}
-  image={post.image ? `https://seamcertification.org${post.image.src}` : undefined}
+  image={post.image?.src}
   type="article"
   article={{
     author: post.author.name,
