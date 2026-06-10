@@ -1,0 +1,28 @@
+---
+import { accent } from './_accent'
+const { eyebrow, heading, rows = [] } = Astro.props
+---
+<section class="py-24 lg:py-32">
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+    {(eyebrow || heading) && (
+      <div class="max-w-2xl mb-16 lg:mb-20">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />}
+      </div>
+    )}
+    <div class="space-y-6">
+      {rows.map((r: any) => (
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 rounded-2xl border border-warm-100 p-5 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <div>
+            <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-warm-600 mb-3 block">The problem</span>
+            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900">{r.pain}</h3>
+          </div>
+          <div>
+            <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-3 block">How SEAM helps</span>
+            <p class="text-[16px] leading-relaxed text-warm-600">{r.solution}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
