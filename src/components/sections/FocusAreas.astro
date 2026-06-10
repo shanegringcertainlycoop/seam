@@ -1,0 +1,29 @@
+---
+import { accent } from './_accent'
+import ConceptBadge from '../ConceptBadge.astro'
+const { eyebrow, heading, intro, areas = [] } = Astro.props
+---
+<section class="py-24 lg:py-32 bg-warm-50">
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+    {(eyebrow || heading) && (
+      <div class="max-w-2xl mb-16 lg:mb-20">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-300')} />}
+        {intro && <p class="mt-4 text-[17px] leading-relaxed text-warm-600">{intro}</p>}
+      </div>
+    )}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {areas.map((area: any) => (
+        <a href={area.href} target="_blank" rel="noopener" class="block rounded-2xl bg-white border border-warm-100 p-10 transition-all duration-300 hover:border-seam-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] group">
+          <div class="flex items-center gap-2 mb-4">
+            {area.conceptCode && <ConceptBadge code={area.conceptCode} size="xs" />}
+            {area.concept && <span class="text-[12px] font-normal uppercase tracking-[0.1em] text-[#6B8F9C]">{area.concept}</span>}
+          </div>
+          <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3 group-hover:text-seam-700 transition-colors">{area.title}</h3>
+          <p class="text-[15px] leading-relaxed text-warm-600">{area.description}</p>
+          <span class="mt-5 inline-flex items-center text-[13px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">View on the SEAM Standard &rarr;</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

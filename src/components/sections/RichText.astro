@@ -1,7 +1,8 @@
 ---
 import { toHTML } from '@portabletext/to-html'
 import { accent } from './_accent'
-const { heading, body } = Astro.props
+const { eyebrow, heading, body, tone = 'light' } = Astro.props
+const dark = tone === 'dark'
 const html = body
   ? toHTML(body, {
       components: {
@@ -23,9 +24,10 @@ const html = body
     })
   : ''
 ---
-<section class="py-20 lg:py-28">
-  <div class="mx-auto max-w-3xl px-6 lg:px-10">
-    {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-10" set:html={accent(heading, 'seam-600')} />}
+<section class={`py-20 lg:py-28 ${dark ? 'bg-warm-900' : ''}`}>
+  <div class={`mx-auto max-w-3xl px-6 lg:px-10 ${dark ? '[&_p]:text-warm-300' : ''}`}>
+    {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+    {heading && <h2 class={`font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] mb-10 ${dark ? 'text-white' : 'text-warm-900'}`} set:html={accent(heading, dark ? 'seam-300' : 'seam-600')} />}
     <div set:html={html} />
   </div>
 </section>

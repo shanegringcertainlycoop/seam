@@ -1,0 +1,50 @@
+---
+import { accent } from './_accent'
+import ConceptBadge from '../ConceptBadge.astro'
+
+const { eyebrow, heading, intro, pillarSlug } = Astro.props
+const STANDARD_URL =
+  process.env.STANDARD_URL ?? import.meta.env.STANDARD_URL ?? 'https://standard.seamcertification.org'
+
+type Activity = {
+  activityId: string
+  title: string
+  url: string
+  activityType: string
+  concept: { code: string }
+  objective: { code: string }
+}
+let activities: Activity[] = []
+try {
+  const res = await fetch(`${STANDARD_URL}/api/activities.json`)
+  if (res.ok) {
+    const data = (await res.json()) as { pillars?: Array<{ slug: string; activities: Activity[] }> }
+    activities = data.pillars?.find((p) => p.slug === pillarSlug)?.activities ?? []
+  }
+} catch {
+  // Standard API unreachable — render nothing rather than fail the page.
+}
+const introText = (intro ?? '').replace('{count}', String(activities.length))
+---
+{activities.length > 0 && (
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-2xl mb-12 lg:mb-16">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />}
+        {introText && <p class="mt-4 text-[17px] leading-relaxed text-warm-600">{introText}</p>}
+      </div>
+      <div class="overflow-hidden rounded-2xl border border-warm-100 bg-white divide-y divide-warm-100">
+        {activities.map((a) => (
+          <a href={a.url} target="_blank" rel="noopener" class="group flex items-baseline gap-3 px-5 py-3 hover:bg-warm-50 transition-colors">
+            <ConceptBadge code={a.concept.code} size="xs" class="shrink-0 self-center" />
+            <span class="font-mono text-[11px] text-warm-500 group-hover:text-seam-600 w-16 shrink-0">{a.activityId}</span>
+            <span class="flex-1 text-[15px] text-warm-800 group-hover:text-seam-700 transition-colors">{a.title}</span>
+            <span class="hidden sm:inline shrink-0 font-mono text-[11px] text-warm-500 w-14 text-right">{a.objective.code}</span>
+            <span class="shrink-0 text-[10px] uppercase tracking-wider text-warm-500 w-14 text-right">{a.activityType}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
