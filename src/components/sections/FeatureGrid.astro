@@ -1,7 +1,10 @@
 ---
 import { accent } from './_accent'
-const { eyebrow, heading, intro, tone = 'light', features = [] } = Astro.props
+const { eyebrow, heading, intro, tone = 'light', imageRatio = '16/9', features = [] } = Astro.props
 const dark = tone === 'dark'
+// Static map so Tailwind JIT keeps these arbitrary aspect classes.
+const RATIO: Record<string, string> = { '16/9': 'aspect-[16/9]', '4/3': 'aspect-[4/3]', '3/4': 'aspect-[3/4]', '1/1': 'aspect-square' }
+const imgAspect = RATIO[imageRatio] ?? RATIO['16/9']
 const cols = features.length % 3 === 0 ? 'lg:grid-cols-3' : features.length % 2 === 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'
 ---
 <section class={`py-24 lg:py-32 ${dark ? 'bg-warm-900' : ''}`}>
@@ -39,7 +42,7 @@ const cols = features.length % 3 === 0 ? 'lg:grid-cols-3' : features.length % 2 
                 )}
               </div>
             )}
-            {photo && <img src={photo} alt={f.title ?? ''} class="w-full aspect-[16/9] object-cover rounded-xl mb-6" loading="lazy" decoding="async" />}
+            {photo && <img src={photo} alt={f.title ?? ''} class={`w-full ${imgAspect} object-cover object-center rounded-xl mb-6`} loading="lazy" decoding="async" />}
             {pathIcon && (
               <div class="text-gold-600 mb-6">
                 <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={pathIcon} /></svg>

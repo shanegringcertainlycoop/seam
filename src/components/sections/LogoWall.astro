@@ -1,0 +1,23 @@
+---
+// A clean member/partner logo wall — centered grid, no cards.
+import { accent } from './_accent'
+const { eyebrow, heading, intro, tone = 'light', logos = [] } = Astro.props
+const dark = tone === 'dark'
+---
+<section class={`py-24 lg:py-32 ${dark ? 'bg-warm-900' : 'bg-warm-50'}`}>
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+    {(eyebrow || heading) && (
+      <div class="max-w-2xl mb-12 lg:mb-16">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class={`font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] ${dark ? 'text-white' : 'text-warm-900'}`} set:html={accent(heading, dark ? 'seam-300' : 'seam-600')} />}
+        {intro && <p class={`mt-6 text-[17px] leading-relaxed ${dark ? 'text-warm-300' : 'text-warm-600'}`}>{intro}</p>}
+      </div>
+    )}
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 items-center justify-items-center gap-x-8 gap-y-12">
+      {logos.map((l: any) => {
+        const img = <img src={l.src ?? l.image ?? l} alt={l.alt ?? l.title ?? ''} class="h-12 sm:h-16 w-auto max-w-[160px] object-contain opacity-80 hover:opacity-100 transition-opacity duration-300" loading="lazy" decoding="async" />
+        return l.href ? <a href={l.href} class="block">{img}</a> : img
+      })}
+    </div>
+  </div>
+</section>
