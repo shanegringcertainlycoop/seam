@@ -1,0 +1,10 @@
+---
+// Full-bleed image break — a tall photographic pause between content sections.
+const { image, alt = '', overlay = 'bg-warm-900/20', height = 'h-[50vh] lg:h-[60vh]' } = Astro.props
+---
+{image && (
+  <section class={`relative ${height} overflow-hidden`}>
+    <img src={image} alt={alt} class="w-full h-full object-cover object-center" loading="lazy" decoding="async" />
+    <div class={`absolute inset-0 ${overlay}`}></div>
+  </section>
+)}

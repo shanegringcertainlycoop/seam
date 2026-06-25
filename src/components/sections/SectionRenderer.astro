@@ -16,6 +16,10 @@ import TeamGrid from './TeamGrid.astro'
 import SealSteps from './SealSteps.astro'
 import ImageText from './ImageText.astro'
 import MarkActivities from './MarkActivities.astro'
+import Steps from './Steps.astro'
+import ImageBreak from './ImageBreak.astro'
+import Pricing from './Pricing.astro'
+import Pathway from './Pathway.astro'
 
 const COMPONENTS: Record<string, any> = {
   heroSection: Hero,
@@ -35,6 +39,10 @@ const COMPONENTS: Record<string, any> = {
   sealStepsSection: SealSteps,
   imageTextSection: ImageText,
   markActivitiesSection: MarkActivities,
+  stepsSection: Steps,
+  imageBreakSection: ImageBreak,
+  pricingSection: Pricing,
+  pathwaySection: Pathway,
 }
 
 const { sections = [] } = Astro.props
