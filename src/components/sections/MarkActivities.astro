@@ -1,10 +1,21 @@
 ---
 import { accent } from './_accent'
-import ConceptBadge from '../ConceptBadge.astro'
 const { eyebrow, heading, intro } = Astro.props
 const STANDARD_URL =
   process.env.STANDARD_URL ?? import.meta.env.STANDARD_URL ?? 'https://standard.seamcertification.org'
-type A = { activityId: string; title: string; displayTitle?: string; marketingTitle?: string; url: string; activityType: string; concept?: { code: string } }
+type Prereq = { activityId: string; displayTitle: string; url: string }
+type A = {
+  activityId: string
+  title: string
+  displayTitle?: string
+  marketingTitle?: string
+  url: string
+  activityType: string
+  sdgs?: number[]
+  concept?: { code: string; title: string }
+  objective?: { code: string; title: string }
+  prerequisites?: Prereq[]
+}
 let activities: A[] = []
 try {
   const res = await fetch(`${STANDARD_URL}/api/marks.json`)
@@ -20,16 +31,44 @@ const introText = (intro ?? '').replace('{count}', String(activities.length))
       <div class="max-w-2xl mb-12 lg:mb-16">
         {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
         {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />}
-        {introText && <p class="mt-4 text-[17px] leading-relaxed text-warm-600">{introText}</p>}
+        {introText && <p class="mt-4 text-[17px] leading-relaxed text-warm-600 max-w-xl">{introText}</p>}
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {activities.map((a) => (
-          <a href={a.url} target="_blank" rel="noopener" class="block rounded-2xl bg-white border border-warm-200/60 p-6 lg:p-7 transition-all duration-300 hover:border-seam-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] group">
-            <div class="flex flex-wrap items-center gap-2 mb-3">
-              <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[11px] font-mono font-medium text-seam-700">{a.activityId}</span>
-              {a.concept?.code && <ConceptBadge code={a.concept.code} size="xs" />}
+          <a
+            href={a.url}
+            target="_blank"
+            rel="noopener"
+            class="flex flex-col rounded-2xl bg-white border border-transparent p-8 lg:p-10 text-left transition-all duration-300 hover:border-seam-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] group"
+          >
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              <span class="inline-flex items-center rounded-full bg-seam-50 border border-seam-200 px-3 py-1 text-[12px] font-mono font-medium text-seam-700">{a.activityId}</span>
+              <span class="inline-flex items-center rounded-full bg-warm-100 px-2.5 py-0.5 text-[11px] font-medium text-warm-600">{a.activityType}</span>
             </div>
-            <h3 class="font-display text-[16px] tracking-[-0.02em] text-warm-900 leading-snug group-hover:text-seam-700 transition-colors">{a.marketingTitle ?? a.displayTitle ?? a.title}</h3>
+            {a.objective && (
+              <p class="text-[11px] font-medium uppercase tracking-[0.12em] text-warm-400 mb-2">{a.objective.code} &middot; {a.objective.title}</p>
+            )}
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3 leading-snug group-hover:text-seam-700 transition-colors">{a.marketingTitle ?? a.displayTitle ?? a.title}</h3>
+            {a.prerequisites && a.prerequisites.length > 0 && (
+              <p class="mb-3 text-[12px] leading-snug text-warm-500">
+                <span class="font-medium text-warm-700">Requires:</span>{' '}
+                {a.prerequisites.map((p, i) => (
+                  <>
+                    {i > 0 && ', '}
+                    <span class="font-mono text-[11px] text-warm-600">{p.activityId}</span>{' '}{p.displayTitle}
+                  </>
+                ))}
+              </p>
+            )}
+            {a.sdgs && a.sdgs.length > 0 && (
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="self-center text-[10px] font-medium uppercase tracking-[0.08em] text-warm-400">UN SDGs</span>
+                {a.sdgs.map((n) => (
+                  <span class="rounded-full bg-warm-50 border border-warm-100 px-2.5 py-0.5 text-[11px] font-mono font-medium text-warm-600">{n}</span>
+                ))}
+              </div>
+            )}
+            <span class="mt-4 inline-flex items-center text-[13px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">View on the SEAM Standard &rarr;</span>
           </a>
         ))}
       </div>
