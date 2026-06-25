@@ -1,0 +1,205 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
+
+const benefits = [
+  { title: 'Activity support templates', description: 'A growing library of documentation templates for activities in the Standard. Reduce the time from decision to submission by starting with proven formats.' },
+  { title: 'ROSSI Calculator Breakdown', description: 'Guided education to apply the ROSSI calculator to your organization or clients to show the ROI of social equity.' },
+  { title: 'Courses and continuing education', description: 'Lifetime access to self-paced and instructor-led courses covering the Standard, Certification process, and Ratings.' },
+  { title: 'Practitioner network', description: 'Connect with a broad network of social equity experts and SEAM APs from leading organizations. Tap into project opportunities, referrals, and collaborative problem-solving.' },
+  { title: 'Standard development input', description: 'Participate in advisory sessions, pilot new activities, and provide feedback that shapes future versions of the SEAM Standard.' },
+  { title: 'Discounted review fees', description: 'Members receive reduced pricing on full certification fees. Volume pricing for portfolio-level rollouts.' },
+]
+
+const faqs = [
+  { q: 'What is the difference between Individual and Organization membership?', a: 'Individual membership is for practitioners, consultants, and professionals. Organization membership provides team seats, portfolio tools, and institutional benefits for companies, nonprofits, and institutions working with the Standard.' },
+  { q: 'Can I try the online community before committing?', a: 'Yes. The Open tier is free and gives you access to the Standard, the directory, and public webcasts. Upgrade to Changemaker or an organization tier when you are ready for full access.' },
+  { q: 'Do members get discounts on certification?', a: 'Yes. Changemaker and organization members receive discounted certification pricing. Ladder and Arc organization tiers include volume pricing for portfolio rollouts.' },
+  { q: 'Is the Education tier really for students and nonprofits?', a: 'Yes. The Education tier is income-qualified and available to students, early-career professionals (under three years of experience), and staff at nonprofits with budgets under $5M. Self-reported, honor system.' },
+  { q: 'How do organization seats work?', a: 'Each organization membership tier (Standing, Ladder, and Arc) includes a set number of team seats. Each seat holder gets full individual-level access (templates, courses, network, ROSSI). Contact our team to adjust seat assignments as needed.' },
+  { q: 'Can I earn CEUs through the online community?', a: 'Yes. Courses, webcasts, and peer learning sessions in the online community carry CEU credit toward SEAM AP renewal.' },
+]
+
+const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
+
+const jsonLd = [
+  faqSchema(faqItems),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Community', path: '/membership' },
+    { name: 'The Community', path: '/membership' },
+  ]),
+]
+---
+
+<SiteLayout
+  title="SEAM Membership — Join the Social Equity Community"
+  description="Membership for organizations and individuals advancing social equity in real estate. Templates, ROSSI access, courses, and discounted certification fees."
+  path="/membership"
+  jsonLd={jsonLd}
+>
+
+  <!-- Hero -->
+  <section class="relative min-h-[70vh] flex items-center bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0 overflow-hidden">
+      <img
+        src="/images/hero-commons.jpg"
+        alt="The Community community for social equity"
+        class="h-full w-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    </div>
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
+      <div class="hero-enter max-w-3xl">
+        <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+          Membership Community
+        </span>
+        <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+          SEAM Membership. <em class="font-display italic font-normal text-seam-300">Where the community thrives.</em>
+        </h1>
+        <p class="hero-subtitle mt-8 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+          Resources, peer connection, and ongoing support for organizations and individuals committed to social equity in the built environment. Join the network shaping social sustainability.
+        </p>
+        <div class="hero-cta mt-10 flex flex-wrap gap-4">
+          <a href="/get-started" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+            Become a member
+          </a>
+          <a href="#benefits" class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300">
+            See the benefits
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hidden lg:flex absolute -bottom-32 right-8 items-end z-10">
+      <img src="/logos/member-changemaker.png" alt="Changemaker membership" class="w-56 h-56 object-contain drop-shadow-2xl -mr-10" loading="lazy" decoding="async" />
+      <img src="/logos/member-individual.png" alt="Individual membership" class="w-56 h-56 object-contain drop-shadow-2xl -mr-10" loading="lazy" decoding="async" />
+      <img src="/logos/member-standing.png" alt="Standing membership" class="w-56 h-56 object-contain drop-shadow-2xl -mr-10" loading="lazy" decoding="async" />
+      <img src="/logos/member-ladder.png" alt="Ladder membership" class="w-56 h-56 object-contain drop-shadow-2xl -mr-10" loading="lazy" decoding="async" />
+      <img src="/logos/member-arc.png" alt="Arc membership" class="w-56 h-56 object-contain drop-shadow-2xl" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits" class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Member benefits</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Everything you need to <em class="italic font-normal text-seam-600">accelerate social equity</em>
+        </h2>
+      </div>
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((b) => (
+          <div class="reveal-child rounded-2xl border border-warm-100 p-6 sm:p-8 lg:p-10 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <h3 class="font-display text-[20px] lg:text-[22px] tracking-[-0.02em] text-warm-900 mb-3">{b.title}</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">{b.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership Paths -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Membership</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Choose your <em class="italic font-normal text-seam-600">path</em>
+        </h2>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-2 gap-8 pt-10">
+        <a
+          href="/membership/individual"
+          class="reveal-child group relative overflow-visible rounded-2xl bg-white border border-warm-100 p-6 sm:p-10 lg:p-14 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+        >
+          <div class="absolute -top-5 right-4 sm:-top-8 sm:right-10 flex items-center">
+            <img src="/logos/member-individual.png" alt="" class="w-10 h-10 sm:w-24 sm:h-24 object-contain drop-shadow-md" loading="lazy" decoding="async" />
+            <img src="/logos/member-changemaker.png" alt="" class="w-10 h-10 sm:w-24 sm:h-24 object-contain drop-shadow-md -ml-3 sm:-ml-6" loading="lazy" decoding="async" />
+          </div>
+          <h3 class="font-display text-[26px] lg:text-[32px] tracking-[-0.02em] text-warm-900 mb-4">
+            Individual Memberships
+          </h3>
+          <p class="text-[17px] leading-relaxed text-warm-600 mb-6">
+            A la carte commitments at multiple price points for practitioners, consultants, and professionals. Open (free), Changemaker, and Education tiers.
+          </p>
+          <span class="inline-flex items-center text-[15px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+            Explore individual tiers &rarr;
+          </span>
+        </a>
+
+        <a
+          href="/membership/organization"
+          class="reveal-child group relative overflow-visible rounded-2xl bg-white border border-warm-100 p-6 sm:p-10 lg:p-14 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+        >
+          <div class="absolute -top-5 right-4 sm:-top-8 sm:right-10 flex items-center">
+            <img src="/logos/member-standing.png" alt="" class="w-10 h-10 sm:w-24 sm:h-24 object-contain drop-shadow-md" loading="lazy" decoding="async" />
+            <img src="/logos/member-ladder.png" alt="" class="w-10 h-10 sm:w-24 sm:h-24 object-contain drop-shadow-md -ml-3 sm:-ml-6" loading="lazy" decoding="async" />
+            <img src="/logos/member-arc.png" alt="" class="w-10 h-10 sm:w-24 sm:h-24 object-contain drop-shadow-md -ml-3 sm:-ml-6" loading="lazy" decoding="async" />
+          </div>
+          <h3 class="font-display text-[26px] lg:text-[32px] tracking-[-0.02em] text-warm-900 mb-4">
+            Organization Memberships
+          </h3>
+          <p class="text-[17px] leading-relaxed text-warm-600 mb-6">
+            Standing, Ladder, and Arc tiers for teams and institutions. Access the online community, member discounts, featured content, and team seats.
+          </p>
+          <span class="inline-flex items-center text-[15px] font-medium text-gold-600 group-hover:text-gold-700 transition-colors">
+            Explore organization tiers &rarr;
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-start">
+        <div>
+          <div class="reveal-slide-left max-w-2xl mb-12 lg:mb-16">
+            <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
+            <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+              Questions about <em class="italic font-normal text-seam-600">SEAM Membership</em>
+            </h2>
+          </div>
+          <div>
+            {faqs.map((faq) => (
+              <details class="border-b border-warm-200 group">
+                <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
+                  <svg class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                </summary>
+                <div class="pb-6">
+                  <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">{faq.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+        <div class="reveal-scale hidden lg:block lg:sticky lg:top-24">
+          <div class="aspect-[419/629] overflow-hidden rounded-2xl">
+            <img src="/images/community-faq.jpg" alt="SEAM community member" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        The Standard is open. <em class="italic font-normal text-seam-300">Membership is how you use it.</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">Whether you're just getting started or ready to go all in, there's a place for you here.</p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a href="/get-started" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Become a member</a>
+        <a href="/resources/standard" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Access the Standard</a>
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>
