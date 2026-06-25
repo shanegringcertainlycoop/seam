@@ -16,6 +16,13 @@ const cols = features.length % 3 === 0 ? 'lg:grid-cols-3' : features.length % 2 
     <div class={`grid grid-cols-1 ${cols} gap-6 pt-10`}>
       {features.map((f: any) => {
         const El = f.href ? 'a' : 'div'
+        // `iconImage` may legitimately hold an inline SVG <path d="…"> rather
+        // than a file path (older seeds stored the icon outline that way) — in
+        // that case draw it as an icon instead of a broken <img>.
+        const pathIcon = typeof f.iconImage === 'string' && /^[Mm][\s\d.\-,]/.test(f.iconImage) && !f.iconImage.includes('/') ? f.iconImage : null
+        const smallIcon = !pathIcon && f.iconImage ? f.iconImage : null
+        // `image` is an explicit card-top photo (e.g. pilot projects).
+        const photo = f.image
         const cardCls = dark
           ? 'group relative overflow-visible rounded-2xl bg-warm-800 border border-warm-700 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-600'
           : 'group relative overflow-visible rounded-2xl bg-white border border-warm-100 p-6 sm:p-8 lg:p-12 transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]'
@@ -32,7 +39,13 @@ const cols = features.length % 3 === 0 ? 'lg:grid-cols-3' : features.length % 2 
                 )}
               </div>
             )}
-            {f.iconImage && <img src={f.iconImage} alt="" class="w-12 h-12 object-contain mb-5" loading="lazy" decoding="async" />}
+            {photo && <img src={photo} alt={f.title ?? ''} class="w-full aspect-[16/9] object-cover rounded-xl mb-6" loading="lazy" decoding="async" />}
+            {pathIcon && (
+              <div class="text-gold-600 mb-6">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={pathIcon} /></svg>
+              </div>
+            )}
+            {smallIcon && <img src={smallIcon} alt="" class="w-12 h-12 object-contain mb-5" loading="lazy" decoding="async" />}
             {f.icon && <span class="text-[13px] font-medium uppercase tracking-[0.1em] text-gold-600 mb-2 block">{f.icon}</span>}
             <h3 class={`font-display text-[22px] lg:text-[26px] tracking-[-0.02em] mb-4 ${dark ? 'text-white' : 'text-warm-900'}`}>{f.title}</h3>
             <p class={`text-[16px] leading-relaxed ${dark ? 'text-warm-300' : 'text-warm-600'}`}>{f.body}</p>
