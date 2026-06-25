@@ -1,0 +1,63 @@
+---
+// Emphasized pricing cards with a feature checklist. Supports a "featured"
+// plan (seam border + badge) and either a per-plan button (cta) or a
+// whole-card link (href) with an optional corner logo.
+import { accent } from './_accent'
+const { eyebrow, heading, intro, plans = [] } = Astro.props
+const cols = plans.length >= 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
+const check = 'M4.5 12.75l6 6 9-13.5'
+---
+<section class="py-24 lg:py-32">
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+    {(eyebrow || heading) && (
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900" set:html={accent(heading, 'seam-600')} />}
+        {intro && <p class="mt-6 text-[17px] leading-relaxed text-warm-600 max-w-xl">{intro}</p>}
+      </div>
+    )}
+
+    <div class={`reveal-stagger grid grid-cols-1 ${cols} gap-8 max-w-4xl`}>
+      {plans.map((p: any) => {
+        const Card = p.href ? 'a' : 'div'
+        const cardCls = p.featured
+          ? 'reveal-child group relative rounded-2xl border-2 border-seam-500 bg-white p-10 lg:p-12 flex flex-col transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]'
+          : 'reveal-child group relative rounded-2xl border border-warm-100 bg-white p-10 lg:p-12 flex flex-col transition-all duration-300 hover:border-warm-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]'
+        const label = p.cta?.label ?? 'Get started'
+        const btnCls = p.featured
+          ? 'inline-flex items-center justify-center w-full rounded-full bg-seam-600 px-8 py-4 text-[16px] font-medium text-white hover:bg-seam-700 transition-colors duration-300'
+          : 'inline-flex items-center justify-center w-full rounded-full border-2 border-warm-900 px-8 py-4 text-[16px] font-medium text-warm-900 group-hover:bg-warm-900 group-hover:text-white transition-colors duration-300'
+        return (
+          <Card href={p.href} class={cardCls}>
+            {p.badge && (
+              <span class="absolute -top-3.5 left-8 inline-block rounded-full bg-seam-600 px-4 py-1 text-[12px] font-medium text-white tracking-wide uppercase">{p.badge}</span>
+            )}
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600">{p.name}</p>
+              {p.logo && <img src={p.logo} alt="" aria-hidden="true" class="w-12 h-auto -mt-1 shrink-0" loading="lazy" decoding="async" />}
+            </div>
+            <div class="flex items-baseline gap-1 mb-2">
+              <span class="font-display text-[clamp(2.5rem,4vw,3.5rem)] tracking-[-0.03em] text-warm-900">{p.price}</span>
+            </div>
+            {p.unit && <p class="text-[15px] text-warm-500 mb-8">{p.unit}</p>}
+            {p.features?.length > 0 && (
+              <ul class="space-y-4 mb-10">
+                {p.features.map((f: string) => (
+                  <li class="flex items-start gap-3 text-[15px] leading-relaxed text-warm-600">
+                    <svg class="shrink-0 w-5 h-5 text-seam-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={check} /></svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {p.href ? (
+              <span class={`mt-auto ${btnCls}`}>{label}</span>
+            ) : (
+              <a href={p.cta?.href ?? '#'} class={`mt-auto ${btnCls}`}>{label}</a>
+            )}
+          </Card>
+        )
+      })}
+    </div>
+  </div>
+</section>

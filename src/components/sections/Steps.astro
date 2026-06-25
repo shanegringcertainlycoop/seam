@@ -1,0 +1,67 @@
+---
+// Numbered process timeline. `variant: 'spine'` draws the vertical spine with
+// circular numbered nodes (the /marks "Four steps to approval" look);
+// `variant: 'plain'` is the lighter numbered-card stack (the /seals "Three
+// steps to a verified Seal" look).
+import { accent } from './_accent'
+const { eyebrow, heading, intro, steps = [], note, variant = 'spine', tone = 'light' } = Astro.props
+const dark = tone === 'dark'
+const num = (s: any, i: number) => s.number ?? String(i + 1).padStart(2, '0')
+---
+<section class={`py-24 lg:py-32 ${dark ? 'bg-warm-900' : ''}`}>
+  <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+    {(eyebrow || heading) && (
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        {eyebrow && <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">{eyebrow}</p>}
+        {heading && <h2 class={`font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] ${dark ? 'text-white' : 'text-warm-900'}`} set:html={accent(heading, dark ? 'seam-300' : 'seam-600')} />}
+        {intro && <p class={`mt-6 text-[17px] leading-relaxed max-w-xl ${dark ? 'text-warm-300' : 'text-warm-600'}`}>{intro}</p>}
+      </div>
+    )}
+
+    {variant === 'spine' ? (
+      <div class="reveal-stagger relative">
+        <div class="hidden lg:block absolute left-[39px] top-0 bottom-0 w-px bg-warm-200"></div>
+        {steps.map((step: any, i: number) => (
+          <div class="reveal-child group relative grid grid-cols-1 lg:grid-cols-[80px_1fr] gap-6 lg:gap-12 pb-16 last:pb-0">
+            <div class="hidden lg:flex flex-col items-center">
+              <div class="relative z-10 flex h-[80px] w-[80px] items-center justify-center rounded-full border-2 border-warm-200 bg-white group-hover:border-seam-500 transition-colors duration-300">
+                <span class="font-display text-[28px] tracking-[-0.02em] text-seam-600">{num(step, i)}</span>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-warm-100 p-8 lg:p-10 group-hover:border-warm-200 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-300">
+              <span class="lg:hidden text-[14px] font-medium text-seam-500 mb-3 block">{num(step, i)}</span>
+              <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">{step.title}</h3>
+              <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">{step.body}</p>
+              {step.cta?.href && (
+                <a href={step.cta.href} class="inline-flex items-center mt-4 text-[14px] font-medium text-seam-600 hover:text-seam-700 transition-colors">
+                  {step.cta.label}
+                  <svg class="ml-1.5 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="reveal-stagger space-y-4">
+        {steps.map((step: any, i: number) => (
+          <div class="reveal-child grid grid-cols-[60px_1fr] lg:grid-cols-[120px_1fr] gap-6 lg:gap-10 rounded-2xl border border-warm-200/60 bg-white p-6 lg:p-8">
+            <p class="font-display text-[36px] lg:text-[44px] tracking-[-0.04em] text-seam-600 leading-none">{num(step, i)}</p>
+            <div>
+              <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-3">{step.title}</h3>
+              <p class="text-[15px] leading-relaxed text-warm-600 max-w-2xl">{step.body}</p>
+              {step.cta?.href && (
+                <a href={step.cta.href} class="inline-flex items-center mt-4 text-[14px] font-medium text-seam-600 hover:text-seam-700 transition-colors">
+                  {step.cta.label}
+                  <svg class="ml-1.5 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {note && <p class={`mt-8 text-[14px] leading-relaxed max-w-3xl ${dark ? 'text-warm-400' : 'text-warm-500'}`}>{note}</p>}
+  </div>
+</section>
