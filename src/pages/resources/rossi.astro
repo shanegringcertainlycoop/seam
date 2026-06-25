@@ -1,0 +1,349 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import { faqSchema, breadcrumbSchema } from '../../lib/seo-helpers'
+
+const dimensions = [
+  {
+    iconPath: 'M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z',
+    title: 'Increased profit',
+    description: 'Based on the 2024 Gallup Q12 Meta-Analysis (11th Edition), which found a 23% median increase in profitability between top- and bottom-quartile organizations. Results show high generalizability across industries.',
+  },
+  {
+    iconPath: 'M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z',
+    title: 'Increased loyalty',
+    description: 'Based on the 2024 Gallup Q12 Meta-Analysis finding a 10% median increase in customer loyalty and engagement for top-quartile organizations. Correlations were consistent across different organization types.',
+  },
+  {
+    iconPath: 'M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z',
+    title: 'New customers',
+    description: 'Based on the 2023 McKinsey report on growth, profit, and sustainability. Companies that outperformed peers in ESG increased revenues at 1.4 percentage points above the median — proving you can do well while doing good.',
+  },
+  {
+    iconPath: 'M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z',
+    title: 'Reduced turnover',
+    description: 'Based on the 2023 Mercer Turnover report (17.3% average) and 2024 Gallup Q12 data showing 21\u201351% lower turnover for top-quartile organizations. The reduction depends on baseline turnover rate.',
+  },
+  {
+    iconPath: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z',
+    title: 'Increased productivity',
+    description: 'Based on the 2024 Gallup Q12 Meta-Analysis finding a 13\u201317% median increase in productivity for top-quartile organizations. Results indicate high generalizability across different industries and contexts.',
+  },
+  {
+    iconPath: 'M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z',
+    title: 'Decreased cost of capital',
+    description: 'Better ESG scores translate to roughly 10% lower cost of capital. ROSSI models this based on the 2020 McKinsey report finding that over 2,000 academic studies show a positive relationship between ESG scores and financial returns.',
+  },
+]
+
+const users = [
+  { title: 'Developers and owners', description: 'Model the business case for SEAM Certification before committing. Walk into investor and board conversations with a directional picture of what social equity investment returns, in numbers.' },
+  { title: 'Capital providers', description: 'Translate social performance into financial terms for diligence and internal reporting. ROSSI helps acquisition teams and ESG officers move from \u201Cthis is the right thing\u201D to \u201Cthis is what the numbers look like.\u201D' },
+  { title: 'Property managers', description: 'Build the internal case for expanding social equity work. ROSSI gives operations teams a directional model of what social performance contributes financially, the kind of evidence ownership conversations need.' },
+  { title: 'Consultants and APs', description: 'Include ROSSI modeling in client proposals and certification scoping. Financial projections strengthen the business case for SEAM engagement.' },
+]
+
+const faqs = [
+  { q: 'Is ROSSI free to use?', a: 'Basic ROSSI access is available to everyone while all organization member tiers (Standing, Ladder, and Arc) receive coaching and analysis of their report.' },
+  { q: 'How long does it take to complete?', a: 'Yes. The core calculator takes fewer than 20 questions, and most users complete a project model in a single session.' },
+  { q: 'What data do I need to get started?', a: 'Basic property information: building size, occupancy type, tenant count, and current social equity programs. The calculator guides you through each input — no financial modeling expertise required.' },
+  { q: 'How does ROSSI relate to GRESB?', a: 'ROSSI translates social equity performance into financial terms. It isn\u2019t currently mapped to GRESB social indicators, but the underlying SEAM Certification is recognized by GRESB as a green building certification, which means a SEAM Certified project can contribute toward the green building certification point in your GRESB assessment.' },
+  { q: 'Can I use ROSSI results in investor presentations?', a: 'Yes. ROSSI generates a report covering a number of dimensions. It\u2019s built to support investor decks, board presentations, and acquisition proposals.' },
+  { q: 'Is the methodology peer-reviewed?', a: 'ROSSI is built on peer-reviewed research from 2019 to 2024 and extends the NYU Stern ROSI methodology. The SEAM advisory council reviews and updates the underlying research base annually.' },
+]
+
+const faqItems = faqs.map((f) => ({ question: f.q, answer: f.a }))
+
+const jsonLd = [
+  faqSchema(faqItems),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Resources', path: '/resources/rossi' },
+    { name: 'ROSSI Calculator', path: '/resources/rossi' },
+  ]),
+]
+---
+<SiteLayout
+  title="ROSSI Calculator — Return on Social Sustainability Investment"
+  description="Translate social equity outcomes into financial language. Model profit, loyalty, turnover, productivity, and cost of capital impacts for your building."
+  path="/resources/rossi"
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/40 to-warm-900/20"></div>
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="hero-enter">
+          <span class="inline-block rounded-full bg-seam-600/20 border border-seam-500/30 px-4 py-1.5 text-[13px] font-medium text-seam-300 mb-8">
+            Financial Modeling Tool
+          </span>
+          <div class="flex items-center gap-5 mb-2">
+            <img src="/logos/rossi-calculator.png" alt="ROSSI Calculator" class="h-16 lg:h-20 w-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]" fetchpriority="high" decoding="async" />
+            <h1 class="hero-title font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.04em] text-white">
+              ROSSI&trade;{' '}
+              <em class="font-display italic font-normal text-seam-300">Calculator</em>
+            </h1>
+          </div>
+          <p class="hero-subtitle mt-4 text-[clamp(1rem,1.3vw,1.15rem)] leading-relaxed text-warm-400">
+            Return on Social Sustainability Investment
+          </p>
+          <p class="mt-6 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-warm-300">
+            Translate social equity outcomes into the financial language decision-makers use. Model project-level and portfolio-level impact in less than 20 questions.
+          </p>
+          <div class="hero-cta mt-10 flex flex-wrap gap-4">
+            <a href="https://seam.outgrow.us/ROSSI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">
+              Calculate your ROSSI
+            </a>
+            <a href="#methodology" class="inline-flex items-center rounded-full border border-white/25 px-8 py-4 text-[16px] font-medium text-white hover:border-white/50 transition-colors duration-300">
+              Explore the methodology
+            </a>
+          </div>
+        </div>
+
+        <div class="hidden lg:flex justify-center">
+          <div class="w-[380px] rounded-2xl bg-white shadow-[0_32px_80px_rgba(0,0,0,0.3)] overflow-hidden">
+            <!-- Report header -->
+            <div class="px-7 pt-6 pb-5 border-b border-warm-100">
+              <div class="flex items-center gap-3 mb-4">
+                <img src="/logos/seam-wordmark.svg" alt="SEAM" class="h-5 w-auto" loading="lazy" decoding="async" />
+              </div>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.15em] text-warm-500 text-center">
+                Return on Social Sustainability Investment
+              </p>
+              <p class="text-[10px] font-semibold uppercase tracking-[0.15em] text-warm-400 text-center mt-0.5">
+                (ROSSI&trade;) Report
+              </p>
+            </div>
+
+            <!-- Project info -->
+            <div class="px-7 py-3 bg-warm-50/80 border-b border-warm-100 flex gap-6">
+              <div>
+                <p class="text-[9px] font-semibold uppercase tracking-[0.1em] text-warm-400">Project</p>
+                <p class="text-[12px] font-medium text-warm-700 mt-0.5">Sample Project</p>
+              </div>
+              <div>
+                <p class="text-[9px] font-semibold uppercase tracking-[0.1em] text-warm-400">Prepared for</p>
+                <p class="text-[12px] font-medium text-warm-700 mt-0.5">Your Organization</p>
+              </div>
+            </div>
+
+            <!-- Metrics -->
+            <div class="px-7 py-5 space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-[12px] font-semibold text-seam-600">Increased profit</p>
+                </div>
+                <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900">$560</p>
+              </div>
+              <div class="h-px bg-warm-100"></div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-[12px] font-semibold text-seam-600">Increased loyalty</p>
+                </div>
+                <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900">$63,900</p>
+              </div>
+              <div class="h-px bg-warm-100"></div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-[12px] font-semibold text-seam-600">New customers</p>
+                </div>
+                <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900">$6,431</p>
+              </div>
+              <div class="h-px bg-warm-100"></div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-[12px] font-semibold text-seam-600">Reduced turnover</p>
+                </div>
+                <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900">$1,020</p>
+              </div>
+              <div class="h-px bg-warm-100"></div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-[12px] font-semibold text-seam-600">Increased productivity</p>
+                </div>
+                <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900">$13,000</p>
+              </div>
+              <div class="h-px bg-warm-100"></div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-[12px] font-semibold text-seam-600">Decreased cost of capital</p>
+                </div>
+                <p class="font-display text-[20px] tracking-[-0.02em] text-warm-900">$0</p>
+              </div>
+            </div>
+
+            <!-- Total -->
+            <div class="px-7 py-3 bg-gold-600 flex items-center justify-between">
+              <p class="text-[11px] font-semibold text-white uppercase tracking-[0.08em]">Total gain</p>
+              <p class="font-display text-[22px] tracking-[-0.03em] text-white">$84,911</p>
+            </div>
+            <div class="px-7 py-3 bg-seam-600 flex items-center justify-between rounded-b-2xl">
+              <p class="text-[11px] font-semibold text-white uppercase tracking-[0.08em]">ROSSI</p>
+              <p class="font-display text-[22px] tracking-[-0.03em] text-white">431%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Business Case -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The problem</p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+            Proving equitable business{' '}<em class="italic font-normal text-seam-600">is good business</em>
+          </h2>
+        </div>
+        <div class="reveal-fade-up">
+          <p class="text-[17px] leading-relaxed text-warm-600">
+            Social sustainability drives both business and societal success, but quantifying the financial impact has always been the hard part. Investors ask for numbers. Boards ask for projections. Insurance underwriters ask for risk models.
+          </p>
+          <p class="mt-6 text-[17px] leading-relaxed text-warm-600">
+            ROSSI bridges that gap — connecting social equity strategies to financial performance so you can make the case with data, not just conviction.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What It Models -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Six dimensions</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          What ROSSI{' '}<em class="italic font-normal text-seam-600">models</em>
+        </h2>
+      </div>
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {dimensions.map((d) => (
+          <div class="reveal-child group rounded-2xl bg-white p-10 lg:p-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+            <div class="text-gold-600 mb-6">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d={d.iconPath} />
+              </svg>
+            </div>
+            <h3 class="font-display text-[22px] lg:text-[26px] tracking-[-0.02em] text-warm-900 mb-4">{d.title}</h3>
+            <p class="text-[16px] leading-relaxed text-warm-600">{d.description}</p>
+          </div>
+        ))}
+      </div>
+      <div class="reveal-fade-up mt-14 text-center">
+        <a href="https://seam.outgrow.us/ROSSI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">
+          Calculate your ROSSI — it's free
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology -->
+  <section id="methodology" class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">The methodology</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Built on research.{' '}<em class="italic font-normal text-seam-600">Grounded in evidence.</em>
+        </h2>
+      </div>
+      <div class="reveal-stagger grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="reveal-child rounded-2xl border border-warm-100 p-10 lg:p-12">
+          <span class="font-display text-[40px] tracking-[-0.04em] text-gold-600">100s</span>
+          <p class="mt-2 text-[14px] text-warm-600 uppercase tracking-[0.08em] mb-6">Studies reviewed</p>
+          <p class="text-[16px] leading-relaxed text-warm-600">
+            We examined hundreds of studies, whitepapers, and reports on the direct relationship between social sustainability and financial performance. All research from 2019 to 2024.
+          </p>
+        </div>
+        <div class="reveal-child rounded-2xl border border-warm-100 p-10 lg:p-12">
+          <span class="font-display text-[40px] tracking-[-0.04em] text-gold-600">NYU</span>
+          <p class="mt-2 text-[14px] text-warm-600 uppercase tracking-[0.08em] mb-6">Stern ROSI foundation</p>
+          <p class="text-[16px] leading-relaxed text-warm-600">
+            ROSSI builds on NYU Stern Center for Sustainable Business&apos;s ROSI&trade; Methodology — the framework used by corporate leaders and investors to bridge sustainability and financial performance.
+          </p>
+        </div>
+        <div class="reveal-child rounded-2xl border border-warm-100 p-10 lg:p-12">
+          <span class="font-display text-[40px] tracking-[-0.04em] text-gold-600">6</span>
+          <p class="mt-2 text-[14px] text-warm-600 uppercase tracking-[0.08em] mb-6">Financial dimensions</p>
+          <p class="text-[16px] leading-relaxed text-warm-600">
+            While NYU ROSI covers all ESG factors, ROSSI focuses specifically on social factors — modeling increased profit, loyalty, new customers, reduced turnover, productivity, and decreased cost of capital — making results directly actionable for certification decisions.
+          </p>
+        </div>
+      </div>
+      <div class="reveal-fade-up mt-14 text-center">
+        <a href="https://seam.outgrow.us/ROSSI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-gold-600 px-8 py-4 text-[16px] font-medium text-white hover:bg-gold-700 transition-colors duration-300">
+          Try the ROSSI Calculator
+        </a>
+        <p class="mt-3 text-[14px] text-warm-500">Free for everyone. Less than 20 questions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Uses It -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Who uses ROSSI</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          The financial case for{' '}<em class="italic font-normal text-seam-600">everyone</em>
+        </h2>
+      </div>
+      <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {users.map((u) => (
+          <div class="reveal-child rounded-2xl bg-white p-8 lg:p-10">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">{u.title}</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">{u.description}</p>
+          </div>
+        ))}
+      </div>
+      <div class="reveal-fade-up mt-14 text-center">
+        <a href="https://seam.outgrow.us/ROSSI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[16px] font-medium text-white hover:bg-warm-800 transition-colors duration-300">
+          See your numbers
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-slide-left max-w-2xl mb-16 lg:mb-20">
+        <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">Frequently asked</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          Questions about{' '}<em class="italic font-normal text-seam-600">ROSSI</em>
+        </h2>
+      </div>
+      <div class="max-w-3xl">
+        {faqs.map((faq) => (
+          <details class="group border-b border-warm-200">
+            <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none">
+              <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8">{faq.q}</span>
+              <svg class="shrink-0 w-5 h-5 text-warm-600 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </summary>
+            <div class="overflow-hidden">
+              <p class="pb-6 text-[16px] leading-relaxed text-warm-600 max-w-2xl">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        Social equity has a{' '}<em class="italic font-normal text-seam-300">return on investment</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">See your estimated return across six financial dimensions.</p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a href="https://seam.outgrow.us/ROSSI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300">Calculate your ROSSI</a>
+        <a href="/membership" class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300">Join the community</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
