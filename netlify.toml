@@ -16,78 +16,293 @@
   from = "/accreditation"
   to = "/ap-credential"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/become-seam-ap"
   to = "/ap-credential"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/faqs"
   to = "/faq"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/general-4-1"
   to = "/faq"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/plans-pricing"
   to = "/pricing"
   status = 301
+  force = true
 
 # Marks rebrand (formerly SEAM Approved)
 [[redirects]]
   from = "/approved"
   to = "/marks"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/official-seam-aps"
   to = "/directory"
   status = 301
+  force = true
+
+# Exact matches must precede wildcards (first match wins)
+[[redirects]]
+  from = "/news-1/seam-expands-executive-leadership-team"
+  to = "/resources/blog/seam-expands-executive-leadership-team"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/news-1/seam-hires-new-execs-to-scale-social-equity-in-real-estate"
+  to = "/resources/blog/seam-expands-executive-leadership-team"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/news-1/*"
   to = "/resources/blog"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/news-1"
   to = "/resources/blog"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/post/the-jack"
+  to = "/directory/project/the-jack"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/post/urban-visions-the-jack-becomes-the-world-s-first-project-pursuing-seam-certification"
+  to = "/directory/project/the-jack"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/post/*"
   to = "/resources/blog"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/foundingsponsorships"
   to = "/about"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/seam-studio"
   to = "/resources/courses"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/cidie-certification"
   to = "/certification"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/bestspaces-certification"
   to = "/certification"
   status = 301
+  force = true
 
 # /commitments renamed → /compare
 [[redirects]]
   from = "/commitments"
   to = "/compare"
   status = 301
+  force = true
+
+# Wix-era news/blog paths
+[[redirects]]
+  from = "/news-archive"
+  to = "/resources/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/news/*"
+  to = "/resources/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/news"
+  to = "/resources/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-1"
+  to = "/resources/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/resources/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tag/*"
+  to = "/resources/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tag"
+  to = "/resources/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/press-release-faq"
+  to = "/faq"
+  status = 301
+  force = true
+
+# Wix-era tools, projects, and profiles
+[[redirects]]
+  from = "/rossi"
+  to = "/resources/rossi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projects-1"
+  to = "/directory"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/s-projects-side-by-side"
+  to = "/directory"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/profile/rainey/profile"
+  to = "/directory/team/rainey-shane"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/profile/*"
+  to = "/directory"
+  status = 301
+  force = true
+
+# Wix-era application/conversion paths
+[[redirects]]
+  from = "/application"
+  to = "/get-started"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/apply"
+  to = "/get-started"
+  status = 301
+  force = true
+
+# Wix auto-slugs and misc dead paths (originals unknown — send home)
+[[redirects]]
+  from = "/general-5"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/general-4"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/seam-eu"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/product-page/*"
+  to = "/"
+  status = 301
+  force = true
+
+# No forum on new site — route to contact
+[[redirects]]
+  from = "/forum/*"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/forum"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/opportunities"
+  to = "/contact"
+  status = 301
+  force = true
+
+# Funding/RFP-era pages — closest match is about
+[[redirects]]
+  from = "/funding"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/grants"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rfa"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rfp"
+  to = "/about"
+  status = 301
+  force = true
+
+# Old Wix-hosted files — send to standard resources
+[[redirects]]
+  from = "/_files/*"
+  to = "/resources/standard"
+  status = 301
+  force = true
 
 [[headers]]
   for = "/*"
