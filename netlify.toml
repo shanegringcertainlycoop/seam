@@ -304,6 +304,28 @@
   status = 301
   force = true
 
+# Remaining GSC 404s (old Wix paths still crawled as of Jul 2026). /standard has
+# subpages but no index route, so the bare path 404'd; the old standard/download
+# pages map to the standard resources hub, and cidie-registration follows
+# cidie-certification to /certification.
+[[redirects]]
+  from = "/standard"
+  to = "/resources/standard"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/standard-download"
+  to = "/resources/standard"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cidie-registration"
+  to = "/certification"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
