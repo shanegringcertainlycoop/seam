@@ -914,6 +914,10 @@ const jsonLd = breadcrumbSchema([
             statusEl.textContent = "Thank you! We'll be in touch within 2 business days."
             statusEl.classList.remove('hidden', 'text-red-400')
             statusEl.classList.add('text-seam-300')
+            ;(window as any).seamTrack?.lead({
+              form_name: 'Certification enquiry',
+              form_location: 'certification',
+            })
           } else {
             throw new Error('Submission failed')
           }

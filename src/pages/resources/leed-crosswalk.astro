@@ -150,11 +150,10 @@ const jsonLd = breadcrumbSchema([
           target.classList.add('hidden')
           success.classList.remove('hidden')
         }
-        // Fire dataLayer event for Google Ads conversion tracking via GTM
-        window.dataLayer = window.dataLayer || []
-        window.dataLayer.push({
-          event: 'leed_crosswalk_download',
-          form_location: 'leed-crosswalk',
+        window.seamTrack?.lead({
+          form_name: 'LEED crosswalk download',
+          form_location: 'resources/leed-crosswalk',
+          legacyEvent: 'leed_crosswalk_download',
         })
         // Trigger download
         const link = document.createElement('a')
