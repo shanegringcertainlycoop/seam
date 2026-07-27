@@ -229,6 +229,7 @@ const jsonLd = [
           statusEl.textContent = "You're subscribed! Watch your inbox."
           statusEl.classList.remove('hidden', 'text-red-400')
           statusEl.classList.add('text-seam-600')
+          ;(window as any).seamTrack?.newsletter({ form_location: 'resources/blog' })
         } else {
           throw new Error('Submission failed')
         }

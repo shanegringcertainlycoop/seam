@@ -53,6 +53,32 @@ const url = `${SITE_URL}${path}`
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+
+      // Conversion tracking. Every form on the site reports success through one of
+      // these two calls, so GTM needs exactly two custom-event triggers:
+      //   seam_lead              -> GA4 "generate_lead" (mark this the Key Event)
+      //   seam_newsletter_signup -> GA4 "sign_up"
+      // Deliberately not named form_submit: GA4 enhanced measurement already owns
+      // that name and fires it on submit *intent*, before the HubSpot POST is known
+      // to have succeeded. These fire only after a confirmed 200.
+      // legacyEvent re-fires a pre-existing event name that Google Ads conversion
+      // tags already trigger on. Keep passing it until those tags are repointed at
+      // seam_lead in GTM, or Ads conversion tracking goes dark on that form.
+      window.seamTrack = {
+        lead: function (params) {
+          var p = params || {};
+          window.dataLayer.push(Object.assign({ event: 'seam_lead' }, p));
+          if (p.legacyEvent) {
+            window.dataLayer.push(Object.assign({}, p, { event: p.legacyEvent }));
+          }
+        },
+        newsletter: function (params) {
+          window.dataLayer.push(
+            Object.assign({ event: 'seam_newsletter_signup' }, params || {})
+          );
+        },
+      };
+
       function loadGTM() {
         if (window.__gtmLoaded) return;
         window.__gtmLoaded = true;

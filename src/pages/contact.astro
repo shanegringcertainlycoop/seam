@@ -156,12 +156,17 @@ const jsonLd = breadcrumbSchema([
 
           <div class="rounded-2xl border border-warm-100 bg-warm-50 p-8">
             <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-4">Email us directly</h3>
+            <!-- The email_off/email_on pair below stops Cloudflare Scrape Shield rewriting
+                 this mailto into a /cdn-cgi/l/email-protection URL, which crawlers follow
+                 and get a 404. The tokens must stay byte-exact for Cloudflare to honour them. -->
+            <!--email_off-->
             <a
               href="mailto:info@seamcertification.org"
               class="text-[15px] font-medium text-seam-600 hover:text-seam-700 transition-colors underline decoration-seam-300 hover:decoration-seam-600"
             >
               info@seamcertification.org
             </a>
+            <!--email_on-->
           </div>
 
           <div class="rounded-2xl border border-warm-100 bg-warm-50 p-8">
@@ -221,12 +226,11 @@ const jsonLd = breadcrumbSchema([
         if (res.ok) {
           form.classList.add('hidden')
           success?.classList.remove('hidden')
-          // Fire dataLayer event for Google Ads conversion tracking via GTM
-          ;(window as any).dataLayer = (window as any).dataLayer || []
-          ;(window as any).dataLayer.push({
-            event: 'contact_form_submit',
-            form_topic: data.get('topic'),
+          ;(window as any).seamTrack?.lead({
+            form_name: 'Contact',
             form_location: 'contact',
+            form_topic: data.get('topic'),
+            legacyEvent: 'contact_form_submit',
           })
         } else {
           throw new Error('Submission failed')
