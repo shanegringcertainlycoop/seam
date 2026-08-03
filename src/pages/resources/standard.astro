@@ -452,6 +452,46 @@ const allObjectives = Array.from(objectivesBy.values())
   </section>
 
   <!-- Concepts -->
+  <!-- Digital Standard — the only in-body link to the standard. subdomain root.
+       Its child pages are indexed but the root was not, because nothing on the
+       main site pointed at it outside the nav mega-menu. -->
+  <section class="py-20 lg:py-24 bg-warm-50 border-y border-warm-100">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
+        <div class="reveal-fade-up max-w-2xl">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-5">Read it online</p>
+          <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.15] tracking-[-0.03em] text-warm-900 mb-5">
+            The digital Standard
+          </h2>
+          <p class="text-[17px] leading-relaxed text-warm-600">
+            Every pillar, concept, objective, and activity is published in full at{' '}
+            <a
+              href={STANDARD_URL}
+              rel="noopener"
+              class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors"
+            >standard.seamcertification.org</a>{' '}
+            — free to read, no download required. It includes the{' '}
+            <a href={`${STANDARD_URL}/glossary`} rel="noopener" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">glossary</a>,{' '}
+            <a href={`${STANDARD_URL}/bibliography`} rel="noopener" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">bibliography</a>, and{' '}
+            <a href={`${STANDARD_URL}/appendix`} rel="noopener" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">appendices</a>.
+          </p>
+        </div>
+        <div class="reveal-fade-up shrink-0">
+          <a
+            href={STANDARD_URL}
+            rel="noopener"
+            class="inline-flex items-center rounded-full bg-warm-900 px-8 py-4 text-[15px] font-medium text-white hover:bg-warm-800 transition-colors"
+          >
+            Browse the digital Standard
+            <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   {allConcepts.length > 0 && (
     <section class="py-24 lg:py-32">
       <div class="mx-auto max-w-[1400px] px-6 lg:px-10">

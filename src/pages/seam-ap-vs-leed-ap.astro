@@ -1,0 +1,403 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { faqSchema, breadcrumbSchema } from '../lib/seo-helpers'
+
+/* ─── Data ─── */
+
+// Facts about LEED AP are kept to what USGBC publishes on usgbc.org/credentials
+// (Green Associate prerequisite, five specialties, 30 CE hours / 2 years).
+// Fees are deliberately not quoted here — GBCI changes them, and a stale number
+// on a comparison page is worse than no number.
+const rows = [
+  {
+    label: 'What it certifies',
+    seam: 'Applied expertise in social equity in the built environment — the people a building affects.',
+    leed: 'Applied expertise in green building — energy, water, materials, and environmental performance.',
+  },
+  {
+    label: 'Pillar of sustainability',
+    seam: 'Social',
+    leed: 'Environmental',
+  },
+  {
+    label: 'Issuing body',
+    seam: 'SEAM, Inc. — a 501(c)(3) standards organization.',
+    leed: 'GBCI, the certification body for USGBC\'s LEED rating system.',
+  },
+  {
+    label: 'Prerequisites',
+    seam: 'None. Open to any professional background — no prior credential required.',
+    leed: 'A current LEED Green Associate credential, or passing that exam at the same time.',
+  },
+  {
+    label: 'Specialties',
+    seam: 'One credential covering all four pillars of the Standard.',
+    leed: 'Five tracks: BD+C, ID+C, O+M, ND, and Homes.',
+  },
+  {
+    label: 'Preparation',
+    seam: 'Self-paced Foundations course — 10 modules, 55 lessons, 9 knowledge checks. Most candidates finish in six to eight weeks while working.',
+    leed: 'Self-study or third-party prep courses; USGBC publishes candidate handbooks and reference guides.',
+  },
+  {
+    label: 'Exam',
+    seam: 'Online proctored, scenario-based, with one retake included.',
+    leed: 'Proctored at Prometric testing centers or online.',
+  },
+  {
+    label: 'Cost',
+    seam: '$519 for the full bundle — course, exam, retake, digital credential, and directory listing.',
+    leed: 'Set by GBCI and varies by USGBC membership status. Check usgbc.org for current fees.',
+  },
+  {
+    label: 'Renewal',
+    seam: '30 CEUs every three years. No re-examination.',
+    leed: '30 continuing education hours every two years.',
+  },
+  {
+    label: 'Public listing',
+    seam: 'Listed in the SEAM directory of accredited professionals.',
+    leed: 'Listed in the USGBC people directory.',
+  },
+  {
+    label: 'Role on projects',
+    seam: 'At least one SEAM AP is required on the team for Silver, Gold, and Platinum submissions.',
+    leed: 'A LEED AP with the relevant specialty earns a point toward LEED certification.',
+  },
+]
+
+const faqs = [
+  {
+    question: 'What is the difference between a SEAM AP and a LEED AP?',
+    answer:
+      'A LEED AP is credentialed in green building performance — energy, water, materials, and site. A SEAM AP is credentialed in social equity in the built environment — labor conditions, accessibility, community involvement, and human rights. They cover different pillars of sustainability and are issued by different organizations: GBCI for LEED, SEAM, Inc. for SEAM.',
+  },
+  {
+    question: 'Can you hold both a SEAM AP and a LEED AP?',
+    answer:
+      'Yes, and many practitioners do. The credentials do not overlap or conflict — SEAM AP has no prerequisites and does not require a LEED credential, and vice versa. Sustainability consultants commonly add SEAM AP to cover the social scope their LEED work does not reach.',
+  },
+  {
+    question: 'Do I need a LEED credential before taking the SEAM AP exam?',
+    answer:
+      'No. The SEAM AP credential has no prerequisites. Candidates come from sustainability, real estate, DEI, community development, public health, and related fields, and the Foundations course assumes no prior credential.',
+  },
+  {
+    question: 'Is SEAM AP recognized the way LEED AP is?',
+    answer:
+      'LEED has a two-decade head start and far wider name recognition. SEAM is the newer system, and the SEAM AP credential is the recognized qualification within it — required on the project team for Silver, Gold, and Platinum SEAM submissions. The two credentials are not competing for the same slot on a project.',
+  },
+  {
+    question: 'Does SEAM work count toward LEED credits?',
+    answer:
+      'There is overlap. LEED includes Social Equity pilot credits, and the SEAM–LEED Crosswalk maps SEAM Standard activities to those three credits so a team can see where one body of evidence supports both submissions.',
+  },
+  {
+    question: 'Which credential should I earn first?',
+    answer:
+      'It depends on the work in front of you. If your projects are judged on energy and environmental performance, start with LEED. If clients are asking about labor practices, community impact, accessibility, or social risk in diligence, start with SEAM — those questions have no LEED answer.',
+  },
+]
+
+const jsonLd = [
+  faqSchema(faqs),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'AP Credential', path: '/ap-credential' },
+    { name: 'SEAM AP vs LEED AP', path: '/seam-ap-vs-leed-ap' },
+  ]),
+] as unknown as Record<string, unknown>
+---
+
+<SiteLayout
+  title="SEAM AP vs LEED AP — How the Two Credentials Compare"
+  description="SEAM AP certifies expertise in social equity; LEED AP certifies expertise in green building. Side-by-side comparison of prerequisites, exams, cost, renewal, and project roles."
+  path="/seam-ap-vs-leed-ap"
+  jsonLd={jsonLd}
+>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       1. HERO — direct answer immediately under the H1
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-32 lg:py-40 bg-gradient-to-br from-warm-900 via-warm-800 to-seam-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <nav aria-label="Breadcrumb" class="hero-enter mb-6">
+        <ol class="flex flex-wrap items-center gap-2 text-[13px] text-warm-400">
+          <li><a href="/" class="hover:text-warm-300 transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/ap-credential" class="hover:text-warm-300 transition-colors">AP Credential</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-warm-300">SEAM AP vs LEED AP</li>
+        </ol>
+      </nav>
+
+      <h1 class="hero-enter font-display text-[clamp(2.25rem,4.5vw,4rem)] leading-[1.06] tracking-[-0.04em] text-white max-w-4xl" style="animation-delay:.05s">
+        SEAM AP vs{' '}<em class="italic font-normal text-seam-300">LEED AP</em>
+      </h1>
+
+      <!-- The 40-word answer. One paragraph, no hedging — this is the passage
+           search engines and AI assistants lift for the comparison query. -->
+      <p class="hero-enter mt-8 text-[clamp(1.1rem,1.5vw,1.35rem)] leading-relaxed text-warm-200 max-w-3xl" style="animation-delay:.1s">
+        SEAM AP and LEED AP are both professional credentials for the built environment, but
+        they measure different things. LEED AP certifies expertise in green building
+        performance. SEAM AP certifies expertise in social equity — labor, accessibility,
+        community, and human rights. Most practitioners eventually hold both.
+      </p>
+
+      <div class="hero-enter mt-10 flex flex-wrap gap-4" style="animation-delay:.15s">
+        <a
+          href="/ap-credential"
+          class="inline-flex items-center rounded-full bg-white px-7 py-3.5 text-[15px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+        >
+          Explore the SEAM AP credential
+        </a>
+        <a
+          href="/directory?tab=professionals"
+          class="inline-flex items-center rounded-full border border-warm-600 px-7 py-3.5 text-[15px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+        >
+          Browse certified professionals
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       2. THE SHORT VERSION
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div class="reveal-child rounded-2xl border border-seam-200 bg-seam-50/40 p-8 lg:p-10">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-seam-700 mb-5">SEAM AP</p>
+          <h2 class="font-display text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
+            The social pillar
+          </h2>
+          <p class="text-[16px] leading-relaxed text-warm-600">
+            Qualifies you to guide a project through social equity assessment and certification:
+            who the building affects, what it owes them, and how that gets evidenced. Answers the
+            diligence questions that arrive as "what are you doing about labor, access, and
+            community?"
+          </p>
+        </div>
+        <div class="reveal-child rounded-2xl border border-warm-200 bg-white p-8 lg:p-10">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-warm-500 mb-5">LEED AP</p>
+          <h2 class="font-display text-[26px] tracking-[-0.02em] text-warm-900 mb-4">
+            The environmental pillar
+          </h2>
+          <p class="text-[16px] leading-relaxed text-warm-600">
+            Qualifies you to guide a project through LEED certification: energy, water,
+            materials, indoor environmental quality, and site. Two decades of market
+            recognition, and the default credential on most green building teams.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       3. SIDE BY SIDE
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl mb-14">
+        <p class="reveal-fade-up text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Side by side
+        </p>
+        <h2 class="reveal-fade-up font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900">
+          The full{' '}<em class="italic font-normal text-seam-600">comparison</em>
+        </h2>
+      </div>
+
+      <div class="reveal-fade-up overflow-x-auto rounded-2xl border border-warm-200 bg-white">
+        <table class="w-full min-w-[720px] border-collapse text-left">
+          <caption class="sr-only">
+            SEAM AP compared with LEED AP across scope, issuing body, prerequisites, exam, cost, renewal, and project role
+          </caption>
+          <thead>
+            <tr class="border-b border-warm-200 bg-warm-50/60">
+              <th scope="col" class="w-[18%] px-6 py-5 text-[13px] font-medium uppercase tracking-[0.1em] text-warm-500"></th>
+              <th scope="col" class="w-[41%] px-6 py-5 font-display text-[19px] tracking-[-0.02em] text-seam-700">SEAM AP</th>
+              <th scope="col" class="w-[41%] px-6 py-5 font-display text-[19px] tracking-[-0.02em] text-warm-900">LEED AP</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr class="border-b border-warm-100 last:border-b-0 align-top">
+                <th scope="row" class="px-6 py-6 text-[14px] font-medium text-warm-900">{row.label}</th>
+                <td class="px-6 py-6 text-[15px] leading-relaxed text-warm-600">{row.seam}</td>
+                <td class="px-6 py-6 text-[15px] leading-relaxed text-warm-600">{row.leed}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="reveal-fade-up mt-6 text-[14px] leading-relaxed text-warm-500 max-w-3xl">
+        LEED AP details reflect what USGBC publishes at{' '}
+        <a href="https://www.usgbc.org/credentials/leed-ap" target="_blank" rel="noopener noreferrer" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">usgbc.org/credentials</a>.
+        Requirements and fees are set by GBCI and change — verify current details there before enrolling.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       4. HOW THEY WORK TOGETHER
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div class="reveal-slide-left">
+          <p class="text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+            Not either / or
+          </p>
+          <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-8">
+            The credentials stack.{' '}
+            <em class="italic font-normal text-seam-600">The pillars do not overlap.</em>
+          </h2>
+          <div class="space-y-6 text-[16px] leading-relaxed text-warm-600">
+            <p>
+              A LEED AP walks into a project meeting able to answer questions about energy
+              modeling, material transparency, and water use. The questions that follow —
+              who was displaced, how the contractor treats its labor, whether the space is
+              usable by the people who live nearby — sit outside the rating system.
+            </p>
+            <p>
+              That is not a criticism of LEED. It is a scope boundary, and it is why SEAM
+              exists as a separate standard rather than a LEED add-on. LEED does include
+              Social Equity pilot credits, and the{' '}
+              <a href="/resources/leed-crosswalk" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM–LEED Crosswalk</a>{' '}
+              maps SEAM Standard activities to those three credits, so one body of evidence
+              can support both submissions.
+            </p>
+            <p>
+              For a consultant, the practical effect is straightforward: SEAM AP extends the
+              service you already sell into the scope your clients are already being asked
+              about in diligence.
+            </p>
+          </div>
+        </div>
+
+        <div class="reveal-slide-right space-y-4">
+          <div class="rounded-2xl border border-warm-200 bg-white p-7">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">If you already hold LEED AP</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">
+              Nothing carries over — SEAM AP has its own Foundations course and exam — but
+              nothing is required first either. Add the social scope in six to eight weeks
+              of part-time study.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-warm-200 bg-white p-7">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">If you come from DEI or community work</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">
+              SEAM AP is the faster route in. There is no green building prerequisite, and
+              the bundle includes a commercial real estate familiarization course for people
+              entering from social impact backgrounds.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-warm-200 bg-white p-7">
+            <h3 class="font-display text-[20px] tracking-[-0.02em] text-warm-900 mb-3">If you are staffing a project team</h3>
+            <p class="text-[15px] leading-relaxed text-warm-600">
+              Silver, Gold, and Platinum SEAM submissions require at least one SEAM AP on the
+              team. Bronze can be pursued without one.{' '}
+              <a href="/directory?tab=professionals" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Browse the directory</a>{' '}
+              to find one.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       5. FAQ
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="reveal-fade-up font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 text-center mb-16">
+          Frequently asked questions
+        </h2>
+
+        <div class="reveal-fade-up">
+          {faqs.map((faq) => (
+            <details class="border-b border-warm-200 group last:border-b-0">
+              <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8 group-open:text-seam-600 transition-colors">
+                  {faq.question}
+                </span>
+                <svg
+                  class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-6">
+                <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       6. KEEP READING
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-20 lg:py-24">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <h2 class="reveal-fade-up font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 text-center mb-14">
+        Keep reading
+      </h2>
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <a href="/social-sustainability" class="reveal-child group block rounded-2xl border border-warm-200 bg-white p-8 transition-all duration-300 hover:border-warm-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors mb-3">What is social sustainability?</h3>
+          <p class="text-[15px] leading-relaxed text-warm-600">The third pillar, what it covers, and how it differs from ESG reporting.</p>
+        </a>
+        <a href="/resources/leed-crosswalk" class="reveal-child group block rounded-2xl border border-warm-200 bg-white p-8 transition-all duration-300 hover:border-warm-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors mb-3">SEAM + LEED Crosswalk</h3>
+          <p class="text-[15px] leading-relaxed text-warm-600">Where SEAM activities map to the three LEED Social Equity credits.</p>
+        </a>
+        <a href="/resources/courses/foundations" class="reveal-child group block rounded-2xl border border-warm-200 bg-white p-8 transition-all duration-300 hover:border-warm-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors mb-3">Foundations course</h3>
+          <p class="text-[15px] leading-relaxed text-warm-600">The prep course behind the SEAM AP exam — 10 modules, 55 lessons.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       7. CTA
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        Add the pillar your credential{' '}
+        <em class="italic font-normal text-seam-600">does not cover</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        The SEAM AP bundle includes the Foundations course, the proctored exam, a retake, and a
+        directory listing.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a
+          href="/ap-credential"
+          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+        >
+          Explore the AP credential
+        </a>
+        <a
+          href="/get-started"
+          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+        >
+          Talk to an advisor
+        </a>
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>
