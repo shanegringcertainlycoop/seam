@@ -40,6 +40,8 @@ export const GET: APIRoute = async () => {
     { path: '/privacy', priority: 0.3, changefreq: 'yearly' },
     { path: '/terms', priority: 0.3, changefreq: 'yearly' },
     { path: '/social-equity-101', priority: 0.8, changefreq: 'monthly' },
+    { path: '/social-sustainability', priority: 0.8, changefreq: 'monthly' },
+    { path: '/seam-ap-vs-leed-ap', priority: 0.8, changefreq: 'monthly' },
     { path: '/pathways', priority: 0.7, changefreq: 'monthly' },
     // Solutions
     { path: '/certification', priority: 0.9, changefreq: 'monthly' },

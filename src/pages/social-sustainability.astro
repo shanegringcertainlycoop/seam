@@ -1,0 +1,432 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+import { faqSchema, breadcrumbSchema } from '../lib/seo-helpers'
+
+/* ─── Data ─── */
+
+// The three pillars, framed so the social one is the one with the gap.
+const pillars = [
+  {
+    name: 'Environmental',
+    aka: 'Planet',
+    matured: 'Decades of standards',
+    description:
+      'Energy, carbon, water, waste, and materials. Measured by LEED, BREEAM, Energy Star, and a mature market of consultants and rating tools.',
+    state: 'settled',
+  },
+  {
+    name: 'Economic',
+    aka: 'Profit',
+    matured: 'Measured by default',
+    description:
+      'Viability, cost, yield, and long-term value. Already instrumented — every project has a pro forma, and every asset has a valuation method.',
+    state: 'settled',
+  },
+  {
+    name: 'Social',
+    aka: 'People',
+    matured: 'The open pillar',
+    description:
+      'The people a building touches: occupants, workers, neighbors, and the supply chain behind the materials. Widely claimed in reporting, rarely verified against a standard.',
+    state: 'open',
+  },
+]
+
+// What the social pillar actually contains, mapped to the four SEAM pillars.
+const domains = [
+  {
+    title: 'Social Impact',
+    href: '/standard/social-impact',
+    summary:
+      'What changes for people because the building exists — measured against a baseline, not asserted in a report.',
+    examples: ['Impact assessment', 'Outcome measurement', 'Baseline and target setting'],
+  },
+  {
+    title: 'Social Responsibility',
+    href: '/standard/social-responsibility',
+    summary:
+      'How the organization governs itself and invests in the community it operates in.',
+    examples: ['Transformational governance', 'Community involvement', 'Social investment'],
+  },
+  {
+    title: 'Social Justice',
+    href: '/standard/social-justice',
+    summary:
+      'Who gets access, who gets excluded, and what the project does about the difference.',
+    examples: ['Equitable access', 'Inclusive design', 'Social justice innovation'],
+  },
+  {
+    title: 'Social Accountability',
+    href: '/standard/social-accountability',
+    summary:
+      'The floor: human rights, health, and safety across everyone the project touches — including the people you never meet.',
+    examples: ['Human rights due diligence', 'Health + safety', 'Supply chain labor conditions'],
+  },
+]
+
+// Distinguish the terms people confuse. This is the section that earns
+// "social sustainability vs ESG" and "social impact certification" queries.
+const distinctions = [
+  {
+    term: 'Social sustainability',
+    scope: 'The outcome',
+    body: 'The condition you are trying to reach: people affected by a place are measurably better off, and stay that way. It is the goal, not the paperwork.',
+  },
+  {
+    term: 'The "S" in ESG',
+    scope: 'The reporting frame',
+    body: 'A disclosure category built for investors. ESG reporting asks what you disclose about social performance. It rarely asks a third party to verify it at the asset level.',
+  },
+  {
+    term: 'Social impact',
+    scope: 'The measured change',
+    body: 'The specific, attributable change a project produces for a defined group. Impact is one input to social sustainability — necessary, not sufficient.',
+  },
+  {
+    term: 'Social equity certification',
+    scope: 'The verification',
+    body: 'Independent assessment of a building or organization against a published standard, with a scoring rubric and evidence requirements. This is what SEAM does.',
+  },
+]
+
+const faqs = [
+  {
+    question: 'What is social sustainability in simple terms?',
+    answer:
+      'Social sustainability means building and operating places so the people they touch are measurably better off over time. It covers occupants, workers, neighbors, and the supply chain behind the materials — and it holds up only if the outcomes are measured rather than claimed.',
+  },
+  {
+    question: 'What are the three pillars of sustainability?',
+    answer:
+      'The three pillars of sustainability are environmental, economic, and social — often summarized as planet, profit, and people. The environmental and economic pillars have mature measurement systems in the built environment. The social pillar is the least standardized of the three, which is the gap the SEAM Standard was written to close.',
+  },
+  {
+    question: 'How is social sustainability different from ESG?',
+    answer:
+      'ESG is a reporting framework for investors; social sustainability is an outcome for people. The "S" in ESG asks what an organization discloses. Social sustainability asks what actually changed for occupants, workers, neighbors, and suppliers — and whether an independent party verified it against a published standard.',
+  },
+  {
+    question: 'How do you measure social sustainability in a building?',
+    answer:
+      'You measure it activity by activity against a standard with defined requirements, scoring rubrics, and documentation rules. The SEAM Standard organizes this as 4 pillars, 8 concepts, 21 objectives, and 50+ verifiable activities, each with evidence requirements and a third-party review step.',
+  },
+  {
+    question: 'Is there a certification for social sustainability?',
+    answer:
+      'Yes. SEAM certification verifies a project against the SEAM Standard at four levels — Bronze, Silver, Gold, and Platinum. Organizations that are not ready for whole-building certification can verify individual practices through SEAM Marks or a themed SEAM Seal.',
+  },
+  {
+    question: 'Who is responsible for social sustainability on a project?',
+    answer:
+      'In practice it is shared between the owner, the design and construction team, and the operator — which is why it is often nobody\'s job. Projects that make progress usually name an accountable lead, and Silver, Gold, and Platinum SEAM submissions require at least one SEAM Accredited Professional on the team.',
+  },
+]
+
+const jsonLd = [
+  faqSchema(faqs),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Social Sustainability', path: '/social-sustainability' },
+  ]),
+] as unknown as Record<string, unknown>
+---
+
+<SiteLayout
+  title="What Is Social Sustainability in the Built Environment?"
+  description="Social sustainability means building and operating places so the people they touch are measurably better off. What it covers, how it differs from ESG, and how it is measured."
+  path="/social-sustainability"
+  jsonLd={jsonLd}
+>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       1. HERO — question as H1, direct answer immediately after
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="relative min-h-[70vh] flex items-end bg-warm-900 overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/images/hero-directory.jpg"
+        alt="People moving through a shared urban space"
+        class="h-full w-full object-cover object-center"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-warm-900/90 via-warm-900/60 to-warm-900/30"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-[1400px] px-6 lg:px-10 pb-16 lg:pb-24 pt-40 w-full">
+      <nav aria-label="Breadcrumb" class="hero-enter mb-6">
+        <ol class="flex items-center gap-2 text-[13px] text-warm-400">
+          <li><a href="/" class="hover:text-warm-300 transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-warm-300">Social Sustainability</li>
+        </ol>
+      </nav>
+
+      <h1 class="hero-title font-display text-[clamp(2.25rem,4.5vw,4rem)] leading-[1.06] tracking-[-0.04em] text-white max-w-4xl">
+        What is social sustainability in the{' '}
+        <em class="italic font-normal text-seam-300">built environment?</em>
+      </h1>
+
+      <!-- The 40-word answer. Kept as one short paragraph on purpose: this is
+           the passage that gets lifted into featured snippets and AI answers. -->
+      <p class="hero-subtitle mt-8 text-[clamp(1.1rem,1.5vw,1.35rem)] leading-relaxed text-warm-200 max-w-3xl">
+        Social sustainability is the practice of building and operating places so the people
+        they touch — occupants, workers, neighbors, and supply chains — end up measurably
+        better off. In the built environment that means labor conditions, accessibility,
+        community involvement, and human rights: measured, not asserted.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       2. THE THREE PILLARS
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl mb-16">
+        <p class="reveal-fade-up text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          The three pillars
+        </p>
+        <h2 class="reveal-fade-up font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-8">
+          Sustainability has three pillars.{' '}
+          <em class="italic font-normal text-seam-600">Two of them are already measured.</em>
+        </h2>
+        <p class="reveal-fade-up text-[17px] leading-relaxed text-warm-600">
+          The three pillars of sustainability are environmental, economic, and social — planet,
+          profit, and people. In the built environment the first two arrived with measurement
+          systems attached. The third arrived as a value statement, which is why two buildings
+          can make identical social claims and mean entirely different things by them.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6">
+        {pillars.map((p) => (
+          <div class={`reveal-child rounded-2xl p-8 lg:p-10 border ${
+            p.state === 'open'
+              ? 'border-seam-200 bg-seam-50/40'
+              : 'border-warm-100 bg-white'
+          }`}>
+            <div class="flex items-baseline justify-between mb-5">
+              <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900">{p.name}</h3>
+              <span class="text-[13px] text-warm-400">{p.aka}</span>
+            </div>
+            <p class={`inline-block rounded-full px-3 py-1 text-[12px] font-medium mb-5 ${
+              p.state === 'open'
+                ? 'bg-seam-600/10 text-seam-700'
+                : 'bg-warm-100 text-warm-600'
+            }`}>
+              {p.matured}
+            </p>
+            <p class="text-[15px] leading-relaxed text-warm-600">{p.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       3. WHAT IT ACTUALLY COVERS
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl mb-16">
+        <p class="reveal-fade-up text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          What it covers
+        </p>
+        <h2 class="reveal-fade-up font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-8">
+          Four domains, not one{' '}
+          <em class="italic font-normal text-seam-600">good intention</em>
+        </h2>
+        <p class="reveal-fade-up text-[17px] leading-relaxed text-warm-600">
+          "Social sustainability" collapses into vagueness unless you name what sits inside it.
+          The <a href="/resources/standard" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM Standard</a>{' '}
+          splits it into four pillars, then into 8 concepts, 21 objectives, and 50+ individual
+          activities — each with defined requirements, a scoring rubric, and documentation
+          rules, so an activity is either demonstrated or it is not.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6">
+        {domains.map((d) => (
+          <a
+            href={d.href}
+            class="reveal-child group block rounded-2xl border border-warm-200 bg-white p-8 lg:p-10 transition-all duration-300 hover:border-warm-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+          >
+            <h3 class="font-display text-[24px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors mb-4">
+              {d.title}
+            </h3>
+            <p class="text-[16px] leading-relaxed text-warm-600 mb-6">{d.summary}</p>
+            <ul class="flex flex-wrap gap-2">
+              {d.examples.map((e) => (
+                <li class="rounded-full bg-warm-50 px-3 py-1 text-[12px] text-warm-600">{e}</li>
+              ))}
+            </ul>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       4. TERMS PEOPLE CONFUSE
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl mb-16">
+        <p class="reveal-fade-up text-[13px] font-medium uppercase tracking-[0.15em] text-gold-600 mb-6">
+          Terms that get used interchangeably
+        </p>
+        <h2 class="reveal-fade-up font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 mb-8">
+          Social sustainability, ESG, social impact,{' '}
+          <em class="italic font-normal text-seam-600">and certification</em>
+        </h2>
+        <p class="reveal-fade-up text-[17px] leading-relaxed text-warm-600">
+          These four get swapped for each other in pitch decks, and the swap is where
+          accountability leaks out. They describe different things.
+        </p>
+      </div>
+
+      <div class="reveal-stagger max-w-4xl space-y-4">
+        {distinctions.map((d) => (
+          <div class="reveal-child rounded-2xl border border-warm-100 bg-white p-7 lg:p-9">
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-3">
+              <h3 class="font-display text-[21px] tracking-[-0.02em] text-warm-900">{d.term}</h3>
+              <span class="rounded-full bg-warm-50 px-3 py-1 text-[12px] text-warm-500">{d.scope}</span>
+            </div>
+            <p class="text-[16px] leading-relaxed text-warm-600">{d.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       5. HOW IT GETS VERIFIED
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl mb-14">
+        <p class="reveal-fade-up text-[13px] font-medium uppercase tracking-[0.15em] text-gold-400 mb-6">
+          How it is verified
+        </p>
+        <h2 class="reveal-fade-up font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-white mb-8">
+          A claim becomes a credential when{' '}
+          <em class="italic font-normal text-seam-300">somebody else checks it</em>
+        </h2>
+        <p class="reveal-fade-up text-[17px] leading-relaxed text-warm-400">
+          SEAM is a third-party certification system for social equity in the built environment.
+          Projects are assessed against the published Standard and awarded at four levels —
+          Bronze, Silver, Gold, and Platinum. Organizations that are not ready for whole-building
+          certification can verify individual practices instead.
+        </p>
+      </div>
+
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/marks" class="reveal-child group block rounded-2xl border border-warm-700 p-8 transition-colors duration-300 hover:border-warm-500">
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-white group-hover:text-seam-300 transition-colors mb-3">SEAM Marks</h3>
+          <p class="text-[15px] leading-relaxed text-warm-400">Verify one activity, or three related ones. The smallest honest unit of proof.</p>
+        </a>
+        <a href="/seals" class="reveal-child group block rounded-2xl border border-warm-700 p-8 transition-colors duration-300 hover:border-warm-500">
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-white group-hover:text-seam-300 transition-colors mb-3">SEAM Seals</h3>
+          <p class="text-[15px] leading-relaxed text-warm-400">Verify sustained work in one theme — ethical procurement, community development.</p>
+        </a>
+        <a href="/certification" class="reveal-child group block rounded-2xl border border-warm-700 p-8 transition-colors duration-300 hover:border-warm-500">
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-white group-hover:text-seam-300 transition-colors mb-3">SEAM Certification</h3>
+          <p class="text-[15px] leading-relaxed text-warm-400">Whole-building certification across all four pillars, at four levels of achievement.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       6. KEEP READING
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 bg-warm-50">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <h2 class="reveal-fade-up font-display text-[clamp(2rem,3.5vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 text-center mb-16">
+        Keep reading
+      </h2>
+      <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <a href="/social-equity-101" class="reveal-child group block rounded-2xl border border-warm-200 bg-white p-8 transition-all duration-300 hover:border-warm-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors mb-3">Social Equity 101</h3>
+          <p class="text-[15px] leading-relaxed text-warm-600">The six groups of people every building touches, and what it owes each of them.</p>
+        </a>
+        <a href="/seam-ap-vs-leed-ap" class="reveal-child group block rounded-2xl border border-warm-200 bg-white p-8 transition-all duration-300 hover:border-warm-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors mb-3">SEAM AP vs LEED AP</h3>
+          <p class="text-[15px] leading-relaxed text-warm-600">Two credentials, two pillars of sustainability. How they differ and why practitioners hold both.</p>
+        </a>
+        <a href="/resources/roi" class="reveal-child group block rounded-2xl border border-warm-200 bg-white p-8 transition-all duration-300 hover:border-warm-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <h3 class="font-display text-[22px] tracking-[-0.02em] text-warm-900 group-hover:text-seam-600 transition-colors mb-3">The ROI of social equity</h3>
+          <p class="text-[15px] leading-relaxed text-warm-600">The financial case for the social pillar, backed by published research.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       7. FAQ
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="reveal-fade-up font-display text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-warm-900 text-center mb-16">
+          Frequently asked questions
+        </h2>
+
+        <div class="reveal-fade-up">
+          {faqs.map((faq) => (
+            <details class="border-b border-warm-200 group last:border-b-0">
+              <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8 group-open:text-seam-600 transition-colors">
+                  {faq.question}
+                </span>
+                <svg
+                  class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-6">
+                <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       8. CTA
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32 bg-warm-900">
+    <div class="reveal-scale mx-auto max-w-[1400px] px-6 lg:px-10 text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
+        Ready to measure the{' '}
+        <em class="italic font-normal text-seam-600">social pillar?</em>
+      </h2>
+      <p class="mt-6 text-[17px] text-warm-400 max-w-xl mx-auto">
+        Read the Standard, or talk to an advisor about where your project would start.
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a
+          href="/get-started"
+          class="inline-flex items-center rounded-full bg-white px-8 py-4 text-[16px] font-medium text-warm-900 hover:bg-warm-100 transition-colors duration-300"
+        >
+          Talk to an advisor
+        </a>
+        <a
+          href="/resources/standard"
+          class="inline-flex items-center rounded-full border border-warm-600 px-8 py-4 text-[16px] font-medium text-warm-300 hover:border-warm-400 hover:text-white transition-colors duration-300"
+        >
+          Read the SEAM Standard
+        </a>
+      </div>
+    </div>
+  </section>
+
+</SiteLayout>

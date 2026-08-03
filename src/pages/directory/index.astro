@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro'
-import { breadcrumbSchema } from '../../lib/seo-helpers'
+import { breadcrumbSchema, faqSchema } from '../../lib/seo-helpers'
 import { certificationLevels, ratingSystems } from '../../data/directory'
 import { getSeamAPs, getCertifiedProjects, getMemberOrgs } from '../../lib/sanity'
 
@@ -94,6 +94,30 @@ const ctaConfig: Record<Tab, { heading: string; body: string; label: string; hre
 
 const cta = ctaConfig[activeTab]
 
+// Per-tab copy. The index used to render a hero, a row of pills, and a card
+// grid — almost no crawlable prose — which is why it sat at position 42 while
+// its own child pages ranked in the top 10. Each tab now leads with a heading
+// and a plain-language explanation using the words people actually search.
+const tabIntros: Record<Tab, { heading: string; body: string; filterLabel: string }> = {
+  professionals: {
+    heading: 'Accredited professionals',
+    body: 'SEAM Accredited Professionals (SEAM APs) are practitioners credentialed to lead social equity assessment and certification in the built environment. Every AP listed here has completed the Foundations coursework and passed the proctored SEAM AP exam. Silver, Gold, and Platinum certification submissions require at least one SEAM AP on the project team.',
+    filterLabel: 'Filter accredited professionals by specialty',
+  },
+  projects: {
+    heading: 'Certified projects',
+    body: 'Buildings and interiors that have been assessed against the SEAM Standard and awarded at one of four levels — Bronze, Silver, Gold, or Platinum. Each entry shows the rating system used and the level achieved, and links to the project record.',
+    filterLabel: 'Filter certified projects by level and rating system',
+  },
+  members: {
+    heading: 'Certified organizations and members',
+    body: 'Organizations and individuals who have joined the SEAM network. Organization members are firms, owners, and operators advancing social equity across their portfolios; individual members are practitioners supporting the Standard. Membership is separate from certification — a member has committed to the work, a certified project has been verified against the Standard.',
+    filterLabel: 'Filter members by type',
+  },
+}
+
+const intro = tabIntros[activeTab]
+
 const searchPlaceholder =
   activeTab === 'professionals'
     ? 'Search by name, organization, or specialty...'
@@ -103,10 +127,36 @@ const searchPlaceholder =
         : 'Search by name, organization, or location...'
       : 'Search by name, owner, or location...'
 
-const jsonLd = breadcrumbSchema([
-  { name: 'Home', path: '/' },
-  { name: 'Directory', path: '/directory' },
-])
+const directoryFaqs = [
+  {
+    question: 'What is a SEAM Accredited Professional?',
+    answer:
+      'A SEAM Accredited Professional (SEAM AP) is a practitioner credentialed to lead social equity assessment and certification in the built environment. Earning the credential requires completing the Foundations coursework and passing a proctored, scenario-based exam. Silver, Gold, and Platinum SEAM certification submissions require at least one SEAM AP on the project team.',
+  },
+  {
+    question: 'How do I get listed in the SEAM directory?',
+    answer:
+      'Professionals are listed after earning the SEAM AP credential. Projects are listed after being certified against the SEAM Standard at Bronze, Silver, Gold, or Platinum. Organizations are listed through SEAM membership. Listing follows verification — there is no way to be listed without one of the three.',
+  },
+  {
+    question: 'What is the difference between a SEAM member and a certified project?',
+    answer:
+      'Membership is a commitment; certification is a verification. A member organization has joined the SEAM network and supports the Standard. A certified project has been independently assessed against the Standard and awarded a level. An organization can be a member without holding a certified project, and vice versa.',
+  },
+  {
+    question: 'How do I find a SEAM AP near me?',
+    answer:
+      'Open the accredited professionals tab and search by name, organization, city, or specialty. Every AP profile lists their location, credentials, and areas of practice, so you can shortlist by region and by the kind of project you are staffing.',
+  },
+]
+
+const jsonLd = [
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Directory', path: '/directory' },
+  ]),
+  faqSchema(directoryFaqs),
+] as unknown as Record<string, unknown>
 
 // Pill style helpers for active/inactive state
 const activePillClass = 'bg-seam-700 text-white active'
@@ -114,8 +164,8 @@ const inactivePillClass =
   'bg-warm-50 text-warm-600 hover:bg-warm-100 hover:text-warm-700'
 ---
 <SiteLayout
-  title="Directory — SEAM Accredited Professionals & Certified Projects"
-  description="Browse SEAM Accredited Professionals and certified projects. The social equity ecosystem in the built environment."
+  title="Directory — SEAM Accredited Professionals, Certified Projects & Organizations"
+  description="Search the SEAM directory of accredited professionals, certified projects, and member organizations. Find a SEAM AP for your project team, or check a firm's current SEAM achievements."
   path="/directory"
   jsonLd={jsonLd}
 >
@@ -145,6 +195,60 @@ const inactivePillClass =
     </div>
   </section>
 
+  {/* Intro — renders on every tab so the index always has crawlable text of its own */}
+  <section class="py-16 lg:py-20 border-b border-warm-100">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 lg:gap-20 items-start">
+        <div class="reveal-fade-up max-w-3xl">
+          <h2 class="font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.15] tracking-[-0.03em] text-warm-900 mb-6">
+            The public record of who is doing this work
+          </h2>
+          <div class="space-y-5 text-[16px] leading-relaxed text-warm-600">
+            <p>
+              The SEAM directory is the searchable index of everyone verified under the SEAM
+              Standard: <strong class="font-medium text-warm-900">accredited professionals</strong>{' '}
+              credentialed to lead certification work,{' '}
+              <strong class="font-medium text-warm-900">certified projects</strong> assessed and
+              awarded at Bronze, Silver, Gold, or Platinum, and{' '}
+              <strong class="font-medium text-warm-900">certified organizations and members</strong>{' '}
+              committed to social equity in the built environment.
+            </p>
+            <p>
+              Use it to find a SEAM AP for a project team, to check whether a firm or building
+              holds a current SEAM achievement, or to see how the field is being practiced in
+              your region. Every listing links to a full profile with credentials, specialties,
+              and location.
+            </p>
+            <p>
+              Getting listed follows earning the credential.{' '}
+              <a href="/ap-credential" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">Earn the SEAM AP credential</a>{' '}
+              to be listed as a professional, pursue{' '}
+              <a href="/certification" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">SEAM certification</a>{' '}
+              to list a project, or{' '}
+              <a href="/membership" class="underline decoration-warm-300 hover:decoration-warm-600 transition-colors">join as a member</a>{' '}
+              to list your organization.
+            </p>
+          </div>
+        </div>
+
+        <div class="reveal-fade-up grid grid-cols-3 lg:grid-cols-1 gap-4">
+          <a href="/directory?tab=professionals" class="group rounded-2xl border border-warm-100 p-5 lg:p-6 transition-colors duration-300 hover:border-warm-300">
+            <p class="font-display text-[28px] tracking-[-0.02em] text-gold-600">{seamAPs.length}</p>
+            <p class="text-[14px] text-warm-600 mt-1 group-hover:text-warm-900 transition-colors">Accredited professionals</p>
+          </a>
+          <a href="/directory?tab=projects" class="group rounded-2xl border border-warm-100 p-5 lg:p-6 transition-colors duration-300 hover:border-warm-300">
+            <p class="font-display text-[28px] tracking-[-0.02em] text-gold-600">{certifiedProjects.length}</p>
+            <p class="text-[14px] text-warm-600 mt-1 group-hover:text-warm-900 transition-colors">Certified projects</p>
+          </a>
+          <a href="/directory?tab=members" class="group rounded-2xl border border-warm-100 p-5 lg:p-6 transition-colors duration-300 hover:border-warm-300">
+            <p class="font-display text-[28px] tracking-[-0.02em] text-gold-600">{memberOrgs.length}</p>
+            <p class="text-[14px] text-warm-600 mt-1 group-hover:text-warm-900 transition-colors">Member organizations</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   {/* Sticky Tab Bar — server-rendered links so each tab is a real URL */}
   <section class="sticky top-[88px] z-30 bg-white/95 backdrop-blur-md border-b border-warm-100">
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -168,6 +272,14 @@ const inactivePillClass =
   {/* Search + Filters + Grid */}
   <section class="py-12 lg:py-16" data-directory-root>
     <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      {/* Tab heading — gives each ?tab= URL its own H2 and description */}
+      <div class="reveal-fade-up max-w-3xl mb-8">
+        <h2 class="font-display text-[clamp(1.5rem,2.5vw,2rem)] leading-[1.15] tracking-[-0.03em] text-warm-900 mb-4">
+          {intro.heading}
+        </h2>
+        <p class="text-[16px] leading-relaxed text-warm-600">{intro.body}</p>
+      </div>
+
       {/* Search bar */}
       <div class="relative mb-6">
         <label for="directory-search" class="sr-only">
@@ -198,7 +310,10 @@ const inactivePillClass =
       </div>
 
       {/* Sub-filter pills */}
-      <div class="flex flex-wrap gap-2 mb-8">
+      <h3 id="directory-filters" class="text-[13px] font-medium uppercase tracking-[0.12em] text-warm-500 mb-3">
+        {intro.filterLabel}
+      </h3>
+      <div class="flex flex-wrap gap-2 mb-8" role="group" aria-labelledby="directory-filters">
         {activeTab === 'professionals' &&
           specialtyFilters.map((s) => (
             <button
@@ -535,6 +650,40 @@ const inactivePillClass =
         >
           Clear all filters
         </button>
+      </div>
+    </div>
+  </section>
+
+  {/* About the directory — matches the FAQPage schema in the head */}
+  <section class="py-20 lg:py-28 border-t border-warm-100">
+    <div class="mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div class="max-w-3xl">
+        <h2 class="reveal-fade-up font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.15] tracking-[-0.03em] text-warm-900 mb-10">
+          About the SEAM directory
+        </h2>
+        <div class="reveal-fade-up">
+          {directoryFaqs.map((faq) => (
+            <details class="border-b border-warm-200 group last:border-b-0">
+              <summary class="flex w-full items-center justify-between py-6 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <h3 class="text-[17px] lg:text-[18px] font-medium text-warm-900 pr-8 group-open:text-seam-600 transition-colors">
+                  {faq.question}
+                </h3>
+                <svg
+                  class="shrink-0 w-5 h-5 text-warm-400 transition-transform duration-300 group-open:rotate-45"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <div class="pb-6">
+                <p class="text-[16px] leading-relaxed text-warm-600 max-w-2xl">{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   </section>
