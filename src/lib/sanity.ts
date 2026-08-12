@@ -42,18 +42,24 @@ const POST = `{
   "slug": slug.current, title, excerpt, category, author, "date": date,
   readTime, featured, "image": { "src": image.asset->url, "alt": image.alt }, body
 }`
+// Array fields are coalesced to []. An empty field in the Studio comes back as
+// null, and consumers spread/.map these directly (the data/ interfaces declare
+// them as arrays) — so an unfilled field would otherwise throw mid-render and
+// truncate the SSR stream. Same resilience contract as safeFetch below.
 const AP = `{
   "slug": slug.current, name, "photo": photo.asset->url, title, organization,
-  location, specialties, bio, credentials, membershipTier, roles, linkedIn, website,
+  location, "specialties": coalesce(specialties, []), bio, credentials,
+  membershipTier, "roles": coalesce(roles, []), linkedIn, website,
   dateCredentialed, projectsLed
 }`
 const ORG = `{
   "slug": slug.current, name, "logo": logo.asset->url, tier, description, location,
-  website, sectors
+  website, "sectors": coalesce(sectors, [])
 }`
 const PROJECT = `{
   "slug": slug.current, name, "image": image.asset->url, location, certificationLevel,
-  ratingSystem, description, completionDate, size, owner, highlights,
+  ratingSystem, description, completionDate, size, owner,
+  "highlights": coalesce(highlights, []),
   "apLead": apLead->slug.current,
   "blogPost": select(defined(blogPost) => "/resources/blog/" + blogPost->slug.current),
   website
